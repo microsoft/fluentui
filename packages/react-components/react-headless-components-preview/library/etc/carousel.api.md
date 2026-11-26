@@ -162,7 +162,7 @@ export type CarouselNavSlots = {
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
     pageCount: number;
     rendered: boolean;
-    registerTab: (index: number) => () => void;
+    registerTab: (index: number, autoFocusTarget?: HTMLButtonElement) => () => void;
     renderNavButton: NavButtonRenderFunction;
 };
 

@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import {
   CarouselRegisterTabContext,
@@ -21,7 +27,14 @@ export const useCarouselNavButton = (
   const index = useCarouselItemIndex();
   const registerTab = React.useContext(CarouselRegisterTabContext);
   const available = !isControlHidden(props) && !isControlDisabled(props);
-  useIsomorphicLayoutEffect(() => (available ? registerTab?.(index) : undefined), [registerTab, available, index]);
+  const rootRef = React.useRef<HTMLButtonElement>(null);
+  const mergedRef = useMergedRefs(ref, rootRef);
+  const autoFocusOnMount = React.useRef(props.autoFocus);
+  useIsomorphicLayoutEffect(
+    () =>
+      available ? registerTab?.(index, autoFocusOnMount.current ? rootRef.current ?? undefined : undefined) : undefined,
+    [registerTab, available, index],
+  );
   const { indicator, ...rest } = props;
   const selected = activeIndex === index;
   return {
@@ -32,7 +45,7 @@ export const useCarouselNavButton = (
           type: 'button',
           'aria-label': getPageLabel(index + 1, pageCount),
           ...rest,
-          ref,
+          ref: mergedRef,
           id: `${idPrefix}-tab-${index + 1}`,
           role: 'tab',
           'aria-controls': `${idPrefix}-page-${index + 1}`,

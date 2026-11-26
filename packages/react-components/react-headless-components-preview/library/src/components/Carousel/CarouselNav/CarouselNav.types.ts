@@ -22,8 +22,8 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   pageCount: number;
   /** False with fewer than two groups. */
   rendered: boolean;
-  /** Tracks the group's operable tab, including tabs rendered by a custom template. */
-  registerTab: (index: number) => () => void;
+  /** Tracks the group's operable tab and its optional mount autofocus request, including custom templates. */
+  registerTab: (index: number, autoFocusTarget?: HTMLButtonElement) => () => void;
   /** Renders the item for one group. */
   renderNavButton: NavButtonRenderFunction;
 };

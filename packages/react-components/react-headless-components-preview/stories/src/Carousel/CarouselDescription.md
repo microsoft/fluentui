@@ -46,6 +46,8 @@ the slide. Keep `groupSize` fixed and stack cards at narrow widths with CSS rath
 function must supply exactly one wired, visible, enabled `CarouselNavButton` (or its hook and renderer)
 per group. If any tab is missing, hidden, inert or disabled, the _whole_ tablist is unavailable: there are no partial
 roving tablists or panels labeled by unavailable tabs. Operable arrows can still enable paging.
+If a tab requests `autoFocus`, a complete nav honors it on mount. Restoring an incomplete or hidden nav
+does not move focus back to that tab.
 
 `CarouselPrevious` and `CarouselNext` have `root` (layout wrapper), `button` (headless Button) and `tooltip`
 (headless Tooltip content) slots. The tooltip text names the button through `aria-labelledby`; localize it

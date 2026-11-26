@@ -201,7 +201,49 @@ describe('Carousel browser behavior', () => {
     cy.wrap(onFocus).should('have.been.calledOnce');
   });
 
+  it('honors tab autofocus once when a complete nav mounts on an existing carousel', () => {
+    const onFocus = cy.stub();
+    let updateNav: (nav: { disabled?: boolean; hidden?: boolean }) => void;
+    const Collection = () => {
+      const [nav, setNav] = React.useState<{ disabled?: boolean; hidden?: boolean }>();
+      updateNav = setNav;
+      return (
+        <>
+          <button>Outside</button>
+          <Carousel aria-label="Lessons">
+            <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+            {nav && (
+              <CarouselNav hidden={nav.hidden}>
+                {i => <CarouselNavButton autoFocus={i === 0} onFocus={onFocus} disabled={i === 1 && nav.disabled} />}
+              </CarouselNav>
+            )}
+          </Carousel>
+        </>
+      );
+    };
+    mount(<Collection />);
+    cy.contains('button', 'Outside').focus();
+    cy.then(() => updateNav({}));
+    cy.get('[role="tablist"] [role="tab"]').first().should('be.focused');
+    cy.wrap(onFocus).should('have.been.calledOnce');
+
+    cy.contains('button', 'Outside').focus();
+    cy.then(() => updateNav({}));
+    cy.contains('button', 'Outside').should('be.focused');
+    cy.then(() => updateNav({ disabled: true }));
+    cy.get('[role="tablist"]').should('not.exist');
+    cy.then(() => updateNav({}));
+    cy.get('[role="tablist"]').should('be.visible');
+    cy.then(() => updateNav({ hidden: true }));
+    cy.get('[role="tab"]').should('not.exist');
+    cy.then(() => updateNav({}));
+    cy.get('[role="tablist"]').should('be.visible');
+    cy.contains('button', 'Outside').should('be.focused');
+    cy.wrap(onFocus).should('have.been.calledOnce');
+  });
+
   it('keeps an incomplete flex tablist hidden and out of focus order until its tabs are operable', () => {
+    const onFocus = cy.stub();
     let enableTabs: () => void;
     const Collection = () => {
       const [disabled, setDisabled] = React.useState(true);
@@ -212,7 +254,9 @@ describe('Carousel browser behavior', () => {
           <Carousel aria-label="Lessons">
             <CarouselViewport>{['First', 'Second']}</CarouselViewport>
             <CarouselNav style={{ display: 'flex' }}>
-              {index => <CarouselNavButton disabled={disabled && index === 1} />}
+              {index => (
+                <CarouselNavButton autoFocus={index === 0} onFocus={onFocus} disabled={disabled && index === 1} />
+              )}
             </CarouselNav>
           </Carousel>
           <button>After</button>
@@ -235,6 +279,8 @@ describe('Carousel browser behavior', () => {
     cy.contains('[data-carousel-page]', 'Second').should('be.visible');
     cy.then(() => enableTabs());
     cy.get('[role="tablist"]').should('be.visible').and('have.css', 'display', 'flex');
+    cy.contains('button', 'After').should('be.focused');
+    cy.wrap(onFocus).should('not.have.been.called');
     cy.get('[role="tab"]').last().click().should('have.attr', 'aria-selected', 'true');
     cy.contains('[role="tabpanel"]', 'Second').should('be.visible');
   });

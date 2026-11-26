@@ -10,11 +10,13 @@ import type { CarouselNavProps, CarouselNavState, NavButtonRenderFunction } from
 export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
   const { pageCount } = useCarouselContext();
   const { children, ...rest } = props;
-  const tabs = React.useRef(new Set<{ index: number }>());
+  const tabs = React.useRef(new Set<{ index: number; autoFocusTarget?: HTMLButtonElement }>());
+  // Undefined until the first registration pass; null once autofocus is consumed or declined.
+  const mountFocus = React.useRef<HTMLButtonElement | null | undefined>(undefined);
   const [revision, refresh] = React.useReducer((value: number) => value + 1, 0);
   const [complete, setComplete] = React.useState(false);
-  const registerTab = React.useCallback((index: number) => {
-    const entry = { index };
+  const registerTab = React.useCallback((index: number, autoFocusTarget?: HTMLButtonElement) => {
+    const entry = { index, autoFocusTarget };
     tabs.current.add(entry);
     refresh();
     return () => {
@@ -25,14 +27,27 @@ export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivEl
   const rendered = pageCount > 1 && !isControlHidden(props) && !isControlDisabled(props);
   // Read after child layout effects. A page-count change and its tabs are one commit, not a lost route.
   useIsomorphicLayoutEffect(() => {
-    setComplete(
-      tabs.current.size === pageCount && new Set(Array.from(tabs.current, tab => tab.index)).size === pageCount,
-    );
-  }, [pageCount, revision]);
+    const entries = Array.from(tabs.current);
+    const ready = rendered && entries.length === pageCount && new Set(entries.map(tab => tab.index)).size === pageCount;
+    if (pageCount > 1 && mountFocus.current === undefined) {
+      mountFocus.current = (ready && entries.find(tab => tab.autoFocusTarget)?.autoFocusTarget) || null;
+    }
+    setComplete(ready);
+  }, [rendered, pageCount, revision]);
   useCarouselPart('nav', rendered && complete);
   const inertRef = React.useCallback(
     (node: HTMLDivElement | null) => {
       node?.toggleAttribute('inert', !complete);
+      if (node && complete && mountFocus.current) {
+        const target = mountFocus.current;
+        mountFocus.current = null;
+        if (
+          node.contains(target) &&
+          !target.closest('[hidden], [inert], [aria-hidden="true"], [aria-disabled="true"]')
+        ) {
+          target.focus();
+        }
+      }
     },
     [complete],
   );

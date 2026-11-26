@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import type { CarouselNavState } from './CarouselNav/CarouselNav.types';
 
 /** Compound parts whose presence changes how the collection behaves. */
 export type CarouselPart = 'previous' | 'next' | 'nav' | 'autoplay';
@@ -93,7 +94,7 @@ export const useCarouselContext = (): CarouselContextValue =>
 export const CarouselItemIndexContext = React.createContext<number | undefined>(undefined);
 
 /** Only a complete set of operable tabs constitutes a pagination route. */
-export const CarouselRegisterTabContext = React.createContext<((index: number) => () => void) | undefined>(undefined);
+export const CarouselRegisterTabContext = React.createContext<CarouselNavState['registerTab'] | undefined>(undefined);
 
 export const useCarouselItemIndex = (): number => React.useContext(CarouselItemIndexContext) ?? 0;
 
