@@ -7,7 +7,7 @@ import { getDependencies } from '@fluentui/scripts-monorepo';
 import { sync as globSync } from 'glob';
 import * as ts from 'typescript';
 
-import { createPackageResolutions } from './packPackages';
+import { createPackageResolutions, packPackageArchives } from './packPackages';
 import { generateFiles, prepareTempDirs, workspaceRoot } from './utils';
 
 interface Manifest {
@@ -26,6 +26,16 @@ interface Manifest {
 
 function readManifest(root: string): Manifest {
   return JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+}
+
+export function copyStarter(source: string, app: string): void {
+  const files = execFileSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard'], {
+    cwd: source,
+    encoding: 'utf8',
+  });
+  for (const file of files.split('\0').filter(Boolean)) {
+    generateFiles(path.join(source, file), path.join(app, file));
+  }
 }
 
 export function verifyDeclaredImports(root: string, manifest: Manifest): void {
@@ -95,7 +105,7 @@ export async function testIntegration(): Promise<void> {
   );
 
   await withTemporaryApp(async (app, root) => {
-    generateFiles(path.join(workspaceRoot, 'starter-templates/src/react-components-vite'), app);
+    copyStarter(path.join(workspaceRoot, 'starter-templates/src/react-components-vite'), app);
     const manifest = readManifest(app);
     // Hoisted transitive packages must not conceal a missing starter dependency.
     verifyDeclaredImports(app, manifest);
@@ -113,18 +123,10 @@ export async function testIntegration(): Promise<void> {
         throw new Error(`${name}: add this local starter dependency to the integration package selection and Nx graph`);
       }
     }
-    const archives: Record<string, string> = {};
     for (const local of localPackages) {
       verifyPackageOutputs(local.absoluteRootPath, local);
-      // Sequential packing ensures no subprocess is still writing when cleanup starts.
-      const result: { filename: string }[] = JSON.parse(
-        execFileSync('npm', ['pack', '--json', '--ignore-scripts', local.absoluteRootPath], {
-          cwd: root,
-          encoding: 'utf8',
-        }),
-      );
-      archives[local.name] = path.join(root, result[0].filename);
     }
+    const archives = await packPackageArchives(localPackages, root, true);
     fs.writeFileSync(
       path.join(app, 'package.json'),
       JSON.stringify(

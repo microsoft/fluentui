@@ -1,10 +1,36 @@
+import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
 
-import { verifyDeclaredImports, verifyPackageOutputs, withTemporaryApp } from './vite';
+import { copyStarter, verifyDeclaredImports, verifyPackageOutputs, withTemporaryApp } from './vite';
 
 describe('isolated starter consumer', () => {
+  it('copies current starter files without ignored local artifacts', async () => {
+    await withTemporaryApp(async (app, root) => {
+      const source = path.join(root, 'starter');
+      fs.mkdirSync(source);
+      execFileSync('git', ['init', '--quiet', source]);
+      fs.writeFileSync(path.join(source, '.gitignore'), 'node_modules\ndist\n*.local\n');
+      fs.writeFileSync(path.join(source, 'main.tsx'), 'original');
+      execFileSync('git', ['add', '.'], { cwd: source });
+      fs.writeFileSync(path.join(source, 'main.tsx'), 'local changes');
+      fs.writeFileSync(path.join(source, 'new file.ts'), 'new source');
+      for (const directory of ['dist', 'node_modules']) {
+        fs.mkdirSync(path.join(source, directory));
+        fs.writeFileSync(path.join(source, directory, 'artifact'), '');
+      }
+      fs.writeFileSync(path.join(source, 'settings.local'), '');
+      copyStarter(source, app);
+      expect(fs.readFileSync(path.join(app, 'main.tsx'), 'utf8')).toBe('local changes');
+      expect(fs.readFileSync(path.join(app, 'new file.ts'), 'utf8')).toBe('new source');
+      expect(fs.existsSync(path.join(app, '.gitignore'))).toBe(true);
+      for (const ignored of ['dist', 'node_modules', 'settings.local', '.git']) {
+        expect(fs.existsSync(path.join(app, ignored))).toBe(false);
+      }
+    });
+  });
+
   it('rejects missing ESM and declaration outputs even when CommonJS exists', () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-output-'));
     try {
