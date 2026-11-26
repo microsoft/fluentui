@@ -213,6 +213,32 @@ describe('createPositionManager', () => {
       expect(computePositionMock).not.toHaveBeenCalled();
     });
 
+    it('follows scrolling content measured inside the virtual target context element', async () => {
+      const contextElement = createScroller();
+      const content = contextElement.appendChild(document.createElement('span'));
+      const virtualTarget = {
+        contextElement,
+        getBoundingClientRect: () => content.getBoundingClientRect(),
+      };
+      const { container } = await startManager(virtualTarget);
+      computePositionMock.mockResolvedValue({ x: 10, y: 20, placement: 'bottom', ...mockVisibility });
+
+      await scroll(contextElement);
+
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+      expect(computePositionMock).toHaveBeenCalledWith(virtualTarget, container, expect.any(Object));
+      expect(container.style.transform).toBe('translate(10px, 20px)');
+    });
+
+    it('does not reposition when the HTMLElement target itself scrolls', async () => {
+      const target = createScroller();
+      await startManager(target);
+
+      await scroll(target);
+
+      expect(computePositionMock).not.toHaveBeenCalled();
+    });
+
     it('follows the target in a different document and coalesces viewport notifications', async () => {
       const iframe = document.body.appendChild(document.createElement('iframe'));
       const targetDocument = iframe.contentDocument!;

@@ -82,6 +82,7 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
   const onScroll = (event: Event) => {
     // Non-composed scroll events stay inside shadow roots; use the original target when an event is retargeted.
     const scrollTarget = event.composedPath()[0] ?? event.target;
+    const isVirtualContextScroll = !isHTMLElement(target) && scrollTarget === target.contextElement;
     const affectsPosition = getScrollElements().some(element => {
       if (scrollTarget === element.ownerDocument) {
         return true;
@@ -93,7 +94,7 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
       }
       return false;
     });
-    if (affectsPosition) {
+    if (isVirtualContextScroll || affectsPosition) {
       updatePosition();
     }
   };

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: keep retained position managers following changing scroll ancestry and apply only the latest started position computation",
+  "comment": "fix: keep retained position managers following changing scroll ancestry, including virtual context element scrolling, and apply only the latest started position computation",
   "packageName": "@fluentui/react-positioning",
   "email": "141153077+andreivms@users.noreply.github.com"
 }
