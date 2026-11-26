@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { Tooltip } from './Tooltip';
@@ -197,7 +197,7 @@ describe('Tooltip', () => {
     const onVisibleChange = jest.fn();
     const Example = ({ visible }: { visible: boolean }) => {
       const button = React.useRef<HTMLButtonElement>(null);
-      React.useLayoutEffect(() => {
+      useIsomorphicLayoutEffect(() => {
         if (visible) {
           button.current?.dispatchEvent(
             new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
