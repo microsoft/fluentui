@@ -29,7 +29,7 @@ Compose one viewport and at most one of each control. Parts register with `Carou
   one arrow in a `circular` collection. Otherwise (a lone non-circular arrow, no controls, or fewer than two
   groups) every slide stays visible as a static collection, and the server render matches it before parts
   register.
-- A native `hidden` on the nav, an arrow wrapper or its `button` removes that route. Disabled arrows
+- A native `hidden` or `inert` on the nav, an arrow wrapper or its `button` removes that route. Disabled arrows
   do not count. Use props or conditional rendering rather than visually hiding the only route with CSS.
 - `CarouselAutoplayButton` enables user-started autoplay. Render it first so it is the first focus stop.
   Hiding, removing or disabling the playback control stops its session. Restoring it does not restart playback.
@@ -44,7 +44,7 @@ the slide. Keep `groupSize` fixed and stack cards at narrow widths with CSS rath
 
 `CarouselNav` renders one item per group, defaulting to `<CarouselNavButton />`. Each template or render
 function must supply exactly one wired, visible, enabled `CarouselNavButton` (or its hook and renderer)
-per group. If any tab is missing, hidden or disabled, the _whole_ tablist is hidden: there are no partial
+per group. If any tab is missing, hidden, inert or disabled, the _whole_ tablist is unavailable: there are no partial
 roving tablists or panels labeled by unavailable tabs. Operable arrows can still enable paging.
 
 `CarouselPrevious` and `CarouselNext` have `root` (layout wrapper), `button` (headless Button) and `tooltip`

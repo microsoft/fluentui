@@ -22,18 +22,19 @@ export const CarouselDirectionTooltip = (props: {
 }): React.ReactElement => {
   const { targetDocument } = useFluent_unstable();
   const [visible, setVisible] = React.useState(false);
-  const trigger = React.useRef<HTMLElement | null>(null);
+  const [trigger, setTrigger] = React.useState<HTMLElement | null>(null);
   const tooltip = React.useRef<HTMLDivElement | null>(null);
   const hovered = React.useRef(false);
   const content = slot.always(props.content, { elementType: 'div' });
   const contentRef = useMergedRefs(content.ref, tooltip);
-  // The child's own (consumer) handlers are merged below; they must not be invoked here as well.
-  const onFocus = useEventCallback((event: React.FocusEvent<HTMLElement>) => {
-    trigger.current = event.currentTarget;
+  // Native autofocus may fire before a layout-effect-backed event callback is ready.
+  const onFocus = (event: React.FocusEvent<HTMLElement>) => {
+    props.children.props.onFocus?.(event);
+    setTrigger(event.currentTarget);
     setVisible(true);
-  });
+  };
   const onPointerEnter = useEventCallback((event: React.PointerEvent<HTMLElement>) => {
-    trigger.current = event.currentTarget;
+    setTrigger(event.currentTarget);
     hovered.current = true;
   });
   const onPointerLeave = useEventCallback(() => {
@@ -47,11 +48,7 @@ export const CarouselDirectionTooltip = (props: {
   });
   const onVisibleChange = useEventCallback(
     (event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
-      if (
-        !data.visible &&
-        event &&
-        (hovered.current || (trigger.current && trigger.current === getActiveElement(trigger.current)))
-      ) {
+      if (!data.visible && event && (hovered.current || (trigger && trigger === getActiveElement(trigger)))) {
         return;
       }
       setVisible(data.visible);
@@ -60,7 +57,7 @@ export const CarouselDirectionTooltip = (props: {
   useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
     const element = tooltip.current;
-    const button = trigger.current;
+    const button = trigger;
     if (!win || !element || !button || !visible || props.unavailable) {
       return;
     }
@@ -98,7 +95,7 @@ export const CarouselDirectionTooltip = (props: {
       element.style.placeSelf = oldAlignment;
       element.style.setProperty('position-area', oldArea);
     };
-  }, [targetDocument, visible, props.unavailable, props.position]);
+  }, [targetDocument, trigger, visible, props.unavailable, props.position]);
   return (
     <Tooltip
       relationship="label"
@@ -115,7 +112,7 @@ export const CarouselDirectionTooltip = (props: {
       {React.cloneElement(props.children, {
         onPointerEnter: mergeCallbacks(props.children.props.onPointerEnter, onPointerEnter),
         onPointerLeave: mergeCallbacks(props.children.props.onPointerLeave, onPointerLeave),
-        onFocus: mergeCallbacks(props.children.props.onFocus, onFocus),
+        onFocus,
       })}
     </Tooltip>
   );

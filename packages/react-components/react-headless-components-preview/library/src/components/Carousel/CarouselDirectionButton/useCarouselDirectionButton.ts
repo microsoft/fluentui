@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../../hooks/top-layer/utils';
 import { Button } from '../../Button';
-import { isControlDisabled, useCarouselContext, useCarouselPart } from '../carouselContext';
+import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
 import { useFocusCarouselPage } from '../useFocusCarouselPage';
 import type { CarouselDirectionButtonProps, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
@@ -28,7 +28,7 @@ export const useCarouselDirectionButton = (
   const { button, tooltip, ...rest } = props;
   const unavailable = kind === 'previous' ? context.previousUnavailable : context.nextUnavailable;
   const buttonSlot = slot.always(button, { elementType: Button });
-  const present = !props.hidden && !buttonSlot.hidden;
+  const present = !isControlHidden(props) && !isControlHidden(buttonSlot);
   const wrapperDisabled = isControlDisabled(rest);
   useCarouselPart(kind, present, !wrapperDisabled && !isControlDisabled(buttonSlot));
   const boundaryHidden = kind === 'previous' ? context.previousHidden : context.nextHidden;

@@ -121,7 +121,7 @@ describe('Carousel', () => {
     expect(screen.getByRole('region')).not.toHaveAttribute('data-playing');
   });
 
-  it.each([false, { hidden: true }, { disabled: true }, { disabledFocusable: true }])(
+  it.each([false, { hidden: true }, { inert: true }, { disabled: true }, { disabledFocusable: true }])(
     'stops when playback loses its usable control (%p), requiring a fresh Play',
     autoplay => {
       jest.useFakeTimers();
@@ -139,11 +139,13 @@ describe('Carousel', () => {
 
   it.each([
     <CarouselNav key="hidden" hidden />,
+    <CarouselNav key="inert" inert />,
     <CarouselNav key="unavailable" aria-disabled="true" />,
     <CarouselNav key="empty">{false}</CarouselNav>,
     <CarouselNav key="missing">{i => i !== 1 && <CarouselNavButton />}</CarouselNav>,
     <CarouselNav key="disabled">{i => <CarouselNavButton disabled={i === 1} />}</CarouselNav>,
     <CarouselNav key="hidden-tab">{i => <CarouselNavButton hidden={i === 1} />}</CarouselNav>,
+    <CarouselNav key="inert-tab">{i => <CarouselNavButton inert={i === 1} />}</CarouselNav>,
   ])('does not count a hidden or incomplete tablist as a route', nav => {
     const tree = (arrows: boolean) => (
       <Carousel aria-label="Notes">
@@ -165,7 +167,9 @@ describe('Carousel', () => {
 
   it.each([
     { hidden: true },
+    { inert: true },
     { button: { hidden: true } },
+    { button: { inert: true } },
     { button: { disabled: true } },
     { button: { disabledFocusable: true } },
   ])('does not hide slides behind unavailable sequential controls (%p)', next => {

@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { mergeCallbacks, slot } from '@fluentui/react-utilities';
 import { Button } from '../../Button';
-import { isControlDisabled, useCarouselContext, useCarouselPart } from '../carouselContext';
+import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
 import type {
   CarouselAutoplayButtonProps,
   CarouselAutoplayButtonSlots,
@@ -20,7 +20,8 @@ export const useCarouselAutoplayButton = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): CarouselAutoplayButtonState => {
-  useCarouselPart('autoplay', !props.hidden, !isControlDisabled(props));
+  const present = !isControlHidden(props);
+  useCarouselPart('autoplay', present, !isControlDisabled(props));
   const context = useCarouselContext();
   const {
     playLabel = 'Play',
@@ -44,6 +45,6 @@ export const useCarouselAutoplayButton = (
       children: context.reducedMotion ? reducedMotionLabel : context.playing ? pauseLabel : playLabel,
       onClick: mergeCallbacks(root.onClick, context.toggleAutoplay),
     }),
-    rendered: context.paged && !props.hidden,
+    rendered: context.paged && present,
   };
 };

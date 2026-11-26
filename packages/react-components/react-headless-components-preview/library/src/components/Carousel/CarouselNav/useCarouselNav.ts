@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { isControlDisabled, useCarouselContext, useCarouselPart } from '../carouselContext';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
 import { CarouselNavButton } from '../CarouselNavButton/CarouselNavButton';
 import type { CarouselNavProps, CarouselNavState, NavButtonRenderFunction } from './CarouselNav.types';
 
@@ -22,7 +22,7 @@ export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivEl
       refresh();
     };
   }, []);
-  const rendered = pageCount > 1 && !props.hidden && !isControlDisabled(props);
+  const rendered = pageCount > 1 && !isControlHidden(props) && !isControlDisabled(props);
   // Read after child layout effects. A page-count change and its tabs are one commit, not a lost route.
   useIsomorphicLayoutEffect(() => {
     setComplete(
@@ -30,15 +30,23 @@ export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivEl
     );
   }, [pageCount, revision]);
   useCarouselPart('nav', rendered && complete);
+  const inertRef = React.useCallback(
+    (node: HTMLDivElement | null) => {
+      node?.toggleAttribute('inert', !complete);
+    },
+    [complete],
+  );
+  const rootRef = useMergedRefs(complete ? ref : undefined, inertRef);
   return {
     components: { root: 'div' },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        'aria-label': 'Choose a page',
-        ...rest,
-        ref,
-        role: 'tablist',
-        hidden: !complete,
+      // Keep the templates mounted to detect when they become operable. An incomplete set gets only
+      // a hidden staging container: do not apply the public tablist's role, display styles or handlers.
+      getIntrinsicElementProps<Omit<CarouselNavProps, 'children'>>('div', {
+        ...(complete
+          ? { 'aria-label': 'Choose a page', ...rest, role: 'tablist' }
+          : { hidden: true, 'aria-hidden': true }),
+        ref: rootRef,
       }),
       { elementType: 'div' },
     ),

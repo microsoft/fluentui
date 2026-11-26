@@ -118,3 +118,7 @@ export const isControlDisabled = (props: {
   'aria-disabled'?: React.AriaAttributes['aria-disabled'];
 }): boolean =>
   !!(props.disabled || props.disabledFocusable || props['aria-disabled'] === true || props['aria-disabled'] === 'true');
+
+/** An explicitly hidden or inert part cannot provide an operable route, irrespective of group boundaries. */
+export const isControlHidden = (props: { hidden?: boolean; inert?: boolean }): boolean =>
+  !!(props.hidden || props.inert);

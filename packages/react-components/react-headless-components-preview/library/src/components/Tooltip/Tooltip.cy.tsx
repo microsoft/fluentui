@@ -64,6 +64,24 @@ describe('Tooltip', () => {
   });
 
   describe('keyboard and focus', () => {
+    it('keeps the normal show delay and consumer callback for a natively autofocused trigger', () => {
+      const onFocus = cy.stub();
+      cy.clock();
+      mount(
+        <Tooltip content="Description" relationship="description" showDelay={200}>
+          <button autoFocus onFocus={onFocus}>
+            Trigger
+          </button>
+        </Tooltip>,
+      );
+      cy.get('button').should('be.focused');
+      cy.tick(199);
+      cy.get(tooltipSelector).should('not.be.visible');
+      cy.tick(1);
+      cy.get(tooltipSelector).should('be.visible');
+      cy.wrap(onFocus).should('have.been.calledOnce');
+    });
+
     it('should show on trigger focus', () => {
       mount(<Example />);
       cy.get('button').focus();

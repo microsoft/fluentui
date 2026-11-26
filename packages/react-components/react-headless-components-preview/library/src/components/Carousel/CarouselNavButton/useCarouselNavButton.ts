@@ -6,6 +6,7 @@ import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import {
   CarouselRegisterTabContext,
   isControlDisabled,
+  isControlHidden,
   useCarouselContext,
   useCarouselItemIndex,
 } from '../carouselContext';
@@ -19,7 +20,7 @@ export const useCarouselNavButton = (
   const { idPrefix, activeIndex, pageCount, nav, getPageLabel, select, onNavKeyDown } = useCarouselContext();
   const index = useCarouselItemIndex();
   const registerTab = React.useContext(CarouselRegisterTabContext);
-  const available = !props.hidden && !isControlDisabled(props);
+  const available = !isControlHidden(props) && !isControlDisabled(props);
   useIsomorphicLayoutEffect(() => (available ? registerTab?.(index) : undefined), [registerTab, available, index]);
   const { indicator, ...rest } = props;
   const selected = activeIndex === index;

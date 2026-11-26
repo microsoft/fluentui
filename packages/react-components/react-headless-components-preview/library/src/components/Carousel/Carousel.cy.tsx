@@ -7,6 +7,7 @@ import { CarouselCard } from './CarouselCard';
 import { CarouselPrevious } from './CarouselPrevious';
 import { CarouselNext } from './CarouselNext';
 import { CarouselNav } from './CarouselNav';
+import { CarouselNavButton } from './CarouselNavButton';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
 import { CarouselDirectionTooltip } from './CarouselDirectionButton/CarouselDirectionTooltip';
 import { Tooltip } from '../Tooltip';
@@ -184,6 +185,58 @@ describe('Carousel browser behavior', () => {
     cy.get('#lessons-next-label').should(label => {
       expect([label[0].style.left, label[0].style.top]).to.deep.equal(originalInsets);
     });
+  });
+
+  it('opens the tooltip and calls onFocus once when the Next button mounts with autoFocus', () => {
+    const onFocus = cy.stub();
+    mount(
+      <Carousel aria-label="Lessons">
+        <CarouselPrevious />
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNext button={{ autoFocus: true, onFocus }} />
+      </Carousel>,
+    );
+    cy.get('[data-carousel-action="next"]').should('be.focused');
+    cy.contains('[role="tooltip"]', 'Next').should('be.visible');
+    cy.wrap(onFocus).should('have.been.calledOnce');
+  });
+
+  it('keeps an incomplete flex tablist hidden and out of focus order until its tabs are operable', () => {
+    let enableTabs: () => void;
+    const Collection = () => {
+      const [disabled, setDisabled] = React.useState(true);
+      enableTabs = () => setDisabled(false);
+      return (
+        <>
+          <button>Before</button>
+          <Carousel aria-label="Lessons">
+            <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+            <CarouselNav style={{ display: 'flex' }}>
+              {index => <CarouselNavButton disabled={disabled && index === 1} />}
+            </CarouselNav>
+          </Carousel>
+          <button>After</button>
+        </>
+      );
+    };
+    mount(<Collection />);
+    cy.get('[role="tablist"]').should('not.exist');
+    cy.get('[role="tab"]')
+      .first()
+      .should('not.be.visible')
+      .closest('[inert]')
+      .should('have.attr', 'aria-hidden', 'true');
+    cy.contains('button', 'Before').focus().realPress('Tab');
+    cy.contains('button', 'After').should('be.focused');
+    cy.get('[role="tab"]')
+      .first()
+      .then(tab => tab[0].focus());
+    cy.contains('button', 'After').should('be.focused');
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.then(() => enableTabs());
+    cy.get('[role="tablist"]').should('be.visible').and('have.css', 'display', 'flex');
+    cy.get('[role="tab"]').last().click().should('have.attr', 'aria-selected', 'true');
+    cy.contains('[role="tabpanel"]', 'Second').should('be.visible');
   });
 
   it('allows autofocus in a static slide on the first commit', () => {
