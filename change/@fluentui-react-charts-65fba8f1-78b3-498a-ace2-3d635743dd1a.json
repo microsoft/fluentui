@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add annotations support for HeatMapChart via DeclarativeChart",
+  "packageName": "@fluentui/react-charts",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}
