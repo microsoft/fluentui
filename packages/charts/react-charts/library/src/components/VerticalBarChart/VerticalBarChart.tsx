@@ -13,7 +13,6 @@ import type {
   AccessibilityProps,
   Margins,
   Legend,
-  RefArrayData,
   VerticalBarChartProps,
   VerticalBarChartDataPoint,
   ChildProps,
@@ -72,7 +71,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _points: VerticalBarChartDataPoint[] = [];
   let _barWidth: number = 0;
   let _colors: string[];
-  const _refArray: RefArrayData[] = [];
   let margins: Margins;
   const _useRtl: boolean = useRtl();
   let _bars: JSXElement[];
@@ -412,10 +410,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return colorScale;
   }
 
-  function _refCallback(element: SVGRectElement, legendTitle: string): void {
-    _refArray.push({ index: legendTitle, refElement: element });
-  }
-
   function _getCalloutContentForLineAndBar(point: VerticalBarChartDataPoint): {
     YValueHover: YValueHover[];
     hoverXValue: string | number | undefined;
@@ -508,7 +502,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   function _onBarFocus(
     event: React.FocusEvent<SVGRectElement, Element>,
     point: VerticalBarChartDataPoint,
-    refArrayIndexNumber: number,
     color: string,
   ): void {
     let x = 0;
@@ -520,26 +513,22 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     updatePosition(x, y);
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
-    _refArray.forEach((obj: RefArrayData, index: number) => {
-      if (obj.index === point.legend! && refArrayIndexNumber === index) {
-        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(point.legend));
-        setDataForHoverCard(point.y);
-        setCalloutLegend(point.legend!);
-        setColor(point.color || color);
-        // To display callout value, if no callout value given, taking given point.x value as a string.
-        setXCalloutValue(
-          point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
-        );
-        setYCalloutValue(point.yAxisCalloutData!);
-        setDataPointCalloutProps(point);
-        // Hovering over a bar should highlight corresponding line points only when no legend is selected
-        setActiveXDatapoint(point.x);
-        setYValueHover(YValueHover);
-        setHoverXValue(hoverXValue);
-        setCalloutAccessibilityData(point.callOutAccessibilityData);
-      }
-    });
+    /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+    setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(point.legend));
+    setDataForHoverCard(point.y);
+    setCalloutLegend(point.legend!);
+    setColor(point.color || color);
+    // To display callout value, if no callout value given, taking given point.x value as a string.
+    setXCalloutValue(
+      point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+    );
+    setYCalloutValue(point.yAxisCalloutData!);
+    setDataPointCalloutProps(point);
+    // Hovering over a bar should highlight corresponding line points only when no legend is selected
+    setActiveXDatapoint(point.x);
+    setYValueHover(YValueHover);
+    setHoverXValue(hoverXValue);
+    setCalloutAccessibilityData(point.callOutAccessibilityData);
   }
 
   function _lineHover(point: VerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
@@ -668,15 +657,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             height={adjustedBarHeight}
-            ref={(e: SVGRectElement) => {
-              _refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
             role="option"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
@@ -734,14 +720,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             height={adjustedBarHeight}
             aria-label={_getAriaLabel(point)}
             role="option"
-            ref={(e: SVGRectElement) => {
-              _refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
@@ -791,15 +774,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             height={adjustedBarHeight}
-            ref={(e: SVGRectElement) => {
-              _refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
             role="option"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}

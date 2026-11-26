@@ -18,7 +18,6 @@ import {
   IBasestate,
   IMargins,
   ILegend,
-  IRefArrayData,
   IVerticalBarChartProps,
   IVerticalBarChartStyleProps,
   IVerticalBarChartStyles,
@@ -99,7 +98,6 @@ export class VerticalBarChartBase
   private _barWidth: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
-  private _refArray: IRefArrayData[];
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
@@ -139,7 +137,6 @@ export class VerticalBarChartBase
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
-    this._refArray = [];
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
@@ -556,10 +553,6 @@ export class VerticalBarChartBase
     return colorScale;
   }
 
-  private _refCallback = (element: SVGRectElement, legendTitle: string): void => {
-    this._refArray.push({ index: legendTitle, refElement: element });
-  };
-
   private _getCalloutContentForLineAndBar = (
     point: IVerticalBarChartDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
@@ -661,30 +654,30 @@ export class VerticalBarChartBase
     });
   };
 
-  private _onBarFocus = (point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void => {
+  private _onBarFocus = (
+    point: IVerticalBarChartDataPoint,
+    color: string,
+    event: React.FocusEvent<SVGRectElement>,
+  ): void => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-    this._refArray.forEach((obj: IRefArrayData, index: number) => {
-      if (obj.index === point.legend! && refArrayIndexNumber === index) {
-        this.setState({
-          refSelected: obj.refElement,
-          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
-          calloutLegend: point.legend!,
-          dataForHoverCard: point.y,
-          color: point.color || color,
-          xCalloutValue:
-            point.xAxisCalloutData ||
-            (point.x instanceof Date
-              ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
-              : point.x.toString()),
-          yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: point,
-          activeXdataPoint: point.x,
-          YValueHover,
-          hoverXValue,
-          callOutAccessibilityData: point.callOutAccessibilityData,
-        });
-      }
+    this.setState({
+      refSelected: event.currentTarget,
+      /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+      isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
+      calloutLegend: point.legend!,
+      dataForHoverCard: point.y,
+      color: point.color || color,
+      xCalloutValue:
+        point.xAxisCalloutData ||
+        (point.x instanceof Date
+          ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+          : point.x.toString()),
+      yCalloutValue: point.yAxisCalloutData!,
+      dataPointCalloutProps: point,
+      activeXdataPoint: point.x,
+      YValueHover,
+      hoverXValue,
+      callOutAccessibilityData: point.callOutAccessibilityData,
     });
   };
 
@@ -850,15 +843,12 @@ export class VerticalBarChartBase
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
@@ -944,15 +934,12 @@ export class VerticalBarChartBase
             height={adjustedBarHeight}
             aria-label={this._getAriaLabel(point)}
             role="img"
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
             data-is-focusable={!this.props.hideTooltip && shouldHighlight}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
@@ -1032,15 +1019,12 @@ export class VerticalBarChartBase
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
