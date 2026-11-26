@@ -10,7 +10,6 @@ import {
   IAccessibilityProps,
   IBasestate,
   IHorizontalBarChartWithAxisDataPoint,
-  IRefArrayData,
   IMargins,
   IChart,
   IImageExportOptions,
@@ -81,7 +80,6 @@ export class HorizontalBarChartWithAxisBase
   private _barHeight: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IHorizontalBarChartWithAxisStyles>;
-  private _refArray: IRefArrayData[];
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
@@ -123,7 +121,6 @@ export class HorizontalBarChartWithAxisBase
       selectedLegends: props.legendProps?.selectedLegends || [],
     };
     this._calloutId = getId('callout');
-    this._refArray = [];
     this._xAxisType =
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
@@ -378,10 +375,6 @@ export class HorizontalBarChartWithAxisBase
     return colorScale;
   }
 
-  private _refCallback = (element: SVGRectElement, legendTitle: string): void => {
-    this._refArray.push({ index: legendTitle, refElement: element });
-  };
-
   private _getCalloutContentForBar = (
     point: IHorizontalBarChartWithAxisDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
@@ -469,31 +462,27 @@ export class HorizontalBarChartWithAxisBase
 
   private _onBarFocus = (
     point: IHorizontalBarChartWithAxisDataPoint,
-    refArrayIndexNumber: number,
     color: string,
+    event: React.FocusEvent<SVGRectElement>,
   ): void => {
     if (
       (this.state.isLegendSelected === false || this._isLegendHighlighted(point.legend)) &&
       this._calloutAnchorPoint !== point
     ) {
       const { YValueHover, hoverXValue } = this._getCalloutContentForBar(point);
-      this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (refArrayIndexNumber === index) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            selectedLegendTitle: point.legend!,
-            dataForHoverCard: point.x,
-            color: this.props.useSingleColor ? color : point.color,
-            xCalloutValue: point.yAxisCalloutData || point.y.toString(),
-            yCalloutValue: point.xAxisCalloutData! || point.x.toString(),
-            dataPointCalloutProps: point,
-            activeXdataPoint: point.x,
-            YValueHover,
-            hoverXValue,
-            callOutAccessibilityData: point.callOutAccessibilityData,
-          });
-        }
+      this.setState({
+        refSelected: event.currentTarget,
+        isCalloutVisible: true,
+        selectedLegendTitle: point.legend!,
+        dataForHoverCard: point.x,
+        color: this.props.useSingleColor ? color : point.color,
+        xCalloutValue: point.yAxisCalloutData || point.y.toString(),
+        yCalloutValue: point.xAxisCalloutData! || point.x.toString(),
+        dataPointCalloutProps: point,
+        activeXdataPoint: point.x,
+        YValueHover,
+        hoverXValue,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   };
@@ -734,9 +723,6 @@ export class HorizontalBarChartWithAxisBase
             data-is-focusable={shouldHighlight}
             width={barWidth}
             height={this._barHeight}
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             rx={this.props.roundCorners ? 3 : 0}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
@@ -744,7 +730,7 @@ export class HorizontalBarChartWithAxisBase
             role="img"
             aria-labelledby={`toolTip${this._calloutId}`}
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
@@ -950,15 +936,12 @@ export class HorizontalBarChartWithAxisBase
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
             role="img"
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
             data-is-focusable={shouldHighlight}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
           {showLabel && this._renderBarLabel(barEndX, yPosition, totalBarValue, isPositiveBar)}

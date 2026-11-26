@@ -1,6 +1,6 @@
 import { pointsHBCWA } from '../../utilities/test-data';
 import { axe } from 'jest-axe';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider, resetIds } from '@fluentui/react';
@@ -272,6 +272,62 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
       expect(screen.queryByText('Custom Callout Content')).not.toBeNull();
     },
   );
+});
+
+describe('Horizontal bar chart with axis - Keyboard focus', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const getBars = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll<SVGRectElement>('rect[role="img"]'));
+  const calloutText = () => document.querySelector('.ms-Callout')?.textContent;
+  // The callout measures its target to find its position. Focuses each bar in turn, and expects the callout to
+  // show the legend of that bar and to have measured that bar and no other one.
+  const expectCalloutAtEachFocusedBar = async (data: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const { container } = render(<HorizontalBarChartWithAxis data={data} calloutProps={{ doNotLayer: true }} />);
+    await waitFor(() => expect(getBars(container)).toHaveLength(data.length));
+    const bars = getBars(container);
+    const measured = bars.map(bar => jest.spyOn(bar, 'getBoundingClientRect'));
+
+    for (let focused = bars.length - 1; focused >= 0; focused--) {
+      // Without callout data the label of a bar is its x value and its y value.
+      const point = data.find(item => bars[focused].getAttribute('aria-label') === `${item.x}. ${item.y}.`)!;
+      measured.forEach(spy => spy.mockClear());
+      fireEvent.focus(bars[focused]);
+      await waitFor(() => expect(calloutText()).toContain(point.legend));
+      await waitFor(() => expect(measured[focused]).toHaveBeenCalled());
+      measured.forEach((spy, index) => {
+        if (index !== focused) {
+          expect(spy).not.toHaveBeenCalled();
+        }
+      });
+    }
+  };
+
+  test('Should place the callout at the focused bar with a string y axis', async () => {
+    await expectCalloutAtEachFocusedBar([
+      { x: 10, y: 'Mon', legend: 'Rooms Mon' },
+      { x: 20, y: 'Tue', legend: 'Rooms Tue' },
+      { x: 30, y: 'Wed', legend: 'Rooms Wed' },
+    ]);
+  });
+
+  test('Should place the callout at the focused bar with a numeric y axis', async () => {
+    await expectCalloutAtEachFocusedBar([
+      { x: 10, y: 1000, legend: 'Rooms 1000' },
+      { x: 20, y: 2000, legend: 'Rooms 2000' },
+      { x: 30, y: 3000, legend: 'Rooms 3000' },
+    ]);
+  });
+
+  test('Should place the callout at the focused bar when a row has more than one bar', async () => {
+    await expectCalloutAtEachFocusedBar([
+      { x: 10, y: 'Mon', legend: 'Rooms Mon' },
+      { x: 5, y: 'Mon', legend: 'Suites Mon' },
+      { x: 20, y: 'Tue', legend: 'Rooms Tue' },
+      { x: 8, y: 'Tue', legend: 'Suites Tue' },
+    ]);
+  });
 });
 
 describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
