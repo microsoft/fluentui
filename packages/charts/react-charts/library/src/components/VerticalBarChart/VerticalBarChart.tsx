@@ -162,7 +162,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   ): React.ReactNode {
     const isStringAxis = _xAxisType === XAxisTypes.StringAxis;
     const colorScale = _createColors();
-    const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
+    const { data, lineLegendColor = tokens.colorPaletteYellowForeground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
     const line: JSXElement[] = [];
@@ -422,7 +422,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   } {
     const YValueHover: YValueHover[] = [];
     const { useSingleColor = false } = props;
-    const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
+    const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const selectedPoint = data!.filter((xDataPoint: VerticalBarChartDataPoint) => xDataPoint.x === point.x);
     // Check if the line legend is highlighted or no legend is highlighted
     if (
@@ -561,7 +561,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     point: VerticalBarChartDataPoint,
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
-    const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
+    const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(lineLegendText));
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);
