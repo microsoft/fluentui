@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { mergeCallbacks, slot } from '@fluentui/react-utilities';
 import { Button } from '../../Button';
-import { useCarouselContext, useCarouselPart } from '../carouselContext';
+import { isControlDisabled, useCarouselContext, useCarouselPart } from '../carouselContext';
 import type {
   CarouselAutoplayButtonProps,
   CarouselAutoplayButtonSlots,
@@ -20,7 +20,7 @@ export const useCarouselAutoplayButton = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): CarouselAutoplayButtonState => {
-  useCarouselPart('autoplay');
+  useCarouselPart('autoplay', !props.hidden, !isControlDisabled(props));
   const context = useCarouselContext();
   const {
     playLabel = 'Play',
@@ -39,11 +39,11 @@ export const useCarouselAutoplayButton = (
       'aria-labelledby': undefined,
       'aria-pressed': undefined,
       'data-carousel-action': 'autoplay',
-      disabled: context.reducedMotion,
-      disabledFocusable: context.reducedMotion,
+      disabled: props.disabled || context.reducedMotion,
+      disabledFocusable: props.disabledFocusable || (!props.disabled && context.reducedMotion),
       children: context.reducedMotion ? reducedMotionLabel : context.playing ? pauseLabel : playLabel,
       onClick: mergeCallbacks(root.onClick, context.toggleAutoplay),
     }),
-    rendered: context.autoplay,
+    rendered: context.paged && !props.hidden,
   };
 };

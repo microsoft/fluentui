@@ -73,26 +73,29 @@ export const CarouselDirectionTooltip = (props: {
     // Tooltip uses native CSS anchors. Older engines need placement, not a carousel-engine polyfill.
     const oldLeft = element.style.left;
     const oldTop = element.style.top;
+    const oldAlignment = element.style.placeSelf;
     element.style.setProperty('position-area', 'none');
+    element.style.placeSelf = 'start';
+    let frame: number;
     const update = () => {
       const rect = button.getBoundingClientRect();
       const tip = element.getBoundingClientRect();
       const leading = (props.position === 'before') !== (win.getComputedStyle(button).direction === 'rtl');
-      element.style.left = `${leading ? rect.left - tip.width : rect.right}px`;
-      element.style.top = `${rect.top + (rect.height - tip.height) / 2}px`;
+      const left = `${leading ? rect.left - tip.width : rect.right}px`;
+      const top = `${rect.top + (rect.height - tip.height) / 2}px`;
+      if (element.style.left !== left || element.style.top !== top) {
+        element.style.left = left;
+        element.style.top = top;
+      }
+      // A sibling's reflow can move the trigger without resizing or scrolling anything.
+      frame = win.requestAnimationFrame(update);
     };
     update();
-    const observer = win.ResizeObserver ? new win.ResizeObserver(update) : undefined;
-    observer?.observe(element);
-    observer?.observe(button);
-    win.addEventListener('resize', update);
-    win.addEventListener('scroll', update, true);
     return () => {
-      observer?.disconnect();
-      win.removeEventListener('resize', update);
-      win.removeEventListener('scroll', update, true);
+      win.cancelAnimationFrame(frame);
       element.style.left = oldLeft;
       element.style.top = oldTop;
+      element.style.placeSelf = oldAlignment;
       element.style.setProperty('position-area', oldArea);
     };
   }, [targetDocument, visible, props.unavailable, props.position]);

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: add headless Carousel with compound parts named after react-carousel; fix tooltip Escape ordering and boundary focus recovery",
+  "comment": "feat: add a fixed-group headless Carousel preview with accessible navigation, user-started playback and a static fallback; fix tooltip Escape ordering",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com"
 }

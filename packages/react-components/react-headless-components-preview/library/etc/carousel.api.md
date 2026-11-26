@@ -12,6 +12,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
@@ -76,7 +77,7 @@ export type CarouselContextValue = {
     nextHidden: boolean;
     getPageLabel: (position: number, total: number) => string;
     getSlideLabel: (position: number, total: number) => string;
-    register: (part: CarouselPart) => () => void;
+    register: (part: CarouselPart, available?: boolean) => () => void;
     setSlideCount: (count: number) => void;
     select: (index: number, event: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     previous: (event: React_2.MouseEvent<HTMLElement>) => void;
@@ -100,7 +101,7 @@ type CarouselDirectionButtonSlots = {
     root: Slot<'div'>;
     button: NonNullable<Slot<Extract<ButtonBaseProps, {
         as?: 'button';
-    }>>>;
+    }> & RefAttributes<HTMLButtonElement>>>;
     tooltip: NonNullable<Slot<'div'>>;
 };
 export { CarouselDirectionButtonSlots as CarouselNextSlots }
@@ -108,6 +109,9 @@ export { CarouselDirectionButtonSlots as CarouselPreviousSlots }
 
 // @public (undocumented)
 type CarouselDirectionButtonState = ComponentState<CarouselDirectionButtonSlots> & {
+    root: {
+        'data-carousel-button': 'previous' | 'next';
+    };
     kind: 'previous' | 'next';
     rendered: boolean;
     hidden: boolean;
@@ -158,6 +162,7 @@ export type CarouselNavSlots = {
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
     pageCount: number;
     rendered: boolean;
+    registerTab: (index: number) => () => void;
     renderNavButton: NavButtonRenderFunction;
 };
 

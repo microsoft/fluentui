@@ -1,9 +1,14 @@
 'use client';
 
-import type * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
-import { useCarouselContext, useCarouselItemIndex } from '../carouselContext';
+import {
+  CarouselRegisterTabContext,
+  isControlDisabled,
+  useCarouselContext,
+  useCarouselItemIndex,
+} from '../carouselContext';
 import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
 
 /** Create the state required to render CarouselNavButton. Must be rendered inside `CarouselNav`. */
@@ -11,8 +16,11 @@ export const useCarouselNavButton = (
   props: CarouselNavButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): CarouselNavButtonState => {
-  const { idPrefix, activeIndex, pageCount, getPageLabel, select, onNavKeyDown } = useCarouselContext();
+  const { idPrefix, activeIndex, pageCount, nav, getPageLabel, select, onNavKeyDown } = useCarouselContext();
   const index = useCarouselItemIndex();
+  const registerTab = React.useContext(CarouselRegisterTabContext);
+  const available = !props.hidden && !isControlDisabled(props);
+  useIsomorphicLayoutEffect(() => (available ? registerTab?.(index) : undefined), [registerTab, available, index]);
   const { indicator, ...rest } = props;
   const selected = activeIndex === index;
   return {
@@ -30,12 +38,12 @@ export const useCarouselNavButton = (
           'aria-selected': selected,
           tabIndex: selected ? 0 : -1,
           onClick: mergeCallbacks(rest.onClick, (event: React.MouseEvent<HTMLButtonElement>) => {
-            if (!event.defaultPrevented) {
+            if (!event.defaultPrevented && nav && available) {
               select(index, event);
             }
           }),
           onKeyDown: mergeCallbacks(rest.onKeyDown, (event: React.KeyboardEvent<HTMLButtonElement>) => {
-            if (!event.defaultPrevented) {
+            if (!event.defaultPrevented && nav && available) {
               onNavKeyDown(event, index);
             }
           }),

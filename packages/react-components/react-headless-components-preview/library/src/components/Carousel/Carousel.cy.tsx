@@ -50,7 +50,7 @@ describe('Carousel browser behavior', () => {
           transition={transition}
           {...props}
         >
-          {autoplay && <CarouselAutoplayButton className="button" />}
+          {autoplay && <CarouselAutoplayButton className="button playback" />}
           <CarouselPrevious button={{ className: 'button', icon: '<' }} tooltip={{ className: 'tooltip' }} />
           <CarouselViewport className="viewport">
             {[1, 2, 3, 4, 5].map(index => (
@@ -59,7 +59,10 @@ describe('Carousel browser behavior', () => {
               </CarouselCard>
             ))}
           </CarouselViewport>
-          <CarouselNext button={{ className: 'button', icon: '>' }} tooltip={{ className: 'tooltip' }} />
+          <CarouselNext
+            button={{ className: 'button', icon: { children: '›', 'aria-hidden': true } }}
+            tooltip={{ className: 'tooltip' }}
+          />
           <CarouselNav />
         </Carousel>
         <button>After</button>
@@ -86,6 +89,11 @@ describe('Carousel browser behavior', () => {
 
   it('mirrors nav keys and retains button width in RTL', () => {
     renderCarousel({ dir: 'rtl' });
+    cy.get('[data-carousel-button="next"] [aria-hidden="true"]').should(
+      'have.css',
+      'transform',
+      'matrix(-1, 0, 0, 1, 0, 0)',
+    );
     cy.get('.viewport').then(viewports => {
       const { x, width, height } = viewports[0].getBoundingClientRect();
       cy.get('[aria-selected="true"]').focus().realPress('ArrowLeft');
@@ -139,6 +147,81 @@ describe('Carousel browser behavior', () => {
     cy.get('[data-carousel-action="next"]').should('have.attr', 'aria-labelledby', 'lessons-next-label');
     cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-label');
     cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-describedby');
+  });
+
+  it('keeps the fallback tooltip beside its focused arrow after a sibling reflows', () => {
+    let originalInsets: string[];
+    cy.window().then(win => {
+      const supports = win.CSS.supports.bind(win.CSS);
+      cy.stub(win.CSS, 'supports').callsFake((...args: [string]) =>
+        args[0] === 'position-area: self-inline-start' ? false : supports(...args),
+      );
+    });
+    renderCarousel();
+    cy.get('#lessons-next-label').then(label => {
+      originalInsets = [label[0].style.left, label[0].style.top];
+    });
+    cy.get('[data-carousel-action="next"]')
+      .focus()
+      .then(button => {
+        const before = button[0].getBoundingClientRect();
+        const assertPlacement = () =>
+          cy.get('#lessons-next-label').should(label => {
+            const arrow = button[0].getBoundingClientRect();
+            const tip = label[0].getBoundingClientRect();
+            expect(label[0].style.left).to.equal(`${arrow.right}px`);
+            expect(tip.left).to.be.closeTo(arrow.right, 1);
+            expect(tip.top + tip.height / 2).to.be.closeTo(arrow.top + arrow.height / 2, 1);
+          });
+        assertPlacement();
+        cy.contains('button', 'Before').then(sibling => {
+          sibling[0].style.height = `${before.height + 80}px`;
+        });
+        cy.wrap(button).should(el => expect(el[0].getBoundingClientRect().top).to.be.greaterThan(before.top));
+        assertPlacement();
+      });
+    cy.get('[data-carousel-action="next"]').realPress('Escape');
+    cy.get('#lessons-next-label').should(label => {
+      expect([label[0].style.left, label[0].style.top]).to.deep.equal(originalInsets);
+    });
+  });
+
+  it('allows autofocus in a static slide on the first commit', () => {
+    const capture = cy.stub();
+    mount(
+      <Carousel aria-label="Notes" onFocusCapture={capture}>
+        <CarouselViewport>
+          <CarouselCard>
+            <input autoFocus aria-label="Note" />
+          </CarouselCard>
+        </CarouselViewport>
+      </Carousel>,
+    );
+    cy.get('[aria-label="Note"]').should('be.focused');
+    cy.wrap(capture).should('have.been.calledOnce');
+  });
+
+  it('recovers focus when the focused arrow retires without a page change', () => {
+    let removeLast: () => void;
+    const Collection = () => {
+      const [last, setLast] = React.useState(true);
+      removeLast = () => setLast(false);
+      return (
+        <Carousel aria-label="Lessons" defaultActiveIndex={1}>
+          <CarouselPrevious />
+          <CarouselViewport>
+            <CarouselCard>First</CarouselCard>
+            <CarouselCard>Second</CarouselCard>
+            {last && <CarouselCard>Third</CarouselCard>}
+          </CarouselViewport>
+          <CarouselNext />
+        </Carousel>
+      );
+    };
+    mount(<Collection />);
+    cy.get('[data-carousel-action="next"]').focus();
+    cy.then(() => removeLast());
+    cy.get('[aria-label="Slide 2 of 2"]').should('be.focused');
   });
 
   it('dismisses the newest tooltip before the focused carousel tooltip', () => {
@@ -200,6 +283,30 @@ describe('Carousel browser behavior', () => {
         <div key="last">Last</div>,
       ],
       expected: 'button:contains("Available")',
+    },
+    {
+      name: 'a programmatic-only button followed by a summary',
+      slides: [
+        <div key="targets">
+          <button tabIndex={-1}>Not a tab stop</button>
+          <details>
+            <summary>Open details</summary>More information
+          </details>
+        </div>,
+        <div key="last">Last</div>,
+      ],
+      expected: 'summary',
+    },
+    {
+      name: 'an unchecked radio in a group with a checked tab stop',
+      slides: [
+        <div key="radio">
+          <input type="radio" name="choice" value="first" />
+          <input type="radio" name="choice" value="current" defaultChecked />
+        </div>,
+        <div key="last">Last</div>,
+      ],
+      expected: 'input[value="current"]',
     },
     {
       name: 'all hidden candidates',

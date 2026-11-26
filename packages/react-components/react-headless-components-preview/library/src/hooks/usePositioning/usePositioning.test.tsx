@@ -154,6 +154,23 @@ describe('usePositioning', () => {
     expect(node.style.getPropertyValue('position-try-fallbacks')).toBe('');
   });
 
+  it('does not measure a pinned surface on layout updates', async () => {
+    const result = mountHook({ position: 'after', pinned: true });
+    const target = document.createElement('button');
+    const surface = document.createElement('div');
+    const measure = jest.spyOn(surface, 'getBoundingClientRect');
+    await act(async () => {
+      result.current.targetRef(target);
+      result.current.containerRef(surface);
+    });
+    const win = target.ownerDocument.defaultView!;
+    await act(async () => {
+      win.dispatchEvent(new win.Event('resize'));
+    });
+    expect(measure).not.toHaveBeenCalled();
+    expect(surface).toHaveAttribute('data-placement', 'after');
+  });
+
   it('containerRef writes cover self-alignment when coverTarget is true', () => {
     const result = mountHook({ coverTarget: true, position: 'above', align: 'start' });
     const node = document.createElement('div');

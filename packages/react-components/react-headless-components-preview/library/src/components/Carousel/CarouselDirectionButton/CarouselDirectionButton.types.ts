@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, RefAttributes, Slot } from '@fluentui/react-utilities';
 import type { ButtonProps } from '../../Button';
 
 export type CarouselDirectionButtonSlots = {
@@ -8,7 +8,7 @@ export type CarouselDirectionButtonSlots = {
    */
   root: Slot<'div'>;
   /** Icon-only button. Supply the chevron through `button={{ icon }}`; mirror it in RTL. */
-  button: NonNullable<Slot<Extract<ButtonProps, { as?: 'button' }>>>;
+  button: NonNullable<Slot<Extract<ButtonProps, { as?: 'button' }> & RefAttributes<HTMLButtonElement>>>;
   /** Tooltip that names the button through `aria-labelledby`. Defaults to "Previous" or "Next". */
   tooltip: NonNullable<Slot<'div'>>;
 };
@@ -16,6 +16,9 @@ export type CarouselDirectionButtonSlots = {
 export type CarouselDirectionButtonProps = ComponentProps<Partial<CarouselDirectionButtonSlots>>;
 
 export type CarouselDirectionButtonState = ComponentState<CarouselDirectionButtonSlots> & {
+  root: {
+    'data-carousel-button': 'previous' | 'next';
+  };
   kind: 'previous' | 'next';
   /**
    * False whenever the collection isn't paged (fewer than two groups, or controls that can't reach every group, such

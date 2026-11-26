@@ -42,8 +42,16 @@ export function useCarouselEnvironment(
       return;
     }
     setVisible(false);
-    const observer = new Observer(entries => setVisible(entries.some(entry => entry.isIntersecting)));
-    observer.observe(rootRef.current);
+    const root = rootRef.current;
+    const observer = new Observer(entries => {
+      for (let i = entries.length - 1; i >= 0; --i) {
+        if (entries[i].target === root) {
+          setVisible(entries[i].isIntersecting);
+          break;
+        }
+      }
+    });
+    observer.observe(root);
     return () => observer.disconnect();
   }, [enabled, targetDocument, rootRef]);
 
@@ -58,7 +66,7 @@ export function useCarouselRotation(
   busy: boolean,
   /** The selection is the last group of a non-circular collection. */
   atEnd: boolean,
-  advance: () => boolean,
+  advance: () => void,
   environment: Environment,
 ): {
   playing: boolean;
@@ -94,11 +102,8 @@ export function useCarouselRotation(
       return;
     }
     const timer = win.setTimeout(() => {
-      if (advance()) {
-        setTick(current => current + 1);
-      } else {
-        stop();
-      }
+      advance();
+      setTick(current => current + 1);
     }, interval);
     return () => win.clearTimeout(timer);
   }, [
@@ -114,7 +119,6 @@ export function useCarouselRotation(
     tick,
     advance,
     targetDocument,
-    stop,
   ]);
 
   return {

@@ -136,7 +136,8 @@
   background: var(--surface-sunken);
 }
 
-.button[data-disabled] {
+.button[data-disabled],
+.button[data-disabled-focusable] {
   color: var(--text-faint);
   cursor: default;
 }
@@ -147,11 +148,11 @@
   outline-offset: var(--stroke-thin);
 }
 
-.carousel:dir(rtl) [data-carousel-action]:not([data-carousel-action='autoplay']) {
+.carousel:dir(rtl) [data-carousel-button] .button > [aria-hidden='true'] {
   transform: scaleX(-1);
 }
 
-.carousel [data-carousel-action='autoplay'] {
+.carousel .playback {
   grid-area: 1 / 1 / 2 / -1;
   justify-self: start;
   max-inline-size: 100%;
@@ -161,7 +162,7 @@
   background: var(--surface-muted);
 }
 
-.nav {
+.nav:not([hidden]) {
   grid-area: 3 / 1 / 4 / -1;
   display: flex;
   flex-wrap: wrap;

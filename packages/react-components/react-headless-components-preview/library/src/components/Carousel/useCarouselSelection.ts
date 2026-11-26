@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../hooks/top-layer/utils';
+import { useFocusCarouselPage } from './useFocusCarouselPage';
 import type { CarouselProps, CarouselIndexChangeData } from './Carousel.types';
 
 type SelectionOptions = Pick<
@@ -20,32 +21,6 @@ type SelectionOptions = Pick<
   reducedMotion: boolean;
   documentVisible: boolean;
   viewportRef: React.RefObject<HTMLDivElement | null>;
-};
-
-const TABBABLE =
-  'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), ' +
-  'textarea:not([disabled]), [contenteditable="true"], [tabindex]:not([tabindex="-1"])';
-
-/**
- * Recovers focus into a newly selected group: its first `CarouselCard`, else its first tabbable element, else the
- * group itself. The group gets a temporary `tabindex="-1"` that is removed once focus leaves it.
- */
-const focusPage = (page: HTMLElement) => {
-  const candidates = [
-    ...Array.from(page.querySelectorAll<HTMLElement>('[aria-roledescription="slide"]')),
-    ...Array.from(page.querySelectorAll<HTMLElement>(TABBABLE)),
-  ];
-  for (const target of candidates) {
-    target.focus({ preventScroll: true });
-    if (getActiveElement(target) === target) {
-      return;
-    }
-  }
-  if (!page.hasAttribute('tabindex')) {
-    page.setAttribute('tabindex', '-1');
-    page.addEventListener('blur', () => page.removeAttribute('tabindex'), { once: true });
-  }
-  page.focus({ preventScroll: true });
 };
 
 /** Selection never reads geometry or runs a JavaScript animation loop. */
@@ -67,6 +42,7 @@ export function useCarouselSelection(options: SelectionOptions): {
 } {
   const { pageCount, paged, getDir, targetDocument, reducedMotion, viewportRef, rootRef, transition, groupSize } =
     options;
+  const focusPage = useFocusCarouselPage();
   // A latest ref: an inline adapter re-created by a parent re-render must not restart a running transition.
   const transitionRef = React.useRef(transition);
   useIsomorphicLayoutEffect(() => {
@@ -219,7 +195,7 @@ export function useCarouselSelection(options: SelectionOptions): {
       event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
       direction: 1 | -1 = nextIndex > view.index ? 1 : -1,
     ) => {
-      if (nextIndex < 0 || nextIndex >= pageCount || nextIndex === index) {
+      if (!paged || !Number.isInteger(nextIndex) || nextIndex < 0 || nextIndex >= pageCount || nextIndex === index) {
         return;
       }
       pending.current = { index: nextIndex, direction };

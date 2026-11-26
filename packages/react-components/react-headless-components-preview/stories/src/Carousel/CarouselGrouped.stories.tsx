@@ -6,6 +6,7 @@ export const Grouped = (): React.ReactNode => (
   <div className={styles.example}>
     <CarouselExample
       aria-label="Field notes"
+      dir="rtl"
       groupSize={2}
       slides={['Woodland', 'Wetland', 'Meadow', 'Estuary', 'Coast'].map(habitat => (
         <details key={habitat}>

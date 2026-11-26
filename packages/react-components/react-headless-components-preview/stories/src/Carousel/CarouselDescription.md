@@ -10,8 +10,9 @@ Import from `@fluentui/react-headless-components-preview/carousel` and compose t
   <CarouselAutoplayButton />
   <CarouselPrevious button={{ icon: <ChevronLeftRegular /> }} />
   <CarouselViewport>
-    <CarouselCard>…</CarouselCard>
-    <CarouselCard>…</CarouselCard>
+    <CarouselCard>Keyboard navigation</CarouselCard>
+    <CarouselCard>Semantic HTML</CarouselCard>
+    <CarouselCard>Responsive layouts</CarouselCard>
   </CarouselViewport>
   <CarouselNext button={{ icon: <ChevronRightRegular /> }} />
   <CarouselNav>
@@ -20,15 +21,19 @@ Import from `@fluentui/react-headless-components-preview/carousel` and compose t
 </Carousel>
 ```
 
-Rendering a part enables it. Parts register with `Carousel`, so:
+Compose one viewport and at most one of each control. Parts register with `Carousel`, so:
 
 - Omit `CarouselPrevious`/`CarouselNext` to hide the Previous/Next buttons, or `CarouselNav` to hide the page
   tabs.
-- Paging needs controls that reach every group: `CarouselNav`, both `CarouselPrevious` and `CarouselNext`, or
+- Paging needs operable controls that reach every group: a complete `CarouselNav`, both `CarouselPrevious` and `CarouselNext`, or
   one arrow in a `circular` collection. Otherwise (a lone non-circular arrow, no controls, or fewer than two
   groups) every slide stays visible as a static collection, and the server render matches it before parts
   register.
+- A native `hidden` on the nav, an arrow wrapper or its `button` removes that route. Disabled arrows
+  do not count. Use props or conditional rendering rather than visually hiding the only route with CSS.
 - `CarouselAutoplayButton` enables user-started autoplay. Render it first so it is the first focus stop.
+  Hiding, removing or disabling the playback control stops its session. Restoring it does not restart playback.
+  `disabled` retains native button disabling; `disabledFocusable` keeps an unavailable control focusable.
 
 Each direct child of `CarouselViewport` is one slide; wrap content in `CarouselCard`, which is a focus stop
 labeled "Slide 1 of 5". Embedded actions stay directly tabbable.
@@ -37,12 +42,15 @@ Slides are grouped by position. Changing `groupSize`, or adding, removing or reo
 slide into a different group, which remounts it, so keep slide state (form values, playback position) outside
 the slide. Keep `groupSize` fixed and stack cards at narrow widths with CSS rather than regrouping.
 
-`CarouselNav` renders one item per group, defaulting to `<CarouselNavButton />`. Pass a template element, or a
-render function like `{index => <CarouselNavButton />}` as in `@fluentui/react-carousel`.
+`CarouselNav` renders one item per group, defaulting to `<CarouselNavButton />`. Each template or render
+function must supply exactly one wired, visible, enabled `CarouselNavButton` (or its hook and renderer)
+per group. If any tab is missing, hidden or disabled, the _whole_ tablist is hidden: there are no partial
+roving tablists or panels labeled by unavailable tabs. Operable arrows can still enable paging.
 
 `CarouselPrevious` and `CarouselNext` have `root` (layout wrapper), `button` (headless Button) and `tooltip`
 (headless Tooltip content) slots. The tooltip text names the button through `aria-labelledby`; localize it
-with `tooltip="Précédent"`. Supply your own chevron icons and mirror them in RTL.
+with `tooltip="Précédent"`. Supply your own chevron icons and mirror them in RTL. Use semantic `dir="rtl"`
+on the carousel or an ancestor so the example's `:dir(rtl)` icons agree with keyboard and motion direction.
 
 ## Selection and keyboard
 
@@ -67,7 +75,8 @@ control. `circular` defaults to false and enables directional wrapping with both
 non-integers or values outside 1000–2147483647 throw. Pause, manual navigation, or interaction outside
 playback stops rotation. Hover temporarily suspends it; document visibility and viewport intersection
 suspend its timer. Resuming a suspended session always waits a fresh interval. Non-circular playback stops
-once the selection reaches the final group; Play there restarts from the first group. Localize `playLabel`, `pauseLabel` and
+once the selection reaches the final group; Play there requests the first group immediately. In controlled
+mode it retries that restart once per eligible interval until accepted or stopped. Localize `playLabel`, `pauseLabel` and
 `reducedMotionLabel` on `CarouselAutoplayButton`, and `getPageLabel`/`getSlideLabel` on `Carousel`.
 
 Reduced motion settles animation immediately and disables playback without removing its focus stop.
@@ -94,4 +103,5 @@ the viewport height. Inactive groups have `hidden`, `inert` and `aria-hidden`; t
 contribution with `visibility: hidden`. At container widths of 320px or less the cards stack within the
 current group. Host layouts must reserve outer clearance for the Previous/Next tooltips.
 
-Swipe/drag and alternative pagination formats are outside the current spec.
+This fixed-group preview is maintained separately from the styled Embla Carousel; it does not share the
+styled component's automatic grouping, dragging or event contract. Alternative pagination formats are outside this preview.

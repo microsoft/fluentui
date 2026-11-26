@@ -28,7 +28,7 @@ export type CarouselContextValue = {
   buttons: boolean;
   /** Paged, with `CarouselNav` rendered. */
   nav: boolean;
-  /** Paged, with `CarouselAutoplayButton` rendered. */
+  /** Paged, with an available `CarouselAutoplayButton` (independent of reduced-motion preference). */
   autoplay: boolean;
   playing: boolean;
   reducedMotion: boolean;
@@ -39,8 +39,8 @@ export type CarouselContextValue = {
   nextHidden: boolean;
   getPageLabel: (position: number, total: number) => string;
   getSlideLabel: (position: number, total: number) => string;
-  /** Announces that a part is rendered. Returns the matching cleanup. */
-  register: (part: CarouselPart) => () => void;
+  /** Registers a visible part. Disabled controls are present but do not provide a route or enable playback. */
+  register: (part: CarouselPart, available?: boolean) => () => void;
   setSlideCount: (count: number) => void;
   select: (index: number, event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
   previous: (event: React.MouseEvent<HTMLElement>) => void;
@@ -92,6 +92,9 @@ export const useCarouselContext = (): CarouselContextValue =>
 /** Zero-based position of a generated item (a slide inside the viewport, or a button inside `CarouselNav`). */
 export const CarouselItemIndexContext = React.createContext<number | undefined>(undefined);
 
+/** Only a complete set of operable tabs constitutes a pagination route. */
+export const CarouselRegisterTabContext = React.createContext<((index: number) => () => void) | undefined>(undefined);
+
 export const useCarouselItemIndex = (): number => React.useContext(CarouselItemIndexContext) ?? 0;
 
 /**
@@ -100,8 +103,18 @@ export const useCarouselItemIndex = (): number => React.useContext(CarouselItemI
  */
 export const CarouselSlideCountContext = React.createContext<number | undefined>(undefined);
 
-/** Registers a compound part for as long as it is mounted. */
-export const useCarouselPart = (part: CarouselPart): void => {
+/** Registers the consumer's part, independently of the carousel's own boundary or reduced-motion state. */
+export const useCarouselPart = (part: CarouselPart, present: boolean, available = true): void => {
   const { register } = useCarouselContext();
-  useIsomorphicLayoutEffect(() => register(part), [register, part]);
+  useIsomorphicLayoutEffect(
+    () => (present ? register(part, available) : undefined),
+    [register, part, present, available],
+  );
 };
+
+export const isControlDisabled = (props: {
+  disabled?: boolean;
+  disabledFocusable?: boolean;
+  'aria-disabled'?: React.AriaAttributes['aria-disabled'];
+}): boolean =>
+  !!(props.disabled || props.disabledFocusable || props['aria-disabled'] === true || props['aria-disabled'] === 'true');

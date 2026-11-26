@@ -24,8 +24,8 @@ const slideLabel = (position: number, total: number) => `Slide ${position} of ${
  *
  * The root owns group selection, playback and transitions. Compound parts (`CarouselViewport`,
  * `CarouselPrevious`, `CarouselNext`, `CarouselNav`, `CarouselAutoplayButton`) register themselves, so
- * rendering a part is what enables it. Unless a `CarouselNav`, both Previous and Next, or one arrow in a circular
- * collection is rendered, every slide stays visible.
+ * a complete tablist, two operable arrows, or one operable circular arrow enables paging.
+ * Without a route to every group, all slides stay visible.
  */
 export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   const {
@@ -72,26 +72,25 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
   const viewportId = `${idPrefix}-viewport`;
 
   const [slideCount, setSlideCount] = React.useState(0);
-  const [parts, setParts] = React.useState<Record<CarouselPart, number>>({
-    previous: 0,
-    next: 0,
-    nav: 0,
-    autoplay: 0,
-  });
-  const register = React.useCallback((part: CarouselPart) => {
-    setParts(current => ({ ...current, [part]: current[part] + 1 }));
-    return () => setParts(current => ({ ...current, [part]: current[part] - 1 }));
+  const [parts, setParts] = React.useState<{ part: CarouselPart; available: boolean }[]>([]);
+  const register = React.useCallback((part: CarouselPart, available = true) => {
+    const entry = { part, available };
+    setParts(current => [...current, entry]);
+    return () => setParts(current => current.filter(item => item !== entry));
   }, []);
 
   const pageCount = Math.ceil(slideCount / groupSize);
-  const anyButton = parts.previous > 0 || parts.next > 0;
+  const available = (part: CarouselPart) => parts.some(item => item.part === part && item.available);
+  const hasPrevious = available('previous');
+  const hasNext = available('next');
   // Page only when the rendered controls reach every group in both directions; a lone non-circular arrow
   // would strand the collection at a boundary, so it stays static instead.
-  const reachable = parts.nav > 0 || (parts.previous > 0 && parts.next > 0) || (circular && anyButton);
+  const hasNav = available('nav');
+  const reachable = hasNav || (circular ? hasPrevious || hasNext : hasPrevious && hasNext);
   const paged = pageCount > 1 && reachable;
-  const buttons = paged && anyButton;
-  const nav = paged && parts.nav > 0;
-  const autoplay = paged && parts.autoplay > 0;
+  const buttons = paged && parts.some(item => item.part === 'previous' || item.part === 'next');
+  const nav = paged && hasNav;
+  const autoplay = paged && available('autoplay');
 
   const environment = useCarouselEnvironment(fluent.targetDocument, rootRef, autoplay);
   const selection = useCarouselSelection({
@@ -112,14 +111,10 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
   });
   const { view } = selection;
   const lastGroup = !circular && view.index === pageCount - 1;
-  // Request the next group and keep playing; non-circular playback stops once the selection actually reaches the
-  // last group (see `atEnd` in the rotation), so a declined request keeps playback requesting at each interval.
+  // Arrival at the last group stops rotation. If Play was explicitly started there, request the restart
+  // until the controlled owner accepts it, just like an ordinary advance.
   const advance = useEventCallback(() => {
-    if (lastGroup) {
-      return false;
-    }
     selection.request((view.index + 1) % pageCount, 'autoplay', undefined, 1);
-    return true;
   });
   const rotation = useCarouselRotation(
     fluent.targetDocument,
@@ -179,7 +174,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     }
   });
   const toggleAutoplay = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
-    if (event.defaultPrevented || environment.reducedMotion) {
+    if (event.defaultPrevented || !autoplay || environment.reducedMotion) {
       return;
     }
     if (rotation.playing) {
@@ -192,8 +187,10 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     }
   });
   const onFocusCapture = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    rotation.interrupt(event);
-    if (viewportRef.current?.contains(event.target)) {
+    if (rotation.playing) {
+      rotation.interrupt(event);
+    }
+    if (view.busy && viewportRef.current?.contains(event.target)) {
       selection.settle(false);
     }
   });
@@ -211,7 +208,11 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
           onPointerLeave: mergeCallbacks(rootProps.onPointerLeave, rotation.onPointerLeave),
           onPointerDownCapture: mergeCallbacks(rootProps.onPointerDownCapture, rotation.interrupt),
           onKeyDownCapture: mergeCallbacks(rootProps.onKeyDownCapture, rotation.interrupt),
-          onFocusCapture: mergeCallbacks(rootProps.onFocusCapture, onFocusCapture),
+          // A child's autoFocus can run before the first ancestor layout effect. There is nothing to interrupt yet.
+          onFocusCapture: mergeCallbacks(
+            rootProps.onFocusCapture,
+            rotation.playing || view.busy ? onFocusCapture : undefined,
+          ),
         }),
         { elementType: 'div' },
       ),

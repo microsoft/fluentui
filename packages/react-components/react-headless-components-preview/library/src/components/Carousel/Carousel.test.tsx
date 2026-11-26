@@ -13,6 +13,8 @@ import type { CarouselNextProps } from './CarouselNext';
 import { CarouselNav } from './CarouselNav';
 import { CarouselNavButton } from './CarouselNavButton';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
+import type { CarouselAutoplayButtonProps } from './CarouselAutoplayButton';
+import { useCarouselContext } from './carouselContext';
 import { Provider } from '../Provider';
 
 const items = ['A', 'B', 'C', 'D', 'E'];
@@ -21,7 +23,7 @@ const selected = () => screen.getByRole('tab', { selected: true });
 type ExampleProps = Partial<CarouselProps> & {
   buttons?: boolean;
   nav?: boolean;
-  autoplay?: boolean;
+  autoplay?: boolean | CarouselAutoplayButtonProps;
   slides?: React.ReactNode[];
   viewport?: CarouselViewportProps;
   next?: CarouselNextProps;
@@ -36,7 +38,7 @@ const example = ({
   ...props
 }: ExampleProps = {}) => (
   <Carousel aria-label="Notes" groupSize={2} {...props}>
-    {autoplay && <CarouselAutoplayButton />}
+    {autoplay && <CarouselAutoplayButton {...(typeof autoplay === 'object' ? autoplay : {})} />}
     {buttons && <CarouselPrevious />}
     <CarouselViewport {...viewport}>
       {slides.map((slide, i) => (
@@ -91,6 +93,115 @@ describe('Carousel', () => {
     expect(screen.queryByRole('button', { name: 'Next' })).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+  });
+
+  it('preserves mount-time autofocus and calls the consumer capture handler', () => {
+    const onFocusCapture = jest.fn();
+    render(example({ slides: [<input key="note" autoFocus aria-label="Note" />], onFocusCapture }));
+    expect(screen.getByRole('textbox')).toHaveFocus();
+    expect(onFocusCapture).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(['disabled', 'disabledFocusable'] as const)('honors %s for directions and playback', restriction => {
+    const restricted = { [restriction]: true };
+    render(example({ next: { button: restricted }, autoplay: restricted }));
+    for (const name of ['Play', 'Next']) {
+      const button = screen.getByRole('button', { name });
+      if (restriction === 'disabled') {
+        expect(button).toBeDisabled();
+      } else {
+        expect(button).not.toBeDisabled();
+        expect(button).toHaveAttribute('aria-disabled', 'true');
+        act(() => button.focus());
+        expect(button).toHaveFocus();
+      }
+      fireEvent.click(button);
+    }
+    expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+    expect(screen.getByRole('region')).not.toHaveAttribute('data-playing');
+  });
+
+  it.each([false, { hidden: true }, { disabled: true }, { disabledFocusable: true }])(
+    'stops when playback loses its usable control (%p), requiring a fresh Play',
+    autoplay => {
+      jest.useFakeTimers();
+      const { rerender } = render(example({ autoplay: true }));
+      fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+      expect(screen.getByRole('region')).toHaveAttribute('data-playing');
+      rerender(example({ autoplay }));
+      expect(screen.getByRole('region')).not.toHaveAttribute('data-playing');
+      rerender(example({ autoplay: true }));
+      act(() => jest.advanceTimersByTime(5000));
+      expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+      expect(screen.getByRole('button', { name: 'Play' })).toBeVisible();
+    },
+  );
+
+  it.each([
+    <CarouselNav key="hidden" hidden />,
+    <CarouselNav key="unavailable" aria-disabled="true" />,
+    <CarouselNav key="empty">{false}</CarouselNav>,
+    <CarouselNav key="missing">{i => i !== 1 && <CarouselNavButton />}</CarouselNav>,
+    <CarouselNav key="disabled">{i => <CarouselNavButton disabled={i === 1} />}</CarouselNav>,
+    <CarouselNav key="hidden-tab">{i => <CarouselNavButton hidden={i === 1} />}</CarouselNav>,
+  ])('does not count a hidden or incomplete tablist as a route', nav => {
+    const tree = (arrows: boolean) => (
+      <Carousel aria-label="Notes">
+        <CarouselViewport>{items}</CarouselViewport>
+        {nav}
+        {arrows && <CarouselPrevious />}
+        {arrows && <CarouselNext />}
+      </Carousel>
+    );
+    const { rerender } = render(tree(false));
+    expect(screen.getAllByRole('group')).toHaveLength(5);
+    expect(screen.queryByRole('tablist')).toBeNull();
+    rerender(tree(true));
+    expect(screen.queryByRole('tablist')).toBeNull();
+    expect(screen.queryByRole('tabpanel')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    expect(screen.getByRole('group', { name: 'Page 2 of 5' })).toBeVisible();
+  });
+
+  it.each([
+    { hidden: true },
+    { button: { hidden: true } },
+    { button: { disabled: true } },
+    { button: { disabledFocusable: true } },
+  ])('does not hide slides behind unavailable sequential controls (%p)', next => {
+    render(example({ next, nav: false }));
+    expect(screen.getAllByRole('group', { name: /^Slide/ })).toHaveLength(items.length);
+    expect(screen.getByRole('region')).not.toHaveAttribute('data-paged');
+  });
+
+  it('ignores invalid custom selection requests without changing or announcing selection', () => {
+    const onActiveIndexChange = jest.fn();
+    const Custom = () => {
+      const { select } = useCarouselContext();
+      return (
+        <button onClick={event => [0.5, NaN, -1, Infinity, items.length].forEach(i => select(i, event))}>Custom</button>
+      );
+    };
+    render(
+      <Carousel aria-label="Notes" onActiveIndexChange={onActiveIndexChange}>
+        <CarouselViewport>{items}</CarouselViewport>
+        <CarouselNav />
+        <Custom />
+      </Carousel>,
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Custom' }));
+    expect(onActiveIndexChange).not.toHaveBeenCalled();
+    expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 5');
+    expect(screen.getByRole('tabpanel')).toHaveTextContent('A');
+  });
+
+  it.each([true, false])('recovers only a retiring arrow that owns focus on count change (focused: %s)', focused => {
+    const { rerender } = render(example({ defaultActiveIndex: 1 }));
+    act(() => (focused ? screen.getByRole('button', { name: 'Next' }) : selected()).focus());
+    rerender(example({ defaultActiveIndex: 1, slides: items.slice(0, 4) }));
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 2');
+    expect(screen.queryByRole('button', { name: 'Next' })).toBeNull();
+    expect(focused ? screen.getByRole('group', { name: 'Slide 3 of 4' }) : selected()).toHaveFocus();
   });
 
   it('recovers boundary-arrow focus but preserves the activating control otherwise', () => {
@@ -341,7 +452,7 @@ describe('Carousel', () => {
     const doc = host.container.ownerDocument;
     const win = doc.defaultView!;
     host.unmount();
-    let notify: (entries: { isIntersecting: boolean }[]) => void = jest.fn();
+    let notify: (entries: { target: Element; isIntersecting: boolean }[]) => void = jest.fn();
     const disconnect = jest.fn();
     replaceProperty(
       win,
@@ -370,7 +481,16 @@ describe('Carousel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Play' }));
     act(() => jest.advanceTimersByTime(3000));
     expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
-    act(() => notify([{ isIntersecting: true }]));
+    const target = screen.getByRole('region');
+    act(() =>
+      notify([
+        { target, isIntersecting: true },
+        { target, isIntersecting: false },
+      ]),
+    );
+    act(() => jest.advanceTimersByTime(3000));
+    expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+    act(() => notify([{ target, isIntersecting: true }]));
     act(() => jest.advanceTimersByTime(500));
     replaceProperty(doc, 'hidden', true);
     fireEvent(doc, new win.Event('visibilitychange'));
@@ -382,7 +502,7 @@ describe('Carousel', () => {
     expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
     act(() => jest.advanceTimersByTime(1));
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
-    act(() => notify([{ isIntersecting: false }]));
+    act(() => notify([{ target, isIntersecting: false }]));
     act(() => jest.advanceTimersByTime(3000));
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
     unmount();
@@ -391,6 +511,8 @@ describe('Carousel', () => {
   });
 
   it('renders the CarouselNav template once per group and names arrows by their tooltips', () => {
+    const wrapperRef = React.createRef<HTMLDivElement>();
+    const buttonRef = React.createRef<HTMLButtonElement>();
     render(
       <Carousel aria-label="Notes" groupSize={2}>
         <CarouselPrevious tooltip="Précédent" />
@@ -399,7 +521,7 @@ describe('Carousel', () => {
             <CarouselCard key={item}>{item}</CarouselCard>
           ))}
         </CarouselViewport>
-        <CarouselNext tooltip="Suivant" />
+        <CarouselNext ref={wrapperRef} data-carousel-button="previous" button={{ ref: buttonRef }} tooltip="Suivant" />
         <CarouselNav aria-label="Pages">
           <CarouselNavButton className="dot" indicator={{ className: 'mark' }} />
         </CarouselNav>
@@ -413,6 +535,9 @@ describe('Carousel', () => {
     });
     expect(tabs[0]).toHaveAttribute('data-selected');
     const next = screen.getByRole('button', { name: 'Suivant' });
+    expect(buttonRef.current).toBe(next);
+    expect(wrapperRef.current).toBe(next.parentElement);
+    expect(wrapperRef.current).toHaveAttribute('data-carousel-button', 'next');
     expect(next).toHaveAttribute('aria-controls', screen.getByRole('tabpanel').parentElement!.id);
     expect(next).not.toHaveAttribute('aria-label');
     // At the first group the previous slot stays in layout but is hidden and inert.
@@ -614,6 +739,14 @@ describe('Carousel', () => {
       </Carousel>,
     );
     const next = screen.getByRole('button', { name: 'Next' });
+    if (tabbable) {
+      // jsdom has no layout. Supply the visibility measurements used by the shared focus finder.
+      const button = screen.getByText('Open E');
+      replaceProperty(button, 'offsetParent', button.parentElement);
+      jest
+        .spyOn(button.ownerDocument.body, 'getBoundingClientRect')
+        .mockReturnValue({ width: 100, height: 100 } as DOMRect);
+    }
     act(() => next.focus());
     fireEvent.click(next);
     fireEvent.click(next);
@@ -649,6 +782,34 @@ describe('Carousel', () => {
     expect(onActiveIndexChange).toHaveBeenCalledTimes(2);
     expect(onActiveIndexChange.mock.calls.every(([, data]) => data.index === 2)).toBe(true);
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+  });
+
+  it('keeps a nav-only session when adding a page with its operable tab in the same commit', () => {
+    jest.useFakeTimers();
+    const props = { buttons: false, autoplay: true, autoplayInterval: 1000, defaultActiveIndex: 1 };
+    const { rerender } = render(example(props));
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    rerender(example({ ...props, slides: [...items, 'F', 'G'] }));
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 4');
+    expect(screen.getByRole('button', { name: 'Pause' })).toBeVisible();
+    act(() => jest.advanceTimersByTime(1000));
+    expect(selected()).toHaveAttribute('aria-label', 'Page 3 of 4');
+  });
+
+  it('retries a controlled restart until accepted, then waits a full interval', () => {
+    jest.useFakeTimers();
+    const onActiveIndexChange = jest.fn();
+    const props = { autoplay: true, autoplayInterval: 1000, onActiveIndexChange };
+    const { rerender } = render(example({ ...props, activeIndex: 2 }));
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    act(() => jest.advanceTimersByTime(1000));
+    expect(onActiveIndexChange.mock.calls.map(([, data]) => data.index)).toEqual([0, 0]);
+    act(() => jest.advanceTimersByTime(500));
+    rerender(example({ ...props, activeIndex: 0 }));
+    act(() => jest.advanceTimersByTime(999));
+    expect(onActiveIndexChange).toHaveBeenCalledTimes(2);
+    act(() => jest.advanceTimersByTime(1));
+    expect(onActiveIndexChange.mock.calls.map(([, data]) => data.index)).toEqual([0, 0, 1]);
   });
 
   it.each([0, 999, 1000.5, NaN, Infinity, 2147483648])('rejects invalid autoplay interval %s', autoplayInterval => {

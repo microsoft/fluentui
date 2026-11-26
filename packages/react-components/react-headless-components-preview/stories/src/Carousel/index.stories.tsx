@@ -1,4 +1,13 @@
-import { Carousel } from '@fluentui/react-headless-components-preview/carousel';
+import {
+  Carousel,
+  CarouselAutoplayButton,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselViewport,
+} from '@fluentui/react-headless-components-preview/carousel';
 import descriptionMd from './CarouselDescription.md';
 import './carousel.module.css';
 
@@ -11,5 +20,14 @@ export { Static } from './CarouselStatic.stories';
 export default {
   title: 'Components/Carousel',
   component: Carousel,
+  subcomponents: {
+    CarouselAutoplayButton,
+    CarouselCard,
+    CarouselNav,
+    CarouselNavButton,
+    CarouselNext,
+    CarouselPrevious,
+    CarouselViewport,
+  },
   parameters: { docs: { description: { component: descriptionMd } } },
 };
