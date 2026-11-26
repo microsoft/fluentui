@@ -1077,3 +1077,49 @@ describe('Render empty chart calling with respective to props', () => {
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
+
+// Keep these tests last in the file. The snapshots above contain ids from React's useId, and those ids count up
+// with every component that is rendered earlier in the file.
+describe('Vertical bar chart - Keyboard focus', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar = (legend?: string): VerticalBarChartDataPoint[] => [
+    { x: 'Mon', y: 20, legend: legend ?? 'Rooms Mon' },
+    { x: 'Tue', y: 0, legend: legend ?? 'Rooms Tue' },
+    { x: 'Wed', y: 30, legend: legend ?? 'Rooms Wed' },
+    { x: 'Thu', y: 25, legend: legend ?? 'Rooms Thu' },
+  ];
+  const popoverText = () => document.querySelector('.fui-PopoverSurface')?.textContent;
+
+  test('Should show the values of the focused bar when a bar before it is not drawn', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar()} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Mon'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Wed'));
+    expect(popoverText()).not.toContain('Rooms Mon');
+
+    fireEvent.focus(bars[2]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Thu'));
+    expect(popoverText()).not.toContain('Rooms Wed');
+  });
+
+  test('Should show the values of the focused bar when all bars share a legend and one is not drawn', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar('Rooms')} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(popoverText()).toContain('Wed'));
+
+    fireEvent.focus(bars[2]);
+    await waitFor(() => expect(popoverText()).toContain('Thu'));
+    expect(popoverText()).not.toContain('Wed');
+  });
+});

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: show the callout of the focused bar in VerticalBarChart when a bar before it is not drawn",
+  "packageName": "@fluentui/react-charting",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

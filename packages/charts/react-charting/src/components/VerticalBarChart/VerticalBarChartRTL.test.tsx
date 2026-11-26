@@ -826,6 +826,73 @@ describe('Vertical bar chart - Subcomponent callout', () => {
   );
 });
 
+describe('Vertical bar chart - Keyboard focus', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar = (legend?: string): IVerticalBarChartDataPoint[] => [
+    { x: 'Mon', y: 20, legend: legend ?? 'Rooms Mon' },
+    { x: 'Tue', y: 0, legend: legend ?? 'Rooms Tue' },
+    { x: 'Wed', y: 30, legend: legend ?? 'Rooms Wed' },
+    { x: 'Thu', y: 25, legend: legend ?? 'Rooms Thu' },
+  ];
+  const calloutText = () => document.querySelector('.ms-Callout')?.textContent;
+
+  test('Should show the callout of the focused bar when a bar before it is not drawn', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar()} calloutProps={{ doNotLayer: true }} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Mon'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Wed'));
+    expect(calloutText()).not.toContain('Rooms Mon');
+
+    fireEvent.focus(bars[2]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Thu'));
+    expect(calloutText()).not.toContain('Rooms Wed');
+  });
+
+  test('Should place the callout at the focused bar when a bar before it is not drawn', async () => {
+    // With one legend for all bars the callout had the right content, but it was placed at another bar.
+    const { container } = render(
+      <VerticalBarChart data={pointsWithEmptyBar('Rooms')} calloutProps={{ doNotLayer: true }} />,
+    );
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+    // The callout measures its target to find its position.
+    const measured = bars.map(bar => jest.spyOn(bar, 'getBoundingClientRect'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(calloutText()).toContain('Wed'));
+    await waitFor(() => expect(measured[1]).toHaveBeenCalled());
+    expect(measured[0]).not.toHaveBeenCalled();
+    expect(measured[2]).not.toHaveBeenCalled();
+  });
+
+  test('Should show the callout of the focused bar when a negative bar is not drawn', async () => {
+    // Without supportNegativeData the bar of Tue is not drawn.
+    const points: IVerticalBarChartDataPoint[] = [
+      { x: 'Mon', y: 20, legend: 'Rooms Mon' },
+      { x: 'Tue', y: -5, legend: 'Rooms Tue' },
+      { x: 'Wed', y: 30, legend: 'Rooms Wed' },
+    ];
+    const { container } = render(<VerticalBarChart data={points} calloutProps={{ doNotLayer: true }} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(2));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Mon'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Wed'));
+    expect(calloutText()).not.toContain('Rooms Mon');
+  });
+});
+
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
