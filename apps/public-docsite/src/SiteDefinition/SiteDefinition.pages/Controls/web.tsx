@@ -64,6 +64,7 @@ export const categories: { [name: string]: ICategory } = {
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },
+        FixedHeader: { title: 'Fixed Header' },
         CustomGroupHeaders: { title: 'Custom Group Headers' },
         Advanced: { title: 'Variable Row Heights', url: 'variablerowheights' },
         KeyboardDragDrop: { title: 'Keyboard Column Reorder & Resize', url: 'keyboardcolumnreorderresize' },
