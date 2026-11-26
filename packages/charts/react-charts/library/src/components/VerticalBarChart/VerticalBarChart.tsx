@@ -188,6 +188,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
       : 0;
 
+    // The line has no pointer handlers and is drawn above the bars. Its fill covers the area between the line and
+    // a straight line from its first to its last point, and that area must not take the pointer from the bars.
     if (lineBorderWidth > 0) {
       line.push(
         <path
@@ -196,6 +198,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
+          pointerEvents="none"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
           className={classes.lineBorder}
@@ -209,6 +212,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
         fill="transparent"
+        pointerEvents="none"
         strokeLinecap="square"
         strokeWidth={3}
         stroke={lineLegendColor}
