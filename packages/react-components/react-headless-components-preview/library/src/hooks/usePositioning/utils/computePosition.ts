@@ -7,6 +7,13 @@ const DEFAULT_TOLERANCE = 2;
 
 const closeTo = (a: number, b: number, tolerance: number): boolean => Math.abs(a - b) <= tolerance;
 
+/**
+ * An element is rendered when it has at least one box (it is not `display: none`).
+ * Unlike its rect size, this ignores transforms such as `scale(0)` and keeps
+ * 0×0 point anchors and 0px-tall or 0px-wide elements.
+ */
+export const isRendered = (element: Element): boolean => element.getClientRects().length > 0;
+
 function detectPosition(floatingRect: DOMRect, referenceRect: DOMRect, tolerance: number): Position | null {
   if (floatingRect.bottom <= referenceRect.top + tolerance) {
     return POSITIONS.above;
@@ -72,6 +79,10 @@ export function computePosition(
   const tolerance = config?.tolerance ?? DEFAULT_TOLERANCE;
   const referenceRect = reference.getBoundingClientRect();
   const floatingRect = floating.getBoundingClientRect();
+
+  if (!isRendered(floating) || !isRendered(reference)) {
+    return null;
+  }
 
   const position = detectPosition(floatingRect, referenceRect, tolerance);
   if (!position) {
