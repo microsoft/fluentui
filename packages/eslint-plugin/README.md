@@ -16,13 +16,10 @@ Helpers for customizing configuration are exported under a `configHelpers` objec
 
 ### Workspace dependency declarations
 
-Shared v8/v9 source lint checks workspace imports with `import/no-extraneous-dependencies` using source `package.json`
-files from the repository's `workspaces` patterns. No builds, workspace links or Nx graph cache are required.
-Existing rule options, type-import behavior, development-file exemptions and inline disables are preserved.
-
-Discovery is cached and checked for workspace changes on each linted file's first package import. Nx lint inputs
-track the implementation and workspace manifests. External packages and other import rules retain their configured
-resolvers; this dependency check does not validate unresolved imports or subpath exports.
+Shared v8/v9 lint validates workspace dependency declarations from source manifests with
+`import/no-extraneous-dependencies`, without requiring builds or workspace links. Existing rule options and exemptions
+remain unchanged. Other import rules retain their configured resolvers; this check does not validate import paths or
+package exports.
 
 ## Rules
 
