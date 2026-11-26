@@ -78,17 +78,17 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
-  const setVisible = React.useCallback(
+  const setVisible = useEventCallback(
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
-        if (data.visible !== oldVisible) {
+        // The controlled updater's snapshot lags the committed prop until passive effects run.
+        if (data.visible !== (props.visible ?? oldVisible)) {
           onVisibleChange?.(ev, data);
         }
         return data.visible;
       });
     },
-    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
   // Rendered while hidden, so `aria-labelledby` / `aria-describedby` resolve.

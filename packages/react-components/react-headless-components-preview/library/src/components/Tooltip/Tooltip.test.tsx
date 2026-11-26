@@ -193,6 +193,29 @@ describe('Tooltip', () => {
     expect(target).toHaveAttribute('aria-describedby', 'test-describedby');
   });
 
+  it('reports Escape as soon as a controlled tooltip opens, before passive effects run', () => {
+    const onVisibleChange = jest.fn();
+    const Example = ({ visible }: { visible: boolean }) => {
+      const button = React.useRef<HTMLButtonElement>(null);
+      React.useLayoutEffect(() => {
+        if (visible) {
+          button.current?.dispatchEvent(
+            new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
+          );
+        }
+      }, [visible]);
+      return (
+        <Tooltip content="Description" relationship="description" visible={visible} onVisibleChange={onVisibleChange}>
+          <button ref={button}>Trigger</button>
+        </Tooltip>
+      );
+    };
+    const { rerender } = render(<Example visible={false} />);
+    rerender(<Example visible />);
+    expect(onVisibleChange).toHaveBeenCalledTimes(1);
+    expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
+  });
+
   it.each([
     ['hint', 'supported'],
     ['manual', 'unsupported'],

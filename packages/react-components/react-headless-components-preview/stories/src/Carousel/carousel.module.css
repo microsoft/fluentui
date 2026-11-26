@@ -152,6 +152,21 @@
   transform: scaleX(-1);
 }
 
+@supports not selector(:dir(rtl)) {
+  /* Inherit the nearest explicit direction, including an LTR island inside an RTL page. */
+  [dir='rtl'] {
+    --carousel-chevron-transform: scaleX(-1);
+  }
+
+  [dir='ltr'] {
+    --carousel-chevron-transform: none;
+  }
+
+  .carousel [data-carousel-button] .button > [aria-hidden='true'] {
+    transform: var(--carousel-chevron-transform, none);
+  }
+}
+
 .carousel .playback {
   grid-area: 1 / 1 / 2 / -1;
   justify-self: start;

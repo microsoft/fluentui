@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../hooks/top-layer/utils';
-import { useFocusCarouselPage } from './useFocusCarouselPage';
+import { focusCarouselPage } from './focusCarouselPage';
 import type { CarouselProps, CarouselIndexChangeData } from './Carousel.types';
 
 type SelectionOptions = Pick<
@@ -42,7 +42,6 @@ export function useCarouselSelection(options: SelectionOptions): {
 } {
   const { pageCount, paged, getDir, targetDocument, reducedMotion, viewportRef, rootRef, transition, groupSize } =
     options;
-  const focusPage = useFocusCarouselPage();
   // A latest ref: an inline adapter re-created by a parent re-render must not restart a running transition.
   const transitionRef = React.useRef(transition);
   useIsomorphicLayoutEffect(() => {
@@ -81,7 +80,7 @@ export function useCarouselSelection(options: SelectionOptions): {
     if (restoreFocus && anchor && viewport && anchor === getActiveElement(viewport)) {
       const page = viewport.children[view.index] as HTMLElement | undefined;
       if (page) {
-        focusPage(page);
+        focusCarouselPage(page);
       }
     }
     setView(current => (current.busy ? { ...current, busy: false, outgoing: undefined, anchor: undefined } : current));

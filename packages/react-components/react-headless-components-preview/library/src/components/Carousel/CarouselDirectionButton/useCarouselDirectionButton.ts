@@ -11,7 +11,7 @@ import {
 import { getActiveElement } from '../../../hooks/top-layer/utils';
 import { Button } from '../../Button';
 import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
-import { useFocusCarouselPage } from '../useFocusCarouselPage';
+import { focusCarouselPage } from '../focusCarouselPage';
 import type { CarouselDirectionButtonProps, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
 /**
@@ -37,7 +37,6 @@ export const useCarouselDirectionButton = (
   const retiring = focused && (!rendered || boundaryHidden);
   const hidden = boundaryHidden && !retiring;
   const wrapper = React.useRef<HTMLDivElement>(null);
-  const focusPage = useFocusCarouselPage();
   useIsomorphicLayoutEffect(() => {
     if (retiring) {
       // Keep a retiring arrow mounted until this commit can check actual focus ownership.
@@ -45,12 +44,12 @@ export const useCarouselDirectionButton = (
         const viewport = context.viewportRef.current;
         const page = viewport?.children[Math.min(context.activeIndex, viewport.children.length - 1)];
         if (page) {
-          focusPage(page as HTMLElement);
+          focusCarouselPage(page as HTMLElement);
         }
       }
       setFocused(false);
     }
-  }, [retiring, context.activeIndex, context.viewportRef, focusPage]);
+  }, [retiring, context.activeIndex, context.viewportRef]);
   const inertRef = React.useCallback(
     (node: HTMLDivElement | null) => {
       node?.toggleAttribute('inert', hidden);

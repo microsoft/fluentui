@@ -112,30 +112,25 @@ describe('Carousel browser behavior', () => {
     });
   });
 
-  it('inherits an ancestor RTL direction for nav keys and the transition adapter', () => {
+  it('mirrors chevrons, nav keys and transitions according to the nearest direction', () => {
     const dirs: string[] = [];
     const record: CarouselTransition = data => {
       dirs.push(data.dir);
       return [];
     };
-    mount(
-      <div dir="rtl">
-        <Carousel aria-label="Lessons" groupSize={2} transition={record}>
-          <CarouselPrevious />
-          <CarouselViewport>
-            {[1, 2, 3, 4, 5].map(index => (
-              <CarouselCard key={index}>{index}</CarouselCard>
-            ))}
-          </CarouselViewport>
-          <CarouselNext />
-          <CarouselNav />
-        </Carousel>
-      </div>,
-    );
+    renderCarousel({ transition: record });
+    cy.get('.example').invoke('attr', 'dir', 'rtl');
     cy.get('[role="region"]').should('not.have.attr', 'dir');
+    const glyph = '[data-carousel-button="next"] [aria-hidden="true"]';
+    cy.get(glyph).should('have.css', 'transform', 'matrix(-1, 0, 0, 1, 0, 0)');
     cy.get('[aria-selected="true"]').focus().realPress('ArrowLeft');
     cy.get('[role="tab"]').eq(1).should('be.focused').and('have.attr', 'aria-selected', 'true');
     cy.wrap(dirs).should('deep.equal', ['rtl']);
+    cy.get('.carousel').invoke('attr', 'dir', 'ltr');
+    cy.get(glyph).should('have.css', 'transform', 'none');
+    cy.get('[aria-selected="true"]').realPress('ArrowLeft');
+    cy.get('[role="tab"]').first().should('be.focused').and('have.attr', 'aria-selected', 'true');
+    cy.wrap(dirs).should('deep.equal', ['rtl', 'ltr']);
   });
 
   it('shows tooltips immediately on focus and dismisses Escape without moving focus', () => {
