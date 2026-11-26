@@ -2,6 +2,26 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:28 GMT",
+      "version": "9.26.5",
+      "tag": "@fluentui/react-shared-contexts_v9.26.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.2.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.26.4",
       "comments": {

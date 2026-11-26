@@ -1,0 +1,903 @@
+import * as React from 'react';
+import { createPortal } from 'react-dom';
+import { mount } from '@fluentui/scripts-cypress';
+import { FluentProvider } from '@fluentui/react-provider';
+import { computePosition as computeOracle, hide, shift, offset, limitShift } from '@floating-ui/dom';
+import { computePosition } from './utils/computePosition';
+import { getClippingRect } from './utils/domGeometry';
+import { usePositioning } from './usePositioning';
+import type { OnPositioningEndEventDetail, TargetElement } from './types';
+
+// These dimensions are geometry inputs, not product styling.
+function element(doc: Document, tag: string, css: Partial<CSSStyleDeclaration>, parent: Node): HTMLElement {
+  const node = doc.createElement(tag);
+  Object.assign(node.style, css);
+  parent.appendChild(node);
+  return node;
+}
+
+async function expectParity(target: TargetElement, floating: HTMLElement) {
+  const expected = await computeOracle(target, floating, {
+    placement: 'bottom',
+    strategy: 'fixed',
+    middleware: [shift(), hide(), hide({ strategy: 'escaped' })],
+  });
+  const actual = await computePosition(target, floating, {
+    placement: 'bottom',
+    strategy: 'fixed',
+    options: { pinned: true },
+  });
+  if (!expected.middlewareData.hide) {
+    throw new Error('Both engines must report visibility');
+  }
+  expect(actual.x, 'x').to.equal(expected.x);
+  expect(actual.y, 'y').to.equal(expected.y);
+  expect(actual.referenceHidden, 'reference visibility').to.equal(expected.middlewareData.hide.referenceHidden);
+  expect(actual.escaped, 'surface visibility').to.equal(expected.middlewareData.hide.escaped);
+}
+
+describe('positioning engine browser regressions', () => {
+  let root: HTMLElement;
+  let probeObserver: MutationObserver | undefined;
+  beforeEach(() => {
+    cy.viewport(800, 600);
+    cy.document().then(doc => {
+      root = element(doc, 'div', { position: 'fixed', inset: '0' }, doc.body);
+    });
+  });
+  afterEach(() => {
+    probeObserver?.disconnect();
+    root.remove();
+  });
+
+  // Must run before any other size-query fixture: the feature result is cached for the module, not the document.
+  it('isolates the first size-container probe from page CSS and keeps a fixed menu aligned on reopening', () => {
+    let frameDoc: Document;
+    let pageStyle: HTMLElement;
+    const probes: Node[] = [];
+    cy.document().then(doc => {
+      const frame = doc.createElement('iframe');
+      Object.assign(frame.style, { width: '800px', height: '600px', border: '0' });
+      root.appendChild(frame);
+      frameDoc = frame.contentDocument!;
+      pageStyle = element(frameDoc, 'style', {}, frameDoc.head);
+      pageStyle.textContent = [
+        'html > div { transform: translateZ(0); padding: 9px; }',
+        'html > div > div { transform: translateX(7px); margin-left: 11px; }',
+      ].join('\n');
+      // Observe the real probe, without replacing any geometry or DOM API. A prewarmed cache must fail this test.
+      probeObserver = new frameDoc.defaultView!.MutationObserver(records => {
+        for (const record of records) {
+          probes.push(
+            ...Array.from(record.addedNodes).filter(node => (node as HTMLElement).style?.containerType === 'size'),
+          );
+        }
+      });
+      probeObserver.observe(frameDoc.documentElement, { childList: true });
+
+      const OptionsMenu = () => {
+        const [open, setOpen] = React.useState(false);
+        const { targetRef, containerRef } = usePositioning({ position: 'below', align: 'start', strategy: 'fixed' });
+        return (
+          <section
+            style={{
+              position: 'absolute',
+              left: 160,
+              top: 100,
+              width: 400,
+              height: 300,
+              containerType: 'inline-size',
+            }}
+          >
+            <button
+              ref={targetRef}
+              onClick={() => setOpen(value => !value)}
+              style={{ position: 'absolute', left: 40, top: 30, width: 80, height: 40 }}
+            >
+              Options
+            </button>
+            {open && (
+              <div ref={containerRef} role="menu" style={{ width: 120, height: 60 }}>
+                <div role="menuitem">Edit</div>
+              </div>
+            )}
+          </section>
+        );
+      };
+      return mount(
+        createPortal(
+          <FluentProvider targetDocument={frameDoc}>
+            <OptionsMenu />
+          </FluentProvider>,
+          frameDoc.body,
+        ),
+      );
+    });
+    const checkMenu = () =>
+      cy
+        .then(() => cy.wrap(frameDoc.body).find('[role="menu"]'))
+        .should($menu => {
+          const target = frameDoc.querySelector('button')!.getBoundingClientRect();
+          const menu = $menu[0].getBoundingClientRect();
+          expect({ x: target.x, y: target.y, bottom: target.bottom }, 'button').to.deep.equal({
+            x: 200,
+            y: 130,
+            bottom: 170,
+          });
+          expect({ x: menu.x, y: menu.y }, 'menu below Options').to.deep.equal({ x: 200, y: 170 });
+          expect($menu[0].style.position).to.equal('fixed');
+          expect($menu).to.have.attr('data-popper-placement', 'bottom-start');
+          expect(probes, 'one uncached feature probe').to.have.length(1);
+          expect(probes[0].isConnected, 'probe removed').to.equal(false);
+          expect(frameDoc.documentElement.querySelector(':scope > div'), 'no probe left behind').to.equal(null);
+        });
+    cy.then(() => {
+      expect(pageStyle.isConnected, 'page CSS installed before the probe').to.equal(true);
+      return cy.wrap(frameDoc.body).find('button').click();
+    });
+    checkMenu();
+    cy.then(() => cy.wrap(frameDoc.body).find('button').click());
+    cy.then(() => {
+      pageStyle.remove();
+      return cy.wrap(frameDoc.body).find('button').click();
+    });
+    checkMenu();
+  });
+
+  it('keeps a caret tooltip above a virtual rect with inconsistent x/y', () => {
+    cy.viewport(408, 268);
+    const caret = {
+      getBoundingClientRect: () => ({
+        left: 320,
+        top: 210,
+        x: 0,
+        y: 0,
+        right: 0,
+        bottom: 0,
+        width: 0,
+        height: 0,
+      }),
+    };
+    const events: OnPositioningEndEventDetail[] = [];
+    const CaretSuggestion = () => {
+      const [hidden, setHidden] = React.useState(false);
+      const { containerRef } = usePositioning({
+        target: caret,
+        position: 'above',
+        align: 'center',
+        offset: 4,
+        onPositioningEnd: event => {
+          events.push(event.detail);
+          setHidden(event.detail.referenceHidden);
+        },
+      });
+      return (
+        <div
+          ref={containerRef}
+          role="tooltip"
+          style={{ width: 136, height: 32, visibility: hidden ? 'hidden' : 'visible' }}
+        >
+          Spelling correction
+        </div>
+      );
+    };
+    mount(
+      <FluentProvider>
+        <CaretSuggestion />
+      </FluentProvider>,
+    );
+    cy.get('[role="tooltip"]').should($tooltip => {
+      expect($tooltip).to.have.attr('data-popper-placement', 'top');
+      expect($tooltip).not.to.have.attr('data-popper-reference-hidden');
+      expect($tooltip).to.be.visible;
+      expect(events, 'positioning end events').not.to.be.empty;
+      expect(events[events.length - 1]).to.include({ placement: 'top', referenceHidden: false });
+      const bounds = $tooltip[0].getBoundingClientRect();
+      expect(bounds.x, 'tooltip x').to.equal(252);
+      expect(bounds.y, 'tooltip y').to.equal(174);
+      expect(caret.getBoundingClientRect().top - bounds.bottom, 'caret gap').to.equal(4);
+    });
+  });
+
+  for (const [when, react] of [
+    ['synchronously', (win: Window, move: () => void) => move()],
+    // The latest move Floating UI measured; covers e.g. a React commit, one microtask later, queued by a state update
+    // of the observer
+    ['two microtasks later', (win: Window, move: () => void) => win.queueMicrotask(() => win.queueMicrotask(move))],
+  ] as const) {
+    it(`measures an auto-sized list after observers of its style writes move the target ${when}`, () => {
+      cy.document().then(doc => {
+        element(doc, 'style', {}, root).textContent = [
+          '.fui-test-layout { position: fixed; inset: 0; padding: 100px 0 0 100px }',
+          // Like a media query, moves the target to where the list no longer fits below it
+          '.fui-test-layout.narrow { padding-top: 420px }',
+          '.fui-test-layout.compact { padding: 380px 0 0 60px }',
+          '.fui-test-field { width: 200px; height: 32px }',
+          '.fui-test-list { width: 200px; height: 200px; overflow: auto }',
+        ].join('\n');
+      });
+      const box = ({ x, y, width, height }: DOMRect) => ({ x, y, width, height });
+      // The placement and the boxes of the list and the field when each update ends
+      const updates: { placement: string; list: ReturnType<typeof box>; field: ReturnType<typeof box> }[] = [];
+      const DateFormat = () => {
+        const { targetRef, containerRef } = usePositioning({
+          position: 'below',
+          align: 'start',
+          offset: 2,
+          fallbackPositions: ['above'],
+          autoSize: true,
+          onPositioningEnd: event => {
+            const list = event.target as HTMLElement;
+            updates.push({
+              placement: event.detail.placement,
+              list: box(list.getBoundingClientRect()),
+              field: box(list.previousElementSibling!.getBoundingClientRect()),
+            });
+          },
+        });
+        return (
+          <main className="fui-test-layout">
+            <div className="fui-test-field" ref={targetRef}>
+              <button>Date format</button>
+            </div>
+            <div className="fui-test-list" ref={containerRef} role="listbox" aria-label="Date format">
+              <div role="option" aria-selected="true">
+                M/d/yyyy
+              </div>
+            </div>
+          </main>
+        );
+      };
+      mount(
+        <FluentProvider>
+          <DateFormat />
+        </FluentProvider>,
+      );
+      cy.get('[role="listbox"]').should($list => {
+        expect($list).to.have.attr('data-popper-placement', 'bottom-start');
+        expect(box($list[0].getBoundingClientRect())).to.deep.equal({ x: 100, y: 134, width: 200, height: 200 });
+      });
+
+      let count = 0;
+      let observer: MutationObserver | undefined;
+      cy.get('.fui-test-layout').then($layout => {
+        const layout = $layout[0];
+        const win = layout.ownerDocument.defaultView!;
+        // Like a layout that adapts to the auto-sized list, the target moves without being resized in reaction to
+        // the style writes of the update
+        observer = new win.MutationObserver(() =>
+          react(win, () => layout.classList.toggle('compact', layout.classList.contains('narrow'))),
+        );
+        observer.observe(layout.querySelector('[role="listbox"]')!, { attributes: true, attributeFilter: ['style'] });
+        count = updates.length;
+        layout.classList.add('narrow');
+        win.dispatchEvent(new win.Event('resize'));
+      });
+      cy.wrap(updates).should(items => {
+        expect(items.length, 'updates after the resize').to.be.greaterThan(count);
+        // The update that the resize triggered, a later update must not be needed
+        expect(items[count]).to.deep.equal({
+          placement: 'top',
+          field: { x: 60, y: 380, width: 200, height: 32 },
+          // Start edges aligned, two pixels above the field and not resized
+          list: { x: 60, y: 178, width: 200, height: 200 },
+        });
+      });
+      cy.get('[role="listbox"]').should($list => {
+        expect(box($list[0].getBoundingClientRect()), 'open list').to.deep.equal({
+          x: 60,
+          y: 178,
+          width: 200,
+          height: 200,
+        });
+      });
+      cy.then(() => observer?.disconnect());
+    });
+  }
+
+  it('ignores positioned display: contents ancestors in a scrolled document', () => {
+    cy.document().then(async doc => {
+      const win = doc.defaultView!;
+      const originalScroll = win.scrollY;
+      Object.assign(root.style, { position: 'static', height: '1600px' });
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const wrapper = element(doc, 'div', { display: 'contents', position: 'relative' }, root);
+      const floating = element(doc, 'div', { position: 'absolute', width: '120px', height: '60px' }, wrapper);
+      try {
+        win.scrollTo(0, 200);
+        expect(win.scrollY, 'document scroll').to.equal(200);
+        const actual = await computePosition(target, floating, {
+          strategy: 'absolute',
+          options: { pinned: true },
+        });
+        Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
+        const bounds = floating.getBoundingClientRect();
+        expect(bounds.x, 'physical x').to.equal(330);
+        expect(bounds.y, 'physical y').to.equal(280);
+      } finally {
+        win.scrollTo(0, originalScroll);
+      }
+    });
+  });
+
+  for (const kind of ['popover', 'dialog', 'containedPopover']) {
+    it(`stops containing-block and clipping traversal beyond a ${kind} ancestor`, () => {
+      cy.document().then(async doc => {
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const outer = element(
+          doc,
+          'div',
+          {
+            position: 'absolute',
+            left: '50px',
+            top: '60px',
+            width: '100px',
+            height: '100px',
+            transform: 'translate(40px, 30px)',
+            overflow: 'hidden',
+          },
+          root,
+        );
+        const topLayer = element(
+          doc,
+          kind === 'dialog' ? 'dialog' : 'div',
+          {
+            position: 'fixed',
+            left: '100px',
+            top: '100px',
+            width: '200px',
+            height: '200px',
+            margin: '0',
+            padding: '0',
+            border: '0',
+            ...(kind === 'containedPopover' && { transform: 'translate(20px, 30px)', overflow: 'hidden' }),
+          },
+          outer,
+        );
+        if (kind === 'dialog') {
+          (topLayer as HTMLDialogElement).showModal();
+        } else {
+          topLayer.popover = 'manual';
+          topLayer.showPopover();
+        }
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, topLayer);
+        const actual = await computePosition(target, floating, {
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
+        const bounds = floating.getBoundingClientRect();
+        expect(bounds.x, 'physical x').to.equal(kind === 'containedPopover' ? 200 : 330);
+        expect(bounds.y, 'physical y').to.equal(280);
+        expect(actual.referenceHidden, 'reference visibility').to.equal(false);
+        expect(actual.escaped, 'surface visibility').to.equal(false);
+      });
+    });
+  }
+
+  for (const disableTether of [true, 'all'] as const) {
+    it(`preserves the cross-axis limiter for disabled tether ${disableTether}`, () => {
+      cy.document().then(async doc => {
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+        const expected = await computeOracle(target, floating, {
+          placement: 'bottom',
+          strategy: 'fixed',
+          middleware: [
+            offset(-200),
+            shift({
+              crossAxis: disableTether === 'all',
+              limiter: limitShift({ crossAxis: disableTether !== 'all', mainAxis: false }),
+            }),
+          ],
+        });
+        const actual = await computePosition(target, floating, {
+          strategy: 'fixed',
+          options: {
+            pinned: true,
+            offset: -200,
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            unstable_disableTether: disableTether,
+          },
+        });
+        expect(actual.y).to.equal(disableTether === 'all' ? 80 : 180);
+        expect(actual.x).to.equal(expected.x);
+        expect(actual.y).to.equal(expected.y);
+      });
+    });
+  }
+
+  it('keeps the ordered limiter bounds when a negative offset inverts them', () => {
+    cy.document().then(async doc => {
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+      const expected = await computeOracle(target, floating, {
+        placement: 'top',
+        strategy: 'fixed',
+        middleware: [
+          offset(-200),
+          shift({ crossAxis: true, limiter: limitShift({ crossAxis: true, mainAxis: false }) }),
+        ],
+      });
+      const actual = await computePosition(target, floating, {
+        placement: 'top',
+        strategy: 'fixed',
+        options: { pinned: true, offset: -200, shiftToCoverTarget: true },
+      });
+      // The limits are 380 (min) and 280 (max): the surface stays attached to the bottom edge of the target
+      expect(actual.y).to.equal(280);
+      expect(actual.x).to.equal(expected.x);
+      expect(actual.y).to.equal(expected.y);
+    });
+  });
+
+  it('measures clipping again after auto-sizing removes the scrollbar of an ancestor', () => {
+    cy.document().then(async doc => {
+      // Classic scrollbars of a known size, regardless of the overlay scrollbar settings of the host
+      const scrollbars = element(doc, 'style', {}, root);
+      scrollbars.textContent = '.fui-test-scrollbars::-webkit-scrollbar { width: 20px; height: 20px }';
+      const scroller = element(
+        doc,
+        'div',
+        { position: 'relative', width: '300px', height: '200px', overflow: 'auto' },
+        root,
+      );
+      scroller.className = 'fui-test-scrollbars';
+      const target = element(doc, 'div', { width: '80px', height: '40px' }, scroller);
+      // Overflows the scroller until its height is limited, which removes the vertical scrollbar. The size comes
+      // from the content as auto-sizing resets the inline dimensions.
+      const floating = element(doc, 'div', { position: 'absolute' }, scroller);
+      element(doc, 'div', { width: '100px', height: '400px' }, floating);
+      expect(scroller.clientWidth, 'width with a scrollbar').to.equal(280);
+
+      const actual = await computePosition(target, floating, {
+        strategy: 'absolute',
+        options: { autoSize: 'always' },
+      });
+
+      expect(scroller.clientWidth, 'width without a scrollbar').to.equal(300);
+      expect(actual.placement).to.equal('bottom');
+      expect(floating.style.maxHeight).to.equal('160px');
+      expect(floating.style.maxWidth, 'available width of the resized scroller').to.equal('300px');
+    });
+  });
+
+  it('does not escape clipping through a positioned display: contents ancestor', () => {
+    cy.document().then(async doc => {
+      const clipper = element(doc, 'div', { width: '200px', height: '100px', overflow: 'hidden' }, root);
+      // Boxless, so its position doesn't make it the containing block of anything
+      const wrapper = element(doc, 'div', { display: 'contents', position: 'absolute' }, clipper);
+      const target = element(doc, 'div', { marginTop: '300px', width: '80px', height: '40px' }, wrapper);
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+
+      expect(getClippingRect(target, 'clippingAncestors').height).to.equal(100);
+      const result = await computePosition(target, floating, {
+        strategy: 'fixed',
+        options: { pinned: true },
+      });
+      expect(result.referenceHidden, 'clipped target').to.equal(true);
+    });
+  });
+
+  it('finds containing blocks and clipping wrappers through an assigned slot', () => {
+    cy.document().then(async doc => {
+      const host = element(doc, 'div', {}, root);
+      const wrapper = element(
+        doc,
+        'div',
+        {
+          position: 'relative',
+          left: '100px',
+          top: '100px',
+          width: '100px',
+          height: '100px',
+          overflow: 'hidden',
+          transform: 'translate(20px, 30px)',
+        },
+        host.attachShadow({ mode: 'open' }),
+      );
+      element(doc, 'slot', {}, wrapper);
+      const target = element(doc, 'div', { position: 'relative', top: '150px', width: '80px', height: '40px' }, host);
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
+      expect(target.assignedSlot).not.to.equal(null);
+      await expectParity(target, floating);
+      const result = await computePosition(target, floating, {
+        strategy: 'fixed',
+        options: { pinned: true },
+      });
+      expect(result.referenceHidden).to.equal(true);
+    });
+  });
+
+  for (const tag of ['g', 'path']) {
+    it(`traverses SVG ${tag} parents when clipping a virtual reference`, () => {
+      cy.document().then(async doc => {
+        const host = element(doc, 'div', { width: '100px', height: '100px', overflow: 'hidden' }, root);
+        const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const group = doc.createElementNS('http://www.w3.org/2000/svg', 'g');
+        const path = doc.createElementNS('http://www.w3.org/2000/svg', 'path');
+        host.appendChild(svg);
+        svg.appendChild(group);
+        group.appendChild(path);
+        const target = {
+          contextElement: tag === 'g' ? group : path,
+          getBoundingClientRect: () => new doc.defaultView!.DOMRect(200, 200, 40, 20),
+        };
+        const floating = element(doc, 'div', { position: 'fixed', width: '60px', height: '30px' }, root);
+        await expectParity(target, floating);
+        const result = await computePosition(target, floating, {
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        expect(result.referenceHidden).to.equal(true);
+      });
+    });
+  }
+
+  it('uses viewport clipping for overflow propagated from body', () => {
+    cy.document().then(async doc => {
+      const previous = doc.body.style.cssText;
+      try {
+        Object.assign(doc.body.style, { height: '100px', overflow: 'hidden' });
+        const target = element(
+          doc,
+          'div',
+          { position: 'relative', top: '150px', width: '80px', height: '40px' },
+          doc.body,
+        );
+        try {
+          const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+          await expectParity(target, floating);
+          const result = await computePosition(target, floating, {
+            strategy: 'fixed',
+            options: { pinned: true },
+          });
+          expect(result.referenceHidden).to.equal(false);
+        } finally {
+          target.remove();
+        }
+      } finally {
+        doc.body.style.cssText = previous;
+      }
+    });
+  });
+
+  for (const kind of ['popover', 'dialog']) {
+    it(`uses viewport coordinates and clipping for a top-layer ${kind}`, () => {
+      cy.document().then(async doc => {
+        const host = element(
+          doc,
+          'div',
+          {
+            position: 'absolute',
+            left: '50px',
+            top: '60px',
+            width: '100px',
+            height: '100px',
+            overflow: 'hidden',
+            transform: 'translate(40px, 30px)',
+          },
+          root,
+        );
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(
+          doc,
+          kind === 'dialog' ? 'dialog' : 'div',
+          { position: 'fixed', width: '120px', height: '60px', margin: '0', padding: '0', border: '0' },
+          host,
+        );
+        if (floating instanceof doc.defaultView!.HTMLDialogElement) {
+          floating.showModal();
+        } else {
+          floating.popover = 'manual';
+          floating.showPopover();
+        }
+        await expectParity(target, floating);
+      });
+    });
+  }
+
+  for (const property of ['translate', 'scale', 'rotate'] as const) {
+    it(`recognizes the individual ${property} containing block`, () => {
+      cy.document().then(async doc => {
+        const host = element(
+          doc,
+          'div',
+          {
+            position: 'absolute',
+            left: '40px',
+            top: '40px',
+            width: '200px',
+            height: '200px',
+            transformOrigin: '0 0',
+          },
+          root,
+        );
+        host.style[property] = property === 'translate' ? '40px 30px' : property === 'scale' ? '1.5' : '0deg';
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
+        // The pinned Floating UI version predates individual transform properties.
+        const result = await computePosition(target, floating, {
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        floating.style.left = `${result.x}px`;
+        floating.style.top = `${result.y}px`;
+        const targetRect = target.getBoundingClientRect();
+        const floatingRect = floating.getBoundingClientRect();
+        expect(floatingRect.x).to.equal(targetRect.x + (targetRect.width - floatingRect.width) / 2);
+        expect(floatingRect.y).to.equal(targetRect.bottom);
+      });
+    });
+  }
+
+  for (const property of ['transform', 'translate', 'scale', 'rotate', 'perspective', 'filter']) {
+    it(`recognizes the will-change: ${property} containing block before the property is applied`, () => {
+      cy.document().then(async doc => {
+        const host = element(
+          doc,
+          'div',
+          { position: 'absolute', left: '40px', top: '40px', width: '200px', height: '200px', willChange: property },
+          root,
+        );
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
+        // The pinned Floating UI version predates individual transform properties.
+        const result = await computePosition(target, floating, {
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        floating.style.left = `${result.x}px`;
+        floating.style.top = `${result.y}px`;
+        const targetRect = target.getBoundingClientRect();
+        const floatingRect = floating.getBoundingClientRect();
+        expect(floatingRect.x).to.equal(targetRect.x + (targetRect.width - floatingRect.width) / 2);
+        expect(floatingRect.y).to.equal(targetRect.bottom);
+      });
+    });
+  }
+
+  for (const containerType of ['inline-size', 'size']) {
+    it(`follows the browser containing block of a container-type: ${containerType} query container`, () => {
+      cy.document().then(async doc => {
+        // Away from the viewport origin, so a wrongly adopted coordinate space displaces the surface
+        const container = element(
+          doc,
+          'div',
+          { position: 'absolute', left: '70px', top: '60px', width: '200px', height: '200px', containerType },
+          root,
+        );
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, container);
+        const result = await computePosition(target, floating, {
+          placement: 'bottom',
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        floating.style.left = `${result.x}px`;
+        floating.style.top = `${result.y}px`;
+        const targetRect = target.getBoundingClientRect();
+        const floatingRect = floating.getBoundingClientRect();
+        expect(floatingRect.x, 'x').to.equal(targetRect.x + (targetRect.width - floatingRect.width) / 2);
+        expect(floatingRect.y, 'y').to.equal(targetRect.bottom);
+      });
+    });
+  }
+
+  it('crosses a shadow root to find a transformed containing block', () => {
+    cy.document().then(async doc => {
+      const host = element(
+        doc,
+        'div',
+        { position: 'absolute', left: '50px', top: '60px', transform: 'translate(40px, 30px)' },
+        root,
+      );
+      const shadow = host.attachShadow({ mode: 'open' });
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, shadow);
+      await expectParity(target, floating);
+    });
+  });
+  it('recognizes content-visibility containment', () => {
+    cy.document().then(async doc => {
+      const host = element(
+        doc,
+        'div',
+        {
+          position: 'absolute',
+          left: '50px',
+          top: '60px',
+          width: '200px',
+          height: '200px',
+          contentVisibility: 'auto',
+        },
+        root,
+      );
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
+      const result = await computePosition(target, floating, {
+        strategy: 'fixed',
+        options: { pinned: true },
+      });
+      floating.style.left = `${result.x}px`;
+      floating.style.top = `${result.y}px`;
+      expect(floating.getBoundingClientRect().x).to.equal(280);
+      expect(floating.getBoundingClientRect().y).to.equal(280);
+    });
+  });
+  it('includes clipping ancestors outside an iframe reference document', () => {
+    cy.document().then(async doc => {
+      const host = element(
+        doc,
+        'div',
+        { position: 'relative', width: '100px', height: '100px', overflow: 'hidden' },
+        root,
+      );
+      const frame = doc.createElement('iframe');
+      Object.assign(frame.style, {
+        position: 'relative',
+        left: '200px',
+        width: '300px',
+        height: '200px',
+        border: '0',
+      });
+      host.appendChild(frame);
+      const inner = frame.contentDocument!;
+      inner.body.style.margin = '0';
+      const target = element(inner, 'div', { width: '40px', height: '20px' }, inner.body);
+      const floating = element(doc, 'div', { position: 'fixed', width: '60px', height: '30px' }, root);
+      const result = await computePosition(target, floating, {
+        strategy: 'fixed',
+        options: { pinned: true },
+      });
+      expect(result.referenceHidden, 'reference outside parent clipping host').to.equal(true);
+    });
+  });
+
+  it('includes a clipping shadow host in reference visibility', () => {
+    cy.document().then(async doc => {
+      const host = element(
+        doc,
+        'div',
+        { position: 'absolute', left: '100px', top: '100px', width: '100px', height: '100px', overflow: 'hidden' },
+        root,
+      );
+      const target = element(
+        doc,
+        'div',
+        { position: 'relative', top: '150px', width: '80px', height: '40px' },
+        host.attachShadow({ mode: 'open' }),
+      );
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+      await expectParity(target, floating);
+      expect(getClippingRect(target, 'clippingAncestors').height).to.equal(100);
+    });
+  });
+
+  for (const display of ['inline', 'contents']) {
+    it(`does not clip to an overflow ${display} ancestor`, () => {
+      cy.document().then(async doc => {
+        const host = element(doc, 'span', { display, overflow: 'hidden' }, root);
+        const target = element(
+          doc,
+          'div',
+          { position: 'relative', marginLeft: '300px', marginTop: '240px', width: '80px', height: '40px' },
+          host,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+        await expectParity(target, floating);
+      });
+    });
+  }
+
+  it('keeps viewport-fixed positioning through an untransformed absolute wrapper', () => {
+    cy.document().then(async doc => {
+      const outer = element(
+        doc,
+        'div',
+        { position: 'relative', left: '50px', top: '100px', width: '100px', height: '100px', overflow: 'hidden' },
+        root,
+      );
+      const wrapper = element(doc, 'div', { position: 'absolute' }, outer);
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, wrapper);
+      await expectParity(target, floating);
+    });
+  });
+
+  for (const scale of [1, 1.5]) {
+    it(`normalizes real and virtual bordered, padded iframe references at scale ${scale}`, () => {
+      cy.document().then(async doc => {
+        const frame = doc.createElement('iframe');
+        Object.assign(frame.style, {
+          position: 'absolute',
+          left: '200px',
+          top: '100px',
+          width: '300px',
+          height: '200px',
+          border: '5px solid',
+          padding: '7px',
+          transform: `scale(${scale})`,
+          transformOrigin: '0 0',
+        });
+        root.appendChild(frame);
+        const inner = frame.contentDocument!;
+        inner.body.style.margin = '0';
+        const target = element(
+          inner,
+          'div',
+          { position: 'absolute', left: '20px', top: '30px', width: '40px', height: '20px' },
+          inner.body,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '60px', height: '30px' }, root);
+        await expectParity(target, floating);
+        await expectParity(
+          {
+            contextElement: target,
+            getBoundingClientRect: () => {
+              const { left, top, width, height } = target.getBoundingClientRect();
+              return { left, top, width, height, x: 0, y: 0, right: 0, bottom: 0 };
+            },
+          },
+          floating,
+        );
+        expect(getClippingRect(target, 'clippingAncestors', doc.defaultView!).x).to.equal(200 + 12 * scale);
+      });
+    });
+  }
+});

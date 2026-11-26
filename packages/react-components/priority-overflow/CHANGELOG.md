@@ -1,8 +1,16 @@
 # Change Log - @fluentui/priority-overflow
 
-<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.4)
+
+Tue, 24 Nov 2026 12:44:29 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
 
 ## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.3)
 
