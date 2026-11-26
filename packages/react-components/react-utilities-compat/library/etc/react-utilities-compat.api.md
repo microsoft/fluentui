@@ -4,6 +4,9 @@
 
 ```ts
 
+// @public @deprecated (undocumented)
+export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
+
 // (No @packageDocumentation comment for this package)
 
 ```
