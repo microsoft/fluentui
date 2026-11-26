@@ -23,12 +23,14 @@ export type CarouselDirectionButtonState = ComponentState<CarouselDirectionButto
   kind: 'previous' | 'next';
   /**
    * False whenever the collection isn't paged (fewer than two groups, or controls that can't reach every group, such
-   * as a lone non-circular arrow), which omits the arrow slot.
+   * as a lone non-circular arrow). Only custom slots may stay mounted in hidden, inert staging.
    */
   rendered: boolean;
   /** Attach to a layout-free placeholder when the unmounted button's fieldset ancestry still matters. */
   probeRef?: React.RefObject<HTMLTemplateElement | null>;
-  /** Boundary reached and the transition settled. */
+  /** Keep a custom slot's actual button mounted for fieldset observation, including while hidden and inert. */
+  keepButtonMounted?: boolean;
+  /** Hidden at a settled boundary or while staging a custom slot. */
   hidden: boolean;
   /** Boundary reached; while a transition runs the button remains an `aria-disabled` focus anchor. */
   unavailable: boolean;

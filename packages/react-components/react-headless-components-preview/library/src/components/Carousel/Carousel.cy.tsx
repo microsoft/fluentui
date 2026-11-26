@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createPortal, flushSync } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { Carousel } from './Carousel';
 import type { CarouselProps, CarouselTransition } from './Carousel.types';
 import { CarouselViewport } from './CarouselViewport';
@@ -334,6 +335,135 @@ describe('Carousel browser behavior', () => {
       .first()
       .then(([legend]) => legend.remove());
     cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+  });
+
+  it('uses the forwarded native button inside a fieldset returned by the arrow button slot', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const renderButton: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
+      <fieldset id="slot-fieldset" disabled>
+        <Component {...props} />
+      </fieldset>
+    );
+    mount(
+      <Carousel aria-label="Lessons" circular>
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNext button={{ ref, children: renderButton }} />
+      </Carousel>,
+    );
+    cy.get('#slot-fieldset button').should(button => {
+      expect(button[0]).to.equal(ref.current);
+      expect(button[0].matches(':disabled')).to.equal(true);
+    });
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.get('#slot-fieldset').invoke('prop', 'disabled', false);
+    cy.get('#slot-fieldset button').should('be.enabled').and('be.visible').focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'First').should('not.be.visible');
+    cy.get('#slot-fieldset').invoke('prop', 'disabled', true);
+    cy.contains('[data-carousel-page]', 'First').should('be.visible');
+  });
+
+  it('detects an inner fieldset inserted around the arrow root slot children', () => {
+    const renderRoot: SlotRenderFunction<React.ComponentPropsWithRef<'div'>> = (Component, props) => (
+      <Component {...props}>
+        <fieldset id="root-fieldset" disabled>
+          <legend>{props.children}</legend>
+        </fieldset>
+      </Component>
+    );
+    mount(
+      <Carousel aria-label="Lessons">
+        <CarouselPrevious />
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNext>{renderRoot}</CarouselNext>
+      </Carousel>,
+    );
+    cy.get('#root-fieldset button').should('be.enabled').focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'First').should('not.be.visible');
+    cy.get('[data-carousel-button="next"]').should('have.attr', 'hidden');
+    // Inserting an earlier legend removes the exemption even though Next is hidden at the boundary.
+    cy.get('#root-fieldset').then(([fieldset]) => fieldset.prepend(fieldset.ownerDocument.createElement('legend')));
+    cy.contains('[data-carousel-page]', 'First').should('be.visible');
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.get('#root-fieldset > legend')
+      .first()
+      .then(([legend]) => legend.remove());
+    cy.get('[data-carousel-action="previous"]').focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+  });
+
+  it('keeps one custom trigger inert while static and honors autofocus only on its first reveal', () => {
+    const render = cy.stub();
+    const onFocus = cy.stub();
+    const onClick = cy.stub();
+    const renderButton: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => {
+      render();
+      return <Component {...props} />;
+    };
+    let update: (circular: boolean) => void;
+    let rename: () => void;
+    const Next = () => {
+      const [title, setTitle] = React.useState<string>();
+      rename = () => setTitle('Updated');
+      return (
+        <CarouselNext
+          style={{ display: 'flex' }}
+          button={{ children: renderButton, autoFocus: true, onFocus, onClick, title }}
+        />
+      );
+    };
+    const Example = () => {
+      const [circular, setCircular] = React.useState(false);
+      update = setCircular;
+      return (
+        <>
+          <button>Before</button>
+          <Carousel aria-label="Lessons" circular={circular}>
+            <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+            <Next />
+          </Carousel>
+          <button>After</button>
+        </>
+      );
+    };
+    mount(<Example />, { strict: false });
+    const next = '[data-carousel-action="next"]';
+    cy.contains('button', 'Before').focus().realPress('Tab');
+    cy.contains('button', 'After').should('be.focused');
+    cy.get('[aria-label="Lessons"]').then(carousel => {
+      expect(carousel.find(next).filter(':visible')).to.have.length(0);
+      const [button] = carousel.find(next);
+      if (button) {
+        button.focus();
+        button.click();
+        expect(button.ownerDocument.activeElement).not.to.equal(button);
+      }
+      cy.then(() => update(true));
+      cy.get(next)
+        .should('have.length', 1)
+        .and('be.focused')
+        .then(([visibleButton]) => {
+          if (button) {
+            expect(visibleButton).to.equal(button);
+          }
+        });
+    });
+    cy.wrap(onClick).should('not.have.been.called');
+    cy.wrap(onFocus).should('have.been.calledOnce');
+    cy.contains('[role="tooltip"]', 'Next').should('be.visible');
+    cy.then(() => {
+      render.resetHistory();
+      flushSync(rename);
+      expect(render).to.have.been.calledOnce;
+    });
+    cy.get(next).should('have.attr', 'title', 'Updated');
+    cy.contains('button', 'After').focus();
+    cy.then(() => update(false));
+    cy.get(`${next}:visible`).should('not.exist');
+    cy.then(() => update(true));
+    cy.get(next).should('be.visible');
+    cy.contains('button', 'After').should('be.focused');
+    cy.contains('[role="tooltip"]', 'Next').should('not.be.visible');
+    cy.wrap(onFocus).should('have.been.calledOnce');
   });
 
   it('keeps paging only while an independent arrow or complete tab route remains operable', () => {

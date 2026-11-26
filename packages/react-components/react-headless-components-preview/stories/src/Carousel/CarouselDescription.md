@@ -54,6 +54,9 @@ does not move focus back to that tab.
 (headless Tooltip content) slots. The tooltip text names the button through `aria-labelledby`; localize it
 with `tooltip="Précédent"`. Supply your own chevron icons and mirror them in RTL. Use semantic `dir="rtl"`
 on the carousel or an ancestor so the example's `:dir(rtl)` icons agree with keyboard and motion direction.
+If you wrap the arrow with a slot render function, forward the supplied props and ref to its component.
+Carousel checks the fieldsets that contain the actual button, even inside a custom wrapper. It can keep that
+button mounted but hidden and inert while checking the route; a mounted ref alone does not mean the arrow is visible.
 
 ## Selection and keyboard
 

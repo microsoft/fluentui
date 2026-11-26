@@ -9,9 +9,22 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import type { ForwardRefComponent, SlotRenderFunction } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../../hooks/top-layer/utils';
 import { Tooltip } from '../../Tooltip';
 import type { OnVisibleChangeData, TooltipProps } from '../../Tooltip';
+import type { CarouselDirectionButtonState } from './CarouselDirectionButton.types';
+
+type ButtonProps = CarouselDirectionButtonState['button'];
+type TriggerProps = ButtonProps & {
+  Component: React.ElementType<ButtonProps>;
+  renderButton: SlotRenderFunction<ButtonProps>;
+};
+
+// Tooltip must attach its trigger props and ref before the slot callback wraps the Button in arbitrary markup.
+export const CustomTrigger: ForwardRefComponent<TriggerProps> = React.forwardRef(
+  ({ Component, renderButton, ...props }, ref) => <>{renderButton(Component, { ...props, ref })}</>,
+);
 
 /** Compose existing tooltip behavior, with immediate focus and boundary dismissal. */
 export const CarouselDirectionTooltip = (props: {
@@ -48,12 +61,19 @@ export const CarouselDirectionTooltip = (props: {
   });
   const onVisibleChange = useEventCallback(
     (event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
-      if (!data.visible && event && (hovered.current || (trigger && trigger === getActiveElement(trigger)))) {
+      const active = hovered.current || (trigger !== null && trigger === getActiveElement(trigger));
+      if (props.unavailable || (event && data.visible !== active)) {
         return;
       }
       setVisible(data.visible);
     },
   );
+  useIsomorphicLayoutEffect(() => {
+    if (props.unavailable) {
+      hovered.current = false;
+      setVisible(false);
+    }
+  }, [props.unavailable]);
   useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
     const element = tooltip.current;

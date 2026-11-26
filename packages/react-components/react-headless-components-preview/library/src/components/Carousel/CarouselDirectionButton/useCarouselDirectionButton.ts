@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
+  SLOT_RENDER_FUNCTION_SYMBOL,
   slot,
   useIsomorphicLayoutEffect,
   useMergedRefs,
@@ -31,17 +32,31 @@ export const useCarouselDirectionButton = (
   const present = !isControlHidden(props) && !isControlHidden(buttonSlot);
   const wrapperDisabled = isControlDisabled(rest);
   const enabled = !wrapperDisabled && !isControlDisabled(buttonSlot);
+  const custom = !!buttonSlot[SLOT_RENDER_FUNCTION_SYMBOL] || typeof rest.children === 'function';
+  const keepButtonMounted = custom && present && context.pageCount > 1;
   const boundaryHidden = kind === 'previous' ? context.previousHidden : context.nextHidden;
   const rendered = present && context.buttons;
   const [focused, setFocused] = React.useState(false);
   const retiring = focused && (!rendered || boundaryHidden);
-  const hidden = boundaryHidden && !retiring;
+  const showWrapper = rendered || retiring;
+  const staging = keepButtonMounted && !showWrapper;
+  const hidden = staging || (boundaryHidden && !retiring);
   const wrapper = React.useRef<HTMLDivElement>(null);
   const probe = React.useRef<HTMLTemplateElement>(null);
-  const showWrapper = rendered || retiring;
-  const probeRef = present && !showWrapper && context.pageCount > 1 ? probe : undefined;
-  const location = showWrapper ? wrapper : probeRef;
+  const [nativeButton, setNativeButton] = React.useState<HTMLButtonElement | null>(null);
+  const nativeLocation = React.useMemo(() => ({ current: nativeButton }), [nativeButton]);
+  const buttonRef = useMergedRefs(buttonSlot.ref, setNativeButton);
+  const probeRef = !custom && present && !showWrapper && context.pageCount > 1 ? probe : undefined;
+  const location = keepButtonMounted ? nativeLocation : showWrapper ? wrapper : probeRef;
   useCarouselPart(kind, present && !!location, enabled, location);
+  // A custom button is already mounted while staged. Honor its autofocus once, only when it becomes usable.
+  const pendingAutoFocus = React.useRef(buttonSlot.autoFocus);
+  useIsomorphicLayoutEffect(() => {
+    if (keepButtonMounted && !hidden && nativeButton && pendingAutoFocus.current) {
+      pendingAutoFocus.current = false;
+      nativeButton.focus();
+    }
+  }, [keepButtonMounted, hidden, nativeButton]);
   useIsomorphicLayoutEffect(() => {
     if (retiring) {
       // Keep a retiring arrow mounted until this commit can check actual focus ownership.
@@ -61,7 +76,7 @@ export const useCarouselDirectionButton = (
     },
     [hidden],
   );
-  const rootRef = useMergedRefs(ref, wrapper, inertRef);
+  const rootRef = useMergedRefs(staging ? undefined : ref, wrapper, inertRef);
   const tooltipSlot = slot.always(tooltip, {
     elementType: 'div',
     defaultProps: { children: kind === 'previous' ? 'Previous' : 'Next' },
@@ -70,7 +85,14 @@ export const useCarouselDirectionButton = (
   return {
     components: { root: 'div', button: Button, tooltip: 'div' },
     root: Object.assign(
-      slot.always(getIntrinsicElementProps('div', { ...rest, ref: rootRef, hidden }), { elementType: 'div' }),
+      slot.always(
+        getIntrinsicElementProps('div', {
+          ...(staging ? { children: rest.children, 'aria-hidden': true } : rest),
+          ref: rootRef,
+          hidden,
+        }),
+        { elementType: 'div' },
+      ),
       { 'data-carousel-button': kind },
     ),
     button: Object.assign(buttonSlot, {
@@ -80,8 +102,10 @@ export const useCarouselDirectionButton = (
       'aria-describedby': undefined,
       'aria-disabled': wrapperDisabled || buttonSlot['aria-disabled'],
       'data-carousel-action': kind,
-      disabled: buttonSlot.disabled || unavailable,
-      disabledFocusable: buttonSlot.disabledFocusable || (!buttonSlot.disabled && unavailable),
+      ref: keepButtonMounted ? buttonRef : buttonSlot.ref,
+      autoFocus: keepButtonMounted ? undefined : buttonSlot.autoFocus,
+      disabled: buttonSlot.disabled || unavailable || (keepButtonMounted && hidden),
+      disabledFocusable: !hidden && (buttonSlot.disabledFocusable || (!buttonSlot.disabled && unavailable)),
       onFocus: mergeCallbacks(buttonSlot.onFocus, () => setFocused(true)),
       onBlur: mergeCallbacks(buttonSlot.onBlur, () => setFocused(false)),
       onClick: mergeCallbacks(buttonSlot.onClick, kind === 'previous' ? context.previous : context.next),
@@ -90,6 +114,7 @@ export const useCarouselDirectionButton = (
     kind,
     rendered: showWrapper,
     probeRef,
+    keepButtonMounted,
     hidden,
     unavailable,
   };
