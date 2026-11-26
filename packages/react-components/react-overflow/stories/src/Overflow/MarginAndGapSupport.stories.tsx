@@ -14,6 +14,7 @@ import {
   OverflowItem,
   useIsOverflowItemVisible,
   useOverflowMenu,
+  useIsomorphicLayoutEffect,
   Checkbox,
   type CheckboxProps,
   type OverflowImperativeRef,
@@ -63,11 +64,14 @@ export const MarginAndGapSupport = (): JSXElement => {
   const [useMargin, setUseMargin] = React.useState(false);
   const imperativeRef = React.useRef<OverflowImperativeRef | null>(null);
 
+  useIsomorphicLayoutEffect(() => {
+    imperativeRef.current?.updateOverflow();
+  }, [useGap, useMargin]);
+
   const onChange =
     (setter: React.Dispatch<React.SetStateAction<boolean>>): CheckboxProps['onChange'] =>
     (_e, data) => {
-      setter(data.checked as boolean);
-      imperativeRef.current?.updateOverflow();
+      setter(data.checked === true);
     };
 
   return (
@@ -142,7 +146,9 @@ MarginAndGapSupport.parameters = {
         'The `Overflow` component allows you to opt in to spacing measurement with `measureGap`.',
         'Use fixed gaps and ordinary margins between direct overflow participants in a single, untransformed line.',
         'Spacing is measured along the overflow axis in visual order, including RTL and reversed layouts. Spacing between the end items and the container is excluded.',
-        'Auto margins, distributed alignment, percentage or intrinsic gaps, nested layout parents, wrapping, and complex overlaps are not supported.',
+        'Reserve edge margins with padding, especially when overflow direction or priority changes the first visible item; prefer CSS gap when possible.',
+        'Auto margins, distributed alignment, percentage or intrinsic gaps, nested layout parents, wrapping, complex overlaps, CSS zoom, and ancestor transforms (including scaling animations) are not supported.',
+        'Call imperativeRef.updateOverflow() after spacing changes have committed, as in the layout effect above. Recalculation is coalesced in a microtask, not performed synchronously.',
       ].join('\n'),
     },
   },

@@ -23,6 +23,10 @@ export type OverflowProps = Partial<
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onOverflowChange?: (ev: null, data: OverflowState) => void;
 
+  /**
+   * Ref for requesting overflow recalculation after committed layout changes.
+   * The forwarded component ref still refers to the container element.
+   */
   imperativeRef?: React.Ref<OverflowImperativeRef | null | undefined>;
 };
 

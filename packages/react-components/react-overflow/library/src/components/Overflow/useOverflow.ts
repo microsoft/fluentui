@@ -58,9 +58,13 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
 
   const child = getTriggerChild<HTMLElement>(children);
 
-  React.useImperativeHandle(imperativeRef, () => ({
-    updateOverflow,
-  }));
+  React.useImperativeHandle(
+    imperativeRef,
+    () => ({
+      updateOverflow,
+    }),
+    [updateOverflow],
+  );
 
   return {
     containerRef,

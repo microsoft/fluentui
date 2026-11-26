@@ -90,7 +90,7 @@ export type OverflowDividerProps = {
 
 export { OverflowEventPayload }
 
-// @public (undocumented)
+// @public
 export interface OverflowImperativeRef {
     updateOverflow: () => void;
 }

@@ -170,8 +170,11 @@ export interface OverflowOptions {
    * Supports fixed gaps and ordinary margins along the overflow axis, including RTL and reversed layouts.
    * Elements without a layout box do not contribute spacing.
    * Spacing between the end elements and the container is deliberately excluded.
+   * Reserve edge margins with padding, including when overflow direction or priority changes the first visible item.
+   * Item visibility callbacks must synchronously remove overflowing items from layout.
    * Auto margins, distributed alignment, percentage or intrinsic gaps, nested layout parents,
-   * wrapping, and complex overlaps are not supported.
+   * wrapping, complex overlaps, CSS zoom, and ancestor transforms (including scaling animations) are not supported.
+   * @default false
    */
   measureGap?: boolean;
 

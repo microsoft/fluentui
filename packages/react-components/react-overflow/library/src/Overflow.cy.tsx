@@ -11,10 +11,11 @@ import {
   type OverflowProps,
   type OverflowItemProps,
   type OnOverflowChangeData,
+  type OverflowImperativeRef,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 import type { OverflowAxis } from '@fluentui/priority-overflow';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, type DistributiveOmit } from '@fluentui/react-utilities';
 
 const selectors = {
   container: 'data-test-container',
@@ -1290,6 +1291,42 @@ describe('Overflow', () => {
     overflowCases.forEach(({ overflowCount, containerSize }) => {
       setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it('should recalculate committed gap and margin changes through the imperative handle', () => {
+    const SpacingUpdates = () => {
+      const [spacing, setSpacing] = React.useState(0);
+      const imperativeRef = React.useRef<OverflowImperativeRef | null>(null);
+
+      useIsomorphicLayoutEffect(() => {
+        imperativeRef.current?.updateOverflow();
+      }, [spacing]);
+
+      return (
+        <>
+          <button data-update-spacing onClick={() => setTimeout(() => setSpacing(previous => (previous + 1) % 3), 0)}>
+            Update spacing
+          </button>
+          <Container size={300} style={{ gap: spacing === 1 ? 20 : 0 }} measureGap imperativeRef={imperativeRef}>
+            {Array.from({ length: 5 }, (_, i) => (
+              <Item key={i} id={i.toString()} style={{ marginInlineStart: spacing === 2 && i > 0 ? 20 : 0 }}>
+                {i}
+              </Item>
+            ))}
+          </Container>
+        </>
+      );
+    };
+
+    mount(<SpacingUpdates />);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    [1, 1, 0].forEach(overflowCount => {
+      cy.get('[data-update-spacing]').click();
+      cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', overflowCount);
+      cy.get(`[${selectors.container}]`).should(container => {
+        expect(container[0].scrollWidth).to.be.at.most(container[0].clientWidth);
+      });
     });
   });
 

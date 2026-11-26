@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Add opt-in measurement of fixed gaps and ordinary margins in single-line layouts, including RTL and reversed overflow axes",
+  "comment": "feat: Add opt-in measurement of fixed gaps and ordinary margins in single-line layouts, including RTL and reversed overflow axes; expose a stable imperative handle for post-commit recalculation",
   "packageName": "@fluentui/react-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
