@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: stop setTheme from retaining every theme object and element-scoped style sheet",
-  "packageName": "@fluentui/web-components",
-  "email": "eruvalca@outlook.com",
-  "dependentChangeType": "patch"
-}
