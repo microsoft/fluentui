@@ -1077,3 +1077,104 @@ describe('Render empty chart calling with respective to props', () => {
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
+
+// Keep these tests last in the file. The snapshots above contain ids from React's useId, and those ids count up
+// with every component that is rendered earlier in the file.
+describe('Vertical bar chart - Keyboard focus', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar = (legend?: string): VerticalBarChartDataPoint[] => [
+    { x: 'Mon', y: 20, legend: legend ?? 'Rooms Mon' },
+    { x: 'Tue', y: 0, legend: legend ?? 'Rooms Tue' },
+    { x: 'Wed', y: 30, legend: legend ?? 'Rooms Wed' },
+    { x: 'Thu', y: 25, legend: legend ?? 'Rooms Thu' },
+  ];
+  const popoverText = () => document.querySelector('.fui-PopoverSurface')?.textContent;
+
+  test('Should show the values of the focused bar when a bar before it is not drawn', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar()} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Mon'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Wed'));
+    expect(popoverText()).not.toContain('Rooms Mon');
+
+    fireEvent.focus(bars[2]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Thu'));
+    expect(popoverText()).not.toContain('Rooms Wed');
+  });
+
+  test('Should show the values of the focused bar when all bars share a legend and one is not drawn', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar('Rooms')} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(popoverText()).toContain('Wed'));
+
+    fireEvent.focus(bars[2]);
+    await waitFor(() => expect(popoverText()).toContain('Thu'));
+    expect(popoverText()).not.toContain('Wed');
+  });
+});
+
+// These tests are also at the end of the file because of the ids in the snapshots, see above.
+describe('Vertical bar chart - Line point of a bar that is not drawn', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar: VerticalBarChartDataPoint[] = [
+    { x: 'Mon', y: 20, legend: 'Rooms Mon', lineData: { y: 10 } },
+    { x: 'Tue', y: 0, legend: 'Rooms Tue', lineData: { y: 15 } },
+    { x: 'Wed', y: 30, legend: 'Rooms Wed', lineData: { y: 12 } },
+  ];
+  const popoverText = () => document.querySelector('.fui-PopoverSurface')?.textContent;
+
+  test('Should make the line point focusable when no legend is highlighted', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const [mon, tue, wed] = getById(container, /_VBC_point/i);
+
+    expect(tue.getAttribute('tabindex')).toBe('0');
+    expect(tue.getAttribute('role')).toBe('img');
+    expect(tue.getAttribute('aria-label')).toBe('Tue. Rooms Tue, 0. Target, 15.');
+    // An element with visibility: hidden cannot take focus.
+    expect(tue.getAttribute('visibility')).toBeNull();
+    expect(tue.getAttribute('opacity')).toBe('0');
+
+    // The line points of the bars that are drawn stay as they are.
+    [mon, wed].forEach(point => {
+      expect(point.getAttribute('tabindex')).toBeNull();
+      expect(point.getAttribute('role')).toBeNull();
+      expect(point.getAttribute('visibility')).toBe('hidden');
+    });
+  });
+
+  test('Should show the values of the x-axis point when the line point gets focus', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+
+    fireEvent.focus(getById(container, /_VBC_point/i)[1]);
+    await waitFor(() => expect(popoverText()).toContain('Rooms Tue'));
+    expect(popoverText()).toContain('Target');
+    // The line point is shown while it has focus.
+    expect(getById(container, /_VBC_point/i)[1].getAttribute('opacity')).toBe('1');
+  });
+
+  test('Should not make the line point focusable when the tooltip is hidden', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" hideTooltip />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('tabindex')).toBeNull();
+    expect(tue.getAttribute('role')).toBeNull();
+    expect(tue.getAttribute('visibility')).toBe('hidden');
+  });
+});

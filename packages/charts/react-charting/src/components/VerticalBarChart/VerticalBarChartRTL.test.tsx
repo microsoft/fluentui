@@ -826,6 +826,152 @@ describe('Vertical bar chart - Subcomponent callout', () => {
   );
 });
 
+describe('Vertical bar chart - Keyboard focus', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar = (legend?: string): IVerticalBarChartDataPoint[] => [
+    { x: 'Mon', y: 20, legend: legend ?? 'Rooms Mon' },
+    { x: 'Tue', y: 0, legend: legend ?? 'Rooms Tue' },
+    { x: 'Wed', y: 30, legend: legend ?? 'Rooms Wed' },
+    { x: 'Thu', y: 25, legend: legend ?? 'Rooms Thu' },
+  ];
+  const calloutText = () => document.querySelector('.ms-Callout')?.textContent;
+
+  test('Should show the callout of the focused bar when a bar before it is not drawn', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar()} calloutProps={{ doNotLayer: true }} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Mon'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Wed'));
+    expect(calloutText()).not.toContain('Rooms Mon');
+
+    fireEvent.focus(bars[2]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Thu'));
+    expect(calloutText()).not.toContain('Rooms Wed');
+  });
+
+  test('Should place the callout at the focused bar when a bar before it is not drawn', async () => {
+    // With one legend for all bars the callout had the right content, but it was placed at another bar.
+    const { container } = render(
+      <VerticalBarChart data={pointsWithEmptyBar('Rooms')} calloutProps={{ doNotLayer: true }} />,
+    );
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(3));
+    const bars = getById(container, /_VBC_bar/i);
+    // The callout measures its target to find its position.
+    const measured = bars.map(bar => jest.spyOn(bar, 'getBoundingClientRect'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(calloutText()).toContain('Wed'));
+    await waitFor(() => expect(measured[1]).toHaveBeenCalled());
+    expect(measured[0]).not.toHaveBeenCalled();
+    expect(measured[2]).not.toHaveBeenCalled();
+  });
+
+  test('Should show the callout of the focused bar when a negative bar is not drawn', async () => {
+    // Without supportNegativeData the bar of Tue is not drawn.
+    const points: IVerticalBarChartDataPoint[] = [
+      { x: 'Mon', y: 20, legend: 'Rooms Mon' },
+      { x: 'Tue', y: -5, legend: 'Rooms Tue' },
+      { x: 'Wed', y: 30, legend: 'Rooms Wed' },
+    ];
+    const { container } = render(<VerticalBarChart data={points} calloutProps={{ doNotLayer: true }} />);
+    await waitFor(() => expect(getById(container, /_VBC_bar/i)).toHaveLength(2));
+    const bars = getById(container, /_VBC_bar/i);
+
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Mon'));
+
+    fireEvent.focus(bars[1]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Wed'));
+    expect(calloutText()).not.toContain('Rooms Mon');
+  });
+});
+
+describe('Vertical bar chart - Line point of a bar that is not drawn', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar: IVerticalBarChartDataPoint[] = [
+    { x: 'Mon', y: 20, legend: 'Rooms Mon', lineData: { y: 10 } },
+    { x: 'Tue', y: 0, legend: 'Rooms Tue', lineData: { y: 15 } },
+    { x: 'Wed', y: 30, legend: 'Rooms Wed', lineData: { y: 12 } },
+  ];
+  const calloutText = () => document.querySelector('.ms-Callout')?.textContent;
+
+  test('Should make the line point focusable when no legend is highlighted', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const [mon, tue, wed] = getById(container, /_VBC_point/i);
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('true');
+    expect(tue.getAttribute('role')).toBe('img');
+    expect(tue.getAttribute('aria-label')).toBe('Tue. Rooms Tue, 0. Target, 15.');
+    // An element with visibility: hidden cannot take focus.
+    expect(tue.getAttribute('visibility')).toBeNull();
+    expect(tue.getAttribute('opacity')).toBe('0');
+
+    // The line points of the bars that are drawn stay as they are.
+    [mon, wed].forEach(point => {
+      expect(point.getAttribute('data-is-focusable')).toBe('false');
+      expect(point.getAttribute('role')).toBeNull();
+      expect(point.getAttribute('visibility')).toBe('hidden');
+    });
+  });
+
+  test('Should show the callout of the x-axis point when the line point gets focus', async () => {
+    const { container } = render(
+      <VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" calloutProps={{ doNotLayer: true }} />,
+    );
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+
+    fireEvent.focus(getById(container, /_VBC_point/i)[1]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Tue'));
+    expect(calloutText()).toContain('Target');
+    // The line point is shown while it has focus.
+    expect(getById(container, /_VBC_point/i)[1].getAttribute('opacity')).toBe('1');
+  });
+
+  test('Should make the line point focusable when a negative bar is not drawn', async () => {
+    // Without supportNegativeData the bar of Tue is not drawn.
+    const points = pointsWithEmptyBar.map(point => (point.x === 'Tue' ? { ...point, y: -5 } : point));
+    const { container } = render(<VerticalBarChart data={points} lineLegendText="Target" />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('true');
+    expect(tue.getAttribute('aria-label')).toBe('Tue. Rooms Tue, -5. Target, 15.');
+  });
+
+  test('Should not make the line point focusable when a negative bar is drawn', async () => {
+    // With supportNegativeData the bar of Tue is drawn, so its callout shows the line value.
+    const points = pointsWithEmptyBar.map(point => (point.x === 'Tue' ? { ...point, y: -5 } : point));
+    const { container } = render(<VerticalBarChart data={points} lineLegendText="Target" supportNegativeData />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('false');
+    expect(tue.getAttribute('role')).toBeNull();
+    expect(tue.getAttribute('visibility')).toBe('hidden');
+  });
+
+  test('Should not make the line point focusable when the tooltip is hidden', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" hideTooltip />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('false');
+    expect(tue.getAttribute('role')).toBeNull();
+    expect(tue.getAttribute('visibility')).toBe('hidden');
+  });
+});
+
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);

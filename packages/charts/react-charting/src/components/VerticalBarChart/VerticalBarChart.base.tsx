@@ -18,7 +18,6 @@ import {
   IBasestate,
   IMargins,
   ILegend,
-  IRefArrayData,
   IVerticalBarChartProps,
   IVerticalBarChartStyleProps,
   IVerticalBarChartStyles,
@@ -99,7 +98,6 @@ export class VerticalBarChartBase
   private _barWidth: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
-  private _refArray: IRefArrayData[];
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
@@ -139,7 +137,6 @@ export class VerticalBarChartBase
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
-    this._refArray = [];
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
@@ -313,7 +310,7 @@ export class VerticalBarChartBase
     yScaleSecondary?: any,
   ): React.ReactNode => {
     const isStringAxis = this._xAxisType === XAxisTypes.StringAxis;
-    const { xBarScale } = this._getScales(containerHeight, containerWidth);
+    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
     const { theme } = this.props;
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
@@ -383,6 +380,11 @@ export class VerticalBarChartBase
       ) => {
         // Create an object to store line point ref so that the object can be passed by reference to the focus handler
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
+        // When no legend is highlighted, the line value is shown in the callout of the bar at the same x-axis point.
+        // A bar that is not drawn has no such callout, so its line point is focusable in its place.
+        const standsInForBar =
+          this._noLegendHighlighted() && !this.props.hideTooltip && !this._isBarDrawn(item.point, yBarScale);
+        const { radius, visibility } = this._getCircleVisibilityAndRadius(item.x, lineLegendText!);
         return (
           <circle
             key={index}
@@ -395,20 +397,29 @@ export class VerticalBarChartBase
                 : this._onBarHover.bind(this, item.point, colorScale(item.y))
             }
             onMouseOut={this._onBarLeave}
-            r={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
+            r={radius}
             stroke={lineLegendColor}
             fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
-            visibility={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
+            // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide a line point
+            // that stands in for a bar. For more information,
+            // see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
+            {...(standsInForBar ? { opacity: visibility === CircleVisbility.hide ? 0 : 1 } : { visibility })}
             onClick={item.point.lineData?.onClick}
             // When no legend is highlighted: Line points are automatically displayed along with the bars
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
-            data-is-focusable={this._legendHighlighted(lineLegendText!)}
+            // The exception is a line point whose bar is not drawn.
+            data-is-focusable={this._legendHighlighted(lineLegendText!) || standsInForBar}
+            {...(standsInForBar && { role: 'img', 'aria-label': this._getAriaLabel(item.point) })}
             ref={e => {
               circleRef.refElement = e;
             }}
-            onFocus={this._lineFocus.bind(this, item.point, circleRef)}
+            onFocus={
+              standsInForBar
+                ? this._onBarFocus.bind(this, item.point, colorScale(item.y))
+                : this._lineFocus.bind(this, item.point, circleRef)
+            }
             onBlur={this._handleChartMouseLeave}
           />
         );
@@ -556,10 +567,6 @@ export class VerticalBarChartBase
     return colorScale;
   }
 
-  private _refCallback = (element: SVGRectElement, legendTitle: string): void => {
-    this._refArray.push({ index: legendTitle, refElement: element });
-  };
-
   private _getCalloutContentForLineAndBar = (
     point: IVerticalBarChartDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
@@ -661,30 +668,30 @@ export class VerticalBarChartBase
     });
   };
 
-  private _onBarFocus = (point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void => {
+  private _onBarFocus = (
+    point: IVerticalBarChartDataPoint,
+    color: string,
+    event: React.FocusEvent<SVGElement>,
+  ): void => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-    this._refArray.forEach((obj: IRefArrayData, index: number) => {
-      if (obj.index === point.legend! && refArrayIndexNumber === index) {
-        this.setState({
-          refSelected: obj.refElement,
-          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
-          calloutLegend: point.legend!,
-          dataForHoverCard: point.y,
-          color: point.color || color,
-          xCalloutValue:
-            point.xAxisCalloutData ||
-            (point.x instanceof Date
-              ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
-              : point.x.toString()),
-          yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: point,
-          activeXdataPoint: point.x,
-          YValueHover,
-          hoverXValue,
-          callOutAccessibilityData: point.callOutAccessibilityData,
-        });
-      }
+    this.setState({
+      refSelected: event.currentTarget,
+      /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+      isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
+      calloutLegend: point.legend!,
+      dataForHoverCard: point.y,
+      color: point.color || color,
+      xCalloutValue:
+        point.xAxisCalloutData ||
+        (point.x instanceof Date
+          ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+          : point.x.toString()),
+      yCalloutValue: point.yAxisCalloutData!,
+      dataPointCalloutProps: point,
+      activeXdataPoint: point.x,
+      YValueHover,
+      hoverXValue,
+      callOutAccessibilityData: point.callOutAccessibilityData,
     });
   };
 
@@ -781,6 +788,13 @@ export class VerticalBarChartBase
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
 
+  /** A bar without height is not drawn, and neither is a negative bar unless supportNegativeData is set. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _isBarDrawn(point: IVerticalBarChartDataPoint, yBarScale: any): boolean {
+    const barHeight: number = yBarScale(point.y) - yBarScale(this._yMax < 0 ? this._yMax : 0);
+    return !(barHeight === 0 || (barHeight < 0 && !this.props.supportNegativeData));
+  }
+
   private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -802,7 +816,7 @@ export class VerticalBarChartBase
       const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
+      if (!this._isBarDrawn(point, yBarScale)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -850,15 +864,12 @@ export class VerticalBarChartBase
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
@@ -889,7 +900,7 @@ export class VerticalBarChartBase
       const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
+      if (!this._isBarDrawn(point, yBarScale)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -944,15 +955,12 @@ export class VerticalBarChartBase
             height={adjustedBarHeight}
             aria-label={this._getAriaLabel(point)}
             role="img"
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
             data-is-focusable={!this.props.hideTooltip && shouldHighlight}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
@@ -984,7 +992,7 @@ export class VerticalBarChartBase
       const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
+      if (!this._isBarDrawn(point, yBarScale)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -1032,15 +1040,12 @@ export class VerticalBarChartBase
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend!);
-            }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            onFocus={this._onBarFocus.bind(this, point, startColor)}
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
