@@ -801,14 +801,16 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const isItemSelected =
       item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
+    const isItemDisabled = this._isDisabled() || item.disabled;
+
     // select the right className based on the combination of selected/disabled
     const itemClassName = item.hidden // predicate: item hidden
       ? this._classNames.dropdownItemHidden
-      : isItemSelected && item.disabled === true // predicate: both selected and disabled
+      : isItemSelected && isItemDisabled === true // predicate: both selected and disabled
       ? this._classNames.dropdownItemSelectedAndDisabled
       : isItemSelected // predicate: selected only
       ? this._classNames.dropdownItemSelected
-      : item.disabled === true // predicate: disabled only
+      : isItemDisabled === true // predicate: disabled only
       ? this._classNames.dropdownItemDisabled
       : this._classNames.dropdownItem;
 
@@ -830,8 +832,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         id={id}
         key={item.key}
         data-index={item.index}
-        data-is-focusable={!item.disabled}
-        disabled={item.disabled}
+        data-is-focusable={!isItemDisabled}
+        disabled={isItemDisabled}
         className={itemClassName}
         onClick={this._onItemClick(item)}
         // eslint-disable-next-line react/jsx-no-bind
@@ -853,7 +855,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       <Checkbox
         id={id}
         key={item.key}
-        disabled={item.disabled}
+        disabled={isItemDisabled}
         onChange={this._onItemClick(item)}
         inputProps={{
           'aria-selected': isItemSelected,
@@ -863,7 +865,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           role: 'option',
           ...({
             'data-index': item.index,
-            'data-is-focusable': !(item.disabled || item.hidden),
+            'data-is-focusable': !(isItemDisabled || item.hidden),
           } as any),
         }}
         label={item.text}
@@ -941,7 +943,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   private _onItemClick = (item: IDropdownOption): ((event: React.MouseEvent<HTMLDivElement>) => void) => {
     return (event: React.MouseEvent<HTMLDivElement>): void => {
-      if (!item.disabled) {
+      if (!item.disabled && !this._isDisabled()) {
         this.setSelectedIndex(event, item.index!);
         if (!this.props.multiSelect) {
           // only close the callout when it's in single-select mode
