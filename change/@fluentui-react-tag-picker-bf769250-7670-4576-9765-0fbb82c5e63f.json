@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: inherit TagPicker disabled state in the shared button trigger",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
-}

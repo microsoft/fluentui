@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "perf: drop native props allow-list from Slider hooks",
-  "packageName": "@fluentui/react-slider",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

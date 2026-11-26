@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "Update the PnP E2E assertion for Playwright 1.65 compatibility.",
+  "packageName": "@fluentui/react-storybook-addon-playground",
+  "email": "paulmardling@microsoft.com"
+}

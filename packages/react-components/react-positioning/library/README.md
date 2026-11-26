@@ -1,6 +1,6 @@
 # @fluentui/react-positioning
 
-A React utilities built on top of [Floating UI](https://floating-ui.com/) for positioning elements in the DOM.
+React utilities for positioning elements in the DOM, powered by Fluent UI's positioning engine.
 
 ## Usage
 
