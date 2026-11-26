@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getIntrinsicElementProps, isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import { isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import type { RadioGroupBaseProps, RadioGroupBaseState, RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
@@ -36,7 +36,9 @@ export const useRadioGroupBase_unstable = (
 
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, value, defaultValue, disabled, onChange, required } = props;
+  // `name`, `value`, `defaultValue`, `disabled` and `required` are shared with the radios through context,
+  // they are not valid attributes on the root `div`.
+  const { name = generatedName, value, defaultValue, disabled, onChange, required, ...rootProps } = props;
 
   return {
     name,
@@ -50,7 +52,7 @@ export const useRadioGroupBase_unstable = (
     root: {
       ref,
       role: 'radiogroup',
-      ...slot.always(getIntrinsicElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']), {
+      ...slot.always(rootProps, {
         elementType: 'div',
       }),
       onChange: useEventCallback(ev => {
