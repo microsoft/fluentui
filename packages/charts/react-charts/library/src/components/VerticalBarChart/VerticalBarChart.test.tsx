@@ -2,6 +2,7 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { VerticalBarChart } from './VerticalBarChart';
 import { FluentProvider } from '@fluentui/react-provider';
 import {
@@ -1088,7 +1089,7 @@ describe('Vertical bar chart - Default color of the line', () => {
   test('Should mark the line in the popover of a bar with the default color of the line legend', async () => {
     const { container } = render(<VerticalBarChart data={pointsWithLine} lineLegendText="Target" />);
     const color = legendColor();
-    fireEvent.mouseOver(getById(container, /_VBC_bar/i)[0]);
+    userEvent.hover(getById(container, /_VBC_bar/i)[0]);
     await waitFor(() => expect(document.querySelector('.fui-PopoverSurface')?.textContent).toContain('Target'));
     // Assert
     expect(yellowPartsOfPopover().length).toBeGreaterThan(0);
@@ -1102,8 +1103,8 @@ describe('Vertical bar chart - Default color of the line', () => {
     const { container } = render(<VerticalBarChart data={pointsWithLine} lineLegendText="Target" />);
     const color = legendColor();
     // With the legend of the line selected, a point of the line opens a popover of its own.
-    fireEvent.click(legendButton());
-    fireEvent.mouseOver(getById(container, /_VBC_point/i)[0]);
+    userEvent.click(legendButton());
+    userEvent.hover(getById(container, /_VBC_point/i)[0]);
     await waitFor(() => expect(document.querySelector('.fui-PopoverSurface')?.textContent).toContain('Target'));
     // Assert
     expect(yellowPartsOfPopover().length).toBeGreaterThan(0);
