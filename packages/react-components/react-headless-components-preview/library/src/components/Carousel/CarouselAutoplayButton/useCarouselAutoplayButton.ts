@@ -1,9 +1,15 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { Button } from '../../Button';
-import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
+import {
+  isControlDisabled,
+  isControlHidden,
+  useCarouselContext,
+  useCarouselPartRegistration,
+} from '../carouselContext';
+import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type {
   CarouselAutoplayButtonProps,
   CarouselAutoplayButtonSlots,
@@ -22,9 +28,8 @@ export const useCarouselAutoplayButton = (
 ): CarouselAutoplayButtonState => {
   const context = useCarouselContext();
   const rendered = context.paged && !isControlHidden(props);
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
-  const mergedRef = useMergedRefs(buttonRef, ref);
-  useCarouselPart('autoplay', rendered, !isControlDisabled(props), buttonRef);
+  const register = useCarouselPartRegistration('autoplay', rendered, !isControlDisabled(props));
+  const mergedRef = useMergedRefs(ref, useFieldsetRegistration<HTMLButtonElement>(register));
   const {
     playLabel = 'Play',
     pauseLabel = 'Pause',

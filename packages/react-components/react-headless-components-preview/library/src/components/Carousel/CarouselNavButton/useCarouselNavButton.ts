@@ -22,17 +22,13 @@ export const useCarouselNavButton = (
   const index = useCarouselItemIndex();
   const registerTab = React.useContext(CarouselRegisterTabContext);
   const available = !isControlHidden(props) && !isControlDisabled(props);
-  const rootRef = React.useRef<HTMLButtonElement>(null);
-  const mergedRef = useMergedRefs(ref, rootRef);
   const autoFocusOnMount = React.useRef(props.autoFocus);
   const register = React.useCallback(
-    (enabled: boolean) =>
-      available && enabled
-        ? registerTab?.(index, autoFocusOnMount.current ? rootRef.current ?? undefined : undefined)
-        : undefined,
+    (enabled: boolean, node: HTMLButtonElement) =>
+      available && enabled ? registerTab?.(index, autoFocusOnMount.current ? node : undefined) : undefined,
     [registerTab, available, index],
   );
-  useFieldsetRegistration(rootRef, register);
+  const mergedRef = useMergedRefs(ref, useFieldsetRegistration(register));
   const { indicator, ...rest } = props;
   const selected = activeIndex === index;
   return {

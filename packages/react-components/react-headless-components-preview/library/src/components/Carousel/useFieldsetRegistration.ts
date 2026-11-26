@@ -16,26 +16,33 @@ function getFieldsets(node: HTMLElement): HTMLFieldSetElement[] {
 }
 
 /** Re-register in a single layout commit when the fieldsets at the control's DOM location change its availability. */
-export function useFieldsetRegistration(
-  location: React.RefObject<HTMLElement | null> | undefined,
-  register: (enabled: boolean) => (() => void) | undefined,
-): void {
+export function useFieldsetRegistration<T extends HTMLElement>(
+  register: (enabled: boolean, node: T) => (() => void) | undefined,
+): React.RefCallback<T> {
+  const location = React.useRef<T | null>(null);
   const [revision, refresh] = React.useReducer((value: number) => value + 1, 0);
+  const ref = React.useCallback((node: T | null) => {
+    if (location.current !== node) {
+      location.current = node;
+      refresh();
+    }
+  }, []);
   useIsomorphicLayoutEffect(() => {
-    const node = location?.current;
+    // Read the committed ref even on the first pass, before the parent nav resolves autofocus.
+    const node = location.current;
     if (!node) {
-      return location ? undefined : register(true);
+      return;
     }
     const fieldsets = getFieldsets(node);
     if (!fieldsets.length) {
-      return register(true);
+      return register(true, node);
     }
 
     // Only the first direct legend is exempt; an outer fieldset can still disable an inner legend's controls.
     const isEnabled = () =>
       fieldsets.every(fieldset => !fieldset.disabled || fieldset.querySelector(':scope > legend')?.contains(node));
     const enabled = isEnabled();
-    const unregister = register(enabled);
+    const unregister = register(enabled, node);
     const Observer = node.ownerDocument.defaultView?.MutationObserver;
     const observer =
       Observer &&
@@ -49,5 +56,6 @@ export function useFieldsetRegistration(
       observer?.disconnect();
       unregister?.();
     };
-  }, [location, register, revision]);
+  }, [register, revision]);
+  return ref;
 }

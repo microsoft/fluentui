@@ -8,6 +8,7 @@ import {
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { CarouselDirectionStaging } from './CarouselDirectionStaging';
 import { CarouselDirectionTooltip, CustomTrigger } from './CarouselDirectionTooltip';
 import type { CarouselDirectionButtonSlots, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
@@ -22,8 +23,9 @@ export const renderCarouselDirectionButton = (state: CarouselDirectionButtonStat
     [SLOT_RENDER_FUNCTION_SYMBOL]: renderButton,
     ...buttonProps
   } = state.button;
-  return (
-    <state.root data-carousel-button={state.rendered ? state.root['data-carousel-button'] : undefined}>
+  const stage = state.keepButtonMounted && state.hidden;
+  const control = (
+    <state.root data-carousel-button={stage ? undefined : state.root['data-carousel-button']}>
       {(!state.hidden || state.keepButtonMounted) && (
         <CarouselDirectionTooltip
           content={{ ...state.tooltip, children: <span>{state.tooltip.children}</span> }}
@@ -38,5 +40,10 @@ export const renderCarouselDirectionButton = (state: CarouselDirectionButtonStat
         </CarouselDirectionTooltip>
       )}
     </state.root>
+  );
+  return state.keepButtonMounted ? (
+    <CarouselDirectionStaging state={state}>{control}</CarouselDirectionStaging>
+  ) : (
+    control
   );
 };

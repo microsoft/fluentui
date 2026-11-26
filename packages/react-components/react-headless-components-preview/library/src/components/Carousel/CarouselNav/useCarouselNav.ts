@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
-import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
+import {
+  isControlDisabled,
+  isControlHidden,
+  useCarouselContext,
+  useCarouselPartRegistration,
+} from '../carouselContext';
 import { CarouselNavButton } from '../CarouselNavButton/CarouselNavButton';
 import type { CarouselNavProps, CarouselNavState, NavButtonRenderFunction } from './CarouselNav.types';
 
@@ -34,7 +39,8 @@ export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivEl
     }
     setComplete(ready);
   }, [rendered, pageCount, revision]);
-  useCarouselPart('nav', rendered && complete);
+  const register = useCarouselPartRegistration('nav', rendered && complete);
+  useIsomorphicLayoutEffect(() => register(true), [register]);
   const inertRef = React.useCallback(
     (node: HTMLDivElement | null) => {
       node?.toggleAttribute('inert', !complete);

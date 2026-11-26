@@ -11,8 +11,14 @@ import {
 } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../../hooks/top-layer/utils';
 import { Button } from '../../Button';
-import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
+import {
+  isControlDisabled,
+  isControlHidden,
+  useCarouselContext,
+  useCarouselPartRegistration,
+} from '../carouselContext';
 import { focusCarouselPage } from '../focusCarouselPage';
+import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type { CarouselDirectionButtonProps, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
 /**
@@ -42,21 +48,19 @@ export const useCarouselDirectionButton = (
   const staging = keepButtonMounted && !showWrapper;
   const hidden = staging || (boundaryHidden && !retiring);
   const wrapper = React.useRef<HTMLDivElement>(null);
-  const probe = React.useRef<HTMLTemplateElement>(null);
-  const [nativeButton, setNativeButton] = React.useState<HTMLButtonElement | null>(null);
-  const nativeLocation = React.useMemo(() => ({ current: nativeButton }), [nativeButton]);
-  const buttonRef = useMergedRefs(buttonSlot.ref, setNativeButton);
+  const register = useCarouselPartRegistration(kind, present, enabled);
+  const track = useFieldsetRegistration(register);
+  const probe = useMergedRefs<HTMLTemplateElement>(track);
+  const buttonRef = useMergedRefs(buttonSlot.ref, keepButtonMounted ? track : undefined);
   const probeRef = !custom && present && !showWrapper && context.pageCount > 1 ? probe : undefined;
-  const location = keepButtonMounted ? nativeLocation : showWrapper ? wrapper : probeRef;
-  useCarouselPart(kind, present && !!location, enabled, location);
   // A custom button is already mounted while staged. Honor its autofocus once, only when it becomes usable.
   const pendingAutoFocus = React.useRef(buttonSlot.autoFocus);
   useIsomorphicLayoutEffect(() => {
-    if (keepButtonMounted && !hidden && nativeButton && pendingAutoFocus.current) {
+    if (keepButtonMounted && !hidden && buttonRef.current && pendingAutoFocus.current) {
       pendingAutoFocus.current = false;
-      nativeButton.focus();
+      buttonRef.current.focus();
     }
-  }, [keepButtonMounted, hidden, nativeButton]);
+  });
   useIsomorphicLayoutEffect(() => {
     if (retiring) {
       // Keep a retiring arrow mounted until this commit can check actual focus ownership.
@@ -76,40 +80,47 @@ export const useCarouselDirectionButton = (
     },
     [hidden],
   );
-  const rootRef = useMergedRefs(staging ? undefined : ref, wrapper, inertRef);
+  const rootRef = useMergedRefs(
+    ref,
+    wrapper,
+    keepButtonMounted ? undefined : inertRef,
+    keepButtonMounted ? undefined : track,
+  );
   const tooltipSlot = slot.always(tooltip, {
     elementType: 'div',
     defaultProps: { children: kind === 'previous' ? 'Previous' : 'Next' },
   });
   const tooltipId = tooltipSlot.id ?? `${context.idPrefix}-${kind}-label`;
+  const control = {
+    ...buttonSlot,
+    'aria-controls': context.viewportId,
+    'aria-labelledby': tooltipId,
+    'aria-label': undefined,
+    'aria-describedby': undefined,
+    'aria-disabled': wrapperDisabled || buttonSlot['aria-disabled'],
+    'data-carousel-action': kind,
+    ref: keepButtonMounted ? buttonRef : buttonSlot.ref,
+    autoFocus: keepButtonMounted ? undefined : buttonSlot.autoFocus,
+    disabled: buttonSlot.disabled || (!keepButtonMounted && unavailable),
+    disabledFocusable: buttonSlot.disabledFocusable || (!hidden && !buttonSlot.disabled && unavailable),
+    onFocus: mergeCallbacks(buttonSlot.onFocus, () => setFocused(true)),
+    onBlur: mergeCallbacks(buttonSlot.onBlur, () => setFocused(false)),
+    onClick: mergeCallbacks(buttonSlot.onClick, kind === 'previous' ? context.previous : context.next),
+  };
   return {
     components: { root: 'div', button: Button, tooltip: 'div' },
     root: Object.assign(
       slot.always(
         getIntrinsicElementProps('div', {
-          ...(staging ? { children: rest.children, 'aria-hidden': true } : rest),
+          ...rest,
           ref: rootRef,
-          hidden,
+          hidden: keepButtonMounted ? rest.hidden : hidden,
         }),
         { elementType: 'div' },
       ),
       { 'data-carousel-button': kind },
     ),
-    button: Object.assign(buttonSlot, {
-      'aria-controls': context.viewportId,
-      'aria-labelledby': tooltipId,
-      'aria-label': undefined,
-      'aria-describedby': undefined,
-      'aria-disabled': wrapperDisabled || buttonSlot['aria-disabled'],
-      'data-carousel-action': kind,
-      ref: keepButtonMounted ? buttonRef : buttonSlot.ref,
-      autoFocus: keepButtonMounted ? undefined : buttonSlot.autoFocus,
-      disabled: buttonSlot.disabled || unavailable || (keepButtonMounted && hidden),
-      disabledFocusable: !hidden && (buttonSlot.disabledFocusable || (!buttonSlot.disabled && unavailable)),
-      onFocus: mergeCallbacks(buttonSlot.onFocus, () => setFocused(true)),
-      onBlur: mergeCallbacks(buttonSlot.onBlur, () => setFocused(false)),
-      onClick: mergeCallbacks(buttonSlot.onClick, kind === 'previous' ? context.previous : context.next),
-    }),
+    button: control,
     tooltip: Object.assign(tooltipSlot, { id: tooltipId }),
     kind,
     rendered: showWrapper,

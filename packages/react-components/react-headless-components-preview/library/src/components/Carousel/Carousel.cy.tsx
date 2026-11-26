@@ -520,6 +520,150 @@ describe('Carousel browser behavior', () => {
     cy.get('[role="tab"]').last().click().should('have.attr', 'aria-selected', 'true');
   });
 
+  for (const part of ['tab', 'playback'] as const) {
+    it(`re-registers a replaced native ${part} in the same part instance`, () => {
+      let toggle: () => void;
+      const Wrapper = (props: { children: React.ReactNode }) => {
+        const [wrapped, setWrapped] = React.useState(false);
+        toggle = () => setWrapped(!wrapped);
+        return wrapped ? <fieldset disabled>{props.children}</fieldset> : <>{props.children}</>;
+      };
+      const renderButton: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
+        <Wrapper>
+          <Component {...props} />
+        </Wrapper>
+      );
+      mount(
+        <Carousel aria-label="Lessons">
+          {part === 'playback' && <CarouselAutoplayButton>{renderButton}</CarouselAutoplayButton>}
+          <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+          <CarouselNav>
+            {index => <CarouselNavButton>{part === 'tab' && index === 1 ? renderButton : undefined}</CarouselNavButton>}
+          </CarouselNav>
+        </Carousel>,
+      );
+      const target = part === 'tab' ? '[role="tab"][aria-label="Page 2 of 2"]' : '[data-carousel-action="autoplay"]';
+      cy.get(target).then(([button]) => {
+        if (part === 'playback') {
+          cy.wrap(button).click();
+          cy.get('[role="region"]').should('have.attr', 'data-playing');
+        }
+        cy.then(() => toggle());
+        cy.get(target).should(el => {
+          expect(el[0]).not.to.equal(button);
+          expect(el[0].matches(':disabled')).to.equal(true);
+        });
+      });
+      if (part === 'tab') {
+        cy.get('[role="tablist"]').should('not.exist');
+        cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+      } else {
+        cy.get('[role="region"]').should('not.have.attr', 'data-playing');
+      }
+      cy.then(() => toggle());
+      cy.get(target).should('be.visible').and('be.enabled').click();
+      if (part === 'tab') {
+        cy.contains('[role="tabpanel"]', 'Second').should('be.visible');
+      } else {
+        cy.get('[role="region"]').should('have.attr', 'data-playing');
+      }
+    });
+  }
+
+  it('does not make a custom fieldset disabled just because the arrow is staged', () => {
+    let update: (disabled: boolean) => void;
+    const renderButton: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
+      <fieldset disabled={props.disabled}>
+        <Component {...props} />
+      </fieldset>
+    );
+    const Example = () => {
+      const [disabled, setDisabled] = React.useState(false);
+      update = setDisabled;
+      return (
+        <Carousel aria-label="Lessons" circular>
+          <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+          <CarouselNext button={{ disabled, children: renderButton }} />
+        </Carousel>
+      );
+    };
+    mount(<Example />);
+    cy.get('[data-carousel-action="next"]').should('be.visible').and('be.enabled').click();
+    cy.contains('[data-carousel-page]', 'First').should('not.be.visible');
+    cy.then(() => update(true));
+    cy.contains('[data-carousel-page]', 'First').should('be.visible');
+    cy.get('[data-carousel-action="next"]').should('be.disabled');
+    cy.then(() => update(false));
+    cy.get('[data-carousel-action="next"]').should('be.visible').and('be.enabled').click();
+    cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+  });
+
+  it('stages the entire arrow root callback, including siblings outside the forwarded root', () => {
+    const onFocus = cy.stub();
+    const rootRef = cy.stub();
+    let update: (circular: boolean) => void;
+    const renderRoot: SlotRenderFunction<React.ComponentPropsWithRef<'div'>> = (Component, props) => (
+      <fieldset>
+        <legend>Slide navigation</legend>
+        <button autoFocus onFocus={onFocus}>
+          Extra control
+        </button>
+        <Component {...props} />
+      </fieldset>
+    );
+    const Example = () => {
+      const [circular, setCircular] = React.useState(false);
+      update = setCircular;
+      return (
+        <>
+          <button>Before</button>
+          <Carousel aria-label="Lessons" circular={circular}>
+            <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+            <CarouselNext ref={rootRef}>{renderRoot}</CarouselNext>
+          </Carousel>
+          <button>After</button>
+        </>
+      );
+    };
+    mount(<Example />, { strict: false });
+    cy.contains('legend', 'Slide navigation').should('not.be.visible');
+    cy.contains('button', 'Extra control').should('not.be.visible');
+    cy.wrap(onFocus).should('not.have.been.called');
+    cy.contains('button', 'Before').focus().realPress('Tab');
+    cy.contains('button', 'After').should('be.focused');
+    cy.then(() => update(true));
+    cy.contains('legend', 'Slide navigation').should('be.visible');
+    cy.contains('button', 'After').should('be.focused');
+    cy.then(() => update(false));
+    cy.contains('legend', 'Slide navigation').should('not.be.visible');
+    cy.wrap(rootRef).should('have.been.calledOnce');
+  });
+
+  it('retains the boundary layout slot without revealing a custom arrow through display:flex', () => {
+    const renderButton: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
+      <Component {...props}>Next glyph</Component>
+    );
+    mount(
+      <Carousel aria-label="Lessons">
+        <CarouselPrevious />
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNext style={{ display: 'flex', width: '4em' }} button={{ children: renderButton }} />
+      </Carousel>,
+    );
+    cy.get('[data-carousel-button="next"]').then(([root]) => {
+      const width = root.getBoundingClientRect().width;
+      cy.contains('button', 'Next glyph').focus().realPress('Enter');
+      cy.get('[data-carousel-button="next"][hidden]').should(el => {
+        expect(el).to.have.length(1);
+        expect(el[0].getBoundingClientRect().width).to.equal(width).and.to.be.greaterThan(0);
+        expect(el).to.have.css('visibility', 'hidden');
+      });
+      cy.contains('button', 'Next glyph').should('not.be.visible');
+      cy.get('[data-carousel-action="previous"]').click();
+      cy.contains('button', 'Next glyph').should('be.visible');
+    });
+  });
+
   [false, true].forEach(onSelectedPage => {
     it(`${onSelectedPage ? 'preserves' : 'recovers'} autofocus when paging starts at a controlled index`, () => {
       const adapter = cy.stub().returns([]);

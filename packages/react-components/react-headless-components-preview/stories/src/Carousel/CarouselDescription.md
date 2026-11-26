@@ -55,8 +55,11 @@ does not move focus back to that tab.
 with `tooltip="Précédent"`. Supply your own chevron icons and mirror them in RTL. Use semantic `dir="rtl"`
 on the carousel or an ancestor so the example's `:dir(rtl)` icons agree with keyboard and motion direction.
 If you wrap the arrow with a slot render function, forward the supplied props and ref to its component.
-Carousel checks the fieldsets that contain the actual button, even inside a custom wrapper. It can keep that
-button mounted but hidden and inert while checking the route; a mounted ref alone does not mean the arrow is visible.
+Carousel checks the fieldsets that contain the current native button, even when a slot replaces that element.
+When it needs to keep checking, the entire custom arrow stays mounted in a layout-free wrapper. The wrapper
+is hidden and inert in static mode and at a settled boundary. At that boundary an empty `[data-carousel-button]`
+keeps the root's layout class and style. Use that descendant selector for positioning; a mounted ref alone
+does not mean the arrow is visible.
 
 ## Selection and keyboard
 
