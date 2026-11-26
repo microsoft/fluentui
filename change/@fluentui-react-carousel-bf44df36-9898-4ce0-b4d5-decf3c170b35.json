@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: autoplay carousel does not trigger live region announcements",
+  "packageName": "@fluentui/react-carousel",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
