@@ -10,6 +10,7 @@ import {
   updateProjectConfiguration,
   offsetFromRoot,
   joinPathFragments,
+  normalizePath,
   updateJson,
   readJson,
   getProjects,
@@ -163,6 +164,7 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, oldProjectRoot, file => {
+    file = normalizePath(file);
     if (file.includes('/stories/') || file.includes('/.storybook/')) {
       return;
     }
