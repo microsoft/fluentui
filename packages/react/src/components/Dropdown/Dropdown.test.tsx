@@ -232,7 +232,11 @@ describe('Dropdown', () => {
           const [, setDismissCount] = React.useState(0);
 
           return (
-            <Dropdown options={DEFAULT_OPTIONS} onDismiss={() => setDismissCount(dismissCount => dismissCount + 1)} />
+            <Dropdown
+              options={DEFAULT_OPTIONS}
+              collapsedStateAnnouncement="Collapsed"
+              onDismiss={() => setDismissCount(dismissCount => dismissCount + 1)}
+            />
           );
         };
 
@@ -245,18 +249,23 @@ describe('Dropdown', () => {
         userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
-          jest.runOnlyPendingTimers();
+          jest.advanceTimersByTime(0);
         });
 
         const firstAnnouncement = getByRole('status');
         expect(firstAnnouncement).toHaveTextContent('Collapsed');
+
+        act(() => {
+          jest.advanceTimersByTime(5000);
+        });
+        expect(queryByRole('status')).toBeNull();
 
         userEvent.click(dropdownRoot);
         expect(queryByRole('status')).toBeNull();
         userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
-          jest.runOnlyPendingTimers();
+          jest.advanceTimersByTime(0);
         });
 
         const secondAnnouncement = getByRole('status');
@@ -276,16 +285,45 @@ describe('Dropdown', () => {
         userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
-          jest.runOnlyPendingTimers();
+          jest.advanceTimersByTime(0);
         });
 
         expect(getByRole('status')).toHaveTextContent('Lista contraida');
       });
 
-      it('can disable the announcement', () => {
+      it('announces after selecting an option or clicking the trigger closed', () => {
         jest.useFakeTimers();
 
-        const { getByRole, queryByRole } = render(<Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="" />);
+        const { getByRole, getAllByRole } = render(
+          <Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Collapsed" />,
+        );
+
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        fireEvent.click(getAllByRole('option')[1]);
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+        expect(getByRole('status')).toHaveTextContent('Collapsed');
+
+        act(() => {
+          jest.advanceTimersByTime(5000);
+        });
+
+        userEvent.click(dropdownRoot);
+        userEvent.click(dropdownRoot);
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+        expect(getByRole('status')).toHaveTextContent('Collapsed');
+      });
+
+      it('does not announce unless announcement text is provided', () => {
+        jest.useFakeTimers();
+
+        const { getByRole, queryByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
         const dropdownRoot = getByRole('combobox');
         userEvent.click(dropdownRoot);
@@ -295,6 +333,34 @@ describe('Dropdown', () => {
           jest.runOnlyPendingTimers();
         });
 
+        expect(queryByRole('status')).toBeNull();
+      });
+
+      it('does not announce when focus moves away or the menu is dismissed imperatively', () => {
+        jest.useFakeTimers();
+        const dropdown = React.createRef<IDropdown>();
+
+        const { getByRole, queryByRole } = render(
+          <>
+            <Dropdown componentRef={dropdown} options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Collapsed" />
+            <button>Next</button>
+          </>,
+        );
+
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{tab}', { skipClick: true });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+        expect(queryByRole('status')).toBeNull();
+
+        userEvent.click(dropdownRoot);
+        act(() => {
+          dropdown.current?.dismissMenu();
+          jest.runOnlyPendingTimers();
+        });
         expect(queryByRole('status')).toBeNull();
       });
     });

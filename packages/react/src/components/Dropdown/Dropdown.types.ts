@@ -89,9 +89,8 @@ export interface IDropdownProps
   dropdownWidth?: number | 'auto';
 
   /**
-   * Text to announce to screen reader users when the dropdown closes.
-   * Set to an empty string to disable the announcement.
-   * @defaultvalue 'Collapsed'
+   * Text to announce to screen reader users when the dropdown closes while focus remains on the dropdown.
+   * The announcement is disabled when this prop is not set or is an empty string.
    */
   collapsedStateAnnouncement?: string;
 

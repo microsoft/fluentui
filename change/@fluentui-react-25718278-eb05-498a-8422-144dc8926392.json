@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "fix: announce when the v8 Dropdown collapses",
   "packageName": "@fluentui/react",
   "email": "299056539+PaulGMardling@users.noreply.github.com",
