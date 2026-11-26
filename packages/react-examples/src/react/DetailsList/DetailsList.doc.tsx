@@ -82,6 +82,10 @@ import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverr
 const DetailsListKeyboardOverridesExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
 
+import { ScrollablePaneDetailsListExample as DetailsListFixedHeaderExample } from '../ScrollablePane/ScrollablePane.DetailsList.Example';
+const DetailsListFixedHeaderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/ScrollablePane.DetailsList.Example.tsx') as string;
+
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
@@ -221,4 +225,11 @@ export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
   title: 'Keyboard overrides for selection',
   code: DetailsListKeyboardOverridesExampleCode,
   view: <DetailsListKeyboardOverridesExample />,
+});
+
+export const DetailsListFixedHeaderPageProps: IDocPageProps = generateProps({
+  title: 'Fixed header and footer without ScrollablePane',
+  code: DetailsListFixedHeaderExampleCode,
+  view: <DetailsListFixedHeaderExample />,
+  isScrollable: false,
 });
