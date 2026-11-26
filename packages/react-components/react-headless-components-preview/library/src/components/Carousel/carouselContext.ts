@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { CarouselNavState } from './CarouselNav/CarouselNav.types';
+import { useFieldsetRegistration } from './useFieldsetRegistration';
 
 /** Compound parts whose presence changes how the collection behaves. */
 export type CarouselPart = 'previous' | 'next' | 'nav' | 'autoplay';
@@ -105,12 +105,18 @@ export const useCarouselItemIndex = (): number => React.useContext(CarouselItemI
 export const CarouselSlideCountContext = React.createContext<number | undefined>(undefined);
 
 /** Registers the consumer's part, independently of the carousel's own boundary or reduced-motion state. */
-export const useCarouselPart = (part: CarouselPart, present: boolean, available = true): void => {
+export const useCarouselPart = (
+  part: CarouselPart,
+  present: boolean,
+  available = true,
+  location?: React.RefObject<HTMLElement | null>,
+): void => {
   const { register } = useCarouselContext();
-  useIsomorphicLayoutEffect(
-    () => (present ? register(part, available) : undefined),
+  const registerPart = React.useCallback(
+    (enabled: boolean) => (present ? register(part, available && enabled) : undefined),
     [register, part, present, available],
   );
+  useFieldsetRegistration(location, registerPart);
 };
 
 export const isControlDisabled = (props: {

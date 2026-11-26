@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, RefAttributes, Slot } from '@fluentui/react-utilities';
 import type { ButtonProps } from '../../Button';
 
@@ -25,6 +26,8 @@ export type CarouselDirectionButtonState = ComponentState<CarouselDirectionButto
    * as a lone non-circular arrow), which omits the arrow slot.
    */
   rendered: boolean;
+  /** Attach to a layout-free placeholder when the unmounted button's fieldset ancestry still matters. */
+  probeRef?: React.RefObject<HTMLTemplateElement | null>;
   /** Boundary reached and the transition settled. */
   hidden: boolean;
   /** Boundary reached; while a transition runs the button remains an `aria-disabled` focus anchor. */

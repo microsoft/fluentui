@@ -26,6 +26,7 @@ type SelectionOptions = Pick<
 /** Selection never reads geometry or runs a JavaScript animation loop. */
 export function useCarouselSelection(options: SelectionOptions): {
   view: {
+    paged: boolean;
     index: number;
     outgoing: number | undefined;
     busy: boolean;
@@ -54,6 +55,7 @@ export function useCarouselSelection(options: SelectionOptions): {
   });
   const index = paged ? Math.min(Math.max(0, requested), Math.max(0, pageCount - 1)) : 0;
   const [view, setView] = React.useState({
+    paged,
     index,
     outgoing: undefined as number | undefined,
     busy: false,
@@ -64,7 +66,6 @@ export function useCarouselSelection(options: SelectionOptions): {
   const pending = React.useRef<{ index: number; direction: 1 | -1 } | undefined>(undefined);
   const recovery = React.useRef<Element | null>(null);
   const skipMotion = React.useRef(false);
-  const pagedRef = React.useRef(paged);
 
   const cancel = useEventCallback(() => {
     const current = animations.current;
@@ -87,22 +88,30 @@ export function useCarouselSelection(options: SelectionOptions): {
   });
 
   useIsomorphicLayoutEffect(() => {
-    const wasPaged = pagedRef.current;
-    pagedRef.current = paged;
     // Parts register after the first render, so only clamp once the collection is known to be paged.
     if (paged && requested !== index && options.activeIndex === undefined) {
       setRequested(index);
+    }
+    const viewport = viewportRef.current;
+    if (view.paged !== paged) {
+      // The DOM still shows the static collection. Move only focus the upcoming hidden/inert update would displace.
+      if (paged && viewport) {
+        const active = getActiveElement(viewport);
+        const selected = viewport.children[index] as HTMLElement | undefined;
+        if (selected && active && active !== viewport && viewport.contains(active) && !selected.contains(active)) {
+          focusCarouselPage(selected);
+        }
+      }
+      cancel();
+      pending.current = undefined;
+      recovery.current = null;
+      setView({ paged, index, outgoing: undefined, busy: false, direction: 1, anchor: undefined });
+      return;
     }
     if (view.index === index) {
       return;
     }
     cancel();
-    if (!wasPaged || !paged) {
-      // Entering or leaving paged mode is a layout change, not navigation: swap without motion.
-      setView({ index, outgoing: undefined, busy: false, direction: 1, anchor: undefined });
-      return;
-    }
-    const viewport = viewportRef.current;
     const active = viewport ? getActiveElement(viewport) : null;
     // Focus in another carousel (or elsewhere on the page) is neither an anchor nor content of this one.
     const focused = active && rootRef.current?.contains(active) ? active : null;
@@ -116,6 +125,7 @@ export function useCarouselSelection(options: SelectionOptions): {
     const direction = pending.current?.index === index ? pending.current.direction : index > view.index ? 1 : -1;
     pending.current = undefined;
     setView({
+      paged,
       index,
       outgoing: paged && view.index < pageCount ? view.index : undefined,
       direction,
@@ -127,6 +137,7 @@ export function useCarouselSelection(options: SelectionOptions): {
     requested,
     options.activeIndex,
     options.circular,
+    view.paged,
     view.index,
     pageCount,
     paged,
@@ -152,12 +163,18 @@ export function useCarouselSelection(options: SelectionOptions): {
       return;
     }
     try {
-      const running = adapter({ incoming, outgoing, direction: view.direction, dir: getDir() });
-      animations.current = running;
-      if (!running.length) {
+      const handles = adapter({ incoming, outgoing, direction: view.direction, dir: getDir() });
+      animations.current = handles;
+      const finite = handles.filter(
+        animation =>
+          animation.playState === 'running' &&
+          animation.playbackRate !== 0 &&
+          Number.isFinite(animation.effect?.getComputedTiming().endTime),
+      );
+      if (!finite.length) {
         settle();
       } else {
-        Promise.all(running.map(animation => animation.finished.catch(() => undefined))).then(() => {
+        Promise.all(finite.map(animation => animation.finished.catch(() => undefined))).then(() => {
           if (!disposed) {
             settle();
           }

@@ -1,7 +1,7 @@
 'use client';
 
-import type * as React from 'react';
-import { mergeCallbacks, slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { Button } from '../../Button';
 import { isControlDisabled, isControlHidden, useCarouselContext, useCarouselPart } from '../carouselContext';
 import type {
@@ -20,16 +20,18 @@ export const useCarouselAutoplayButton = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): CarouselAutoplayButtonState => {
-  const present = !isControlHidden(props);
-  useCarouselPart('autoplay', present, !isControlDisabled(props));
   const context = useCarouselContext();
+  const rendered = context.paged && !isControlHidden(props);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const mergedRef = useMergedRefs(buttonRef, ref);
+  useCarouselPart('autoplay', rendered, !isControlDisabled(props), buttonRef);
   const {
     playLabel = 'Play',
     pauseLabel = 'Pause',
     reducedMotionLabel = 'Autoplay unavailable with reduced motion',
     ...rest
   } = props;
-  const root = slot.always({ ...rest, ref } as NonNullable<CarouselAutoplayButtonSlots['root']>, {
+  const root = slot.always({ ...rest, ref: mergedRef } as NonNullable<CarouselAutoplayButtonSlots['root']>, {
     elementType: Button,
   });
   return {
@@ -45,6 +47,6 @@ export const useCarouselAutoplayButton = (
       children: context.reducedMotion ? reducedMotionLabel : context.playing ? pauseLabel : playLabel,
       onClick: mergeCallbacks(root.onClick, context.toggleAutoplay),
     }),
-    rendered: context.paged && present,
+    rendered,
   };
 };

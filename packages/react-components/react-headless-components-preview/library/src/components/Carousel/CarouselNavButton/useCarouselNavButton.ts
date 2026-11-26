@@ -1,13 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  mergeCallbacks,
-  slot,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import {
   CarouselRegisterTabContext,
@@ -16,6 +10,7 @@ import {
   useCarouselContext,
   useCarouselItemIndex,
 } from '../carouselContext';
+import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
 
 /** Create the state required to render CarouselNavButton. Must be rendered inside `CarouselNav`. */
@@ -30,11 +25,14 @@ export const useCarouselNavButton = (
   const rootRef = React.useRef<HTMLButtonElement>(null);
   const mergedRef = useMergedRefs(ref, rootRef);
   const autoFocusOnMount = React.useRef(props.autoFocus);
-  useIsomorphicLayoutEffect(
-    () =>
-      available ? registerTab?.(index, autoFocusOnMount.current ? rootRef.current ?? undefined : undefined) : undefined,
+  const register = React.useCallback(
+    (enabled: boolean) =>
+      available && enabled
+        ? registerTab?.(index, autoFocusOnMount.current ? rootRef.current ?? undefined : undefined)
+        : undefined,
     [registerTab, available, index],
   );
+  useFieldsetRegistration(rootRef, register);
   const { indicator, ...rest } = props;
   const selected = activeIndex === index;
   return {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import { Carousel } from './Carousel';
 import type { CarouselProps, CarouselTransition } from './Carousel.types';
@@ -295,6 +296,166 @@ describe('Carousel browser behavior', () => {
     cy.wrap(capture).should('have.been.calledOnce');
   });
 
+  it('rechecks nested fieldsets while arrows are absent or hidden at a boundary', () => {
+    mount(
+      <Carousel aria-label="Lessons">
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <fieldset id="outer" disabled>
+          <legend>
+            <CarouselPrevious />
+          </legend>
+          <fieldset id="inner" disabled>
+            <legend>
+              <CarouselNext />
+            </legend>
+          </fieldset>
+        </fieldset>
+      </Carousel>,
+    );
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.get('#outer').invoke('prop', 'disabled', false);
+    cy.get('[data-carousel-button="previous"]').should('have.attr', 'hidden');
+    cy.get('[data-carousel-action="next"]').focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'First').should('not.be.visible');
+    cy.get('#outer').invoke('prop', 'disabled', true);
+    cy.contains('[data-carousel-page]', 'First').should('be.visible');
+    cy.get('#outer').invoke('prop', 'disabled', false);
+    cy.get('[data-carousel-action="previous"]').focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+    cy.get('#inner').then(([fieldset]) => fieldset.prepend(fieldset.ownerDocument.createElement('legend')));
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.get('#inner > legend')
+      .first()
+      .then(([legend]) => legend.remove());
+    cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+  });
+
+  it('keeps paging only while an independent arrow or complete tab route remains operable', () => {
+    mount(
+      <Carousel aria-label="Lessons" circular>
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <fieldset id="arrow" disabled>
+          <CarouselNext />
+        </fieldset>
+        <CarouselNav>
+          {index =>
+            index === 1 ? (
+              <fieldset id="tab" disabled>
+                <legend>Choose a page</legend>
+                <CarouselNavButton />
+              </fieldset>
+            ) : (
+              <CarouselNavButton />
+            )
+          }
+        </CarouselNav>
+      </Carousel>,
+    );
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.get('#arrow').invoke('prop', 'disabled', false);
+    cy.get('[role="tablist"]').should('not.exist');
+    cy.get('[data-carousel-action="next"]').focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'First').should('not.be.visible');
+    cy.get('#tab').invoke('prop', 'disabled', false);
+    cy.get('[role="tablist"]').should('be.visible');
+    cy.get('#arrow').invoke('prop', 'disabled', true);
+    cy.get('[role="tab"]').first().focus().realPress('Enter');
+    cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+    cy.get('#tab').invoke('prop', 'disabled', true);
+    cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+  });
+
+  it('stops playback when its fieldset is disabled without removing an independent navigation route', () => {
+    mount(
+      <Carousel aria-label="Lessons">
+        <fieldset id="playback">
+          <CarouselAutoplayButton />
+        </fieldset>
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNav />
+      </Carousel>,
+    );
+    cy.contains('button', 'Play').focus().realPress('Enter');
+    cy.get('[role="region"]').should('have.attr', 'data-playing');
+    cy.get('#playback').invoke('prop', 'disabled', true);
+    cy.get('[role="region"]').should('not.have.attr', 'data-playing');
+    cy.get('#playback').invoke('prop', 'disabled', false);
+    cy.contains('button', 'Play').should('be.enabled');
+    cy.get('[role="tab"]').last().click().should('have.attr', 'aria-selected', 'true');
+  });
+
+  [false, true].forEach(onSelectedPage => {
+    it(`${onSelectedPage ? 'preserves' : 'recovers'} autofocus when paging starts at a controlled index`, () => {
+      const adapter = cy.stub().returns([]);
+      mount(
+        <Carousel aria-label="Lessons" activeIndex={1} transition={adapter}>
+          <CarouselViewport>
+            <input autoFocus={!onSelectedPage} aria-label="First" />
+            <CarouselCard>
+              <input autoFocus={onSelectedPage} aria-label="Second" />
+            </CarouselCard>
+          </CarouselViewport>
+          <CarouselNav />
+        </Carousel>,
+      );
+      cy.get(onSelectedPage ? '[aria-label="Second"]' : '[aria-roledescription="slide"]').should('be.focused');
+      cy.get('[aria-label="First"]').closest('[data-carousel-page]').should('have.attr', 'inert');
+      cy.wrap(adapter).should('not.have.been.called');
+    });
+  });
+
+  it('recovers only focus that entering paged mode would hide inside a shadow root', () => {
+    let setControls: (value: boolean) => void;
+    const adapter = cy.stub().returns([]);
+    const Example = () => {
+      const [shadow, setShadow] = React.useState<ShadowRoot>();
+      const attach = React.useCallback((node: HTMLDivElement | null) => {
+        if (node) {
+          setShadow(node.shadowRoot ?? node.attachShadow({ mode: 'open' }));
+        }
+      }, []);
+      const [controls, set] = React.useState(false);
+      setControls = set;
+      return (
+        <div ref={attach} id="host">
+          {shadow &&
+            createPortal(
+              <>
+                <button>Outside</button>
+                <Carousel aria-label="Lessons" transition={adapter}>
+                  <CarouselViewport>
+                    <CarouselCard>
+                      <input aria-label="First" />
+                    </CarouselCard>
+                    <input aria-label="Second" />
+                  </CarouselViewport>
+                  {controls && <CarouselNav />}
+                </Carousel>
+              </>,
+              shadow,
+            )}
+        </div>
+      );
+    };
+    mount(<Example />);
+    const find = (selector: string) => cy.get('#host').shadow().find(selector);
+    const expectFocus = (selector: string) =>
+      find(selector).should(el => expect((el[0].getRootNode() as ShadowRoot).activeElement).to.equal(el[0]));
+    for (const [source, target] of [
+      ['input[aria-label="Second"]', '[aria-roledescription="slide"]'],
+      ['input[aria-label="First"]', 'input[aria-label="First"]'],
+      ['button', 'button'],
+    ]) {
+      find(source).focus();
+      cy.then(() => setControls(true));
+      find('[aria-label="Second"]').closest('[data-carousel-page]').should('have.attr', 'inert');
+      expectFocus(target);
+      cy.then(() => setControls(false));
+      find('[aria-label="Second"]').should('be.visible');
+    }
+    cy.wrap(adapter).should('not.have.been.called');
+  });
+
   it('recovers focus when the focused arrow retires without a page change', () => {
     let removeLast: () => void;
     const Collection = () => {
@@ -440,6 +601,47 @@ describe('Carousel browser behavior', () => {
     cy.contains('button', 'Play').should('exist');
     cy.get('[data-carousel-action="previous"]').should('be.focused');
     cy.get('.viewport').should('have.attr', 'aria-live', 'polite');
+  });
+
+  it('waits only for finite motion, then cancels every handle and recovers boundary focus', () => {
+    let finite: Animation;
+    let handles: Animation[];
+    renderCarousel({
+      defaultActiveIndex: 1,
+      transition: ({ incoming }) => {
+        finite = incoming.animate([], 60000);
+        const paused = incoming.animate([], 60000);
+        paused.pause();
+        handles = [finite, incoming.animate([], { duration: 100, iterations: Infinity }), paused];
+        return handles;
+      },
+    });
+    cy.get('[data-carousel-action="next"]').focus().realPress('Enter');
+    cy.get('.viewport').should('have.attr', 'aria-busy', 'true');
+    cy.get('[data-carousel-action="next"]').should('be.focused');
+    cy.then(() => finite.finish());
+    cy.get('.viewport').should('have.attr', 'aria-busy', 'false');
+    cy.get('[aria-label="Slide 5 of 5"]').should('be.focused');
+    cy.then(() => handles.forEach(animation => expect(animation.playState).to.equal('idle')));
+  });
+
+  it('continues autoplay when none of the returned animations is advancing', () => {
+    renderCarousel({
+      autoplay: true,
+      autoplayInterval: 1000,
+      transition: ({ incoming }) => {
+        const paused = incoming.animate([], 60000);
+        paused.pause();
+        const idle = incoming.animate([], 60000);
+        idle.cancel();
+        const stopped = incoming.animate([], 60000);
+        stopped.playbackRate = 0;
+        return [paused, idle, stopped];
+      },
+    });
+    cy.contains('button', 'Play').focus().realPress('Enter');
+    cy.get('[role="tab"]').last().should('have.attr', 'aria-selected', 'true');
+    cy.get('.viewport').should('have.attr', 'aria-busy', 'false');
   });
 
   it('settles immediately when an input in the outgoing group would lose focus', () => {

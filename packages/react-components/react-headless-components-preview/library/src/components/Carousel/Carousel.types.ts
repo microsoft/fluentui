@@ -13,7 +13,7 @@ export type CarouselIndexChangeData = EventData<'select', React.SyntheticEvent |
   reason: 'previous' | 'next' | 'nav' | 'autoplay';
 };
 
-/** Consumer-owned animation values. The carousel cancels and awaits the returned native animations. */
+/** The carousel awaits finite, running animations and cancels all returned handles on settlement or interruption. */
 export type CarouselTransition = (data: {
   incoming: HTMLElement;
   outgoing: HTMLElement;

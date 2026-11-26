@@ -19,6 +19,14 @@ import { Provider } from '../Provider';
 
 const items = ['A', 'B', 'C', 'D', 'E'];
 const selected = () => screen.getByRole('tab', { selected: true });
+const runningAnimation = (finished: Promise<unknown>, cancel: () => void): Animation =>
+  ({
+    finished,
+    cancel,
+    playState: 'running',
+    playbackRate: 1,
+    effect: { getComputedTiming: () => ({ endTime: 100 }) },
+  } as unknown as Animation);
 
 type ExampleProps = Partial<CarouselProps> & {
   buttons?: boolean;
@@ -355,16 +363,16 @@ describe('Carousel', () => {
 
   it('defers announcements and boundary focus, cancels interrupted animation and releases it on unmount', async () => {
     const resolvers: (() => void)[] = [];
-    const animations: { finished: Promise<void>; cancel: jest.Mock }[] = [];
+    const animations: Animation[] = [];
     const transition = jest.fn(() => {
-      const animation = {
-        finished: new Promise<void>(resolve => {
+      const animation = runningAnimation(
+        new Promise<void>(resolve => {
           resolvers.push(resolve);
         }),
-        cancel: jest.fn(),
-      };
+        jest.fn(),
+      );
       animations.push(animation);
-      return [animation as unknown as Animation];
+      return [animation];
     });
     const { container, unmount } = render(example({ transition }));
     const next = screen.getByRole('button', { name: 'Next' });
@@ -391,7 +399,7 @@ describe('Carousel', () => {
 
   it('settles motion immediately on entry into a slide', () => {
     const cancel = jest.fn();
-    const transition = jest.fn(() => [{ finished: new Promise(jest.fn()), cancel } as unknown as Animation]);
+    const transition = jest.fn(() => [runningAnimation(new Promise(jest.fn()), cancel)]);
     render(example({ transition }));
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
     const slide = screen.getByRole('group', { name: 'Slide 3 of 5' });
@@ -424,7 +432,7 @@ describe('Carousel', () => {
     };
     replaceProperty(win, 'matchMedia', () => media);
     const cancel = jest.fn();
-    const transition = () => [{ finished: new Promise(jest.fn()), cancel } as unknown as Animation];
+    const transition = () => [runningAnimation(new Promise(jest.fn()), cancel)];
     const { unmount } = render(example({ autoplay: true, circular: true, autoplayInterval: 1000, transition }));
     fireEvent.click(screen.getByRole('button', { name: 'Play' }));
     act(() => jest.advanceTimersByTime(1000));
@@ -708,7 +716,7 @@ describe('Carousel', () => {
           const finished = new Promise<void>(done => {
             resolve = done;
           });
-          return [{ finished, cancel } as unknown as Animation];
+          return [runningAnimation(finished, cancel)];
         },
       });
     const { rerender } = render(view('Notes'));

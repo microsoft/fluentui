@@ -30,13 +30,18 @@ export const useCarouselDirectionButton = (
   const buttonSlot = slot.always(button, { elementType: Button });
   const present = !isControlHidden(props) && !isControlHidden(buttonSlot);
   const wrapperDisabled = isControlDisabled(rest);
-  useCarouselPart(kind, present, !wrapperDisabled && !isControlDisabled(buttonSlot));
+  const enabled = !wrapperDisabled && !isControlDisabled(buttonSlot);
   const boundaryHidden = kind === 'previous' ? context.previousHidden : context.nextHidden;
   const rendered = present && context.buttons;
   const [focused, setFocused] = React.useState(false);
   const retiring = focused && (!rendered || boundaryHidden);
   const hidden = boundaryHidden && !retiring;
   const wrapper = React.useRef<HTMLDivElement>(null);
+  const probe = React.useRef<HTMLTemplateElement>(null);
+  const showWrapper = rendered || retiring;
+  const probeRef = present && !showWrapper && context.pageCount > 1 ? probe : undefined;
+  const location = showWrapper ? wrapper : probeRef;
+  useCarouselPart(kind, present && !!location, enabled, location);
   useIsomorphicLayoutEffect(() => {
     if (retiring) {
       // Keep a retiring arrow mounted until this commit can check actual focus ownership.
@@ -83,7 +88,8 @@ export const useCarouselDirectionButton = (
     }),
     tooltip: Object.assign(tooltipSlot, { id: tooltipId }),
     kind,
-    rendered: rendered || retiring,
+    rendered: showWrapper,
+    probeRef,
     hidden,
     unavailable,
   };

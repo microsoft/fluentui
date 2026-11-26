@@ -9,7 +9,7 @@ import type { CarouselDirectionButtonSlots, CarouselDirectionButtonState } from 
 export const renderCarouselDirectionButton = (state: CarouselDirectionButtonState): JSXElement | null => {
   assertSlots<CarouselDirectionButtonSlots>(state);
   if (!state.rendered) {
-    return null;
+    return state.probeRef ? <template ref={state.probeRef} /> : null;
   }
   // Unmounting the tooltip at a boundary closes it and cancels its pending timers.
   // Non-string content keeps Tooltip mounted while hidden, so `aria-labelledby` always resolves.

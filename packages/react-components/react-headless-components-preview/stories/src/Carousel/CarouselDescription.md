@@ -29,8 +29,9 @@ Compose one viewport and at most one of each control. Parts register with `Carou
   one arrow in a `circular` collection. Otherwise (a lone non-circular arrow, no controls, or fewer than two
   groups) every slide stays visible as a static collection, and the server render matches it before parts
   register.
-- A native `hidden` or `inert` on the nav, an arrow wrapper or its `button` removes that route. Disabled arrows
-  do not count. Use props or conditional rendering rather than visually hiding the only route with CSS.
+- A native `hidden` or `inert` on the nav, an arrow wrapper or its `button` removes that route. Arrows and tabs
+  disabled by a surrounding `fieldset` do not count either; controls in its first `legend` remain operable
+  unless another fieldset disables them. Use props or conditional rendering rather than hiding the only route with CSS.
 - `CarouselAutoplayButton` enables user-started autoplay. Render it first so it is the first focus stop.
   Hiding, removing or disabling the playback control stops its session. Restoring it does not restart playback.
   `disabled` retains native button disabling; `disabledFocusable` keeps an unavailable control focusable.
@@ -69,7 +70,9 @@ else the carousel's computed direction. The headless `Provider` doesn't write `d
 it on an ancestor element for RTL. Embedded controls keep their native keyboard behavior. Boundary arrows
 hide only after the transition settles, then move focus to the first visible slide (or the group's first
 tabbable element, or the group itself, for slides without `CarouselCard`); otherwise focus stays on the activating
-control. `circular` defaults to false and enables directional wrapping with both arrows always available.
+control. When controls make a static collection paged, focus moves into the selected group only if the
+previously focused content would be hidden. This layout change does not animate. `circular` defaults to
+false and enables directional wrapping with both arrows always available.
 
 ## Autoplay and motion
 
@@ -85,8 +88,9 @@ Reduced motion settles animation immediately and disables playback without remov
 Clearing the preference does not restart playback.
 
 The optional `transition` adapter on `Carousel` returns native `Animation` objects for the incoming and
-outgoing groups. The component cancels interrupted animations, waits for completion, defers live
-announcements with `aria-busy`, and handles focus, reduced motion, document visibility and unmount cleanup.
+outgoing groups. Only running animations with a finite end time and nonzero playback rate delay focus recovery,
+live announcements (`aria-busy`), or the next autoplay interval. The component cancels all returned handles
+when the finite work ends, navigation is interrupted, or the carousel unmounts.
 The example adapter uses transform and opacity with consumer-owned CSS variables; the headless library has no
 bundled motion values or styling. Without an adapter, changes are immediate.
 

@@ -114,6 +114,7 @@ type CarouselDirectionButtonState = ComponentState<CarouselDirectionButtonSlots>
     };
     kind: 'previous' | 'next';
     rendered: boolean;
+    probeRef?: React_2.RefObject<HTMLTemplateElement | null>;
     hidden: boolean;
     unavailable: boolean;
 };

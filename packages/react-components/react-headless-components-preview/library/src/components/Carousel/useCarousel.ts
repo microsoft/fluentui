@@ -87,10 +87,8 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
   // would strand the collection at a boundary, so it stays static instead.
   const hasNav = available('nav');
   const reachable = hasNav || (circular ? hasPrevious || hasNext : hasPrevious && hasNext);
-  const paged = pageCount > 1 && reachable;
-  const buttons = paged && parts.some(item => item.part === 'previous' || item.part === 'next');
-  const nav = paged && hasNav;
-  const autoplay = paged && available('autoplay');
+  const canPage = pageCount > 1 && reachable;
+  const autoplay = canPage && available('autoplay');
 
   const environment = useCarouselEnvironment(fluent.targetDocument, rootRef, autoplay);
   const selection = useCarouselSelection({
@@ -100,7 +98,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     transition,
     pageCount,
     groupSize,
-    paged,
+    paged: canPage,
     circular,
     getDir,
     targetDocument: fluent.targetDocument,
@@ -110,6 +108,9 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     viewportRef,
   });
   const { view } = selection;
+  const { paged } = view;
+  const buttons = paged && parts.some(item => item.part === 'previous' || item.part === 'next');
+  const nav = paged && hasNav;
   const lastGroup = !circular && view.index === pageCount - 1;
   // Arrival at the last group stops rotation. If Play was explicitly started there, request the restart
   // until the controlled owner accepts it, just like an ordinary advance.
