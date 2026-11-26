@@ -3,7 +3,7 @@ import { addons } from 'storybook/preview-api';
 
 import { Label } from '@fluentui/react-label';
 import { Switch, type SwitchProps } from '@fluentui/react-switch';
-import { useId, type ForwardRefComponent } from '@fluentui/react-utilities';
+import { useId, type JSXElement } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
 import { makeStyles } from '@griffel/react';
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 /**
  * Dir switch used in the react-components docs header
  */
-export const DirSwitch: ForwardRefComponent<{ dir?: 'ltr' | 'rtl' }> = React.forwardRef(({ dir = 'ltr' }, ref) => {
+export const DirSwitch = ({ dir = 'ltr' }: { dir?: 'ltr' | 'rtl' }): JSXElement => {
   const switchId = useId('dir-switch');
 
   const styles = useStyles();
@@ -42,7 +42,7 @@ export const DirSwitch: ForwardRefComponent<{ dir?: 'ltr' | 'rtl' }> = React.for
   }, []);
 
   return (
-    <div className={styles.container} ref={ref}>
+    <div className={styles.container}>
       <Label className={styles.label} htmlFor={switchId}>
         LTR
       </Label>
@@ -52,6 +52,4 @@ export const DirSwitch: ForwardRefComponent<{ dir?: 'ltr' | 'rtl' }> = React.for
       </Label>
     </div>
   );
-});
-
-DirSwitch.displayName = 'DirSwitch';
+};
