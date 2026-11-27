@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
+import type { TagPickerProps } from '@fluentui/react-tag-picker';
 import {
   TagPicker,
   TagPickerControl,
@@ -8,11 +9,10 @@ import {
   TagPickerList,
   TagPickerOption,
   TagPickerOptionGroup,
-  TagPickerProps,
 } from '@fluentui/react-tag-picker';
 import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, type StoryParameters } from 'storywright';
 import { ArrowDownFilled } from '@fluentui/react-icons';
@@ -60,7 +60,10 @@ export const Default = (props: Pick<TagPickerProps, 'appearance' | 'size'>) => {
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput aria-label="Select Employees" />
+          <TagPickerInput
+            aria-label="Select Employees"
+            placeholder={selectedOptions.length === 0 ? 'Select employees' : undefined}
+          />
         </TagPickerControl>
         <TagPickerList>
           {options
@@ -151,13 +154,18 @@ export const DefaultOpenRTL = getStoryVariant(DefaultOpen, RTL);
 
 const useStyles = makeStyles({
   padding: {
-    ...shorthands.padding('20px'),
+    padding: `${tokens.spacingVerticalXXL} ${tokens.spacingHorizontalXXL}`,
   },
-  darkBG: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    color: tokens.colorNeutralForegroundInverted2,
-    ...shorthands.marginBlock('10px'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  filledFields: {
+    marginBlock: tokens.spacingVerticalMNudge,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackground3,
   },
 });
 
@@ -173,11 +181,11 @@ export const Appearance = () => {
         <h1>Underline</h1>
         <Default appearance="underline" />
       </div>
-      <div className={mergeClasses(styles.darkBG, styles.padding)}>
+      <div className={mergeClasses(styles.filledFields, styles.padding, styles.filledDarker)}>
         <h1>Filled Darker</h1>
         <Default appearance="filled-darker" />
       </div>
-      <div className={mergeClasses(styles.darkBG, styles.padding)}>
+      <div className={mergeClasses(styles.filledFields, styles.padding, styles.filledLighter)}>
         <h1>Filled Lighter</h1>
         <Default appearance="filled-lighter" />
       </div>

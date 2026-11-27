@@ -15,7 +15,7 @@ export const Vertical = (): JSXElement => {
 Vertical.parameters = {
   docs: {
     description: {
-      story: `A slider can be oriented vertically where the max value is at the top of the slider.`,
+      story: `A slider can be oriented vertically where the max value is at the top of the slider in both LTR and RTL layouts. ArrowUp increases the value and ArrowDown decreases it.`,
     },
   },
 };

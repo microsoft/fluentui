@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { Field } from '@fluentui/react-field';
 import { Checkbox } from './Checkbox';
+import { useCheckboxBase_unstable } from './useCheckbox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import type { CheckboxOnChangeData } from './Checkbox.types';
@@ -224,5 +226,56 @@ describe('Checkbox', () => {
       const inputElement = container.querySelector('.test');
       expect(inputElement?.getAttribute('type')).toEqual('checkbox');
     });
+  });
+});
+
+describe('Checkbox DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Checkbox
+        checked="mixed"
+        className="custom"
+        label="Label"
+        labelPosition="before"
+        onChange={jest.fn()}
+        shape="circular"
+        size="large"
+        style={{ color: 'red' }}
+        title="Title"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(root.querySelector('input')!.getAttributeNames().sort()).toEqual(['class', 'id', 'title', 'type']);
+  });
+
+  it('forwards native capture events to the input', () => {
+    const onPointerDownCapture = jest.fn((event: React.PointerEvent<HTMLInputElement>) => {
+      expect(event.currentTarget.tagName).toBe('INPUT');
+    });
+    const { container } = render(<Checkbox onPointerDownCapture={onPointerDownCapture} />);
+    const renderedInput = container.querySelector('input')!;
+
+    fireEvent.pointerDown(renderedInput);
+
+    expect(onPointerDownCapture).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not forward component props from the base hook to the root and input slots', () => {
+    const { result } = renderHook(() =>
+      useCheckboxBase_unstable(
+        { checked: true, className: 'custom', label: 'Label', labelPosition: 'before', onChange: jest.fn() },
+        React.createRef(),
+      ),
+    );
+
+    expect(Object.keys(result.current.root).sort()).toEqual(['className', 'style']);
+    expect(result.current.input).not.toHaveProperty('label');
+    expect(result.current.input).not.toHaveProperty('labelPosition');
+    expect(result.current.input).not.toHaveProperty('className');
   });
 });

@@ -14,7 +14,12 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 
-import type { TagPickerControlBaseState, TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
+import type {
+  TagPickerControlBaseProps,
+  TagPickerControlBaseState,
+  TagPickerControlProps,
+  TagPickerControlState,
+} from './TagPickerControl.types';
 import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useExpandLabel } from '../../utils/useExpandLabel';
@@ -27,9 +32,11 @@ import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
  * @param ref - reference to root HTMLDivElement of TagPickerControl
  */
 export const useTagPickerControlBase_unstable = (
-  props: TagPickerControlProps,
+  props: TagPickerControlBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlBaseState => {
+  const { toggleOn = 'mousedown' } = props;
+  const pendingOpen = React.useRef<boolean | undefined>(undefined);
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
@@ -92,8 +99,15 @@ export const useTagPickerControlBase_unstable = (
     aside.ref = mergedAsideRefs;
   }
 
+  const handleMouseDownCapture = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onMouseDownCapture?.(event);
+  });
+
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.isDefaultPrevented()) {
+    pendingOpen.current = undefined;
+    props.onMouseDown?.(event);
+    if (event.isDefaultPrevented() || (toggleOn === 'click' && (disabled || event.button !== 0))) {
       return;
     }
     if (
@@ -103,9 +117,40 @@ export const useTagPickerControlBase_unstable = (
       event.target === asideRef.current
     ) {
       event.preventDefault();
-      setOpen(event, !open);
+      if (toggleOn === 'click') {
+        // Light dismiss can close the popover before click; retain the intent from gesture start.
+        pendingOpen.current = !open;
+      } else {
+        setOpen(event, !open);
+      }
       triggerRef.current?.focus();
     }
+  });
+
+  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    const nextOpen = pendingOpen.current;
+    pendingOpen.current = undefined;
+    props.onClick?.(event);
+    if (!disabled && nextOpen !== undefined && !event.isDefaultPrevented()) {
+      setOpen(event, nextOpen);
+    }
+  });
+
+  const handleBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    props.onBlur?.(event);
+    if (!elementContains(event.currentTarget, event.relatedTarget)) {
+      pendingOpen.current = undefined;
+    }
+  });
+
+  const handleMouseLeave = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onMouseLeave?.(event);
+  });
+
+  const handlePointerCancel = useEventCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onPointerCancel?.(event);
   });
 
   const state: TagPickerControlBaseState = {
@@ -121,6 +166,13 @@ export const useTagPickerControlBase_unstable = (
         'aria-owns': open && !noPopover ? popoverId : undefined,
         ...props,
         onMouseDown: handleMouseDown,
+        ...(toggleOn === 'click' && {
+          onMouseDownCapture: handleMouseDownCapture,
+          onClick: handleClick,
+          onBlur: handleBlur,
+          onMouseLeave: handleMouseLeave,
+          onPointerCancel: handlePointerCancel,
+        }),
       }),
       { elementType: 'div' },
     ),

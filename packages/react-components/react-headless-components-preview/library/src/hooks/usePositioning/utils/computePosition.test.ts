@@ -15,9 +15,10 @@ function makeRect(rect: Partial<DOMRect>): DOMRect {
   } as DOMRect;
 }
 
-function makeElement(rect: Partial<DOMRect>): HTMLElement {
+function makeElement(rect: Partial<DOMRect>, { rendered = true } = {}): HTMLElement {
   const el = document.createElement('div');
   el.getBoundingClientRect = () => makeRect(rect);
+  el.getClientRects = () => (rendered ? [makeRect(rect)] : []) as unknown as DOMRectList;
   return el;
 }
 
@@ -78,6 +79,34 @@ describe('computePosition', () => {
     const floating = makeElement({ top: 150, left: 125, right: 175, bottom: 201.5, width: 50, height: 51.5 });
 
     expect(computePosition(reference, floating)?.position).toBe('above');
+  });
+
+  it('returns null when the floating element is not rendered', () => {
+    const reference = makeElement({ top: 200, left: 100, right: 200, bottom: 240, width: 100, height: 40 });
+    const floating = makeElement({}, { rendered: false });
+
+    expect(computePosition(reference, floating)).toBeNull();
+  });
+
+  it('measures a rendered floating element scaled to a point', () => {
+    const reference = makeElement({ top: 100, left: 100, width: 100, height: 40 });
+    const floating = makeElement({ top: 165, left: 150, right: 150, bottom: 165, width: 0, height: 0 });
+
+    expect(computePosition(reference, floating)?.position).toBe('below');
+  });
+
+  it('returns null when the reference element is not rendered', () => {
+    const reference = makeElement({}, { rendered: false });
+    const floating = makeElement({ top: 150, left: 125, right: 175, bottom: 190, width: 50, height: 40 });
+
+    expect(computePosition(reference, floating)).toBeNull();
+  });
+
+  it('accepts a laid-out 0x0 reference as a point anchor', () => {
+    const reference = makeElement({ top: 200, left: 100, width: 0, height: 0 });
+    const floating = makeElement({ top: 150, left: 75, right: 125, bottom: 190, width: 50, height: 40 });
+
+    expect(computePosition(reference, floating)?.placement).toBe('above');
   });
 
   it('respects a custom tolerance', () => {

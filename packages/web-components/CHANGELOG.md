@@ -1,8 +1,46 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Tue, 10 Nov 2026 04:11:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 26 Nov 2026 04:08:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.5)
+
+Thu, 26 Nov 2026 04:08:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.4..@fluentui/web-components_v3.2.5)
+
+### Patches
+
+- fix: restore menu list keyboard navigation after reconnect ([PR #36871](https://github.com/microsoft/fluentui/pull/36871) by aseebshibin4@gmail.com)
+- fix: stop setTheme from retaining every theme object and element-scoped style sheet ([PR #37151](https://github.com/microsoft/fluentui/pull/37151) by eruvalca@outlook.com)
+- Fix `spellcheck` conversion and propagation for TextInput and TextArea. ([PR #36500](https://github.com/microsoft/fluentui/pull/36500) by 863023+radium-v@users.noreply.github.com)
+
+## [3.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.4)
+
+Wed, 25 Nov 2026 04:08:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.3..@fluentui/web-components_v3.2.4)
+
+### Patches
+
+- fix: remove disabled tabs from native focusgroup navigation when deselected ([PR #37169](https://github.com/microsoft/fluentui/pull/37169) by paulmardling@microsoft.com)
+
+## [3.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.3)
+
+Tue, 24 Nov 2026 04:08:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.2..@fluentui/web-components_v3.2.3)
+
+### Patches
+
+- Recognize radio subclasses by element identity regardless of tag name and deprecate the tag-name-based isRadio helper. ([PR #37208](https://github.com/microsoft/fluentui/pull/37208) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.2)
+
+Mon, 23 Nov 2026 04:10:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.1..@fluentui/web-components_v3.2.2)
+
+### Patches
+
+- refactor: move default attributes from template into connectedCallback while preserving consumer overrides ([PR #37181](https://github.com/microsoft/fluentui/pull/37181) by machi@microsoft.com)
 
 ## [3.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.1)
 
