@@ -175,3 +175,29 @@ describe('Text', () => {
     `);
   });
 });
+
+describe('Text DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Text
+        align="center"
+        block
+        font="monospace"
+        italic
+        size={500}
+        strikethrough
+        truncate
+        underline
+        weight="bold"
+        wrap={false}
+      >
+        Text
+      </Text>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});

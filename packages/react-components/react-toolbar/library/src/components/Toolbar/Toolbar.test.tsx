@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { Toolbar } from './Toolbar';
 import { isConformant } from '../../testing/isConformant';
+import { useToolbarBase_unstable } from './useToolbar';
 
 describe('Toolbar', () => {
   isConformant({
@@ -19,5 +21,37 @@ describe('Toolbar', () => {
   it('renders a default state', () => {
     const result = render(<Toolbar>Default Toolbar</Toolbar>);
     expect(result.container).toMatchSnapshot();
+  });
+});
+
+describe('Toolbar DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(<Toolbar checkedValues={{}} onCheckedValueChange={jest.fn()} size="large" vertical />);
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-orientation',
+      'class',
+      'data-tabster',
+      'role',
+    ]);
+  });
+});
+
+describe('useToolbarBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useToolbarBase_unstable(
+        { checkedValues: {}, defaultCheckedValues: {}, onCheckedValueChange: jest.fn(), vertical: true },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('checkedValues');
+    expect(result.current.root).not.toHaveProperty('defaultCheckedValues');
+    expect(result.current.root).not.toHaveProperty('onCheckedValueChange');
+    expect(result.current.root).not.toHaveProperty('vertical');
   });
 });

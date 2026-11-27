@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkBaseProps, LinkBaseState, LinkProps, LinkState } from './Link.types';
@@ -41,7 +41,7 @@ export const useLinkBase_unstable = (
   props: LinkBaseProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkBaseState => {
-  const { disabled = false, disabledFocusable = false } = props;
+  const { disabled = false, disabledFocusable = false, ...rest } = props;
 
   const elementType = props.as || (props.href ? 'a' : 'button');
 
@@ -49,7 +49,7 @@ export const useLinkBase_unstable = (
   const propsWithAssignedAs = {
     role: elementType === 'span' ? 'button' : undefined,
     type: elementType === 'button' ? 'button' : undefined,
-    ...props,
+    ...rest,
     as: elementType,
   } as LinkBaseProps;
 
@@ -64,10 +64,10 @@ export const useLinkBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps<LinkBaseProps>(elementType, {
+      {
         ref,
         ...propsWithAssignedAs,
-      } as const),
+      } as LinkBaseState['root'],
       { elementType },
     ),
   };

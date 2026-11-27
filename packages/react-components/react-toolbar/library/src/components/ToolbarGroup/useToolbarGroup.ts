@@ -3,7 +3,7 @@
 import type * as React from 'react';
 
 import type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup.types';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 
 /**
@@ -37,11 +37,11 @@ export const useToolbarGroupBase_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps<React.HTMLAttributes<HTMLDivElement>>('div', {
+      {
         ref,
         role: 'presentation',
         ...props,
-      }),
+      },
       { elementType: 'div' },
     ),
     vertical,

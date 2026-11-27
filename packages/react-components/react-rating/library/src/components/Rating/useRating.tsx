@@ -1,14 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  isHTMLElement,
-  mergeCallbacks,
-  slot,
-  useControllableState,
-  useId,
-} from '@fluentui/react-utilities';
+import { isHTMLElement, mergeCallbacks, slot, useControllableState, useId } from '@fluentui/react-utilities';
 import type { RatingBaseProps, RatingBaseState, RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
@@ -57,11 +50,22 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
  */
 export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HTMLDivElement>): RatingBaseState => {
   const generatedName = useId('rating-');
-  const { iconFilled = 'span', iconOutline = 'span', name = generatedName, onChange, step = 1, itemLabel } = props;
+  const {
+    iconFilled = 'span',
+    iconOutline = 'span',
+    name = generatedName,
+    onChange,
+    step = 1,
+    itemLabel,
+    value: valueProp,
+    defaultValue,
+    max,
+    ...rest
+  } = props;
 
   const [value, setValue] = useControllableState({
-    state: props.value,
-    defaultState: props.defaultValue,
+    state: valueProp,
+    defaultState: defaultValue,
     initialState: 0,
   });
 
@@ -81,15 +85,11 @@ export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HT
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps(
-        'div',
-        {
-          ref,
-          role: 'radiogroup',
-          ...props,
-        },
-        ['onChange'],
-      ),
+      {
+        ref,
+        role: 'radiogroup',
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };

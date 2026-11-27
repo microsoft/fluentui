@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 import { isConformant } from '../../testing/isConformant';
+import { useBreadcrumbDividerBase_unstable } from './useBreadcrumbDivider';
 
 describe('BreadcrumbDivider', () => {
   isConformant({
@@ -35,5 +37,21 @@ describe('BreadcrumbDivider', () => {
         </li>
       </div>
     `);
+  });
+
+  it('forwards native attributes not in the old allow-list', () => {
+    const { container } = render(<BreadcrumbDivider autoCapitalize="off" />);
+
+    expect((container.firstElementChild as HTMLElement).getAttribute('autocapitalize')).toBe('off');
+  });
+});
+
+describe('useBreadcrumbDividerBase_unstable base hook', () => {
+  it('sets aria-hidden on the root slot', () => {
+    const { result } = renderHook(() => useBreadcrumbDividerBase_unstable({}, React.createRef()));
+
+    expect(result.current.root).toMatchObject({
+      'aria-hidden': true,
+    });
   });
 });

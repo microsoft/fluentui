@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemBaseProps, RatingItemBaseState, RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
@@ -43,7 +43,14 @@ export const useRatingItemBase_unstable = (
   ref: React.Ref<HTMLSpanElement>,
 ): RatingItemBaseState => {
   const context = useRatingItemContextValue_unstable();
-  const { value = 0 } = props;
+  const {
+    value = 0,
+    selectedIcon: selectedIconProp,
+    unselectedIcon: unselectedIconProp,
+    halfValueInput: halfValueInputProp,
+    fullValueInput: fullValueInputProp,
+    ...rest
+  } = props;
   const { itemLabel = defaultItemLabel, iconFilled: IconFilled, iconOutline: IconOutline } = context;
 
   const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
@@ -62,16 +69,16 @@ export const useRatingItemBase_unstable = (
   }
 
   const root = slot.always(
-    getIntrinsicElementProps('span', {
+    {
       ref,
-      ...props,
-    }),
+      ...rest,
+    },
     { elementType: 'span' },
   );
 
   let unselectedIcon;
   if (iconFillWidth < 1) {
-    unselectedIcon = slot.always(props.unselectedIcon, {
+    unselectedIcon = slot.always(unselectedIconProp, {
       defaultProps: {
         children: appearance === 'filled' ? <IconFilled /> : <IconOutline />,
         'aria-hidden': true,
@@ -82,7 +89,7 @@ export const useRatingItemBase_unstable = (
 
   let selectedIcon;
   if (iconFillWidth > 0) {
-    selectedIcon = slot.always(props.selectedIcon, {
+    selectedIcon = slot.always(selectedIconProp, {
       defaultProps: {
         children: <IconFilled />,
         'aria-hidden': true,
@@ -93,7 +100,7 @@ export const useRatingItemBase_unstable = (
 
   let halfValueInput;
   if (context.interactive && context.step === 0.5) {
-    halfValueInput = slot.always(props.halfValueInput, {
+    halfValueInput = slot.always(halfValueInputProp, {
       defaultProps: {
         type: 'radio',
         name: context.name,
@@ -111,7 +118,7 @@ export const useRatingItemBase_unstable = (
 
   let fullValueInput;
   if (context.interactive) {
-    fullValueInput = slot.always(props.fullValueInput, {
+    fullValueInput = slot.always(fullValueInputProp, {
       defaultProps: {
         type: 'radio',
         name: context.name,

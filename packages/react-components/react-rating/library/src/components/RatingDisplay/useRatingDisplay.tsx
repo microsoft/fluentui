@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
+import { slot, useId } from '@fluentui/react-utilities';
 import type {
   RatingDisplayBaseProps,
   RatingDisplayBaseState,
@@ -61,7 +61,7 @@ export const useRatingDisplayBase_unstable = (
   props: RatingDisplayBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayBaseState => {
-  const { count, compact = false, icon, max = 5, value } = props;
+  const { count, compact = false, icon, max = 5, value, valueText, countText, ...rest } = props;
 
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
@@ -77,19 +77,19 @@ export const useRatingDisplayBase_unstable = (
       countText: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         role: 'img',
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
-    valueText: slot.optional(props.valueText, {
+    valueText: slot.optional(valueText, {
       renderByDefault: value !== undefined,
       defaultProps: { children: value, id: valueTextId, 'aria-hidden': true },
       elementType: 'span',
     }),
-    countText: slot.optional(props.countText, {
+    countText: slot.optional(countText, {
       renderByDefault: count !== undefined,
       defaultProps: { children: count?.toLocaleString(), id: countTextId, 'aria-hidden': true },
       elementType: 'span',

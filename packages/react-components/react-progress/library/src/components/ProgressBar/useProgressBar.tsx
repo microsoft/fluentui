@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { motionSlot } from '@fluentui/react-motion';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
 import type {
   ProgressBarProps,
@@ -70,11 +70,12 @@ export const useProgressBarBase_unstable = (
 ): ProgressBarBaseState => {
   const field = useFieldContext_unstable();
 
-  const max = clampMax(props.max ?? 1);
-  const value = clampValue(props.value, max);
+  const { max: maxProp, value: valueProp, bar: barProp, ...rest } = props;
+  const max = clampMax(maxProp ?? 1);
+  const value = clampValue(valueProp, max);
 
   const root = slot.always(
-    getIntrinsicElementProps('div', {
+    {
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
       // but since it would be a breaking change to fix it, we are casting ref to it's proper type
@@ -84,8 +85,8 @@ export const useProgressBarBase_unstable = (
       'aria-valuemax': value !== undefined ? max : undefined,
       'aria-valuenow': value,
       'aria-labelledby': field?.labelId,
-      ...props,
-    }),
+      ...rest,
+    },
     { elementType: 'div' },
   );
   if (field && (field.validationMessageId || field.hintId)) {
@@ -94,7 +95,7 @@ export const useProgressBarBase_unstable = (
       .filter(Boolean)
       .join(' ');
   }
-  const bar = slot.always(props.bar, { elementType: 'div' });
+  const bar = slot.always(barProp, { elementType: 'div' });
 
   return {
     max,

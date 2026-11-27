@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { Field } from '@fluentui/react-field';
 import { ProgressBar } from './ProgressBar';
 import { isConformant } from '../../testing/isConformant';
+import { useProgressBarBase_unstable } from './useProgressBar';
 
 describe('ProgressBar', () => {
   isConformant({
@@ -105,5 +107,32 @@ describe('ProgressBar', () => {
 
     expect(progressbar.getAttribute('aria-labelledby')).toEqual(label.id);
     expect(progressbar.getAttribute('aria-describedby')).toEqual(message.id + ' test-describedby');
+  });
+});
+
+describe('ProgressBar DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(<ProgressBar color="success" max={10} shape="square" thickness="large" value={5} />);
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-valuemax',
+      'aria-valuemin',
+      'aria-valuenow',
+      'class',
+      'role',
+    ]);
+  });
+});
+
+describe('useProgressBarBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() => useProgressBarBase_unstable({ bar: {}, max: 10, value: 5 }, React.createRef()));
+
+    expect(result.current.root).not.toHaveProperty('bar');
+    expect(result.current.root).not.toHaveProperty('max');
+    expect(result.current.root).not.toHaveProperty('value');
   });
 });

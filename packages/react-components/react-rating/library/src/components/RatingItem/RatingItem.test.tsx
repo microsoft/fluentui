@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../testing/isConformant';
 import { RatingItem } from './RatingItem';
 import { RatingItemProvider } from '../../contexts/RatingItemContext';
 import type { RatingItemContextValue } from './RatingItem.types';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
+import { useRatingItemBase_unstable } from './useRatingItem';
 
 describe('RatingItem', () => {
   isConformant({
@@ -108,5 +110,52 @@ describe('RatingItem', () => {
     const checkedInputs = inputs.filter(input => input.checked);
     expect(checkedInputs.length).toEqual(1);
     expect(checkedInputs[0].value).toEqual(contextValues.value?.toString());
+  });
+});
+
+describe('RatingItem DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const contextValues: RatingItemContextValue = {
+      value: 3,
+      interactive: true,
+      iconFilled: StarFilled,
+      iconOutline: StarRegular,
+      color: 'neutral',
+      step: 0.5,
+      size: 'medium',
+    };
+    const { container } = render(
+      <RatingItemProvider value={contextValues}>
+        <RatingItem value={2} selectedIcon={{}} unselectedIcon={{}} halfValueInput={{}} fullValueInput={{}} />
+      </RatingItemProvider>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
+
+describe('useRatingItemBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useRatingItemBase_unstable(
+        {
+          value: 2,
+          selectedIcon: <span />,
+          unselectedIcon: <span />,
+          halfValueInput: {},
+          fullValueInput: {},
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('value');
+    expect(result.current.root).not.toHaveProperty('selectedIcon');
+    expect(result.current.root).not.toHaveProperty('unselectedIcon');
+    expect(result.current.root).not.toHaveProperty('halfValueInput');
+    expect(result.current.root).not.toHaveProperty('fullValueInput');
   });
 });

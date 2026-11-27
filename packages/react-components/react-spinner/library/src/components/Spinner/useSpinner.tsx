@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
+import { useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerBaseProps, SpinnerBaseState, SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { useSpinnerContext } from '../../contexts/SpinnerContext';
@@ -45,19 +45,18 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
  * @param ref - User provided ref to be passed to the Spinner component.
  */
 export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<HTMLElement>): SpinnerBaseState => {
-  const { delay = 0, labelPosition = 'after' } = props;
+  const { delay = 0, labelPosition = 'after', role = 'progressbar', label, spinner, spinnerTail, ...rest } = props;
   const baseId = useId('spinner');
 
-  const { role = 'progressbar', ...rest } = props;
   const nativeRoot = slot.always(
-    getIntrinsicElementProps('div', {
+    {
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
       // but since it would be a breaking change to fix it, we are casting ref to it's proper type
       ref: ref as React.Ref<HTMLDivElement>,
       role,
       ...rest,
-    }),
+    },
     {
       elementType: 'div',
     },
@@ -75,12 +74,12 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
       clearDelayTimeout();
     };
   }, [setDelayTimeout, clearDelayTimeout, delay]);
-  const labelShorthand = slot.optional(props.label, {
+  const labelShorthand = slot.optional(label, {
     defaultProps: { id: baseId },
     renderByDefault: false,
     elementType: 'label',
   });
-  const spinnerShortHand = slot.optional(props.spinner, {
+  const spinnerShortHand = slot.optional(spinner, {
     renderByDefault: true,
     elementType: 'span',
   });
@@ -94,7 +93,7 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
     components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: 'label' },
     root: nativeRoot,
     spinner: spinnerShortHand,
-    spinnerTail: slot.always(props.spinnerTail, { elementType: 'span' }),
+    spinnerTail: slot.always(spinnerTail, { elementType: 'span' }),
     label: labelShorthand,
   };
   return state;

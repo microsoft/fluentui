@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
+import { useId, slot } from '@fluentui/react-utilities';
 import type { CardHeaderBaseProps, CardHeaderBaseState, CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 
@@ -68,7 +68,7 @@ export const useCardHeaderBase_unstable = (
   props: CardHeaderBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardHeaderBaseState => {
-  const { image, header, description, action } = props;
+  const { image, header, description, action, ...rest } = props;
 
   const {
     selectableA11yProps: { referenceId, setReferenceId },
@@ -98,13 +98,13 @@ export const useCardHeaderBase_unstable = (
     components: { root: 'div', image: 'div', header: 'div', description: 'div', action: 'div' },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: ref as React.Ref<HTMLDivElement>,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     image: slot.optional(image, { elementType: 'div' }),

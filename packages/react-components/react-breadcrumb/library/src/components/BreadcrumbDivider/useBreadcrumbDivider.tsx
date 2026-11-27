@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   BreadcrumbDividerBaseProps,
   BreadcrumbDividerBaseState,
@@ -55,11 +55,11 @@ export const useBreadcrumbDividerBase_unstable = (
       root: 'li',
     },
     root: slot.always(
-      getIntrinsicElementProps('li', {
+      {
         ref,
         'aria-hidden': true,
         ...props,
-      }),
+      },
       { elementType: 'li' },
     ),
   };

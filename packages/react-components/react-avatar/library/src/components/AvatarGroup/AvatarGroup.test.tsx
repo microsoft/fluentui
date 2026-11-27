@@ -4,6 +4,8 @@ import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../testing/isConformant';
 import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
 import { render, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
+import { useAvatarGroupBase_unstable } from './useAvatarGroup';
 
 describe('AvatarGroup', () => {
   isConformant({
@@ -46,5 +48,24 @@ describe('AvatarGroup', () => {
     );
 
     expect(screen.getByRole('button').textContent).toBe('');
+  });
+});
+
+describe('AvatarGroup DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(<AvatarGroup layout="stack" size={40} />);
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'role']);
+  });
+});
+
+describe('useAvatarGroupBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() => useAvatarGroupBase_unstable({ layout: 'pie' }, React.createRef()));
+
+    expect(result.current.root).not.toHaveProperty('layout');
   });
 });
