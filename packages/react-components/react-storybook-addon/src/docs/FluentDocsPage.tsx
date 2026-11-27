@@ -179,6 +179,11 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
   };
 
   const transformArgTypeNameWithSlotShorthand = (typeName: string) => {
+    // Docgen expands polymorphic slots into unions with required `as` discriminants.
+    if (typeName.includes(' | ') && /as:\s*"[^"]+"/.test(typeName) && typeName.includes('Omit<DetailedHTMLProps<')) {
+      hasArgAsSlot = true;
+      return 'Slot';
+    }
     const match = typeName.match(slotRegex);
 
     if (match) {
@@ -300,7 +305,7 @@ const RenderArgsTable = ({
                 approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
                 primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
                 component structures, similar to slots in other frameworks.{' '}
-                <Link href="./?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                <Link href="https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
                   Customizing components with slots{' '}
                 </Link>
               </span>

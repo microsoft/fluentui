@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Normalize polymorphic slot types and link shared slot guidance across v9 documentation surfaces.",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "paulmardling@microsoft.com"
+}

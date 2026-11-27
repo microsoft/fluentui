@@ -23,6 +23,7 @@
     "@fluentui/react-calendar-preview": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-datepicker-preview": "*",
     "@fluentui/react-icons-compat": "*",
     "@fluentui/react-icons-northstar": "*",
     "@fluentui/react-menu-grid-preview": "*",

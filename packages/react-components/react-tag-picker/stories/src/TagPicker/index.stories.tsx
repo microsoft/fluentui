@@ -6,6 +6,7 @@ import {
   TagPickerList,
   TagPickerOption,
   TagPickerGroup,
+  TagPickerOptionGroup,
 } from '@fluentui/react-components';
 
 import descriptionMd from './TagPickerDescription.md';
@@ -30,7 +31,15 @@ export { SingleLine } from './TagPickerSingleLine.stories';
 export default {
   title: 'Components/TagPicker',
   component: TagPicker,
-  subcomponents: { TagPickerControl, TagPickerGroup, TagPickerButton, TagPickerInput, TagPickerList, TagPickerOption },
+  subcomponents: {
+    TagPickerControl,
+    TagPickerGroup,
+    TagPickerButton,
+    TagPickerInput,
+    TagPickerList,
+    TagPickerOption,
+    TagPickerOptionGroup,
+  },
   parameters: {
     docs: {
       description: {

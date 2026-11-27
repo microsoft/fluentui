@@ -1,4 +1,21 @@
-import { Nav } from '@fluentui/react-components';
+import {
+  AppItem,
+  AppItemStatic,
+  Hamburger,
+  Nav,
+  NavCategory,
+  NavCategoryItem,
+  NavDivider,
+  NavDrawer,
+  NavDrawerBody,
+  NavDrawerFooter,
+  NavDrawerHeader,
+  NavItem,
+  NavSectionHeader,
+  NavSubItem,
+  NavSubItemGroup,
+  SplitNavItem,
+} from '@fluentui/react-components';
 
 import descriptionMd from './NavDescription.md';
 import accessibilityMd from './NavAccessibility.md';
@@ -12,6 +29,23 @@ export { CustomMotion } from './CustomMotion.stories';
 export default {
   title: 'Components/Nav',
   component: Nav,
+  subcomponents: {
+    AppItem,
+    AppItemStatic,
+    Hamburger,
+    NavCategory,
+    NavCategoryItem,
+    NavDivider,
+    NavDrawer,
+    NavDrawerBody,
+    NavDrawerFooter,
+    NavDrawerHeader,
+    NavItem,
+    NavSectionHeader,
+    NavSubItem,
+    NavSubItemGroup,
+    SplitNavItem,
+  },
   parameters: {
     docs: {
       description: {

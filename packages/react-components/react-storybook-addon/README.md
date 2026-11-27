@@ -63,6 +63,11 @@ customization guidance, including when Storybook reuses already normalized story
 or component metadata. Set `reactStorybookAddon.docs.argTable.slotsApi` to `false`
 to disable slot normalization and guidance.
 
+Register related components in CSF `subcomponents` to include their props-table
+tabs. Slot guidance links to the shared v9 documentation, including from the
+separate headless docsite. Polymorphic slots whose docgen output expands to a
+union are displayed as `Slot` rather than choosing one tag from the union.
+
 ## Getting Started
 
 ### Installation

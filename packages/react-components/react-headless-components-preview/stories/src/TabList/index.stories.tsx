@@ -1,4 +1,4 @@
-import { TabList } from '@fluentui/react-headless-components-preview/tab-list';
+import { Tab, TabList } from '@fluentui/react-headless-components-preview/tab-list';
 
 import descriptionMd from './TabListDescription.md';
 
@@ -9,6 +9,7 @@ export { Default } from './TabListDefault.stories';
 export default {
   title: 'Components/TabList',
   component: TabList,
+  subcomponents: { Tab },
   parameters: {
     docs: {
       description: {
