@@ -75,6 +75,8 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
+    // The button fills the cell, so it inherits the cell's justifyContent to place the header content.
+    justifyContent: 'inherit',
     gap: tokens.spacingHorizontalXS,
     minHeight: '32px',
     flex: '1 1 0px',

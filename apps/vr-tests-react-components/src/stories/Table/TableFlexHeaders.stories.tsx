@@ -1,10 +1,10 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { Table } from '@fluentui/react-table';
+import type { Table } from '@fluentui/react-table';
 import { Steps } from 'storywright';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST } from '../../utilities';
 import type { StoryParameters } from 'storywright';
-import { SortableHeaders } from './utils';
+import { SortableHeaders, SortableHeadersJustifyContent } from './utils';
 
 export default {
   title: 'Table layout flex - headers',
@@ -26,3 +26,9 @@ Sortable.storyName = 'sortable';
 export const SortableDarkMode = getStoryVariant(Sortable, DARK_MODE);
 
 export const SortableHighContrast = getStoryVariant(Sortable, HIGH_CONTRAST);
+
+export const SortableJustifyContent = () => <SortableHeadersJustifyContent noNativeElements={true} />;
+SortableJustifyContent.storyName = 'sortable - justify content';
+SortableJustifyContent.parameters = {
+  storyWright: { steps: new Steps().snapshot('default').end() },
+} satisfies StoryParameters;
