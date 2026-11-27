@@ -37,7 +37,7 @@ We use a path-based rendering technique to show datasets with large number of po
 
 #### Chart without data
 
-A line chart without data points shows nothing. To show the empty axes instead, give both axes a range through props. For the y-axis, set `yMaxValue`, and also `yMinValue` if the range does not start at 0. On a log y-axis, `yMinValue` must be greater than 0. On a log x-axis, `xMinValue` must be greater than 0 when it is set. For the x-axis, set `tickValues` to at least two different dates or numbers. A numeric x-axis can also take its range from `xMinValue` and `xMaxValue`. Numeric tick values define the range only while the chart has no data. With data, the range comes from the data, `xMinValue` and `xMaxValue`. Color fill bars are drawn on the empty axes as well, from `yMinValue`, or 0, up to `yMaxValue`.
+A line chart without data points shows nothing. To show the empty axes instead, give both axes a range through props. For the y-axis, set `yMaxValue`, and also `yMinValue` if the range does not start at 0. On a log y-axis, `yMinValue` must be greater than 0. On a log x-axis, `xMinValue` must be greater than 0 when it is set. For the x-axis, set `tickValues` to at least two different dates or numbers. A numeric x-axis can also take its range from `xMinValue` and `xMaxValue`. Numeric tick values define the range only while the chart has no data. With data, the range comes from the data, `xMinValue` and `xMaxValue`. Color fill bars are drawn on the empty axes as well, from `yMinValue`, or 0, up to `yMaxValue`. A secondary y-axis takes its range from `secondaryYScaleOptions`.
 
 #### Custom accessibility
 

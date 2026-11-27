@@ -1150,6 +1150,41 @@ describe('Axes of a chart without data', () => {
     expect(yLabels[yLabels.length - 1]).toBe('1k');
   });
 
+  const primaryYAxis = '[id^="yAxisGElement"]:not([id^="yAxisGElementSecondary"])';
+  const secondaryYAxis = '[id^="yAxisGElementSecondary"]';
+  const getYTickLabels = (container: HTMLElement, axis: string) =>
+    Array.from(container.querySelectorAll(`${axis} .tick`)).map(tick => tick.textContent);
+
+  it('Should take the range of the secondary y-axis from secondaryYScaleOptions', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMaxValue={40}
+        secondaryYScaleOptions={{ yMinValue: 20, yMaxValue: 60 }}
+      />,
+    );
+    expect(getYTickLabels(container, primaryYAxis)).toEqual(['0', '10', '20', '30', '40']);
+    expect(getYTickLabels(container, secondaryYAxis)).toEqual(['20', '30', '40', '50', '60']);
+  });
+
+  it('Should render a log secondary y-axis when its yMinValue is above 0', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMaxValue={40}
+        secondaryYScaleOptions={{ yMinValue: 1, yMaxValue: 100 }}
+        secondaryYScaleType="log"
+      />,
+    );
+    const labels = getYTickLabels(container, secondaryYAxis);
+    expect(labels[0]).toBe('1');
+    expect(labels[labels.length - 1]).toBe('100');
+  });
+
   it.each([
     ['there are no lines', emptyChartPoints],
     ['the lines have no data points', lineWithoutPoints],

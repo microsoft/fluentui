@@ -329,8 +329,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       yAxisType?: YAxisType,
       useSecondaryYScale?: boolean,
     ): { startValue: number; endValue: number } {
-      const yRange = _isChartEmpty() ? _getYAxisRangeFromProps() : undefined;
-      if (yRange && !useSecondaryYScale) {
+      // A chart without data points takes the range of each y-axis from the props.
+      const getYAxisRange = useSecondaryYScale ? _getSecondaryYAxisRangeFromProps : _getYAxisRangeFromProps;
+      const yRange = _isChartEmpty() ? getYAxisRange() : undefined;
+      if (yRange) {
         return { startValue: yRange[0], endValue: yRange[1] };
       }
       const { startValue, endValue } = findNumericMinMaxOfY(
@@ -1916,6 +1918,17 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     function _getYAxisRangeFromProps(): [number, number] | undefined {
       const { yMinValue = 0, yMaxValue = 0 } = props;
       return yMinValue < yMaxValue && isValidDomainValue(yMinValue, props.yScaleType)
+        ? [yMinValue, yMaxValue]
+        : undefined;
+    }
+
+    /**
+     * The range of the secondary y-axis that secondaryYScaleOptions defines on its own. Its yMinValue counts as 0
+     * and its yMaxValue as 100 when they are not set, as in CartesianChart.
+     */
+    function _getSecondaryYAxisRangeFromProps(): [number, number] | undefined {
+      const { yMinValue = 0, yMaxValue = 100 } = props.secondaryYScaleOptions ?? {};
+      return yMinValue < yMaxValue && isValidDomainValue(yMinValue, props.secondaryYScaleType)
         ? [yMinValue, yMaxValue]
         : undefined;
     }
