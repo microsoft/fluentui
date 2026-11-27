@@ -156,6 +156,14 @@ export interface PositioningOptions {
   /** The element which will define the boundaries of the positioned element for the flip behavior. */
   flipBoundary?: PositioningBoundary | null;
 
+  /**
+   * Applies padding to the flip boundary, so that the positioned surface flips before reaching the boundary.
+   * A number applies to all sides. Use `start` and `end` for direction-aware horizontal padding.
+   * Independent of `overflowBoundaryPadding`; omitted sides default to zero.
+   * @default 0
+   */
+  flipBoundaryPadding?: number | Partial<{ top: number; end: number; bottom: number; start: number }>;
+
   /** The element which will define the boundaries of the positioned element for the overflow behavior. */
   overflowBoundary?: PositioningBoundary | null;
 
@@ -281,6 +289,7 @@ export interface PositioningProps
     | 'coverTarget'
     | 'fallbackPositions'
     | 'flipBoundary'
+    | 'flipBoundaryPadding'
     | 'offset'
     | 'overflowBoundary'
     | 'overflowBoundaryPadding'
