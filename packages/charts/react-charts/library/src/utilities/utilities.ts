@@ -1977,8 +1977,8 @@ export const HighContrastSelectorBlack =
  *
  * @public
  */
-export interface RenderFunction<P> {
-  (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
+export interface RenderFunction<P, Result extends JSXElement | null | undefined = JSXElement | null> {
+  (props?: P, defaultRender?: (props?: P) => JSXElement | null): Result;
 }
 
 export const formatDate = (date: Date, useUTC?: string | boolean): string => {

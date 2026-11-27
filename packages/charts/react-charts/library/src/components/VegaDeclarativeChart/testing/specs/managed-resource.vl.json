@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A declared managed URL requires an explicit offline host resolver, then parses and transforms once.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "url": "https://fixtures.example.test/corpus/managed.json",
+    "format": { "type": "json", "parse": { "when": "utc:'%Y-%m-%d'", "amount": "number" } }
+  },
+  "transform": [{ "calculate": "datum.amount * 3", "as": "amount" }],
+  "mark": "line",
+  "encoding": {
+    "x": { "field": "when", "type": "temporal", "scale": { "type": "utc" }, "axis": { "format": "%Y-%m-%d" } },
+    "y": { "field": "amount", "type": "quantitative" },
+    "tooltip": [{ "field": "amount", "type": "quantitative", "title": "Managed", "format": ".1f" }]
+  }
+}

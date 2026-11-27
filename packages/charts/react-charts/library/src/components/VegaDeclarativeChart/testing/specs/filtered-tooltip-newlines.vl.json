@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Field predicates occur at leaves; explicit tooltips retain newlines and escaped fields without leaking other columns.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      {
+        "id": 1,
+        "keep": true,
+        "category": "primary",
+        "stats": { "amount": 4 },
+        "stats.value": 9,
+        "note": "line one\nline two",
+        "secret": "PRIVATE_CORPUS_VALUE"
+      },
+      {
+        "id": 2,
+        "keep": true,
+        "category": "primary",
+        "stats": { "amount": 1 },
+        "stats.value": 10,
+        "note": "excluded",
+        "secret": "PRIVATE_CORPUS_VALUE"
+      },
+      {
+        "id": 3,
+        "keep": false,
+        "category": "backup",
+        "stats": { "amount": 6 },
+        "stats.value": 11,
+        "note": "backup\nsecond line",
+        "secret": "PRIVATE_CORPUS_VALUE"
+      },
+      {
+        "id": 4,
+        "keep": false,
+        "category": "other",
+        "stats": { "amount": 8 },
+        "stats.value": 12,
+        "note": "excluded",
+        "secret": "PRIVATE_CORPUS_VALUE"
+      }
+    ]
+  },
+  "transform": [
+    {
+      "filter": {
+        "and": [
+          { "field": "stats.amount", "gte": 3 },
+          {
+            "or": [
+              { "field": "keep", "equal": true },
+              { "field": "category", "oneOf": ["backup"] }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "id", "type": "quantitative" },
+    "y": { "field": "stats.amount", "type": "quantitative" },
+    "tooltip": [
+      { "field": "note", "type": "nominal", "title": "Note" },
+      { "field": "stats.amount", "type": "quantitative", "title": "Amount", "format": ".1f" },
+      { "field": "stats\\.value", "type": "quantitative", "title": "Literal", "format": ".0f" }
+    ]
+  }
+}

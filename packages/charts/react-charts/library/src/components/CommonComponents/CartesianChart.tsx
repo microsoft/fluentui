@@ -41,6 +41,50 @@ const AXIS_TITLE_PADDING = 8;
 const DEFAULT_MARGIN_WITH_TICKS = 40;
 const DEFAULT_MARGIN_NO_TICKS = 20;
 
+type ChartChildProps = { children?: React.ReactNode; id?: string };
+
+function getChildKey(child: React.ReactNode): React.Key | null {
+  if (!React.isValidElement<ChartChildProps>(child)) {
+    return null;
+  }
+
+  // Point renderers can put the mark's key inside an otherwise unkeyed fragment.
+  return (
+    child.key ??
+    child.props.id ??
+    (child.type === React.Fragment
+      ? getChildKey(Array.isArray(child.props.children) ? child.props.children[0] : child.props.children)
+      : null)
+  );
+}
+
+function getChildComponents(children: React.ReactNode): React.ReactNode {
+  if (Array.isArray(children)) {
+    const keys = new Set(children.filter(React.isValidElement).map(child => child.key));
+    const components = children.map((child, index) => {
+      const component = getChildComponents(child);
+      if (!React.isValidElement(component) || component.key !== null) {
+        return component;
+      }
+
+      let key = String(getChildKey(child) ?? index);
+      while (keys.has(key)) {
+        key = `${key}:${index}`;
+      }
+      keys.add(key);
+      return React.cloneElement(component, { key });
+    });
+    return components.every((component, index) => component === children[index]) ? children : components;
+  }
+
+  if (React.isValidElement<ChartChildProps>(children)) {
+    const components = getChildComponents(children.props.children);
+    return components === children.props.children ? children : React.cloneElement(children, {}, components);
+  }
+
+  return children;
+}
+
 /**
  * Cartesian Chart component
  * {@docCategory CartesianChart}
@@ -433,13 +477,15 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     // Callback function for chart, returns axis
     _getData(xScale, yScalePrimary, yScaleSecondary);
 
-    children = props.children({
-      xScale,
-      yScalePrimary,
-      yScaleSecondary,
-      containerHeight,
-      containerWidth,
-    });
+    children = getChildComponents(
+      props.children({
+        xScale,
+        yScalePrimary,
+        yScaleSecondary,
+        containerHeight,
+        containerWidth,
+      }),
+    );
 
     if (!props.hideTooltip && calloutProps!.isPopoverOpen) {
       callout = _generateCallout(calloutProps);

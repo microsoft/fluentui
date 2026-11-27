@@ -207,10 +207,17 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     const totalLegends: Legend[] = actions.concat(legendsOfLine);
     return (
       <Legends
-        legends={totalLegends}
         enabledWrapLines={props.enabledLegendsWrapLines}
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
+        legends={
+          props.legendProps?.legends?.map(legend => ({
+            ...totalLegends.find(
+              nativeLegend => nativeLegend.title === legend.title && nativeLegend.color === legend.color,
+            ),
+            ...legend,
+          })) ?? totalLegends
+        }
         onChange={_onLegendSelectionChange}
         legendRef={_legendsRef}
       />

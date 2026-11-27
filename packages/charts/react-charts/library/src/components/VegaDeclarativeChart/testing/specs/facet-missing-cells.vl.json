@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Row-column facets retain missing-field groups and the complete observed-domain Cartesian matrix.",
+  "data": {
+    "values": [
+      { "quarter": "Q1", "x": 1, "y": 2 },
+      { "region": "North", "quarter": "Q1", "x": 2, "y": 4 },
+      { "region": "South", "quarter": "Q2", "x": 3, "y": 6 }
+    ]
+  },
+  "facet": {
+    "row": { "field": "region", "type": "nominal", "sort": "ascending", "header": { "title": "Region" } },
+    "column": { "field": "quarter", "type": "nominal", "sort": ["Q1", "Q2"], "header": { "title": "Quarter" } }
+  },
+  "spec": {
+    "width": 640,
+    "height": 400,
+    "mark": "point",
+    "encoding": { "x": { "field": "x", "type": "quantitative" }, "y": { "field": "y", "type": "quantitative" } }
+  }
+}

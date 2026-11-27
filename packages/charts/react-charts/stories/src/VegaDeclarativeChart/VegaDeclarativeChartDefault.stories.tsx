@@ -1,7 +1,58 @@
 import * as React from 'react';
 import { VegaDeclarativeChart } from '@fluentui/react-charts';
 import type { InputOnChangeData, OptionOnSelectData, SelectionEvents } from '@fluentui/react-components';
-import { Button, Dropdown, Field, Input, Option, Spinner, Switch } from '@fluentui/react-components';
+import {
+  Button,
+  Dropdown,
+  Field,
+  Input,
+  Option,
+  Spinner,
+  Switch,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 0,
+    padding: tokens.spacingHorizontalXL,
+  },
+  controls: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: tokens.spacingHorizontalXL,
+    marginBottom: tokens.spacingVerticalXL,
+  },
+  workspace: {
+    display: 'grid',
+    // This is a layout breakpoint, not spacing: stack the editor and preview when two columns no longer fit.
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 32rem), 1fr))',
+    gap: tokens.spacingHorizontalXL,
+  },
+  column: {
+    minWidth: 0,
+    maxWidth: '100%',
+    gridTemplateColumns: 'minmax(0, 1fr)',
+  },
+  editor: {
+    boxSizing: 'border-box',
+    width: '100%',
+    minWidth: 0,
+    height: '500px',
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase200,
+    padding: tokens.spacingHorizontalM,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  preview: {
+    minWidth: 0,
+    maxWidth: '100%',
+    // Keep the requested chart dimensions, but contain scrolling within the preview rather than the page.
+    overflowX: 'auto',
+  },
+});
 
 // Inline schemas (25 total covering various chart types)
 // These are the default schemas shown in "show few" mode
@@ -1030,6 +1081,7 @@ ALL_OPTIONS.sort((a, b) => {
 type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
 
 export const Default = (): React.ReactElement => {
+  const classes = useStyles();
   const [selectedChart, setSelectedChart] = React.useState<string>(DEFAULT_SCHEMAS[0].key);
   const [schemaText, setSchemaText] = React.useState<string>(JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2));
   const [width, setWidth] = React.useState<number>(600);
@@ -1210,7 +1262,7 @@ export const Default = (): React.ReactElement => {
   }, [showMore]);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className={classes.root}>
       <h1>Vega-Lite Declarative Chart - {schemaCount} Schemas</h1>
       <p>
         This component renders charts from Vega-Lite specifications. Browse through {schemaCount}
@@ -1224,9 +1276,13 @@ export const Default = (): React.ReactElement => {
         <Switch checked={showMore} onChange={onSwitchDataChange} label={showMore ? 'Show more' : 'Show few'} />
       </div>
 
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', flexWrap: 'wrap' }}>
-        <Field label="Category">
-          <Dropdown value={selectedCategory} onOptionSelect={handleCategoryChange} style={{ width: '150px' }}>
+      <div className={classes.controls}>
+        <Field className={classes.column} label="Category">
+          <Dropdown
+            value={selectedCategory}
+            onOptionSelect={handleCategoryChange}
+            style={{ width: '150px', minWidth: 0, maxWidth: '100%' }}
+          >
             {categories.map(category => (
               <Option
                 key={category}
@@ -1242,11 +1298,11 @@ export const Default = (): React.ReactElement => {
           </Dropdown>
         </Field>
 
-        <Field label="Chart Type">
+        <Field className={classes.column} label="Chart Type">
           <Dropdown
             value={filteredOptions.find(opt => opt.key === selectedChart)?.text || filteredOptions[0]?.text || 'Chart'}
             onOptionSelect={handleChartChange}
-            style={{ width: '300px' }}
+            style={{ width: '300px', minWidth: 0, maxWidth: '100%' }}
           >
             {filteredOptions.map(option => (
               <Option key={option.key} value={option.key} text={option.text}>
@@ -1277,22 +1333,10 @@ export const Default = (): React.ReactElement => {
         )}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-        <div>
-          <Field label="Vega-Lite Schema (JSON)">
-            <textarea
-              value={schemaText}
-              onChange={handleSchemaChange}
-              style={{
-                width: '100%',
-                height: '500px',
-                fontFamily: 'monospace',
-                fontSize: '12px',
-                padding: '10px',
-                border: '1px solid #ccc',
-                borderRadius: '4px',
-              }}
-            />
+      <div className={classes.workspace}>
+        <div className={classes.column}>
+          <Field className={classes.column} label="Vega-Lite Schema (JSON)">
+            <textarea className={classes.editor} value={schemaText} onChange={handleSchemaChange} />
           </Field>
           {parseError && (
             <div style={{ color: 'red', marginTop: '10px' }}>
@@ -1301,30 +1345,32 @@ export const Default = (): React.ReactElement => {
           )}
         </div>
 
-        <div>
-          <Field label="Chart Preview">
-            <ErrorBoundary
-              key={
-                parsedSchema
-                  ? JSON.stringify(parsedSchema).length +
-                    '-' +
-                    (parsedSchema.title || parsedSchema.data?.values?.length || '') +
-                    '-' +
-                    JSON.stringify(parsedSchema).substring(50, 200)
-                  : 'empty'
-              }
-            >
-              {parsedSchema ? (
-                <div style={{ width: `${width}px`, height: `${height}px` }}>
-                  <VegaDeclarativeChart
-                    key={`${selectedChart}-${width}-${height}`}
-                    chartSchema={{ vegaLiteSpec: { ...parsedSchema, width, height } }}
-                  />
-                </div>
-              ) : (
-                <div style={{ color: 'red' }}>Invalid JSON schema. Please check your syntax.</div>
-              )}
-            </ErrorBoundary>
+        <div className={classes.column}>
+          <Field className={classes.column} label="Chart Preview">
+            <div className={classes.preview}>
+              <ErrorBoundary
+                key={
+                  parsedSchema
+                    ? JSON.stringify(parsedSchema).length +
+                      '-' +
+                      (parsedSchema.title || parsedSchema.data?.values?.length || '') +
+                      '-' +
+                      JSON.stringify(parsedSchema).substring(50, 200)
+                    : 'empty'
+                }
+              >
+                {parsedSchema ? (
+                  <div style={{ width: `${width}px`, height: `${height}px` }}>
+                    <VegaDeclarativeChart
+                      key={`${selectedChart}-${width}-${height}`}
+                      chartSchema={{ vegaLiteSpec: { ...parsedSchema, width, height } }}
+                    />
+                  </div>
+                ) : (
+                  <div style={{ color: 'red' }}>Invalid JSON schema. Please check your syntax.</div>
+                )}
+              </ErrorBoundary>
+            </div>
           </Field>
         </div>
       </div>
