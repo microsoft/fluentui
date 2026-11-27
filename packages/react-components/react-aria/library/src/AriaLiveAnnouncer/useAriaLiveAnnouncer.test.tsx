@@ -1,7 +1,9 @@
-import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
+import { Provider_unstable as Provider, useAnnounce } from '@fluentui/react-shared-contexts';
+import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
+import { AriaLiveAnnouncer } from './AriaLiveAnnouncer';
 import { useAriaLiveAnnouncer_unstable as useAriaLiveAnnouncer } from './useAriaLiveAnnouncer';
 
 const ANNOUNCE_TIMEOUT = 500;
@@ -10,10 +12,19 @@ const ANNOUNCE_SUFFIX = '. ';
 describe('useAriaLiveAnnouncer', () => {
   describe('announce', () => {
     let liveRegionNode: HTMLDivElement | null;
+    let politeRegionNode: HTMLDivElement | null;
     let innerNode: HTMLSpanElement | null;
+    let divCount: number;
 
     const targetDocument = {
-      createElement: (type: string) => (type === 'div' ? liveRegionNode : innerNode),
+      createElement: (type: string) => {
+        if (type === 'div') {
+          return divCount++ % 2 === 0 ? liveRegionNode : politeRegionNode;
+        }
+
+        innerNode = document.createElement('span');
+        return innerNode;
+      },
       body: {
         append: jest.fn(),
       },
@@ -28,33 +39,106 @@ describe('useAriaLiveAnnouncer', () => {
       jest.useFakeTimers();
 
       liveRegionNode = document.createElement('div');
-      innerNode = document.createElement('span');
+      politeRegionNode = document.createElement('div');
+      innerNode = null;
+      divCount = 0;
     });
 
     afterEach(() => {
       jest.useRealTimers();
 
       liveRegionNode = null;
+      politeRegionNode = null;
       innerNode = null;
     });
 
-    it('should append a "div" to <body>', () => {
+    it('should append assertive and polite regions to <body>', () => {
       const append = jest.spyOn(document.body, 'append');
-      const { rerender } = renderHook(() => useAriaLiveAnnouncer({}));
+      const { rerender, unmount } = renderHook(() => useAriaLiveAnnouncer({}));
 
-      expect(append).toHaveBeenCalledTimes(1);
+      expect(append).toHaveBeenCalledTimes(2);
       expect(append).toHaveBeenCalledWith(expect.any(HTMLDivElement));
-      expect(document.body.querySelector('[data-tabster-never-hide]')).toBeTruthy();
+      const [assertive, polite] = append.mock.calls.map(call => call[0] as HTMLElement);
+      expect(assertive.getAttribute('aria-live')).toBe('assertive');
+      expect(polite.getAttribute('aria-live')).toBe('polite');
+      expect(assertive.hasAttribute('data-tabster-never-hide')).toBe(true);
+      expect(polite.hasAttribute('data-tabster-never-hide')).toBe(true);
 
       // Ensure that the same element is not appended again
       rerender();
-      expect(append).toHaveBeenCalledTimes(1);
+      expect(append).toHaveBeenCalledTimes(2);
+      unmount();
+      expect(assertive.isConnected).toBe(false);
+      expect(polite.isConnected).toBe(false);
+    });
+
+    it('routes polite and assertive messages to separate regions', () => {
+      const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
+
+      result.current.announce('polite message', { polite: true });
+      result.current.announce('assertive message', { polite: false });
+      result.current.announce('legacy default');
+      jest.advanceTimersByTime(0);
+
+      expect(politeRegionNode?.getAttribute('aria-live')).toBe('polite');
+      expect((politeRegionNode?.firstElementChild as HTMLElement)?.innerText).toBe('polite message. ');
+      expect(liveRegionNode?.getAttribute('aria-live')).toBe('assertive');
+      expect((liveRegionNode?.firstElementChild as HTMLElement)?.innerText).toBe('assertive message. legacy default. ');
+
+      jest.advanceTimersByTime(ANNOUNCE_TIMEOUT);
+      expect(politeRegionNode?.childElementCount).toBe(0);
+      expect(liveRegionNode?.childElementCount).toBe(0);
+    });
+
+    it('moves a replaced batch to the latest message politeness', () => {
+      const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
+
+      result.current.announce('original', { batchId: 'message', polite: true });
+      result.current.announce('replacement', { batchId: 'message', polite: false });
+      jest.advanceTimersByTime(0);
+
+      expect(politeRegionNode?.childElementCount).toBe(0);
+      expect((liveRegionNode?.firstElementChild as HTMLElement)?.innerText).toBe('replacement. ');
+    });
+
+    it('announces higher-priority messages first within a region', () => {
+      const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
+
+      result.current.announce('low', { priority: 0, polite: true });
+      result.current.announce('high', { priority: 3, polite: true });
+      result.current.announce('medium', { priority: 2, polite: true });
+      result.current.announce('next', { priority: 1, polite: true });
+      jest.advanceTimersByTime(0);
+
+      expect((politeRegionNode?.firstElementChild as HTMLElement)?.innerText).toBe('high. medium. next. low. ');
     });
 
     it('should update the announcement message', () => {
       const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
 
       result.current.announce('message loaded');
+      jest.advanceTimersByTime(0);
+      expect(innerNode?.innerText).toBe('message loaded' + ANNOUNCE_SUFFIX);
+    });
+
+    it('should announce a message from a child that is mounted together with the announcer', () => {
+      const AnnounceOnMount = () => {
+        const { announce } = useAnnounce();
+
+        React.useEffect(() => {
+          announce('message loaded');
+        }, [announce]);
+
+        return null;
+      };
+
+      render(
+        <AriaLiveAnnouncer>
+          <AnnounceOnMount />
+        </AriaLiveAnnouncer>,
+        { wrapper: ContextWrapper },
+      );
+
       jest.advanceTimersByTime(0);
       expect(innerNode?.innerText).toBe('message loaded' + ANNOUNCE_SUFFIX);
     });
@@ -142,7 +226,7 @@ describe('useAriaLiveAnnouncer', () => {
       expect(innerNode?.innerText).toBe('message resurrections' + ANNOUNCE_SUFFIX);
 
       jest.advanceTimersByTime(ANNOUNCE_TIMEOUT);
-      expect(liveRegionNode?.innerText).toBe('');
+      expect(liveRegionNode?.textContent).toBe('');
     });
   });
 });
