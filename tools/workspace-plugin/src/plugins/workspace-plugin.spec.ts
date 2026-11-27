@@ -151,6 +151,32 @@ describe(`workspace-plugin`, () => {
     expect(getTargetsNames(commonjsFirst, 'commonjs-first')).not.toContain('attw');
   });
 
+  it.each([
+    ['array', ['packages/*', '!packages/excluded']],
+    ['object', { packages: ['packages/*', '!packages/excluded'] }],
+  ])('should hash workspace manifests from %s patterns without component builds', async (_format, workspaces) => {
+    await tempFs.createFiles({
+      'package.json': serializeJson({ workspaces }),
+      'proj/project.json': serializeJson({}),
+      'proj/package.json': serializeJson({}),
+      'proj/eslint.config.js': 'module.exports = {}',
+    });
+    const results = await createNodesFunction(['proj/project.json'], options, context);
+    const lint = getTargets(results)?.lint;
+
+    expect(lint?.inputs).toEqual([
+      'default',
+      '{projectRoot}/eslint.{js,cjs,mjs}',
+      '{workspaceRoot}/eslint.config.{js,cjs,mjs}',
+      '{workspaceRoot}/packages/eslint-plugin/src/**/*.js',
+      '{workspaceRoot}/package.json',
+      '{workspaceRoot}/packages/*/package.json',
+      '!{workspaceRoot}/packages/excluded/package.json',
+      { externalDependencies: ['eslint', 'eslint-plugin-import', 'minimatch'] },
+    ]);
+    expect(lint?.dependsOn).toBeUndefined();
+  });
+
   it('should add lint,test task only if configuration exists', async () => {
     await tempFs.createFiles({
       'proj/project.json': serializeJson({}),
@@ -170,9 +196,13 @@ describe(`workspace-plugin`, () => {
           "default",
           "{projectRoot}/eslint.{js,cjs,mjs}",
           "{workspaceRoot}/eslint.config.{js,cjs,mjs}",
+          "{workspaceRoot}/packages/eslint-plugin/src/**/*.js",
+          "{workspaceRoot}/package.json",
           Object {
             "externalDependencies": Array [
               "eslint",
+              "eslint-plugin-import",
+              "minimatch",
             ],
           },
         ],
@@ -199,6 +229,8 @@ describe(`workspace-plugin`, () => {
         ],
       }
     `);
+
+    expect(targets?.lint?.dependsOn).toBeUndefined();
 
     expect(targets?.test).toMatchInlineSnapshot(`
       Object {

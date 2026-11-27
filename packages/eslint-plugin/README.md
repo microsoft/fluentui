@@ -14,6 +14,13 @@ Usage: in your [ESLint config file](https://eslint.org/docs/user-guide/configuri
 
 Helpers for customizing configuration are exported under a `configHelpers` object.
 
+### Workspace dependency declarations
+
+Shared v8/v9 lint validates workspace dependency declarations from source manifests with
+`import/no-extraneous-dependencies`, without requiring builds or workspace links. Existing rule options and exemptions
+remain unchanged. Other import rules retain their configured resolvers; this check does not validate import paths or
+package exports.
+
 ## Rules
 
 ### `ban-context-export`
