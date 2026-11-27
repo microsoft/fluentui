@@ -118,9 +118,14 @@ describe('Menu', () => {
       });
     const expectOpen = (id: string, open: boolean) =>
       cy.wrap(null).should(() => {
-        const surface = root.querySelector<HTMLElement>(`#${id}`)!;
-        expect(surface.matches(':popover-open')).to.equal(open);
-        expect(surface.checkVisibility()).to.equal(open);
+        // A closed menu unmounts its popover (once any exit animation ends), so "closed" also means "not rendered".
+        const surface = root.querySelector<HTMLElement>(`#${id}`);
+        if (!open && !surface) {
+          return;
+        }
+        expect(surface, `#${id}`).not.to.equal(null);
+        expect(surface!.matches(':popover-open')).to.equal(open);
+        expect(surface!.checkVisibility()).to.equal(open);
       });
     const openMenu = (kind: RootKind, nested = false) => {
       mount(<RootExample kind={kind} nested={nested} />);
@@ -211,7 +216,7 @@ describe('Menu', () => {
     cy.get('#trigger').realClick();
     cy.get('#item-1').should('be.focused');
     cy.get('body').realClick({ position: 'bottomRight' });
-    cy.get('#item-1').should('not.be.visible');
+    cy.get('#item-1').should('not.exist');
   });
 
   describe('with Tooltip wrapping MenuTrigger', () => {
@@ -235,7 +240,7 @@ describe('Menu', () => {
     it('should open menu when tooltip-wrapped trigger is clicked', () => {
       mount(<TooltipWrappedMenuExample />);
       cy.get('#tooltip-wrapped-trigger').should('exist');
-      cy.get('#menu-item-1').should('not.be.visible');
+      cy.get('#menu-item-1').should('not.exist');
       cy.get('#tooltip-wrapped-trigger').click();
       cy.get('#menu-item-1').should('be.visible');
       cy.get('#menu-item-2').should('be.visible');
@@ -265,7 +270,7 @@ describe('Menu', () => {
       cy.get('#tooltip-wrapped-trigger').click();
       cy.get('#menu-item-2').should('be.visible');
       cy.get('#menu-item-2').click();
-      cy.get('#menu-item-1').should('not.be.visible');
+      cy.get('#menu-item-1').should('not.exist');
     });
 
     it('should dismiss on Escape even with tooltip wrapper', () => {
@@ -273,7 +278,7 @@ describe('Menu', () => {
       cy.get('#tooltip-wrapped-trigger').click();
       cy.get('#menu-item-1').should('be.visible');
       cy.focused().realPress('Escape');
-      cy.get('#menu-item-1').should('not.be.visible');
+      cy.get('#menu-item-1').should('not.exist');
     });
 
     it('should show tooltip on hover without opening menu', () => {
@@ -281,7 +286,7 @@ describe('Menu', () => {
       cy.get('#tooltip-wrapped-trigger').trigger('pointerover');
       cy.get('[role="tooltip"]').should('be.visible');
       cy.get('[role="tooltip"]').should('contain.text', 'Click to open menu options');
-      cy.get('#menu-item-1').should('not.be.visible');
+      cy.get('#menu-item-1').should('not.exist');
     });
   });
 });
