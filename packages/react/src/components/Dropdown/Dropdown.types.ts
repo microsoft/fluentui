@@ -89,6 +89,12 @@ export interface IDropdownProps
   dropdownWidth?: number | 'auto';
 
   /**
+   * Text to announce to screen reader users when the dropdown closes while focus remains on the dropdown.
+   * The announcement is disabled when this prop is not set or is an empty string.
+   */
+  collapsedStateAnnouncement?: string;
+
+  /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
    * ResponsiveMode.large would, for instance, disable the behavior where Dropdown options
    * get rendered into a Panel while ResponsiveMode.small would result in the Dropdown

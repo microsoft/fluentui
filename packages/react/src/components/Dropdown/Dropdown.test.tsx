@@ -224,6 +224,147 @@ describe('Dropdown', () => {
       expect(onDismissSpy).toHaveBeenCalledTimes(1);
     });
 
+    describe('collapsed state announcement', () => {
+      it('announces after a synchronous parent rerender and on repeated open and close cycles', () => {
+        jest.useFakeTimers();
+
+        const Parent = () => {
+          const [, setDismissCount] = React.useState(0);
+
+          return (
+            <Dropdown
+              options={DEFAULT_OPTIONS}
+              collapsedStateAnnouncement="Collapsed"
+              onDismiss={() => setDismissCount(dismissCount => dismissCount + 1)}
+            />
+          );
+        };
+
+        const { getByRole, queryByRole } = render(<Parent />);
+        const dropdownRoot = getByRole('combobox');
+
+        expect(queryByRole('status')).toBeNull();
+
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+
+        const firstAnnouncement = getByRole('status');
+        expect(firstAnnouncement).toHaveTextContent('Collapsed');
+
+        act(() => {
+          jest.advanceTimersByTime(5000);
+        });
+        expect(queryByRole('status')).toBeNull();
+
+        userEvent.click(dropdownRoot);
+        expect(queryByRole('status')).toBeNull();
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+
+        const secondAnnouncement = getByRole('status');
+        expect(secondAnnouncement).toHaveTextContent('Collapsed');
+        expect(secondAnnouncement).not.toBe(firstAnnouncement);
+      });
+
+      it('supports a custom localized announcement', () => {
+        jest.useFakeTimers();
+
+        const { getByRole } = render(
+          <Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Lista contraida" />,
+        );
+
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+
+        expect(getByRole('status')).toHaveTextContent('Lista contraida');
+      });
+
+      it('announces after selecting an option or clicking the trigger closed', () => {
+        jest.useFakeTimers();
+
+        const { getByRole, getAllByRole } = render(
+          <Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Collapsed" />,
+        );
+
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        fireEvent.click(getAllByRole('option')[1]);
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+        expect(getByRole('status')).toHaveTextContent('Collapsed');
+
+        act(() => {
+          jest.advanceTimersByTime(5000);
+        });
+
+        userEvent.click(dropdownRoot);
+        userEvent.click(dropdownRoot);
+
+        act(() => {
+          jest.advanceTimersByTime(0);
+        });
+        expect(getByRole('status')).toHaveTextContent('Collapsed');
+      });
+
+      it('does not announce unless announcement text is provided', () => {
+        jest.useFakeTimers();
+
+        const { getByRole, queryByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
+
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+
+        expect(queryByRole('status')).toBeNull();
+      });
+
+      it('does not announce when focus moves away or the menu is dismissed imperatively', () => {
+        jest.useFakeTimers();
+        const dropdown = React.createRef<IDropdown>();
+
+        const { getByRole, queryByRole } = render(
+          <>
+            <Dropdown componentRef={dropdown} options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Collapsed" />
+            <button>Next</button>
+          </>,
+        );
+
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{tab}', { skipClick: true });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+        expect(queryByRole('status')).toBeNull();
+
+        userEvent.click(dropdownRoot);
+        act(() => {
+          dropdown.current?.dismissMenu();
+          jest.runOnlyPendingTimers();
+        });
+        expect(queryByRole('status')).toBeNull();
+      });
+    });
+
     it('sets the selected item even when key is number 0', () => {
       const options = [
         { key: 0, text: 'item1' },

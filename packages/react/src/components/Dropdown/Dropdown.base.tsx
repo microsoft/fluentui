@@ -29,6 +29,7 @@ import { Icon } from '../../Icon';
 import { Label } from '../../Label';
 import { Panel } from '../../Panel';
 import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
+import { Announced } from '../../Announced';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox } from '../../Checkbox';
@@ -74,11 +75,16 @@ interface IDropdownState {
   /** Used to track whether focus is already within the Dropdown, for openOnFocus handling. */
   hasFocus: boolean;
   calloutRenderEdge?: RectangleEdge;
+  collapseAnnouncementId: number;
+  isCollapseAnnouncementVisible: boolean;
 }
 
 const DEFAULT_PROPS: Partial<IDropdownProps> = {
   options: [],
 };
+
+// Allow polite live regions time to queue the message, then remove it from the accessibility tree.
+const COLLAPSE_ANNOUNCEMENT_TIMEOUT = 5000;
 
 function useSelectedItemsState({
   defaultSelectedKeys,
@@ -210,6 +216,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _hasBeenPositioned: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  private _collapseAnnouncementTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
@@ -219,6 +226,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _gotMouseMove: boolean;
   /** Flag for tracking whether focus is triggered by click (alternatively triggered by keyboard nav) */
   private _isFocusedByClick: boolean;
+  private _shouldAnnounceCollapse: boolean = false;
 
   constructor(props: IDropdownInternalProps) {
     super(props);
@@ -275,6 +283,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       isOpen: false,
       hasFocus: false,
       calloutRenderEdge: undefined,
+      collapseAnnouncementId: 0,
+      isCollapseAnnouncementVisible: false,
     };
   }
 
@@ -292,6 +302,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   public componentWillUnmount() {
     clearTimeout(this._scrollIdleTimeoutId);
+    clearTimeout(this._collapseAnnouncementTimeoutId);
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
@@ -299,8 +310,28 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       this._gotMouseMove = false;
       this._hasBeenPositioned = false;
 
+      if (this._shouldAnnounceCollapse && this.props.collapsedStateAnnouncement) {
+        this.setState(({ collapseAnnouncementId }) => ({
+          collapseAnnouncementId: collapseAnnouncementId + 1,
+          isCollapseAnnouncementVisible: true,
+        }));
+      }
+      this._shouldAnnounceCollapse = false;
+
       if (this.props.onDismiss) {
         this.props.onDismiss();
+      }
+    } else if (prevState.isOpen === false && this.state.isOpen === true) {
+      this._clearCollapseAnnouncement();
+    }
+
+    if (!prevState.isCollapseAnnouncementVisible && this.state.isCollapseAnnouncementVisible) {
+      const win = getWindowEx(this.context);
+      if (win) {
+        this._collapseAnnouncementTimeoutId = win.setTimeout(
+          this._clearCollapseAnnouncement,
+          COLLAPSE_ANNOUNCEMENT_TIMEOUT,
+        );
       }
     }
   }
@@ -320,6 +351,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       theme,
       panelProps,
       calloutProps,
+      collapsedStateAnnouncement,
       onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -328,7 +360,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       hoisted: { selectedIndices },
       responsiveMode,
     } = props;
-    const { isOpen, calloutRenderEdge, hasFocus } = this.state;
+    const { isOpen, calloutRenderEdge, hasFocus, collapseAnnouncementId, isCollapseAnnouncementVisible } = this.state;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
@@ -418,6 +450,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             },
             this._onRenderContainer,
           )}
+        {!isOpen && isCollapseAnnouncementVisible && collapsedStateAnnouncement && (
+          <Announced key={collapseAnnouncementId} message={collapsedStateAnnouncement} />
+        )}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}
@@ -945,6 +980,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         this.setSelectedIndex(event, item.index!);
         if (!this.props.multiSelect) {
           // only close the callout when it's in single-select mode
+          this._shouldAnnounceCollapse = true;
           this.setState({
             isOpen: false,
           });
@@ -1068,6 +1104,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
+        this._shouldAnnounceCollapse = isOpen;
         this.setState({
           isOpen: !isOpen,
         });
@@ -1078,6 +1115,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           return;
         }
 
+        this._shouldAnnounceCollapse = true;
         this.setState({
           isOpen: false,
         });
@@ -1156,6 +1194,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.space:
+        this._shouldAnnounceCollapse = isOpen;
         this.setState({
           isOpen: !isOpen,
         });
@@ -1231,6 +1270,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         break;
 
       case KeyCodes.escape:
+        this._shouldAnnounceCollapse = true;
         this.setState({ isOpen: false });
         break;
 
@@ -1281,6 +1321,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const disabled = this._isDisabled();
 
     if (!disabled && !this._shouldOpenOnFocus()) {
+      this._shouldAnnounceCollapse = isOpen;
       this.setState({
         isOpen: !isOpen,
       });
@@ -1306,6 +1347,18 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       }
 
       this.setState(state);
+    }
+  };
+
+  private _clearCollapseAnnouncement = (): void => {
+    const win = getWindowEx(this.context);
+    if (win && this._collapseAnnouncementTimeoutId !== undefined) {
+      win.clearTimeout(this._collapseAnnouncementTimeoutId);
+      this._collapseAnnouncementTimeoutId = undefined;
+    }
+
+    if (this.state.isCollapseAnnouncementVisible) {
+      this.setState({ isCollapseAnnouncementVisible: false });
     }
   };
 
