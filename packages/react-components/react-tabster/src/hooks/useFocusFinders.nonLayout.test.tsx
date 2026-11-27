@@ -1,17 +1,28 @@
 import * as React from 'react';
 import { cleanup, render, waitFor } from '@testing-library/react';
-import { createTabster, disposeTabster, getTabster } from 'tabster';
+import { createTabster, disposeTabster, getTabster, getShadowDOMAPI } from 'tabster';
 import type { Types } from 'tabster';
+import { getParent } from '@fluentui/react-utilities';
+import { createTabsterWithConfig } from './useTabster';
 
 describe('local Tabster non-layout visibility policy', () => {
   const instances = new Set<Types.Tabster>();
+  const shadowWindows = new Map<Window & { __tabsterShadowDOMAPI?: Types.DOMAPI }, Types.DOMAPI | undefined>();
 
   const initialize = (element: HTMLElement, visibilityMode?: Types.TabsterCoreProps['visibilityMode']) => {
-    const view = element.ownerDocument.defaultView;
+    const view: (Window & { __tabsterShadowDOMAPI?: Types.DOMAPI }) | null = element.ownerDocument.defaultView;
     if (!view) {
       throw new Error('The focus test requires a DOM window.');
     }
-    const instance = createTabster(view, { autoRoot: {}, controlTab: false, visibilityMode });
+    const instance = createTabster(view, {
+      autoRoot: {},
+      controlTab: false,
+      getParent,
+      checkUncontrolledCompletely: candidate =>
+        candidate.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
+      DOMAPI: view.__tabsterShadowDOMAPI,
+      visibilityMode,
+    });
     instances.add(instance);
     return instance;
   };
@@ -20,6 +31,15 @@ describe('local Tabster non-layout visibility policy', () => {
     cleanup();
     instances.forEach(instance => disposeTabster(instance));
     instances.clear();
+    shadowWindows.forEach((previous, view) => {
+      expect(getTabster(view)).toBeNull();
+      if (previous === undefined) {
+        delete view.__tabsterShadowDOMAPI;
+      } else {
+        view.__tabsterShadowDOMAPI = previous;
+      }
+    });
+    shadowWindows.clear();
   });
 
   it('discovers and focuses an enabled button without layout geometry', async () => {
@@ -93,4 +113,76 @@ describe('local Tabster non-layout visibility policy', () => {
     const recreated = initialize(button);
     expect(recreated.focusable.isVisible(button)).toBe(false);
   });
+
+  it('preserves Fluent focus-trap handling when the preinitialized instance is reused', () => {
+    const result = render(
+      <>
+        <div data-testid="trap">
+          <span data-is-focus-trap-zone-bumper />
+        </div>
+        <div data-testid="ordinary" />
+      </>,
+    );
+    const trap = result.getByTestId('trap');
+    const instance = initialize(trap, 'non-layout');
+    const reused = createTabsterWithConfig(trap.ownerDocument);
+    if (!reused) {
+      throw new Error('Fluent initialization requires a DOM window.');
+    }
+    instances.add(reused);
+    expect(reused.focusable).toBe(instance.focusable);
+    expect(reused.uncontrolled.isUncontrolledCompletely(trap, false)).toBe(true);
+    expect(reused.uncontrolled.isUncontrolledCompletely(result.getByTestId('ordinary'), false)).toBe(false);
+    expect(reused.uncontrolled.isUncontrolledCompletely(result.getByTestId('ordinary'), true)).toBe(true);
+  });
+
+  it.each(['display-none', 'content-hidden', 'hidden-host', 'visible'])(
+    'preserves configured shadow traversal and filters %s slot ancestors',
+    async hidden => {
+      const result = render(
+        <>
+          <div data-testid="host">
+            <button slot="action" data-testid="slotted">
+              Slotted
+            </button>
+          </div>
+          <button data-testid="next">Next</button>
+        </>,
+      );
+      const host = result.getByTestId('host');
+      const view: (Window & { __tabsterShadowDOMAPI?: Types.DOMAPI }) | null = host.ownerDocument.defaultView;
+      if (!view) {
+        throw new Error('The shadow focus test requires a DOM window.');
+      }
+      shadowWindows.set(view, view.__tabsterShadowDOMAPI);
+      view.__tabsterShadowDOMAPI = getShadowDOMAPI();
+      const wrapper = host.ownerDocument.createElement('span');
+      const slot = host.ownerDocument.createElement('slot');
+      slot.name = 'action';
+      wrapper.appendChild(slot);
+      host.attachShadow({ mode: 'open' }).appendChild(wrapper);
+      if (hidden === 'display-none') {
+        wrapper.style.display = 'none';
+      } else if (hidden === 'content-hidden') {
+        wrapper.style.contentVisibility = 'hidden';
+      } else if (hidden === 'hidden-host') {
+        host.style.display = 'none';
+      }
+
+      const instance = initialize(host, 'non-layout');
+      const reused = createTabsterWithConfig(host.ownerDocument);
+      if (!reused) {
+        throw new Error('Fluent initialization requires a DOM window.');
+      }
+      instances.add(reused);
+      expect(reused.focusable).toBe(instance.focusable);
+      const slotted = result.getByTestId('slotted');
+      expect(reused.focusable.isVisible(slotted)).toBe(hidden === 'visible');
+      await waitFor(() =>
+        expect(reused.focusable.findFirst({ container: result.container })).toBe(
+          hidden === 'visible' ? slotted : result.getByTestId('next'),
+        ),
+      );
+    },
+  );
 });

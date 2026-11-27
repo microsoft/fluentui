@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Support opt-in non-layout focus discovery through the local Tabster patch.",
+  "comment": "Add regression coverage for focus discovery when Tabster is initialized before Fluent.",
   "packageName": "@fluentui/react-tabster",
   "email": "paulmardling@microsoft.com"
 }

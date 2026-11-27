@@ -18,7 +18,7 @@
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
     "keyborg": "^3.498.0",
-    "tabster": "patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch"
+    "tabster": "^8.8.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

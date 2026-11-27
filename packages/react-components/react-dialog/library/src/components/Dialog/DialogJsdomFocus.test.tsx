@@ -2,6 +2,7 @@ import * as React from 'react';
 import { cleanup, render, waitFor } from '@testing-library/react';
 import { createTabster, disposeTabster } from 'tabster';
 import type { Types } from 'tabster';
+import { getParent } from '@fluentui/react-utilities';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Dialog } from './Dialog';
@@ -28,13 +29,17 @@ describe('Dialog with the local Tabster non-layout policy', () => {
 
   const initialize = () => {
     const { container } = render(<div />);
-    const view = container.ownerDocument.defaultView;
+    const view: (Window & { __tabsterShadowDOMAPI?: Types.DOMAPI }) | null = container.ownerDocument.defaultView;
     if (!view) {
       throw new Error('The focus test requires a DOM window.');
     }
     tabster = createTabster(view, {
       autoRoot: {},
       controlTab: false,
+      getParent,
+      checkUncontrolledCompletely: element =>
+        element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
+      DOMAPI: view.__tabsterShadowDOMAPI,
       visibilityMode: 'non-layout',
     });
   };

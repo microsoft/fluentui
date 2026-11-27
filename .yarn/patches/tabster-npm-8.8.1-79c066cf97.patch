@@ -1,5 +1,5 @@
 diff --git a/dist/cjs/Focusable.cjs b/dist/cjs/Focusable.cjs
-index 1111acb62dd5edfe3439780f894eb4dc94f3a236..6be0655b440ded48ffea73172abd52fae9076962 100644
+index 1111acb62dd5edfe3439780f894eb4dc94f3a236..f014743cffe8fed3035e11c3478e378df2b9c4c1 100644
 --- a/dist/cjs/Focusable.cjs
 +++ b/dist/cjs/Focusable.cjs
 @@ -18,8 +18,9 @@ const _DummyInput = require("./DummyInput.cjs");
@@ -13,7 +13,7 @@ index 1111acb62dd5edfe3439780f894eb4dc94f3a236..6be0655b440ded48ffea73172abd52fa
      }
      dispose() {
      /**/ }
-@@ -37,6 +38,24 @@ class FocusableAPI {
+@@ -37,6 +38,32 @@ class FocusableAPI {
          if (!el.ownerDocument || el.nodeType !== Node.ELEMENT_NODE) {
              return false;
          }
@@ -26,11 +26,19 @@ index 1111acb62dd5edfe3439780f894eb4dc94f3a236..6be0655b440ded48ffea73172abd52fa
 +            if (visibility === "hidden" || visibility === "collapse") {
 +                return false;
 +            }
-+            for(let ancestor = el; ancestor; ancestor = _DOMAPI.dom.getParentElement(ancestor)){
++            const ancestors = new Set([el]);
++            for (const ancestor of ancestors) {
 +                const style = view.getComputedStyle(ancestor);
 +                if (style.display === "none" ||
 +                    (ancestor !== el && style.contentVisibility === "hidden")) {
 +                    return false;
++                }
++                const parent = _DOMAPI.dom.getParentElement(ancestor);
++                if (parent) {
++                    ancestors.add(parent);
++                }
++                if (ancestor.assignedSlot) {
++                    ancestors.add(ancestor.assignedSlot);
 +                }
 +            }
 +            return true;
@@ -98,7 +106,7 @@ index ef15534ca0f9f0219eaa11c21a1c42aaf10286af..38c7e9fbff17ba6bbddaae7893bd438f
      getProps(element: HTMLElement): Types.FocusableProps;
      isFocusable(el: HTMLElement, includeProgrammaticallyFocusable?: boolean, noVisibleCheck?: boolean, noAccessibleCheck?: boolean): boolean;
 diff --git a/dist/esm/Focusable.js b/dist/esm/Focusable.js
-index 702b876d7b05348273e03a52745e1d69210d6646..df69db7652917affc76a2797250c516e942e4259 100644
+index 702b876d7b05348273e03a52745e1d69210d6646..68cb56b7f8eaa4693bb4647fbbadc305322160a8 100644
 --- a/dist/esm/Focusable.js
 +++ b/dist/esm/Focusable.js
 @@ -9,8 +9,9 @@ import { getDummyInputContainer } from "./DummyInput.js";
@@ -112,7 +120,7 @@ index 702b876d7b05348273e03a52745e1d69210d6646..df69db7652917affc76a2797250c516e
      }
      dispose() {
          /**/
-@@ -31,6 +32,24 @@ export class FocusableAPI {
+@@ -31,6 +32,32 @@ export class FocusableAPI {
          if (!el.ownerDocument || el.nodeType !== Node.ELEMENT_NODE) {
              return false;
          }
@@ -125,11 +133,19 @@ index 702b876d7b05348273e03a52745e1d69210d6646..df69db7652917affc76a2797250c516e
 +            if (visibility === "hidden" || visibility === "collapse") {
 +                return false;
 +            }
-+            for (let ancestor = el; ancestor; ancestor = dom.getParentElement(ancestor)) {
++            const ancestors = new Set([el]);
++            for (const ancestor of ancestors) {
 +                const style = view.getComputedStyle(ancestor);
 +                if (style.display === "none" ||
 +                    (ancestor !== el && style.contentVisibility === "hidden")) {
 +                    return false;
++                }
++                const parent = dom.getParentElement(ancestor);
++                if (parent) {
++                    ancestors.add(parent);
++                }
++                if (ancestor.assignedSlot) {
++                    ancestors.add(ancestor.assignedSlot);
 +                }
 +            }
 +            return true;
