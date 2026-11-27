@@ -323,7 +323,7 @@ export const useDatePicker = (
       // Keep the Escape that closes the calendar from also dismissing a surrounding dialog or popover.
       event.preventDefault();
       event.stopPropagation();
-      requestOpen(event, false, 'keyboard');
+      requestOpen(event, false, 'escape');
     } else if (
       event.key === Enter &&
       allowTextInput &&
@@ -526,7 +526,7 @@ export const useDatePicker = (
   popupSurface.onKeyDown = mergeCallbacks(popupSurface.onKeyDown, onSurfaceKeyDown);
 
   // Declared after the surface handlers, so focus moved while showing the popover reaches them.
-  // `manual` popovers only report `native-open`/`native-close` (something else called showPopover/hidePopover),
+  // `manual` popovers only report `native-open`/`native-close` (something outside React opened or closed the popover),
   // which map to 'outsideClick' so the reason union stays unchanged.
   useLayerOpenState(surfaceRef, {
     open,

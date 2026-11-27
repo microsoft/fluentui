@@ -309,6 +309,17 @@ describe('DatePicker', () => {
       expect(onOpenChange.mock.calls[1][1]).toMatchObject({ open: false, reason: 'outsideClick' });
     });
 
+    it('reports escape when Escape closes from the field', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole } = renderDatePicker({ defaultOpen: true, onOpenChange });
+      const control = getByRole('combobox');
+
+      fireEvent.keyDown(control, { key: 'Escape' });
+
+      const calls = onOpenChange.mock.calls;
+      expect(calls[calls.length - 1][1]).toMatchObject({ open: false, reason: 'escape' });
+    });
+
     it('opens when :popover-open is unsupported', () => {
       const spy = jest
         .spyOn(HTMLElement.prototype, 'matches')

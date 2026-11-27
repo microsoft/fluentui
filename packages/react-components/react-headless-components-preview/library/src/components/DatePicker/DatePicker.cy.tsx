@@ -55,6 +55,21 @@ describe('DatePicker', () => {
     cy.get('button[aria-haspopup="dialog"]').should('be.focused');
   });
 
+  it('closes on Escape from the calendar, reopens, and survives a double Escape without errors', () => {
+    const onOpenChange = cy.stub().as('onOpenChange');
+    mount(<Example onOpenChange={onOpenChange} />);
+
+    cy.get('button[aria-haspopup="dialog"]').click();
+    cy.get(day('August 12, 2026')).should('be.focused').realPress('Escape');
+    cy.get('[role="dialog"]').should('not.exist');
+    cy.get('button[aria-haspopup="dialog"]').should('be.focused');
+    cy.get('@onOpenChange').its('lastCall.args.1').should('include', { open: false, reason: 'escape' });
+
+    cy.get('button[aria-haspopup="dialog"]').click();
+    cy.get(day('August 12, 2026')).should('be.focused').realPress(['Escape', 'Escape']);
+    cy.get('[role="dialog"]').should('not.exist');
+  });
+
   it('closes when the trigger is pressed again without reopening', () => {
     mount(<Example />);
 
