@@ -9,6 +9,49 @@ Fluent charts is a set of modern, accessible, interactive and highly customizabl
 Examples and code snippets for the chart components are available on the [doc site](https://aka.ms/FluentChartsV9).
 The code snippets can be used as usage guide for all the props and chart variations.
 
+### Vega-Lite expressions
+
+`VegaDeclarativeChart` evaluates logical (`&&`, `||`) and ternary (`?:`) expressions
+with short-circuit semantics. Skipped branches are parsed but not evaluated.
+If a filter expression throws for a row, that row is excluded and a warning is logged.
+
+For nonaggregate vertical bar, line, and area charts without `timeUnit` on either encoded axis,
+successfully filtering populated, valid encoded data down to zero rows renders the native no-data display. This also preserves healthy
+sibling charts in an `hconcat` or `vconcat` spec. Encoded fields are validated against
+the rows entering the exhausting filter, including fields produced by earlier transforms.
+Fields produced only by later transforms cannot establish validity for this empty view.
+Empty-view validation is read-only: discarded rows do not change the declared field
+types or subsequent chart routing. Views requiring temporal or aggregate normalization
+remain outside this filter-exhaustion exception and retain their existing empty-data validation.
+
+Stacked bar and line-overlay transforms run once per rendered data series. Conditional
+color and temporal preparation apply to the rows supplying that series, not a discarded metadata pass.
+Temporal normalization consumes only per-render copies of axis declarations, so successful
+or failed preparation does not remove caller-owned `timeUnit` or `aggregate` settings on reuse.
+
+For line/point overlays, `timeUnit` projects x coordinates without implicitly reducing y
+observations. Only an explicit `y.aggregate` reduces observations, grouped by x and color series.
+Supported reducers are `count`, `sum`, `mean`, `average`, `median`, `min`, and `max`;
+temporal bar preparation uses the same declared operations while retaining its default
+mean/count policy when no aggregate is declared. Unsupported temporal or overlay reducers
+throw rather than silently selecting another operation.
+Explicit array color domains reserve positions within their own scale and pair with
+range colors by domain position. Unused bar-domain entries do not reserve line fallback
+palette slots. Other domain forms retain the adapter's existing color fallback behavior.
+
+Empty source data, invalid encoded fields, and all-excluded results involving filter
+evaluation errors still follow the existing validation/error path. Other adapters use
+mark-specific empty-data handling: scatter supports a no-data display, while histogram
+and polar validate empty results and can throw even for a successful guarded no-match.
+No uniform empty-view contract is provided across marks. An error in a child of an `hconcat` or `vconcat` spec can still abort the entire
+containing chart render; the component does not isolate invalid child specs. Callers needing error
+containment must handle render errors externally, for example with a React error
+boundary around the chart for client-side rendering. No uniform no-data fallback for
+invalid input or per-child error boundary is provided.
+
+Filters control chart display only; validate input data separately rather than relying
+on chart filters for authorization.
+
 ## Available charts across fluent platforms
 
 <table>

@@ -1,5 +1,6 @@
 import {
   transformVegaLiteToLineChartProps,
+  transformVegaLiteToAreaChartProps,
   transformVegaLiteToVerticalBarChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
@@ -8,8 +9,10 @@ import {
   transformVegaLiteToScatterChartProps,
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
+  getChartType,
 } from './VegaLiteSchemaAdapter';
-import type { VegaLiteSpec } from './VegaLiteTypes';
+import type { VegaLitePositionEncoding, VegaLiteSpec } from './VegaLiteTypes';
+import { getVegaColor } from './VegaLiteColorAdapter';
 import { specialChartNames } from '../../utilities/test-data/specialChartNames';
 
 const colorMap = new Map<string, string>();
@@ -102,6 +105,51 @@ describe('VegaLiteSchemaAdapter', () => {
 
       return transformVegaLiteToLineChartProps(spec, { current: colorMap }, false).data.lineChartData![0].data;
     }
+
+    it('excludes rows whose filter evaluation throws and reports the failure', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const points = transformData(
+          [
+            { x: 1, y: 10, a: false, b: 5 },
+            { x: 2, y: 20, a: false, b: { toString: 0 } },
+            { x: 3, y: 30, a: true, b: { toString: 0 } },
+            { x: 4, y: 40, a: true, b: 5 },
+          ],
+          [{ filter: 'datum.a && +datum.b' }],
+        );
+
+        expect(points).toEqual([expect.objectContaining({ x: 4, y: 40 })]);
+        expect(warn).toHaveBeenCalledTimes(1);
+        expect(warn).toHaveBeenCalledWith('Vega-Lite filter evaluation failed; excluding row.', expect.any(TypeError));
+      } finally {
+        warn.mockRestore();
+      }
+    });
+
+    it.each([
+      { filter: 'true || +datum.b' },
+      { filter: 'true ? true : +datum.b' },
+      { filter: 'false ? +datum.b : true' },
+    ])('short-circuits expressions in the transform pipeline: %o', transform => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const points = transformData([{ x: 1, y: 42, b: { toString: 0 } }], [transform]);
+
+        expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
+        expect(warn).not.toHaveBeenCalled();
+      } finally {
+        warn.mockRestore();
+      }
+    });
+
+    it('uses the selected calculate branch rather than falling back to the original row', () => {
+      const points = transformData(
+        [{ x: 1, y: 10, b: { toString: 0 } }],
+        [{ calculate: 'true ? 42 : +datum.b', as: 'y' }],
+      );
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
+    });
 
     it.each(['constructor', 'toString', '__proto__'])('does not fold the inherited %s property', field => {
       const points = transformData(
@@ -763,6 +811,812 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(result.chartTitle).toBeUndefined();
       expect(result.xAxisTitle).toBeUndefined();
       expect(result.yAxisTitle).toBeUndefined();
+    });
+  });
+
+  describe('filter-exhausted vertical bar data', () => {
+    function filteredBarSpec(
+      values: Array<Record<string, unknown>>,
+      transform: VegaLiteSpec['transform'],
+    ): VegaLiteSpec {
+      return {
+        mark: 'bar',
+        data: { values },
+        transform,
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+        },
+      };
+    }
+
+    it.each(['false', 'datum.approved && +datum.invalid', 'datum.approved ? +datum.invalid : false'])(
+      'returns empty props for successful no-match filtering: %s',
+      filter => {
+        const spec = filteredBarSpec(
+          [{ category: 'A', value: 10, approved: false, invalid: { toString: 0 } }],
+          [{ filter }],
+        );
+
+        expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+      },
+    );
+
+    it('validates fields calculated before the exhausting filter', () => {
+      const spec = filteredBarSpec(
+        [{ category: 'A', amount: 5 }],
+        [{ calculate: 'datum.amount * 2', as: 'value' }, { filter: 'false' }],
+      );
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it.each(['42', "'discarded label'"])(
+      'does not change same-spec routing from discarded calculated values: %s',
+      value => {
+        const spec: VegaLiteSpec = {
+          mark: 'bar',
+          data: { values: [{ x: 1, y: 10 }] },
+          transform: [{ calculate: value, as: 'y' }, { filter: 'false' }],
+          encoding: {
+            x: { field: 'x', type: 'quantitative' },
+            y: { field: 'y', type: 'quantitative' },
+          },
+        };
+        const before = getChartType(spec);
+
+        expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+        expect(spec.encoding?.y?.type).toBe('quantitative');
+        expect(getChartType(spec)).toEqual(before);
+        expect(before.type).toBe('bar');
+      },
+    );
+
+    it('preserves type correction for calculated values that are actually rendered', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: 10 }], [{ calculate: "'rendered label'", as: 'value' }]);
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([
+        expect.objectContaining({ x: 'A', y: 1 }),
+      ]);
+      expect(spec.encoding?.y?.type).toBe('nominal');
+    });
+
+    it.each(['true', 'false'])('rejects invalid calculated temporal values with timeUnit and filter %s', filter => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: { values: [{ date: '2024-01-15', value: 10 }] },
+        transform: [{ calculate: "'not-a-date'", as: 'date' }, { filter }],
+        encoding: {
+          x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+          y: { field: 'value', type: 'quantitative' },
+        },
+      };
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        'Empty data array for VerticalBarChart',
+      );
+    });
+
+    it.each([undefined, 'sum'] as const)(
+      'does not use pre-timeUnit rows to admit an empty view with declared aggregate %s',
+      aggregate => {
+        const makeSpec = (filter: string): VegaLiteSpec => ({
+          mark: 'bar',
+          data: { values: [{ date: '2024-01-15', value: 10 }] },
+          transform: [{ filter }],
+          encoding: {
+            x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+            y: { field: 'value', type: 'quantitative', aggregate },
+          },
+        });
+
+        expect(transformVegaLiteToVerticalBarChartProps(makeSpec('true'), { current: colorMap }).data).toEqual([
+          expect.objectContaining({ x: 'Jan', y: 10 }),
+        ]);
+        expect(() => transformVegaLiteToVerticalBarChartProps(makeSpec('false'), { current: colorMap })).toThrow(
+          'Empty data array for VerticalBarChart',
+        );
+      },
+    );
+
+    it('tracks a successful filter exhaustion in a layer after shared transforms', () => {
+      const spec: VegaLiteSpec = {
+        data: { values: [{ category: 'A', amount: 5 }] },
+        transform: [{ calculate: 'datum.amount * 2', as: 'value' }],
+        layer: [
+          {
+            mark: 'bar',
+            transform: [{ filter: 'false' }],
+            encoding: {
+              x: { field: 'category', type: 'nominal' },
+              y: { field: 'value', type: 'quantitative' },
+            },
+          },
+        ],
+      };
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it.each([undefined, 'sum'] as const)(
+      'keeps temporal exhaustion strict across retries with declared aggregate %s',
+      aggregate => {
+        const spec: VegaLiteSpec = {
+          mark: 'bar',
+          data: { values: [{ date: '2024-01-15', value: 10 }] },
+          transform: [{ filter: 'false' }],
+          encoding: {
+            x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+            y: { field: 'value', type: 'quantitative', aggregate },
+          },
+        };
+        const declaration = JSON.stringify(spec);
+        const route = getChartType(spec);
+
+        for (let attempt = 0; attempt < 3; attempt++) {
+          expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+            'Empty data array for VerticalBarChart',
+          );
+          expect(JSON.stringify(spec)).toBe(declaration);
+          expect(getChartType(spec)).toEqual(route);
+        }
+      },
+    );
+
+    it('does not make invalid calculated dates valid on a later temporal preparation attempt', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: { values: [{ date: '2024-01-15', value: 10 }] },
+        transform: [{ calculate: "'not-a-date'", as: 'date' }],
+        encoding: {
+          x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+          y: { field: 'value', type: 'quantitative' },
+        },
+      };
+      const declaration = JSON.stringify(spec);
+
+      for (let attempt = 0; attempt < 2; attempt++) {
+        expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+          'Empty data array for VerticalBarChart',
+        );
+        expect(JSON.stringify(spec)).toBe(declaration);
+      }
+    });
+
+    it('normalizes frozen temporal declarations locally and produces the same result on reuse', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { date: '2024-01-10', value: 10 },
+            { date: '2024-01-15', value: 20 },
+          ],
+        },
+        encoding: Object.freeze({
+          x: Object.freeze({ field: 'date', type: 'temporal', timeUnit: 'month' }),
+          y: Object.freeze({ field: 'value', type: 'quantitative', aggregate: 'sum' }),
+        }),
+      };
+      const declaration = JSON.stringify(spec);
+
+      for (let attempt = 0; attempt < 2; attempt++) {
+        expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([
+          expect.objectContaining({ x: 'Jan', y: 30 }),
+        ]);
+        expect(JSON.stringify(spec)).toBe(declaration);
+      }
+    });
+
+    it('retains exhaustion evidence when a later filter sees no rows', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: 10 }], [{ filter: 'false' }, { filter: 'true' }]);
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it('retains exhaustion evidence across shared and layer filters', () => {
+      const spec: VegaLiteSpec = {
+        data: { values: [{ category: 'A', value: 10 }] },
+        transform: [{ filter: 'datum.value > 100' }],
+        layer: [
+          {
+            mark: 'bar',
+            transform: [{ filter: "datum.category == 'A'" }],
+            encoding: {
+              x: { field: 'category', type: 'nominal' },
+              y: { field: 'value', type: 'quantitative' },
+            },
+          },
+        ],
+      };
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it('does not assume fields calculated only after the exhausting filter are valid', () => {
+      const spec = filteredBarSpec(
+        [{ category: 'A', amount: 5 }],
+        [{ filter: 'false' }, { calculate: 'datum.amount * 2', as: 'value' }],
+      );
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        "No valid values found for field 'value' in VerticalBarChart",
+      );
+    });
+
+    it('preserves validation for nested encoded values before filtering', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: [10] }], [{ filter: 'false' }]);
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        "Nested arrays not supported for field 'value'",
+      );
+    });
+
+    it('does not classify a later empty fold as successful filter exhaustion', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: 10 }], [{ filter: 'true' }, { fold: ['missing'] }]);
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        'Empty data array for VerticalBarChart',
+      );
+    });
+
+    it('does not hide earlier filter evaluation failures behind a later no-match filter', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const spec = filteredBarSpec(
+          [
+            { category: 'A', value: 10, operand: { toString: 0 } },
+            { category: 'B', value: 20, operand: 1 },
+          ],
+          [{ filter: '+datum.operand' }, { filter: 'false' }],
+        );
+
+        expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+          'Empty data array for VerticalBarChart',
+        );
+        expect(warn).toHaveBeenCalledTimes(1);
+      } finally {
+        warn.mockRestore();
+      }
+    });
+  });
+
+  describe.each([
+    { mark: 'line', transform: transformVegaLiteToLineChartProps },
+    { mark: 'area', transform: transformVegaLiteToAreaChartProps },
+  ] as const)('filter-exhausted $mark data', ({ mark, transform }) => {
+    function filteredSpec(filter: string): VegaLiteSpec {
+      return {
+        mark,
+        data: { values: [{ x: 1, y: 10, approved: false, invalid: { toString: 0 } }] },
+        transform: [{ filter }],
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      };
+    }
+
+    it.each(['false', 'datum.approved && +datum.invalid', 'datum.approved ? +datum.invalid : false'])(
+      'returns native empty props for a successful no-match: %s',
+      filter => {
+        expect(transform(filteredSpec(filter), { current: colorMap }).data).toMatchObject({ lineChartData: [] });
+      },
+    );
+
+    it('retains the populated witness across successive filters', () => {
+      const spec = filteredSpec('false');
+      spec.transform?.push({ filter: 'true' });
+
+      expect(transform(spec, { current: colorMap }).data).toMatchObject({ lineChartData: [] });
+    });
+
+    it('validates preceding calculations without rewriting discarded field types', () => {
+      const spec = filteredSpec('false');
+      spec.transform?.unshift({ calculate: "'discarded label'", as: 'y' });
+
+      expect(transform(spec, { current: colorMap }).data).toMatchObject({ lineChartData: [] });
+      expect(spec.encoding?.y?.type).toBe('quantitative');
+    });
+
+    it.each(['true && +datum.invalid', 'false && (1 + )'])(
+      'keeps strict validation for evaluation failures: %s',
+      filter => {
+        const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+        try {
+          expect(() => transform(filteredSpec(filter), { current: colorMap })).toThrow(
+            'Empty data array for LineChart',
+          );
+          expect(warn).toHaveBeenCalledTimes(1);
+        } finally {
+          warn.mockRestore();
+        }
+      },
+    );
+
+    it.each(['timeUnit', 'aggregate'] as const)('does not broaden empty eligibility to %s contracts', kind => {
+      const spec = filteredSpec('false');
+      spec.encoding = {
+        x: { field: 'x', type: 'quantitative', ...(kind === 'timeUnit' && { timeUnit: 'month' }) },
+        y: { field: 'y', type: 'quantitative', ...(kind === 'aggregate' && { aggregate: 'sum' }) },
+      };
+
+      expect(() => transform(spec, { current: colorMap })).toThrow('Empty data array for LineChart');
+    });
+  });
+
+  describe.each([
+    {
+      name: 'Histogram',
+      mark: 'bar',
+      transform: transformVegaLiteToHistogramProps,
+      encoding: { x: { field: 'x', bin: true }, y: { aggregate: 'count' } },
+    },
+    {
+      name: 'PolarChart',
+      mark: 'line',
+      transform: transformVegaLiteToPolarChartProps,
+      encoding: { theta: { field: 'x', type: 'quantitative' }, radius: { field: 'y', type: 'quantitative' } },
+    },
+  ] as const)('strict empty $name data', ({ name, mark, transform, encoding }) => {
+    it('keeps mark-specific empty validation for a successful guarded no-match', () => {
+      const spec: VegaLiteSpec = {
+        mark,
+        encoding,
+        data: { values: [{ x: 1, y: 10, approved: false, invalid: { toString: 0 } }] },
+        transform: [{ filter: 'datum.approved && +datum.invalid' }],
+      };
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        expect(() => transform(spec, { current: colorMap })).toThrow(`Empty data array for ${name}`);
+        expect(warn).not.toHaveBeenCalled();
+      } finally {
+        warn.mockRestore();
+      }
+    });
+  });
+
+  describe('stacked-bar transform ownership', () => {
+    function temporalComboSpec(aggregate?: VegaLitePositionEncoding['aggregate'], mark: 'line' | 'point' = 'line') {
+      return {
+        data: {
+          values: [
+            { date: '2024-01-10', bar: 10, line: 2 },
+            { date: '2024-01-15', bar: 20, line: 8 },
+            { date: '2024-01-20', bar: 30, line: 11 },
+          ],
+        },
+        encoding: { x: { field: 'date', type: 'temporal', timeUnit: 'month' } },
+        layer: [
+          { mark: 'bar', encoding: { y: { field: 'bar', type: 'quantitative', aggregate: 'sum' } } },
+          { mark, encoding: { y: { field: 'line', type: 'quantitative', aggregate } } },
+        ],
+      } satisfies VegaLiteSpec;
+    }
+
+    function colorComboSpec(domain: string[], range?: string[]): VegaLiteSpec {
+      return {
+        data: { values: [{ category: 'A', bar: 10, line: 20, series: 'A' }] },
+        encoding: { x: { field: 'category', type: 'nominal' } },
+        layer: [
+          {
+            mark: 'bar',
+            encoding: {
+              y: { field: 'bar', type: 'quantitative' },
+              color: { field: 'series', type: 'nominal', scale: { domain, range } },
+            },
+          },
+          { mark: 'line', encoding: { y: { field: 'line', type: 'quantitative' } } },
+        ],
+      };
+    }
+
+    describe.each(['line', 'point'] as const)('%s overlay measures', mark => {
+      it.each([
+        [undefined, [2, 8, 11]],
+        ['count', [3]],
+        ['sum', [21]],
+        ['mean', [7]],
+        ['average', [7]],
+        ['median', [8]],
+        ['min', [2]],
+        ['max', [11]],
+      ] as const)('preserves observations or honors the explicit reducer %s', (aggregate, expected) => {
+        const spec = temporalComboSpec(aggregate, mark);
+        const declaration = JSON.stringify(spec);
+        const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+        expect(result.data).toHaveLength(1);
+        expect(result.data?.[0].xAxisPoint).toBe('Jan');
+        expect(result.data?.[0].chartData).toEqual([expect.objectContaining({ data: 60 })]);
+        expect(result.data?.[0].lineData?.map(point => point.y)).toEqual(expected);
+        expect(JSON.stringify(spec)).toBe(declaration);
+      });
+    });
+
+    it('keeps explicit temporal overlay reduction scoped to its color series', () => {
+      const spec: VegaLiteSpec = {
+        data: {
+          values: [
+            { date: '2024-01-10', bar: 10, line: 2, series: 'First' },
+            { date: '2024-01-15', bar: 20, line: 8, series: 'First' },
+            { date: '2024-01-20', bar: 30, line: 100, series: 'Second' },
+          ],
+        },
+        encoding: { x: { field: 'date', type: 'temporal', timeUnit: 'month' } },
+        layer: [
+          { mark: 'bar', encoding: { y: { field: 'bar', type: 'quantitative', aggregate: 'sum' } } },
+          {
+            mark: 'line',
+            encoding: {
+              y: { field: 'line', type: 'quantitative', aggregate: 'max' },
+              color: { field: 'series', type: 'nominal' },
+            },
+          },
+        ],
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data?.[0].lineData).toEqual([
+        expect.objectContaining({ legend: 'First', y: 8 }),
+        expect.objectContaining({ legend: 'Second', y: 100 }),
+      ]);
+    });
+
+    it('honors an explicit overlay reducer on ordinary categorical coordinates too', () => {
+      const spec: VegaLiteSpec = {
+        ...temporalComboSpec('max'),
+        data: {
+          values: [
+            { date: 'A', bar: 10, line: 2 },
+            { date: 'A', bar: 20, line: 8 },
+          ],
+        },
+        encoding: { x: { field: 'date', type: 'nominal' } },
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data).toHaveLength(1);
+      expect(result.data?.[0].lineData).toEqual([expect.objectContaining({ y: 8 })]);
+    });
+
+    it.each([
+      ['min', 2],
+      ['max', 11],
+      ['median', 8],
+    ] as const)('uses the same declared %s operation for temporal bars', (aggregate, expected) => {
+      const combo = temporalComboSpec();
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: combo.data,
+        encoding: {
+          ...combo.encoding,
+          y: { field: 'line', type: 'quantitative', aggregate },
+        },
+      };
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([
+        expect.objectContaining({ x: 'Jan', y: expected }),
+      ]);
+    });
+
+    it('rejects unsupported temporal reducers at the shared normalization boundary', () => {
+      const spec: VegaLiteSpec = JSON.parse(
+        JSON.stringify(temporalComboSpec('mean')).replace('"aggregate":"sum"', '"aggregate":"variance"'),
+      );
+
+      expect(() => transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap })).toThrow(
+        'VegaLiteSchemaAdapter: Unsupported temporal chart aggregate: variance',
+      );
+    });
+
+    it('rejects unsupported overlay reducers instead of silently substituting mean or count', () => {
+      const spec: VegaLiteSpec = JSON.parse(
+        JSON.stringify(temporalComboSpec('mean')).replace('"aggregate":"mean"', '"aggregate":"variance"'),
+      );
+
+      expect(() => transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap })).toThrow(
+        'VegaLiteSchemaAdapter: Unsupported line overlay aggregate: variance',
+      );
+    });
+
+    it.each([false, true])(
+      'does not reserve line fallback palette slots for unused bar domain values (dark=%s)',
+      dark => {
+        const original = transformVegaLiteToVerticalStackedBarChartProps(
+          colorComboSpec(['A']),
+          { current: new Map() },
+          dark,
+        );
+        const extended = transformVegaLiteToVerticalStackedBarChartProps(
+          colorComboSpec(['Unused', 'A']),
+          { current: new Map() },
+          dark,
+        );
+        const expected = getVegaColor(1, undefined, undefined, dark);
+
+        expect(original.data?.[0].lineData?.[0].color).toBe(expected);
+        expect(extended.data?.[0].lineData?.[0].color).toBe(expected);
+      },
+    );
+
+    it('maps an explicit user bar color range by domain position rather than row discovery order', () => {
+      const result = transformVegaLiteToVerticalStackedBarChartProps(
+        colorComboSpec(['B', 'A'], ['#111111', '#222222']),
+        { current: colorMap },
+      );
+
+      expect(result.data?.[0].chartData).toEqual([expect.objectContaining({ legend: 'A', color: '#222222' })]);
+    });
+
+    it('reserves explicit bar-domain palette positions only within the bar color scale', () => {
+      const result = transformVegaLiteToVerticalStackedBarChartProps(colorComboSpec(['Unused', 'A']), {
+        current: colorMap,
+      });
+
+      expect(result.data?.[0].chartData).toEqual([
+        expect.objectContaining({ legend: 'A', color: getVegaColor(1, undefined, undefined) }),
+      ]);
+      expect(result.data?.[0].lineData?.[0].color).toBe(getVegaColor(1, undefined, undefined));
+    });
+
+    it('does not treat a non-array JSON color domain as an array', () => {
+      const spec: VegaLiteSpec = JSON.parse(
+        JSON.stringify(colorComboSpec(['A'])).replace('["A"]', '{"unionWith":["A"]}'),
+      );
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data?.[0].chartData).toEqual([
+        expect.objectContaining({ legend: 'A', color: getVegaColor(0, undefined, undefined) }),
+      ]);
+    });
+
+    it('resolves an overlay explicit color domain and range from its own encoding', () => {
+      const spec: VegaLiteSpec = {
+        data: { values: [{ category: 'A', bar: 10, line: 20, series: 'Forecast' }] },
+        encoding: { x: { field: 'category', type: 'nominal' } },
+        layer: [
+          { mark: 'bar', encoding: { y: { field: 'bar', type: 'quantitative' } } },
+          {
+            mark: 'line',
+            encoding: {
+              y: { field: 'line', type: 'quantitative' },
+              color: {
+                field: 'series',
+                type: 'nominal',
+                scale: { domain: ['Unused', 'Forecast'], range: ['#111111', '#222222'] },
+              },
+            },
+          },
+        ],
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data?.[0].lineData).toEqual([expect.objectContaining({ legend: 'Forecast', color: '#222222' })]);
+    });
+
+    it('uses calculated conditional overlay colors without rewriting caller rows or encodings', () => {
+      const spec: VegaLiteSpec = {
+        data: {
+          values: [
+            { category: 'A', bar: 10, line: 2 },
+            { category: 'B', bar: 20, line: 8 },
+          ],
+        },
+        transform: [{ calculate: 'datum.line > 5', as: 'highlight' }],
+        encoding: { x: { field: 'category', type: 'nominal' } },
+        layer: [
+          { mark: 'bar', encoding: { y: { field: 'bar', type: 'quantitative' } } },
+          {
+            mark: 'line',
+            encoding: {
+              y: { field: 'line', type: 'quantitative' },
+              color: { condition: { test: 'datum.highlight', value: 'red' }, value: 'blue' },
+            },
+          },
+        ],
+      };
+      const declaration = JSON.stringify(spec);
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data?.map(point => point.lineData)).toEqual([
+        [expect.objectContaining({ y: 2, color: 'blue' })],
+        [expect.objectContaining({ y: 8, color: 'red' })],
+      ]);
+      expect(JSON.stringify(spec)).toBe(declaration);
+    });
+
+    it('reports a failing predicate only on the transform pass supplying bar data', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const spec: VegaLiteSpec = {
+          mark: 'bar',
+          data: {
+            values: [
+              { category: 'A', value: 10, operand: { toString: 0 } },
+              { category: 'B', value: 20, operand: 1 },
+            ],
+          },
+          transform: [{ filter: '+datum.operand' }],
+          encoding: {
+            x: { field: 'category', type: 'nominal' },
+            y: { field: 'value', type: 'quantitative' },
+          },
+        };
+        const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+        expect(result.data).toEqual([
+          expect.objectContaining({
+            xAxisPoint: 'B',
+            chartData: [expect.objectContaining({ data: 20 })],
+          }),
+        ]);
+        expect(warn).toHaveBeenCalledTimes(1);
+        expect(warn).toHaveBeenCalledWith('Vega-Lite filter evaluation failed; excluding row.', expect.any(TypeError));
+      } finally {
+        warn.mockRestore();
+      }
+    });
+
+    it('prepares conditional colors on the calculated rows actually rendered', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { category: 'A', value: 10 },
+            { category: 'B', value: 20 },
+          ],
+        },
+        transform: [{ calculate: 'datum.value > 15', as: 'highlight' }],
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { condition: { test: 'datum.highlight', value: 'red' }, value: 'blue' },
+        },
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data).toEqual([
+        expect.objectContaining({
+          xAxisPoint: 'A',
+          chartData: [expect.objectContaining({ legend: 'blue', color: 'blue' })],
+        }),
+        expect.objectContaining({
+          xAxisPoint: 'B',
+          chartData: [expect.objectContaining({ legend: 'red', color: 'red' })],
+        }),
+      ]);
+    });
+
+    it('uses the prepared temporal aggregate rather than replaying raw rows', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { date: '2024-01-10', value: 10 },
+            { date: '2024-01-15', value: 20 },
+          ],
+        },
+        encoding: {
+          x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+          y: { field: 'value', type: 'quantitative', aggregate: 'sum' },
+        },
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data).toEqual([
+        expect.objectContaining({ xAxisPoint: 'Jan', chartData: [expect.objectContaining({ data: 30 })] }),
+      ]);
+    });
+
+    it('prepares temporal bar and line aggregates independently on their authoritative rows', () => {
+      const spec: VegaLiteSpec = {
+        data: {
+          values: [
+            { date: '2024-01-10', bar: 10, line: 2 },
+            { date: '2024-01-15', bar: 20, line: 4 },
+          ],
+        },
+        resolve: { scale: { y: 'independent' } },
+        layer: [
+          {
+            mark: 'line',
+            encoding: {
+              x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+              y: { field: 'line', type: 'quantitative', aggregate: 'mean' },
+            },
+          },
+          {
+            mark: 'bar',
+            encoding: {
+              x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+              y: { field: 'bar', type: 'quantitative', aggregate: 'sum' },
+            },
+          },
+        ],
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data).toEqual([
+        expect.objectContaining({
+          xAxisPoint: 'Jan',
+          chartData: [expect.objectContaining({ data: 30 })],
+          lineData: [expect.objectContaining({ y: 3, useSecondaryYScale: true })],
+        }),
+      ]);
+    });
+
+    it('does not let bar preparation consume a line overlay shared timeUnit contract', () => {
+      const spec: VegaLiteSpec = {
+        data: {
+          values: [
+            { date: '2024-01-10', bar: 10, line: 2 },
+            { date: '2024-01-15', bar: 20, line: 4 },
+          ],
+        },
+        encoding: { x: { field: 'date', type: 'temporal', timeUnit: 'month' } },
+        layer: [
+          { mark: 'line', encoding: { y: { field: 'line', type: 'quantitative', aggregate: 'mean' } } },
+          { mark: 'bar', encoding: { y: { field: 'bar', type: 'quantitative', aggregate: 'sum' } } },
+        ],
+      };
+      const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+      expect(result.data).toEqual([
+        expect.objectContaining({
+          xAxisPoint: 'Jan',
+          chartData: [expect.objectContaining({ data: 30 })],
+          lineData: [expect.objectContaining({ y: 3 })],
+        }),
+      ]);
+      expect(spec.encoding?.x).toEqual({ field: 'date', type: 'temporal', timeUnit: 'month' });
+    });
+
+    it('keeps independent line and rule overlays while executing each data-series transform once', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const spec: VegaLiteSpec = {
+          data: {
+            values: [
+              { category: 'A', bar: 10, line: 20, operand: { toString: 0 } },
+              { category: 'B', bar: 30, line: 40, operand: 1 },
+            ],
+          },
+          transform: [{ filter: '+datum.operand' }],
+          resolve: { scale: { y: 'independent' } },
+          layer: [
+            {
+              mark: 'line',
+              encoding: { x: { field: 'category', type: 'nominal' }, y: { field: 'line', type: 'quantitative' } },
+            },
+            {
+              mark: 'bar',
+              encoding: { x: { field: 'category', type: 'nominal' }, y: { field: 'bar', type: 'quantitative' } },
+            },
+            { mark: 'rule', encoding: { y: { datum: 15 } } },
+          ],
+        };
+        const result = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap });
+
+        expect(result.data).toEqual([
+          expect.objectContaining({
+            xAxisPoint: 'B',
+            chartData: [expect.objectContaining({ data: 30 })],
+            lineData: [
+              expect.objectContaining({ y: 40, useSecondaryYScale: true }),
+              expect.objectContaining({ y: 15, useSecondaryYScale: false }),
+            ],
+          }),
+        ]);
+        expect(warn).toHaveBeenCalledTimes(2);
+      } finally {
+        warn.mockRestore();
+      }
+    });
+
+    it('preserves the no-unit-spec error contract', () => {
+      expect(() => transformVegaLiteToVerticalStackedBarChartProps({}, { current: colorMap })).toThrow(
+        'VegaLiteSchemaAdapter: No valid unit specs found in specification',
+      );
     });
   });
 

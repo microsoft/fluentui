@@ -125,6 +125,85 @@ describe('VegaLiteExpressionEvaluator', () => {
     });
   });
 
+  describe('short-circuit evaluation', () => {
+    it.each([
+      ['false && +datum.b', false],
+      ['true || +datum.b', true],
+      ['true ? 42 : +datum.b', 42],
+      ['false ? +datum.b : 42', 42],
+      ['0 && +datum.b || 7', 7],
+      ['5 || +datum.b && 0', 5],
+      ['false ? 0 : true ? 42 : +datum.b', 42],
+      ['true ? false ? +datum.b : 42 : 0', 42],
+    ])('skips throwing coercion in %s', (expression, expected) => {
+      expect(safeEvaluateExpression(expression, { b: { toString: 0 } })).toBe(expected);
+    });
+
+    it.each(['true && +datum.b', 'false || +datum.b', 'true ? +datum.b : 42', 'false ? 42 : +datum.b'])(
+      'still evaluates the selected operand in %s',
+      expression => {
+        expect(() => safeEvaluateExpression(expression, { b: { toString: 0 } })).toThrow(TypeError);
+      },
+    );
+
+    it.each([
+      'false && datum.b',
+      'true || datum.b',
+      'true ? 42 : datum.b',
+      'false ? datum.b : 42',
+      'true || datum[datum.b]',
+      'true || abs(datum.b)',
+    ])('does not access skipped properties in %s', expression => {
+      const getValue = jest.fn(() => {
+        throw new Error('Skipped property was accessed');
+      });
+      const datum = Object.defineProperty({}, 'b', { get: getValue });
+
+      expect(() => safeEvaluateExpression(expression, datum)).not.toThrow();
+      expect(getValue).not.toHaveBeenCalled();
+    });
+
+    it.each([
+      '+datum.b',
+      '-datum.b',
+      'datum.b + 1',
+      'datum.b - 1',
+      'datum.b * 2',
+      'datum.b / 2',
+      'datum.b % 2',
+      'datum.b < 2',
+      'datum.b <= 2',
+      'datum.b > 2',
+      'datum.b >= 2',
+      'datum.b == 2',
+      'datum.b != 2',
+      'datum[datum.b]',
+      'toNumber(datum.b)',
+      'datum.callback()',
+    ])('does not execute a skipped subexpression: %s', expression => {
+      const callback = jest.fn();
+      expect(safeEvaluateExpression(`true || (${expression})`, { b: { toString: 0 }, callback })).toBe(true);
+      expect(callback).not.toHaveBeenCalled();
+    });
+
+    it.each(['false && (1 + )', 'true || abs(1,)', 'true ? 42 : (', 'false ? (1 + ) : 42', 'true || globalThis'])(
+      'still rejects invalid or disallowed syntax in %s',
+      expression => {
+        expect(() => safeEvaluateExpression(expression, {})).toThrow();
+      },
+    );
+
+    it('preserves operand values rather than converting them to booleans', () => {
+      expect(safeEvaluateExpression('0 && 42', {})).toBe(0);
+      expect(safeEvaluateExpression("'' && 42", {})).toBe('');
+      expect(safeEvaluateExpression('null && 42', {})).toBeNull();
+      expect(safeEvaluateExpression('datum.missing && 42', {})).toBeUndefined();
+      expect(safeEvaluateExpression("'value' || 42", {})).toBe('value');
+      expect(safeEvaluateExpression('0 || 42', {})).toBe(42);
+      expect(safeEvaluateExpression('1 && 42', {})).toBe(42);
+    });
+  });
+
   // -------------------------------------------------------------------
   // Malicious expressions that MUST be rejected
   // -------------------------------------------------------------------
