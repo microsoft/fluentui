@@ -9,7 +9,7 @@ export type ToolbarButtonState = ToolbarButtonBaseState & {
     /**
      * Data attribute with the component's orientation.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
 
     /**
      * Data attribute set when the button is disabled.

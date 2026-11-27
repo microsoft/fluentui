@@ -20,6 +20,6 @@ export type TabListState = TabListBaseState & {
     /**
      * Data attribute set to reflect the orientation of the tab list. Value is 'vertical' or 'horizontal'.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
   };
 };

@@ -12,6 +12,6 @@ export type ToolbarState = ToolbarBaseState & {
     /**
      * Data attribute with the component's orientation.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
   };
 };

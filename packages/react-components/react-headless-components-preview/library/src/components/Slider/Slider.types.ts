@@ -15,6 +15,6 @@ export type SliderState = SliderBaseState & {
     /**
      * Data attribute with the component's orientation.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
   };
 };

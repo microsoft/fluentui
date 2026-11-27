@@ -35,7 +35,7 @@ export type RangeSliderState = RangeSliderBaseState & {
     /**
      * Data attribute with the component's orientation.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
   };
   startThumb: RangeSliderThumbDataAttributes;
   endThumb: RangeSliderThumbDataAttributes;

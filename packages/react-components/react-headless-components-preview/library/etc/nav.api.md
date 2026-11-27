@@ -132,7 +132,7 @@ export { NavDividerSlots }
 // @public (undocumented)
 export type NavDividerState = DividerBaseState & {
     root: {
-        'data-orientation'?: 'vertical' | 'horizontal';
+        'data-orientation'?: string;
     };
 };
 

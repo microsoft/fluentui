@@ -41,7 +41,7 @@ export { AlphaSliderSlots }
 export type AlphaSliderState = AlphaSliderBaseState & {
     root: {
         'data-channel'?: AlphaSliderBaseState['channel'];
-        'data-orientation'?: 'horizontal' | 'vertical';
+        'data-orientation'?: string;
         'data-transparency'?: string;
     };
 };
@@ -79,7 +79,7 @@ export { ColorSliderSlots }
 export type ColorSliderState = ColorSliderBaseState & {
     root: {
         'data-channel'?: ColorChannel;
-        'data-orientation'?: 'horizontal' | 'vertical';
+        'data-orientation'?: string;
     };
 };
 

@@ -16,6 +16,6 @@ export type ToolbarRadioGroupState = ToolbarRadioGroupBaseState & {
     /**
      * Data attribute with the orientation of the toolbar the radio group is in.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
   };
 };
