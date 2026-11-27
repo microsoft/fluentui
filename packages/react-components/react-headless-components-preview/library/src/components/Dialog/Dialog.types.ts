@@ -72,9 +72,9 @@ export type DialogProps = {
 
   /**
    * Enables standard behavior according to the HTML dialog spec
-   * where the focus trap involves setting outside elements inert.
-   * Native `<dialog showModal()>` always uses inert focus trapping,
-   * so this prop is accepted for API parity but does not change behavior.
+   * where the focus trap involves setting outside elements inert,
+   * letting Tab move from the dialog to the browser UI and back.
+   * By default, Tab and Shift+Tab cycle inside modal and alert dialogs.
    *
    * @default false
    */

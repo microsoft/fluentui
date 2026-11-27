@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { createPortal } from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
@@ -641,6 +641,75 @@ describe('Menu', () => {
       expect(getByTestId('outside-item').querySelectorAll('span')).toHaveLength(3);
       // Inside the split group the trigger half suppresses the icon gutter: indicator + content.
       expect(getByTestId('split-trigger').querySelectorAll('span')).toHaveLength(2);
+    });
+
+    it('moves focus between the split items with ArrowRight and ArrowLeft', () => {
+      const { getByTestId } = render(
+        <Menu defaultOpen>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuSplitGroup>
+                <MenuItem data-testid="split-main">Split main</MenuItem>
+                <MenuItem data-testid="split-secondary">Secondary</MenuItem>
+              </MenuSplitGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      getByTestId('split-main').focus();
+      // `fireEvent` returns false when the default action (scrolling) was prevented.
+      expect(fireEvent.keyDown(getByTestId('split-main'), { key: 'ArrowRight' })).toBe(false);
+      expect(getByTestId('split-secondary')).toHaveFocus();
+
+      fireEvent.keyDown(getByTestId('split-secondary'), { key: 'ArrowLeft' });
+      expect(getByTestId('split-main')).toHaveFocus();
+    });
+
+    it('keeps arrow navigation when a consumer onKeyDown is passed, unless it prevents the default', () => {
+      const onKeyDown = jest.fn();
+      const { getByTestId, rerender } = render(
+        <Menu defaultOpen>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuSplitGroup onKeyDown={onKeyDown}>
+                <MenuItem data-testid="split-main">Split main</MenuItem>
+                <MenuItem data-testid="split-secondary">Secondary</MenuItem>
+              </MenuSplitGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      getByTestId('split-main').focus();
+      fireEvent.keyDown(getByTestId('split-main'), { key: 'ArrowRight' });
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+      expect(getByTestId('split-secondary')).toHaveFocus();
+
+      rerender(
+        <Menu defaultOpen>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuSplitGroup onKeyDown={event => event.preventDefault()}>
+                <MenuItem data-testid="split-main">Split main</MenuItem>
+                <MenuItem data-testid="split-secondary">Secondary</MenuItem>
+              </MenuSplitGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      fireEvent.keyDown(getByTestId('split-secondary'), { key: 'ArrowLeft' });
+      expect(getByTestId('split-secondary')).toHaveFocus();
     });
   });
 });
