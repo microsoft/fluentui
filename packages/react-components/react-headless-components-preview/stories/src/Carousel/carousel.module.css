@@ -1,10 +1,12 @@
-/* Story frame — gives the carousel a realistic width instead of shrinking to its content. */
+/* Story frame — a realistic width, with side room for the arrow tooltips. */
 .example {
+  box-sizing: border-box;
   display: grid;
   gap: var(--space-4);
   inline-size: 100%;
-  max-inline-size: 720px;
+  max-inline-size: calc(720px + 2 * var(--space-16));
   margin-inline: auto;
+  padding-inline: var(--space-16);
 }
 
 /* ------------------------------------------------------------------
