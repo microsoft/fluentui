@@ -21,7 +21,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   const setOpen = useMenuContext(ctx => ctx.setOpen);
   const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
 
-  // Stays mounted; `useMenu` restores focus. Once shown, the first enabled item takes focus and `focusgroup` is
+  // Rendered while open or closing (`useMenu`, `useLayerPresence`); `useMenu` restores focus. Once shown, the first enabled item takes focus and `focusgroup` is
   // re-applied, so the polyfill sees the visible items.
   useLayerOpenState(menuPopoverRef as React.RefObject<HTMLElement | null>, {
     open,
