@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose TagPicker single selection mode",
+  "packageName": "@fluentui/react-components",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

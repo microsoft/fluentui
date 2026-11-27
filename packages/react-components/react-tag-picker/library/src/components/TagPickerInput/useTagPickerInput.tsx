@@ -23,6 +23,8 @@ import { tagPickerInputCSSRules } from '../../utils/tokens';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
 
+const noopClearSelection = () => undefined;
+
 /**
  * Create the base state required to render TagPickerInput, without design-only props.
  * The Base hook omits Tabster-driven focus management; consumers can re-add it via the
@@ -49,12 +51,12 @@ export const useTagPickerInputBase_unstable = (
   const setValue = useTagPickerContext_unstable(ctx => ctx.setValue);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
-  const clearSelection = useTagPickerContext_unstable(ctx => ctx.clearSelection);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const popoverId = useTagPickerContext_unstable(ctx => (ctx.noPopover ? undefined : ctx.popoverId));
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
   const contextValue = useTagPickerContext_unstable(ctx => ctx.value);
+  const multiselect = useTagPickerContext_unstable(ctx => ctx.selectionMode === 'multiselect');
 
   useIsomorphicLayoutEffect(() => {
     if (!triggerRef.current) {
@@ -87,15 +89,21 @@ export const useTagPickerInputBase_unstable = (
       ...getIntrinsicElementProps('input', fieldProps),
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         fieldProps.onKeyDown?.(event);
+        const activeOptionId = activeDescendantController.active();
+        const activeOption = activeOptionId ? getOptionById(activeOptionId) : undefined;
+        // The shared trigger already closes single selection unless the active option is disabled.
+        const shouldClose = multiselect || activeOption?.disabled;
         if (event.key === Space) {
-          if (open && !isTypingRef.current) {
+          if (open && !isTypingRef.current && shouldClose) {
             setOpen(event, false);
           }
         } else if (event.key === Enter) {
           if (open) {
             ReactDOM.unstable_batchedUpdates(() => {
               setValue(undefined);
-              setOpen(event, false);
+              if (shouldClose) {
+                setOpen(event, false);
+              }
             });
           } else {
             setOpen(event, true);
@@ -110,7 +118,8 @@ export const useTagPickerInputBase_unstable = (
       activeDescendantController,
       freeform: false,
       state: {
-        clearSelection,
+        // Typing must not clear the selected tag; single mode only needs multiselect:false for Tab selection.
+        clearSelection: noopClearSelection,
         getOptionById,
         open,
         selectedOptions,
@@ -118,7 +127,7 @@ export const useTagPickerInputBase_unstable = (
         setHasFocus,
         setOpen,
         setValue,
-        multiselect: true,
+        multiselect,
         value: fieldProps.value,
       },
     },
