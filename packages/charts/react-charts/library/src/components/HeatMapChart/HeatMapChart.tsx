@@ -517,7 +517,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
          * rectangles and then format the x and y datapoints respectively
          */
         Object.keys(yPoints).forEach((item: string) => {
-          yPoints[item] = _getOrderedXPoints(yPoints[item]);
+          yPoints[item] = _getOrderedXPoints(yPoints[item], uniqueXPoints);
 
           yPoints[item].forEach((datapoint: HeatMapChartDataPoint) => {
             if (_xAxisType.current === XAxisTypes.DateAxis) {
@@ -668,8 +668,12 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       return sortAxisCategories(_mapCategoryToValues(true), props.yAxisCategoryOrder);
     };
 
-    const _getOrderedXPoints = (xPoints: FlattenData[]) => {
-      if (!_shouldOrderXAxisLabelsByCategoryOrder()) {
+    const _getOrderedXPoints = (xPoints: FlattenData[], uniqueXPoints: { [key: string]: '1' }) => {
+      // With sortOrder "none" a string x axis keeps the order of the data, and the rows can list their cells
+      // in different orders. _createRectangles walks every row in the order of the x axis, so these rows are
+      // put in that order too, like the rows of a chart with a category order.
+      const keepsDataOrder = _xAxisType.current === XAxisTypes.StringAxis && props.sortOrder === 'none';
+      if (!_shouldOrderXAxisLabelsByCategoryOrder() && !keepsDataOrder) {
         return xPoints.sort((a: HeatMapChartDataPoint, b: HeatMapChartDataPoint) => {
           if (_xAxisType.current === XAxisTypes.StringAxis) {
             return props.sortOrder === 'none'
@@ -698,7 +702,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         xValueToPoints[xValue].push(point);
       });
 
-      const xAxisLabels = _getOrderedXAxisLabels({});
+      const xAxisLabels = _getOrderedXAxisLabels(uniqueXPoints);
       xAxisLabels.forEach(xValue => {
         if (xValueToPoints[xValue]) {
           result.push(...xValueToPoints[xValue]);

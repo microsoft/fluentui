@@ -614,6 +614,53 @@ describe('HeatMapChart - Default category order of string axes', () => {
     await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Medium', 'Large']));
     expect(tickLabels(container, 'yAxis')).toEqual(['North', 'South']);
   });
+
+  // The two rows list their cells in different orders.
+  const mixedRows: HeatMapChartProps['data'] = [
+    {
+      value: 20,
+      legend: 'Orders',
+      data: [
+        cell('Small', 'South', 10),
+        cell('Large', 'South', 30),
+        cell('Large', 'North', 35),
+        cell('Small', 'North', 15),
+      ],
+    },
+  ];
+  const cellLabels = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll('[aria-label*="Orders,"]'))
+      .map(element => element.getAttribute('aria-label'))
+      .sort();
+  const allFourCells = [
+    'Large, North. Orders, 35.',
+    'Large, South. Orders, 30.',
+    'Small, North. Orders, 15.',
+    'Small, South. Orders, 10.',
+  ];
+
+  it('Should draw every cell when sortOrder is none and the rows list their cells in different orders', async () => {
+    const { container } = render(<HeatMapChart {...chart} data={mixedRows} sortOrder="none" />);
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Large']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['South', 'North']);
+    expect(cellLabels(container)).toEqual(allFourCells);
+  });
+
+  it('Should draw every cell of such rows when the category order props are set to default as well', async () => {
+    const { container } = render(
+      <HeatMapChart
+        {...chart}
+        data={mixedRows}
+        sortOrder="none"
+        xAxisCategoryOrder="default"
+        yAxisCategoryOrder="default"
+      />,
+    );
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Large']));
+    expect(cellLabels(container)).toEqual(allFourCells);
+  });
 });
 
 describe('HeatMapChart - basic props', () => {
