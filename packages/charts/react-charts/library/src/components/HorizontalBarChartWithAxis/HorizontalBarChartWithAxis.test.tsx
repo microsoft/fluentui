@@ -535,16 +535,10 @@ describe('Horizontal bar chart with axis - Up and down arrow keys', () => {
   afterEach(sharedAfterEach);
 
   const topOf = (bar: Element) => Number(bar.getAttribute('y'));
-  // jsdom has no layout, so each bar reports the place that its own x, y, width and height attributes give it.
   const renderBars = async (data: HorizontalBarChartWithAxisDataPoint[], count: number) => {
     const { container } = render(<HorizontalBarChartWithAxis data={data} height={300} width={600} />);
     await waitFor(() => expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(count));
     const bars = Array.from(container.querySelectorAll<SVGRectElement>('rect[role="option"]'));
-    bars.forEach(bar => {
-      const [x, y, width, height] = ['x', 'y', 'width', 'height'].map(name => Number(bar.getAttribute(name)));
-      bar.getBoundingClientRect = () =>
-        ({ left: x, top: y, right: x + width, bottom: y + height, width, height, x, y } as DOMRect);
-    });
     // The bars from the top of the chart to the bottom. This is not their order in the document.
     return [...bars].sort((first, second) => topOf(first) - topOf(second));
   };

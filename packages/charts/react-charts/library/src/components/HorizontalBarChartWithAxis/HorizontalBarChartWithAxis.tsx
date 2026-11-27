@@ -312,14 +312,17 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       return;
     }
     const focused = event.currentTarget;
+    // The middle of a bar comes from its own x, y, width and height attributes. All bars of the chart share one
+    // coordinate system, and the bars of one row have the same y and the same height, so their middles are equal
+    // numbers. The layout box is not used, because a browser can round it, and the rows of a numeric y axis can
+    // be less than a pixel apart.
     const middleOf = (bar: Element) => {
-      const rect = bar.getBoundingClientRect();
-      return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+      const [x, y, width, height] = ['x', 'y', 'width', 'height'].map(name => Number(bar.getAttribute(name)));
+      return { x: x + width / 2, y: y + height / 2 };
     };
     const from = middleOf(focused);
     // Every other bar that can take the focus and is in another row: how far below it is, and how far to the side.
-    // The bars of one row have the same top and the same height, so their middles are equal. Rows are compared
-    // without a tolerance, because the rows of a numeric y axis can be less than a pixel apart.
+    // Rows are compared without a tolerance.
     const others = Array.from(
       focused.ownerSVGElement?.querySelectorAll<SVGRectElement>('rect[role="option"][tabindex="0"]') ?? [],
     )
