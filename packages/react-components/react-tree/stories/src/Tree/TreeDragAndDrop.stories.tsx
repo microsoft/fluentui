@@ -54,8 +54,14 @@ const SortableTreeItem = ({ children, value, onKeyDown, ...rest }: FlatTreeItemP
       onKeyDown={event => {
         listeners?.onKeyDown?.(event);
         onKeyDown?.(event);
-        if (isDragging && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-          // Prevent Tree navigation, but let the document-level drag sensor receive the event.
+        const isTypeAhead =
+          event.key.length === 1 && /\w/.test(event.key) && !event.altKey && !event.ctrlKey && !event.metaKey;
+        if (
+          isDragging &&
+          (isTypeAhead ||
+            ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key))
+        ) {
+          // Prevent Tree navigation and activation, but let the document-level drag sensor receive the event.
           event.preventDefault();
         }
       }}
@@ -119,7 +125,7 @@ In this example, the tree component is integrated with \`@dnd-kit\` to enable dr
 
 **DndContext** and **SortableContext** from \`@dnd-kit\` set up the necessary environment for drag-and-drop throughout the tree. Following that, **SortableTreeItem** is a component that wraps \`TreeItem\`, leveraging the **useSortable** hook to add drag-and-drop capabilities. Lastly, the **handleDragEnd** function ensures items are rearranged correctly after dragging.
 
-To reorder with the keyboard, focus a sortable item and press Enter or Space to pick it up. Up and Down move it between siblings; Enter or Space drops it, and Escape cancels. The keyboard sensor uses \`sortableKeyboardCoordinates\` rather than free movement. While dragging, the item prevents Tree arrow-key navigation without stopping events from reaching the drag sensor. The integration preserves Tree's \`treeitem\` roles and roving tab index rather than forwarding the drag library's button roles and tab indices.
+To reorder with the keyboard, focus a sortable item and press Enter or Space to pick it up. Up and Down move it between siblings; Enter or Space drops it, and Escape cancels. The keyboard sensor uses \`sortableKeyboardCoordinates\` rather than free movement. While dragging, the item prevents Tree navigation (including Home, End and typeahead) and activation without stopping events from reaching the drag sensor. Normal Tree navigation resumes after dropping or cancelling. The integration preserves Tree's \`treeitem\` roles and roving tab index rather than forwarding the drag library's button roles and tab indices.
 
 By adopting this approach, users can easily drag and drop tree items, rearranging them as desired. The \`dnd-kit\` also supports virtualization. For an in-depth look and further customization options, check the [dnd-kit's documentation](https://dndkit.com/).`,
     },

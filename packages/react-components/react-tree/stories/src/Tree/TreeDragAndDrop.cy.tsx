@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { DragAndDrop } from '../../../../stories/src/Tree/TreeDragAndDrop.stories';
+import { DragAndDrop } from './TreeDragAndDrop.stories';
 
 describe('Tree drag and drop example', () => {
   beforeEach(() => {
@@ -17,6 +17,34 @@ describe('Tree drag and drop example', () => {
   const item = (label: string) => cy.contains('.fui-TreeItem', label);
   const order = () =>
     cy.get('.fui-TreeItem[aria-level="2"]').then(elements => Array.from(elements, element => element.textContent));
+
+  (
+    [
+      { key: 'Home', target: 'Parent item' },
+      { key: 'End', target: 'Sortable item 8' },
+      { key: 's', target: 'Sortable item 2' },
+    ] as const
+  ).forEach(({ key, target }) => {
+    it(`keeps focus during ${key} while dragging and restores navigation after cancellation`, () => {
+      item('Sortable item 1').focus();
+      cy.realPress('Enter');
+      cy.realPress(key);
+      item('Sortable item 1').should('be.focused');
+      cy.realPress('Enter');
+      item('Parent item').should('have.attr', 'aria-expanded', 'true');
+      order().should(
+        'deep.equal',
+        Array.from({ length: 8 }, (_, index) => `Sortable item ${index + 1}`),
+      );
+
+      cy.realPress('Enter');
+      cy.realPress(key);
+      item('Sortable item 1').should('be.focused');
+      cy.realPress('Escape');
+      cy.realPress(key);
+      item(target).should('be.focused');
+    });
+  });
 
   it('sorts by sibling with the keyboard without moving focus or leaving the tree', () => {
     item('Sortable item 1').focus();

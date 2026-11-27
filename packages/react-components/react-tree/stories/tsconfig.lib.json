@@ -6,5 +6,6 @@
     "inlineSources": true,
     "types": ["static-assets", "environment"]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["**/*.cy.ts", "**/*.cy.tsx"]
 }
