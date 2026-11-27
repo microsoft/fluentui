@@ -2,11 +2,13 @@
 
 import * as React from 'react';
 import {
+  elementContains,
   useControllableState,
   useEventCallback,
   useFirstMount,
   useId,
   useMergedRefs,
+  useOnScrollOutside,
   useTimeout,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -77,6 +79,8 @@ export const useMenu = (props: MenuProps): MenuState => {
     open: props.open,
     defaultOpen: props.defaultOpen,
     onOpenChange: props.onOpenChange,
+    closeOnScroll,
+    openOnContext,
   });
 
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
@@ -205,7 +209,7 @@ const useMenuOpenState = (
     triggerRef: React.MutableRefObject<HTMLElement | null>;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     menuPopoverRef: React.MutableRefObject<HTMLElement | null>;
-  } & Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
+  } & Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'closeOnScroll' | 'openOnContext'>,
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext(ctx => ctx.setOpen);
@@ -259,6 +263,17 @@ const useMenuOpenState = (
     } else {
       trySetOpen(e, data);
     }
+  });
+
+  useOnScrollOutside({
+    contains: elementContains,
+    element: targetDocument,
+    callback: event => setOpen(event, { open: false, type: 'scrollOutside', event }),
+    refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
+      Boolean,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+    ) as React.MutableRefObject<HTMLElement | null>[],
+    disabled: !open || !state.closeOnScroll,
   });
 
   const firstMount = useFirstMount();

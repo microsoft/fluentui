@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { createPortal } from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
@@ -641,6 +641,52 @@ describe('Menu', () => {
       expect(getByTestId('outside-item').querySelectorAll('span')).toHaveLength(3);
       // Inside the split group the trigger half suppresses the icon gutter: indicator + content.
       expect(getByTestId('split-trigger').querySelectorAll('span')).toHaveLength(2);
+    });
+  });
+
+  describe('closeOnScroll', () => {
+    const renderMenu = (props: Partial<React.ComponentProps<typeof Menu>>) =>
+      render(
+        <Menu defaultOpen {...props}>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item 1</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+    it('closes on wheel outside the menu', () => {
+      const onOpenChange = jest.fn();
+      renderMenu({ closeOnScroll: true, onOpenChange });
+
+      fireEvent.wheel(document.body);
+
+      expect(onOpenChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ open: false, type: 'scrollOutside' }),
+      );
+    });
+
+    it('does not close on wheel without closeOnScroll', () => {
+      const onOpenChange = jest.fn();
+      renderMenu({ onOpenChange });
+
+      fireEvent.wheel(document.body);
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
+    it('does not close on wheel inside the popover', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = renderMenu({ closeOnScroll: true, onOpenChange });
+
+      fireEvent.wheel(getByText('Item 1'));
+
+      expect(onOpenChange).not.toHaveBeenCalled();
     });
   });
 });
