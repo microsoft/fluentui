@@ -11,10 +11,11 @@ import {
   type OverflowProps,
   type OverflowItemProps,
   type OnOverflowChangeData,
+  type OverflowImperativeRef,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 import type { OverflowAxis } from '@fluentui/priority-overflow';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, type DistributiveOmit } from '@fluentui/react-utilities';
 
 const selectors = {
   container: 'data-test-container',
@@ -23,12 +24,9 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
-const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
-  children,
-  size,
-  overflowAxis = 'horizontal' as const,
-  ...userProps
-}) => {
+const Container: React.FC<
+  { children?: React.ReactNode; size?: number; style?: React.CSSProperties } & Omit<OverflowProps, 'children'>
+> = ({ children, size, overflowAxis = 'horizontal' as const, style, ...userProps }) => {
   const selector = {
     [selectors.container]: '',
   };
@@ -50,6 +48,7 @@ const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<O
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           resize: overflowAxis,
+          ...style,
         }}
       >
         {children}
@@ -75,26 +74,27 @@ const setContainerHeight = (size: number) => {
   setContainerSize(size, 'height');
 };
 
-type ItemProps = { children?: React.ReactNode; width?: number | string } & DistributiveOmit<
-  OverflowItemProps,
-  'children'
->;
+type ItemProps = {
+  children?: React.ReactNode;
+  width?: number | string;
+  style?: React.CSSProperties;
+} & DistributiveOmit<OverflowItemProps, 'children'>;
 
-const Item = ({ children, width, ...overflowItemProps }: ItemProps) => {
+const Item = ({ children, width, style, ...overflowItemProps }: ItemProps) => {
   const selector = {
     [selectors.item]: overflowItemProps.id,
   };
 
   return (
     <OverflowItem {...overflowItemProps}>
-      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0 }}>
+      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0, ...style }}>
         {children}
       </button>
     </OverflowItem>
   );
 };
 
-const Menu: React.FC<{ width?: number }> = ({ width }) => {
+const Menu: React.FC<{ width?: number; style?: React.CSSProperties }> = ({ width, style }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
   const { itemVisibility } = useOverflowVisibility();
   const selector = {
@@ -108,7 +108,7 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, minWidth: width, height: 50 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, minWidth: width, height: 50, ...style }}>
         +{overflowCount}
       </button>
       <Portal>
@@ -181,21 +181,37 @@ export const CustomDivider: React.FC<{
     return null;
   }
 
+  return (
+    <MountedDivider groupId={groupId} style={{ display: 'inline-block' }}>
+      {children}
+    </MountedDivider>
+  );
+};
+
+const MountedDivider = ({
+  groupId,
+  children,
+  style,
+}: {
+  groupId: string;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+}) => {
   const selector = {
     [selectors.divider]: groupId,
   };
 
-  const style = {
-    display: 'inline-block',
+  const dividerStyle = {
     width: '30px',
     backgroundColor: 'red',
     height: '20px',
     flexShrink: 0,
+    ...style,
   };
 
   return (
     <OverflowDivider groupId={groupId}>
-      <div {...selector} style={style}>
+      <div {...selector} style={dividerStyle}>
         {children}
       </div>
     </OverflowDivider>
@@ -659,6 +675,9 @@ describe('Overflow', () => {
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
     cy.get(`[${selectors.item}="1"]`).should('be.visible');
     cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+    setContainerWidth(600);
+    cy.get(`[${selectors.divider}="4"]`).should('exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 4);
   });
 
   it('should be no flickering', () => {
@@ -1194,6 +1213,316 @@ describe('Overflow', () => {
           expect(latestUpdate?.itemVisibility[i.toString()]).to.equal(false);
         }
       });
+    });
+  });
+
+  it(`should overflow items with flex gap`, () => {
+    const mapHelper = new Array(6).fill(0).map((_, i) => i);
+    mount(
+      <Container style={{ gap: 10 }} measureGap>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 290, overflowCount: 2 },
+      { containerSize: 280, overflowCount: 3 },
+      { containerSize: 230, overflowCount: 3 },
+      { containerSize: 170, overflowCount: 4 },
+      { containerSize: 110, overflowCount: 5 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items with margin`, () => {
+    const mapHelper = new Array(6).fill(0).map((_, i) => i);
+    mount(
+      <Container measureGap>
+        {mapHelper.map((i, index) => (
+          <Item style={{ marginInlineStart: index > 0 ? 10 : 0 }} key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu style={{ marginInlineStart: 10 }} />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 290, overflowCount: 2 },
+      { containerSize: 280, overflowCount: 3 },
+      { containerSize: 230, overflowCount: 3 },
+      { containerSize: 170, overflowCount: 4 },
+      { containerSize: 110, overflowCount: 5 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items with gap and margin`, () => {
+    const mapHelper = new Array(6).fill(0).map((_, i) => i);
+    mount(
+      <Container style={{ gap: 5 }} measureGap>
+        {mapHelper.map((i, index) => (
+          <Item style={{ marginInlineStart: index > 0 ? 5 : 0 }} key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu style={{ marginInlineStart: 5 }} />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 290, overflowCount: 2 },
+      { containerSize: 280, overflowCount: 3 },
+      { containerSize: 230, overflowCount: 3 },
+      { containerSize: 170, overflowCount: 4 },
+      { containerSize: 110, overflowCount: 5 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it('should recalculate committed gap and margin changes through the imperative handle', () => {
+    const SpacingUpdates = () => {
+      const [spacing, setSpacing] = React.useState(0);
+      const imperativeRef = React.useRef<OverflowImperativeRef | null>(null);
+
+      useIsomorphicLayoutEffect(() => {
+        imperativeRef.current?.updateOverflow();
+      }, [spacing]);
+
+      return (
+        <>
+          <button data-update-spacing onClick={() => setTimeout(() => setSpacing(previous => (previous + 1) % 3), 0)}>
+            Update spacing
+          </button>
+          <Container size={300} style={{ gap: spacing === 1 ? 20 : 0 }} measureGap imperativeRef={imperativeRef}>
+            {Array.from({ length: 5 }, (_, i) => (
+              <Item key={i} id={i.toString()} style={{ marginInlineStart: spacing === 2 && i > 0 ? 20 : 0 }}>
+                {i}
+              </Item>
+            ))}
+          </Container>
+        </>
+      );
+    };
+
+    mount(<SpacingUpdates />);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    [1, 1, 0].forEach(overflowCount => {
+      cy.get('[data-update-spacing]').click();
+      cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', overflowCount);
+      cy.get(`[${selectors.container}]`).should(container => {
+        expect(container[0].scrollWidth).to.be.at.most(container[0].clientWidth);
+      });
+    });
+  });
+
+  it('should leave spacing measurement disabled by default', () => {
+    mount(
+      <Container size={280} style={{ gap: 10 }}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+  });
+
+  it('should account for overlapping item margins', () => {
+    mount(
+      <Container size={250} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} style={{ marginInlineStart: i > 0 ? -10 : 0 }}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  const spacingLayouts: { name: string; axis: OverflowAxis; style: React.CSSProperties }[] = [
+    { name: 'LTR', axis: 'horizontal', style: {} },
+    { name: 'RTL', axis: 'horizontal', style: { direction: 'rtl' } },
+    { name: 'row-reverse', axis: 'horizontal', style: { flexDirection: 'row-reverse' } },
+    {
+      name: 'RTL row-reverse',
+      axis: 'horizontal',
+      style: { direction: 'rtl', flexDirection: 'row-reverse' },
+    },
+    { name: 'vertical', axis: 'vertical', style: {} },
+    { name: 'column-reverse', axis: 'vertical', style: { flexDirection: 'column-reverse' } },
+  ];
+
+  spacingLayouts.forEach(({ name, axis, style }) => {
+    it(`should ignore CSS-hidden items when measuring spacing in ${name} layouts`, () => {
+      mount(
+        <Container
+          size={170}
+          overflowAxis={axis}
+          style={{ gap: 10, marginLeft: 400, marginTop: 400, ...style }}
+          measureGap
+        >
+          {Array.from({ length: 4 }, (_, i) => (
+            <Item key={i} id={i.toString()} style={i === 1 ? { display: 'none' } : undefined}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      [0, 2, 3].forEach(i => {
+        cy.get(`[${selectors.item}="${i}"]`).should('be.visible');
+      });
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+      cy.get(`[${selectors.menu}]`).should('not.exist');
+    });
+
+    it(`should restore all items with an interior menu in ${name} layouts`, () => {
+      mount(
+        <Container size={350} overflowAxis={axis} style={{ gap: 10, ...style }} measureGap>
+          {Array.from({ length: 6 }, (_, i) => (
+            <React.Fragment key={i}>
+              <Item id={i.toString()}>{i}</Item>
+              {i === 2 && <Menu style={{ flexShrink: 0 }} />}
+            </React.Fragment>
+          ))}
+        </Container>,
+      );
+
+      const setSize = axis === 'horizontal' ? setContainerWidth : setContainerHeight;
+      setSize(290);
+      cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+      setSize(350);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+      cy.get(`[${selectors.menu}]`).should('not.exist');
+    });
+
+    it(`should measure spacing in ${name} layouts`, () => {
+      mount(
+        <Container size={350} overflowAxis={axis} style={{ gap: 10, ...style }} measureGap>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={i.toString()}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      const setSize = axis === 'horizontal' ? setContainerWidth : setContainerHeight;
+      [
+        { containerSize: 350, overflowCount: 0 },
+        { containerSize: 290, overflowCount: 2 },
+        { containerSize: 280, overflowCount: 3 },
+        { containerSize: 230, overflowCount: 3 },
+        { containerSize: 220, overflowCount: 4 },
+        { containerSize: 350, overflowCount: 0 },
+      ].forEach(({ containerSize, overflowCount }) => {
+        setSize(containerSize);
+        cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', overflowCount);
+        if (overflowCount) {
+          cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+        } else {
+          cy.get(`[${selectors.menu}]`).should('not.exist');
+        }
+      });
+    });
+  });
+
+  it('should include zero-width layout boxes when measuring spacing', () => {
+    mount(
+      <Container size={120} style={{ gap: 10, marginLeft: 400 }} measureGap>
+        <Item id="0" />
+        <Item id="1" />
+        <Item id="2" width={0} style={{ padding: 0, border: 0 }} />
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    setContainerWidth(110);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+    setContainerWidth(120);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  it(`should overflow items with gap and dividers`, () => {
+    mount(
+      <Container style={{ gap: 10 }} measureGap>
+        <Item id={'6'} priority={6} groupId={'1'}>
+          6-1
+        </Item>
+        <MountedDivider groupId={'1'}>
+          <span data-divider="1" />
+        </MountedDivider>
+        <Item id={'7'} priority={7} groupId={'2'}>
+          7-2
+        </Item>
+        <MountedDivider groupId={'2'}>
+          <span data-divider="2" />
+        </MountedDivider>
+        <Item id={'4'} priority={4} groupId={'3'}>
+          4-3
+        </Item>
+        <Item id={'5'} priority={5} groupId={'3'}>
+          5-3
+        </Item>
+        <MountedDivider groupId={'3'}>
+          <span data-divider="3" />
+        </MountedDivider>
+        <Item id={'1'} priority={1} groupId={'4'}>
+          1-4
+        </Item>
+        <Item id={'2'} priority={2} groupId={'4'}>
+          2-4
+        </Item>
+        <Item id={'3'} priority={3} groupId={'4'}>
+          3-4
+        </Item>
+        <MountedDivider groupId={'4'}>
+          <span data-divider="4" />
+        </MountedDivider>
+        <Item id={'8'} priority={8} groupId={'5'}>
+          8-5
+        </Item>
+        <Menu />
+      </Container>,
+    );
+
+    const overflowCases = [
+      { containerSize: 570, overflowCount: 2, dividerCount: 4 },
+      { containerSize: 470, overflowCount: 3, dividerCount: 3 },
+      { containerSize: 410, overflowCount: 4, dividerCount: 3 },
+      { containerSize: 310, overflowCount: 5, dividerCount: 2 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize, dividerCount }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+      cy.get(`[${selectors.divider}]:not([data-overflowing])`).should('have.length', dividerCount);
     });
   });
 

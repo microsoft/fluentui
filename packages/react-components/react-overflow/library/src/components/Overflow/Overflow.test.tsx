@@ -49,6 +49,33 @@ describe('Overflow', () => {
   });
 
   describe('ref', () => {
+    it('keeps the imperative handle stable across renders alongside the container refs', () => {
+      const imperativeRef = jest.fn();
+      const containerRef = jest.fn();
+      const childRef = jest.fn();
+      const { rerender } = render(
+        <Overflow imperativeRef={imperativeRef} ref={containerRef}>
+          <div id="child" ref={childRef} />
+        </Overflow>,
+      );
+
+      const handle = imperativeRef.mock.calls[0][0];
+      expect(handle.updateOverflow).toEqual(expect.any(Function));
+      expect(containerRef).toHaveBeenCalledWith(expect.objectContaining({ id: 'child', tagName: 'DIV' }));
+      expect(childRef).toHaveBeenCalledWith(containerRef.mock.calls[0][0]);
+
+      rerender(
+        <Overflow imperativeRef={imperativeRef} ref={containerRef}>
+          <div id="child" ref={childRef}>
+            Updated content
+          </div>
+        </Overflow>,
+      );
+
+      expect(imperativeRef).toHaveBeenCalledTimes(1);
+      expect(imperativeRef).toHaveBeenLastCalledWith(handle);
+    });
+
     it('handles ref propagation', () => {
       const itemRef = jest.fn();
       const childRef = jest.fn();

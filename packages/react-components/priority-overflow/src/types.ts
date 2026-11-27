@@ -166,6 +166,19 @@ export interface OverflowOptions {
   onUpdateOverflow: OnUpdateOverflow;
 
   /**
+   * Measures spacing between direct overflow participants in a single, untransformed line.
+   * Supports fixed gaps and ordinary margins along the overflow axis, including RTL and reversed layouts.
+   * Elements without a layout box do not contribute spacing.
+   * Spacing between the end elements and the container is deliberately excluded.
+   * Reserve edge margins with padding, including when overflow direction or priority changes the first visible item.
+   * Item visibility callbacks must synchronously remove overflowing items from layout.
+   * Auto margins, distributed alignment, percentage or intrinsic gaps, nested layout parents,
+   * wrapping, complex overlaps, CSS zoom, and ancestor transforms (including scaling animations) are not supported.
+   * @default false
+   */
+  measureGap?: boolean;
+
+  /**
    * When true, reserve space as if the overflow menu were visible even with no overflowing items.
    * @default false
    */
