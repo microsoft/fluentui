@@ -301,6 +301,43 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     }
   }
 
+  /**
+   * The bars are stacked from the top of the chart to the bottom, so the up and down arrow keys move the focus to
+   * the nearest bar above or below the focused one, and go around at the ends like the left and right arrow keys.
+   * The left and right arrow keys stay with the arrow navigation group of the chart.
+   */
+  function _onBarKeyDown(event: React.KeyboardEvent<SVGRectElement>): void {
+    const isUp = event.key === 'ArrowUp';
+    if ((!isUp && event.key !== 'ArrowDown') || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) {
+      return;
+    }
+    const focused = event.currentTarget;
+    const middleOf = (bar: Element) => {
+      const rect = bar.getBoundingClientRect();
+      return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+    };
+    const from = middleOf(focused);
+    // Every other bar that can take the focus and is in another row: how far below it is, and how far to the side.
+    const others = Array.from(
+      focused.ownerSVGElement?.querySelectorAll<SVGRectElement>('rect[role="option"][tabindex="0"]') ?? [],
+    )
+      .filter(bar => bar !== focused)
+      .map(bar => ({ bar, below: middleOf(bar).y - from.y, aside: Math.abs(middleOf(bar).x - from.x) }))
+      .filter(other => Math.abs(other.below) >= 1);
+    if (others.length === 0) {
+      return;
+    }
+    // The nearest row in the direction of the key. From the last row, the row at the other end of the chart.
+    const ahead = others.filter(other => (isUp ? other.below < 0 : other.below > 0));
+    const distances = (ahead.length > 0 ? ahead : others).map(other => Math.abs(other.below));
+    const rowDistance = ahead.length > 0 ? Math.min(...distances) : Math.max(...distances);
+    const next = (ahead.length > 0 ? ahead : others)
+      .filter(other => Math.abs(Math.abs(other.below) - rowDistance) < 1)
+      .reduce((nearest, other) => (other.aside < nearest.aside ? other : nearest));
+    event.preventDefault();
+    next.bar.focus();
+  }
+
   function _getScales(
     containerHeight: number,
     containerWidth: number,
@@ -485,6 +522,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
             onBlur={_onBarLeave}
+            onKeyDown={_onBarKeyDown}
             fill={startColor}
             opacity={shouldHighlight ? 1 : 0.1}
             tabIndex={shouldHighlight ? 0 : undefined}
@@ -663,6 +701,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
+            onKeyDown={_onBarKeyDown}
             opacity={shouldHighlight ? 1 : 0.1}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
             fill={startColor}
