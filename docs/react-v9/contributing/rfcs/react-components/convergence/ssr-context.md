@@ -54,7 +54,7 @@ const useId = () => {
 };
 ```
 
-This _might_ work fine intially (probably not though), but the server will keep that global `id` value growing while on the client it will reset to `0` on every page refresh.
+This _might_ work fine initially (probably not though), but the server will keep that global `id` value growing while on the client it will reset to `0` on every page refresh.
 
 React will warn since the server output do not match the client render during hydration
 
@@ -179,7 +179,7 @@ The `Portal` component can be aware of SSR state by consuming context and forcin
 import { defaultContext, useSSRContext } from 'context';
 
 // if the ssrContext is the default value -> we are not in SSR
-// no probem with first render
+// no problem with first render
 const [shouldRender, setShouldRender] =
   React.useState(ssrContextValue === defaultSSRContextValue );
 

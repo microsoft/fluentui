@@ -34,7 +34,7 @@ The surrounding context of an app or website is also likely to influence user ex
 
 The content of options also influences user expectations -- there would be a greater expectation of space-to-type when options contain a space in them, for example multi-word options, names, states or cities.
 
-One of the risks is that the developers and designers may not be in a position to make a correct decision on the value of the prop. This is because options are usually either translations or user data, which may contain spaces that the authoring team was not aware of. We generally can't expect authors to understand all possible translations across supported languages or the specific validations of the user data at UI authoring time. While the occaisonal space character does not necessarily mean that space should not select, translations and user data do introduce the possibility of frequent spaces within multiple options.
+One of the risks is that the developers and designers may not be in a position to make a correct decision on the value of the prop. This is because options are usually either translations or user data, which may contain spaces that the authoring team was not aware of. We generally can't expect authors to understand all possible translations across supported languages or the specific validations of the user data at UI authoring time. While the occasional space character does not necessarily mean that space should not select, translations and user data do introduce the possibility of frequent spaces within multiple options.
 
 ## Problem statement
 
