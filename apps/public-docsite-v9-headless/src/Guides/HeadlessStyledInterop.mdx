@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Headless and styled v9 interop" />
+
+# Using headless components with styled v9
+
+Compose headless and styled v9 components when you want headless behavior in some parts of a UI and Fluent styling in
+others. Compose **whole widgets**: for example, put a complete styled `Combobox` inside a headless `Dialog`. Keep a
+widget's trigger, surface, list, and items from the same implementation; do not combine the Dialog from one package with
+the DialogSurface from another.
+
+The two systems can have different owners for overlay placement and keyboard behavior. Headless overlays use native
+`<dialog>` and the Popover API; styled v9 overlays commonly render through portals and use Tabster for focus
+management. The fact that two components are React descendants does not guarantee their popup DOM, focus, or dismissal
+behavior is compatible.
+
+## Set up the providers
+
+Styled components need `FluentProvider` for their theme and shared context. Headless `Provider` forwards the shared
+Fluent context used by headless components; it does not replace `FluentProvider`.
+
+```tsx
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
+import { Provider as HeadlessProvider } from '@fluentui/react-headless-components-preview/provider';
+
+<FluentProvider theme={webLightTheme}>
+  <HeadlessProvider>{/* Compose complete headless and styled widgets here. */}</HeadlessProvider>
+</FluentProvider>;
+```
+
+Use the focusgroup polyfill if a composition includes headless components that use `focusgroup`. The headless package
+does not install it for consumers. See [Keyboard navigation](?path=/docs/overview-accessibility-keyboard-navigation--docs).
+
+## Interop scenarios
+
+These scenarios have browser-level Cypress coverage in the headless component package. The tests exercise user-visible
+behavior—opening, selecting, dismissal, and focus—not just attributes or DOM presence.
+
+| Composition | What to verify | Placement and behavior to compare |
+| --- | --- | --- |
+| Headless modal `Dialog` → styled `Combobox` | Open the listbox, select an option by pointer, and confirm the input value updates while focus remains on the input. Press Escape: dismiss the listbox but keep the dialog open; press Escape again: close the dialog and restore focus to its trigger. | The default body portal currently closes the headless dialog when an option is clicked. `inlinePopup` and a dialog-local `mountNode` both select correctly in Cypress. `Combobox` supports these placement options; test them in your own scroll and clipping layout. |
+| Headless modal `Dialog` → styled `Menu` | Open the menu and verify its first item receives focus, arrow keys move between items, and Escape closes the menu before the dialog. | The default body portal currently leaves the visible menu item unfocusable outside the native modal dialog. `Menu`'s `inline` and `mountNode` props do not change its portal placement. Use headless `Menu` with a headless `Dialog`, or styled `Dialog` with styled `Menu`; do not change a modal to non-modal unless that matches the product interaction. |
+| Styled modal `Dialog` → headless `TabList` | Tab into the group at the selected tab, move focus with one arrow press, activate a tab, and Tab out. Shift+Tab should re-enter at the selected tab. | Run with the focusgroup polyfill. This checks that its roving focus behavior does not add or skip stops in the styled dialog's Tabster focus management. |
+| Styled modal `Dialog` → headless `Menu` | Open the menu, dismiss it with Escape, and confirm the dialog stays open and focus returns to the menu trigger. A subsequent Escape should close the dialog and restore focus to the dialog trigger. | The menu uses the native Popover API inside a styled portal/focus-trap dialog. Check both the nested overlay's dismissal and the dialog's focus restoration. |
+
+The Combobox and Menu portal cases are known interop issues, captured by browser tests that assert their current
+failures rather than hiding them. For Combobox, `inlinePopup` and a dialog-local `mountNode` both have passing selection
+tests; revisit the failure assertion when the default portal interaction is fixed. For Menu, there is no supported
+placement workaround in its current API, so choose a compatible whole-widget composition. A workaround must preserve
+keyboard interaction and focus, not just make the popup visible. Do not assume `inline` or `mountNode` props work on
+every component—check that component's API.
+
+## Coverage beyond the examples
+
+- **Modal and non-modal are distinct.** A modal native dialog makes content outside itself inert; a non-modal dialog
+  does not. Run the modal cases first, then add non-modal coverage when the product uses that mode. `alert` dialogs share
+  modal placement but have different dismissal rules; cover those rules if the composition relies on them. The existing
+  non-modal Dialog with styled Menu, Popover, and Tooltip Escape coverage is in
+  `react-headless-components-preview/library/src/components/Dialog/Dialog.cy.tsx`.
+- **Test the full keyboard path.** Include initial focus, arrow-key navigation, Enter/Space activation, Escape ordering,
+  Tab and Shift+Tab, and focus restoration. Verify that only the topmost intended popup closes.
+- **Test layout and lifecycle.** Repeat portal cases in a scrollable dialog and check clipping, viewport collision,
+  close/reopen behavior, and unmounting while a popup is open. If a parent closes programmatically, verify that child
+  popup state and focus do not linger.
+- **Check assistive technology manually.** Confirm the dialog and popup names/roles, reading order, selected or active
+  option announcements, and that background content is unavailable only while a modal is open. Browser automation
+  cannot replace screen-reader testing.
+- **Test the actual browser support matrix.** Native dialog and Popover API behavior varies by browser; focusgroup is
+  still polyfilled. Run in supported browsers rather than treating a jsdom test or a Storybook render as proof of
+  interoperability.
+
+Keep a failing default composition as a documented limitation with a reproducer and a working alternative. Do not make
+a known-broken interaction a passing test by weakening its assertion; the supported workaround should have a passing
+browser test.
+
+See [Overlays](?path=/docs/overview-accessibility-overlays--docs) and
+[Keyboard navigation](?path=/docs/overview-accessibility-keyboard-navigation--docs) for the underlying platform
+behavior.
