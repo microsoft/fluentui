@@ -42,6 +42,7 @@ export interface FluentGlobals extends Args {
 
 // @public
 export interface FluentParameters extends Parameters_2 {
+    __generatedStylingMetadata?: StylingMetadata;
     // (undocumented)
     dir?: 'ltr' | 'rtl';
     // (undocumented)
@@ -70,6 +71,12 @@ export interface FluentStoryContext extends StoryContext {
 
 // @public (undocumented)
 export function parameters(options?: FluentParameters): FluentParameters;
+
+// @public
+export type StylingMetadata = {
+    classNames?: ClassNamesDefinition | ComponentFamily<ClassNamesDefinition>;
+    dataAttributes?: DataAttributesDefinition | ComponentFamily<DataAttributesDefinition>;
+};
 
 // @public (undocumented)
 export type Theme = (typeof themes)[number];

@@ -1,4 +1,5 @@
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 export { Controlled } from './AccordionControlled.stories';
@@ -29,7 +30,7 @@ export default {
         component: [descriptionMd].join('\n'),
       },
     },
-  },
+  } satisfies FluentParameters,
   argTypes: {
     navigation: {
       defaultValue: undefined,

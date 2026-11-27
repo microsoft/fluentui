@@ -39,8 +39,8 @@ describe('Button', () => {
     const button = result.getByRole('button', { name: 'Disabled Button' });
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('data-disabled');
-    expect(button).toHaveAttribute('data-disabled-focusable');
+    expect(button).toHaveAttribute('data-disabled', '');
+    expect(button).toHaveAttribute('data-disabled-focusable', '');
   });
 
   it('renders <Button> with icon only', () => {
@@ -48,6 +48,24 @@ describe('Button', () => {
     const button = result.getByRole('button', { name: 'Icon Button' });
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('data-icon-only');
+    expect(button).toHaveAttribute('data-icon-only', '');
+  });
+
+  it('omits inactive state attributes and icon position without an icon', () => {
+    const { getByRole } = render(<Button iconPosition="after">Text</Button>);
+    const button = getByRole('button');
+    for (const attribute of ['data-disabled', 'data-disabled-focusable', 'data-icon-only', 'data-icon-position']) {
+      expect(button).not.toHaveAttribute(attribute);
+    }
+  });
+
+  it.each(['before', 'after'] as const)('exposes the %s icon position only with an icon', iconPosition => {
+    const { getByRole } = render(
+      <Button icon={<span />} iconPosition={iconPosition}>
+        Text
+      </Button>,
+    );
+    expect(getByRole('button')).toHaveAttribute('data-icon-position', iconPosition);
+    expect(getByRole('button')).not.toHaveAttribute('data-icon-only');
   });
 });

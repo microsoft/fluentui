@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@fluentui/react-accordion": "^9.12.6",
     "@fluentui/react-aria": "^9.17.17",
     "@fluentui/react-button": "^9.11.4",
     "@fluentui/react-icons": "^2.0.245",
@@ -21,6 +22,7 @@
     "@fluentui/react-shared-contexts": "^9.26.5",
     "@fluentui/react-spinner": "^9.8.8",
     "@fluentui/react-switch": "^9.7.8",
+    "@fluentui/react-tabs": "^9.12.7",
     "@fluentui/react-text": "^9.6.22",
     "@fluentui/react-theme": "^9.2.3",
     "@fluentui/react-toast": "^9.8.6",

@@ -5723,6 +5723,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon@workspace:packages/react-components/react-storybook-addon"
   dependencies:
+    "@fluentui/react-accordion": "npm:^9.12.6"
     "@fluentui/react-aria": "npm:^9.17.17"
     "@fluentui/react-button": "npm:^9.11.4"
     "@fluentui/react-icons": "npm:^2.0.245"
@@ -5733,6 +5734,7 @@ __metadata:
     "@fluentui/react-shared-contexts": "npm:^9.26.5"
     "@fluentui/react-spinner": "npm:^9.8.8"
     "@fluentui/react-switch": "npm:^9.7.8"
+    "@fluentui/react-tabs": "npm:^9.12.7"
     "@fluentui/react-text": "npm:^9.6.22"
     "@fluentui/react-theme": "npm:^9.2.3"
     "@fluentui/react-toast": "npm:^9.8.6"

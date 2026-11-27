@@ -20,6 +20,7 @@ import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import type { FluentParameters } from '../hooks';
 import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
@@ -27,6 +28,8 @@ import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
 import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
+import { StylingApiReference } from './StylingApiReference';
+import { resolveStylingMetadata } from './stylingMetadata';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -268,9 +271,10 @@ const RenderArgsTable = ({
     nativePropsApi: showNativePropsApi,
   });
   const styles = useStyles();
+  const parameters: FluentParameters = story.parameters;
 
   return hideArgsTable ? null : (
-    <>
+    <StylingApiReference metadata={resolveStylingMetadata(parameters)}>
       <div className={styles.additionalInfoWrapper}>
         <ArgTypes of={component} />
         {hasArgAsProp && (
@@ -308,7 +312,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-    </>
+    </StylingApiReference>
   );
 };
 

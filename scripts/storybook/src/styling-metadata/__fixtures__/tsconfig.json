@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "paths": {
+      "fixture-components": ["./components/index.ts"]
+    }
+  }
+}
