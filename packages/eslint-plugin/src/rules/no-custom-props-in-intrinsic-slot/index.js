@@ -27,14 +27,18 @@ const getConstituents = type => (type.isUnion() ? type.types : [type]);
 
 /**
  * @param {TSESTree.Property} property
- * @returns {string | undefined} the key of a non-computed identifier or string-literal property
+ * @returns {string | undefined} the property's key when it is known statically: `as`, `'as'`, `['as']` or `` [`as`] ``
  */
 function getStaticKey(property) {
-  if (property.key.type === AST_NODE_TYPES.Identifier) {
-    return property.key.name;
+  const { key } = property;
+  if (key.type === AST_NODE_TYPES.Identifier && !property.computed) {
+    return key.name;
   }
-  if (property.key.type === AST_NODE_TYPES.Literal && typeof property.key.value === 'string') {
-    return property.key.value;
+  if (key.type === AST_NODE_TYPES.Literal && typeof key.value === 'string') {
+    return key.value;
+  }
+  if (key.type === AST_NODE_TYPES.TemplateLiteral && key.expressions.length === 0) {
+    return key.quasis[0].value.cooked ?? undefined;
   }
   return undefined;
 }
@@ -46,7 +50,7 @@ function getStaticKey(property) {
  */
 function getOptionValue(options, name) {
   for (const property of options.properties) {
-    if (property.type === AST_NODE_TYPES.Property && !property.computed && getStaticKey(property) === name) {
+    if (property.type === AST_NODE_TYPES.Property && getStaticKey(property) === name) {
       return property.value;
     }
   }
@@ -62,7 +66,7 @@ function getKeysOverriddenAfter(object, spread) {
   const keys = new Set();
   const index = object.properties.indexOf(spread);
   for (const property of object.properties.slice(index + 1)) {
-    const key = property.type === AST_NODE_TYPES.Property && !property.computed ? getStaticKey(property) : undefined;
+    const key = property.type === AST_NODE_TYPES.Property ? getStaticKey(property) : undefined;
     if (key !== undefined) {
       keys.add(key);
     }
@@ -199,7 +203,7 @@ module.exports = createRule({
       for (const property of object.properties) {
         if (property.type === AST_NODE_TYPES.SpreadElement) {
           current = spreadAs(current, getType(property.argument), location);
-        } else if (!property.computed && getStaticKey(property) === 'as') {
+        } else if (getStaticKey(property) === 'as') {
           const type = getType(property.value);
           current = type ? getAsValues(type) : new Set([UNKNOWN]);
         }

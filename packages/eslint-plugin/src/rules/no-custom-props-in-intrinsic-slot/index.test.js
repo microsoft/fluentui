@@ -142,6 +142,14 @@ ruleTester.run('no-custom-props-in-intrinsic-slot', rule, {
         slot.always({ ...rest }, { elementType: 'div', defaultProps: { as: 'a' } });
       `,
     },
+    {
+      name: 'a computed string-literal "as" key selects the tag',
+      filename,
+      code: `${prelude}
+        declare const rest: { href?: string };
+        slot.always({ ...rest, ['as']: 'a' }, { elementType: 'div' });
+      `,
+    },
   ],
   invalid: [
     {
@@ -220,6 +228,20 @@ ruleTester.run('no-custom-props-in-intrinsic-slot', rule, {
         slot.always({ ...rest }, { elementType: 'div', defaultProps: { as: 'a' } });
       `,
       errors: [{ messageId: 'customProps', data: { names: '`href`', tags: 'div', verb: 'is', pronoun: 'it' } }],
+    },
+    {
+      name: 'a computed "as" key after the spread replaces a component "as" from the spread',
+      filename,
+      code: `${prelude}
+        declare const rest: Props & { as?: React.ComponentType };
+        slot.always({ ...rest, [\`as\`]: 'div' }, { elementType: 'div' });
+      `,
+      errors: [
+        {
+          messageId: 'customProps',
+          data: { names: '`appearance`, `size`', tags: 'div', verb: 'are', pronoun: 'them' },
+        },
+      ],
     },
   ],
 });
