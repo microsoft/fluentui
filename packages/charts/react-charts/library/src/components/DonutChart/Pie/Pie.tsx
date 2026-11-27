@@ -4,6 +4,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { pie as d3Pie } from 'd3-shape';
 import type { PieProps } from './index';
@@ -36,7 +37,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       data: ChartDataPoint,
       id: string,
       e: React.FocusEvent<SVGPathElement>,
-      targetElement?: HTMLElement | null,
+      targetElement?: PositioningVirtualElement | null,
     ): void {
       props.onFocusCallback!(data, id, e, targetElement);
     }
@@ -44,7 +45,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     function _hoverCallback(
       data: ChartDataPoint,
       e: React.MouseEvent<SVGPathElement>,
-      targetElement?: HTMLElement | null,
+      targetElement?: PositioningVirtualElement | null,
     ): void {
       props.hoverOnCallback!(data, e, targetElement);
     }

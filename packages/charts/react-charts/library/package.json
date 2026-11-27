@@ -28,6 +28,7 @@
     "@fluentui/react-jsx-runtime": "^9.4.8",
     "@fluentui/react-overflow": "^9.9.6",
     "@fluentui/react-popover": "^9.14.11",
+    "@fluentui/react-positioning": "^9.23.5",
     "@fluentui/react-shared-contexts": "^9.26.5",
     "@fluentui/react-tabster": "^9.26.20",
     "@fluentui/react-theme": "^9.2.3",

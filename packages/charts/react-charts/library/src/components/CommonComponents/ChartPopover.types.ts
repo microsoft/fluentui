@@ -24,6 +24,10 @@ export interface ChartPopoverProps {
   ratio?: [number, number];
   isCartesian?: boolean;
   styles?: Partial<PopoverComponentStyles>;
+  /**
+   * Configures callout placement. Per-data-point positioning overrides individual caller options.
+   * A nullish per-data-point target retains the caller target; without either target, the callout uses clickPosition.
+   */
   positioning?: PositioningShorthand;
 }
 

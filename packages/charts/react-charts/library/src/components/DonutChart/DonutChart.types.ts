@@ -47,7 +47,7 @@ export interface DonutChartProps extends CartesianChartProps {
   calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
 
   /**
-   * props for the callout in the chart
+   * Props for the callout in the chart. Positioning targets default to the hovered or focused arc.
    */
   calloutProps?: ChartPopoverProps;
 

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: honor caller and per-point chart callout positioning and anchor DonutChart hover and focus to the selected arc",
+  "packageName": "@fluentui/react-charts",
+  "email": "paulmardling@microsoft.com"
+}
