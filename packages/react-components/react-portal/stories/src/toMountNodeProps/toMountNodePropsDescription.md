@@ -27,3 +27,11 @@ toMountNodeProps({ className: 'my-mount-node' }); // { className: 'my-mount-node
 ```
 
 This function is used internally by `Portal` component, but it can be also used to build custom components that accept `mountNode` prop.
+
+### Customizing z-index
+
+The generated portal mount node creates a stacking context. To customize its `z-index`, pass a class through `mountNode={{ className }}` and define the `zIndex` in that class. The Default example below demonstrates this by merging a custom class with the normalized mount node props. The same approach works with components that expose `mountNode`, such as `DialogSurface`.
+
+When `mountNode` is an existing element (or an object with `element`), the portal renders directly into that element instead of creating a mount node. Style the existing element yourself; `mountNode.className` only styles a generated mount node.
+
+Choose the value to fit your application's stacking order. Changing the surface's `z-index` alone cannot move it outside the mount node's stacking context. See [Stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Stacking_context) for how ancestor stacking contexts affect layering.
