@@ -1,0 +1,6 @@
+{
+  "type": "prerelease",
+  "comment": "refactor(react-theme-sass): Forward Sass token modules and document tested @use examples",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "paulmardling@microsoft.com"
+}
