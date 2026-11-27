@@ -21,5 +21,10 @@ export type SearchBoxState = SearchBoxBaseState & {
      * Data attribute set when the search box has focus within.
      */
     'data-focused'?: string;
+
+    /**
+     * Data attribute set when the search box is read-only.
+     */
+    'data-readonly'?: string;
   };
 };
