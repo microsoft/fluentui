@@ -97,6 +97,117 @@ describe('createToaster', () => {
     expect(toaster.visibleToasts.size).toBe(0);
   });
 
+  it('removes a dismissed queued toast without changing the order of the remaining queue', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast({ toastId: 'cancelled', priority: 1, onStatusChange }, () => null);
+    toaster.buildToast({ toastId: 'later', priority: 3 }, () => null);
+    toaster.buildToast({ toastId: 'next', priority: 2 }, () => null);
+
+    toaster.dismissToast('cancelled');
+    expect(toaster.toasts.has('cancelled')).toBe(false);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+
+    toaster.toasts.get('visible')!.close();
+    toaster.toasts.get('visible')!.remove();
+    expect(toaster.visibleToasts.has('next')).toBe(true);
+    toaster.toasts.get('next')!.close();
+    toaster.toasts.get('next')!.remove();
+    expect(toaster.visibleToasts.has('later')).toBe(true);
+  });
+
+  it('keeps priority order after dismissing a queued toast that is not at the front of the queue', () => {
+    const toaster = createToaster({ limit: 1 });
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    [1, 7, 3, 5, 4, 6, 2].forEach(priority => {
+      toaster.buildToast({ toastId: `p${priority}`, priority }, () => null);
+    });
+
+    toaster.dismissToast('p7');
+
+    const shown: string[] = [];
+    let current = 'visible';
+    for (let i = 0; i < 6; i++) {
+      toaster.toasts.get(current)!.close();
+      toaster.toasts.get(current)!.remove();
+      current = Array.from(toaster.visibleToasts)[0] as string;
+      shown.push(current);
+    }
+
+    expect(shown).toEqual(['p1', 'p2', 'p3', 'p4', 'p5', 'p6']);
+  });
+
+  it('clears queued toasts when dismissing all and permits reusing their ids', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast({ toastId: 'queued', onStatusChange }, () => null);
+
+    toaster.dismissAllToasts();
+    expect(toaster.toasts.has('queued')).toBe(false);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+
+    toaster.toasts.get('visible')!.remove();
+    toaster.buildToast({ toastId: 'queued' }, () => null);
+    expect(toaster.visibleToasts.has('queued')).toBe(true);
+  });
+
+  it('preserves a toast dispatched by a dismissed handler during bulk dismissal', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast(
+      {
+        toastId: 'queued',
+        onStatusChange: (_, { status }) => {
+          if (status === 'dismissed') {
+            toaster.buildToast({ toastId: 'new', onStatusChange }, () => null);
+          }
+        },
+      },
+      () => null,
+    );
+    toaster.buildToast({ toastId: 'other' }, () => null);
+
+    toaster.dismissAllToasts();
+    toaster.toasts.get('visible')!.remove();
+
+    expect(Array.from(toaster.visibleToasts)).toEqual(['new']);
+    expect(toaster.toasts.has('new')).toBe(true);
+    expect(toaster.toasts.has('queued')).toBe(false);
+    expect(toaster.toasts.has('other')).toBe(false);
+    expect(onStatusChange).toHaveBeenCalledTimes(1);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'queued' }));
+  });
+
+  it('clears all queued entries even if a dismissed handler throws', () => {
+    const toaster = createToaster({ limit: 1 });
+    const error = new Error('Dismissed handler failed');
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast(
+      {
+        toastId: 'queued',
+        onStatusChange: (_, { status }) => {
+          if (status === 'dismissed') {
+            throw error;
+          }
+        },
+      },
+      () => null,
+    );
+    toaster.buildToast({ toastId: 'other' }, () => null);
+
+    expect(() => toaster.dismissAllToasts()).toThrow(error);
+    expect(toaster.visibleToasts.size).toBe(0);
+    expect(toaster.toasts.has('queued')).toBe(false);
+    expect(toaster.toasts.has('other')).toBe(false);
+
+    toaster.toasts.get('visible')!.remove();
+    toaster.buildToast({ toastId: 'other' }, () => null);
+    expect(Array.from(toaster.visibleToasts)).toEqual(['other']);
+  });
+
   it('should update a toasts', () => {
     const toaster = createToaster({});
 
