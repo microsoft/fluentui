@@ -572,6 +572,40 @@ describe('Popover', () => {
     expect(queryByTestId('custom')).not.toBeInTheDocument();
   });
 
+  it('persists the mouseleave event before the hover delay so React < 17 does not pool it', () => {
+    jest.useFakeTimers();
+    try {
+      const persist = jest.fn();
+      const { getByText } = render(
+        <Popover openOnHover mouseLeaveDelay={100}>
+          <PopoverTrigger>
+            <button
+              onMouseLeave={e => {
+                // Runs before the trigger's own handler, on the same synthetic event.
+                const original = e.persist.bind(e);
+                e.persist = () => {
+                  persist();
+                  original();
+                };
+              }}
+            >
+              Trigger
+            </button>
+          </PopoverTrigger>
+          <PopoverSurface>Content</PopoverSurface>
+        </Popover>,
+      );
+
+      fireEvent.mouseEnter(getByText('Trigger'));
+      fireEvent.mouseLeave(getByText('Trigger'));
+
+      // Persisting must happen synchronously, before the delayed close reads the event.
+      expect(persist).toHaveBeenCalledTimes(1);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
   it('reports the mouseleave event type after the hover delay', () => {
     jest.useFakeTimers();
     try {
