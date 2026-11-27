@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     backgroundColor: navItemTokens.backgroundColor,
     alignItems: 'unset',
   },
-  // seperate style so it can be applied conditionally
+  // separate style so it can be applied conditionally
   // if size is not set, use default width from the token.
   defaultWidth: {
     width: `${navItemTokens.defaultDrawerWidth}px`,
