@@ -19,7 +19,7 @@ export const RenderFunctionTrigger = (): JSXElement => {
         {(props: MenuTriggerChildProps<'button'>) => (
           <div>
             <button style={buttonStyle}>Custom Trigger</button>
-            <button {...props} style={buttonStyle}>
+            <button {...props} style={buttonStyle} aria-label="Open menu">
               <ChevronDownRegular fontSize={16} />
             </button>
           </div>
