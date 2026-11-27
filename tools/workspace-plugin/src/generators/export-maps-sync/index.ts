@@ -54,12 +54,14 @@ async function syncProject(tree: Tree, projectConfig: ProjectConfiguration): Pro
   const config = readExportMapConfig(projectConfig);
   const entryPoints = await resolveEntryPoints(tree, projectConfig.root, config);
 
+  // a project with no source entry points has no `main`/`module`/`typings` to own and no map to
+  // derive, so it is left entirely alone - hand authored `exports` included.
   if (entryPoints.length === 0) {
     return false;
   }
 
   const expectedFields = buildEntryPointFields(packageJson);
-  const expectedExports = buildExportMap(packageJson, entryPoints);
+  const expectedExports = buildExportMap(packageJson, entryPoints, config.staticSubpaths);
 
   const fieldsInSync = (Object.keys(expectedFields) as Array<keyof typeof expectedFields>).every(field =>
     isEqual(packageJson[field], expectedFields[field]),
