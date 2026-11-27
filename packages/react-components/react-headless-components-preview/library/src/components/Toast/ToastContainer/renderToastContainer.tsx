@@ -15,6 +15,11 @@ export const renderToastContainer = (
 ): JSXElement => {
   assertSlots<ToastContainerSlots>(state);
 
+  // Queued toasts stay mounted to keep their state, but are not rendered until they become visible.
+  if (!state.visible) {
+    return <></>;
+  }
+
   return (
     <ToastContainerContextProvider value={contextValues.toast}>
       <state.root />
