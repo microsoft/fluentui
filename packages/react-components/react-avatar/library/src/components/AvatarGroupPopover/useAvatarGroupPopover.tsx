@@ -112,6 +112,8 @@ export const useAvatarGroupPopoverBase_unstable = (props: AvatarGroupPopoverBase
         children: <></>,
         size: 'small',
         trapFocus: true,
+        // The root is a placeholder: useAvatarGroupPopover_unstable renders it as Popover, so these are Popover props.
+        // eslint-disable-next-line @fluentui/no-custom-props-in-intrinsic-slot
         ...restOfProps,
         open: popoverOpen,
         onOpenChange: handleOnPopoverChange,

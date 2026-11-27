@@ -22,6 +22,7 @@ const reactCompilerRulesOff = Object.fromEntries(Object.keys(reactCompilerRules)
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
   '@fluentui/ban-context-export': ['error', { exclude: ['**/react-shared-contexts/**'] }],
+  '@fluentui/no-custom-props-in-intrinsic-slot': 'error',
 };
 
 const root = configHelpers.findGitRoot();
