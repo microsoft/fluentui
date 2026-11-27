@@ -4,6 +4,8 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { ToggleButton } from '@fluentui/react-button';
+import { Input } from '@fluentui/react-input';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { TextBoldRegular } from '@fluentui/react-icons';
 import { TextBoldRegular as TextBoldFont } from '@fluentui/react-icons/lib/fonts';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -23,6 +25,140 @@ const mount = (element: JSXElement) => {
 };
 
 describe('Toolbar', () => {
+  describe('Input last in a horizontal toolbar', () => {
+    const InputToolbar = ({ controlled = false, dir = 'ltr' }: { controlled?: boolean; dir?: 'ltr' | 'rtl' }) => {
+      const rootAttributes = useTabsterAttributes({ root: {} });
+      const [value, setValue] = React.useState('abcdef');
+
+      return (
+        <div {...rootAttributes} dir={dir}>
+          <button id="before">Before</button>
+          <Toolbar aria-label="Input toolbar">
+            <ToolbarButton id="first">First</ToolbarButton>
+            <ToolbarButton id="second">Second</ToolbarButton>
+            <Input
+              aria-label="Filter"
+              {...(controlled ? { value } : { defaultValue: value })}
+              onChange={(_, data) => setValue(data.value)}
+            />
+          </Toolbar>
+          <button id="after">After</button>
+          {dir === 'rtl' && <input id="native" aria-label="Native editing baseline" defaultValue="abcdef" />}
+        </div>
+      );
+    };
+
+    const assertSelection = (start: number, end = start) => {
+      cy.get<HTMLInputElement>('input')
+        .should('be.focused')
+        .should($input => {
+          expect($input[0].selectionStart).to.equal(start);
+          expect($input[0].selectionEnd).to.equal(end);
+        });
+    };
+
+    it('enters once, navigates the buttons, exits in both directions and remembers input focus', () => {
+      mount(<InputToolbar />);
+      cy.get('#before').focus();
+      cy.realPress('Tab');
+      cy.get('#first').should('be.focused');
+      cy.realPress('ArrowRight');
+      cy.get('#second').should('be.focused');
+      cy.realPress('ArrowLeft');
+      cy.get('#first').should('be.focused');
+      cy.realPress('End');
+      cy.get('input').should('be.focused');
+      cy.realPress('Home');
+      assertSelection(0);
+      cy.realPress('ArrowRight');
+      assertSelection(1);
+      cy.realPress('Tab');
+      cy.get('#after').should('be.focused');
+      cy.realPress(['Shift', 'Tab']);
+      assertSelection(1);
+      cy.realPress(['Shift', 'Tab']);
+      cy.get('#before').should('be.focused');
+      cy.realPress('Tab');
+      assertSelection(1);
+    });
+
+    for (const controlled of [false, true]) {
+      it(`preserves editing and selection in a ${controlled ? 'controlled' : 'uncontrolled'} input`, () => {
+        mount(<InputToolbar controlled={controlled} />);
+        cy.get('input').focus();
+        cy.realPress('Home');
+        assertSelection(0);
+        cy.realPress('ArrowRight');
+        cy.realPress('ArrowRight');
+        cy.realPress('ArrowRight');
+        assertSelection(3);
+        cy.realType('X');
+        cy.get('input').should('have.value', 'abcXdef');
+        assertSelection(4);
+        cy.realPress('ArrowLeft');
+        assertSelection(3);
+        cy.realPress(['Shift', 'ArrowRight']);
+        assertSelection(3, 4);
+        cy.realPress('End');
+        assertSelection(7);
+        cy.realPress(['Shift', 'ArrowLeft']);
+        assertSelection(6, 7);
+        cy.realPress('Home');
+        assertSelection(0);
+        cy.realPress(['Shift', 'ArrowRight']);
+        assertSelection(0, 1);
+      });
+    }
+
+    it('preserves existing focus transfer at unselected text boundaries', () => {
+      mount(<InputToolbar />);
+      cy.get('input').focus();
+      cy.realPress('Home');
+      assertSelection(0);
+      cy.realPress('ArrowLeft');
+      cy.get('#second').should('be.focused');
+      cy.realPress('End');
+      cy.realPress('End');
+      assertSelection(6);
+      cy.realPress('ArrowRight');
+      cy.get('#first').should('be.focused');
+      cy.realPress('End');
+      cy.realPress('Home');
+      assertSelection(0);
+      cy.get('#second').focus();
+      cy.realPress('Home');
+      cy.get('#first').should('be.focused');
+    });
+
+    it('uses RTL button order without taking focus from text editing', () => {
+      mount(<InputToolbar dir="rtl" />);
+      cy.get('#native').focus();
+      cy.realPress('Home');
+      cy.realPress('ArrowRight');
+      cy.realType('X');
+      cy.get<HTMLInputElement>('#native').then($native => {
+        const { value, selectionStart, selectionEnd } = $native[0];
+        cy.get('#first').focus();
+        cy.realPress('ArrowLeft');
+        cy.get('#second').should('be.focused');
+        cy.realPress('ArrowRight');
+        cy.get('#first').should('be.focused');
+        cy.realPress('End');
+        cy.get('input[aria-label="Filter"]').should('be.focused');
+        cy.realPress('Home');
+        cy.realPress('ArrowRight');
+        cy.realType('X');
+        cy.get<HTMLInputElement>('input[aria-label="Filter"]')
+          .should('be.focused')
+          .should($input => {
+            expect($input[0].value).to.equal(value);
+            expect($input[0].selectionStart).to.equal(selectionStart);
+            expect($input[0].selectionEnd).to.equal(selectionEnd);
+          });
+      });
+    });
+  });
+
   describe('Navigation', () => {
     it('should navigate with arrows', () => {
       mount(
