@@ -189,6 +189,7 @@ describe('useCardBase_unstable base hook', () => {
       useCardBase_unstable(
         {
           checkbox: {},
+          defaultSelected: true,
           disabled: false,
           floatingAction: {},
           focusMode: 'off',

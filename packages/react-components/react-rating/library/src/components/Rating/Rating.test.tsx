@@ -89,15 +89,17 @@ describe('Rating DOM attributes', () => {
 
 describe('useRatingBase_unstable base hook', () => {
   it('does not forward component props to the root slot', () => {
+    const onChange = jest.fn();
     const { result } = renderHook(() =>
       useRatingBase_unstable(
         {
+          defaultValue: 1,
           iconFilled: StarFilled,
           iconOutline: StarRegular,
           itemLabel: n => `${n}`,
           max: 3,
           name: 'rating',
-          onChange: jest.fn(),
+          onChange,
           step: 0.5,
           value: 2,
         },
@@ -111,6 +113,8 @@ describe('useRatingBase_unstable base hook', () => {
     expect(result.current.root).not.toHaveProperty('itemLabel');
     expect(result.current.root).not.toHaveProperty('max');
     expect(result.current.root).not.toHaveProperty('name');
+    // The root gets its own change handler; the user's (ev, data) callback must not be forwarded as is.
+    expect(result.current.root.onChange).not.toBe(onChange);
     expect(result.current.root).not.toHaveProperty('step');
     expect(result.current.root).not.toHaveProperty('value');
   });

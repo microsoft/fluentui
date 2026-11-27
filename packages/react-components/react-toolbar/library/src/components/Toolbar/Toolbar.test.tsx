@@ -44,12 +44,13 @@ describe('useToolbarBase_unstable base hook', () => {
   it('does not forward component props to the root slot', () => {
     const { result } = renderHook(() =>
       useToolbarBase_unstable(
-        { checkedValues: {}, onCheckedValueChange: jest.fn(), vertical: true },
+        { checkedValues: {}, defaultCheckedValues: {}, onCheckedValueChange: jest.fn(), vertical: true },
         React.createRef(),
       ),
     );
 
     expect(result.current.root).not.toHaveProperty('checkedValues');
+    expect(result.current.root).not.toHaveProperty('defaultCheckedValues');
     expect(result.current.root).not.toHaveProperty('onCheckedValueChange');
     expect(result.current.root).not.toHaveProperty('vertical');
   });
