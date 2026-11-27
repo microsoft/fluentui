@@ -270,6 +270,20 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this._updateTabIndexes();
     }
 
+    const tabStop = this._activeElement || this._defaultFocusElement;
+    if (
+      !this._isInnerZone &&
+      !this._lastIndexPath &&
+      doc &&
+      !elementContains(root, doc.activeElement as HTMLElement | null, ALLOW_VIRTUAL_ELEMENTS) &&
+      (!tabStop || !isElementTabbable(tabStop, undefined, this._inShadowRoot))
+    ) {
+      if (tabStop) {
+        tabStop.setAttribute(TABINDEX, '-1');
+      }
+      this._updateTabIndexes();
+    }
+
     if (
       !this.props.preventFocusRestoration &&
       doc &&

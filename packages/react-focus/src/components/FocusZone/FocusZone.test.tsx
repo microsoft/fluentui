@@ -1751,6 +1751,111 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonB);
   });
 
+  it.each(['disabled', 'data-is-focusable'] as const)(
+    'repairs the tab stop when an item is turned off using %s while focus is outside',
+    mode => {
+      const renderZone = (disabledItems: string[]) => (
+        <div>
+          <button data-testid="outside">outside</button>
+          <FocusZone direction={FocusZoneDirection.horizontal}>
+            {['a', 'b', 'c'].map(item => (
+              <button
+                key={item}
+                data-testid={item}
+                data-is-visible="true"
+                disabled={mode === 'disabled' && disabledItems.includes(item)}
+                data-is-focusable={mode === 'data-is-focusable' && disabledItems.includes(item) ? false : undefined}
+              >
+                {item}
+              </button>
+            ))}
+          </FocusZone>
+        </div>
+      );
+      const { getByTestId, rerender } = render(renderZone([]));
+      const outside = getByTestId('outside');
+      const a = getByTestId('a');
+      const b = getByTestId('b');
+      const c = getByTestId('c');
+
+      outside.focus();
+      expect([a.tabIndex, b.tabIndex, c.tabIndex]).toEqual([0, -1, -1]);
+      rerender(renderZone(['a']));
+      expect(outside.ownerDocument.activeElement).toBe(outside);
+      expect([a.tabIndex, b.tabIndex, c.tabIndex]).toEqual([-1, 0, -1]);
+
+      b.focus();
+      outside.focus();
+      rerender(renderZone(['a', 'b', 'c']));
+      expect([a.tabIndex, b.tabIndex, c.tabIndex]).toEqual([-1, -1, -1]);
+
+      rerender(renderZone([]));
+      expect([a.tabIndex, b.tabIndex, c.tabIndex]).toEqual([0, -1, -1]);
+      expect(outside.ownerDocument.activeElement).toBe(outside);
+    },
+  );
+
+  it('repairs the last focused tab stop when it is disabled outside the zone', () => {
+    const renderZone = (disableB: boolean) => (
+      <div>
+        <button data-testid="outside">outside</button>
+        <FocusZone>
+          <button data-testid="a">a</button>
+          <button data-testid="b" disabled={disableB}>
+            b
+          </button>
+        </FocusZone>
+      </div>
+    );
+    const { getByTestId, rerender } = render(renderZone(false));
+    const outside = getByTestId('outside');
+    const a = getByTestId('a');
+    const b = getByTestId('b');
+
+    b.focus();
+    outside.focus();
+    rerender(renderZone(true));
+    expect([a.tabIndex, b.tabIndex]).toEqual([0, -1]);
+
+    rerender(renderZone(false));
+    expect([a.tabIndex, b.tabIndex]).toEqual([0, -1]);
+    expect(outside.ownerDocument.activeElement).toBe(outside);
+  });
+
+  it('creates a tab stop when an initially disabled item becomes enabled', () => {
+    const renderZone = (disabled: boolean) => (
+      <FocusZone>
+        <button data-testid="item" disabled={disabled}>
+          item
+        </button>
+      </FocusZone>
+    );
+    const { getByTestId, rerender } = render(renderZone(true));
+    const item = getByTestId('item');
+
+    rerender(renderZone(false));
+    expect(item.tabIndex).toBe(0);
+  });
+
+  it('does not change the tab stop when focus is still inside the zone', () => {
+    const renderZone = (focusable: boolean) => (
+      <FocusZone>
+        <button data-testid="a" data-is-focusable={focusable}>
+          a
+        </button>
+        <button data-testid="b">b</button>
+      </FocusZone>
+    );
+    const { getByTestId, rerender } = render(renderZone(true));
+    const a = getByTestId('a');
+    const b = getByTestId('b');
+
+    a.focus();
+    rerender(renderZone(false));
+    expect(a.ownerDocument.activeElement).toBe(a);
+    expect([a.tabIndex, b.tabIndex]).toEqual([0, -1]);
+  });
+
   it('Focus is not affected by readOnly inputs with values', () => {
     const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 

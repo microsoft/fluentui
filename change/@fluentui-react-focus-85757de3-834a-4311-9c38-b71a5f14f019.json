@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix FocusZone tab stops when an item is disabled while focus is outside the zone.",
+  "packageName": "@fluentui/react-focus",
+  "email": "1492102+dmytrokirpa@users.noreply.github.com"
+}
