@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(usePositioning): fall back to usePositioning() from @fluentui/react-positioning when CSS anchor positioning is not supported or an option needs JavaScript (autoSize, boundaries, nonzero flip boundary padding, function offsets, arrows, virtual targets), and return arrowRef. Preserve the headless placement defaults, shared trigger anchors and consumer sizing/overflow during engine handoffs, and dispatch positioning completion consistently from both engines, including overlapping and covered targets and CSS option updates.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

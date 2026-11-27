@@ -90,7 +90,7 @@ describe('usePlacementObserver', () => {
 
   it('attaches no window listeners while hidden', () => {
     setRendered(container, false);
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     notify(container);
 
     expect(calledWith(addSpy, 'scroll')).toBe(false);
@@ -99,7 +99,7 @@ describe('usePlacementObserver', () => {
 
   it('attaches listeners and updates placement when shown', async () => {
     setRendered(container, false);
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     notify(container);
 
     showBelow();
@@ -113,7 +113,7 @@ describe('usePlacementObserver', () => {
   });
 
   it('removes listeners when hidden again', () => {
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     showBelow();
     notify(container);
     expect(calledWith(removeSpy, 'scroll')).toBe(false);
@@ -126,7 +126,7 @@ describe('usePlacementObserver', () => {
   });
 
   it('never overwrites a correct placement while hidden', async () => {
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     container.setAttribute('data-placement', 'below-start');
     setRendered(container, false);
 
@@ -137,7 +137,7 @@ describe('usePlacementObserver', () => {
   });
 
   it('keeps listening on a scale(0) surface and updates once the transform is restored', async () => {
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     showBelow();
     // a rendered surface whose transformed rect collapses to a point
     container.getBoundingClientRect = () => makeRect({ top: 165, left: 150 });
@@ -156,13 +156,13 @@ describe('usePlacementObserver', () => {
 
   it('observes the container with the border-box option', () => {
     const observe = jest.spyOn(FakeRO.prototype, 'observe');
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     expect(observe).toHaveBeenCalledWith(container, { box: 'border-box' });
     observe.mockRestore();
   });
 
   it('keeps the placement when the anchor is hidden while the surface stays laid out', async () => {
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     target.getBoundingClientRect = () => makeRect({ top: 200, left: 100, width: 100, height: 40 });
     container.getBoundingClientRect = () => makeRect({ top: 150, left: 100, width: 100, height: 40 });
     container.setAttribute('data-placement', 'above-start');
@@ -178,7 +178,7 @@ describe('usePlacementObserver', () => {
   });
 
   it('updates placement for a laid-out 0x0 point anchor', async () => {
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     target.getBoundingClientRect = () => makeRect({ top: 100, left: 150, width: 0, height: 0 });
     container.getBoundingClientRect = () => makeRect({ top: 100, left: 100, width: 100, height: 50 });
 
@@ -191,7 +191,7 @@ describe('usePlacementObserver', () => {
   it('attaches listeners when a 0x0 surface is shown without a resize notification', () => {
     container.getBoundingClientRect = () => makeRect({ top: 140, left: 100 });
     setRendered(container, false);
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     notify(container);
     notifyIntersection(container);
     expect(calledWith(addSpy, 'scroll')).toBe(false);
@@ -206,7 +206,7 @@ describe('usePlacementObserver', () => {
 
   it('removes listeners when a 0x0 surface is hidden without a resize notification', () => {
     container.getBoundingClientRect = () => makeRect({ top: 140, left: 100 });
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     notify(container);
     expect(calledWith(addSpy, 'scroll')).toBe(true);
 
@@ -218,7 +218,7 @@ describe('usePlacementObserver', () => {
   });
 
   it('removes listeners on the next scroll when the surface was hidden without any observer notification', async () => {
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     showBelow();
     notify(container);
     await Promise.resolve();
@@ -236,7 +236,7 @@ describe('usePlacementObserver', () => {
   it('still tracks visibility through ResizeObserver without IntersectionObserver', () => {
     delete (window as unknown as { IntersectionObserver?: unknown }).IntersectionObserver;
     setRendered(container, false);
-    renderHook(() => usePlacementObserver(container, target, document));
+    renderHook(() => usePlacementObserver(container, target, {}));
     notify(container);
     expect(calledWith(addSpy, 'scroll')).toBe(false);
 
@@ -246,20 +246,24 @@ describe('usePlacementObserver', () => {
     expect(calledWith(addSpy, 'scroll')).toBe(true);
   });
 
-  it('does nothing without ResizeObserver', async () => {
+  it('still tracks scroll and completion without ResizeObserver', async () => {
     delete (window as unknown as { ResizeObserver?: unknown }).ResizeObserver;
     container.setAttribute('data-placement', 'below-start');
 
-    renderHook(() => usePlacementObserver(container, target, document));
+    const listener = jest.fn();
+    container.addEventListener('fui-positioningend', listener);
+    showBelow();
+    renderHook(() => usePlacementObserver(container, target, {}));
     await Promise.resolve();
 
-    expect(calledWith(addSpy, 'scroll')).toBe(false);
-    expect(calledWith(addSpy, 'resize')).toBe(false);
+    expect(calledWith(addSpy, 'scroll')).toBe(true);
+    expect(calledWith(addSpy, 'resize')).toBe(true);
     expect(container.getAttribute('data-placement')).toBe('below-start');
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 
   it('removes everything on unmount', () => {
-    const { unmount } = renderHook(() => usePlacementObserver(container, target, document));
+    const { unmount } = renderHook(() => usePlacementObserver(container, target, {}));
     showBelow();
     notify(container);
 
@@ -269,5 +273,59 @@ describe('usePlacementObserver', () => {
     expect(calledWith(removeSpy, 'resize')).toBe(true);
     expect(instances[0].disconnect).toHaveBeenCalled();
     expect(ioInstances[0].disconnect).toHaveBeenCalled();
+  });
+
+  it('coalesces option updates with observer notifications without reconnecting observers', async () => {
+    showBelow();
+    const listener = jest.fn();
+    container.addEventListener('fui-positioningend', listener);
+    const { rerender } = renderHook(
+      ({ offset }) => usePlacementObserver(container, target, { position: 'below', offset }),
+      { initialProps: { offset: { mainAxis: 0, crossAxis: 0 } } },
+    );
+    await Promise.resolve();
+    listener.mockClear();
+
+    rerender({ offset: { mainAxis: 8, crossAxis: 4 } });
+    notify(container);
+    notifyIntersection(container);
+    await Promise.resolve();
+
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect(instances).toHaveLength(1);
+    expect(ioInstances).toHaveLength(1);
+    expect(instances[0].disconnect).not.toHaveBeenCalled();
+    expect(ioInstances[0].disconnect).not.toHaveBeenCalled();
+
+    rerender({ offset: { mainAxis: 8, crossAxis: 4 } });
+    await Promise.resolve();
+    expect(listener).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    ['below', 'bottom-start'],
+    ['before', 'right-start'],
+  ] as const)('uses the configured logical %s placement for a covered target in RTL', async (position, placement) => {
+    container.style.direction = 'rtl';
+    showBelow();
+    const listener = jest.fn();
+    container.addEventListener('fui-positioningend', listener);
+    renderHook(() => usePlacementObserver(container, target, { coverTarget: true, position, align: 'start' }));
+    await Promise.resolve();
+
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect(listener.mock.calls[0][0].detail.placement).toBe(placement);
+    expect(listener.mock.calls[0][0].target).toBe(container);
+  });
+
+  it('does not dispatch a queued completion after unmount', async () => {
+    showBelow();
+    const listener = jest.fn();
+    container.addEventListener('fui-positioningend', listener);
+    const { unmount } = renderHook(() => usePlacementObserver(container, target, {}));
+    unmount();
+    await Promise.resolve();
+
+    expect(listener).not.toHaveBeenCalled();
   });
 });
