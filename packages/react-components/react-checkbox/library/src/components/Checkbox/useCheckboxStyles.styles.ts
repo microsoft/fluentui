@@ -50,7 +50,7 @@ const useRootStyles = makeStyles({
   checked: {
     color: tokens.colorNeutralForeground1,
     [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+    [vars.indicatorColor]: tokens.colorNeutralForegroundOnBrand,
     [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
 
     ':hover': {

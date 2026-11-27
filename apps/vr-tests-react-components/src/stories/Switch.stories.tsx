@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { Switch } from '@fluentui/react-switch';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../utilities';
 
@@ -40,6 +42,20 @@ export const EnabledAndCheckedRTL = getStoryVariant(EnabledAndChecked, RTL);
 export const EnabledAndCheckedHighContrast = getStoryVariant(EnabledAndChecked, HIGH_CONTRAST);
 
 export const EnabledAndCheckedDarkMode = getStoryVariant(EnabledAndChecked, DARK_MODE);
+
+export const CheckedWithCustomBrand = () => (
+  <FluentProvider
+    theme={{
+      colorCompoundBrandBackground: webLightTheme.colorPaletteYellowBackground3,
+      colorCompoundBrandBackgroundHover: webLightTheme.colorPaletteYellowBackground3,
+      colorCompoundBrandBackgroundPressed: webLightTheme.colorPaletteYellowBackground3,
+      colorNeutralForegroundOnBrand: webLightTheme.colorNeutralForeground1,
+      colorNeutralForegroundInverted: webLightTheme.colorNeutralForegroundInverted,
+    }}
+  >
+    <Switch className="test-class" checked label="Checked with custom brand" />
+  </FluentProvider>
+);
 
 export const DisabledAndUnchecked = () => (
   <Switch className="test-class" disabled defaultChecked={false} label="Toggle switch" />
