@@ -1,4 +1,5 @@
-import { screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent, act, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
@@ -526,6 +527,136 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   it('Should render rounded corners on bars', () => {
     const component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} roundCorners={true} />);
     expect(component).toMatchSnapshot();
+  });
+});
+
+describe('Horizontal bar chart with axis - Up and down arrow keys', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const topOf = (bar: Element) => Number(bar.getAttribute('y'));
+  const renderBars = async (data: HorizontalBarChartWithAxisDataPoint[], count: number) => {
+    const { container } = render(<HorizontalBarChartWithAxis data={data} height={300} width={600} />);
+    await waitFor(() => expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(count));
+    const bars = Array.from(container.querySelectorAll<SVGRectElement>('rect[role="option"]'));
+    // The bars from the top of the chart to the bottom. This is not their order in the document.
+    return [...bars].sort((first, second) => topOf(first) - topOf(second));
+  };
+  // One keydown event on the focused bar. fireEvent returns false when the handler called preventDefault, which is
+  // what keeps the page from scrolling, so the tests can tell a handled key from one that was left alone.
+  type Modifier = 'ctrlKey' | 'altKey' | 'shiftKey' | 'metaKey';
+  const press = (key: string, modifiers: Partial<Record<Modifier, boolean>> = {}) => {
+    let unhandled = true;
+    act(() => {
+      unhandled = fireEvent.keyDown(document.activeElement!, { key, ...modifiers });
+    });
+    return unhandled;
+  };
+
+  test('Should move the focus to the bar below with the down arrow key and to the bar above with the up arrow key', async () => {
+    const bars = await renderBars(chartPointsHBCWA, 4);
+    expect(new Set(bars.map(topOf)).size).toEqual(4);
+    act(() => bars[0].focus());
+    for (const below of bars.slice(1)) {
+      // Assert
+      expect(press('ArrowDown')).toBe(false);
+      expect(document.activeElement).toBe(below);
+    }
+    for (const above of [bars[2], bars[1], bars[0]]) {
+      // Assert
+      expect(press('ArrowUp')).toBe(false);
+      expect(document.activeElement).toBe(above);
+    }
+  });
+
+  test('Should go around at the first and the last bar', async () => {
+    const bars = await renderBars(chartPointsWithStringYAxisHBCWA, 4);
+    act(() => bars[0].focus());
+    press('ArrowUp');
+    // Assert
+    expect(document.activeElement).toBe(bars[3]);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(bars[0]);
+  });
+
+  test('Should move to another row of a stacked chart, to the bar that is nearest to the focused one', async () => {
+    const bars = await renderBars(stackedChartPointsHBCWA, stackedChartPointsHBCWA.length);
+    const rows = Array.from(new Set(bars.map(topOf)));
+    expect(rows.length).toBeGreaterThan(1);
+    expect(rows.length).toBeLessThan(bars.length);
+    const middleOf = (bar: Element) => Number(bar.getAttribute('x')) + Number(bar.getAttribute('width')) / 2;
+    const firstRow = bars.filter(bar => topOf(bar) === rows[0]);
+    const secondRow = bars.filter(bar => topOf(bar) === rows[1]);
+    const start = firstRow[firstRow.length - 1];
+    const nearest = secondRow.reduce((best, bar) =>
+      Math.abs(middleOf(bar) - middleOf(start)) < Math.abs(middleOf(best) - middleOf(start)) ? bar : best,
+    );
+    act(() => start.focus());
+    press('ArrowDown');
+    // Assert
+    expect(document.activeElement).toBe(nearest);
+  });
+
+  test('Should leave the up and down arrow keys alone when a modifier key is held', async () => {
+    const bars = await renderBars(chartPointsHBCWA, 4);
+    act(() => bars[1].focus());
+    for (const modifier of ['ctrlKey', 'altKey', 'shiftKey', 'metaKey'] as const) {
+      // Assert
+      expect(press('ArrowDown', { [modifier]: true })).toBe(true);
+      expect(press('ArrowUp', { [modifier]: true })).toBe(true);
+      expect(document.activeElement).toBe(bars[1]);
+    }
+  });
+
+  test('Should skip the bars that a selected legend has dimmed', async () => {
+    // Four rows. The bars of the first and the third data point share one legend.
+    const twoLegends: HorizontalBarChartWithAxisDataPoint[] = ['Row one', 'Row two', 'Row three', 'Row four'].map(
+      (y, index) => ({
+        x: 1000 * (index + 1),
+        y,
+        legend: index % 2 === 0 ? 'Kept' : 'Dimmed',
+        color: index % 2 === 0 ? tokens.colorPaletteBlueForeground2 : tokens.colorPaletteYellowForeground2,
+      }),
+    );
+    const bars = await renderBars(twoLegends, 4);
+    userEvent.click(screen.getByText('Kept'));
+    const [upper, lower] = bars.filter(bar => bar.getAttribute('tabindex') === '0');
+    expect(bars.filter(bar => bar.getAttribute('tabindex') === '0')).toHaveLength(2);
+    // A dimmed bar is between the two bars that can take the focus.
+    expect(bars.indexOf(lower) - bars.indexOf(upper)).toEqual(2);
+    act(() => upper.focus());
+    press('ArrowDown');
+    // Assert
+    expect(document.activeElement).toBe(lower);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(upper);
+    press('ArrowUp');
+    expect(document.activeElement).toBe(lower);
+  });
+
+  test('Should move between rows that are less than a pixel apart', async () => {
+    // A numeric y axis. The bars of 1000 and 1001 are almost in the same place.
+    const closeRows: HorizontalBarChartWithAxisDataPoint[] = [1000, 1001, 50000].map((y, index) => ({
+      x: 1000 * (index + 1),
+      y,
+      legend: `Row ${y}`,
+      color: tokens.colorPaletteBlueForeground2,
+    }));
+    const [top, middle, bottom] = await renderBars(closeRows, 3);
+    expect(topOf(bottom) - topOf(middle)).toBeGreaterThan(0);
+    expect(topOf(bottom) - topOf(middle)).toBeLessThan(1);
+    act(() => bottom.focus());
+    // Assert
+    expect(press('ArrowUp')).toBe(false);
+    expect(document.activeElement).toBe(middle);
+    press('ArrowUp');
+    expect(document.activeElement).toBe(top);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(middle);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(bottom);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(top);
   });
 });
 

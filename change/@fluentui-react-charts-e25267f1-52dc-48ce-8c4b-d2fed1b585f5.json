@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: move between the bars of HorizontalBarChartWithAxis with the up and down arrow keys",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
