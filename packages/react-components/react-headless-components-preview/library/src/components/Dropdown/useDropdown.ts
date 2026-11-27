@@ -76,9 +76,6 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
     clearButton: slot.optional(mergedProps.clearButton, {
       defaultProps: {
         'aria-label': 'Clear selection',
-        // Safari doesn't allow to focus an element with this
-        // when the element is not visible (display: none) we need to remove it to avoid tabster issues
-        tabIndex: showClearButton ? 0 : undefined,
         type: 'button',
       },
       elementType: 'button',
@@ -106,8 +103,8 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
     state.clearButton.onClick = onClearButtonClick;
   }
 
-  // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
-  if (multiselect) {
+  // The clear button is rendered only while it can clear: clearable, single-select, enabled, with a selection.
+  if (!showClearButton) {
     state.clearButton = undefined;
   }
 

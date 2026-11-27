@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Dropdown renders the clear button only when it can clear, Combobox hides and disables its clear icon when not clearable, and a standalone Listbox is no longer a closed popover",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
