@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-tabster): maintain focus-visible listeners on nested providers when outer provider is unmounted",
+  "packageName": "@fluentui/react-tabster",
+  "email": "geervan99@gmail.com"
+}
