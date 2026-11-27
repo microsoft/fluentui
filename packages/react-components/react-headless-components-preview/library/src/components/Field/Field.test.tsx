@@ -42,4 +42,15 @@ describe('Field', () => {
 
     expect(container.firstElementChild!).not.toHaveAttribute('data-required');
   });
+
+  it('does not render the invalid required attribute on the label', () => {
+    const { container } = render(
+      <Field required label="Name">
+        <input />
+      </Field>,
+    );
+
+    expect(container.querySelector('label')).not.toHaveAttribute('required');
+    expect(container.firstElementChild!).toHaveAttribute('data-required');
+  });
 });
