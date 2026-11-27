@@ -36,12 +36,6 @@ export type RangeSliderState = RangeSliderBaseState & {
      * Data attribute with the component's orientation.
      */
     'data-orientation'?: 'vertical' | 'horizontal';
-
-    /**
-     * Set when the RangeSlider is vertical.
-     * @deprecated Use `data-orientation` instead. Will be removed in a future release.
-     */
-    'data-vertical'?: string;
   };
   startThumb: RangeSliderThumbDataAttributes;
   endThumb: RangeSliderThumbDataAttributes;

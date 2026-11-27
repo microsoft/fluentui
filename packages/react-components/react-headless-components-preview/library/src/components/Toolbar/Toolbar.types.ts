@@ -13,11 +13,5 @@ export type ToolbarState = ToolbarBaseState & {
      * Data attribute with the component's orientation.
      */
     'data-orientation'?: 'vertical' | 'horizontal';
-
-    /**
-     * Data attribute set when the toolbar is vertically oriented.
-     * @deprecated Use `data-orientation` instead. Will be removed in a future release.
-     */
-    'data-vertical'?: string;
   };
 };

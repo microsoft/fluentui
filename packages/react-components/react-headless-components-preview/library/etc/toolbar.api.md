@@ -61,7 +61,6 @@ export { ToolbarButtonProps }
 export type ToolbarButtonState = ToolbarButtonBaseState & {
     root: {
         'data-orientation'?: 'vertical' | 'horizontal';
-        'data-vertical'?: string;
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
         'data-icon-only'?: string;
@@ -83,7 +82,6 @@ export { ToolbarDividerSlots }
 export type ToolbarDividerState = ToolbarDividerBaseState & {
     root: {
         'data-orientation'?: 'vertical' | 'horizontal';
-        'data-vertical'?: string;
     };
 };
 
@@ -101,7 +99,6 @@ export type ToolbarGroupSlots = {
 export type ToolbarGroupState = ToolbarGroupState_2 & {
     root: {
         'data-orientation'?: 'vertical' | 'horizontal';
-        'data-vertical'?: string;
     };
 };
 
@@ -136,7 +133,7 @@ export type ToolbarRadioGroupSlots = {
 export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
     vertical?: boolean;
     root: {
-        'data-vertical'?: string;
+        'data-orientation'?: 'vertical' | 'horizontal';
     };
 };
 
@@ -146,7 +143,6 @@ export { ToolbarSlots }
 export type ToolbarState = ToolbarBaseState & {
     root: {
         'data-orientation'?: 'vertical' | 'horizontal';
-        'data-vertical'?: string;
     };
 };
 

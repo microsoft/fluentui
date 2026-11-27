@@ -27,7 +27,6 @@ export type RangeSliderState = RangeSliderBaseState & {
     root: {
         'data-disabled'?: string;
         'data-orientation'?: 'vertical' | 'horizontal';
-        'data-vertical'?: string;
     };
     startThumb: RangeSliderThumbDataAttributes;
     endThumb: RangeSliderThumbDataAttributes;

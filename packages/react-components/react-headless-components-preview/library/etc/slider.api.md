@@ -25,7 +25,6 @@ export type SliderState = SliderBaseState & {
     root: {
         'data-disabled'?: string;
         'data-orientation'?: 'vertical' | 'horizontal';
-        'data-vertical'?: string;
     };
 };
 

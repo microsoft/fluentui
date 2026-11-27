@@ -40,7 +40,7 @@ describe('Toolbar', () => {
     );
 
     expect(getByRole('toolbar')).toHaveAttribute('focusgroup', 'toolbar block wrap');
-    expect(getByRole('toolbar')).toHaveAttribute('data-vertical');
+    expect(getByRole('toolbar')).not.toHaveAttribute('data-vertical');
     expect(getByRole('toolbar')).toHaveAttribute('data-orientation', 'vertical');
 
     const button1 = getByRole('button', { name: 'Bold' });

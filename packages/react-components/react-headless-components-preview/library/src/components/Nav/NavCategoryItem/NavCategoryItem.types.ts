@@ -43,11 +43,6 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
     root: {
       'data-disabled'?: string;
       /**
-       * Data attribute set when the category is expanded.
-       * @deprecated Use `data-open` instead. Will be removed in a future release.
-       */
-      'data-expanded'?: string;
-      /**
        * Data attribute set when the category is open.
        */
       'data-open'?: string;

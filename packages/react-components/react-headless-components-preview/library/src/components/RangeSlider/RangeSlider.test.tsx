@@ -71,10 +71,10 @@ describe('RangeSlider', () => {
       expect(endThumb).toHaveAttribute('data-disabled', '');
     });
 
-    it('sets data-vertical when vertical', () => {
+    it('sets data-orientation when vertical', () => {
       const { container } = render(<RangeSlider vertical defaultValue={{ start: 20, end: 80 }} {...thumbLabels} />);
 
-      expect(container.firstElementChild).toHaveAttribute('data-vertical', '');
+      expect(container.firstElementChild).not.toHaveAttribute('data-vertical');
       expect(container.firstElementChild).toHaveAttribute('data-orientation', 'vertical');
     });
 
@@ -128,7 +128,7 @@ describe('RangeSlider', () => {
         <RangeSlider
           defaultValue={{ start: 20, end: 80 }}
           data-disabled=""
-          data-vertical=""
+          data-orientation="vertical"
           startThumb={{ 'data-disabled': '' } as React.HTMLAttributes<HTMLDivElement>}
           {...thumbLabels}
         />,
@@ -136,7 +136,7 @@ describe('RangeSlider', () => {
       const { startThumb } = getThumbs(container);
 
       expect(container.firstElementChild).not.toHaveAttribute('data-disabled');
-      expect(container.firstElementChild).not.toHaveAttribute('data-vertical');
+      expect(container.firstElementChild).toHaveAttribute('data-orientation', 'horizontal');
       expect(startThumb).not.toHaveAttribute('data-disabled');
     });
   });

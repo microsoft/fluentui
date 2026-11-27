@@ -16,8 +16,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   // Set data attributes for disabled and vertical states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
-  // eslint-disable-next-line react-hooks/immutability, @typescript-eslint/no-deprecated
-  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
