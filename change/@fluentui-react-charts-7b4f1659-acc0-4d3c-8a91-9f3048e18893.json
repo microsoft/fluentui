@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: render the empty state of LineChart for data without lineChartData",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
