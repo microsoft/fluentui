@@ -4,7 +4,7 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-import { Combobox, Option } from '@fluentui/react-combobox';
+import { Combobox, Dropdown, Option } from '@fluentui/react-combobox';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 
 import { triggerSelector, listboxSelector, triggerId } from '../../testing/selectors';
@@ -13,6 +13,64 @@ import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
+
+for (const Component of [Combobox, Dropdown]) {
+  describe(`${Component.displayName} - scroll stability`, () => {
+    it('preserves listbox scrollTop across hover-driven parent re-renders', () => {
+      const ScrollStability = () => {
+        const [hoveredOption, setHoveredOption] = React.useState<string | null>(null);
+
+        // Center and pin the popup so autoSize, not the CSS max-height, constrains the listbox.
+        // Disable resize updates to isolate positioning changes caused by parent re-renders.
+        return (
+          <div style={{ display: 'flex', alignItems: 'center', height: '100vh' }}>
+            <span data-testid="hovered-option">Hovered: {hoveredOption ?? 'none'}</span>
+            <Component aria-label="Select an option" positioning={{ pinned: true, disableUpdateOnResize: true }}>
+              {Array.from({ length: 50 }, (_, index) => {
+                const option = `Option ${index + 1}`;
+                return (
+                  <Option key={option} onMouseEnter={() => setHoveredOption(option)}>
+                    {option}
+                  </Option>
+                );
+              })}
+            </Component>
+          </div>
+        );
+      };
+
+      mount(<ScrollStability />);
+
+      cy.get('[role="combobox"]').click();
+      cy.get(listboxSelector).should('be.visible').scrollTo('bottom');
+      cy.get(listboxSelector)
+        .invoke('prop', 'scrollTop')
+        .then(scrollTop => {
+          expect(scrollTop).to.be.greaterThan(0);
+
+          cy.contains('[role="option"]', /^Option 50$/).trigger('mouseover', { scrollBehavior: false });
+          cy.get('[data-testid="hovered-option"]').should('have.text', 'Hovered: Option 50');
+
+          // Allow positioning updates after the parent re-render to finish before checking the scroll position.
+          cy.window().then(
+            win =>
+              new Cypress.Promise<void>(resolve => {
+                win.requestAnimationFrame(() => win.requestAnimationFrame(() => resolve()));
+              }),
+          );
+          cy.get(listboxSelector).should('have.prop', 'scrollTop', scrollTop);
+        });
+
+      cy.contains('[role="option"]', /^Option 50$/).click({ scrollBehavior: false });
+      cy.get(listboxSelector).should('not.be.visible');
+      if (Component === Combobox) {
+        cy.get('[role="combobox"]').should('have.value', 'Option 50');
+      } else {
+        cy.get('[role="combobox"]').should('have.text', 'Option 50');
+      }
+    });
+  });
+}
 
 describe('Combobox controlling open/close state', () => {
   const ControlledOpenCloseStateCombobox = (props: Partial<ComboboxProps>) => {

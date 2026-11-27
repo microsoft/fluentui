@@ -21,6 +21,7 @@ import { useMenuContext } from './menuContext';
 import { useHasParentMenuList } from './menuListPresenceContext';
 import { usePositioning, resolvePositioningShorthand } from '../../positioning';
 import { getActiveElement } from '../../hooks/top-layer/utils';
+import { useLayerPresence } from '../../hooks/top-layer';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 
 export const useMenu = (props: MenuProps): MenuState => {
@@ -79,6 +80,11 @@ export const useMenu = (props: MenuProps): MenuState => {
     onOpenChange: props.onOpenChange,
   });
 
+  // Like Popover: the popover (list + items) renders only while open or animating out, so a closed Menu costs only
+  // its trigger. This Menu's checked values live here, so they survive the unmount. A nested Menu inside the popover
+  // unmounts with it and loses uncontrolled state (as in v9); use controlled `checkedValues` to keep it.
+  const { shouldRender: shouldRenderPopover } = useLayerPresence(menuPopoverRef, { open });
+
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
     checkedValues: props.checkedValues,
     defaultCheckedValues,
@@ -114,7 +120,7 @@ export const useMenu = (props: MenuProps): MenuState => {
     hasIcons,
     closeOnScroll,
     menuTrigger,
-    menuPopover,
+    menuPopover: shouldRenderPopover ? menuPopover : undefined,
     mountNode,
     triggerRef: mergedTriggerRef,
     menuPopoverRef: mergedMenuPopoverRef,
