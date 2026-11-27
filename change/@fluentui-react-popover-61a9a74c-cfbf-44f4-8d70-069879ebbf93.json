@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: reuse arrow position managers across renders while preserving scroll following and synchronous imperative callback refs",
+  "email": "141153077+andreivms@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "packageName": "@fluentui/react-popover"
+}

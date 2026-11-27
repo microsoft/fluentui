@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
-import type { PositioningProps } from '@fluentui/react-positioning';
+import type { PositioningImperativeRef, PositioningProps } from '@fluentui/react-positioning';
 import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
@@ -101,8 +101,13 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     onPositioningEnd,
   };
 
-  if (state.withArrow) {
-    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeight);
+  const arrowOffset = useArrowOffset(positioningOptions.offset, withArrow);
+  const arrowPositioningRef = React.useRef<PositioningImperativeRef>(null);
+  const userPositioningRef = positioningOptions.positioningRef;
+
+  if (arrowOffset !== undefined) {
+    positioningOptions.offset = arrowOffset;
+    positioningOptions.positioningRef = arrowPositioningRef;
   }
 
   const {
@@ -117,6 +122,23 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePositioning(positioningOptions);
+
+  // Attach after usePositioning so callbacks can synchronously use the forwarding handle.
+  React.useImperativeHandle(
+    arrowOffset === undefined ? undefined : userPositioningRef,
+    (): PositioningImperativeRef => ({
+      updatePosition: () => arrowPositioningRef.current?.updatePosition(),
+      setTarget: target => arrowPositioningRef.current?.setTarget(target),
+    }),
+    [],
+  );
+
+  // A new merged offset on every render used to recreate, and therefore reposition, the position manager of a visible
+  // tooltip with an arrow. Keep repositioning after every render, without the recreation, so the tooltip still
+  // follows a target that moved without being resized. The ref is only attached to tooltips with an arrow.
+  useIsomorphicLayoutEffect(() => {
+    arrowPositioningRef.current?.updatePosition();
+  });
 
   const [setDelayTimeout, clearDelayTimeout] = useTooltipTimeout(containerRef);
 
@@ -328,3 +350,14 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
   return state;
 };
+
+/**
+ * mergeArrowOffset() returns a new offset on every call, and a new offset recreates the position manager.
+ * Keeps the merged offset while the user offset is unchanged.
+ */
+function useArrowOffset(userOffset: PositioningProps['offset'], withArrow: boolean): PositioningProps['offset'] {
+  return React.useMemo(
+    () => (withArrow ? mergeArrowOffset(userOffset, arrowHeight) : undefined),
+    [userOffset, withArrow],
+  );
+}

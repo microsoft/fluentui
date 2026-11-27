@@ -8,9 +8,8 @@ import type {
   TargetElement,
 } from './types';
 import { computePosition } from './utils/computePosition';
-import { getWindow, px } from './utils/domGeometry';
+import { getPhysicalParent, getWindow, px } from './utils/domGeometry';
 import { debounce } from './utils';
-import { listScrollParents } from './utils/listScrollParents';
 import {
   DATA_POSITIONING_ESCAPED,
   DATA_POSITIONING_HIDDEN,
@@ -76,14 +75,56 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
       });
 
   let isFirstUpdate = true;
-  // The window and the scroll parents of the container and the target, the target is only observed
-  // when it is an element as virtual elements are not part of the DOM
-  const scrollTargets = new Set<EventTarget>([targetWindow]);
+  const scrollRoots = new Set<Document | ShadowRoot>();
   const elements = isHTMLElement(target) ? [container, target] : [container];
-  const listenToScroll = (scrollTarget: EventTarget) => {
-    scrollTargets.add(scrollTarget);
-    scrollTarget.addEventListener('scroll', updatePosition, { passive: true });
+  const getScrollElements = () =>
+    isHTMLElement(target) || !target.contextElement ? elements : [...elements, target.contextElement];
+  const onScroll = (event: Event) => {
+    // Non-composed scroll events stay inside shadow roots; use the original target when an event is retargeted.
+    const scrollTarget = event.composedPath()[0] ?? event.target;
+    const isVirtualContextScroll = !isHTMLElement(target) && scrollTarget === target.contextElement;
+    const affectsPosition = getScrollElements().some(element => {
+      if (scrollTarget === element.ownerDocument) {
+        return true;
+      }
+      for (let parent = getPhysicalParent(element); parent; parent = getPhysicalParent(parent)) {
+        if (parent === scrollTarget) {
+          return true;
+        }
+      }
+      return false;
+    });
+    if (isVirtualContextScroll || affectsPosition) {
+      updatePosition();
+    }
   };
+  const updateScrollRoots = () => {
+    const nextRoots = new Set<Document | ShadowRoot>();
+    getScrollElements().forEach(element => {
+      nextRoots.add(element.ownerDocument);
+      for (let node: Element | null = element; node; node = getPhysicalParent(node)) {
+        const root = node.getRootNode();
+        if (root.nodeType === 11 && 'host' in root) {
+          nextRoots.add(root as ShadowRoot);
+        }
+      }
+    });
+    scrollRoots.forEach(root => {
+      if (!nextRoots.has(root)) {
+        root.removeEventListener('scroll', onScroll, true);
+        scrollRoots.delete(root);
+      }
+    });
+    nextRoots.forEach(root => {
+      if (!scrollRoots.has(root)) {
+        root.addEventListener('scroll', onScroll, { capture: true, passive: true });
+        scrollRoots.add(root);
+      }
+    });
+  };
+  // Identifies the latest position computation that started. A computation that started earlier can resolve later,
+  // so only the latest one may write the position.
+  let latestComputation = 0;
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
@@ -98,7 +139,6 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
 
     if (isFirstUpdate) {
       elements.forEach(element => {
-        listScrollParents(element).forEach(listenToScroll);
         resizeObserver && resizeObserver.observe(element);
       });
 
@@ -106,11 +146,13 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
     }
 
     container.style.position = strategy;
+    latestComputation += 1;
+    const computation = latestComputation;
     computePosition(target, container, managerOptions)
       .then(({ x, y, placement, arrow: arrowCoordinates, intersecting, escaped, referenceHidden }) => {
-        // Promise can still resolve after destruction
+        // Promise can still resolve after destruction or after a newer computation started
         // early return to avoid applying outdated position
-        if (isDestroyed) {
+        if (isDestroyed || computation !== latestComputation) {
           return;
         }
 
@@ -165,21 +207,29 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
       });
   };
 
-  const updatePosition = debounce(forceUpdate);
+  const scheduleUpdate = debounce(forceUpdate);
+  const updatePosition = () => {
+    if (!isDestroyed) {
+      // A render can move the same element into another shadow root without changing its ref.
+      updateScrollRoots();
+      scheduleUpdate();
+    }
+  };
 
   const dispose = () => {
     isDestroyed = true;
 
     targetWindow.removeEventListener('resize', updatePosition);
-    scrollTargets.forEach(scrollTarget => {
-      scrollTarget.removeEventListener('scroll', updatePosition);
+    targetWindow.removeEventListener('scroll', updatePosition);
+    scrollRoots.forEach(root => {
+      root.removeEventListener('scroll', onScroll, true);
     });
-    scrollTargets.clear();
+    scrollRoots.clear();
 
     resizeObserver && resizeObserver.disconnect();
   };
 
-  listenToScroll(targetWindow);
+  targetWindow.addEventListener('scroll', updatePosition, { passive: true });
   targetWindow.addEventListener('resize', updatePosition);
 
   // Update the position on initialization
