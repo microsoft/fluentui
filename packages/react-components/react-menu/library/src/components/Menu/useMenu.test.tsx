@@ -3,6 +3,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useMenu_unstable } from './useMenu';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 const defaultMenuListContextValue: MenuListContextValue = {
   checkedValues: {},
@@ -21,6 +22,213 @@ const trigger = <button key="trigger">trigger</button>;
 const popover = <div key="popover">popover</div>;
 
 describe('useMenu_unstable', () => {
+  describe('context target', () => {
+    const spyOnSetTarget = (handle: PositioningImperativeRef | null) => {
+      if (!handle) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      return jest.spyOn(handle, 'setTarget');
+    };
+
+    it('sets and clears the positioning target synchronously through the exported setter', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result } = renderHook(() =>
+        useMenu_unstable({ children: [trigger, popover], openOnContext: true, positioning: { positioningRef } }),
+      );
+      const setTarget = spyOnSetTarget(positioningRef.current);
+
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+
+      expect(setTarget).toHaveBeenLastCalledWith(result.current.contextTarget);
+      expect(result.current.contextTarget?.getBoundingClientRect()).toEqual(
+        expect.objectContaining({ left: 100, top: 200 }),
+      );
+
+      act(() => result.current.setContextTarget(undefined));
+
+      expect(setTarget).toHaveBeenLastCalledWith(null);
+      expect(result.current.contextTarget).toBeUndefined();
+    });
+
+    it('preserves an explicit positioning target when the context target changes', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const target = document.createElement('button');
+      const { result } = renderHook(() =>
+        useMenu_unstable({
+          children: [trigger, popover],
+          openOnContext: true,
+          positioning: { positioningRef, target },
+        }),
+      );
+      const setTarget = spyOnSetTarget(positioningRef.current);
+
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+      act(() => result.current.setContextTarget(null));
+
+      expect(setTarget).not.toHaveBeenCalled();
+      expect(result.current.contextTarget).toBeUndefined();
+    });
+
+    it.each([undefined, null])('preserves an explicitly supplied target=%s', target => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result, rerender } = renderHook(
+        ({ openOnContext }) =>
+          useMenu_unstable({
+            children: [trigger, popover],
+            openOnContext,
+            positioning: { positioningRef, target },
+          }),
+        { initialProps: { openOnContext: true } },
+      );
+      const setTarget = spyOnSetTarget(positioningRef.current);
+
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+      rerender({ openOnContext: false });
+      rerender({ openOnContext: true });
+
+      expect(setTarget).not.toHaveBeenCalled();
+      expect(result.current.contextTarget?.getBoundingClientRect()).toEqual(
+        expect.objectContaining({ left: 100, top: 200 }),
+      );
+    });
+
+    it.each(['context mode', 'undefined target option'])(
+      'reconciles %s changes without changing the exposed handle',
+      transition => {
+        const positioningRef = jest.fn<void, [PositioningImperativeRef | null]>();
+        const { result, rerender } = renderHook(
+          ({ departed }) =>
+            useMenu_unstable({
+              children: [trigger, popover],
+              openOnContext: transition !== 'context mode' || !departed,
+              positioning: {
+                positioningRef,
+                ...(departed && transition === 'undefined target option' ? { target: undefined } : {}),
+              },
+            }),
+          { initialProps: { departed: false } },
+        );
+        const handle = positioningRef.mock.calls[0][0];
+        const setTarget = spyOnSetTarget(handle);
+        act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+        const target = result.current.contextTarget;
+        setTarget.mockClear();
+
+        rerender({ departed: true });
+        expect(setTarget).toHaveBeenLastCalledWith(null);
+
+        rerender({ departed: false });
+        expect(setTarget).toHaveBeenLastCalledWith(target);
+        expect(positioningRef).toHaveBeenCalledTimes(1);
+        expect(positioningRef).toHaveBeenLastCalledWith(handle);
+      },
+    );
+
+    it.each([undefined, true])('preserves consumer close overrides with open=%s', open => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const target = document.createElement('button');
+      const { result } = renderHook(() =>
+        useMenu_unstable({
+          children: [trigger, popover],
+          open,
+          defaultOpen: open === undefined ? true : undefined,
+          openOnContext: true,
+          positioning: { positioningRef },
+          onOpenChange: () => positioningRef.current?.setTarget(target),
+        }),
+      );
+      const setTarget = spyOnSetTarget(positioningRef.current);
+      const event = new MouseEvent('click');
+      act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+      expect(setTarget.mock.calls).toEqual([[null], [target]]);
+      expect(result.current.open).toBe(open === true);
+    });
+
+    [undefined, true].forEach(open => {
+      it.each(['undefined target', 'disabled context mode'])(
+        `clears a close-time target override on departure to %s with open=${open}`,
+        departure => {
+          const positioningRef = React.createRef<PositioningImperativeRef>();
+          const target = document.createElement('button');
+          const { result, rerender } = renderHook(
+            ({ departed }) =>
+              useMenu_unstable({
+                children: [trigger, popover],
+                open,
+                defaultOpen: open === undefined ? true : undefined,
+                openOnContext: !(departed && departure === 'disabled context mode'),
+                positioning: {
+                  positioningRef,
+                  ...(departed && departure === 'undefined target' ? { target: undefined } : {}),
+                },
+                onOpenChange: (_, data) => {
+                  if (!data.open) {
+                    positioningRef.current?.setTarget(target);
+                  }
+                },
+              }),
+            { initialProps: { departed: false } },
+          );
+          const setTarget = spyOnSetTarget(positioningRef.current);
+          act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+          setTarget.mockClear();
+
+          const event = new MouseEvent('click');
+          act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+          expect(setTarget.mock.calls).toEqual([[null], [target]]);
+          expect(result.current.contextTarget).toBeUndefined();
+          expect(result.current.open).toBe(open === true);
+          setTarget.mockClear();
+
+          rerender({ departed: false });
+          expect(setTarget).not.toHaveBeenCalled();
+
+          rerender({ departed: true });
+          expect(setTarget).toHaveBeenCalledTimes(1);
+          expect(setTarget).toHaveBeenLastCalledWith(null);
+        },
+      );
+    });
+
+    it('preserves an ordinary menu close override when an undefined target option is added', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const target = document.createElement('button');
+      const { result, rerender } = renderHook(
+        ({ explicit }) =>
+          useMenu_unstable({
+            children: [trigger, popover],
+            defaultOpen: true,
+            positioning: { positioningRef, ...(explicit ? { target: undefined } : {}) },
+            onOpenChange: () => positioningRef.current?.setTarget(target),
+          }),
+        { initialProps: { explicit: false } },
+      );
+      const setTarget = spyOnSetTarget(positioningRef.current);
+      const event = new MouseEvent('click');
+      act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+      expect(setTarget.mock.calls).toEqual([[target]]);
+      setTarget.mockClear();
+      rerender({ explicit: true });
+      expect(setTarget).not.toHaveBeenCalled();
+    });
+
+    it('does not clear imperative targets when an ordinary menu closes', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result } = renderHook(() =>
+        useMenu_unstable({ children: [trigger, popover], defaultOpen: true, positioning: { positioningRef } }),
+      );
+      const setTarget = spyOnSetTarget(positioningRef.current);
+      const event = new MouseEvent('click');
+      act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+      expect(setTarget).not.toHaveBeenCalled();
+      expect(result.current.open).toBe(false);
+    });
+  });
+
   describe('components and slots', () => {
     it('returns a surfaceMotion component', () => {
       const { result } = renderHook(() => useMenu_unstable({ children: [trigger, popover] }));
