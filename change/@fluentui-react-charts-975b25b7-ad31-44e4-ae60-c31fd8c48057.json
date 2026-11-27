@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: draw LineChart axes without data when both axis ranges are set",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

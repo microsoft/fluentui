@@ -9,7 +9,7 @@ import { bisector } from 'd3-array';
 import type { Legend } from '../Legends/index';
 import { Legends } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { YAxisType } from '../../utilities/index';
@@ -51,6 +51,7 @@ import {
   isScatterPolarSeries,
   getDomainPaddingForMarkers,
   isPlottable,
+  isValidDomainValue,
   getRangeForScatterMarkerSize,
   calculateMarkerRadius,
 } from '../../utilities/index';
@@ -214,6 +215,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         pointsRef.current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
         calloutPointsRef.current = calloutData(pointsRef.current);
       }
+      // A callout or a hover guide line that was showing when the data went away has nothing left to point at.
+      if (_isChartEmpty()) {
+        setPopoverOpen(false);
+        _handleMouseOut();
+      }
     }, [props.height, props.width, props.data]);
 
     function _getDomainNRangeValues(
@@ -226,6 +232,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       barWidth: number,
       tickValues: Date[] | number[] | undefined,
     ) {
+      const xRange = _isChartEmpty() ? _getXAxisRangeFromProps() : undefined;
+      if (xRange) {
+        // createNumericXAxis applies xMinValue and xMaxValue without RTL handling, so a numeric range is
+        // only reversed for RTL when neither of them is set.
+        const isReversed =
+          isRTL &&
+          (xAxisType !== XAxisTypes.NumericAxis || (props.xMinValue === undefined && props.xMaxValue === undefined));
+        const [dStartValue, dEndValue] = isReversed ? [xRange[1], xRange[0]] : xRange;
+        return { dStartValue, dEndValue, rStartValue: margins.left!, rEndValue: width - margins.right! };
+      }
       let domainNRangeValue: IDomainNRange;
       if (xAxisType === XAxisTypes.NumericAxis) {
         domainNRangeValue = domainRangeOfNumericForAreaLineScatterCharts(
@@ -313,6 +329,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       yAxisType?: YAxisType,
       useSecondaryYScale?: boolean,
     ): { startValue: number; endValue: number } {
+      // A chart without data points takes the range of each y-axis from the props.
+      const getYAxisRange = useSecondaryYScale ? _getSecondaryYAxisRangeFromProps : _getYAxisRangeFromProps;
+      const yRange = _isChartEmpty() ? getYAxisRange() : undefined;
+      if (yRange) {
+        return { startValue: yRange[0], endValue: yRange[1] };
+      }
       const { startValue, endValue } = findNumericMinMaxOfY(
         points,
         yAxisType,
@@ -522,7 +544,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
       const lines: JSXElement[] = [];
-      if (isSelectedLegend) {
+      // A selection holds the series that were selected. Once the data is gone, they are no longer in the chart.
+      if (isSelectedLegend && !_isChartEmpty()) {
         _points = selectedLegendPoints;
       } else {
         _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
@@ -1376,13 +1399,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _createColorFillBars(containerHeight: number) {
       const colorFillBars: JSXElement[] = [];
-      if (isSelectedLegend) {
+      // Without data points, a selection that holds only lines has nothing left to show, so it hides no bars.
+      if (isSelectedLegend && (selectedColorBarLegend.length > 0 || !_isChartEmpty())) {
         _colorFillBars.current = selectedColorBarLegend;
       } else {
         _colorFillBars.current = props.colorFillBars!;
       }
 
-      const yMinMaxValues = findNumericMinMaxOfY(_points);
+      // The bars reach up to the highest y value. Without data points, that is the top of the y range from the props.
+      const yRange = _isChartEmpty() ? _getYAxisRangeFromProps() : undefined;
+      const yMinMaxValues = yRange ? { startValue: yRange[0], endValue: yRange[1] } : findNumericMinMaxOfY(_points);
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
@@ -1847,7 +1873,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _getChartTitle(): string {
       const { chartTitle, lineChartData } = props.data;
-      return (chartTitle ? `${chartTitle}. ` : '') + `Line chart with ${lineChartData?.length || 0} lines. `;
+      return (
+        (chartTitle ? `${chartTitle}. ` : '') +
+        `Line chart with ${lineChartData?.length || 0} lines. ` +
+        // The empty axes replace the hidden element that carries this message when nothing is drawn.
+        (_isChartEmpty() ? 'Graph has no data to display. ' : '')
+      );
     }
 
     function _isChartEmpty(): boolean {
@@ -1859,13 +1890,61 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       );
     }
 
+    /**
+     * A chart without data points has nothing to derive its axes from. This is the x-axis range that
+     * the props define on their own: date tick values for a date axis, or numeric tick values,
+     * xMinValue and xMaxValue for a numeric axis.
+     */
+    function _getXAxisRangeFromProps(): [number, number] | [Date, Date] | undefined {
+      const tickValues = props.tickValues ?? [];
+      if (tickValues[0] instanceof Date) {
+        const start = d3Min(tickValues as Date[]);
+        const end = d3Max(tickValues as Date[]);
+        return start && end && start < end ? [start, end] : undefined;
+      }
+      // createNumericXAxis extends the domain down to xMinValue, and a log scale cannot start at or below 0.
+      if (props.xMinValue !== undefined && !isValidDomainValue(props.xMinValue, props.xScaleType)) {
+        return undefined;
+      }
+      const values = [...tickValues, props.xMinValue, props.xMaxValue].filter(
+        (value): value is number => typeof value === 'number' && isValidDomainValue(value, props.xScaleType),
+      );
+      const start = d3Min(values);
+      const end = d3Max(values);
+      return start !== undefined && end !== undefined && start < end ? [start, end] : undefined;
+    }
+
+    /** The y-axis range that yMinValue and yMaxValue define on their own. Both count as 0 when they are not set. */
+    function _getYAxisRangeFromProps(): [number, number] | undefined {
+      const { yMinValue = 0, yMaxValue = 0 } = props;
+      return yMinValue < yMaxValue && isValidDomainValue(yMinValue, props.yScaleType)
+        ? [yMinValue, yMaxValue]
+        : undefined;
+    }
+
+    /**
+     * The range of the secondary y-axis that secondaryYScaleOptions defines on its own. Its yMinValue counts as 0
+     * and its yMaxValue as 100 when they are not set, as in CartesianChart.
+     */
+    function _getSecondaryYAxisRangeFromProps(): [number, number] | undefined {
+      const { yMinValue = 0, yMaxValue = 100 } = props.secondaryYScaleOptions ?? {};
+      return yMinValue < yMaxValue && isValidDomainValue(yMinValue, props.secondaryYScaleType)
+        ? [yMinValue, yMaxValue]
+        : undefined;
+    }
+
+    /** A chart without data points still draws its axes when the props give both of them a range. */
+    function _hasAxesWithoutData(): boolean {
+      return _isChartEmpty() && !!_getXAxisRangeFromProps() && !!_getYAxisRangeFromProps();
+    }
+
     const { legendProps, tickValues, tickFormat, eventAnnotationProps } = props;
     _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
 
-    _isXAxisDateType = getXAxisType(_points);
+    _isXAxisDateType = _isChartEmpty() ? _getXAxisRangeFromProps()?.[0] instanceof Date : getXAxisType(_points);
     let points = _points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
-      points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
+      points = selectedLegendPoints.length >= 1 && !_isChartEmpty() ? selectedLegendPoints : _points;
       calloutPointsRef.current = calloutData(points);
     }
 
@@ -1873,7 +1952,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     // reduce computation cost by only creating legendBars
     // if when hideLegend is false.
     // NOTE: they are rendered only when hideLegend is false in CartesianChart.
-    if (!props.hideLegend) {
+    // A chart without lines and without color fill bars has no legends to list.
+    if (!props.hideLegend && (_points.length > 0 || !!props.colorFillBars?.length)) {
       legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
     const calloutProps = {
@@ -1890,7 +1970,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       tabIndex: 0,
       xAxisCalloutAccessibilityData,
       ...props.calloutProps,
-      isPopoverOpen,
+      // An effect closes the callout when the data goes away. This hides it in the render before that.
+      isPopoverOpen: isPopoverOpen && !_isChartEmpty(),
       clickPosition,
       positioning: {
         target: refSelected,
@@ -1910,7 +1991,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       tickFormat,
     };
 
-    return !_isChartEmpty() ? (
+    return !_isChartEmpty() || _hasAxesWithoutData() ? (
       <CartesianChart
         {...props}
         chartTitle={_getChartTitle()}

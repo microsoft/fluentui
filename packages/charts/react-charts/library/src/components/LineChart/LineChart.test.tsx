@@ -1074,3 +1074,286 @@ describe('LineChart - mouse events', () => {
     expect(screen.getByTestId('callout-action')).toBeInTheDocument();
   });
 });
+
+describe('Axes of a chart without data', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const emptyChartPoints = { chartTitle: 'EmptyLineChart', lineChartData: [] };
+  const lineWithoutPoints = {
+    chartTitle: 'EmptyLineChart',
+    lineChartData: [{ legend: 'metaData1', data: [], color: 'red' }],
+  };
+  const emptyChartLabel = '[aria-label="Graph has no data to display"]';
+  const getChartLabel = (container: HTMLElement) =>
+    container.querySelector('svg[role="region"]')!.getAttribute('aria-label');
+  const getTicks = (container: HTMLElement, axis: 'x' | 'y') =>
+    Array.from(container.querySelectorAll<SVGGElement>(`[id^="${axis}AxisGElement"] .tick`));
+  const getTickLabels = (container: HTMLElement, axis: 'x' | 'y') =>
+    getTicks(container, axis).map(tick => tick.textContent);
+  const getTickPosition = (tick: SVGGElement) =>
+    Number(/translate\(([^,]+),/.exec(tick.getAttribute('transform')!)![1]);
+
+  it('Should render both axes when numeric tick values and yMaxValue are set', () => {
+    const { container } = render(
+      <LineChart data={emptyChartPoints} tickValues={[0, 25, 50, 75, 100]} yMaxValue={40} />,
+    );
+    expect(container.querySelectorAll(emptyChartLabel)).toHaveLength(0);
+    expect(getTickLabels(container, 'x')).toEqual(['0', '25', '50', '75', '100']);
+    expect(getTickLabels(container, 'y')).toEqual(['0', '10', '20', '30', '40']);
+  });
+
+  it('Should take the axis ranges from xMinValue, xMaxValue, yMinValue and yMaxValue', () => {
+    const { container } = render(
+      <LineChart data={emptyChartPoints} xMinValue={0} xMaxValue={100} yMinValue={20} yMaxValue={60} />,
+    );
+    const xLabels = getTickLabels(container, 'x');
+    expect(xLabels[0]).toBe('0');
+    expect(xLabels[xLabels.length - 1]).toBe('100');
+    expect(getTickLabels(container, 'y')).toEqual(['20', '30', '40', '50', '60']);
+  });
+
+  it('Should render a date axis when the tick values are dates', () => {
+    const tickValues = [
+      new Date('2020-03-03T00:00:00.000Z'),
+      new Date('2020-03-04T00:00:00.000Z'),
+      new Date('2020-03-05T00:00:00.000Z'),
+    ];
+    const { container } = render(<LineChart data={emptyChartPoints} tickValues={tickValues} yMaxValue={40} />);
+    expect(container.querySelectorAll(emptyChartLabel)).toHaveLength(0);
+    expect(getTicks(container, 'x')).toHaveLength(3);
+    expect(getChartLabel(container)).toContain('The X axis displays time');
+  });
+
+  it('Should render the axes when the lines have no data points', () => {
+    const { container } = render(
+      <LineChart data={lineWithoutPoints} tickValues={[0, 25, 50, 75, 100]} yMaxValue={40} />,
+    );
+    expect(container.querySelectorAll(emptyChartLabel)).toHaveLength(0);
+    expect(getTickLabels(container, 'x')).toEqual(['0', '25', '50', '75', '100']);
+  });
+
+  it('Should render a log y-axis when yMinValue is above 0', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMinValue={1}
+        yMaxValue={1000}
+        yScaleType="log"
+      />,
+    );
+    const yLabels = getTickLabels(container, 'y');
+    expect(container.querySelectorAll(emptyChartLabel)).toHaveLength(0);
+    expect(yLabels[0]).toBe('1');
+    expect(yLabels[yLabels.length - 1]).toBe('1k');
+  });
+
+  const primaryYAxis = '[id^="yAxisGElement"]:not([id^="yAxisGElementSecondary"])';
+  const secondaryYAxis = '[id^="yAxisGElementSecondary"]';
+  const getYTickLabels = (container: HTMLElement, axis: string) =>
+    Array.from(container.querySelectorAll(`${axis} .tick`)).map(tick => tick.textContent);
+
+  it('Should take the range of the secondary y-axis from secondaryYScaleOptions', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMaxValue={40}
+        secondaryYScaleOptions={{ yMinValue: 20, yMaxValue: 60 }}
+      />,
+    );
+    expect(getYTickLabels(container, primaryYAxis)).toEqual(['0', '10', '20', '30', '40']);
+    expect(getYTickLabels(container, secondaryYAxis)).toEqual(['20', '30', '40', '50', '60']);
+  });
+
+  it('Should render a log secondary y-axis when its yMinValue is above 0', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMaxValue={40}
+        secondaryYScaleOptions={{ yMinValue: 1, yMaxValue: 100 }}
+        secondaryYScaleType="log"
+      />,
+    );
+    const labels = getYTickLabels(container, secondaryYAxis);
+    expect(labels[0]).toBe('1');
+    expect(labels[labels.length - 1]).toBe('100');
+  });
+
+  it.each([
+    ['there are no lines', emptyChartPoints],
+    ['the lines have no data points', lineWithoutPoints],
+  ])('Should say in the chart label that there is no data when %s', (_name, data) => {
+    const { container } = render(<LineChart data={data} tickValues={[0, 25, 50, 75, 100]} yMaxValue={40} />);
+    expect(getChartLabel(container)).toContain('Graph has no data to display');
+  });
+
+  it('Should not say in the chart label that there is no data when there is data', () => {
+    const { container } = render(<LineChart data={basicChartPoints} xMinValue={0} xMaxValue={100} yMaxValue={100} />);
+    expect(getChartLabel(container)).not.toContain('Graph has no data to display');
+  });
+
+  it('Should render a legend list only when there is a legend to show', () => {
+    const rangeProps = { tickValues: [0, 25, 50, 75, 100], yMaxValue: 40 };
+    const withoutLines = render(<LineChart data={emptyChartPoints} {...rangeProps} />).container;
+    const withLine = render(<LineChart data={lineWithoutPoints} {...rangeProps} />).container;
+
+    expect(withoutLines.querySelectorAll('[role="listbox"]')).toHaveLength(0);
+    expect(withLine.querySelectorAll('[role="option"]')).toHaveLength(1);
+  });
+
+  it('Should close an open callout when the data goes away, and keep it closed when the data comes back', () => {
+    const rangeProps = { xMinValue: 0, xMaxValue: 100, yMaxValue: 100 };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...rangeProps} />);
+    fireEvent.focus(container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]')!);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    rerender(<LineChart data={emptyChartPoints} {...rangeProps} />);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(container.querySelectorAll('[id^="lineID"]')).toHaveLength(0);
+    expect(getTicks(container, 'y').length).toBeGreaterThan(1);
+
+    rerender(<LineChart data={basicChartPoints} {...rangeProps} />);
+    expect(container.querySelectorAll('[id^="lineID"]').length).toBeGreaterThan(0);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
+  it('Should not draw a series that was selected before the data went away', () => {
+    const chartProps = {
+      xMinValue: 0,
+      xMaxValue: 100,
+      yMaxValue: 100,
+      legendProps: { canSelectMultipleLegends: true },
+    };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...chartProps} />);
+    const legend = container.querySelector<HTMLElement>('button[role="option"]')!;
+    fireEvent.click(legend);
+    expect(legend).toHaveAttribute('aria-selected', 'true');
+    expect(container.querySelectorAll('[id^="lineID"]').length).toBeGreaterThan(0);
+
+    rerender(<LineChart data={emptyChartPoints} {...chartProps} />);
+    expect(container.querySelectorAll('[id^="lineID"]')).toHaveLength(0);
+    expect(container.querySelectorAll('[id^="circle"]')).toHaveLength(0);
+    expect(getTicks(container, 'y').length).toBeGreaterThan(1);
+  });
+
+  it('Should hide the hover guide line when the data goes away', () => {
+    const rangeProps = { xMinValue: 0, xMaxValue: 100, yMaxValue: 100 };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...rangeProps} />);
+    const getGuideLine = () => container.querySelector('line[id^="verticalLine"]')!;
+    fireEvent.focus(container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]')!);
+    expect(getGuideLine()).not.toHaveAttribute('visibility', 'hidden');
+
+    rerender(<LineChart data={emptyChartPoints} {...rangeProps} />);
+    expect(getGuideLine()).toHaveAttribute('visibility', 'hidden');
+  });
+
+  it('Should draw color fill bars over the y range when there is no data', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMaxValue={40}
+        colorFillBars={[{ legend: 'Range 1', color: 'blue', data: [{ startX: 10, endX: 30 }] }]}
+      />,
+    );
+    const bars = container.querySelectorAll('rect[fill-opacity]');
+    const tickPositions = getTicks(container, 'y').map(tick =>
+      Number(/translate\(0,([^)]+)\)/.exec(tick.getAttribute('transform')!)![1]),
+    );
+    const top = Math.min(...tickPositions);
+    const bottom = Math.max(...tickPositions);
+
+    expect(bars).toHaveLength(1);
+    const y = Number(bars[0].getAttribute('y'));
+    const height = Number(bars[0].getAttribute('height'));
+    expect(Number(bars[0].getAttribute('width'))).toBeGreaterThan(0);
+    // The bar reaches from 0 up to yMaxValue: it starts 3px above the highest tick and ends at the lowest one.
+    expect(height).toBeCloseTo(bottom - top + 3, 5);
+    expect(Math.abs(y + height - bottom)).toBeLessThan(1);
+  });
+
+  it('Should keep the color fill bars when a selected series goes away with the data', () => {
+    const chartProps = {
+      xMinValue: 0,
+      xMaxValue: 100,
+      yMaxValue: 100,
+      legendProps: { canSelectMultipleLegends: true },
+      colorFillBars: [{ legend: 'Range 1', color: 'blue', data: [{ startX: 10, endX: 30 }] }],
+    };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...chartProps} />);
+    // With data, a selected series hides the bars that are not selected.
+    fireEvent.click(container.querySelector<HTMLElement>('button[role="option"]')!);
+    expect(container.querySelectorAll('rect[fill-opacity]')).toHaveLength(0);
+
+    rerender(<LineChart data={emptyChartPoints} {...chartProps} />);
+    expect(container.querySelectorAll('rect[fill-opacity]')).toHaveLength(1);
+  });
+
+  it('Should mirror the x-axis in RTL', () => {
+    const chart = <LineChart data={emptyChartPoints} tickValues={[0, 25, 50, 75, 100]} yMaxValue={40} />;
+    const ltrTicks = getTicks(render(chart).container, 'x');
+    const rtlTicks = getTicks(
+      render(
+        <FluentProvider dir="rtl" theme={{}}>
+          {chart}
+        </FluentProvider>,
+      ).container,
+      'x',
+    );
+
+    expect(ltrTicks.map(tick => tick.textContent)).toEqual(['0', '25', '50', '75', '100']);
+    expect(rtlTicks.map(tick => tick.textContent)).toEqual(['0', '25', '50', '75', '100']);
+    expect(getTickPosition(ltrTicks[0])).toBeLessThan(getTickPosition(ltrTicks[4]));
+    expect(getTickPosition(rtlTicks[0])).toBeGreaterThan(getTickPosition(rtlTicks[4]));
+  });
+
+  it('Should keep the ticks apart in RTL when xMinValue is set next to the tick values', () => {
+    const { container } = render(
+      <FluentProvider dir="rtl" theme={{}}>
+        <LineChart data={emptyChartPoints} tickValues={[0, 25, 50, 75, 100]} xMinValue={0} yMaxValue={40} />
+      </FluentProvider>,
+    );
+    const positions = getTicks(container, 'x').map(getTickPosition);
+    expect(new Set(positions).size).toBe(5);
+  });
+
+  it.each([
+    ['only the x-axis has a range', { xMinValue: 0, xMaxValue: 100 }],
+    ['only the y-axis has a range', { yMaxValue: 40 }],
+    ['the x-axis range has no end', { xMinValue: 0, yMaxValue: 40 }],
+    ['the x-axis range is a single value', { tickValues: [50], yMaxValue: 40 }],
+    ['a log y-axis would start at 0', { xMinValue: 0, xMaxValue: 100, yMaxValue: 40, yScaleType: 'log' as const }],
+    [
+      'a log x-axis would start at 0',
+      { tickValues: [1, 10, 100], xMinValue: 0, yMaxValue: 40, xScaleType: 'log' as const },
+    ],
+  ])('Should render only the empty chart aria label div when %s', (_name, rangeProps) => {
+    const { container } = render(<LineChart data={emptyChartPoints} {...rangeProps} />);
+    expect(container.querySelectorAll(emptyChartLabel)).toHaveLength(1);
+    expect(container.querySelector('svg')).toBeNull();
+  });
+});
+
+describe('Axes of a chart without data - Accessibility', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(
+      <LineChart
+        data={{ chartTitle: 'EmptyLineChart', lineChartData: [] }}
+        tickValues={[0, 25, 50, 75, 100]}
+        yMaxValue={40}
+      />,
+    );
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
+});
