@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: touch the positioning target only once a surface exists",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
