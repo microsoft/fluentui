@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-headless-components-preview): give a toast that reuses the id of a dismissed toast its own lifecycle",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

@@ -65,6 +65,10 @@ export function createToaster(options: Partial<ToasterOptions>): {
     return a.priority - b.priority;
   });
 
+  // Ids that are reserved while their toast is replaced or reports its `queued` status. A dispatch with a reserved
+  // id is ignored.
+  const pendingToasts = new Set<ToastId>();
+
   const isToastVisible = (toastId: ToastId) => {
     return visibleToasts.has(toastId);
   };
@@ -105,13 +109,34 @@ export function createToaster(options: Partial<ToasterOptions>): {
   const buildToast = (toastOptions: Partial<ToastOptions> & { toastId: ToastId }, onUpdate: () => void) => {
     const { toastId, content, toasterId } = toastOptions;
 
-    if (toasts.has(toastId)) {
+    if (pendingToasts.has(toastId)) {
       return;
     }
 
+    const existingToast = toasts.get(toastId);
+    if (existingToast) {
+      if (visibleToasts.has(toastId) || queue.contains(toastId)) {
+        return;
+      }
+
+      // The existing toast is neither visible nor queued. It was dismissed and is waiting for its exit motion,
+      // or `dismissAllToasts` dropped it from the queue. Remove it now, so that the new toast can use its id.
+      // `remove` calls the update callback of that toast. The id stays reserved, so that a dispatch from that
+      // callback cannot take it first.
+      pendingToasts.add(toastId);
+      try {
+        existingToast.remove();
+      } finally {
+        pendingToasts.delete(toastId);
+      }
+    }
+
+    const order = counter++;
+
     const close = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      // An id can be reused once its toast is dismissed. Only act on the toast this callback was created for.
+      if (!toast || toast.order !== order) {
         return;
       }
 
@@ -122,7 +147,7 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
     const remove = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      if (!toast || toast.order !== order) {
         return;
       }
 
@@ -148,7 +173,7 @@ export function createToaster(options: Partial<ToasterOptions>): {
       content,
       updateId: 0,
       toasterId,
-      order: counter++,
+      order,
       data: {},
       imperativeRef: React.createRef<ToastImperativeRef>(),
     };
@@ -157,7 +182,14 @@ export function createToaster(options: Partial<ToasterOptions>): {
     assignDefined(toast, toastOptions);
 
     toasts.set(toastId, toast);
-    toast.onStatusChange?.(null, { status: 'queued', ...toast });
+    // A dispatch with the same id from the `queued` handler must not replace the toast that is being built
+    pendingToasts.add(toastId);
+    try {
+      toast.onStatusChange?.(null, { status: 'queued', ...toast });
+    } finally {
+      pendingToasts.delete(toastId);
+    }
+
     if (visibleToasts.size >= limit) {
       queue.enqueue(toastId);
     } else {
