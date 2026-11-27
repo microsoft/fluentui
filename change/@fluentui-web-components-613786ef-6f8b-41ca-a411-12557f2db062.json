@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix comment for appearance property in tree-item",
+  "packageName": "@fluentui/web-components",
+  "email": "jolud@microsoft.com"
+}
