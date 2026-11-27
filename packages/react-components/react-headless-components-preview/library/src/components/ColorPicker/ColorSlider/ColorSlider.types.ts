@@ -12,6 +12,6 @@ export type ColorSliderState = ColorSliderBaseState & {
     /**
      * The slider orientation.
      */
-    'data-orientation'?: 'horizontal' | 'vertical';
+    'data-orientation'?: string;
   };
 };

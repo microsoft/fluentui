@@ -147,6 +147,10 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
     unmountOnClose: boolean;
     modalType: DialogModalType;
     shouldRender: boolean;
+    root: {
+        'data-open'?: string;
+        'data-modal-type'?: DialogModalType;
+    };
 };
 
 // @public

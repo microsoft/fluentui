@@ -33,9 +33,9 @@ export type RangeSliderState = RangeSliderBaseState & {
     'data-disabled'?: string;
 
     /**
-     * Set when the RangeSlider is vertical.
+     * Data attribute with the component's orientation.
      */
-    'data-vertical'?: string;
+    'data-orientation'?: string;
   };
   startThumb: RangeSliderThumbDataAttributes;
   endThumb: RangeSliderThumbDataAttributes;

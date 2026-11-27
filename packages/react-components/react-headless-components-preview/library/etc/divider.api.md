@@ -21,7 +21,7 @@ export { DividerSlots }
 // @public (undocumented)
 export type DividerState = DividerBaseState & {
     root: {
-        'data-orientation'?: 'vertical' | 'horizontal';
+        'data-orientation'?: string;
     };
 };
 

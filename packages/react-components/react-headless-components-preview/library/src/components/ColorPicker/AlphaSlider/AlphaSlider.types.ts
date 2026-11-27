@@ -12,7 +12,7 @@ export type AlphaSliderState = AlphaSliderBaseState & {
     /**
      * The slider orientation.
      */
-    'data-orientation'?: 'horizontal' | 'vertical';
+    'data-orientation'?: string;
 
     /**
      * Present when the slider value represents transparency instead of opacity.

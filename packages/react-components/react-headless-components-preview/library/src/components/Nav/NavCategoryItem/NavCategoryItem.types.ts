@@ -42,7 +42,10 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
     selected: boolean;
     root: {
       'data-disabled'?: string;
-      'data-expanded'?: string;
+      /**
+       * Data attribute set when the category is open.
+       */
+      'data-open'?: string;
       'data-selected'?: string;
     };
   };

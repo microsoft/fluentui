@@ -20,7 +20,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     components: { root: 'span', initials: 'span', icon: 'span', image: 'img', badge: PresenceBadge },
     root: {
       ...baseState.root,
-      'data-active': toDataAttributeValue(baseState.active !== 'unset' && baseState.active),
+      'data-active': toDataAttributeValue(baseState.active === 'active'),
+      'data-inactive': toDataAttributeValue(baseState.active === 'inactive'),
     },
     badge: slot.optional(props.badge, {
       defaultProps: baseState.badge,

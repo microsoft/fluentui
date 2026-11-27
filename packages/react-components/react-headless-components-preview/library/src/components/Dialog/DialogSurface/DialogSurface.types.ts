@@ -43,4 +43,14 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
    * consumer CSS controls whether the surface remains visible during its exit.
    */
   shouldRender: boolean;
+  root: {
+    /**
+     * Data attribute set when the dialog is open.
+     */
+    'data-open'?: string;
+    /**
+     * Data attribute with the dialog's modal type.
+     */
+    'data-modal-type'?: DialogModalType;
+  };
 };

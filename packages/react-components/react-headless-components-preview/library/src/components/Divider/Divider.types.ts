@@ -7,6 +7,6 @@ export type DividerState = DividerBaseState & {
     /**
      * Data attribute set to indicate the orientation of the divider.
      */
-    'data-orientation'?: 'vertical' | 'horizontal';
+    'data-orientation'?: string;
   };
 };

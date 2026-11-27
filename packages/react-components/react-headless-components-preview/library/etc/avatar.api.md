@@ -29,6 +29,7 @@ export { AvatarSlots }
 export type AvatarState = AvatarBaseState & {
     root: {
         'data-active'?: string;
+        'data-inactive'?: string;
     };
 };
 

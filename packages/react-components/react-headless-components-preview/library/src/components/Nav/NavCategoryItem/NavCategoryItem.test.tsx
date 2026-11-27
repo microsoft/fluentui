@@ -7,7 +7,7 @@ import { NavSubItemGroup } from '../NavSubItemGroup';
 import { NavSubItem } from '../NavSubItem';
 
 describe('NavCategoryItem', () => {
-  it('does not set data-expanded, data-selected, or data-disabled by default', () => {
+  it('does not set data-open, data-selected, or data-disabled by default', () => {
     const result = render(
       <Nav>
         <NavCategory value="cat1">
@@ -20,12 +20,12 @@ describe('NavCategoryItem', () => {
     );
 
     const categoryItem = result.getByText('Category 1');
-    expect(categoryItem).not.toHaveAttribute('data-expanded');
+    expect(categoryItem).not.toHaveAttribute('data-open');
     expect(categoryItem).not.toHaveAttribute('data-selected');
     expect(categoryItem).not.toHaveAttribute('data-disabled');
   });
 
-  it('sets data-expanded when the category is open', () => {
+  it('sets data-open when the category is open', () => {
     const result = render(
       <Nav defaultOpenCategories={['cat1']}>
         <NavCategory value="cat1">
@@ -37,10 +37,10 @@ describe('NavCategoryItem', () => {
       </Nav>,
     );
 
-    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
   });
 
-  it('removes data-expanded when the category is toggled closed', () => {
+  it('removes data-open when the category is toggled closed', () => {
     const result = render(
       <Nav defaultOpenCategories={['cat1']}>
         <NavCategory value="cat1">
@@ -53,7 +53,7 @@ describe('NavCategoryItem', () => {
     );
 
     fireEvent.click(result.getByText('Category 1'));
-    expect(result.getByText('Category 1')).not.toHaveAttribute('data-expanded');
+    expect(result.getByText('Category 1')).not.toHaveAttribute('data-open');
   });
 
   it('sets data-selected when the category is the selected category and closed', () => {

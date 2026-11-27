@@ -5,8 +5,12 @@ export type { AvatarBaseProps as AvatarProps, AvatarBaseSlots as AvatarSlots } f
 export type AvatarState = AvatarBaseState & {
   root: {
     /**
-     * Data attribute set when the avatar is active or inactive.
+     * Data attribute set when the avatar is active.
      */
     'data-active'?: string;
+    /**
+     * Data attribute set when the avatar is inactive.
+     */
+    'data-inactive'?: string;
   };
 };

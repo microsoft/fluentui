@@ -18,12 +18,27 @@ describe('Avatar', () => {
     expect(avatar).toHaveAttribute('aria-label', 'John Doe');
     expect(avatar).toHaveTextContent('JD');
     expect(avatar).not.toHaveAttribute('data-active');
+    expect(avatar).not.toHaveAttribute('data-inactive');
+  });
+
+  it('sets data-active as a presence attribute when active', () => {
+    const { getByRole } = render(<Avatar name="John Doe" active="active" />);
+
+    expect(getByRole('img')).toHaveAttribute('data-active', '');
+    expect(getByRole('img')).not.toHaveAttribute('data-inactive');
+  });
+
+  it('sets data-inactive as a presence attribute when inactive', () => {
+    const { getByRole } = render(<Avatar name="John Doe" active="inactive" />);
+
+    expect(getByRole('img')).toHaveAttribute('data-inactive', '');
+    expect(getByRole('img')).not.toHaveAttribute('data-active');
   });
 
   it.each(['active', 'inactive'] as const)('exposes and announces the %s state', active => {
     const { getByRole } = render(<Avatar name="John Doe" active={active} />);
 
-    expect(getByRole('img')).toHaveAttribute('data-active', active);
+    expect(getByRole('img')).toHaveAttribute(active === 'active' ? 'data-active' : 'data-inactive', '');
     expect(getByRole('img')).toHaveAttribute('aria-label', `John Doe ${active}`);
   });
 
@@ -41,7 +56,7 @@ describe('Avatar', () => {
 
     expect(getAllByRole('img')[0]).toHaveAttribute('aria-label', 'Custom avatar label');
     expect(getAllByRole('img')[0]).not.toHaveAttribute('aria-labelledby');
-    expect(getAllByRole('img')[0]).toHaveAttribute('data-active', 'active');
+    expect(getAllByRole('img')[0]).toHaveAttribute('data-active', '');
   });
 
   it('preserves an explicit aria-labelledby when active state and a badge are present', () => {

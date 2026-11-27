@@ -24,7 +24,7 @@ export { SliderSlots }
 export type SliderState = SliderBaseState & {
     root: {
         'data-disabled'?: string;
-        'data-vertical'?: string;
+        'data-orientation'?: string;
     };
 };
 

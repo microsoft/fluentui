@@ -7,9 +7,9 @@ export type { ButtonSlots as ToolbarButtonSlots } from '@fluentui/react-button';
 export type ToolbarButtonState = ToolbarButtonBaseState & {
   root: {
     /**
-     * Data attribute set when the button is in a vertically oriented toolbar.
+     * Data attribute with the component's orientation.
      */
-    'data-vertical'?: string;
+    'data-orientation'?: string;
 
     /**
      * Data attribute set when the button is disabled.

@@ -16,7 +16,7 @@ export const useRangeSlider = (props: RangeSliderProps, ref: React.Ref<HTMLDivEl
   // Set data attributes after the base hook resolves consumer slot props, so they always reflect the real state.
   /* eslint-disable react-hooks/immutability */
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
-  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
   state.startThumb['data-disabled'] = toDataAttributeValue(state.startDisabled);
   state.startThumb['data-active'] = toDataAttributeValue(state.activeThumb === 'start');
   state.endThumb['data-disabled'] = toDataAttributeValue(state.endDisabled);

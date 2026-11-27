@@ -18,7 +18,7 @@ export const useToolbarButton = (
 
   // Set data attributes for vertical, disabled, disabledFocusable, and iconOnly states to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability

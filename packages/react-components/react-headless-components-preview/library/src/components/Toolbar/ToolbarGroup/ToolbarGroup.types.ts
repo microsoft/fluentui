@@ -10,8 +10,8 @@ export type ToolbarGroupSlots = {
 export type ToolbarGroupState = ToolbarGroupBaseState & {
   root: {
     /**
-     * Data attribute set when the toolbar group is in a vertically oriented toolbar.
+     * Data attribute with the component's orientation.
      */
-    'data-vertical'?: string;
+    'data-orientation'?: string;
   };
 };

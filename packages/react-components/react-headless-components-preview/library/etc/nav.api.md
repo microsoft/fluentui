@@ -103,7 +103,7 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCat
     selected: boolean;
     root: {
         'data-disabled'?: string;
-        'data-expanded'?: string;
+        'data-open'?: string;
         'data-selected'?: string;
     };
 };
@@ -132,7 +132,7 @@ export { NavDividerSlots }
 // @public (undocumented)
 export type NavDividerState = DividerBaseState & {
     root: {
-        'data-orientation'?: 'vertical' | 'horizontal';
+        'data-orientation'?: string;
     };
 };
 

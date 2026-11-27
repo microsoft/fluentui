@@ -27,10 +27,17 @@ describe('Slider', () => {
     expect(root).toHaveAttribute('data-disabled');
   });
 
-  it('renders with data-vertical when vertical', () => {
+  it('renders with data-orientation="vertical" when vertical', () => {
     const { container } = render(<Slider vertical defaultValue={0.5} />);
     const root = container.firstElementChild!;
 
-    expect(root).toHaveAttribute('data-vertical');
+    expect(root).not.toHaveAttribute('data-vertical');
+    expect(root).toHaveAttribute('data-orientation', 'vertical');
+  });
+
+  it('renders with horizontal data-orientation by default', () => {
+    const { container } = render(<Slider defaultValue={0.5} />);
+
+    expect(container.firstElementChild).toHaveAttribute('data-orientation', 'horizontal');
   });
 });

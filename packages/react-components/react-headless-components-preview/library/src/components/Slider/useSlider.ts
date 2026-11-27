@@ -17,7 +17,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };

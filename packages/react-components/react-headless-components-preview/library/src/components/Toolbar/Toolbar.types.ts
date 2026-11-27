@@ -10,8 +10,8 @@ export type {
 export type ToolbarState = ToolbarBaseState & {
   root: {
     /**
-     * Data attribute set when the toolbar is vertically oriented.
+     * Data attribute with the component's orientation.
      */
-    'data-vertical'?: string;
+    'data-orientation'?: string;
   };
 };

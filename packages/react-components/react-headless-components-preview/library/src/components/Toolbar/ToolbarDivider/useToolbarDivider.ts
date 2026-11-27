@@ -4,7 +4,6 @@ import type * as React from 'react';
 import { useToolbarDividerBase_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider.types';
-import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for a ToolbarDivider component, given its props and ref.
@@ -13,9 +12,9 @@ import { toDataAttributeValue } from '../../../utils';
 export const useToolbarDivider = (props: ToolbarDividerProps, ref: React.Ref<HTMLElement>): ToolbarDividerState => {
   const state: ToolbarDividerState = useToolbarDividerBase_unstable(props, ref);
 
-  // Set data-vertical based on the resolved orientation of the divider (already inverted relative to the toolbar).
+  // Set data-orientation based on the resolved orientation of the divider (already inverted relative to the toolbar).
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };
