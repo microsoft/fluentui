@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ResizeGroup } from './ResizeGroup';
 import { getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { getBySelector } from '../../common/testUtilities';
 import type { IResizeGroupState } from './ResizeGroup.base';
+import type { IResizeGroup, IResizeGroupProps } from './ResizeGroup.types';
 
 interface ITestScalingData {
   scalingIndex: number;
@@ -603,5 +604,737 @@ describe('ResizeGroup', () => {
     const nextState = stateProvider.getNextState(props, initialState, getElementToMeasureWidth, containerWidth);
 
     expect(nextState!.dataToMeasure.scalingIndex).toEqual(7);
+  });
+});
+
+describe('ResizeGroup forceLayoutUpdate and remeasure', () => {
+  interface IItemsData {
+    count: number;
+    cacheKey?: string;
+  }
+
+  const fullData: IItemsData = { count: 5, cacheKey: 'items5' };
+  const onReduceItems = (data: IItemsData): IItemsData | undefined =>
+    data.count > 1 ? { count: data.count - 1, cacheKey: data.cacheKey && `items${data.count - 1}` } : undefined;
+  const onGrowItems = (data: IItemsData): IItemsData | undefined =>
+    data.count < 5 ? { count: data.count + 1, cacheKey: `items${data.count + 1}` } : undefined;
+  const onRenderItems = (data: IItemsData) => <div data-item-count={data.count} />;
+  const growCases: Array<[string, IResizeGroupProps['onGrowData']]> = [
+    ['without onGrowData', undefined],
+    ['with onGrowData', onGrowItems],
+  ];
+
+  // jsdom has no layout, so each test sets the width of one item and of the container.
+  let itemWidth: number;
+  let containerWidth: number;
+  // How many times the data was measured.
+  let measurements: number;
+  const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    itemWidth = 100;
+    containerWidth = 500;
+    measurements = 0;
+    Element.prototype.getBoundingClientRect = function (this: HTMLElement): DOMRect {
+      let width = 0;
+      if (this.classList.contains('resizeGroupRoot')) {
+        width = containerWidth;
+      } else if (this.style.visibility === 'hidden') {
+        // The div that the ResizeGroup renders data into to measure it. The content can say how wide it is.
+        // Without that, every item has the same width.
+        const content = this.querySelector('[data-item-count]')!;
+        const ownWidth = content.getAttribute('data-width');
+        width = ownWidth === null ? Number(content.getAttribute('data-item-count')) * itemWidth : Number(ownWidth);
+        measurements++;
+      }
+      return { width, height: 0, top: 0, right: width, bottom: 0, left: 0, x: 0, y: 0 } as DOMRect;
+    };
+  });
+
+  afterEach(() => {
+    Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+    jest.useRealTimers();
+  });
+
+  // The number of items in the div that the ResizeGroup measures data in, or null when it measures nothing.
+  const getMeasuredCount = () => {
+    const item = document.querySelector('[style*="visibility: hidden"] [data-item-count]');
+    return item && Number(item.getAttribute('data-item-count'));
+  };
+
+  // A measurement pass ends in a render that schedules the next pass, so run the timers until none are left.
+  const runAllTimers = () => {
+    for (let pass = 0; pass < 20 && jest.getTimerCount() > 0; pass++) {
+      act(() => {
+        jest.runAllTimers();
+      });
+    }
+    expect(jest.getTimerCount()).toBe(0);
+    // No copy is left in a measuring div, and the content is not hidden.
+    expect(getMeasuredCount()).toBeNull();
+  };
+
+  const renderResizeGroup = (props: Partial<IResizeGroupProps> = {}, settle: boolean = true) => {
+    const componentRef = React.createRef<IResizeGroup>();
+    const group = (data: IItemsData = fullData, moreProps: Partial<IResizeGroupProps> = {}) => (
+      <ResizeGroup
+        className="resizeGroupRoot"
+        componentRef={componentRef}
+        data={data}
+        onReduceData={onReduceItems}
+        onRenderData={onRenderItems}
+        {...props}
+        {...moreProps}
+      />
+    );
+    const { container, rerender } = render(group());
+    if (settle) {
+      runAllTimers();
+    }
+
+    const getRenderedCount = () =>
+      Number(
+        getBySelector(container, '[data-automation-id="visibleContent"] [data-item-count]')!.getAttribute(
+          'data-item-count',
+        ),
+      );
+    const forceLayoutUpdate = () => {
+      act(() => {
+        componentRef.current!.forceLayoutUpdate();
+      });
+      runAllTimers();
+    };
+
+    return {
+      componentRef,
+      getRenderedCount,
+      forceLayoutUpdate,
+      rerenderWithData: (data: IItemsData) => rerender(group(data)),
+      rerenderWithProps: (moreProps: Partial<IResizeGroupProps>) => rerender(group(fullData, moreProps)),
+    };
+  };
+
+  // Leaves the group in the middle of a measurement: three items are rendered, and two items are in the measuring
+  // div, because the window has become narrower than it has been before.
+  const renderWithMeasurementUnderWay = (props: Partial<IResizeGroupProps> = {}) => {
+    containerWidth = 300;
+    const result = renderResizeGroup(props);
+    expect(result.getRenderedCount()).toBe(3);
+
+    containerWidth = 200;
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+    // The resize handler is debounced, so run frames until the pass measures the two items.
+    for (let frame = 0; frame < 5 && getMeasuredCount() === null; frame++) {
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+    }
+    expect(getMeasuredCount()).toBe(2);
+    return result;
+  };
+
+  it.each(growCases)(
+    'fits the data again when forceLayoutUpdate is called after the content has become larger (%s)',
+    (_name, onGrowData) => {
+      const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData });
+      expect(getRenderedCount()).toBe(5);
+
+      // Something other than the data makes every item wider, for example a style sheet.
+      itemWidth = 150;
+      forceLayoutUpdate();
+
+      expect(getRenderedCount()).toBe(3);
+    },
+  );
+
+  it.each(growCases)(
+    'fits the data again when forceLayoutUpdate is called after the content has become smaller (%s)',
+    (_name, onGrowData) => {
+      containerWidth = 300;
+      const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData });
+      expect(getRenderedCount()).toBe(3);
+
+      itemWidth = 50;
+      forceLayoutUpdate();
+
+      expect(getRenderedCount()).toBe(5);
+    },
+  );
+
+  it('fits the data when forceLayoutUpdate is called after a first layout that had no size', () => {
+    // The same as a ResizeGroup inside an element with display: none.
+    itemWidth = 0;
+    containerWidth = 0;
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(5);
+
+    itemWidth = 100;
+    containerWidth = 300;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('keeps the cached measurements when forceLayoutUpdate is called while the group has no size', () => {
+    containerWidth = 300;
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(3);
+
+    // The same as an ancestor that got display: none after the first layout. Nothing is measured.
+    itemWidth = 0;
+    containerWidth = 0;
+    measurements = 0;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(3);
+    expect(measurements).toBe(0);
+
+    // Shown again in a wider window. The cached measurements are still the real ones, so the resize needs none.
+    itemWidth = 100;
+    containerWidth = 400;
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+    runAllTimers();
+    expect(getRenderedCount()).toBe(4);
+    expect(measurements).toBe(0);
+  });
+
+  it('measures the data again when forceLayoutUpdate is called after only the container has changed', () => {
+    containerWidth = 300;
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(3);
+    expect(measurements).toBe(3);
+
+    // The cached measurements are dropped, so the new fit measures the five items and then the four items.
+    measurements = 0;
+    containerWidth = 400;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(4);
+    expect(measurements).toBe(2);
+  });
+
+  it('fits the data when forceLayoutUpdate is called in the frame that first shows the content', () => {
+    const { componentRef, getRenderedCount } = renderResizeGroup({}, false);
+
+    act(() => {
+      // The first measurement finds that all items fit. The items get wider before that result is rendered,
+      // and forceLayoutUpdate lands in the same render.
+      jest.runOnlyPendingTimers();
+      itemWidth = 150;
+      componentRef.current!.forceLayoutUpdate();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('fits the data again when forceLayoutUpdate is called together with a new data object', () => {
+    const { componentRef, getRenderedCount, rerenderWithData } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(5);
+
+    // A parent such as CommandBar passes a new data object with the same cacheKey on every render.
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+      rerenderWithData({ ...fullData });
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('fits the data again with the onGrowData of the latest render', () => {
+    containerWidth = 300;
+    const { getRenderedCount, forceLayoutUpdate, rerenderWithProps } = renderResizeGroup({
+      onGrowData: onGrowItems,
+    });
+    expect(getRenderedCount()).toBe(3);
+
+    // Two renders with the same data object, the second without onGrowData, and then the call. The frame of the
+    // first render handles the call. The items get narrower, so all five fit, and without onGrowData only a new
+    // fit from the full data can show them.
+    rerenderWithProps({});
+    rerenderWithProps({ onGrowData: undefined });
+    itemWidth = 50;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(5);
+  });
+
+  it('fits the data again with the onGrowData of the render that applies the new fit', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount, rerenderWithProps } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // The frame that handles the call and a render without onGrowData, with the same data object, are rendered
+    // together, so the new fit lands in a render without onGrowData.
+    itemWidth = 50;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    act(() => {
+      jest.runOnlyPendingTimers();
+      rerenderWithProps({ onGrowData: undefined });
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(5);
+  });
+
+  it('fits the data again from the full data when the data has no cacheKey', () => {
+    containerWidth = 300;
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ data: { count: 5 } });
+    expect(getRenderedCount()).toBe(3);
+
+    // Nothing is cached for this data. The items get narrower, and the new fit starts from the full data, so all
+    // five items are shown again, which remeasure does not do for such data.
+    measurements = 0;
+    itemWidth = 60;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(5);
+    expect(measurements).toBe(1);
+  });
+
+  it('does not measure cached data again when the window is resized', () => {
+    containerWidth = 300;
+    const { getRenderedCount } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(3);
+
+    measurements = 0;
+    containerWidth = 400;
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(4);
+    expect(measurements).toBe(0);
+  });
+
+  it('goes on from the rendered data when forceLayoutUpdate is called after only the container has changed', () => {
+    containerWidth = 300;
+    const onGrowData = jest.fn(onGrowItems);
+    const onReduceData = jest.fn(onReduceItems);
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData, onReduceData });
+    expect(getRenderedCount()).toBe(3);
+
+    onGrowData.mockClear();
+    onReduceData.mockClear();
+    containerWidth = 400;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(4);
+    // One onGrowData step from the three rendered items, and no new pass from the full data.
+    expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([3]);
+    expect(onReduceData).not.toHaveBeenCalled();
+  });
+
+  it('goes through onGrowData from the rendered data when the content has become smaller', () => {
+    containerWidth = 300;
+    const onGrowData = jest.fn(onGrowItems);
+    const onReduceData = jest.fn(onReduceItems);
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData, onReduceData });
+    expect(getRenderedCount()).toBe(3);
+
+    onGrowData.mockClear();
+    onReduceData.mockClear();
+    itemWidth = 50;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(5);
+    // Every item that comes back is one onGrowData step, so that a caller such as CommandBar can update it.
+    // The call with five items returns undefined.
+    expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([3, 4, 5]);
+    expect(onReduceData).not.toHaveBeenCalled();
+  });
+
+  it('shows the content when forceLayoutUpdate is called before the frame that ends the first measurement', () => {
+    const { componentRef, getRenderedCount } = renderResizeGroup({}, false);
+
+    act(() => {
+      // The call lands first. The frame that is already pending then ends the first measurement from the state
+      // before the call, in the same batch.
+      componentRef.current!.forceLayoutUpdate();
+      jest.runOnlyPendingTimers();
+    });
+    // This also checks that the content is not left hidden.
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(5);
+  });
+
+  it('fits the data again when forceLayoutUpdate lands before a frame that an earlier render asked for', () => {
+    const { componentRef, getRenderedCount, rerenderWithData } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(5);
+
+    // A parent renders the group again with the same data. The frame that this render asks for has not run yet,
+    // and its state does not ask for the size of the container.
+    rerenderWithData(fullData);
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+      jest.runOnlyPendingTimers();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('measures in the right div when forceLayoutUpdate lands in the frame that ends the first measurement', () => {
+    const { componentRef, getRenderedCount, rerenderWithData } = renderResizeGroup({}, false);
+
+    // In the frame that ends the first measurement, which finds that all items fit, an application calls
+    // forceLayoutUpdate after the items got wider. A parent has rendered the group again before that frame, so one more
+    // frame of the group runs after the call. The result of the first measurement and the new fit land in the
+    // same render, which measures the full data in the div of the first measurement.
+    window.requestAnimationFrame(() => {
+      itemWidth = 150;
+      componentRef.current!.forceLayoutUpdate();
+    });
+    rerenderWithData(fullData);
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('fits the data again from the full data when forceLayoutUpdate is called while a measurement is under way', () => {
+    const { componentRef, getRenderedCount } = renderWithMeasurementUnderWay();
+
+    measurements = 0;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(2);
+    // Without onGrowData the new fit starts from the full data: five, four, three and two items.
+    expect(measurements).toBe(4);
+  });
+
+  it('fits the data again from a measurement that is under way when the content has become smaller', () => {
+    const onGrowData = jest.fn(onGrowItems);
+    const onReduceData = jest.fn(onReduceItems);
+    const { componentRef, getRenderedCount } = renderWithMeasurementUnderWay({ onGrowData, onReduceData });
+
+    onGrowData.mockClear();
+    onReduceData.mockClear();
+    itemWidth = 50;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(4);
+    // The new fit starts from the two items that were being measured.
+    expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([2, 3]);
+    expect(onReduceData).not.toHaveBeenCalled();
+  });
+
+  // The items get wider, and forceLayoutUpdate fits the data again from the three items that are rendered. That fit
+  // stops at two items, so it never measures the full data, and nothing is cached for it.
+  const renderAfterFitThatStopsBeforeFullData = (props: Partial<IResizeGroupProps> = {}) => {
+    containerWidth = 300;
+    const result = renderResizeGroup({ onGrowData: onGrowItems, ...props });
+    expect(result.getRenderedCount()).toBe(3);
+
+    itemWidth = 150;
+    result.forceLayoutUpdate();
+    expect(result.getRenderedCount()).toBe(2);
+    return result;
+  };
+
+  it('fits the data again when the content is back at an earlier size after another pass measured it', () => {
+    const { getRenderedCount, forceLayoutUpdate, rerenderWithData } = renderAfterFitThatStopsBeforeFullData();
+
+    // The items get narrower, and a new data object with the same cacheKey is measured at that size.
+    itemWidth = 50;
+    rerenderWithData({ ...fullData });
+    runAllTimers();
+    expect(getRenderedCount()).toBe(5);
+
+    // The items are as wide as at the latest forceLayoutUpdate call again.
+    itemWidth = 150;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('fits the data again when the group is shown after a pass that measured the data while it had no size', () => {
+    const { getRenderedCount, forceLayoutUpdate, rerenderWithData } = renderAfterFitThatStopsBeforeFullData();
+
+    // The same as an ancestor with display: none while a new data object with the same cacheKey is measured.
+    itemWidth = 0;
+    containerWidth = 0;
+    rerenderWithData({ ...fullData });
+    runAllTimers();
+
+    // Shown again, with the items as wide as at the latest forceLayoutUpdate call.
+    itemWidth = 150;
+    containerWidth = 300;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('fits the data again when a new data object was measured with no size during a forceLayoutUpdate fit', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount, forceLayoutUpdate, rerenderWithData } = renderResizeGroup({
+      onGrowData: onGrowItems,
+    });
+    expect(getRenderedCount()).toBe(3);
+
+    // The items get wider, and forceLayoutUpdate starts a new fit, which measures the three items first.
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(getMeasuredCount()).toBe(3);
+
+    // Before that fit ends, the group loses its size and gets a new data object with the same cacheKey.
+    itemWidth = 0;
+    containerWidth = 0;
+    rerenderWithData({ ...fullData });
+    runAllTimers();
+
+    itemWidth = 150;
+    containerWidth = 300;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('fits the data again when a wider window lets a pass grow to the full data after forceLayoutUpdate', () => {
+    containerWidth = 300;
+    const { getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // The items get a little narrower. The new fit grows from the three items, finds that four do not fit and
+    // stops there, so nothing is cached for the full data.
+    itemWidth = 90;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(3);
+
+    // The window gets wider while the items are narrower still. The pass that follows grows to the full data
+    // and measures it.
+    itemWidth = 50;
+    containerWidth = 500;
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+    runAllTimers();
+    expect(getRenderedCount()).toBe(5);
+
+    // Back to the size of the latest forceLayoutUpdate call, in the first container.
+    itemWidth = 90;
+    containerWidth = 300;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('fits the data again when the group is shown after a forceLayoutUpdate fit measured with no size', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // The items get wider, and forceLayoutUpdate starts a new fit, which measures the three items first.
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(getMeasuredCount()).toBe(3);
+
+    // Before that fit ends, the group loses its size. The fit goes on and measures each step as 0.
+    itemWidth = 0;
+    containerWidth = 0;
+    runAllTimers();
+
+    itemWidth = 150;
+    containerWidth = 300;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('fits the data again when the items get narrower before the fit of forceLayoutUpdate measures them', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount, forceLayoutUpdate } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // The items get wider, and forceLayoutUpdate starts a new fit, which measures the three items first.
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(getMeasuredCount()).toBe(3);
+
+    // Before that fit measures them, the items get narrower, and nothing calls forceLayoutUpdate for it. The fit
+    // grows to the full data at that size.
+    itemWidth = 50;
+    runAllTimers();
+    expect(getRenderedCount()).toBe(5);
+
+    // Back to the size of the earlier forceLayoutUpdate call.
+    itemWidth = 150;
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(2);
+    forceLayoutUpdate();
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('follows the container when forceLayoutUpdate is called in every frame while it gets narrower', () => {
+    const { componentRef, getRenderedCount } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(5);
+
+    // Like an application that calls forceLayoutUpdate from a ResizeObserver while the container is dragged narrower.
+    const renderedCounts: number[] = [];
+    for (let frame = 1; frame <= 12; frame++) {
+      containerWidth = 500 - 25 * frame;
+      act(() => {
+        componentRef.current!.forceLayoutUpdate();
+      });
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+      renderedCounts.push(getRenderedCount());
+    }
+
+    // The layout changes while the calls go on, and it ends on what fits.
+    expect(Math.min(...renderedCounts)).toBeLessThan(5);
+    expect(renderedCounts[renderedCounts.length - 1]).toBeLessThan(5);
+    runAllTimers();
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('fits the data again after the fit of an earlier call when forceLayoutUpdate is called during that fit', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // The items get narrower, and forceLayoutUpdate starts a new fit. It measures the three items and goes on to four.
+    itemWidth = 50;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    for (let frame = 0; frame < 2; frame++) {
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+    }
+    expect(getMeasuredCount()).toBe(4);
+
+    // While that fit runs, the items get wider again, and the application calls forceLayoutUpdate for it.
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(2);
+  });
+
+  it('only measures the available space when remeasure is called after the content has become larger', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // remeasure reads the size of the container and keeps the cached measurements, as it always has. Four items
+    // were measured at 400px, so the wider container shows four, although the items have become wider too.
+    containerWidth = 400;
+    itemWidth = 150;
+    measurements = 0;
+    act(() => {
+      componentRef.current!.remeasure();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(4);
+    expect(measurements).toBe(0);
+  });
+
+  describe('content that depends on more than the data', () => {
+    // Like a CommandBar item that is drawn smaller while it is in the overflow menu: the caller keeps the number
+    // of items that are shown up to date in onReduceData and onGrowData, and an item that is not shown takes
+    // 10px in place of the width of an item.
+    const renderGroupWithShownCount = () => {
+      let shown = fullData.count;
+      const onReduceData = jest.fn((data: IItemsData) => {
+        const nextData = onReduceItems(data);
+        shown = nextData ? nextData.count : shown;
+        return nextData;
+      });
+      const onGrowData = jest.fn((data: IItemsData) => {
+        const nextData = onGrowItems(data);
+        shown = nextData ? nextData.count : shown;
+        return nextData;
+      });
+      const onRenderData = (data: IItemsData) => (
+        <div
+          data-item-count={data.count}
+          data-width={Math.min(data.count, shown) * itemWidth + Math.max(data.count - shown, 0) * 10}
+        />
+      );
+
+      containerWidth = 420;
+      const result = renderResizeGroup({ onGrowData, onReduceData, onRenderData });
+      // Five items are 500px wide, and four items fit.
+      expect(result.getRenderedCount()).toBe(4);
+      onGrowData.mockClear();
+      onReduceData.mockClear();
+      measurements = 0;
+      return { ...result, onGrowData, onReduceData };
+    };
+
+    it('keeps the data that fits, because the new fit goes through onGrowData', () => {
+      const { getRenderedCount, forceLayoutUpdate, onGrowData, onReduceData } = renderGroupWithShownCount();
+
+      forceLayoutUpdate();
+
+      expect(getRenderedCount()).toBe(4);
+      // The new fit measures every step itself, after onGrowData has updated what is shown: the four items, and
+      // then the five items, which do not fit. Measured from the full data while four are shown, the five items
+      // would take 410px.
+      expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([4]);
+      expect(onReduceData.mock.calls.map(([data]) => data.count)).toEqual([5]);
+      expect(measurements).toBe(2);
+    });
+
+    it('takes the same steps and ends on the same layout when forceLayoutUpdate is called again', () => {
+      const { getRenderedCount, forceLayoutUpdate, onGrowData, onReduceData } = renderGroupWithShownCount();
+      forceLayoutUpdate();
+      onGrowData.mockClear();
+      onReduceData.mockClear();
+      measurements = 0;
+
+      forceLayoutUpdate();
+
+      expect(getRenderedCount()).toBe(4);
+      expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([4]);
+      expect(onReduceData.mock.calls.map(([data]) => data.count)).toEqual([5]);
+      expect(measurements).toBe(2);
+    });
+
+    it('fits the data again when the items get wider after an earlier call', () => {
+      const { getRenderedCount, forceLayoutUpdate } = renderGroupWithShownCount();
+      forceLayoutUpdate();
+      expect(getRenderedCount()).toBe(4);
+
+      itemWidth = 150;
+      forceLayoutUpdate();
+
+      expect(getRenderedCount()).toBe(2);
+    });
   });
 });

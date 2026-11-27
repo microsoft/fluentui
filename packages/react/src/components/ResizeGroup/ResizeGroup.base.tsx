@@ -324,22 +324,41 @@ const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'h
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 const COMPONENT_NAME = 'ResizeGroup';
 
-type ResizeDataAction = {
-  type: 'resizeData' | keyof IResizeGroupState;
-  value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
-};
+// How many ResizeGroups are working out their next state at the moment. onGrowData and onReduceData run in that
+// time, and so do the callbacks that a parent such as CommandBar calls from them.
+let groupsInNextState = 0;
+
+type ResizeDataAction =
+  | {
+      type: 'resizeData' | keyof IResizeGroupState;
+      value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
+    }
+  | {
+      type: 'fitAgain';
+    };
 
 /**
  * Use useReducer instead of userState because React is not batching the state updates
  * when state is set in callbacks of setTimeout or requestAnimationFrame.
  * See issue: https://github.com/facebook/react/issues/14259
  */
-function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): IResizeGroupState {
+function resizeDataReducer(
+  state: IResizeGroupState,
+  action: ResizeDataAction,
+  props: IResizeGroupProps,
+): IResizeGroupState {
   switch (action.type) {
     case 'resizeData':
       return { ...action.value };
     case 'dataToMeasure':
       return { ...state, dataToMeasure: action.value, resizeDirection: 'grow', measureContainer: true };
+    case 'fitAgain': {
+      // With onGrowData, go on from the data that is being measured or that is rendered, and grow it first, so
+      // that every step goes through onGrowData or onReduceData. Without onGrowData the data can only get
+      // larger again by starting from the full data.
+      const dataToMeasure = props.onGrowData ? state.dataToMeasure ?? state.renderedData ?? props.data : props.data;
+      return { ...state, dataToMeasure, resizeDirection: 'grow', measureContainer: true };
+    }
     default:
       return { ...state, [action.type]: action.value };
   }
@@ -351,7 +370,12 @@ function useResizeState(
   rootRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const initialStateData = useConst(() => nextResizeGroupStateProvider.getInitialResizeGroupState(props.data));
-  const [resizeData, dispatchResizeDataAction] = React.useReducer(resizeDataReducer, initialStateData);
+  // The reducer reads the props of the render that applies an action. So the fit that forceLayoutUpdate starts uses
+  // the latest data and onGrowData, whichever frame asks for it and whatever React renders together with it.
+  const [resizeData, dispatchResizeDataAction] = React.useReducer(
+    (state: IResizeGroupState, action: ResizeDataAction) => resizeDataReducer(state, action, props),
+    initialStateData,
+  );
 
   // Reset state when new data is provided
   React.useEffect(() => {
@@ -375,7 +399,7 @@ function useResizeState(
     }
   }, []);
 
-  const remeasure: () => void = React.useCallback(() => {
+  const remeasureContainer: () => void = React.useCallback(() => {
     if (rootRef.current) {
       dispatchResizeDataAction({
         type: 'measureContainer',
@@ -384,11 +408,29 @@ function useResizeState(
     }
   }, [rootRef]);
 
-  return [stateRef, updateResizeState, remeasure] as const;
+  // Fits the data again after its cached measurements have been dropped.
+  const fitDataAgain: () => void = React.useCallback(() => {
+    dispatchResizeDataAction({ type: 'fitAgain' });
+  }, []);
+
+  return [stateRef, updateResizeState, remeasureContainer, fitDataAgain] as const;
 }
 
 function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
-  const nextResizeGroupStateProvider = useConst(getNextResizeGroupStateProvider);
+  // The cache is held in an object so that forceLayoutUpdate can replace it with an empty one.
+  const measurementCache = useConst(() => ({ current: getMeasurementCache() }));
+  const nextResizeGroupStateProvider = useConst(() =>
+    getNextResizeGroupStateProvider({
+      getCachedMeasurement: data => measurementCache.current.getCachedMeasurement(data),
+      addMeasurementToCache: (data, measurement) => measurementCache.current.addMeasurementToCache(data, measurement),
+    }),
+  );
+  // True from a forceLayoutUpdate call until the frame that drops the cached measurements.
+  const isFitAgainPendingRef = React.useRef(false);
+  // True from that drop until the pass that it starts ends.
+  const isFitAgainRunningRef = React.useRef(false);
+  // True when forceLayoutUpdate was called while that pass was running.
+  const isFitAgainQueuedRef = React.useRef(false);
 
   // A div that can be used for the initial measurement so that we can avoid mounting a second instance
   // of the component being measured for the initial render.
@@ -400,10 +442,16 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   // Tracks if any content has been rendered to the user. This enables us to do some performance optimizations
   // for the initial render.
   const hasRenderedContent = React.useRef(false);
+  // Whether the latest render used the initial div to measure dataToMeasure.
+  const isInitialMeasureRef = React.useRef(false);
 
   const async: Async = useAsync();
 
-  const [stateRef, updateResizeState, remeasure] = useResizeState(props, nextResizeGroupStateProvider, rootRef);
+  const [stateRef, updateResizeState, remeasureContainer, fitDataAgain] = useResizeState(
+    props,
+    nextResizeGroupStateProvider,
+    rootRef,
+  );
 
   React.useEffect(() => {
     if (stateRef.current.renderedData) {
@@ -412,47 +460,116 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
     }
   });
 
+  // The cached measurements that this render is based on. The data that it puts in the measuring div, if any, is
+  // the data that is not cached at this moment.
+  const renderedWithCache = measurementCache.current;
+
   React.useEffect((): void => {
     async.requestAnimationFrame(() => {
+      // A forceLayoutUpdate call has dropped the cached measurements since this render, so the measuring div may
+      // not hold the data that the next state would measure. The render that follows the drop runs its own frame.
+      if (measurementCache.current !== renderedWithCache) {
+        return;
+      }
       let containerDimension = undefined;
-      if (stateRef.current.measureContainer && rootRef.current) {
+      // forceLayoutUpdate asks for the size of the container. Read it while that call is pending too, because a
+      // state update from an earlier frame can clear measureContainer before the call is handled.
+      if ((stateRef.current.measureContainer || isFitAgainPendingRef.current) && rootRef.current) {
         const boundingRect = rootRef.current.getBoundingClientRect();
         containerDimension =
           props.direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
       }
-      const nextState = nextResizeGroupStateProvider.getNextState(
-        props,
-        stateRef.current,
-        () => {
-          const refToMeasure = !hasRenderedContent.current ? initialHiddenDiv : updateHiddenDiv;
-          if (!refToMeasure.current) {
-            return 0;
-          }
-          const measuredBoundingRect = refToMeasure.current.getBoundingClientRect();
-          return props.direction === ResizeGroupDirection.vertical
-            ? measuredBoundingRect.height
-            : measuredBoundingRect.width;
-        },
-        containerDimension,
-      );
+      const refToMeasure = isInitialMeasureRef.current ? initialHiddenDiv : updateHiddenDiv;
+      const getElementToMeasureDimension = (): number => {
+        if (!refToMeasure.current) {
+          return 0;
+        }
+        const measuredBoundingRect = refToMeasure.current.getBoundingClientRect();
+        return props.direction === ResizeGroupDirection.vertical
+          ? measuredBoundingRect.height
+          : measuredBoundingRect.width;
+      };
+
+      // After a forceLayoutUpdate call, drop all cached measurements and fit the data again, so that the layout
+      // uses new measurements only. Something other than the data, for example a style sheet or a font, can have
+      // changed the size of the content, and then none of the cached measurements can be trusted.
+      if (isFitAgainPendingRef.current) {
+        isFitAgainPendingRef.current = false;
+        // A container without a size is not laid out, for example inside display: none. Content measures 0 there
+        // too, which says nothing about its size, so the cached measurements are kept.
+        if (containerDimension) {
+          measurementCache.current = getMeasurementCache();
+          isFitAgainRunningRef.current = true;
+          fitDataAgain();
+          return;
+        }
+      }
+
+      let nextState: IResizeGroupState | undefined;
+      groupsInNextState++;
+      try {
+        nextState = nextResizeGroupStateProvider.getNextState(
+          props,
+          stateRef.current,
+          getElementToMeasureDimension,
+          containerDimension,
+        );
+      } finally {
+        groupsInNextState--;
+      }
+      // A pass ends when no data is left to measure.
+      const hasFitAgainEnded = isFitAgainRunningRef.current && !(nextState ?? stateRef.current).dataToMeasure;
 
       updateResizeState(nextState);
+
+      if (hasFitAgainEnded) {
+        isFitAgainRunningRef.current = false;
+        // A forceLayoutUpdate call came while that pass was running, so fit the data again now.
+        if (isFitAgainQueuedRef.current) {
+          isFitAgainQueuedRef.current = false;
+          isFitAgainPendingRef.current = true;
+          remeasureContainer();
+        }
+      }
     }, rootRef.current);
   });
 
   const win = useWindow();
-  useOnEvent(win, 'resize', async.debounce(remeasure, RESIZE_DELAY, { leading: true }));
+  // A window resize usually changes only the available space, so it keeps using the cached measurements.
+  useOnEvent(win, 'resize', async.debounce(remeasureContainer, RESIZE_DELAY, { leading: true }));
+
+  // remeasure only measures the available space again. forceLayoutUpdate also drops the cached measurements.
+  const forceLayoutUpdate: () => void = React.useCallback(() => {
+    if (!rootRef.current) {
+      return;
+    }
+    // A call from onGrowData, onReduceData or a callback that a parent calls from them, of this group or of another
+    // one, does only what remeasure does. The fit that such a call starts would run those callbacks again, and they
+    // would call forceLayoutUpdate again, without end.
+    if (groupsInNextState === 0) {
+      if (isFitAgainRunningRef.current) {
+        // Dropping the cache now would start that pass over, and calls in every frame would keep it from ever
+        // ending. So the pass ends first, and then the data is fit again.
+        isFitAgainQueuedRef.current = true;
+      } else {
+        isFitAgainPendingRef.current = true;
+      }
+    }
+    remeasureContainer();
+  }, [rootRef, remeasureContainer]);
 
   const dataNeedsMeasuring = nextResizeGroupStateProvider.shouldRenderDataForMeasurement(
     stateRef.current.dataToMeasure,
   );
 
   const isInitialMeasure = !hasRenderedContent.current && dataNeedsMeasuring;
+  isInitialMeasureRef.current = isInitialMeasure;
 
   return [
     stateRef.current.dataToMeasure,
     stateRef.current.renderedData,
-    remeasure,
+    remeasureContainer,
+    forceLayoutUpdate,
     initialHiddenDiv,
     updateHiddenDiv,
     dataNeedsMeasuring,
@@ -485,13 +602,17 @@ export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps> = React
     dataToMeasure,
     renderedData,
     remeasure,
+    forceLayoutUpdate,
     initialHiddenDiv,
     updateHiddenDiv,
     dataNeedsMeasuring,
     isInitialMeasure,
   ] = useResizingBehavior(props, rootRef);
 
-  React.useImperativeHandle(props.componentRef, () => ({ remeasure }), [remeasure]);
+  React.useImperativeHandle(props.componentRef, () => ({ remeasure, forceLayoutUpdate }), [
+    remeasure,
+    forceLayoutUpdate,
+  ]);
 
   useDebugWarnings(props);
 

@@ -9,7 +9,7 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { OverflowSet } from '../../OverflowSet';
-import { ResizeGroup } from '../../ResizeGroup';
+import { MeasuredContext, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandBarButton } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
@@ -123,6 +123,16 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
+  public forceLayoutUpdate(): void {
+    const { current: resizeGroup } = this._resizeGroup;
+    // A ResizeGroup from resizeGroupAs that was written before forceLayoutUpdate existed only has remeasure.
+    if (resizeGroup?.forceLayoutUpdate) {
+      resizeGroup.forceLayoutUpdate();
+    } else {
+      resizeGroup?.remeasure();
+    }
+  }
+
   private _onRenderData = (data: ICommandBarData): JSXElement => {
     const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
     const hasSecondSet = data.farItems && data.farItems.length > 0;
@@ -135,16 +145,22 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         aria-label={ariaLabel}
       >
         {/*Primary Items*/}
-        <OverflowSet
-          role={hasSecondSet ? 'group' : 'none'}
-          aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
-          componentRef={this._overflowSet}
-          className={css(this._classNames.primarySet)}
-          items={data.primaryItems}
-          overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
-          onRenderItem={this._onRenderItem}
-          onRenderOverflowButton={this._onRenderOverflowButton}
-        />
+        <MeasuredContext.Consumer>
+          {({ isMeasured }) => (
+            <OverflowSet
+              role={hasSecondSet ? 'group' : 'none'}
+              aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
+              // ResizeGroup also renders the data in a hidden copy to measure it. That copy must not take the
+              // ref, because it would clear the ref when it is removed, and focus() would stop working.
+              componentRef={isMeasured ? undefined : this._overflowSet}
+              className={css(this._classNames.primarySet)}
+              items={data.primaryItems}
+              overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
+              onRenderItem={this._onRenderItem}
+              onRenderOverflowButton={this._onRenderOverflowButton}
+            />
+          )}
+        </MeasuredContext.Consumer>
 
         {/*Secondary Items*/}
         {hasSecondSet && (
@@ -162,10 +178,16 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   };
 
   private _onRenderItem = (item: ICommandBarItemProps): JSXElement | React.ReactNode => {
+    // This renders the items of the bar, so none of them is in the overflow menu. The flag of an item can still
+    // say that it is: the bar sets it when it moves the item into the menu, and only the step that moves the
+    // item back clears it. A pass that starts from the full data renders every item here to measure it, without
+    // moving any of them. Render such an item with the flag off.
+    const renderedItem = item.renderedInOverflow ? { ...item, renderedInOverflow: false } : item;
+
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
       // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
-      return item.onRender(item, () => undefined);
+      return item.onRender(renderedItem, () => undefined);
     }
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -173,7 +195,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
       role: 'menuitem',
-      ...item,
+      ...renderedItem,
       styles: getCommandButtonStyles(item.buttonStyles),
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,

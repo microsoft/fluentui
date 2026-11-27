@@ -20,6 +20,15 @@ export interface ICommandBar {
    * Remeasures the available space.
    */
   remeasure(): void;
+
+  /**
+   * Drops the cached measurements of the items and fits them again in the next frame. Call this when something
+   * other than the items has changed their size, for example a style sheet or a font. It measures the items again
+   * and can call `onDataGrown` and `onDataReduced` for the items that it tries, so it should be called sparingly. A
+   * call while such a fit runs waits for it to end. Do not call it in response to those callbacks, since the new fit
+   * calls them again. While the bar has no size, it only remeasures the available space.
+   */
+  forceLayoutUpdate(): void;
 }
 
 /**
