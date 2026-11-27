@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: let remeasure() refresh stale ResizeGroup and CommandBar measurements",
+  "type": "minor",
+  "comment": "feat: add forceLayoutUpdate() to ResizeGroup and CommandBar to refit stale measurements",
   "packageName": "@fluentui/react",
   "email": "171317405+jakesalvesen@users.noreply.github.com"
 }

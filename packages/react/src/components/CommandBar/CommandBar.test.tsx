@@ -7,6 +7,7 @@ import { resetIds } from '../../Utilities';
 import type { IButtonProps } from '../../Button';
 import type { IContextualMenuItem } from '../../ContextualMenu';
 import type { ICommandBar, ICommandBarItemProps, ICommandBarProps } from './CommandBar.types';
+import type { IResizeGroup, IResizeGroupProps } from '../../ResizeGroup';
 
 describe('CommandBar', () => {
   beforeEach(() => {
@@ -301,7 +302,7 @@ describe('CommandBar', () => {
     expect(getByRole('menu').querySelector('.SubMenuClassUpdate')).toBeTruthy();
   });
 
-  it('keeps focus() working after remeasure()', () => {
+  it('keeps focus() working after forceLayoutUpdate()', () => {
     jest.useFakeTimers();
     // jsdom has no layout, so focus() takes every element for hidden unless it has an offsetParent.
     const offsetParent = jest
@@ -319,7 +320,7 @@ describe('CommandBar', () => {
       }
     };
 
-    // A 500px bar with 100px buttons, so that remeasure() fits the items again in a hidden copy.
+    // A 500px bar with 100px buttons, so that forceLayoutUpdate() fits the items again in a hidden copy.
     const getBoundingClientRect = jest
       .spyOn(Element.prototype, 'getBoundingClientRect')
       .mockImplementation(function (this: Element) {
@@ -352,9 +353,9 @@ describe('CommandBar', () => {
       });
       expect(document.activeElement).toBe(document.body);
 
-      // remeasure() renders a hidden copy of the items to measure them, and removes it again.
+      // forceLayoutUpdate() renders a hidden copy of the items to measure them, and removes it again.
       act(() => {
-        commandBar.current!.remeasure();
+        commandBar.current!.forceLayoutUpdate();
       });
       runAllTimers();
 
@@ -369,7 +370,7 @@ describe('CommandBar', () => {
     }
   });
 
-  describe('remeasure() and the items in the overflow menu', () => {
+  describe('forceLayoutUpdate(), remeasure() and the items in the overflow menu', () => {
     // jsdom has no layout, so the tests set the width of one button and of the bar.
     let buttonWidth: number;
     let barWidth: number;
@@ -386,9 +387,9 @@ describe('CommandBar', () => {
       }
       expect(jest.getTimerCount()).toBe(0);
     };
-    const remeasure = () => {
+    const forceLayoutUpdate = () => {
       act(() => {
-        commandBar.current!.remeasure();
+        commandBar.current!.forceLayoutUpdate();
       });
       runAllTimers();
     };
@@ -450,7 +451,7 @@ describe('CommandBar', () => {
     it('updates the items when the bar has more room', () => {
       renderDefaultButtons();
       barWidth = 400;
-      remeasure();
+      forceLayoutUpdate();
 
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, false, false]);
       expect(onDataGrown.mock.calls.map(([item]) => item.key)).toEqual(['2', '3']);
@@ -459,7 +460,7 @@ describe('CommandBar', () => {
     it('updates the items when the items have become smaller', () => {
       renderDefaultButtons();
       buttonWidth = 50;
-      remeasure();
+      forceLayoutUpdate();
 
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, false, false]);
       expect(onDataGrown.mock.calls.map(([item]) => item.key)).toEqual(['2', '3']);
@@ -477,7 +478,7 @@ describe('CommandBar', () => {
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
 
       // The new fit tries the third item in the bar, where it measures 100px, and puts it back in the menu.
-      remeasure();
+      forceLayoutUpdate();
 
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
       expect(onDataGrown.mock.calls.map(([item]) => item.key)).toEqual(['Third']);
@@ -505,12 +506,12 @@ describe('CommandBar', () => {
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
 
       // The new fit measures every step itself and ends where it started, on each call.
-      remeasure();
+      forceLayoutUpdate();
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
       expect(onDataGrownToBar.mock.calls.map(([item]) => item.key)).toEqual(['Third']);
       expect(getButtonsInBar()).toEqual(['First', 'Second']);
 
-      remeasure();
+      forceLayoutUpdate();
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
       expect(onDataGrownToBar.mock.calls.map(([item]) => item.key)).toEqual(['Third', 'Third']);
       expect(getButtonsInBar()).toEqual(['First', 'Second']);
@@ -561,19 +562,67 @@ describe('CommandBar', () => {
       expect(barItems.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
 
       // The new fit tries the third item in the bar and puts it back, on each call.
-      remeasure();
+      forceLayoutUpdate();
       expect(barItems.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
       expect(getButtonsInBar()).toEqual(['First', 'Second']);
       expect(onDataGrownToBar.mock.calls.map(([item]) => item.key)).toEqual(['Third']);
 
-      remeasure();
+      forceLayoutUpdate();
       expect(barItems.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
       expect(getButtonsInBar()).toEqual(['First', 'Second']);
       expect(onDataGrownToBar.mock.calls.map(([item]) => item.key)).toEqual(['Third', 'Third']);
     });
 
-    it('settles when the application calls remeasure() from onDataReduced', () => {
-      const onDataReduced = jest.fn(() => commandBar.current?.remeasure());
+    it('settles when a timer that onDataReduced sets calls remeasure()', () => {
+      const onDataReduced = jest.fn(() => {
+        setTimeout(() => commandBar.current?.remeasure(), 0);
+      });
+      // Each run of the timers checks that none are left, so remeasure() does not run the callbacks again.
+      renderBar(
+        [
+          { key: '1', text: 'First' },
+          { key: '2', text: 'Second' },
+          { key: '3', text: 'Third' },
+        ],
+        { onDataReduced },
+      );
+
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, true, true]);
+      expect(getButtonsInBar()).toEqual(['First']);
+      expect(onDataReduced).toHaveBeenCalledTimes(3);
+
+      // remeasure() still reads the size of the bar, and the two items come back.
+      barWidth = 400;
+      act(() => {
+        commandBar.current!.remeasure();
+      });
+      runAllTimers();
+      expect(getButtonsInBar()).toEqual(['First', 'Second', 'Third']);
+      expect(onDataReduced).toHaveBeenCalledTimes(3);
+    });
+
+    it('calls remeasure() of a ResizeGroup from resizeGroupAs that has no forceLayoutUpdate()', () => {
+      const remeasureOfGroup = jest.fn();
+      const ResizeGroupWithoutForceLayoutUpdate = (props: IResizeGroupProps) => {
+        // A ResizeGroup that was written before forceLayoutUpdate existed.
+        const handle: Partial<IResizeGroup> = { remeasure: remeasureOfGroup };
+        React.useImperativeHandle(props.componentRef, () => handle as IResizeGroup);
+        return <div />;
+      };
+      render(
+        <CommandBar
+          componentRef={commandBar}
+          items={[{ key: '1', text: 'First' }]}
+          resizeGroupAs={ResizeGroupWithoutForceLayoutUpdate}
+        />,
+      );
+
+      commandBar.current!.forceLayoutUpdate();
+      expect(remeasureOfGroup).toHaveBeenCalledTimes(1);
+    });
+
+    it('settles when the application calls forceLayoutUpdate() in onDataReduced', () => {
+      const onDataReduced = jest.fn(() => commandBar.current?.forceLayoutUpdate());
       // Each run of the timers checks that none are left, so the bar does not fit its items again without end.
       renderBar(
         [
@@ -586,12 +635,12 @@ describe('CommandBar', () => {
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, true, true]);
 
       onDataReduced.mockClear();
-      remeasure();
+      forceLayoutUpdate();
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, true, true]);
       expect(onDataReduced).toHaveBeenCalledTimes(1);
     });
 
-    it('settles when two bars call remeasure() of each other from onDataReduced', () => {
+    it('settles when two bars call forceLayoutUpdate() of each other in onDataReduced', () => {
       const first = React.createRef<ICommandBar>();
       const second = React.createRef<ICommandBar>();
       const barItems = (bar: string) => ['A', 'B', 'C'].map(text => ({ key: bar + text, text }));
@@ -600,19 +649,19 @@ describe('CommandBar', () => {
           <CommandBar
             componentRef={first}
             items={barItems('first')}
-            onDataReduced={() => second.current?.remeasure()}
+            onDataReduced={() => second.current?.forceLayoutUpdate()}
           />
           <CommandBar
             componentRef={second}
             items={barItems('second')}
-            onDataReduced={() => first.current?.remeasure()}
+            onDataReduced={() => first.current?.forceLayoutUpdate()}
           />
         </>,
       );
       runAllTimers();
 
       act(() => {
-        first.current!.remeasure();
+        first.current!.forceLayoutUpdate();
       });
       // This also checks that no timer is left, so the two bars do not keep each other fitting their items again.
       runAllTimers();
@@ -620,11 +669,11 @@ describe('CommandBar', () => {
     });
 
     // Four items in a 250px or 310px bar: two items and the overflow button fit, and three do not. The new fit
-    // of remeasure tries the third item and stops at two items, so it does not measure all four. The bar is then
-    // rendered again, and the pass from the full data that this starts measures all four items in the bar.
+    // of forceLayoutUpdate tries the third item and stops at two items, so it does not measure all four. The bar
+    // is then rendered again, and the pass from the full data that this starts measures all four items in the bar.
     const fourItems = ['First', 'Second', 'Third', 'Fourth'];
 
-    it('keeps the overflow menu when the bar renders again after remeasure and an item reads its flag', () => {
+    it('keeps the overflow menu when the bar renders again after forceLayoutUpdate and an item reads its flag', () => {
       // Each item is 100px wide in the bar and 50px wide in the overflow menu, and the overflow button is 20px.
       buttonWidth = 20;
       barWidth = 310;
@@ -634,7 +683,7 @@ describe('CommandBar', () => {
       const { renderAgain } = renderBar(fourItems.map(text => ({ key: text, text, onRender })));
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true, true]);
 
-      remeasure();
+      forceLayoutUpdate();
       renderAgain();
 
       // Drawn with their flags, the four items would take 300px and all of them would be shown.
@@ -656,7 +705,7 @@ describe('CommandBar', () => {
       );
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true, true]);
 
-      remeasure();
+      forceLayoutUpdate();
       rendered.length = 0;
       renderAgain();
 

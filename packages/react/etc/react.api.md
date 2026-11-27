@@ -1070,6 +1070,8 @@ export class CommandBarBase extends React_2.Component<ICommandBarProps, {}> impl
     // (undocumented)
     focus(): void;
     // (undocumented)
+    forceLayoutUpdate(): void;
+    // (undocumented)
     remeasure(): void;
     // (undocumented)
     render(): JSXElement;
@@ -4019,6 +4021,7 @@ export interface IComboBoxStyles extends IShadowDomStyle {
 // @public (undocumented)
 export interface ICommandBar {
     focus(): void;
+    forceLayoutUpdate(): void;
     remeasure(): void;
 }
 
@@ -8106,6 +8109,7 @@ export interface IRenderGroupHeaderProps extends INavLinkGroup {
 
 // @public (undocumented)
 export interface IResizeGroup {
+    forceLayoutUpdate(): void;
     remeasure(): void;
 }
 

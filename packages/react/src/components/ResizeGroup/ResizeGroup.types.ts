@@ -17,11 +17,19 @@ export enum ResizeGroupDirection {
  */
 export interface IResizeGroup {
   /**
-   * Remeasures the available space. When the data has a `cacheKey`, it also drops the cached measurements and
-   * fits the data again, unless the group has no size. Call it when something other than the data has changed
-   * the size of the content, for example a style sheet.
+   * Remeasures the available space.
    */
   remeasure(): void;
+
+  /**
+   * Drops the cached measurements and fits the data again in the next frame. Call this when something other than
+   * the data has changed the size of the content, for example a style sheet or a font. It measures the data again,
+   * so it costs more than `remeasure` and should be called sparingly. A call while such a fit runs waits for it to
+   * end. Do not call it in response to `onGrowData` or `onReduceData`, since the new fit calls them again. A call
+   * from inside those callbacks of any `ResizeGroup`, and a call while the group has no size, only remeasure the
+   * available space.
+   */
+  forceLayoutUpdate(): void;
 }
 
 /**

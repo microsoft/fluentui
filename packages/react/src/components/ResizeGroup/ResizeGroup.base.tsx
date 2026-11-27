@@ -383,7 +383,7 @@ function useResizeState(
   const stateRef = React.useRef<IResizeGroupState>(initialStateData);
   stateRef.current = { ...resizeData };
 
-  // The data of the latest render, for remeasure, which runs outside of a render.
+  // The data of the latest render, for forceLayoutUpdate, which runs outside of a render.
   const dataRef = React.useRef(props.data);
   dataRef.current = props.data;
 
@@ -413,11 +413,11 @@ function useResizeState(
     });
   }, []);
 
-  return [stateRef, dataRef, updateResizeState, remeasureContainer, fitDataAgain] as const;
+  return [stateRef, updateResizeState, remeasureContainer, fitDataAgain] as const;
 }
 
 function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
-  // The cache is held in an object so that remeasure can replace it with an empty one.
+  // The cache is held in an object so that forceLayoutUpdate can replace it with an empty one.
   const measurementCache = useConst(() => ({ current: getMeasurementCache() }));
   const nextResizeGroupStateProvider = useConst(() =>
     getNextResizeGroupStateProvider({
@@ -425,11 +425,11 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
       addMeasurementToCache: (data, measurement) => measurementCache.current.addMeasurementToCache(data, measurement),
     }),
   );
-  // True from a remeasure call until the frame that drops the cached measurements.
+  // True from a forceLayoutUpdate call until the frame that drops the cached measurements.
   const isFitAgainPendingRef = React.useRef(false);
   // True from that drop until the pass that it starts ends.
   const isFitAgainRunningRef = React.useRef(false);
-  // True when remeasure was called while that pass was running.
+  // True when forceLayoutUpdate was called while that pass was running.
   const isFitAgainQueuedRef = React.useRef(false);
 
   // A div that can be used for the initial measurement so that we can avoid mounting a second instance
@@ -447,7 +447,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
 
   const async: Async = useAsync();
 
-  const [stateRef, dataRef, updateResizeState, remeasureContainer, fitDataAgain] = useResizeState(
+  const [stateRef, updateResizeState, remeasureContainer, fitDataAgain] = useResizeState(
     props,
     nextResizeGroupStateProvider,
     rootRef,
@@ -466,13 +466,13 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
 
   React.useEffect((): void => {
     async.requestAnimationFrame(() => {
-      // A remeasure call has dropped the cached measurements since this render, so the measuring div may not hold
-      // the data that the next state would measure. The render that follows the drop runs its own frame.
+      // A forceLayoutUpdate call has dropped the cached measurements since this render, so the measuring div may
+      // not hold the data that the next state would measure. The render that follows the drop runs its own frame.
       if (measurementCache.current !== renderedWithCache) {
         return;
       }
       let containerDimension = undefined;
-      // A remeasure call asks for the size of the container. Read it while that call is pending too, because a
+      // forceLayoutUpdate asks for the size of the container. Read it while that call is pending too, because a
       // state update from an earlier frame can clear measureContainer before the call is handled.
       if ((stateRef.current.measureContainer || isFitAgainPendingRef.current) && rootRef.current) {
         const boundingRect = rootRef.current.getBoundingClientRect();
@@ -490,9 +490,9 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
           : measuredBoundingRect.width;
       };
 
-      // After a remeasure call, drop all cached measurements and fit the data again, so that the layout uses new
-      // measurements only. Something other than the data, for example a style sheet or a font, can have changed
-      // the size of the content, and then none of the cached measurements can be trusted.
+      // After a forceLayoutUpdate call, drop all cached measurements and fit the data again, so that the layout
+      // uses new measurements only. Something other than the data, for example a style sheet or a font, can have
+      // changed the size of the content, and then none of the cached measurements can be trusted.
       if (isFitAgainPendingRef.current) {
         isFitAgainPendingRef.current = false;
         // A container without a size is not laid out, for example inside display: none. Content measures 0 there
@@ -524,7 +524,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
 
       if (hasFitAgainEnded) {
         isFitAgainRunningRef.current = false;
-        // A remeasure call came while that pass was running, so fit the data again now.
+        // A forceLayoutUpdate call came while that pass was running, so fit the data again now.
         if (isFitAgainQueuedRef.current) {
           isFitAgainQueuedRef.current = false;
           isFitAgainPendingRef.current = true;
@@ -538,25 +538,25 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   // A window resize usually changes only the available space, so it keeps using the cached measurements.
   useOnEvent(win, 'resize', async.debounce(remeasureContainer, RESIZE_DELAY, { leading: true }));
 
-  const remeasure: () => void = React.useCallback(() => {
+  // remeasure only measures the available space again. forceLayoutUpdate also drops the cached measurements.
+  const forceLayoutUpdate: () => void = React.useCallback(() => {
     if (!rootRef.current) {
       return;
     }
-    // For data without a cacheKey, remeasure measures the container only, as it did before, and nothing is cached
-    // for such data. So does a call from onGrowData, onReduceData or a callback that a parent calls from them, of
-    // this group or of another one. The fit that such a call starts would run those callbacks again, and they
-    // would call remeasure again, without end.
-    if (dataRef.current?.cacheKey && groupsInNextState === 0) {
+    // A call from onGrowData, onReduceData or a callback that a parent calls from them, of this group or of another
+    // one, does only what remeasure does. The fit that such a call starts would run those callbacks again, and they
+    // would call forceLayoutUpdate again, without end.
+    if (groupsInNextState === 0) {
       if (isFitAgainRunningRef.current) {
-        // Dropping the cache now would start that pass over, and calls in every frame, for example from a
-        // ResizeObserver, would keep it from ever ending. So the pass ends first, and then the data is fit again.
+        // Dropping the cache now would start that pass over, and calls in every frame would keep it from ever
+        // ending. So the pass ends first, and then the data is fit again.
         isFitAgainQueuedRef.current = true;
       } else {
         isFitAgainPendingRef.current = true;
       }
     }
     remeasureContainer();
-  }, [rootRef, dataRef, remeasureContainer]);
+  }, [rootRef, remeasureContainer]);
 
   const dataNeedsMeasuring = nextResizeGroupStateProvider.shouldRenderDataForMeasurement(
     stateRef.current.dataToMeasure,
@@ -568,7 +568,8 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   return [
     stateRef.current.dataToMeasure,
     stateRef.current.renderedData,
-    remeasure,
+    remeasureContainer,
+    forceLayoutUpdate,
     initialHiddenDiv,
     updateHiddenDiv,
     dataNeedsMeasuring,
@@ -601,13 +602,17 @@ export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps> = React
     dataToMeasure,
     renderedData,
     remeasure,
+    forceLayoutUpdate,
     initialHiddenDiv,
     updateHiddenDiv,
     dataNeedsMeasuring,
     isInitialMeasure,
   ] = useResizingBehavior(props, rootRef);
 
-  React.useImperativeHandle(props.componentRef, () => ({ remeasure }), [remeasure]);
+  React.useImperativeHandle(props.componentRef, () => ({ remeasure, forceLayoutUpdate }), [
+    remeasure,
+    forceLayoutUpdate,
+  ]);
 
   useDebugWarnings(props);
 

@@ -123,6 +123,16 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
+  public forceLayoutUpdate(): void {
+    const { current: resizeGroup } = this._resizeGroup;
+    // A ResizeGroup from resizeGroupAs that was written before forceLayoutUpdate existed only has remeasure.
+    if (resizeGroup?.forceLayoutUpdate) {
+      resizeGroup.forceLayoutUpdate();
+    } else {
+      resizeGroup?.remeasure();
+    }
+  }
+
   private _onRenderData = (data: ICommandBarData): JSXElement => {
     const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
     const hasSecondSet = data.farItems && data.farItems.length > 0;
