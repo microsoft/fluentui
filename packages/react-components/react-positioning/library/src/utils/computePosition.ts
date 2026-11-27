@@ -60,6 +60,18 @@ const lengthOf = (axis: Axis) => (axis === 'x' ? 'width' : 'height');
 const startOf = (axis: Axis) => (axis === 'x' ? LEFT : TOP);
 const endOf = (axis: Axis) => (axis === 'x' ? RIGHT : BOTTOM);
 const sides = (top: number, right: number, bottom: number, left: number): SideObject => ({ top, right, bottom, left });
+const normalizePadding = (
+  padding: NonNullable<PositioningOptions['overflowBoundaryPadding']>,
+  isRtl: boolean,
+): SideObject =>
+  typeof padding === 'number'
+    ? sides(padding, padding, padding, padding)
+    : sides(
+        padding.top ?? 0,
+        padding[isRtl ? START : END] ?? 0,
+        padding.bottom ?? 0,
+        padding[isRtl ? END : START] ?? 0,
+      );
 const splitPlacement = (placement: PositioningPlacement) =>
   placement.split('-') as [Side, (typeof START | typeof END)?];
 const alignmentAxis = (side: Side): Axis => (side === TOP || side === BOTTOM ? 'x' : 'y');
@@ -106,6 +118,7 @@ export async function computePosition(
     coverTarget,
     pinned,
     flipBoundary,
+    flipBoundaryPadding = 0,
     overflowBoundary,
     overflowBoundaryPadding: rawPadding = 0,
     fallbackPositions = [],
@@ -143,15 +156,8 @@ export async function computePosition(
   let flipClip!: PositioningRect;
   let shiftClip!: PositioningRect;
   let visibilityClip!: PositioningRect;
-  const padding =
-    typeof rawPadding === 'number'
-      ? sides(rawPadding, rawPadding, rawPadding, rawPadding)
-      : sides(
-          rawPadding.top || 0,
-          rawPadding[isRtl ? START : END] || 0,
-          rawPadding.bottom || 0,
-          rawPadding[isRtl ? END : START] || 0,
-        );
+  const padding = normalizePadding(rawPadding, isRtl ?? false);
+  const flipPadding = normalizePadding(flipBoundaryPadding, isRtl ?? false);
   /** How far the box (in container coordinates) overflows the bounds (in viewport coordinates) on each side */
   const overflow = (box: PositioningRect, bounds: PositioningRect, inset = sides(0, 0, 0, 0)) => {
     const result = {} as SideObject;
@@ -262,7 +268,7 @@ export async function computePosition(
       coords[cross] += (isStart ? 1 : -1) * r[crossLength];
     }
     if (resetsLeft && !pinned && !arrowData) {
-      const values = overflow(floatingRect(), flipClip);
+      const values = overflow(floatingRect(), flipClip, flipPadding);
       // The edge on the alignment axis that overflows first: the end edge for start alignment (logical in RTL),
       // the opposite one when the target is larger than the floating element
       const alignEnd = alignsToStart !== r[mainLength] > f[mainLength];

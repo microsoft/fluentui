@@ -11,9 +11,9 @@ import { usePositioningConfiguration } from './PositioningConfigurationContext';
  * rerenders that only change them do not recreate the position manager.
  */
 const OPTION_KEYS = (
-  'align arrowPadding autoSize coverTarget disableUpdateOnResize fallbackPositions flipBoundary matchTargetSize ' +
-  'offset overflowBoundary overflowBoundaryPadding pinned position shiftToCoverTarget strategy unstable_disableTether ' +
-  'useTransform'
+  'align arrowPadding autoSize coverTarget disableUpdateOnResize fallbackPositions flipBoundary flipBoundaryPadding ' +
+  'matchTargetSize offset overflowBoundary overflowBoundaryPadding pinned position shiftToCoverTarget strategy ' +
+  'unstable_disableTether useTransform'
 ).split(' ') as (keyof PositioningOptions)[];
 
 /** Keep callback/ref rerenders out of the manager lifecycle, including removed options. */
