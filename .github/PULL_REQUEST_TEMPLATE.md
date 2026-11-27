@@ -20,6 +20,8 @@ PR flow tips:
 
 <!-- This is the behavior we should expect with the changes in this PR -->
 
+<!-- For tier 2 and 3, add a nonempty "Review focus: ..." line identifying what the human reviewer should check. -->
+
 ## Related Issue(s)
 
 <!-- Please link the issue being fixed so it gets closed when this is merged. -->
