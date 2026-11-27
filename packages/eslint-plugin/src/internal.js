@@ -36,6 +36,7 @@ const __internal = {
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
             '@nx/workspace-base-hook-signature': 'error',
+            '@nx/workspace-style-hook-signature': 'error',
             '@nx/workspace-base-hook-no-forbidden-runtime': 'error',
             '@nx/workspace-prefer-direct-reexport': 'off',
             '@nx/workspace-no-restricted-globals': restrictedGlobals.react,

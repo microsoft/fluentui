@@ -5,6 +5,7 @@ import {
   rule as consistentCallbackType,
 } from './rules/consistent-callback-type';
 import { RULE_NAME as baseHookSignatureName, rule as baseHookSignature } from './rules/base-hook-signature';
+import { RULE_NAME as styleHookSignatureName, rule as styleHookSignature } from './rules/style-hook-signature';
 import {
   RULE_NAME as baseHookNoForbiddenRuntimeName,
   rule as baseHookNoForbiddenRuntime,
@@ -39,6 +40,7 @@ module.exports = {
   rules: {
     [consistentCallbackTypeName]: consistentCallbackType,
     [baseHookSignatureName]: baseHookSignature,
+    [styleHookSignatureName]: styleHookSignature,
     [baseHookNoForbiddenRuntimeName]: baseHookNoForbiddenRuntime,
     [preferDirectReexportName]: preferDirectReexport,
     [noRestrictedGlobalsName]: noRestrictedGlobals,

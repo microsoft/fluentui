@@ -569,7 +569,7 @@ export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2
 export const useMenuItemRadioBase_unstable: (props: MenuItemRadioBaseProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioBaseState;
 
 // @public (undocumented)
-export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
+export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => MenuItemRadioState;
 
 // @public
 export const useMenuItemStyles_unstable: (state: MenuItemState) => MenuItemState;

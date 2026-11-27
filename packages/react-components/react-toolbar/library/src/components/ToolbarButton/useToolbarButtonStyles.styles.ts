@@ -17,7 +17,7 @@ const useBaseStyles = makeStyles({
 /**
  * Apply styling to the ToolbarButton slots based on the state
  */
-export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void => {
+export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): ToolbarButtonState => {
   const buttonStyles = useBaseStyles();
 
   // eslint-disable-next-line react-hooks/immutability
@@ -29,4 +29,6 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void
   }
 
   useButtonStyles_unstable(state);
+
+  return state;
 };

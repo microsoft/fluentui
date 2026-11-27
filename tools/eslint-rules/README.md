@@ -36,3 +36,33 @@ module.exports = [
 ```sh
 npx nx g @fluentui/workspace-plugin:eslint-rule
 ```
+
+## Component style-hook signatures
+
+The internal v9 React config enables `@nx/workspace-style-hook-signature` for exported
+`use<Component>Styles` and `use<Component>Styles_unstable` hooks in that component's
+`src/components/` directory, including nested components and export aliases.
+Every public call signature must accept required component state and return a
+bidirectionally assignable state type. TypeScript aliases and constrained,
+state-preserving generics are supported; `any`, `unknown`, `never` and `void` are not.
+Additional parameters are allowed.
+
+The state check uses the current `ComponentState` element-to-slot map, validating
+its entries against `React.ElementType` and supporting rootless components with
+optional slots. Nested generic constraints are respected. Slotless states must
+match the sibling `render<Component>_unstable` state parameter. Slotted-state and
+component-map unions are validated member by member, preserving each state's slot
+mapping. The check must be updated when the deprecated `components` field is
+removed. Matching is structural, not nominal,
+and does not prove that the hook returns the same runtime object. The rule requires
+TypeScript parser services and does not rewrite hook bodies.
+
+The internal config works from both the repository root and individual project
+directories. Export-all component barrels are checked alongside named exports.
+
+Griffel `makeStyles`/`makeResetStyles` hooks, shared helpers, provider custom-style
+callbacks, tests, stories and v8 are outside this contract. The six calendar-compat
+`useCalendar{,Day,DayGrid,Month,Picker,Year}Styles_unstable` hooks are explicitly
+excluded because they generate class maps from style props, not component state.
+The Griffel exclusion follows immutable local aliases and transparent expression
+wrappers, but not mutable aliases, factory wrappers or calls to generated hooks.
