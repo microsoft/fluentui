@@ -5880,7 +5880,7 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
     keyborg: "npm:^3.498.0"
-    tabster: "npm:^8.8.1"
+    tabster: "patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -30861,13 +30861,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabster@npm:^8.8.1":
+"tabster@npm:8.8.1":
   version: 8.8.1
   resolution: "tabster@npm:8.8.1"
   dependencies:
     keyborg: "npm:^3.0.0"
     tslib: "npm:^2.8.1"
   checksum: 10c0/e26f2e38eba89af632b44efdb6dd1e92fd8040084f1976592dac69a3cff30423fb0b6a9849ba8f011be5314d873fae2d05356e358462552be538519e513803b1
+  languageName: node
+  linkType: hard
+
+"tabster@patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch":
+  version: 8.8.1
+  resolution: "tabster@patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch::version=8.8.1&hash=3dc55c"
+  dependencies:
+    keyborg: "npm:^3.0.0"
+    tslib: "npm:^2.8.1"
+  checksum: 10c0/acde48ac5555b3a70b6ffc684e3a365de0dc41a7b3fbedd4c60f5707b3fe2ee07899446241edaf65e51584ec61926724498d6ab1fb02d0ccabe0ef2d537ad7c9
   languageName: node
   linkType: hard
 
