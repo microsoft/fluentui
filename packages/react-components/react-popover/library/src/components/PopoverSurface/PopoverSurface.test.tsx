@@ -1,7 +1,8 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { PopoverSurface } from './PopoverSurface';
-import { render, renderHook, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../testing/isConformant';
 import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
 import type { PopoverSurfaceProps } from './PopoverSurface.types';

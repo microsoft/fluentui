@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render, renderHook } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { DrawerHeaderTitle } from './DrawerHeaderTitle';
 import { isConformant } from '../../testing/isConformant';
 import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
