@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: redraw the axes of HeatMapChart when its data or category order changes",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

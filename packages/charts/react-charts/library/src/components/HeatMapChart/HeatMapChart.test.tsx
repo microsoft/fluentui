@@ -594,6 +594,103 @@ describe('HeatMapChart - basic props', () => {
   });
 });
 
+describe('HeatMapChart - Changes after the first render', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const cell = (x: string, y: string, value: number) => ({ x, y, value, rectText: value });
+  const chartOf = (points: ReturnType<typeof cell>[]): HeatMapChartProps => ({
+    data: [{ value: 20, legend: 'Orders', data: points }],
+    domainValuesForColorScale: [0, 40],
+    rangeValuesForColorScale: ['lightblue', 'darkblue'],
+  });
+  const first = [
+    cell('Small', 'South', 10),
+    cell('Large', 'South', 30),
+    cell('Small', 'North', 15),
+    cell('Large', 'North', 35),
+  ];
+  const ticks = (container: HTMLElement, axis: 'xAxis' | 'yAxis') =>
+    Array.from(container.querySelectorAll(`.fui-cart__${axis} .tick text`)).map(text => text.textContent);
+  const cells = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll('[aria-label*="Orders,"]')).map(element =>
+      element.getAttribute('aria-label'),
+    );
+  const drawn = (container: HTMLElement) => ({
+    x: ticks(container, 'xAxis'),
+    y: ticks(container, 'yAxis'),
+    cells: cells(container),
+  });
+  // After a change the chart has to draw what a new chart with the same props draws.
+  const expectSameAsNewChart = async (container: HTMLElement, props: HeatMapChartProps, count: number) => {
+    await waitFor(() => expect(cells(container)).toHaveLength(count));
+    const fresh = render(<HeatMapChart {...props} />);
+    await waitFor(() => expect(cells(fresh.container)).toHaveLength(count));
+    expect(drawn(container)).toEqual(drawn(fresh.container));
+  };
+
+  const settings: [string, Partial<HeatMapChartProps>][] = [
+    ['without the category order props', {}],
+    ['with the category order props set to data', { xAxisCategoryOrder: 'data', yAxisCategoryOrder: 'data' }],
+  ];
+  // The name of the change, the new data, and the labels of the x axis and the y axis in alphabetical order.
+  const changes: [string, ReturnType<typeof cell>[], string[], string[]][] = [
+    [
+      'a new x category',
+      [...first, cell('Huge', 'South', 5), cell('Huge', 'North', 7)],
+      ['Huge', 'Large', 'Small'],
+      ['North', 'South'],
+    ],
+    [
+      'a new y category',
+      [...first, cell('Small', 'West', 9), cell('Large', 'West', 11)],
+      ['Large', 'Small'],
+      ['North', 'South', 'West'],
+    ],
+    ['one y category less', first.slice(0, 2), ['Large', 'Small'], ['South']],
+    ['one x category less', [cell('Large', 'South', 30), cell('Large', 'North', 35)], ['Large'], ['North', 'South']],
+  ];
+  settings.forEach(([settingName, extra]) => {
+    changes.forEach(([changeName, next, xLabels, yLabels]) => {
+      it(`Should draw the new data when it has ${changeName}, ${settingName}`, async () => {
+        const { container, rerender } = render(<HeatMapChart {...chartOf(first)} {...extra} />);
+        await waitFor(() => expect(cells(container)).toHaveLength(first.length));
+
+        const props = { ...chartOf(next), ...extra };
+        rerender(<HeatMapChart {...props} />);
+
+        await expectSameAsNewChart(container, props, next.length);
+        expect(ticks(container, 'xAxis').sort()).toEqual(xLabels);
+        expect(ticks(container, 'yAxis').sort()).toEqual(yLabels);
+      });
+    });
+  });
+
+  it('Should apply an x axis category order that changes after the first render', async () => {
+    const chart = chartOf(first);
+    const { container, rerender } = render(<HeatMapChart {...chart} xAxisCategoryOrder="data" />);
+    await waitFor(() => expect(ticks(container, 'xAxis')).toEqual(['Small', 'Large']));
+
+    const props = { ...chart, xAxisCategoryOrder: ['Large', 'Small'] };
+    rerender(<HeatMapChart {...props} />);
+
+    await waitFor(() => expect(ticks(container, 'xAxis')).toEqual(['Large', 'Small']));
+    await expectSameAsNewChart(container, props, first.length);
+  });
+
+  it('Should apply a y axis category order that changes after the first render', async () => {
+    const chart = chartOf(first);
+    const { container, rerender } = render(<HeatMapChart {...chart} yAxisCategoryOrder="data" />);
+    await waitFor(() => expect(ticks(container, 'yAxis')).toEqual(['South', 'North']));
+
+    const props = { ...chart, yAxisCategoryOrder: ['North', 'South'] };
+    rerender(<HeatMapChart {...props} />);
+
+    await waitFor(() => expect(ticks(container, 'yAxis')).toEqual(['North', 'South']));
+    await expectSameAsNewChart(container, props, first.length);
+  });
+});
+
 describe('Render calling with respective to props', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
