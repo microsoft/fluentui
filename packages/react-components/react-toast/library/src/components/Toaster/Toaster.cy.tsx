@@ -18,6 +18,8 @@ const mount = (element: JSXElement) => {
 const VIEWPORT_WIDTH = 280;
 // The default horizontal offset, which is also the space the Toaster keeps free at the far edge
 const GUTTER = 20;
+// Narrower than the 292px Toaster and its two gutters, inside a viewport that is wide enough for both
+const CONTAINER_WIDTH = 250;
 
 // eslint-disable-next-line @griffel/styles-file
 const useStyles = makeStyles({
@@ -30,9 +32,11 @@ type ExampleProps = {
   /** Limits the Toaster to 200px through `className` */
   narrow?: boolean;
   style?: React.CSSProperties;
+  /** Renders an `inline` Toaster in a positioned container that is `CONTAINER_WIDTH` wide */
+  inline?: boolean;
 };
 
-const Example = ({ offset, position, narrow, style }: ExampleProps) => {
+const Example = ({ offset, position, narrow, style, inline }: ExampleProps) => {
   const { dispatchToast } = useToastController();
   const styles = useStyles();
 
@@ -50,7 +54,13 @@ const Example = ({ offset, position, narrow, style }: ExampleProps) => {
       >
         Make toast
       </button>
-      <Toaster offset={offset} className={narrow ? styles.narrow : undefined} style={style} />
+      {inline ? (
+        <div id="container" style={{ position: 'relative', width: CONTAINER_WIDTH, height: 300, marginLeft: 100 }}>
+          <Toaster inline offset={offset} />
+        </div>
+      ) : (
+        <Toaster offset={offset} className={narrow ? styles.narrow : undefined} style={style} />
+      )}
     </>
   );
 };
@@ -105,6 +115,17 @@ const getGutters = (element: HTMLElement) => {
   return { left, right: element.ownerDocument.documentElement.clientWidth - right };
 };
 
+/**
+ * Space between the element and the left and right edges of the container of an `inline` Toaster. The container
+ * has no border, so its box is the containing block of the Toaster.
+ */
+const getGuttersInContainer = (element: HTMLElement) => {
+  const container = element.ownerDocument.getElementById('container')!.getBoundingClientRect();
+  const { left, right } = element.getBoundingClientRect();
+
+  return { left: left - container.left, right: container.right - right };
+};
+
 describe('Toaster', () => {
   (
     [
@@ -138,6 +159,27 @@ describe('Toaster', () => {
           expect(gutters.left, `${className} left gutter`).to.be.at.least(expected.left);
           expect(gutters.right, `${className} right gutter`).to.be.at.least(expected.right);
         });
+      });
+    });
+  });
+
+  (['bottom-end', 'bottom-start', 'bottom'] as const).forEach(position => {
+    it(`should keep a ${position} toast of an inline Toaster inside a narrow container`, () => {
+      // The viewport is wide enough for the Toaster, so only the container can narrow it
+      mountInViewport(600, { position, inline: true });
+
+      // The Toaster keeps exactly the default gutter at both edges of the container, the toast stays inside it
+      cy.get(`#container .${toasterClassNames.root}`).should($toaster => {
+        const gutters = getGuttersInContainer($toaster[0]);
+
+        expect(gutters.left, 'left gutter').to.equal(GUTTER);
+        expect(gutters.right, 'right gutter').to.equal(GUTTER);
+      });
+      cy.get(`#container .${toastClassNames.root}`).should($toast => {
+        const gutters = getGuttersInContainer($toast[0]);
+
+        expect(gutters.left, 'toast left gutter').to.be.at.least(GUTTER);
+        expect(gutters.right, 'toast right gutter').to.be.at.least(GUTTER);
       });
     });
   });
