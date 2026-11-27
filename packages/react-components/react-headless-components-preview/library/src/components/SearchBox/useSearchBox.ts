@@ -20,6 +20,8 @@ export const useSearchBox = (props: SearchBoxProps, ref: React.Ref<HTMLInputElem
   state.root['data-focused'] = toDataAttributeValue(state.focused);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-invalid'] = toDataAttributeValue(state.input['aria-invalid']);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-readonly'] = toDataAttributeValue(state.input.readOnly);
 
   return state;
 };
