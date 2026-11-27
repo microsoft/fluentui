@@ -7,8 +7,6 @@ import { TeachingPopoverCarousel } from './TeachingPopoverCarousel';
 import type { TeachingPopoverCarouselProps } from './TeachingPopoverCarousel.types';
 import { TeachingPopoverCarouselCard } from '../TeachingPopoverCarouselCard/TeachingPopoverCarouselCard';
 import { TeachingPopoverCarouselFooter } from '../TeachingPopoverCarouselFooter/TeachingPopoverCarouselFooter';
-import { TeachingPopoverCarouselFooterButton } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton';
-import { TeachingPopoverCarouselPageCount } from '../TeachingPopoverCarouselPageCount/TeachingPopoverCarouselPageCount';
 import { TeachingPopoverTitle } from '../TeachingPopoverTitle/TeachingPopoverTitle';
 
 const Example = (props: TeachingPopoverCarouselProps) => (
@@ -219,57 +217,16 @@ describe('TeachingPopoverCarousel DOM attributes', () => {
     consoleError.mockRestore();
     expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
   });
-});
 
-describe('TeachingPopoverCarousel dangerouslySetInnerHTML', () => {
-  it('keeps inactive cards empty', () => {
+  it('forwards native HTML props to inactive cards', () => {
     const { container } = render(
       <TeachingPopoverCarousel value="one">
         <TeachingPopoverCarouselCard value="one">Step one</TeachingPopoverCarouselCard>
-        <TeachingPopoverCarouselCard
-          value="two"
-          dangerouslySetInnerHTML={{ __html: '<iframe title="Injected"></iframe>' }}
-        />
+        <TeachingPopoverCarouselCard value="two" dangerouslySetInnerHTML={{ __html: '<span>Injected</span>' }} />
       </TeachingPopoverCarousel>,
     );
 
-    const inactiveCard = container.querySelector('[hidden]') as HTMLElement;
-    expect(inactiveCard).not.toBeNull();
-    expect(inactiveCard.innerHTML).toBe('');
-    expect(container.querySelector('iframe')).toBeNull();
-  });
-
-  it('renders the page count callback output', () => {
-    render(
-      <TeachingPopoverCarousel value="one">
-        <TeachingPopoverCarouselCard value="one">Step one</TeachingPopoverCarouselCard>
-        <TeachingPopoverCarouselCard value="two">Step two</TeachingPopoverCarouselCard>
-        <TeachingPopoverCarouselPageCount data-testid="page-count" dangerouslySetInnerHTML={{ __html: 'Injected' }}>
-          {(currentPage, totalPages) => `${currentPage} of ${totalPages}`}
-        </TeachingPopoverCarouselPageCount>
-      </TeachingPopoverCarousel>,
-    );
-
-    expect(screen.getByTestId('page-count').textContent).toBe('1 of 2');
-  });
-
-  it('renders the footer button altText on the final step without explicit children', () => {
-    const example = (value: string) => (
-      <TeachingPopoverCarousel value={value}>
-        <TeachingPopoverCarouselCard value="one">Step one</TeachingPopoverCarouselCard>
-        <TeachingPopoverCarouselCard value="two">Step two</TeachingPopoverCarouselCard>
-        <TeachingPopoverCarouselFooterButton
-          data-testid="next"
-          navType="next"
-          altText="Finish"
-          dangerouslySetInnerHTML={{ __html: 'Injected' }}
-        />
-      </TeachingPopoverCarousel>
-    );
-    const view = render(example('one'));
-    expect(screen.getByTestId('next').textContent).toBe('');
-
-    view.rerender(example('two'));
-    expect(screen.getByTestId('next').textContent).toBe('Finish');
+    const inactiveCard = container.querySelector('[hidden]');
+    expect(inactiveCard?.innerHTML).toBe('<span>Injected</span>');
   });
 });

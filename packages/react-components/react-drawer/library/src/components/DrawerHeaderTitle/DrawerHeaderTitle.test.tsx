@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import { DrawerHeaderTitle } from './DrawerHeaderTitle';
 import { isConformant } from '../../testing/isConformant';
 import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleSlots } from './DrawerHeaderTitle.types';
 import { drawerHeaderTitleClassNames } from './useDrawerHeaderTitleStyles.styles';
+import { useDrawerHeaderTitle_unstable } from './useDrawerHeaderTitle';
 
 describe('DrawerHeaderTitle', () => {
   isConformant<DrawerHeaderTitleProps>({
@@ -97,11 +98,14 @@ describe('DrawerHeaderTitle root render function', () => {
     expect(customRoot.querySelector('h2')?.textContent).toBe('Title');
   });
 
-  it('does not forward dangerouslySetInnerHTML to the root, which renders composed children', () => {
-    const { container } = render(
-      <DrawerHeaderTitle dangerouslySetInnerHTML={{ __html: 'Injected' }}>Title</DrawerHeaderTitle>,
+  it('forwards React native props while consuming component slots', () => {
+    const html = { __html: 'Title' };
+    const { result } = renderHook(() =>
+      useDrawerHeaderTitle_unstable({ heading: 'Heading', action: 'Action', dangerouslySetInnerHTML: html }, null),
     );
 
-    expect((container.firstElementChild as HTMLElement).textContent).toBe('Title');
+    expect(result.current.root.dangerouslySetInnerHTML).toBe(html);
+    expect(result.current.root).not.toHaveProperty('heading');
+    expect(result.current.root).not.toHaveProperty('action');
   });
 });

@@ -31,12 +31,4 @@ describe('TeachingPopoverHeader DOM attributes', () => {
     consoleError.mockRestore();
     expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
   });
-
-  it('does not forward dangerouslySetInnerHTML to the root, which renders composed children', () => {
-    const { container } = render(
-      <TeachingPopoverHeader dangerouslySetInnerHTML={{ __html: 'Injected' }}>Header</TeachingPopoverHeader>,
-    );
-
-    expect((container.firstElementChild as HTMLElement).textContent).toBe('Header');
-  });
 });

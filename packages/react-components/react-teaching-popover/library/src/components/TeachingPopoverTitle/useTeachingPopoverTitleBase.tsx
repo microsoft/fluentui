@@ -15,8 +15,7 @@ export const useTeachingPopoverTitleBase_unstable = (
   props: TeachingPopoverTitleBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverTitleBaseState => {
-  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
-  const { dismissButton, dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rest } = props;
+  const { dismissButton, ...rest } = props;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);

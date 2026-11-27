@@ -11,14 +11,12 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   props: TeachingPopoverCarouselFooterProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselFooterState => {
-  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
   const {
     layout = 'centered',
     initialStepText,
     finalStepText,
     previous: previousProp,
     next: nextProp,
-    dangerouslySetInnerHTML: _dangerouslySetInnerHTML,
     ...rest
   } = props;
 

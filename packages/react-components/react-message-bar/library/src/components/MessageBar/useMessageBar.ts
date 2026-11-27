@@ -19,16 +19,7 @@ export const useMessageBarBase_unstable = (
   props: MessageBarBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarBaseState => {
-  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
-  const {
-    layout = 'auto',
-    intent = 'info',
-    politeness,
-    icon,
-    bottomReflowSpacer,
-    dangerouslySetInnerHTML: _dangerouslySetInnerHTML,
-    ...rest
-  } = props;
+  const { layout = 'auto', intent = 'info', politeness, icon, bottomReflowSpacer, ...rest } = props;
   const computedPoliteness = politeness ?? (intent === 'info' ? 'polite' : 'assertive');
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);

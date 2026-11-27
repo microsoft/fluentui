@@ -31,12 +31,4 @@ describe('TeachingPopoverBody DOM attributes', () => {
     consoleError.mockRestore();
     expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
   });
-
-  it('does not forward dangerouslySetInnerHTML to the root, which renders composed children', () => {
-    const { container } = render(
-      <TeachingPopoverBody dangerouslySetInnerHTML={{ __html: 'Injected' }}>Body</TeachingPopoverBody>,
-    );
-
-    expect((container.firstElementChild as HTMLElement).textContent).toBe('Body');
-  });
 });

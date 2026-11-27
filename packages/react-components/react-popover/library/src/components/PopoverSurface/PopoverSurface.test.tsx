@@ -1,10 +1,11 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { PopoverSurface } from './PopoverSurface';
-import { render, fireEvent } from '@testing-library/react';
+import { render, renderHook, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
 import type { PopoverSurfaceProps } from './PopoverSurface.types';
+import { usePopoverSurface_unstable } from './usePopoverSurface';
 
 jest.mock('../../popoverContext');
 
@@ -81,10 +82,13 @@ describe('PopoverSurface', () => {
     expect(getByTestId(testid)).not.toBeNull();
   });
 
-  it('does not forward dangerouslySetInnerHTML to the root, which always renders composed children', () => {
-    mockPopoverContext({ withArrow: false });
-    const { getByTestId } = render(<PopoverSurface {...props} dangerouslySetInnerHTML={{ __html: 'Details' }} />);
+  it('forwards React native props to the root slot', () => {
+    const html = { __html: 'Details' };
+    const { result } = renderHook(() =>
+      usePopoverSurface_unstable({ dangerouslySetInnerHTML: html, suppressHydrationWarning: true }, null),
+    );
 
-    expect(getByTestId(testid).innerHTML).toBe('');
+    expect(result.current.root.dangerouslySetInnerHTML).toBe(html);
+    expect(result.current.root.suppressHydrationWarning).toBe(true);
   });
 });

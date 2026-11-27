@@ -32,8 +32,6 @@ export const usePopoverSurface_unstable = (
   const inertTrapFocus = usePopoverContext_unstable(context => context.inertTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
   const motionForwardedRef = useMotionForwardedRef();
-  // The renderer always composes children (arrow + content), which conflicts with `dangerouslySetInnerHTML`.
-  const { dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rootProps } = props;
   const { modalAttributes } = useModalAttributes({
     trapFocus,
     legacyTrapFocus: !inertTrapFocus,
@@ -59,7 +57,7 @@ export const usePopoverSurface_unstable = (
         role: trapFocus ? 'dialog' : 'group',
         'aria-modal': trapFocus ? true : undefined,
         ...modalAttributes,
-        ...rootProps,
+        ...props,
       },
       { elementType: 'div' },
     ),
