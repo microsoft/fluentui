@@ -661,6 +661,37 @@ describe('HeatMapChart - Default category order of string axes', () => {
     await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Large']));
     expect(cellLabels(container)).toEqual(allFourCells);
   });
+
+  // Two labels that differ only in upper and lower case. The two rows list them in different orders.
+  const caseRows: HeatMapChartProps['data'] = [
+    {
+      value: 20,
+      legend: 'Orders',
+      data: [cell('A', 'South', 10), cell('a', 'South', 30), cell('a', 'North', 35), cell('A', 'North', 15)],
+    },
+  ];
+  const allFourCaseCells = [
+    'A, North. Orders, 15.',
+    'A, South. Orders, 10.',
+    'a, North. Orders, 35.',
+    'a, South. Orders, 30.',
+  ];
+
+  it('Should draw every cell when two labels differ only in case and the rows list them in different orders', async () => {
+    const { container } = render(<HeatMapChart {...chart} data={caseRows} />);
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toHaveLength(2));
+    expect(cellLabels(container)).toEqual(allFourCaseCells);
+  });
+
+  it('Should draw every cell of labels that differ only in case when the category order props are set to default as well', async () => {
+    const { container } = render(
+      <HeatMapChart {...chart} data={caseRows} xAxisCategoryOrder="default" yAxisCategoryOrder="default" />,
+    );
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toHaveLength(2));
+    expect(cellLabels(container)).toEqual(allFourCaseCells);
+  });
 });
 
 describe('HeatMapChart - basic props', () => {

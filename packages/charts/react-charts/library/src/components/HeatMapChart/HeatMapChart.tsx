@@ -669,19 +669,13 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     };
 
     const _getOrderedXPoints = (xPoints: FlattenData[], uniqueXPoints: { [key: string]: '1' }) => {
-      // With sortOrder "none" a string x axis keeps the order of the data, and the rows can list their cells
-      // in different orders. _createRectangles walks every row in the order of the x axis, so these rows are
-      // put in that order too, like the rows of a chart with a category order.
-      const keepsDataOrder = _xAxisType.current === XAxisTypes.StringAxis && props.sortOrder === 'none';
-      if (!_shouldOrderXAxisLabelsByCategoryOrder() && !keepsDataOrder) {
+      // _createRectangles walks every row in the order of the x axis. The rows of a string x axis are put in
+      // the order of its labels below, for every sortOrder and every category order. Sorting each row on its
+      // own does not give that order in every case: with sortOrder "none" the rows can list their cells in
+      // different orders, and labels that differ only in case have no fixed place in the sort.
+      if (_xAxisType.current !== XAxisTypes.StringAxis) {
         return xPoints.sort((a: HeatMapChartDataPoint, b: HeatMapChartDataPoint) => {
-          if (_xAxisType.current === XAxisTypes.StringAxis) {
-            return props.sortOrder === 'none'
-              ? 0
-              : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
-              ? 1
-              : -1;
-          } else if (_xAxisType.current === XAxisTypes.DateAxis) {
+          if (_xAxisType.current === XAxisTypes.DateAxis) {
             return (a.x as Date).getTime() - (b.x as Date).getTime();
           } else if (_xAxisType.current === XAxisTypes.NumericAxis) {
             return +(a.x as string) > +(b.x as string) ? 1 : -1;
