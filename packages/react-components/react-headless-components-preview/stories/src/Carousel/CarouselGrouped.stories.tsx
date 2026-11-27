@@ -9,10 +9,13 @@ export const Grouped = (): React.ReactNode => (
       dir="rtl"
       groupSize={2}
       slides={['Woodland', 'Wetland', 'Meadow', 'Estuary', 'Coast'].map(habitat => (
-        <details key={habitat}>
-          <summary>{habitat}</summary>
-          Observations from the {habitat.toLowerCase()} survey.
-        </details>
+        <React.Fragment key={habitat}>
+          <p className={styles.eyebrow}>Survey</p>
+          <details>
+            <summary>{habitat}</summary>
+            Observations from the {habitat.toLowerCase()} survey.
+          </details>
+        </React.Fragment>
       ))}
     />
   </div>

@@ -1,54 +1,49 @@
+/* Story frame — gives the carousel a realistic width instead of shrinking to its content. */
 .example {
-  padding-inline: var(--space-16);
+  display: grid;
+  gap: var(--space-4);
+  inline-size: 100%;
+  max-inline-size: 720px;
+  margin-inline: auto;
 }
 
+/* ------------------------------------------------------------------
+ * Root — rows: playback, viewport (with arrows), nav
+ * ----------------------------------------------------------------*/
 .carousel {
-  --carousel-enter-duration: var(--duration-medium);
-  --carousel-exit-duration: var(--duration-fast);
-  --carousel-enter-easing: var(--ease-standard);
-  --carousel-exit-easing: var(--ease-emphasized);
-  --carousel-distance: var(--space-4);
+  --carousel-enter-duration: var(--duration-slow);
+  --carousel-exit-duration: var(--duration-medium);
+  --carousel-enter-easing: var(--ease-emphasized);
+  --carousel-exit-easing: var(--ease-standard);
+  --carousel-distance: var(--space-6);
+  --carousel-arrow-size: 32px;
   container-type: inline-size;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-2) var(--space-1);
+  gap: var(--space-3);
   color: var(--text);
   font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.carousel:has([data-carousel-button]) {
+  grid-template-columns: var(--carousel-arrow-size) minmax(0, 1fr) var(--carousel-arrow-size);
 }
 
 .viewport {
   grid-area: 2 / 1 / 3 / -1;
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-3);
   min-inline-size: 0;
+  /* Room for the card shadow and focus ring, which overflow would otherwise clip. */
+  padding: var(--space-1);
+  margin: calc(-1 * var(--space-1));
   overflow: hidden;
-}
-
-.carousel:has([data-carousel-button]) {
-  grid-template-columns: var(--space-6) minmax(0, 1fr) var(--space-6);
 }
 
 .carousel:has([data-carousel-button]) .viewport {
   grid-column: 2;
-}
-
-.carousel [data-carousel-button] {
-  display: grid;
-  align-items: center;
-  grid-row: 2;
-}
-
-.carousel [data-carousel-button='previous'] {
-  grid-column: 1;
-}
-
-.carousel [data-carousel-button='next'] {
-  grid-column: 3;
-}
-
-.carousel [data-carousel-button][hidden] {
-  display: grid;
-  visibility: hidden;
 }
 
 .viewport[data-paged] > [data-carousel-page] {
@@ -69,7 +64,8 @@
 .viewport [data-carousel-slides] {
   display: grid;
   grid-template-columns: repeat(var(--slides-per-page, 1), minmax(0, 1fr));
-  gap: var(--space-2);
+  gap: var(--space-3);
+  block-size: 100%;
 }
 
 .viewport[data-group-size='2'] {
@@ -82,70 +78,153 @@
 
 .viewport[data-group-size='4'] {
   --slides-per-page: 4;
-  gap: var(--space-1);
 }
 
-.viewport[data-group-size='4'] [data-carousel-slides] {
-  gap: var(--space-1);
-}
-
+/* ------------------------------------------------------------------
+ * Card
+ * ----------------------------------------------------------------*/
 .card {
   position: relative;
-  isolation: isolate;
-  padding: var(--space-4);
-  background: var(--bg-soft);
-  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--bg-elev);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   overflow-wrap: anywhere;
   outline: none;
 }
 
-.card:focus-visible::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 var(--stroke-thin) var(--bg);
-  outline: var(--stroke-thick) solid var(--text);
-  outline-offset: calc(-1 * (var(--stroke-thin) + var(--stroke-thick)));
+.card:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
-.button,
-.navButton {
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.3;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.meta {
+  margin: auto 0 0;
+  padding-block-start: var(--space-3);
+  color: var(--text-soft);
+  font-size: 12px;
+}
+
+.card details {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.card summary {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.card summary:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* ------------------------------------------------------------------
+ * Previous / Next and playback buttons
+ * ----------------------------------------------------------------*/
+.carousel [data-carousel-button] {
+  display: grid;
+  align-items: center;
+  grid-row: 2;
+}
+
+.carousel [data-carousel-button='previous'] {
+  grid-column: 1;
+}
+
+.carousel [data-carousel-button='next'] {
+  grid-column: 3;
+}
+
+/* Keep the column when an arrow is hidden at a boundary, so the viewport doesn't shift. */
+.carousel [data-carousel-button][hidden] {
+  display: grid;
+  visibility: hidden;
+}
+
+.button {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-inline-size: var(--space-6);
-  min-block-size: var(--space-6);
+  inline-size: var(--carousel-arrow-size);
+  block-size: var(--carousel-arrow-size);
   padding: 0;
-  border: 0;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: inherit;
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  color: var(--text);
   font: inherit;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard), transform 80ms var(--ease-standard);
 }
 
 .button:hover {
   background: var(--surface-muted);
+  border-color: var(--text);
 }
 
 .button:active {
-  background: var(--surface-sunken);
-}
-
-.button[data-disabled],
-.button[data-disabled-focusable] {
-  color: var(--text-faint);
-  cursor: default;
+  transform: scale(0.96);
 }
 
 .button:focus-visible,
 .navButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
-  outline-offset: var(--stroke-thin);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.button[data-disabled],
+.button[data-disabled-focusable] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button[data-disabled]:hover,
+.button[data-disabled-focusable]:hover {
+  background: var(--bg-elev);
+  border-color: var(--border-strong);
+}
+
+.button > [aria-hidden='true'] {
+  display: inline-flex;
+  font-size: 16px;
 }
 
 .carousel:dir(rtl) [data-carousel-button] .button > [aria-hidden='true'] {
@@ -167,16 +246,34 @@
   }
 }
 
+/* Playback — secondary pill, sized to its label. */
 .carousel .playback {
   grid-area: 1 / 1 / 2 / -1;
   justify-self: start;
+  inline-size: auto;
   max-inline-size: 100%;
-  padding: var(--space-1) var(--space-2);
-  white-space: normal;
-  overflow-wrap: anywhere;
+  block-size: 28px;
+  padding: 0 var(--space-3);
+  border-color: transparent;
   background: var(--surface-muted);
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
+.carousel .playback:hover {
+  background: var(--surface-sunken);
+  border-color: transparent;
+}
+
+.carousel .playback:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+/* ------------------------------------------------------------------
+ * Nav
+ * ----------------------------------------------------------------*/
 .nav:not([hidden]) {
   grid-area: 3 / 1 / 4 / -1;
   display: flex;
@@ -185,50 +282,130 @@
   gap: var(--space-1);
 }
 
+.navButton {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--space-6);
+  block-size: var(--space-6);
+  padding: 0 var(--space-1);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  cursor: pointer;
+}
+
 .indicator {
   box-sizing: border-box;
   inline-size: var(--space-2);
   block-size: var(--space-2);
-  background: var(--text-soft);
   border-radius: var(--radius-pill);
-}
-
-.navButton[data-selected] .indicator {
-  inline-size: var(--space-4);
-  background: var(--text);
+  background: var(--border-stronger);
+  transition: inline-size var(--duration-medium) var(--ease-emphasized),
+    background-color var(--duration-fast) var(--ease-standard);
 }
 
 .navButton:hover .indicator {
   background: var(--text-muted);
 }
 
-.navButton:active .indicator {
-  background: var(--text);
+.navButton[data-selected] .indicator {
+  inline-size: var(--space-5);
+  background: var(--accent);
 }
 
+/* ------------------------------------------------------------------
+ * Tooltip — matches the Tooltip stories
+ * ----------------------------------------------------------------*/
 .tooltip {
   box-sizing: border-box;
-  max-inline-size: var(--space-16);
+  /* Size to the label rather than the space left beside a pinned arrow. */
+  inline-size: max-content;
+  max-inline-size: 240px;
   padding: var(--space-1) var(--space-2);
-  border: var(--stroke-thin) solid var(--border-strong);
-  border-radius: var(--radius-sm);
+  border: none;
+  border-radius: var(--radius-md);
   background: var(--bg-elev);
+  box-shadow: var(--shadow-3);
   color: var(--text);
-  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 
-@container (max-width: 320px) {
+/* ------------------------------------------------------------------
+ * Story controls (Controlled story)
+ * ----------------------------------------------------------------*/
+.control {
+  justify-self: start;
+  block-size: 32px;
+  padding: 0 14px;
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text);
+  font: 500 13px var(--font-sans);
+  cursor: pointer;
+}
+
+.control:hover {
+  background: var(--surface-muted);
+  border-color: var(--text);
+}
+
+.control:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 32px;
+  padding: 0 var(--space-3);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+  font: 13px var(--font-sans);
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.label {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .indicator {
+    transition: none;
+  }
+}
+
+@container (max-width: 400px) {
   .viewport [data-carousel-slides] {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (forced-colors: active) {
-  .card:focus-visible::after,
+  .card:focus-visible,
   .button:focus-visible,
-  .navButton:focus-visible {
-    outline-color: Highlight;
+  .navButton:focus-visible,
+  .control:focus-visible {
+    outline: var(--stroke-thick) solid Highlight;
+    outline-offset: 2px;
   }
 
   .indicator {
@@ -236,14 +413,11 @@
   }
 
   .navButton[data-selected] .indicator {
-    outline: var(--stroke-thick) solid Highlight;
+    background: Highlight;
+    border-color: Highlight;
   }
 
   .navButton:hover .indicator {
     border-style: dashed;
-  }
-
-  .navButton:active .indicator {
-    border-width: var(--stroke-thick);
   }
 }
