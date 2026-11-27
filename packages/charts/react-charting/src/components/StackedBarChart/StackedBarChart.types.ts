@@ -3,7 +3,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { ILegendsProps } from '../Legends/index';
+import { ILegendsProps, LegendOverflowText } from '../Legends/index';
 
 export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
@@ -106,9 +106,9 @@ export interface IStackedBarChartProps {
   legendsOverflowProps?: Partial<IOverflowSetProps>;
 
   /**
-   * text for overflow legends string
+   * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
    */
-  legendsOverflowText?: string;
+  legendsOverflowText?: LegendOverflowText;
 
   /**
    * focus zone props in hover card for legends

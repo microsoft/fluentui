@@ -46,6 +46,27 @@ describe('StackedBarChart snapShot testing', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('forwards the complete localized overflow label to visible text and the accessible name', () => {
+    const overflowText = jest.fn((count: number) => `mais ${count} legendas`);
+    const overflowItems = points.map((point, index) => ({
+      key: String(index),
+      title: point.legend!,
+      color: point.color!,
+    }));
+    const { getByRole } = render(
+      <StackedBarChart
+        data={chartPoints}
+        legendsOverflowText={overflowText}
+        legendsOverflowProps={{ overflowItems }}
+        enabledLegendsWrapLines
+        ignoreFixStyle
+      />,
+    );
+
+    expect(getByRole('button', { name: 'mais 2 legendas' }).textContent).toBe('mais 2 legendas');
+    expect(overflowText).toHaveBeenLastCalledWith(2);
+  });
+
   it('renders hideLegend correctly', () => {
     const { container } = render(<StackedBarChart data={chartPoints} hideLegend={true} />);
     expect(container).toMatchSnapshot();

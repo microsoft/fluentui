@@ -215,7 +215,6 @@ export interface CartesianChartProps {
     href?: string;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    // (undocumented)
     legendsOverflowText?: any;
     margins?: Margins;
     noOfCharsToTruncate?: number;
@@ -739,7 +738,6 @@ export interface DonutChartProps extends CartesianChartProps {
     innerRadius?: number;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     order?: 'default' | 'sorted';
@@ -1140,7 +1138,6 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     hideTooltip?: boolean;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSXElement | undefined;
     showLegendForSinglePointBar?: boolean;
@@ -1281,6 +1278,15 @@ export interface LegendDataItem {
     legendText: string | number;
 }
 
+// @public
+export type LegendOverflowText = string | LegendOverflowTextFormatter;
+
+// @public
+export interface LegendOverflowTextFormatter {
+    // (undocumented)
+    (count: number): string;
+}
+
 // @public (undocumented)
 export const Legends: React_2.FunctionComponent<LegendsProps>;
 
@@ -1290,6 +1296,7 @@ export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof t
 // @public
 export interface LegendsProps {
     allowFocusOnLegends?: boolean;
+    ariaLabel?: string;
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;
@@ -1300,7 +1307,7 @@ export interface LegendsProps {
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
-    overflowText?: string;
+    overflowText?: LegendOverflowText;
     selectedLegend?: string;
     selectedLegends?: string[];
     shape?: LegendShape;

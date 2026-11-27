@@ -424,7 +424,6 @@ export interface ICartesianChartProps {
     // (undocumented)
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    // (undocumented)
     legendsOverflowText?: any;
     margins?: IMargins;
     noOfCharsToTruncate?: number;
@@ -1222,8 +1221,15 @@ export interface ILegendOverflowData {
 }
 
 // @public
+export interface ILegendOverflowTextFormatter {
+    // (undocumented)
+    (count: number): string;
+}
+
+// @public
 export interface ILegendsProps {
     allowFocusOnLegends?: boolean;
+    ariaLabel?: string;
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;
@@ -1235,7 +1241,7 @@ export interface ILegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
-    overflowText?: string;
+    overflowText?: LegendOverflowText;
     // Warning: (ae-forgotten-export) The symbol "ILegendContainer" needs to be exported by the entry point index.d.ts
     ref?: IRefObject<ILegendContainer>;
     selectedLegend?: string;
@@ -1481,7 +1487,7 @@ export interface IMultiStackedBarChartProps {
     href?: string;
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: string;
+    legendsOverflowText?: LegendOverflowText;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
@@ -1798,7 +1804,7 @@ export interface IStackedBarChartProps {
     ignoreFixStyle?: boolean;
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: string;
+    legendsOverflowText?: LegendOverflowText;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
@@ -2065,6 +2071,9 @@ export interface IYValueHover {
         [id: string]: number;
     };
 }
+
+// @public
+export type LegendOverflowText = string | ILegendOverflowTextFormatter;
 
 // @public
 export const Legends: React_2.FunctionComponent<ILegendsProps>;

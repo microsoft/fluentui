@@ -585,6 +585,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       return (
         <Legends
           legends={actions}
+          overflowText={props.legendsOverflowText}
           enabledWrapLines={props.enabledLegendsWrapLines}
           {...props.legendProps}
           onChange={_onLegendSelectionChange}

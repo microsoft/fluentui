@@ -5,12 +5,14 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItemCheckbox } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { useOverflowMenu, useOverflowVisibility } from '@fluentui/react-overflow';
+import type { LegendOverflowText } from './Legends.types';
 
 export const OverflowMenu: React.FC<{
   itemIds: string[];
-  title: string;
+  title: LegendOverflowText;
   items: JSXElement[];
-}> = ({ itemIds, title, items }) => {
+  ariaLabel?: string;
+}> = ({ itemIds, title, items, ariaLabel }) => {
   const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
   const { itemVisibility } = useOverflowVisibility();
 
@@ -56,7 +58,12 @@ export const OverflowMenu: React.FC<{
       </MenuItemCheckbox>,
     );
   }
-  const displayLabel = title === '' ? `+${menuList.length} items` : `+${menuList.length} ${title}`;
+  const displayLabel =
+    typeof title === 'function'
+      ? title(menuList.length)
+      : title === ''
+      ? `+${menuList.length} items`
+      : `+${menuList.length} ${title}`;
 
   return (
     <Menu>
@@ -65,7 +72,11 @@ export const OverflowMenu: React.FC<{
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList aria-label="Legends" checkedValues={{ legends: checkedLegends }}>
+        <MenuList
+          aria-label={ariaLabel || 'Legends'}
+          {...(!!ariaLabel && { 'aria-labelledby': undefined })}
+          checkedValues={{ legends: checkedLegends }}
+        >
           {menuList}
         </MenuList>
       </MenuPopover>

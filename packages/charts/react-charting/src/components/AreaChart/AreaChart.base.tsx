@@ -754,6 +754,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return (
       <Legends
         legends={actions}
+        overflowText={this.props.legendsOverflowText}
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
