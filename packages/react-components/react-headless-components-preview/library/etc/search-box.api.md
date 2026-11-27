@@ -26,6 +26,7 @@ export type SearchBoxState = SearchBoxBaseState & {
         'data-disabled'?: string;
         'data-invalid'?: string;
         'data-focused'?: string;
+        'data-readonly'?: string;
     };
 };
 
