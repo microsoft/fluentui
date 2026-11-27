@@ -55,14 +55,16 @@ export const useCarouselDirectionButton = (
   const probe = useMergedRefs<HTMLTemplateElement>(track);
   const buttonRef = useMergedRefs(buttonSlot.ref, keepButtonMounted ? track : undefined);
   const ownControlRef = useCarouselControlRef<HTMLButtonElement>(context.viewportRef, kind);
-  const controlRef = useMergedRefs(keepButtonMounted ? buttonRef : buttonSlot.ref, ownControlRef);
+  const focusTarget = React.useRef<HTMLButtonElement | null>(null);
+  const controlRef = useMergedRefs(keepButtonMounted ? buttonRef : buttonSlot.ref, ownControlRef, focusTarget);
   const probeRef = !custom && present && !showWrapper && context.pageCount > 1 ? probe : undefined;
-  // A custom button is already mounted while staged. Honor its autofocus once, only when it becomes usable.
+  // Native autofocus fires during commit, before the tooltip's mount effects can react to it, and a staged custom
+  // button is mounted before it is usable. Honor `autoFocus` once from an effect, when the arrow is shown.
   const pendingAutoFocus = React.useRef(buttonSlot.autoFocus);
-  useIsomorphicLayoutEffect(() => {
-    if (keepButtonMounted && !hidden && buttonRef.current && pendingAutoFocus.current) {
+  React.useEffect(() => {
+    if (pendingAutoFocus.current && !hidden && focusTarget.current) {
       pendingAutoFocus.current = false;
-      buttonRef.current.focus();
+      focusTarget.current.focus();
     }
   });
   useIsomorphicLayoutEffect(() => {
@@ -103,7 +105,7 @@ export const useCarouselDirectionButton = (
     'aria-disabled': wrapperDisabled || buttonSlot['aria-disabled'],
     'data-carousel-action': kind,
     ref: controlRef,
-    autoFocus: keepButtonMounted ? undefined : buttonSlot.autoFocus,
+    autoFocus: undefined,
     disabled: buttonSlot.disabled || (!keepButtonMounted && unavailable),
     disabledFocusable: buttonSlot.disabledFocusable || (!hidden && !buttonSlot.disabled && unavailable),
     onFocus: mergeCallbacks(buttonSlot.onFocus, () => setFocused(true)),

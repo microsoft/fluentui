@@ -22,7 +22,6 @@ import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerPro
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
 import { useLayerEscape, useLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
-import { getActiveElement } from '../../hooks/top-layer/utils';
 
 /**
  * Create the state required to render Tooltip.
@@ -138,31 +137,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.showDelay],
   );
 
-  // Native autofocus precedes mount effects. Start its timer after mounting so StrictMode's
-  // initial effect cleanup cannot cancel it while the trigger still has focus.
-  const mounted = React.useRef(false);
-  const mountFocus = React.useRef<React.FocusEvent<HTMLElement> | undefined>(undefined);
-  const [autofocused, setAutofocused] = React.useState(false);
-  React.useEffect(() => {
-    mounted.current = true;
-    if (autofocused && mountFocus.current) {
-      const event = mountFocus.current;
-      mountFocus.current = undefined;
-      if (getActiveElement(event.target) === event.target) {
-        onEnterTrigger(event);
-      }
-    }
-  }, [autofocused, onEnterTrigger]);
-  const onFocusTrigger = (event: React.FocusEvent<HTMLElement>) => {
-    if (mounted.current) {
-      onEnterTrigger(event);
-    } else {
-      event.persist();
-      mountFocus.current = event;
-      setAutofocused(true);
-    }
-  };
-
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
 
   // Callback ref that attaches a keyborg:focusin event listener.
@@ -275,11 +249,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
     // eslint-disable-next-line react-hooks/refs
     onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
-    // Native autoFocus can focus this trigger (and blur another) before ancestor layout effects run.
     // eslint-disable-next-line react-hooks/refs
-    onFocus: mergeCallbacks(child?.props?.onFocus, onFocusTrigger),
+    onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
     // eslint-disable-next-line react-hooks/refs
-    onBlur: mergeCallbacks(child?.props?.onBlur, onLeaveTrigger),
+    onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
     onPointerUp: useEventCallback(mergeCallbacks(child?.props?.onPointerUp, onPointerUpTrigger)),
   });
 
