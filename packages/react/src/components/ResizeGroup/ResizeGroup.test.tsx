@@ -677,7 +677,7 @@ describe('ResizeGroup forceLayoutUpdate and remeasure', () => {
 
   const renderResizeGroup = (props: Partial<IResizeGroupProps> = {}, settle: boolean = true) => {
     const componentRef = React.createRef<IResizeGroup>();
-    const group = (data: IItemsData = fullData) => (
+    const group = (data: IItemsData = fullData, moreProps: Partial<IResizeGroupProps> = {}) => (
       <ResizeGroup
         className="resizeGroupRoot"
         componentRef={componentRef}
@@ -685,6 +685,7 @@ describe('ResizeGroup forceLayoutUpdate and remeasure', () => {
         onReduceData={onReduceItems}
         onRenderData={onRenderItems}
         {...props}
+        {...moreProps}
       />
     );
     const { container, rerender } = render(group());
@@ -710,6 +711,7 @@ describe('ResizeGroup forceLayoutUpdate and remeasure', () => {
       getRenderedCount,
       forceLayoutUpdate,
       rerenderWithData: (data: IItemsData) => rerender(group(data)),
+      rerenderWithProps: (moreProps: Partial<IResizeGroupProps>) => rerender(group(fullData, moreProps)),
     };
   };
 
@@ -843,6 +845,44 @@ describe('ResizeGroup forceLayoutUpdate and remeasure', () => {
     runAllTimers();
 
     expect(getRenderedCount()).toBe(3);
+  });
+
+  it('fits the data again with the onGrowData of the latest render', () => {
+    containerWidth = 300;
+    const { getRenderedCount, forceLayoutUpdate, rerenderWithProps } = renderResizeGroup({
+      onGrowData: onGrowItems,
+    });
+    expect(getRenderedCount()).toBe(3);
+
+    // Two renders with the same data object, the second without onGrowData, and then the call. The frame of the
+    // first render handles the call. The items get narrower, so all five fit, and without onGrowData only a new
+    // fit from the full data can show them.
+    rerenderWithProps({});
+    rerenderWithProps({ onGrowData: undefined });
+    itemWidth = 50;
+    forceLayoutUpdate();
+
+    expect(getRenderedCount()).toBe(5);
+  });
+
+  it('fits the data again with the onGrowData of the render that applies the new fit', () => {
+    containerWidth = 300;
+    const { componentRef, getRenderedCount, rerenderWithProps } = renderResizeGroup({ onGrowData: onGrowItems });
+    expect(getRenderedCount()).toBe(3);
+
+    // The frame that handles the call and a render without onGrowData, with the same data object, are rendered
+    // together, so the new fit lands in a render without onGrowData.
+    itemWidth = 50;
+    act(() => {
+      componentRef.current!.forceLayoutUpdate();
+    });
+    act(() => {
+      jest.runOnlyPendingTimers();
+      rerenderWithProps({ onGrowData: undefined });
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(5);
   });
 
   it('fits the data again from the full data when the data has no cacheKey', () => {

@@ -335,7 +335,6 @@ type ResizeDataAction =
     }
   | {
       type: 'fitAgain';
-      value: { fullData: any; canGrow: boolean };
     };
 
 /**
@@ -343,7 +342,11 @@ type ResizeDataAction =
  * when state is set in callbacks of setTimeout or requestAnimationFrame.
  * See issue: https://github.com/facebook/react/issues/14259
  */
-function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): IResizeGroupState {
+function resizeDataReducer(
+  state: IResizeGroupState,
+  action: ResizeDataAction,
+  props: IResizeGroupProps,
+): IResizeGroupState {
   switch (action.type) {
     case 'resizeData':
       return { ...action.value };
@@ -353,8 +356,7 @@ function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): 
       // With onGrowData, go on from the data that is being measured or that is rendered, and grow it first, so
       // that every step goes through onGrowData or onReduceData. Without onGrowData the data can only get
       // larger again by starting from the full data.
-      const { fullData, canGrow } = action.value;
-      const dataToMeasure = canGrow ? state.dataToMeasure ?? state.renderedData ?? fullData : fullData;
+      const dataToMeasure = props.onGrowData ? state.dataToMeasure ?? state.renderedData ?? props.data : props.data;
       return { ...state, dataToMeasure, resizeDirection: 'grow', measureContainer: true };
     }
     default:
@@ -368,7 +370,12 @@ function useResizeState(
   rootRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const initialStateData = useConst(() => nextResizeGroupStateProvider.getInitialResizeGroupState(props.data));
-  const [resizeData, dispatchResizeDataAction] = React.useReducer(resizeDataReducer, initialStateData);
+  // The reducer reads the props of the render that applies an action. So the fit that forceLayoutUpdate starts uses
+  // the latest data and onGrowData, whichever frame asks for it and whatever React renders together with it.
+  const [resizeData, dispatchResizeDataAction] = React.useReducer(
+    (state: IResizeGroupState, action: ResizeDataAction) => resizeDataReducer(state, action, props),
+    initialStateData,
+  );
 
   // Reset state when new data is provided
   React.useEffect(() => {
@@ -382,10 +389,6 @@ function useResizeState(
   // want to make sure that the RAF request is using the most recent data.
   const stateRef = React.useRef<IResizeGroupState>(initialStateData);
   stateRef.current = { ...resizeData };
-
-  // The data of the latest render, for forceLayoutUpdate, which runs outside of a render.
-  const dataRef = React.useRef(props.data);
-  dataRef.current = props.data;
 
   const updateResizeState = React.useCallback((nextState?: IResizeGroupState) => {
     if (nextState) {
@@ -406,11 +409,8 @@ function useResizeState(
   }, [rootRef]);
 
   // Fits the data again after its cached measurements have been dropped.
-  const fitDataAgain: (canGrow: boolean) => void = React.useCallback((canGrow: boolean) => {
-    dispatchResizeDataAction({
-      type: 'fitAgain',
-      value: { fullData: dataRef.current, canGrow },
-    });
+  const fitDataAgain: () => void = React.useCallback(() => {
+    dispatchResizeDataAction({ type: 'fitAgain' });
   }, []);
 
   return [stateRef, updateResizeState, remeasureContainer, fitDataAgain] as const;
@@ -500,7 +500,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
         if (containerDimension) {
           measurementCache.current = getMeasurementCache();
           isFitAgainRunningRef.current = true;
-          fitDataAgain(!!props.onGrowData);
+          fitDataAgain();
           return;
         }
       }
