@@ -33,6 +33,7 @@ type ColumnResizeStateAction<T> =
   | {
       type: 'COLUMNS_UPDATED';
       columns: TableColumnDefinition<T>[];
+      columnSizingOptions: TableColumnSizingOptions | undefined;
     }
   | {
       type: 'COLUMN_SIZING_OPTIONS_UPDATED';
@@ -43,6 +44,31 @@ type ColumnResizeStateAction<T> =
       columnId: TableColumnId;
       width: number;
     };
+
+const areSizingOptionsEqual = (
+  first: TableColumnSizingOptions | undefined,
+  second: TableColumnSizingOptions | undefined,
+): boolean => {
+  if (first === second) {
+    return true;
+  }
+
+  const columnIds = new Set([...Object.keys(first ?? {}), ...Object.keys(second ?? {})]);
+  for (const columnId of columnIds) {
+    const firstColumn = first?.[columnId];
+    const secondColumn = second?.[columnId];
+    if (
+      firstColumn?.defaultWidth !== secondColumn?.defaultWidth ||
+      firstColumn?.idealWidth !== secondColumn?.idealWidth ||
+      firstColumn?.minWidth !== secondColumn?.minWidth ||
+      firstColumn?.padding !== secondColumn?.padding ||
+      firstColumn?.autoFitColumns !== secondColumn?.autoFitColumns
+    ) {
+      return false;
+    }
+  }
+  return true;
+};
 
 const createReducer =
   <T>(autoFitColumns?: boolean) =>
@@ -58,14 +84,18 @@ const createReducer =
         };
 
       case 'COLUMNS_UPDATED':
-        const newS = columnDefinitionsToState(action.columns, state.columnWidthState, state.columnSizingOptions);
+        const newS = columnDefinitionsToState(action.columns, state.columnWidthState, action.columnSizingOptions);
         return {
           ...state,
           columns: action.columns,
+          columnSizingOptions: action.columnSizingOptions,
           columnWidthState: autoFitColumns ? adjustColumnWidthsToFitContainer(newS, state.containerWidth) : newS,
         };
 
       case 'COLUMN_SIZING_OPTIONS_UPDATED':
+        if (areSizingOptionsEqual(state.columnSizingOptions, action.columnSizingOptions)) {
+          return state;
+        }
         const newState = columnDefinitionsToState(state.columns, state.columnWidthState, action.columnSizingOptions);
         return {
           ...state,
@@ -120,12 +150,16 @@ export function useTableColumnResizeState<T>(
   }, [containerWidth]);
 
   useIsomorphicLayoutEffect(() => {
-    dispatch({ type: 'COLUMNS_UPDATED', columns });
-  }, [columns]);
+    if (columns !== state.columns) {
+      dispatch({ type: 'COLUMNS_UPDATED', columns, columnSizingOptions });
+    }
+  }, [columns, columnSizingOptions, state.columns]);
 
   useIsomorphicLayoutEffect(() => {
-    dispatch({ type: 'COLUMN_SIZING_OPTIONS_UPDATED', columnSizingOptions });
-  }, [columnSizingOptions]);
+    if (!areSizingOptionsEqual(state.columnSizingOptions, columnSizingOptions)) {
+      dispatch({ type: 'COLUMN_SIZING_OPTIONS_UPDATED', columnSizingOptions });
+    }
+  }, [columnSizingOptions, state.columnSizingOptions]);
 
   const setColumnWidth = useEventCallback(
     (event: KeyboardEvent | MouseEvent | TouchEvent | undefined, data: { columnId: TableColumnId; width: number }) => {
