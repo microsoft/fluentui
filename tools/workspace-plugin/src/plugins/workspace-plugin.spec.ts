@@ -1,6 +1,6 @@
 import {
-  CreateNodesContextV2,
-  CreateNodesResultV2,
+  CreateNodesContext,
+  CreateNodesResultArray,
   PostTasksExecutionContext,
   ProjectConfiguration,
   TaskResult,
@@ -33,7 +33,7 @@ const postTasksExecutionContext: PostTasksExecutionContext = {
 describe(`workspace-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
   const originalEnv = process.env;
-  let context: CreateNodesContextV2;
+  let context: CreateNodesContext;
   let tempFs: TempFs;
   let cwd: string;
   const options: WorkspacePluginOptions = {
@@ -1284,12 +1284,12 @@ describe(`workspace-plugin`, () => {
   });
 });
 
-function getTargets(results: CreateNodesResultV2, projRoot = 'proj') {
+function getTargets(results: CreateNodesResultArray, projRoot = 'proj') {
   return results[0][1].projects?.[projRoot].targets;
 }
-function getMetadata(results: CreateNodesResultV2, projRoot = 'proj') {
+function getMetadata(results: CreateNodesResultArray, projRoot = 'proj') {
   return results[0][1].projects?.[projRoot].metadata;
 }
-function getTargetsNames(results: CreateNodesResultV2, projRoot = 'proj'): string[] {
+function getTargetsNames(results: CreateNodesResultArray, projRoot = 'proj'): string[] {
   return Object.keys(getTargets(results, projRoot) ?? {});
 }

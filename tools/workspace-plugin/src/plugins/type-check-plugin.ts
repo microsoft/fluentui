@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {
-  type CreateNodesV2,
+  type CreateNodes,
   createNodesFromFiles,
   TargetConfiguration,
-  CreateNodesContextV2,
+  CreateNodesContext,
   CreateNodesResult,
 } from '@nx/devkit';
 import { dirname } from 'node:path';
@@ -16,7 +16,7 @@ interface TypeCheckPluginOptions {
 
 const typescriptConfigGlob = '**/tsconfig.json';
 
-export const createNodesV2: CreateNodesV2<TypeCheckPluginOptions> = [
+export const createNodesV2: CreateNodes<TypeCheckPluginOptions> = [
   typescriptConfigGlob,
   (configFiles, options, context) => {
     return createNodesFromFiles(
@@ -42,7 +42,7 @@ function normalizeOptions(options: TypeCheckPluginOptions | undefined): Required
 function createNodesInternal(
   configFilePath: string,
   options: TypeCheckPluginOptions | undefined,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
 
@@ -67,7 +67,7 @@ function createNodesInternal(
 
 export function buildTypeCheckTarget(
   _options: TypeCheckPluginOptions,
-  _context: CreateNodesContextV2,
+  _context: CreateNodesContext,
   _config: TaskBuilderConfig,
 ) {
   const targetConfig: TargetConfiguration = {

@@ -9,7 +9,7 @@ describe(`utils`, () => {
   describe(`#getWorkspaceConfig`, () => {
     let tree: Tree;
     beforeEach(() => {
-      tree = createTreeWithEmptyWorkspace();
+      tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     });
     it(`should return nx config with some package.json metadata`, () => {
       const actual = getWorkspaceConfig(tree);

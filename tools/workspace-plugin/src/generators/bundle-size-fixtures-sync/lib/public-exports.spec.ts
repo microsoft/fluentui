@@ -7,7 +7,7 @@ describe('collectPublicExports', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
   });
 
   function collect(files: Record<string, string>, entry = 'src/index.ts') {

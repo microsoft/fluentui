@@ -126,8 +126,6 @@ export function parseArgs<T extends Record<string, any>>(args: string[]) {
   return parsedArguments;
 }
 
-export { updateJestConfig } from '@nx/workspace/src/generators/move/lib/update-jest-config';
-
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
   const workspaceConfig = getWorkspaceConfig(tree);

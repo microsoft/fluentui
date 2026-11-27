@@ -11,6 +11,19 @@
 | Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
 | Conformance       | isConformant                 | Part of unit tests                              | Consistent component API         |
 
+## Running Tests Through the Root Jest Configuration
+
+Use the root Nx entry point rather than invoking root Jest directly. It enables
+Node's VM modules, which the workspace-plugin generator tests need for Nx's
+dynamic formatter imports. Pass Jest options after `--`:
+
+```bash
+yarn nx run fluentui-repo:test-workspace -- --selectProjects=workspace-plugin --runInBand
+```
+
+Omit `--selectProjects` to run all projects discovered by the root Jest configuration.
+For project-scoped testing, continue using `yarn nx run <project>:test`.
+
 ## V9 Icon Regression Coverage
 
 The v9 VRT project shares SVG/font icon examples between StoryWright screenshot

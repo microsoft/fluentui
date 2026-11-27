@@ -8,7 +8,7 @@ describe('react-component generator', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
   });
 
   it.each([false, true])('runs only the generated component tests (update snapshots: %s)', async updateSnapshots => {

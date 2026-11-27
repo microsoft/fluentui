@@ -19,7 +19,7 @@ describe(`print stats`, () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
     addProjectConfiguration(tree, '@proj/pkg-a', {
       root: 'packages/pkg-a',

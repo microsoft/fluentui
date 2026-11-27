@@ -34,7 +34,7 @@ describe('move-packages generator', () => {
     jest.restoreAllMocks();
     jest.spyOn(console, 'log').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
     setupCodeowners(tree, { content: `packages/test @dummyOwner` });
 
