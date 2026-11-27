@@ -500,6 +500,38 @@ describe('overflowManager', () => {
     expect(getInvisibleIds(manager)).toHaveLength(1);
   });
 
+  it('should hide items from the end after an earlier item is removed', () => {
+    const manager = createOverflowManager();
+    const container = createContainer(1000);
+    const ids = ['i0', 'i1', 'i2', 'i3', 'i4', 'i5', 'i6'];
+    const elements = ids.map(() => createElementWithSize('button', 40));
+    container.append(...elements);
+    ids.forEach((id, index) => manager.addItem({ element: elements[index], id, priority: 0 }));
+    manager.observe(container, createObserveOptions({ padding: 0, forceUpdate: true }));
+
+    manager.removeItem('i0');
+    elements[0].remove();
+    Object.defineProperty(container, 'clientWidth', { configurable: true, value: 120 });
+    manager.forceUpdate();
+
+    expect(getInvisibleIds(manager)).toEqual(['i4', 'i5', 'i6']);
+  });
+
+  it('should not keep a removed item after the items were reordered', () => {
+    const manager = createOverflowManager();
+    const container = createContainer(200);
+    const [a, b, c] = [0, 1, 2].map(() => createElementWithSize('button', 40));
+    container.append(a, b, c);
+    manager.addItem({ element: a, id: 'a', priority: 0 });
+    manager.addItem({ element: b, id: 'b', priority: 0 });
+    manager.addItem({ element: c, id: 'c', priority: 0 });
+    manager.observe(container, createObserveOptions({ forceUpdate: true }));
+    container.insertBefore(c, a);
+
+    expect(() => manager.removeItem('b')).not.toThrow();
+    expect(getVisibleIds(manager)).toEqual(['a', 'c']);
+  });
+
   it('should remove items through removeItem', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(priority-overflow): keep overflow items in priority order after another item is removed",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
