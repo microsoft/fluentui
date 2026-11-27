@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat(react-theme-sass): Release stable 9.0.0 with Sass module token forwarding and documented @use support",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "paulmardling@microsoft.com"
+}
