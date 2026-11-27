@@ -55,6 +55,7 @@ export function useListboxSlot(
       id: listboxId,
       multiselect,
       tabIndex: undefined,
+      popover: 'auto',
       ...defaultProps,
     },
   });

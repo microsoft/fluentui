@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Dropdown } from './Dropdown';
 import { Option } from './Option';
@@ -48,6 +48,40 @@ describe('Dropdown', () => {
     );
 
     expect(getByRole('listbox')).toHaveAttribute('popover', 'manual');
+  });
+
+  it('does not render a clear button when not clearable', () => {
+    const { queryByRole } = render(
+      <Dropdown defaultSelectedOptions={['Cat']}>
+        <Option>Cat</Option>
+      </Dropdown>,
+    );
+    expect(queryByRole('button', { name: 'Clear selection' })).toBeNull();
+  });
+
+  it('does not render a clear button when clearable but nothing is selected', () => {
+    const { queryByRole } = render(
+      <Dropdown clearable>
+        <Option>Cat</Option>
+      </Dropdown>,
+    );
+    expect(queryByRole('button', { name: 'Clear selection' })).toBeNull();
+  });
+
+  it('renders a clear button when clearable with a selection', () => {
+    const { getByRole, queryByRole } = render(
+      <Dropdown clearable defaultSelectedOptions={['Cat']} defaultValue="Cat">
+        <Option>Cat</Option>
+      </Dropdown>,
+    );
+    const button = getByRole('button', { name: 'Clear selection' });
+    expect(button).toBeInTheDocument();
+    expect(getByRole('combobox')).toHaveTextContent('Cat');
+
+    fireEvent.click(button);
+
+    expect(getByRole('combobox')).not.toHaveTextContent('Cat');
+    expect(queryByRole('button', { name: 'Clear selection' })).toBeNull();
   });
 
   it('sets data-selected="true" on the selected option', () => {

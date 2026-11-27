@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Combobox } from './Combobox';
 import { Option } from '../Dropdown/Option';
@@ -37,6 +37,56 @@ describe('Combobox', () => {
     expect(listbox).not.toHaveAttribute('hidden');
 
     expect(getAllByRole('option')).toHaveLength(3);
+  });
+
+  it('hides the clear icon and ignores clicks when not clearable', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox
+        defaultSelectedOptions={['Cat']}
+        defaultValue="Cat"
+        clearIcon={{ 'data-testid': 'clear' } as React.HTMLAttributes<HTMLSpanElement>}
+      >
+        <Option>Cat</Option>
+      </Combobox>,
+    );
+    expect(getByTestId('clear')).toHaveAttribute('hidden');
+
+    fireEvent.click(getByTestId('clear'));
+
+    expect(getByRole('combobox')).toHaveValue('Cat');
+  });
+
+  it('hides the clear icon when clearable but nothing is selected', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox clearable clearIcon={{ 'data-testid': 'clear' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Option>Cat</Option>
+      </Combobox>,
+    );
+    expect(getByTestId('clear')).toHaveAttribute('hidden');
+
+    fireEvent.click(getByTestId('clear'));
+
+    expect(getByRole('combobox')).toHaveValue('');
+  });
+
+  it('shows the clear icon and clears when clearable with a selection', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox
+        clearable
+        defaultSelectedOptions={['Cat']}
+        defaultValue="Cat"
+        clearIcon={{ 'data-testid': 'clear' } as React.HTMLAttributes<HTMLSpanElement>}
+      >
+        <Option>Cat</Option>
+      </Combobox>,
+    );
+    expect(getByTestId('clear')).not.toHaveAttribute('hidden');
+    expect(getByRole('combobox')).toHaveValue('Cat');
+
+    fireEvent.click(getByTestId('clear'));
+
+    expect(getByRole('combobox')).toHaveValue('');
+    expect(getByTestId('clear')).toHaveAttribute('hidden');
   });
 
   it('sets data-selected="true" on the selected option', () => {

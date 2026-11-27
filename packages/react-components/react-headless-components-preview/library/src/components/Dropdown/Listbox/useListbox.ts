@@ -10,10 +10,5 @@ import type { ListboxProps, ListboxState } from './Listbox.types';
  * The returned state can be modified with hooks before being passed to `renderListbox`.
  */
 export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  const state = useListbox_unstable(props, ref);
-
-  return {
-    ...state,
-    root: { popover: 'auto', ...state.root },
-  };
+  return useListbox_unstable(props, ref);
 };
