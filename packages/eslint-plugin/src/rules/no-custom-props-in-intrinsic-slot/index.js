@@ -121,6 +121,64 @@ module.exports = createRule({
     }
 
     /**
+     * Adds the tag names a type can hold to `tags`. `undefined`, `null` and `never` add nothing.
+     * @param {ts.Type} type
+     * @param {Set<string>} tags
+     * @returns {boolean} false when the type can hold something other than a string literal (for example a component)
+     */
+    function collectTagLiterals(type, tags) {
+      for (const constituent of getConstituents(type)) {
+        if (constituent.isStringLiteral()) {
+          tags.add(constituent.value);
+        } else if (
+          ![ts.TypeFlags.Undefined, ts.TypeFlags.Null, ts.TypeFlags.Never].some(flag =>
+            isTypeFlagSet(constituent, flag),
+          )
+        ) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    /**
+     * Slots render `as ?? elementType` for intrinsic element types, so every tag `as` can hold is a possible root.
+     * @param {TSESTree.ObjectExpression} value
+     * @param {TSESTree.SpreadElement[]} spreads
+     * @param {ts.Node} location
+     * @returns {Set<string> | undefined} the tags `as` can hold, or undefined when `as` can be something else
+     */
+    function getAsTags(value, spreads, location) {
+      const tags = new Set();
+      for (const property of value.properties) {
+        if (
+          property.type === AST_NODE_TYPES.Property &&
+          !property.computed &&
+          property.key.type === AST_NODE_TYPES.Identifier &&
+          property.key.name === 'as'
+        ) {
+          const type = getType(property.value);
+          if (type && !collectTagLiterals(type, tags)) {
+            return undefined;
+          }
+        }
+      }
+      for (const spread of spreads) {
+        const spreadType = getType(spread.argument);
+        if (!spreadType) {
+          continue;
+        }
+        for (const constituent of getConstituents(spreadType)) {
+          const asProp = typeChecker.getPropertyOfType(typeChecker.getApparentType(constituent), 'as');
+          if (asProp && !collectTagLiterals(typeChecker.getTypeOfSymbolAtLocation(asProp, location), tags)) {
+            return undefined;
+          }
+        }
+      }
+      return tags;
+    }
+
+    /**
      * @param {ts.Symbol} prop
      * @param {ts.Node} location
      */
@@ -160,12 +218,18 @@ module.exports = createRule({
         }
 
         const elementType = getElementTypeValue(options);
-        const tags = elementType && getIntrinsicTags(elementType);
-        if (!tags) {
+        const elementTags = elementType && getIntrinsicTags(elementType);
+        if (!elementTags) {
           return;
         }
 
         const location = esTreeNodeToTSNodeMap.get(node);
+        const asTags = getAsTags(value, spreads, location);
+        if (!asTags) {
+          // `as` can be a component or an unknown string, so the rendered element is unknown.
+          return;
+        }
+        const tags = [...new Set([...elementTags, ...asTags])];
         const allProps = getIntrinsicProps(location.getSourceFile());
         const tagProps = tags.map(tag => allProps.get(tag));
         if (tagProps.some(props => !props)) {

@@ -96,7 +96,7 @@ The rule requires an options object containing:
 
 Reports props that are spread into a `slot.always` / `slot.optional` call for an intrinsic element (for example `elementType: 'div'`) when they are not valid attributes of that element. Such props reach the DOM: React warns about them in development, and they end up as unknown attributes in the markup.
 
-This is a type-aware rule. It reads the type of each spread object, so it also catches props that a component forgot to destructure. Names starting with `data-` or `aria-`, `as`, `ref`, `key` and `children` are always allowed. Keys set after the spread, props typed as `never` and slots with a component `elementType` are not checked. When `elementType` is a union of tags, a prop is allowed if any of the tags accepts it.
+This is a type-aware rule. It reads the type of each spread object, so it also catches props that a component forgot to destructure. Names starting with `data-` or `aria-`, `as`, `ref`, `key` and `children` are always allowed. Keys set after the spread, props typed as `never` and slots with a component `elementType` are not checked. Slots render `as ?? elementType`, so the tags that `as` can hold (from an explicit `as` key or from the spread type) count as possible roots alongside `elementType`. When `as` can be a component or an arbitrary string, the call is not checked. When there are several possible tags, a prop is allowed if any of them accepts it.
 
 **❌ Don't**
 

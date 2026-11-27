@@ -94,6 +94,38 @@ ruleTester.run('no-custom-props-in-intrinsic-slot', rule, {
         slot.always(props, { elementType: 'div' });
       `,
     },
+    {
+      name: 'a prop valid on the tag that "as" selects is allowed',
+      filename,
+      code: `${prelude}
+        declare const rest: { as: 'a'; href: string };
+        slot.always({ ...rest }, { elementType: 'div' });
+      `,
+    },
+    {
+      name: 'an optional "as" keeps the base tag and adds the alternate tag',
+      filename,
+      code: `${prelude}
+        declare const rest: React.HTMLAttributes<HTMLElement> & { as?: 'a'; href?: string };
+        slot.always({ ...rest }, { elementType: 'div' });
+      `,
+    },
+    {
+      name: 'an explicit "as" key selects the tag',
+      filename,
+      code: `${prelude}
+        declare const rest: React.AnchorHTMLAttributes<HTMLAnchorElement>;
+        slot.always({ ...rest, as: 'a' as const }, { elementType: 'div' });
+      `,
+    },
+    {
+      name: '"as" that can be a component is not checked',
+      filename,
+      code: `${prelude}
+        declare const rest: Props & { as?: 'a' | React.ComponentType };
+        slot.always({ ...rest }, { elementType: 'div' });
+      `,
+    },
   ],
   invalid: [
     {
@@ -140,6 +172,15 @@ ruleTester.run('no-custom-props-in-intrinsic-slot', rule, {
           data: { names: '`disabledFocusable`', tags: 'a> | <button', verb: 'is', pronoun: 'it' },
         },
       ],
+    },
+    {
+      name: 'a prop valid on neither the base tag nor the "as" tag is reported',
+      filename,
+      code: `${prelude}
+        declare const rest: React.HTMLAttributes<HTMLElement> & { as?: 'a'; href?: string; size?: string };
+        slot.always({ ...rest }, { elementType: 'div' });
+      `,
+      errors: [{ messageId: 'customProps', data: { names: '`size`', tags: 'div> | <a', verb: 'is', pronoun: 'it' } }],
     },
   ],
 });
