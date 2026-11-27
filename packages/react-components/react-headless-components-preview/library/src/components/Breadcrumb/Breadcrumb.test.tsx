@@ -18,4 +18,16 @@ describe('Breadcrumb', () => {
     expect(nav.querySelector('ol')).toBeInTheDocument();
     expect(getByText('Default Breadcrumb')).toBeInTheDocument();
   });
+
+  it('sets focusgroup on the list when focusMode is arrow', () => {
+    const { getByRole } = render(<Breadcrumb focusMode="arrow">Item</Breadcrumb>);
+
+    expect(getByRole('list')).toHaveAttribute('focusgroup', 'toolbar inline wrap');
+  });
+
+  it('does not set focusgroup by default', () => {
+    const { getByRole } = render(<Breadcrumb>Item</Breadcrumb>);
+
+    expect(getByRole('list')).not.toHaveAttribute('focusgroup');
+  });
 });
