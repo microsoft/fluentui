@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Popover openOnContext opens from the keyboard and cleans up its pending pointerup listener",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com"
-}

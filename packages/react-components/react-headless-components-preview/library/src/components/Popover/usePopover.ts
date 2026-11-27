@@ -38,6 +38,11 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const setOpen = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     clearOpenTimeout();
 
+    if (!(e instanceof Event) && 'persist' in e && typeof e.persist === 'function') {
+      // < React 17 still uses pooled synthetic events
+      e.persist();
+    }
+
     if (shouldOpen && e.type === 'contextmenu') {
       const mouseEvent = e as React.MouseEvent<HTMLElement>;
       setContextTarget({ x: mouseEvent.clientX, y: mouseEvent.clientY });
