@@ -331,7 +331,8 @@ describe('DatePicker', () => {
         });
       try {
         const { getByRole } = renderDatePicker({ defaultOpen: true });
-        expect(getByRole('dialog')).toBeInTheDocument();
+        // The popover polyfill marks a popover in the top layer with the `:popover-open` class.
+        expect(getByRole('dialog')).toHaveClass(':popover-open');
       } finally {
         spy.mockRestore();
       }

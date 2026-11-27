@@ -101,11 +101,12 @@ export type DatePickerOpenChangeData = EventData<string, React.SyntheticEvent | 
    * What requested the change.
    * - `trigger`: activation of the non-editable field
    * - `icon`: click on the calendar icon
-   * - `keyboard`: Alt + Arrow Down, or Escape on the field
+   * - `keyboard`: Alt + Arrow Down on the field
    * - `selection`: a day was selected
-   * - `escape`: Escape inside the calendar
+   * - `escape`: Escape on the field or inside the calendar
    * - `focusOut`: focus left the calendar
-   * - `outsideClick`: a pointer press outside the date picker
+   * - `outsideClick`: a pointer press outside the date picker, or the popup was opened or closed outside React
+   *   (for example by a direct `showPopover()` or `hidePopover()` call)
    */
   reason: 'trigger' | 'icon' | 'keyboard' | 'selection' | 'escape' | 'focusOut' | 'outsideClick';
 };
