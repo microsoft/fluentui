@@ -490,6 +490,60 @@ describe('CommandBar', () => {
       expect(onDataGrownToBar).toHaveBeenCalledTimes(1);
     });
 
+    it('keeps the items where they are when the application renders the bar again from its callbacks', () => {
+      // The items of the test before, but the application keeps the set of items in the overflow menu in its
+      // state. Each change renders the bar again, and the bar gives its ResizeGroup a new data object with the
+      // same cacheKey.
+      buttonWidth = 20;
+      let inMenu = new Set<string>();
+      const onRender = (item: ICommandBarItemProps) => (
+        <button data-width={inMenu.has(item.key) ? 50 : 100}>{item.text}</button>
+      );
+      const barItems: ICommandBarItemProps[] = ['First', 'Second', 'Third'].map(text => ({
+        key: text,
+        text,
+        onRender,
+      }));
+      const onDataGrownToBar = jest.fn();
+      const App = () => {
+        const [menuKeys, setMenuKeys] = React.useState(() => new Set<string>());
+        inMenu = menuKeys;
+        const handleDataReduced = (item: ICommandBarItemProps) =>
+          setMenuKeys(keys => (keys.has(item.key) ? keys : new Set(keys).add(item.key)));
+        const handleDataGrown = (item: ICommandBarItemProps) => {
+          onDataGrownToBar(item);
+          setMenuKeys(keys => {
+            if (!keys.has(item.key)) {
+              return keys;
+            }
+            const next = new Set(keys);
+            next.delete(item.key);
+            return next;
+          });
+        };
+        return (
+          <CommandBar
+            componentRef={commandBar}
+            items={barItems}
+            onDataReduced={handleDataReduced}
+            onDataGrown={handleDataGrown}
+          />
+        );
+      };
+      render(<App />);
+      runAllTimers();
+      expect(barItems.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+
+      remeasure();
+      expect(barItems.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+      const callsOfTheFirstCall = onDataGrownToBar.mock.calls.length;
+
+      // A second call takes the same measurement as the first one, and nothing is fit again.
+      remeasure();
+      expect(barItems.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+      expect(onDataGrownToBar).toHaveBeenCalledTimes(callsOfTheFirstCall);
+    });
+
     it('renders an item in the bar with the flag off and gives its click handler the item itself', () => {
       buttonWidth = 20;
       const onClick = jest.fn();

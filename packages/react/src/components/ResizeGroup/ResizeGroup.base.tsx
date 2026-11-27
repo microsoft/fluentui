@@ -415,16 +415,36 @@ function useResizeState(
 function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
   // The cache is held in an object so that remeasure can replace it with an empty one.
   const measurementCache = useConst(() => ({ current: getMeasurementCache() }));
-  const nextResizeGroupStateProvider = useConst(() =>
-    getNextResizeGroupStateProvider({
-      getCachedMeasurement: data => measurementCache.current.getCachedMeasurement(data),
-      addMeasurementToCache: (data, measurement) => measurementCache.current.addMeasurementToCache(data, measurement),
-    }),
-  );
   // True from a remeasure call until its check has run: a new measurement of the full data.
   const checkMeasurementCache = React.useRef(false);
   // The measurement that the latest check took, and the cacheKey of the full data that it measured.
   const lastCheck = React.useRef<{ cacheKey: string; dimension: number } | undefined>(undefined);
+  // True from the moment a check starts to fit the data again until that pass ends. A pass that a new data object
+  // starts in the meantime counts as part of that fit, because an application can render a parent such as
+  // CommandBar again from onDataGrown or onDataReduced.
+  const isFitAgainRef = React.useRef(false);
+  // True while the cache holds a measurement of 0.
+  const hasZeroMeasurementRef = React.useRef(false);
+  const nextResizeGroupStateProvider = useConst(() =>
+    getNextResizeGroupStateProvider({
+      getCachedMeasurement: data => measurementCache.current.getCachedMeasurement(data),
+      addMeasurementToCache: (data, measurement) => {
+        if (data?.cacheKey) {
+          // Content that measures 0 is not laid out, for example inside display: none, so the next check fits the
+          // data again.
+          if (measurement === 0) {
+            hasZeroMeasurementRef.current = true;
+          }
+          // Another pass has measured the full data, for example for a new data object with the same cacheKey.
+          // The latest check did not see that measurement, so the next check compares with the cache.
+          if (!isFitAgainRef.current && data.cacheKey === lastCheck.current?.cacheKey) {
+            lastCheck.current = undefined;
+          }
+        }
+        measurementCache.current.addMeasurementToCache(data, measurement);
+      },
+    }),
+  );
   // Whether the latest render rendered the full data for that check, in place of the data of the resize state.
   const isCheckRenderRef = React.useRef(false);
 
@@ -493,21 +513,26 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
         if (measuredDimension !== 0 && fullData) {
           // The check renders the full data while other data is on screen. Content that also depends on what is
           // on screen, for example on the items that are in an overflow menu at that moment, can measure
-          // differently here than it does in a pass. So compare with the check before this one, and with the
-          // cached measurement only when this is the first check of this data.
+          // differently here than it does in a pass. So compare with the check before this one. Compare with the
+          // cached measurement when this is the first check of this data, or when a pass other than the fit that a
+          // check started has measured the full data since the latest check.
           const previousCheck = lastCheck.current;
           const expectedDimension =
             previousCheck && previousCheck.cacheKey === fullData.cacheKey
               ? previousCheck.dimension
               : measurementCache.current.getCachedMeasurement(fullData);
           lastCheck.current = { cacheKey: fullData.cacheKey, dimension: measuredDimension };
-          if (expectedDimension !== measuredDimension) {
+          // A measurement of 0 in the cache was taken while the content was not laid out.
+          if (hasZeroMeasurementRef.current || expectedDimension !== measuredDimension) {
             measurementCache.current = getMeasurementCache();
+            hasZeroMeasurementRef.current = false;
             if (!props.onGrowData) {
               // The new pass starts from the full data and would take this measurement again. With onGrowData
-              // it starts from other data, and measures the full data itself when it gets there.
+              // it starts from other data, and measures the full data itself when it gets there. This writes to
+              // the cache directly and not through the provider, so it does not drop the check that it comes from.
               measurementCache.current.addMeasurementToCache(fullData, measuredDimension);
             }
+            isFitAgainRef.current = true;
             fitDataAgain(!!props.onGrowData);
             return;
           }
@@ -528,6 +553,10 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
         getElementToMeasureDimension,
         containerDimension,
       );
+      // A pass ends when no data is left to measure.
+      if (!(nextState ?? stateRef.current).dataToMeasure) {
+        isFitAgainRef.current = false;
+      }
 
       updateResizeState(nextState);
     }, rootRef.current);
