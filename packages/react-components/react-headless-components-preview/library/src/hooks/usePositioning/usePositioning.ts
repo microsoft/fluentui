@@ -67,13 +67,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
-  // A pinned surface cannot flip, so its declared data-placement is authoritative: don't measure or overwrite it.
-  const requestPlacementUpdate = usePlacementObserver(
-    containerEl,
-    effectiveTarget,
-    targetDocument,
-    coverTarget || pinned,
-  );
+  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,

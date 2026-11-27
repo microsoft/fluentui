@@ -12,7 +12,6 @@ import { CarouselNext } from './CarouselNext';
 import { CarouselNav } from './CarouselNav';
 import { CarouselNavButton } from './CarouselNavButton';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
-import { CarouselDirectionTooltip } from './CarouselDirectionButton/CarouselDirectionTooltip';
 import { Tooltip } from '../Tooltip';
 
 const transition: CarouselTransition = ({ incoming, outgoing }) => [
@@ -61,7 +60,7 @@ describe('Carousel browser behavior', () => {
           {...props}
         >
           {autoplay && <CarouselAutoplayButton className="button playback" />}
-          <CarouselPrevious button={{ className: 'button', icon: '<' }} tooltip={{ className: 'tooltip' }} />
+          <CarouselPrevious button={{ className: 'button', icon: '<' }} />
           <CarouselViewport className="viewport">
             {[1, 2, 3, 4, 5].map(index => (
               <CarouselCard key={index}>
@@ -69,10 +68,7 @@ describe('Carousel browser behavior', () => {
               </CarouselCard>
             ))}
           </CarouselViewport>
-          <CarouselNext
-            button={{ className: 'button', icon: { children: '›', 'aria-hidden': true } }}
-            tooltip={{ className: 'tooltip' }}
-          />
+          <CarouselNext button={{ className: 'button', icon: { children: '›', 'aria-hidden': true } }} />
           <CarouselNav />
         </Carousel>
         <button>After</button>
@@ -142,231 +138,51 @@ describe('Carousel browser behavior', () => {
     cy.wrap(dirs).should('deep.equal', ['rtl', 'ltr']);
   });
 
-  it('shows tooltips immediately on focus and dismisses Escape without moving focus', () => {
-    renderCarousel();
+  it('names arrows through aria-label unless the button slot names them', () => {
+    mount(
+      <>
+        <span id="next-name">Next lesson</span>
+        <Carousel aria-label="Lessons">
+          <CarouselPrevious button={{ 'aria-label': 'Précédent' }} />
+          <CarouselViewport>{['First', 'Second', 'Third']}</CarouselViewport>
+          <CarouselNext button={{ 'aria-labelledby': 'next-name' }} />
+        </Carousel>
+        <Carousel aria-label="Defaults" circular>
+          <CarouselPrevious />
+          <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+          <CarouselNext />
+        </Carousel>
+      </>,
+    );
+    cy.get('[aria-label="Lessons"] [data-carousel-action="next"]')
+      .should('have.attr', 'aria-labelledby', 'next-name')
+      .and('not.have.attr', 'aria-label');
+    cy.get('[aria-label="Lessons"] [data-carousel-action="next"]').click();
+    cy.get('[aria-label="Lessons"] [data-carousel-action="previous"]').should('have.attr', 'aria-label', 'Précédent');
+    cy.get('[aria-label="Defaults"] [data-carousel-action="previous"]').should('have.attr', 'aria-label', 'Previous');
+    cy.get('[aria-label="Defaults"] [data-carousel-action="next"]').should('have.attr', 'aria-label', 'Next');
+  });
+
+  it('composes a Tooltip that shows the arrow name through the button slot render function', () => {
+    const withTooltip: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
+      <Tooltip relationship="inaccessible" content={props['aria-label'] ?? ''}>
+        <Component {...props} />
+      </Tooltip>
+    );
+    mount(
+      <Carousel aria-label="Lessons" circular>
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNext button={{ children: withTooltip, 'aria-label': 'Next lesson' }} />
+      </Carousel>,
+    );
     cy.get('[data-carousel-action="next"]').focus();
-    cy.get('#lessons-next-label').should('be.visible');
-    cy.get('[data-carousel-action="next"]').realPress('Escape');
-    cy.get('[data-carousel-action="next"]').should('be.focused');
-    cy.get('#lessons-next-label').should('not.be.visible');
-    cy.get('[data-carousel-action="next"]').should('have.attr', 'aria-labelledby', 'lessons-next-label');
-    cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-label');
+    cy.contains('[role="tooltip"]', 'Next lesson').should('be.visible');
+    cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-labelledby');
     cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-describedby');
+    cy.get('[data-carousel-action="next"]').should('have.attr', 'aria-label', 'Next lesson');
   });
 
-  it('keeps the fallback tooltip beside its focused arrow after a sibling reflows', () => {
-    let originalInsets: string[];
-    cy.window().then(win => {
-      const supports = win.CSS.supports.bind(win.CSS);
-      cy.stub(win.CSS, 'supports').callsFake((...args: [string]) =>
-        args[0] === 'position-area: self-inline-start' ? false : supports(...args),
-      );
-    });
-    renderCarousel();
-    cy.get('#lessons-next-label').then(label => {
-      originalInsets = [label[0].style.left, label[0].style.top];
-    });
-    cy.get('[data-carousel-action="next"]')
-      .focus()
-      .then(button => {
-        const before = button[0].getBoundingClientRect();
-        const assertPlacement = () =>
-          cy.get('#lessons-next-label').should(label => {
-            const arrow = button[0].getBoundingClientRect();
-            const tip = label[0].getBoundingClientRect();
-            expect(label[0].style.left).to.equal(`${arrow.right}px`);
-            expect(tip.left).to.be.closeTo(arrow.right, 1);
-            expect(tip.top + tip.height / 2).to.be.closeTo(arrow.top + arrow.height / 2, 1);
-          });
-        assertPlacement();
-        cy.contains('button', 'Before').then(sibling => {
-          sibling[0].style.height = `${before.height + 80}px`;
-        });
-        cy.wrap(button).should(el => expect(el[0].getBoundingClientRect().top).to.be.greaterThan(before.top));
-        assertPlacement();
-      });
-    cy.get('[data-carousel-action="next"]').realPress('Escape');
-    cy.get('#lessons-next-label').should(label => {
-      expect([label[0].style.left, label[0].style.top]).to.deep.equal(originalInsets);
-    });
-  });
-
-  for (const native of [true, false]) {
-    it(`keeps ${native ? 'anchored' : 'fallback'} arrow tooltips within the viewport edges`, () => {
-      if (!native) {
-        cy.window().then(win => {
-          const supports = win.CSS.supports.bind(win.CSS);
-          cy.stub(win.CSS, 'supports').callsFake((...args: [string]) =>
-            args[0] === 'position-area: self-inline-start' ? false : supports(...args),
-          );
-        });
-      }
-      mount(
-        <div style={{ position: 'fixed', insetInline: 0, top: 100, display: 'flex', justifyContent: 'space-between' }}>
-          <style>{styles}</style>
-          <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
-            <CarouselPrevious button={{ icon: '<' }} tooltip={{ className: 'tooltip', children: 'Previous lesson' }} />
-            <CarouselViewport>{['First', 'Second']}</CarouselViewport>
-            <CarouselNext button={{ icon: '>' }} tooltip={{ className: 'tooltip', children: 'Next lesson' }} />
-          </Carousel>
-        </div>,
-      );
-      for (const kind of ['previous', 'next']) {
-        cy.get(`[data-carousel-action="${kind}"]`)
-          .focus()
-          .then(button => {
-            cy.contains('[role="tooltip"]', `${kind === 'next' ? 'Next' : 'Previous'} lesson`).should(tip => {
-              const { clientWidth } = tip[0].ownerDocument.documentElement;
-              const arrow = button[0].getBoundingClientRect();
-              const box = tip[0].getBoundingClientRect();
-              expect(box.width).to.be.greaterThan(kind === 'previous' ? arrow.left : clientWidth - arrow.right);
-              expect(box.left).to.be.at.least(0);
-              expect(box.right).to.be.at.most(clientWidth);
-              // Flipped to the side with room rather than covering its arrow.
-              if (kind === 'previous') {
-                expect(box.left).to.be.closeTo(arrow.right, 1);
-              } else {
-                expect(box.right).to.be.closeTo(arrow.left, 1);
-              }
-            });
-          });
-      }
-    });
-  }
-
-  const useFallbackPositioning = () =>
-    cy.window().then(win => {
-      const supports = win.CSS.supports.bind(win.CSS);
-      cy.stub(win.CSS, 'supports').callsFake((...args: [string]) =>
-        args[0] === 'position-area: self-inline-start' ? false : supports(...args),
-      );
-    });
-  // The tooltip box must stay in the viewport, leave its arrow uncovered and sit against it on the reported side.
-  const expectTooltipBeside = (button: HTMLElement, label: string, placement: string) =>
-    cy.contains('[role="tooltip"]', label).should(tip => {
-      const doc = tip[0].ownerDocument;
-      const { clientWidth, clientHeight } = doc.documentElement;
-      const arrow = button.getBoundingClientRect();
-      const box = tip[0].getBoundingClientRect();
-      expect(tip[0]).to.have.attr('data-placement', placement);
-      expect(box.left).to.be.at.least(-0.5);
-      expect(box.top).to.be.at.least(-0.5);
-      expect(box.right).to.be.at.most(clientWidth + 0.5);
-      expect(box.bottom).to.be.at.most(clientHeight + 0.5);
-      expect(
-        button.contains(doc.elementFromPoint(arrow.left + arrow.width / 2, arrow.top + arrow.height / 2)),
-      ).to.equal(true);
-      const rtl = getComputedStyle(button).direction === 'rtl';
-      const edges = {
-        before: () => expect(rtl ? box.left : box.right).to.be.closeTo(rtl ? arrow.right : arrow.left, 1),
-        after: () => expect(rtl ? box.right : box.left).to.be.closeTo(rtl ? arrow.left : arrow.right, 1),
-        below: () => expect(box.top).to.be.closeTo(arrow.bottom, 1),
-        above: () => expect(box.bottom).to.be.closeTo(arrow.top, 1),
-      };
-      edges[placement as keyof typeof edges]();
-    });
-
-  for (const native of [true, false]) {
-    const kind = native ? 'anchored' : 'fallback';
-    it(`re-places the ${kind} tooltip when a sibling reflow moves its arrow to the edge`, () => {
-      if (!native) {
-        useFallbackPositioning();
-      }
-      mount(
-        <div style={{ position: 'fixed', insetInline: 0, top: 100, display: 'flex' }}>
-          <style>{styles}</style>
-          <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
-            <div id="spacer" style={{ flex: '0 0 0px' }} />
-            <CarouselNext button={{ icon: '>' }} tooltip={{ className: 'tooltip', children: 'Next lesson' }} />
-            <CarouselViewport style={{ flex: 1 }}>{['First', 'Second']}</CarouselViewport>
-          </Carousel>
-        </div>,
-      );
-      cy.get('[data-carousel-action="next"]')
-        .focus()
-        .then(button => {
-          expectTooltipBeside(button[0], 'Next lesson', 'after');
-          cy.get('#spacer').then(spacer => {
-            spacer[0].style.flexBasis = `calc(100% - ${button[0].getBoundingClientRect().width}px)`;
-          });
-          expectTooltipBeside(button[0], 'Next lesson', 'before');
-        });
-    });
-
-    it(`re-places the ${kind} tooltip when only the direction changes`, () => {
-      if (!native) {
-        useFallbackPositioning();
-      }
-      mount(
-        <div id="host" style={{ position: 'fixed', insetInline: 0, top: 100, display: 'flex' }}>
-          <style>{styles}</style>
-          <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
-            <CarouselPrevious button={{ icon: '<' }} tooltip={{ className: 'tooltip', children: 'Previous lesson' }} />
-            <CarouselViewport style={{ flex: 1 }}>{['First', 'Second']}</CarouselViewport>
-          </Carousel>
-        </div>,
-      );
-      cy.get('[data-carousel-action="previous"]')
-        .focus()
-        .then(button => {
-          expectTooltipBeside(button[0], 'Previous lesson', 'after');
-          // The arrow stays at the left edge, where the inline start side now has room.
-          cy.get('#host').then(host => {
-            host[0].dir = 'rtl';
-            host[0].style.justifyContent = 'flex-end';
-            host[0].style.flexDirection = 'row-reverse';
-          });
-          cy.wrap(button).should(el => expect(el[0].getBoundingClientRect().left).to.be.closeTo(0, 1));
-          expectTooltipBeside(button[0], 'Previous lesson', 'before');
-        });
-    });
-
-    for (const dir of ['ltr', 'rtl'] as const) {
-      it(`moves a ${kind} ${dir} tooltip below or above its arrow when neither side has room`, () => {
-        if (!native) {
-          useFallbackPositioning();
-        }
-        const label = 'Previous lesson, too long for a side';
-        let atBottom: () => void;
-        const Layout = () => {
-          const [bottom, setBottom] = React.useState(false);
-          atBottom = () => setBottom(true);
-          return (
-            <div
-              dir={dir}
-              style={{
-                position: 'fixed',
-                insetInline: 0,
-                ...(bottom ? { bottom: 0 } : { top: 100 }),
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <style>{`${styles}\n.wide { white-space: nowrap; max-width: none; }`}</style>
-              <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
-                <CarouselPrevious button={{ icon: '<' }} tooltip={{ className: 'tooltip wide', children: label }} />
-                <CarouselViewport style={{ display: 'none' }}>{['First', 'Second']}</CarouselViewport>
-              </Carousel>
-            </div>
-          );
-        };
-        cy.viewport(320, 400);
-        mount(<Layout />);
-        cy.get('[data-carousel-action="previous"]')
-          .focus()
-          .then(button => {
-            cy.contains('[role="tooltip"]', label).should(tip => {
-              expect(tip[0].getBoundingClientRect().width).to.be.greaterThan(160);
-            });
-            expectTooltipBeside(button[0], label, 'below');
-            cy.then(() => atBottom());
-            expectTooltipBeside(button[0], label, 'above');
-          });
-      });
-    }
-  }
-
-  it('opens the tooltip and calls onFocus once when the Next button mounts with autoFocus', () => {
+  it('focuses the Next button and calls onFocus once when it mounts with autoFocus', () => {
     const onFocus = cy.stub();
     mount(
       <Carousel aria-label="Lessons">
@@ -376,7 +192,6 @@ describe('Carousel browser behavior', () => {
       </Carousel>,
     );
     cy.get('[data-carousel-action="next"]').should('be.focused');
-    cy.contains('[role="tooltip"]', 'Next').should('be.visible');
     cy.wrap(onFocus).should('have.been.calledOnce');
   });
 
@@ -789,7 +604,6 @@ describe('Carousel browser behavior', () => {
     });
     cy.wrap(onClick).should('not.have.been.called');
     cy.wrap(onFocus).should('have.been.calledOnce');
-    cy.contains('[role="tooltip"]', 'Next').should('be.visible');
     cy.then(() => {
       render.resetHistory();
       flushSync(rename);
@@ -802,7 +616,6 @@ describe('Carousel browser behavior', () => {
     cy.then(() => update(true));
     cy.get(next).should('be.visible');
     cy.contains('button', 'After').should('be.focused');
-    cy.contains('[role="tooltip"]', 'Next').should('not.be.visible');
     cy.wrap(onFocus).should('have.been.calledOnce');
   });
 
@@ -1134,44 +947,6 @@ describe('Carousel browser behavior', () => {
     cy.get('[data-carousel-action="next"]').focus();
     cy.then(() => removeLast());
     cy.get('[aria-label="Slide 2 of 2"]').should('be.focused');
-  });
-
-  it('dismisses the newest tooltip before the focused carousel tooltip', () => {
-    let showNewer: () => void;
-    const Tooltips = () => {
-      const [visible, setVisible] = React.useState(false);
-      showNewer = () => setVisible(true);
-      return (
-        <>
-          <CarouselDirectionTooltip
-            content={{ children: 'Older', popover: 'manual' }}
-            position="after"
-            unavailable={false}
-          >
-            <button>Arrow</button>
-          </CarouselDirectionTooltip>
-          <Tooltip
-            relationship="description"
-            content={{ children: 'Newer', popover: 'manual' }}
-            visible={visible}
-            onVisibleChange={(_, data) => setVisible(data.visible)}
-          >
-            <button>Other</button>
-          </Tooltip>
-        </>
-      );
-    };
-    mount(<Tooltips />);
-    cy.contains('button', 'Arrow').focus();
-    cy.contains('[role="tooltip"]', 'Older').should('be.visible');
-    cy.then(() => showNewer());
-    cy.contains('[role="tooltip"]', 'Newer').should('be.visible');
-    cy.contains('button', 'Arrow').realPress('Escape');
-    cy.contains('[role="tooltip"]', 'Newer').should('not.be.visible');
-    cy.contains('[role="tooltip"]', 'Older').should('be.visible');
-    cy.contains('button', 'Arrow').realPress('Escape');
-    cy.contains('[role="tooltip"]', 'Older').should('not.exist');
-    cy.contains('button', 'Arrow').should('be.focused');
   });
 
   [

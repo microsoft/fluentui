@@ -529,18 +529,22 @@ describe('Carousel', () => {
     expect(jest.getTimerCount()).toBe(0);
   });
 
-  it('renders the CarouselNav template once per group and names arrows by their tooltips', () => {
+  it('renders the CarouselNav template once per group and names arrows through aria-label', () => {
     const wrapperRef = React.createRef<HTMLDivElement>();
     const buttonRef = React.createRef<HTMLButtonElement>();
     render(
       <Carousel aria-label="Notes" groupSize={2}>
-        <CarouselPrevious tooltip="Précédent" />
+        <CarouselPrevious />
         <CarouselViewport>
           {items.map(item => (
             <CarouselCard key={item}>{item}</CarouselCard>
           ))}
         </CarouselViewport>
-        <CarouselNext ref={wrapperRef} data-carousel-button="previous" button={{ ref: buttonRef }} tooltip="Suivant" />
+        <CarouselNext
+          ref={wrapperRef}
+          data-carousel-button="previous"
+          button={{ ref: buttonRef, 'aria-label': 'Suivant' }}
+        />
         <CarouselNav aria-label="Pages">
           <CarouselNavButton className="dot" indicator={{ className: 'mark' }} />
         </CarouselNav>
@@ -558,7 +562,7 @@ describe('Carousel', () => {
     expect(wrapperRef.current).toBe(next.parentElement);
     expect(wrapperRef.current).toHaveAttribute('data-carousel-button', 'next');
     expect(next).toHaveAttribute('aria-controls', screen.getByRole('tabpanel').parentElement!.id);
-    expect(next).not.toHaveAttribute('aria-label');
+    expect(next).not.toHaveAttribute('aria-labelledby');
     // At the first group the previous slot stays in layout but is hidden and inert.
     const previousSlot = document.querySelector('[data-carousel-button="previous"]');
     expect(previousSlot).toHaveAttribute('hidden');

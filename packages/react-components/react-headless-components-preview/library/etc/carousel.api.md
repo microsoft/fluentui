@@ -102,7 +102,6 @@ type CarouselDirectionButtonSlots = {
     button: NonNullable<Slot<Extract<ButtonBaseProps, {
         as?: 'button';
     }> & RefAttributes<HTMLButtonElement>>>;
-    tooltip: NonNullable<Slot<'div'>>;
 };
 export { CarouselDirectionButtonSlots as CarouselNextSlots }
 export { CarouselDirectionButtonSlots as CarouselPreviousSlots }

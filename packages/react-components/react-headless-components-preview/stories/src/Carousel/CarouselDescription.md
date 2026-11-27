@@ -58,10 +58,15 @@ disabled or a single group), including a focused tab that becomes disabled or hi
 group. If the focused tab is removed while the nav stays complete, focus moves to the selected tab. Focus elsewhere
 is left alone. The nav's own `onFocus`/`onBlur` run only while the tablist is available.
 
-`CarouselPrevious` and `CarouselNext` have `root` (layout wrapper), `button` (headless Button) and `tooltip`
-(headless Tooltip content) slots. The tooltip text names the button through `aria-labelledby`; localize it
-with `tooltip="Précédent"`. Supply your own chevron icons and mirror them in RTL. Use semantic `dir="rtl"`
-on the carousel or an ancestor so the example's `:dir(rtl)` icons agree with keyboard and motion direction.
+`CarouselPrevious` and `CarouselNext` have `root` (layout wrapper) and `button` (headless Button) slots. The
+button is named "Previous" or "Next" through `aria-label`; localize it with `button={{ 'aria-label': 'Précédent' }}`
+(or `aria-labelledby`). There is no built-in tooltip, so the carousel doesn't pay for one you don't use. To add one,
+wrap the button in a headless `Tooltip` from the slot render function, as the examples do. The button's own
+`aria-label` wins over a tooltip's label, so show `props['aria-label']` as the content with
+`relationship="inaccessible"`; the name and the tooltip then stay in sync. While a transition runs at a boundary the
+arrow stays focusable with `disabledFocusable`, which the callback can read to keep the tooltip closed.
+Supply your own chevron icons and mirror them in RTL. Use semantic `dir="rtl"` on the carousel or an ancestor so the
+example's `:dir(rtl)` icons agree with keyboard and motion direction.
 If you wrap the arrow with a slot render function, forward the supplied props and ref to its component.
 Carousel checks the fieldsets that contain the current native button, even when a slot replaces that element.
 When it needs to keep checking, the entire custom arrow stays mounted in a layout-free wrapper. The wrapper
@@ -134,10 +139,7 @@ bundled motion values or styling. Without an adapter, changes are immediate.
 The example CSS reserves both Previous/Next slots and layers groups in one grid cell, so the tallest group sets
 the viewport height. Inactive groups have `hidden`, `inert` and `aria-hidden`; the CSS keeps their layout
 contribution with `visibility: hidden`. At container widths of 320px or less the cards stack within the
-current group. Previous/Next tooltips prefer the outer side of their arrow; near a viewport edge they use the
-other side, or go below (else above) the arrow when neither side fits, re-placing when the arrow moves. The
-tooltip's `data-placement` (`before`, `after`, `below` or `above`) reports the side in use. Reserve outer clearance
-to keep the preferred side.
+current group.
 
 This fixed-group preview is maintained separately from the styled Embla Carousel; it does not share the
 styled component's automatic grouping, dragging or event contract. Alternative pagination formats are outside this preview.

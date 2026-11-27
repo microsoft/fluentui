@@ -1,4 +1,4 @@
-/* Story frame — a realistic width, with side room for the arrow tooltips. */
+/* Story frame — a realistic width, with side room around the arrows. */
 .example {
   box-sizing: border-box;
   display: grid;
@@ -322,7 +322,6 @@
  * ----------------------------------------------------------------*/
 .tooltip {
   box-sizing: border-box;
-  /* Size to the label rather than the space left beside a pinned arrow. */
   inline-size: max-content;
   max-inline-size: 240px;
   padding: var(--space-1) var(--space-2);

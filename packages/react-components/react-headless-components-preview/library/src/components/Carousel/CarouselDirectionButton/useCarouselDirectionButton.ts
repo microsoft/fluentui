@@ -33,7 +33,7 @@ export const useCarouselDirectionButton = (
   kind: 'previous' | 'next',
 ): CarouselDirectionButtonState => {
   const context = useCarouselContext();
-  const { button, tooltip, ...rest } = props;
+  const { button, ...rest } = props;
   const unavailable = kind === 'previous' ? context.previousUnavailable : context.nextUnavailable;
   const buttonSlot = slot.always(button, { elementType: Button });
   const present = !isControlHidden(props) && !isControlHidden(buttonSlot);
@@ -58,8 +58,8 @@ export const useCarouselDirectionButton = (
   const focusTarget = React.useRef<HTMLButtonElement | null>(null);
   const controlRef = useMergedRefs(keepButtonMounted ? buttonRef : buttonSlot.ref, ownControlRef, focusTarget);
   const probeRef = !custom && present && !showWrapper && context.pageCount > 1 ? probe : undefined;
-  // Native autofocus fires during commit, before the tooltip's mount effects can react to it, and a staged custom
-  // button is mounted before it is usable. Honor `autoFocus` once from an effect, when the arrow is shown.
+  // A staged custom button is mounted before it is usable, so native autofocus would fire too early. Honor `autoFocus`
+  // once from an effect, when the arrow is shown.
   const pendingAutoFocus = React.useRef(buttonSlot.autoFocus);
   React.useEffect(() => {
     if (pendingAutoFocus.current && !hidden && focusTarget.current) {
@@ -91,17 +91,11 @@ export const useCarouselDirectionButton = (
     keepButtonMounted ? undefined : inertRef,
     keepButtonMounted ? undefined : track,
   );
-  const tooltipSlot = slot.always(tooltip, {
-    elementType: 'div',
-    defaultProps: { children: kind === 'previous' ? 'Previous' : 'Next' },
-  });
-  const tooltipId = tooltipSlot.id ?? `${context.idPrefix}-${kind}-label`;
+  const named = !!buttonSlot['aria-label'] || !!buttonSlot['aria-labelledby'];
   const control = {
     ...buttonSlot,
     'aria-controls': context.viewportId,
-    'aria-labelledby': tooltipId,
-    'aria-label': undefined,
-    'aria-describedby': undefined,
+    'aria-label': named ? buttonSlot['aria-label'] : kind === 'previous' ? 'Previous' : 'Next',
     'aria-disabled': wrapperDisabled || buttonSlot['aria-disabled'],
     'data-carousel-action': kind,
     ref: controlRef,
@@ -113,7 +107,7 @@ export const useCarouselDirectionButton = (
     onClick: mergeCallbacks(buttonSlot.onClick, kind === 'previous' ? context.previous : context.next),
   };
   return {
-    components: { root: 'div', button: Button, tooltip: 'div' },
+    components: { root: 'div', button: Button },
     root: Object.assign(
       slot.always(
         getIntrinsicElementProps('div', {
@@ -126,7 +120,6 @@ export const useCarouselDirectionButton = (
       { 'data-carousel-button': kind },
     ),
     button: control,
-    tooltip: Object.assign(tooltipSlot, { id: tooltipId }),
     kind,
     rendered: showWrapper,
     probeRef,

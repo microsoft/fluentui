@@ -14,6 +14,9 @@ import {
   CarouselViewport,
 } from '@fluentui/react-headless-components-preview/carousel';
 import type { CarouselProps } from '@fluentui/react-headless-components-preview/carousel';
+// eslint-disable-next-line import/no-extraneous-dependencies -- Shared story helper uses development dependencies.
+import { Tooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { carouselTransition } from './carouselTransition';
 import styles from './carousel.module.css';
 
@@ -63,13 +66,23 @@ export const WorkshopSlide = ({ track, title, description, when }: Workshop): Re
 );
 
 /**
- * Arrow glyphs live in an `aria-hidden` span, so the tooltip text alone names the button.
+ * Arrow glyphs live in an `aria-hidden` span, so the button's label alone names it.
  * A factory rather than exported objects: Storybook's docgen tags exported values, which would then be spread onto the span.
  */
 export const arrowIcon = (direction: 'previous' | 'next'): { children: React.ReactElement; 'aria-hidden': true } => ({
   children: direction === 'previous' ? <ChevronLeftRegular /> : <ChevronRightRegular />,
   'aria-hidden': true as const,
 });
+
+/**
+ * Arrows have no built-in tooltip. Compose one through the button slot's render function. The button keeps its
+ * `aria-label` ("Previous"/"Next" by default), so the tooltip only shows that name and stays `inaccessible`.
+ */
+export const arrowTooltip: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
+  <Tooltip relationship="inaccessible" content={{ children: props['aria-label'], className: styles.tooltip }}>
+    <Component {...props} />
+  </Tooltip>
+);
 
 /** Shared story composition: autoplay button first, arrows around the viewport, nav below. */
 export const CarouselExample = ({
@@ -79,10 +92,7 @@ export const CarouselExample = ({
 }: CarouselProps & { slides: React.ReactNode[]; autoplay?: boolean }): React.ReactElement => (
   <Carousel className={styles.carousel} transition={carouselTransition} {...props}>
     {autoplay && <CarouselAutoplayButton className={`${styles.button} ${styles.playback}`} />}
-    <CarouselPrevious
-      button={{ className: styles.button, icon: arrowIcon('previous') }}
-      tooltip={{ className: styles.tooltip }}
-    />
+    <CarouselPrevious button={{ className: styles.button, icon: arrowIcon('previous'), children: arrowTooltip }} />
     <CarouselViewport className={styles.viewport}>
       {slides.map((slide, i) => (
         <CarouselCard key={i} className={styles.card}>
@@ -90,10 +100,7 @@ export const CarouselExample = ({
         </CarouselCard>
       ))}
     </CarouselViewport>
-    <CarouselNext
-      button={{ className: styles.button, icon: arrowIcon('next') }}
-      tooltip={{ className: styles.tooltip }}
-    />
+    <CarouselNext button={{ className: styles.button, icon: arrowIcon('next'), children: arrowTooltip }} />
     <CarouselNav className={styles.nav}>
       <CarouselNavButton className={styles.navButton} indicator={{ className: styles.indicator }} />
     </CarouselNav>

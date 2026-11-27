@@ -8,10 +8,12 @@ export type CarouselDirectionButtonSlots = {
    * `hidden` and `inert`; style `[hidden]` with `visibility: hidden` rather than `display: none`.
    */
   root: Slot<'div'>;
-  /** Icon-only button. Supply the chevron through `button={{ icon }}`; mirror it in RTL. */
+  /**
+   * Icon-only button, named "Previous" or "Next" through `aria-label` unless it has its own `aria-label` or
+   * `aria-labelledby`. Supply the chevron through `button={{ icon }}`; mirror it in RTL. To add a tooltip, wrap the
+   * button in a slot render function; `disabledFocusable` marks an arrow that is unavailable.
+   */
   button: NonNullable<Slot<Extract<ButtonProps, { as?: 'button' }> & RefAttributes<HTMLButtonElement>>>;
-  /** Tooltip that names the button through `aria-labelledby`. Defaults to "Previous" or "Next". */
-  tooltip: NonNullable<Slot<'div'>>;
 };
 
 export type CarouselDirectionButtonProps = ComponentProps<Partial<CarouselDirectionButtonSlots>>;
