@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Popover openOnContext opens from the keyboard, cleans up its pending pointerup listener, and keeps the hover-close event on React 16",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

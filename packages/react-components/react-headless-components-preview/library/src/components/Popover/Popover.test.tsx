@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
@@ -570,5 +570,32 @@ describe('Popover', () => {
 
     rerender(<Example open={false} />);
     expect(queryByTestId('custom')).not.toBeInTheDocument();
+  });
+
+  it('reports the mouseleave event type after the hover delay', () => {
+    jest.useFakeTimers();
+    try {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(
+        <Popover openOnHover mouseLeaveDelay={100} onOpenChange={onOpenChange}>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>Content</PopoverSurface>
+        </Popover>,
+      );
+
+      fireEvent.mouseEnter(getByText('Trigger'));
+      fireEvent.mouseLeave(getByText('Trigger'));
+      act(() => {
+        jest.advanceTimersByTime(100);
+      });
+
+      const lastData = onOpenChange.mock.calls[onOpenChange.mock.calls.length - 1][1];
+      expect(lastData.type).toBe('mouseleave');
+      expect(lastData.open).toBe(false);
+    } finally {
+      jest.useRealTimers();
+    }
   });
 });

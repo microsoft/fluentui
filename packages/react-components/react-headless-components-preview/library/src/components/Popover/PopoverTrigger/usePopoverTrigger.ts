@@ -1,6 +1,6 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
@@ -36,19 +36,33 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
 
   const { targetDocument } = useFluent();
 
-  const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
+  const pendingPointerUpRef = React.useRef<(() => void) | undefined>(undefined);
+  React.useEffect(() => () => pendingPointerUpRef.current?.(), []);
+
+  const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (!openOnContext || !targetDocument) {
       return;
     }
 
     e.preventDefault();
     const nativeEvent = e.nativeEvent;
+    pendingPointerUpRef.current?.();
+    pendingPointerUpRef.current = undefined;
+
+    // Keyboard context menus (Menu key, Shift+F10) have no trailing pointerup.
+    if (e.button !== 2) {
+      setOpen(nativeEvent, true);
+      return;
+    }
+
     // Defer to trailing `pointerup` so popover="auto" light-dismiss doesn't treat it as outside-click.
-    targetDocument.addEventListener('pointerup', () => setOpen(nativeEvent, true), {
-      once: true,
-      capture: true,
-    });
-  };
+    const onPointerUp = () => {
+      pendingPointerUpRef.current = undefined;
+      setOpen(nativeEvent, true);
+    };
+    targetDocument.addEventListener('pointerup', onPointerUp, { once: true, capture: true });
+    pendingPointerUpRef.current = () => targetDocument.removeEventListener('pointerup', onPointerUp, { capture: true });
+  });
 
   const onClick = (e: React.MouseEvent<HTMLElement>) => {
     if (!openOnContext) {
@@ -84,7 +98,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
     ...child?.props,
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
-    onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    onContextMenu: mergeCallbacks(child?.props.onContextMenu, onContextMenu),
     onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
     onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
     ref: useMergedRefs(triggerRef, positioningCtx.targetRef, getReactElementRef(child)),

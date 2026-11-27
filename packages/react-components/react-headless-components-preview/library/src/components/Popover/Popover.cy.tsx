@@ -339,6 +339,11 @@ describe('Popover', () => {
       cy.get(popoverTriggerSelector).rightclick().get(popoverContentSelector).should('be.visible');
     });
 
+    it('should open immediately from a keyboard context menu', () => {
+      cy.get(popoverTriggerSelector).focus().trigger('contextmenu', { button: 0 });
+      cy.get(popoverContentSelector).should('be.visible');
+    });
+
     it('should stay open after right click (no immediate light-dismiss)', () => {
       // Regression: previously the trailing pointerup/auxclick from the
       // right-click sequence was interpreted by the browser's `popover="auto"`
