@@ -73,7 +73,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
  */
 export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<HTMLElement>): AvatarBaseState => {
   const { dir } = useFluent();
-  const { name, image: imageProp, initials: initialsProp, badge, active = 'unset', ...rest } = props;
+  const { name, image: imageProp, initials: initialsProp, icon: iconProp, badge, active = 'unset', ...rest } = props;
 
   const baseId = useId('avatar-');
 
@@ -123,7 +123,7 @@ export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<H
   // Render the icon slot *only if* there aren't any initials or image to display
   let icon: AvatarBaseState['icon'] = undefined;
   if (!initials && (!image || imageHidden)) {
-    icon = slot.optional(props.icon, {
+    icon = slot.optional(iconProp, {
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
