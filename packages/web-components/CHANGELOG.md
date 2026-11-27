@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Wed, 25 Nov 2026 04:08:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 26 Nov 2026 04:08:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.5)
+
+Thu, 26 Nov 2026 04:08:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.4..@fluentui/web-components_v3.2.5)
+
+### Patches
+
+- fix: restore menu list keyboard navigation after reconnect ([PR #36871](https://github.com/microsoft/fluentui/pull/36871) by aseebshibin4@gmail.com)
+- fix: stop setTheme from retaining every theme object and element-scoped style sheet ([PR #37151](https://github.com/microsoft/fluentui/pull/37151) by eruvalca@outlook.com)
+- Fix `spellcheck` conversion and propagation for TextInput and TextArea. ([PR #36500](https://github.com/microsoft/fluentui/pull/36500) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.4)
 

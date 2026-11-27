@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: render Menu popover only while open",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
