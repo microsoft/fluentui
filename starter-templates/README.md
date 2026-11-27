@@ -21,6 +21,28 @@ starter-templates/
 
 ## Contributing
 
+### Integration coverage
+
+Run the Vite starter's TypeScript and production build against this checkout's
+built Fluent UI packages in an isolated temporary app:
+
+```bash
+yarn nx run stater-templates:test-integration
+```
+
+Nx builds the required packages first; affected CI also runs this check.
+It does not cover Vitest/jsdom or browser behavior.
+
+Validate the runner:
+
+```bash
+yarn nx run-many -p scripts-projects-test -t test type-check lint
+```
+
+When adding an in-repository starter dependency, update both the
+`implicitDependencies` in `project.json` and the package selection in
+`scripts/projects-test/src/vite.ts`.
+
 We welcome contributions! You can help by:
 
 - Improving existing templates

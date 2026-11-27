@@ -2,5 +2,16 @@
   "name": "stater-templates",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "tags": ["vNext", "tools"]
+  "tags": ["vNext", "tools"],
+  "implicitDependencies": ["react-components", "scripts-projects-test"],
+  "targets": {
+    "test-integration": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["^build"],
+      "options": {
+        "command": "node -r ./scripts/ts-node/src/register scripts/projects-test/src/vite.ts"
+      }
+    }
+  }
 }

@@ -1,10 +1,11 @@
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import path from 'path';
 
 import { getDependencies } from '@fluentui/scripts-monorepo';
-import { sh } from '@fluentui/scripts-utils';
 import fs from 'fs-extra';
 
-import { createTempDir, shEcho } from './utils';
+import { createTempDir } from './utils';
 
 type PackedPackages = Record</** npmPackageName (including scope) */ string, /** packed package path */ string>;
 
@@ -28,13 +29,45 @@ export function createPackageResolutions(packages: PackedPackages): Record<strin
   );
 }
 
+export async function packPackageArchives(
+  packages: { name: string; absoluteRootPath: string }[],
+  directory: string,
+  ignoreScripts = false,
+): Promise<PackedPackages> {
+  const archives: PackedPackages = {};
+  const pack = promisify(execFile);
+  let next = 0;
+  const workers = Array.from({ length: Math.min(4, packages.length) }, async () => {
+    while (next < packages.length) {
+      const pkg = packages[next++];
+      const { stdout } = await pack(
+        'npm',
+        ['pack', '--json', ignoreScripts ? '--ignore-scripts' : '--foreground-scripts=false', pkg.absoluteRootPath],
+        { cwd: directory, encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 },
+      );
+      const result: { filename?: string }[] = JSON.parse(stdout);
+      const filename = result[0]?.filename;
+      if (!filename || path.basename(filename) !== filename || !fs.existsSync(path.join(directory, filename))) {
+        throw new Error(`${pkg.name}: npm pack did not produce an archive in ${directory}`);
+      }
+      archives[pkg.name] = path.join(directory, filename);
+    }
+  });
+  // Promise.all rejects before sibling processes finish; drain them before callers can clean up.
+  const results = await Promise.allSettled(workers);
+  for (const result of results) {
+    if (result.status === 'rejected') {
+      throw result.reason;
+    }
+  }
+  return archives;
+}
+
 export async function packProjectPackages(logger: Function, project: string): Promise<PackedPackages> {
   if (packedPackages) {
     logger(`✔️ Packages already packed`);
     return packedPackages;
   }
-
-  packedPackages = {};
 
   const { dependencies: projectDependencies, projectGraph, getProjectPackageJsonInfo } = await getDependencies(project);
   // add provided package to be packaged
@@ -49,39 +82,27 @@ export async function packProjectPackages(logger: Function, project: string): Pr
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
 
-  await shEcho('which npm', tmpDirectory);
-  await shEcho('npm --version', tmpDirectory);
+  const packages = projectDependencies.map(projectConfig => {
+    const packageName = projectConfig.name;
+    const packageInfo = getProjectPackageJsonInfo(packageName, projectGraph);
+    if (!packageInfo) {
+      throw new Error(`Package ${packageName} doesn't exist`);
+    }
 
-  await Promise.all(
-    projectDependencies.map(async projectConfig => {
-      const packageName = projectConfig.name;
-      const packageInfo = getProjectPackageJsonInfo(packageName, projectGraph);
-      if (!packageInfo) {
-        throw new Error(`Package ${packageName} doesn't exist`);
-      }
+    const packagePath = packageInfo.absoluteRootPath;
+    const packageMain = packageInfo.main;
+    const entryPointPath = packageMain ? path.join(packagePath, packageMain) : '';
+    if (!fs.existsSync(entryPointPath)) {
+      throw new Error(
+        `Package '${packageName}' does not appear to have been built yet.` +
+          `Please ensure that package:"${project}" has properly defined dependencies in its package.json`,
+      );
+    }
 
-      const packagePath = packageInfo.absoluteRootPath;
-      const packageMain = packageInfo.main;
-      const entryPointPath = packageMain ? path.join(packagePath, packageMain) : '';
-      if (!fs.existsSync(entryPointPath)) {
-        throw new Error(
-          `Package '${packageName}' does not appear to have been built yet.` +
-            `Please ensure that package:"${project}" has properly defined dependencies in its package.json`,
-        );
-      }
-
-      // Use `npm pack` because `yarn pack` incorrectly calculates the included files when the
-      // files to include/exclude are specified by .npmignore rather than package.json `files`.
-      // (--quiet outputs only the .tgz filename, not all the included files)
-      const packFile = (await sh(`npm pack --quiet ${packagePath}`, tmpDirectory, true /*pipeOutputToResult*/)).trim();
-      const packedPackagePath = path.join(tmpDirectory, packFile);
-
-      // need to normalize to include npm Scope for other apis
-      packedPackages[`@fluentui/${packageName}`] = packedPackagePath;
-
-      console.log('Wrote tarball to', packagePath);
-    }),
-  );
+    return packageInfo;
+  });
+  // npm respects package files/.npmignore; Yarn pack does not produce the same archives.
+  packedPackages = await packPackageArchives(packages, tmpDirectory);
 
   logger(`✔️ Packages were packaged to ${tmpDirectory}`);
 
