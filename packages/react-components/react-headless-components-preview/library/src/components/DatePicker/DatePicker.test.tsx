@@ -309,6 +309,23 @@ describe('DatePicker', () => {
       expect(onOpenChange.mock.calls[1][1]).toMatchObject({ open: false, reason: 'outsideClick' });
     });
 
+    it('opens when :popover-open is unsupported', () => {
+      const spy = jest
+        .spyOn(HTMLElement.prototype, 'matches')
+        .mockImplementation(function (this: HTMLElement, selector: string) {
+          if (selector === ':popover-open') {
+            throw new SyntaxError('unsupported');
+          }
+          return Element.prototype.matches.call(this, selector);
+        });
+      try {
+        const { getByRole } = renderDatePicker({ defaultOpen: true });
+        expect(getByRole('dialog')).toBeInTheDocument();
+      } finally {
+        spy.mockRestore();
+      }
+    });
+
     it('cannot open while disabled', () => {
       const { container, getByRole, queryByRole } = renderDatePicker({ disabled: true });
       const trigger = getByRole('combobox', { name: 'Due date Select a date' });
