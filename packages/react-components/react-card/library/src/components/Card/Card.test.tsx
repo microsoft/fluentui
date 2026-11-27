@@ -158,17 +158,28 @@ describe('Card DOM attributes', () => {
     const { container } = render(
       <Card
         appearance="outline"
-        defaultSelected
+        disabled
         focusMode="off"
         onSelectionChange={jest.fn()}
         orientation="horizontal"
+        selected
         size="large"
       />,
     );
 
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
-    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'role']);
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'role',
+    ]);
+  });
+
+  it('forwards native attributes not in the old allow-list', () => {
+    const { container } = render(<Card autoCapitalize="off" />);
+
+    expect((container.firstElementChild as HTMLElement).getAttribute('autocapitalize')).toBe('off');
   });
 });
 
@@ -178,11 +189,11 @@ describe('useCardBase_unstable base hook', () => {
       useCardBase_unstable(
         {
           checkbox: {},
-          defaultSelected: true,
           disabled: false,
           floatingAction: {},
           focusMode: 'off',
           onSelectionChange: jest.fn(),
+          selected: true,
           shouldRestrictTriggerAction: () => false,
         },
         React.createRef(),

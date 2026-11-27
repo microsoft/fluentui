@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../testing/isConformant';
 import { RatingItem } from './RatingItem';
 import { RatingItemProvider } from '../../contexts/RatingItemContext';
 import type { RatingItemContextValue } from './RatingItem.types';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
+import { useRatingItemBase_unstable } from './useRatingItem';
 
 describe('RatingItem', () => {
   isConformant({
@@ -132,5 +134,28 @@ describe('RatingItem DOM attributes', () => {
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
     expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
+
+describe('useRatingItemBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useRatingItemBase_unstable(
+        {
+          value: 2,
+          selectedIcon: <span />,
+          unselectedIcon: <span />,
+          halfValueInput: {},
+          fullValueInput: {},
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('value');
+    expect(result.current.root).not.toHaveProperty('selectedIcon');
+    expect(result.current.root).not.toHaveProperty('unselectedIcon');
+    expect(result.current.root).not.toHaveProperty('halfValueInput');
+    expect(result.current.root).not.toHaveProperty('fullValueInput');
   });
 });

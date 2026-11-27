@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import type { BreadcrumbItemProps } from './BreadcrumbItem.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbItemClassNames } from './useBreadcrumbItemStyles.styles';
+import { useBreadcrumbItemBase_unstable } from './useBreadcrumbItem';
 
 describe('BreadcrumbItem', () => {
   isConformant({
@@ -43,5 +45,13 @@ describe('BreadcrumbItem DOM attributes', () => {
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
     expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
+
+describe('useBreadcrumbItemBase_unstable base hook', () => {
+  it('forwards root DOM props', () => {
+    const { result } = renderHook(() => useBreadcrumbItemBase_unstable({ id: 'breadcrumb-item' }, React.createRef()));
+
+    expect(result.current.root.id).toBe('breadcrumb-item');
   });
 });

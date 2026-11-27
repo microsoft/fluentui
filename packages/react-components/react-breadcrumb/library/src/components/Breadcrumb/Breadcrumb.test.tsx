@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
 import { BreadcrumbItem } from '../BreadcrumbItem/BreadcrumbItem';
 import { isConformant } from '../../testing/isConformant';
+import { useBreadcrumbBase_unstable } from './useBreadcrumb';
 
 describe('Breadcrumb', () => {
   isConformant({
@@ -91,5 +93,16 @@ describe('Breadcrumb DOM attributes', () => {
       'class',
       'data-tabster',
     ]);
+  });
+});
+
+describe('useBreadcrumbBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbBase_unstable({ focusMode: 'arrow', list: { children: 'Items' } }, React.createRef()),
+    );
+
+    expect(result.current.root).not.toHaveProperty('focusMode');
+    expect(result.current.root).not.toHaveProperty('list');
   });
 });

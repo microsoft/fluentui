@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { CardFooter } from './CardFooter';
 import { isConformant } from '../../testing/isConformant';
+import { useCardFooterBase_unstable } from './useCardFooter';
 
 describe('CardFooter', () => {
   isConformant({
@@ -32,5 +34,13 @@ describe('CardFooter DOM attributes', () => {
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
     expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
+
+describe('useCardFooterBase_unstable base hook', () => {
+  it('does not forward slot props to the root slot', () => {
+    const { result } = renderHook(() => useCardFooterBase_unstable({ action: <button /> }, React.createRef()));
+
+    expect(result.current.root).not.toHaveProperty('action');
   });
 });

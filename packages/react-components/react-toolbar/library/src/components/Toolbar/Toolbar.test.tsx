@@ -27,9 +27,7 @@ describe('Toolbar', () => {
 describe('Toolbar DOM attributes', () => {
   it('does not render component props as DOM attributes', () => {
     const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    const { container } = render(
-      <Toolbar defaultCheckedValues={{}} onCheckedValueChange={jest.fn()} size="large" vertical />,
-    );
+    const { container } = render(<Toolbar checkedValues={{}} onCheckedValueChange={jest.fn()} size="large" vertical />);
 
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
@@ -46,13 +44,12 @@ describe('useToolbarBase_unstable base hook', () => {
   it('does not forward component props to the root slot', () => {
     const { result } = renderHook(() =>
       useToolbarBase_unstable(
-        { defaultCheckedValues: {}, onCheckedValueChange: jest.fn(), vertical: true },
+        { checkedValues: {}, onCheckedValueChange: jest.fn(), vertical: true },
         React.createRef(),
       ),
     );
 
     expect(result.current.root).not.toHaveProperty('checkedValues');
-    expect(result.current.root).not.toHaveProperty('defaultCheckedValues');
     expect(result.current.root).not.toHaveProperty('onCheckedValueChange');
     expect(result.current.root).not.toHaveProperty('vertical');
   });

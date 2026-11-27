@@ -70,12 +70,12 @@ describe('Rating DOM attributes', () => {
     const { container } = render(
       <Rating
         color="brand"
-        defaultValue={2}
         iconFilled={StarFilled}
         iconOutline={StarRegular}
         itemLabel={n => `${n}`}
         max={3}
         name="rating"
+        value={2}
         size="large"
         step={0.5}
       />,
@@ -92,7 +92,6 @@ describe('useRatingBase_unstable base hook', () => {
     const { result } = renderHook(() =>
       useRatingBase_unstable(
         {
-          defaultValue: 2,
           iconFilled: StarFilled,
           iconOutline: StarRegular,
           itemLabel: n => `${n}`,
@@ -100,6 +99,7 @@ describe('useRatingBase_unstable base hook', () => {
           name: 'rating',
           onChange: jest.fn(),
           step: 0.5,
+          value: 2,
         },
         React.createRef(),
       ),
