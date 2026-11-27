@@ -853,6 +853,27 @@ describe('Carousel', () => {
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
   });
 
+  it('keeps a finished transition filled until the outgoing group is hidden', async () => {
+    let resolve = () => undefined as void;
+    const outgoingAtCancel: Array<Element | null> = [];
+    const { container } = render(
+      example({
+        transition: () => [
+          runningAnimation(
+            new Promise<void>(done => {
+              resolve = done;
+            }),
+            () => outgoingAtCancel.push(container.querySelector('[data-outgoing]')),
+          ),
+        ],
+      }),
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    await act(async () => resolve());
+    // Canceling while the outgoing group is still shown would repaint it at full opacity for a frame.
+    expect(outgoingAtCancel).toEqual([null]);
+  });
+
   it('does not announce a static collection', () => {
     const { rerender } = render(example({ buttons: false, nav: false }));
     const viewport = screen.getByRole('region').firstElementChild!;

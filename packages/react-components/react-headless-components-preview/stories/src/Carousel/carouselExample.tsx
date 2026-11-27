@@ -62,9 +62,14 @@ export const WorkshopSlide = ({ track, title, description, when }: Workshop): Re
   </>
 );
 
-/** Arrow glyphs live in an `aria-hidden` span, so the tooltip text alone names the button. */
-export const previousIcon = { children: <ChevronLeftRegular />, 'aria-hidden': true } as const;
-export const nextIcon = { children: <ChevronRightRegular />, 'aria-hidden': true } as const;
+/**
+ * Arrow glyphs live in an `aria-hidden` span, so the tooltip text alone names the button.
+ * A factory rather than exported objects: Storybook's docgen tags exported values, which would then be spread onto the span.
+ */
+export const arrowIcon = (direction: 'previous' | 'next'): { children: React.ReactElement; 'aria-hidden': true } => ({
+  children: direction === 'previous' ? <ChevronLeftRegular /> : <ChevronRightRegular />,
+  'aria-hidden': true as const,
+});
 
 /** Shared story composition: autoplay button first, arrows around the viewport, nav below. */
 export const CarouselExample = ({
@@ -75,7 +80,7 @@ export const CarouselExample = ({
   <Carousel className={styles.carousel} transition={carouselTransition} {...props}>
     {autoplay && <CarouselAutoplayButton className={`${styles.button} ${styles.playback}`} />}
     <CarouselPrevious
-      button={{ className: styles.button, icon: previousIcon }}
+      button={{ className: styles.button, icon: arrowIcon('previous') }}
       tooltip={{ className: styles.tooltip }}
     />
     <CarouselViewport className={styles.viewport}>
@@ -85,7 +90,10 @@ export const CarouselExample = ({
         </CarouselCard>
       ))}
     </CarouselViewport>
-    <CarouselNext button={{ className: styles.button, icon: nextIcon }} tooltip={{ className: styles.tooltip }} />
+    <CarouselNext
+      button={{ className: styles.button, icon: arrowIcon('next') }}
+      tooltip={{ className: styles.tooltip }}
+    />
     <CarouselNav className={styles.nav}>
       <CarouselNavButton className={styles.navButton} indicator={{ className: styles.indicator }} />
     </CarouselNav>

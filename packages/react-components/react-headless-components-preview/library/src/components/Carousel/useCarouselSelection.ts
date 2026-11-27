@@ -79,7 +79,9 @@ export function useCarouselSelection(options: SelectionOptions): {
     current.forEach(animation => animation.cancel());
   });
   const settle = useEventCallback((restoreFocus = true) => {
-    cancel();
+    // Don't cancel here: the outgoing group is still `data-outgoing` (visible) until React commits `busy: false`, so
+    // removing its finished fill now paints it at full opacity for a frame. The busy effect's cleanup cancels at that
+    // commit, before paint.
     const anchor = recovery.current;
     recovery.current = null;
     const viewport = viewportRef.current;
