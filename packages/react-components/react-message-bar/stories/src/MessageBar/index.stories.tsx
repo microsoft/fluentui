@@ -17,6 +17,7 @@ export { Dismiss } from './Dismiss.stories';
 export { Animation } from './Animation.stories';
 export { Reflow } from './Reflow.stories';
 export { ManualLayout } from './ManualLayout.stories';
+export { MultilineTextWidth } from './MultilineTextWidth.stories';
 
 export default {
   title: 'Components/MessageBar',

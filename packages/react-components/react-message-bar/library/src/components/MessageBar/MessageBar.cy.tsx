@@ -5,6 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle } from '@fluentui/react-message-bar';
+import type { MessageBarProps } from '@fluentui/react-message-bar';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
@@ -35,7 +36,53 @@ const Test = () => {
   );
 };
 
+const TextMeasure = ({ layout }: Pick<MessageBarProps, 'layout'>) => (
+  <div data-testid="container" style={{ width: 1200 }}>
+    <MessageBar layout={layout}>
+      <MessageBarBody>
+        <MessageBarTitle>Descriptive title</MessageBarTitle>
+        Message providing information to the user with actionable insights. Message providing information to the user
+        with actionable insights. Message providing information to the user with actionable insights.
+      </MessageBarBody>
+      <MessageBarActions containerAction={<button aria-label="dismiss">Dismiss</button>}>
+        <button>Action</button>
+      </MessageBarActions>
+    </MessageBar>
+  </div>
+);
+
 describe('MessageBar', () => {
+  it('bounds multiline text without moving the actions or overflowing a narrow container', () => {
+    mount(<TextMeasure layout="multiline" />);
+
+    cy.get('.fui-MessageBarBody').should($body => {
+      expect($body.width()).to.be.at.most(520);
+    });
+    cy.get('[data-testid="container"]').invoke('css', 'width', '400px');
+    cy.get('.fui-MessageBarBody').should($body => {
+      expect($body.width()).to.be.lessThan(400);
+      const body = $body[0].getBoundingClientRect();
+      const bar = $body[0].parentElement!;
+      const action = bar.querySelector('.fui-MessageBarActions')!.getBoundingClientRect();
+      const dismiss = bar.querySelector('[aria-label="dismiss"]')!.getBoundingClientRect();
+      expect(action.top).to.be.at.least(body.bottom);
+      expect(dismiss.left).to.be.at.least(body.right);
+    });
+  });
+
+  it('removes the multiline text bound when automatic layout expands back to singleline', () => {
+    mount(<TextMeasure layout="auto" />);
+
+    cy.get('[data-testid="container"]').invoke('css', 'width', '400px');
+    cy.get('.fui-MessageBarBody').should('have.css', 'max-width', '520px');
+    cy.get('[data-testid="container"]').invoke('css', 'width', '1800px');
+    cy.get('.fui-MessageBarBody')
+      .should('have.css', 'max-width', 'none')
+      .should($body => {
+        expect($body.width()).to.be.greaterThan(520);
+      });
+  });
+
   // ⚠️ - This test will fail on headed cypress runs, since cypress element highlighting injects divs that
   // trigger resize observer updates
   it('Should render MessageActions slots with correct keys', () => {

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { isHTMLElement } from '@fluentui/react-utilities';
+import { isHTMLElement, useAnimationFrame } from '@fluentui/react-utilities';
 
 export function useMessageBarReflow(enabled: boolean = false): {
   ref: React.RefCallback<HTMLElement>;
@@ -11,9 +11,11 @@ export function useMessageBarReflow(enabled: boolean = false): {
   const { targetDocument } = useFluent();
   const forceUpdate = React.useReducer(() => ({}), {})[1];
   const reflowingRef = React.useRef(false);
+  const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
   const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
+  const observedElementRef = React.useRef<HTMLElement | null>(null);
   const singleLineWidthRef = React.useRef(Number.POSITIVE_INFINITY);
 
   const handleResize: ResizeObserverCallback = React.useCallback(
@@ -61,33 +63,42 @@ export function useMessageBarReflow(enabled: boolean = false): {
 
       if (typeof nextReflowing !== 'undefined' && reflowingRef.current !== nextReflowing) {
         reflowingRef.current = nextReflowing;
-        forceUpdate();
+        // Changing layout during observer delivery resizes the observed root and can trigger a loop error.
+        requestAnimationFrame(() => forceUpdate());
       }
     },
-    [forceUpdate],
+    [forceUpdate, requestAnimationFrame],
   );
 
   const ref = React.useCallback(
     (el: HTMLElement | null) => {
-      if (!enabled || !el || !targetDocument?.defaultView) {
-        return;
-      }
-
       resizeObserverRef.current?.disconnect();
-
-      const win = targetDocument.defaultView;
-      const resizeObserver = new win.ResizeObserver(handleResize);
-      resizeObserverRef.current = resizeObserver;
-      resizeObserver.observe(el, { box: 'border-box' });
+      cancelAnimationFrame();
+      observedElementRef.current = el;
+      if (el) {
+        resizeObserverRef.current?.observe(el, { box: 'border-box' });
+      }
     },
-    [targetDocument, handleResize, enabled],
+    [cancelAnimationFrame],
   );
 
   React.useEffect(() => {
+    if (!enabled || !targetDocument?.defaultView) {
+      return;
+    }
+
+    const resizeObserver = new targetDocument.defaultView.ResizeObserver(handleResize);
+    resizeObserverRef.current = resizeObserver;
+    if (observedElementRef.current) {
+      resizeObserver.observe(observedElementRef.current, { box: 'border-box' });
+    }
+
     return () => {
-      resizeObserverRef.current?.disconnect();
+      resizeObserver.disconnect();
+      resizeObserverRef.current = null;
+      cancelAnimationFrame();
     };
-  }, []);
+  }, [enabled, targetDocument, handleResize, cancelAnimationFrame]);
 
   // eslint-disable-next-line react-hooks/refs
   return { ref, reflowing: reflowingRef.current };
