@@ -30861,13 +30861,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabster@npm:^8.8.1":
+"tabster@npm:8.8.1":
   version: 8.8.1
   resolution: "tabster@npm:8.8.1"
   dependencies:
     keyborg: "npm:^3.0.0"
     tslib: "npm:^2.8.1"
   checksum: 10c0/e26f2e38eba89af632b44efdb6dd1e92fd8040084f1976592dac69a3cff30423fb0b6a9849ba8f011be5314d873fae2d05356e358462552be538519e513803b1
+  languageName: node
+  linkType: hard
+
+"tabster@patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch":
+  version: 8.8.1
+  resolution: "tabster@patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch::version=8.8.1&hash=78fc2e"
+  dependencies:
+    keyborg: "npm:^3.0.0"
+    tslib: "npm:^2.8.1"
+  checksum: 10c0/4d2c22ecf7a3edc80fe3295fa675c03825b7d181de6038ea351cb5eec7046343f166433f902be3a446f2d329c053458d58c2d2a8d7ea7e510046747b9b999baa
   languageName: node
   linkType: hard
 

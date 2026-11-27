@@ -45,6 +45,55 @@ components/Button/
 - Controlled and uncontrolled patterns
 - Edge cases (null children, empty arrays, etc.)
 
+### Repository-only DOM focus tests
+
+The workspace's root Yarn resolution supplies a local Tabster patch with
+`visibilityMode: 'non-layout'` for focus-discovery tests in JSDOM. This option is
+not available in the unmodified published Tabster package. Published Fluent
+packages keep their normal npm-compatible dependency range.
+
+Initialize Tabster before mounting `FluentProvider`, with the complete Fluent
+configuration from `react-tabster/src/hooks/useTabster.ts`. Only `getParent` is
+merged on reuse; an incomplete first initialization loses focus-trap callbacks
+and configured Shadow DOM traversal.
+
+```ts
+import { getParent } from '@fluentui/react-utilities';
+import { createTabster, disposeTabster } from 'tabster';
+import type { Types } from 'tabster';
+
+const view: (Window & { __tabsterShadowDOMAPI?: Types.DOMAPI }) | null = testContainer.ownerDocument.defaultView;
+if (!view) {
+  throw new Error('The focus test requires a DOM window.');
+}
+
+const tabster = createTabster(view, {
+  autoRoot: {},
+  controlTab: false,
+  getParent,
+  checkUncontrolledCompletely: element =>
+    element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
+  DOMAPI: view.__tabsterShadowDOMAPI,
+  visibilityMode: 'non-layout',
+});
+
+// Mount and exercise the component, then unmount it before disposing Tabster.
+disposeTabster(tabster);
+```
+
+The mode is fixed by the window's first instance. Later calls without a mode
+reuse that policy; explicitly requesting a conflicting mode throws. Dispose all
+instances between tests that use different policies.
+
+Non-layout discovery rejects disconnected and CSS-hidden candidates, as well
+as physical and assigned-slot ancestors with `display: none` or hidden contents.
+Disabled, ARIA-hidden and modal filtering still applies. It does not synthesize
+layout or establish browser-equivalent visibility, keyboard navigation, or
+screen-reader behavior. Use browser component tests for geometry-dependent
+cases, including hidden iframes and closed disclosure widgets.
+
+The default remains the layout-aware browser policy.
+
 ### Updating Snapshots
 
 If your change intentionally alters rendered output:

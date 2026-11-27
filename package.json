@@ -386,6 +386,7 @@
     "shell-quote": "^1.8.2",
     "swc-loader": "0.2.6",
     "syncpack/minimatch": "^9.0.7",
+    "tabster@npm:^8.8.1": "patch:tabster@npm%3A8.8.1#~/.yarn/patches/tabster-npm-8.8.1-79c066cf97.patch",
     "tar-fs": "2.1.4",
     "webpack": "5.108.4",
     "ws": "^8.21.1"

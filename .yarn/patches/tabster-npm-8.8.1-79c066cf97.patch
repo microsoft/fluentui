@@ -1,0 +1,218 @@
+diff --git a/dist/cjs/Focusable.cjs b/dist/cjs/Focusable.cjs
+index 1111acb62dd5edfe3439780f894eb4dc94f3a236..f014743cffe8fed3035e11c3478e378df2b9c4c1 100644
+--- a/dist/cjs/Focusable.cjs
++++ b/dist/cjs/Focusable.cjs
+@@ -18,8 +18,9 @@ const _DummyInput = require("./DummyInput.cjs");
+ const _Utils = require("./Utils.cjs");
+ const _DOMAPI = require("./DOMAPI.cjs");
+ class FocusableAPI {
+-    constructor(tabster){
++    constructor(tabster, visibilityMode = "layout"){
+         this._tabster = tabster;
++        this._visibilityMode = visibilityMode;
+     }
+     dispose() {
+     /**/ }
+@@ -37,6 +38,32 @@ class FocusableAPI {
+         if (!el.ownerDocument || el.nodeType !== Node.ELEMENT_NODE) {
+             return false;
+         }
++        if (this._visibilityMode === "non-layout") {
++            const view = el.ownerDocument.defaultView;
++            if (!el.isConnected || !view) {
++                return false;
++            }
++            const visibility = view.getComputedStyle(el).visibility;
++            if (visibility === "hidden" || visibility === "collapse") {
++                return false;
++            }
++            const ancestors = new Set([el]);
++            for (const ancestor of ancestors) {
++                const style = view.getComputedStyle(ancestor);
++                if (style.display === "none" ||
++                    (ancestor !== el && style.contentVisibility === "hidden")) {
++                    return false;
++                }
++                const parent = _DOMAPI.dom.getParentElement(ancestor);
++                if (parent) {
++                    ancestors.add(parent);
++                }
++                if (ancestor.assignedSlot) {
++                    ancestors.add(ancestor.assignedSlot);
++                }
++            }
++            return true;
++        }
+         if ((0, _Utils.isDisplayNone)(el)) {
+             return false;
+         }
+diff --git a/dist/cjs/Tabster.cjs b/dist/cjs/Tabster.cjs
+index 24cf53e6e2f75689e66f20e58a622db38f2d3710..563dc72d78bd2b6ca6d81ce4f5037416cc1defcc 100644
+--- a/dist/cjs/Tabster.cjs
++++ b/dist/cjs/Tabster.cjs
+@@ -166,7 +166,8 @@ class Tabster {
+         }
+         this.keyboardNavigation = new _KeyboardNavigation.KeyboardNavigationState(getWindow);
+         this.focusedElement = new _FocusedElement.FocusedElementState(this, getWindow);
+-        this.focusable = new _Focusable.FocusableAPI(this);
++        this._visibilityMode = props?.visibilityMode ?? "layout";
++        this.focusable = new _Focusable.FocusableAPI(this, this._visibilityMode);
+         this.root = new _Root.RootAPI(this, props?.autoRoot);
+         this.uncontrolled = new _Uncontrolled.UncontrolledAPI(// TODO: Remove checkUncontrolledTrappingFocus in the next major version.
+         props?.checkUncontrolledCompletely || props?.checkUncontrolledTrappingFocus);
+@@ -202,14 +203,17 @@ class Tabster {
+         if (!props) {
+             return;
+         }
++        if (props.visibilityMode !== undefined && props.visibilityMode !== this._visibilityMode) {
++            throw new Error("Tabster: visibilityMode cannot change on an existing window instance.");
++        }
+         this.getParent = props.getParent ?? this.getParent;
+     }
+     createTabster(noRefCount, props) {
++        this._mergeProps(props);
+         const wrapper = new Tabster(this);
+         if (!noRefCount) {
+             this._wrappers.add(wrapper);
+         }
+-        this._mergeProps(props);
+         return wrapper;
+     }
+     disposeTabster(wrapper, allInstances) {
+@@ -317,6 +321,11 @@ function forceCleanup(tabster) {
+     tabsterCore.forceCleanup();
+ }
+ function createTabster(win, props) {
++    if (props?.visibilityMode !== undefined &&
++        props.visibilityMode !== "layout" &&
++        props.visibilityMode !== "non-layout") {
++        throw new Error("Tabster: visibilityMode must be 'layout' or 'non-layout'.");
++    }
+     let tabster = getCurrentTabster(win);
+     if (tabster) {
+         return tabster.createTabster(false, props);
+diff --git a/dist/esm/Focusable.d.ts b/dist/esm/Focusable.d.ts
+index ef15534ca0f9f0219eaa11c21a1c42aaf10286af..38c7e9fbff17ba6bbddaae7893bd438f4d4bc0c0 100644
+--- a/dist/esm/Focusable.d.ts
++++ b/dist/esm/Focusable.d.ts
+@@ -5,7 +5,8 @@
+ import type * as Types from "./Types.js";
+ export declare class FocusableAPI implements Types.FocusableAPI {
+     private _tabster;
+-    constructor(tabster: Types.TabsterCore);
++    private _visibilityMode;
++    constructor(tabster: Types.TabsterCore, visibilityMode?: Types.TabsterCoreProps["visibilityMode"]);
+     dispose(): void;
+     getProps(element: HTMLElement): Types.FocusableProps;
+     isFocusable(el: HTMLElement, includeProgrammaticallyFocusable?: boolean, noVisibleCheck?: boolean, noAccessibleCheck?: boolean): boolean;
+diff --git a/dist/esm/Focusable.js b/dist/esm/Focusable.js
+index 702b876d7b05348273e03a52745e1d69210d6646..68cb56b7f8eaa4693bb4647fbbadc305322160a8 100644
+--- a/dist/esm/Focusable.js
++++ b/dist/esm/Focusable.js
+@@ -9,8 +9,9 @@ import { getDummyInputContainer } from "./DummyInput.js";
+ import { createElementTreeWalker, getLastChild, getRadioButtonGroup, isDisplayNone, isRadio, matchesSelector, shouldIgnoreFocus, } from "./Utils.js";
+ import { dom } from "./DOMAPI.js";
+ export class FocusableAPI {
+-    constructor(tabster) {
++    constructor(tabster, visibilityMode = "layout") {
+         this._tabster = tabster;
++        this._visibilityMode = visibilityMode;
+     }
+     dispose() {
+         /**/
+@@ -31,6 +32,32 @@ export class FocusableAPI {
+         if (!el.ownerDocument || el.nodeType !== Node.ELEMENT_NODE) {
+             return false;
+         }
++        if (this._visibilityMode === "non-layout") {
++            const view = el.ownerDocument.defaultView;
++            if (!el.isConnected || !view) {
++                return false;
++            }
++            const visibility = view.getComputedStyle(el).visibility;
++            if (visibility === "hidden" || visibility === "collapse") {
++                return false;
++            }
++            const ancestors = new Set([el]);
++            for (const ancestor of ancestors) {
++                const style = view.getComputedStyle(ancestor);
++                if (style.display === "none" ||
++                    (ancestor !== el && style.contentVisibility === "hidden")) {
++                    return false;
++                }
++                const parent = dom.getParentElement(ancestor);
++                if (parent) {
++                    ancestors.add(parent);
++                }
++                if (ancestor.assignedSlot) {
++                    ancestors.add(ancestor.assignedSlot);
++                }
++            }
++            return true;
++        }
+         if (isDisplayNone(el)) {
+             return false;
+         }
+diff --git a/dist/esm/Tabster.js b/dist/esm/Tabster.js
+index ea0c30ac97a02ee760db446dafa9024826600335..331e96a77f6b51108a4ea40f194db466eb35834b 100644
+--- a/dist/esm/Tabster.js
++++ b/dist/esm/Tabster.js
+@@ -54,7 +54,8 @@ class TabsterCore {
+         }
+         this.keyboardNavigation = new KeyboardNavigationState(getWindow);
+         this.focusedElement = new FocusedElementState(this, getWindow);
+-        this.focusable = new FocusableAPI(this);
++        this._visibilityMode = props?.visibilityMode ?? "layout";
++        this.focusable = new FocusableAPI(this, this._visibilityMode);
+         this.root = new RootAPI(this, props?.autoRoot);
+         this.uncontrolled = new UncontrolledAPI(
+         // TODO: Remove checkUncontrolledTrappingFocus in the next major version.
+@@ -93,14 +94,17 @@ class TabsterCore {
+         if (!props) {
+             return;
+         }
++        if (props.visibilityMode !== undefined && props.visibilityMode !== this._visibilityMode) {
++            throw new Error("Tabster: visibilityMode cannot change on an existing window instance.");
++        }
+         this.getParent = props.getParent ?? this.getParent;
+     }
+     createTabster(noRefCount, props) {
++        this._mergeProps(props);
+         const wrapper = new Tabster(this);
+         if (!noRefCount) {
+             this._wrappers.add(wrapper);
+         }
+-        this._mergeProps(props);
+         return wrapper;
+     }
+     disposeTabster(wrapper, allInstances) {
+@@ -213,6 +217,11 @@ export function forceCleanup(tabster) {
+  * Creates an instance of Tabster, returns the current window instance if it already exists.
+  */
+ export function createTabster(win, props) {
++    if (props?.visibilityMode !== undefined &&
++        props.visibilityMode !== "layout" &&
++        props.visibilityMode !== "non-layout") {
++        throw new Error("Tabster: visibilityMode must be 'layout' or 'non-layout'.");
++    }
+     let tabster = getCurrentTabster(win);
+     if (tabster) {
+         return tabster.createTabster(false, props);
+diff --git a/dist/esm/Types.d.ts b/dist/esm/Types.d.ts
+index 79521cc8c65f871d9f6f2b6412029da33fb46ee6..c40e6f848740a7a2673edf73acb01e0d6cb33911 100644
+--- a/dist/esm/Types.d.ts
++++ b/dist/esm/Types.d.ts
+@@ -16,6 +16,13 @@ export interface TabsterDOMAttribute {
+     [TABSTER_ATTRIBUTE_NAME]: string | undefined;
+ }
+ export interface TabsterCoreProps {
++    /**
++     * Visibility policy, fixed when the window's first Tabster instance is created.
++     * "non-layout" uses CSS visibility and ancestor display checks without geometry.
++     * It supports DOM-only testing, not browser-equivalent layout or navigation.
++     * @default "layout"
++     */
++    visibilityMode?: "layout" | "non-layout";
+     autoRoot?: RootProps;
+     /**
+      * Allows all tab key presses under the tabster root to be controlled by tabster
