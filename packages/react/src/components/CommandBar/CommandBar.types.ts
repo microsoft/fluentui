@@ -17,9 +17,9 @@ export interface ICommandBar {
   focus(): void;
 
   /**
-   * Remeasures the available space. It also measures the items again. If their size has changed, the cached
-   * measurements are dropped and the items are fit again. Call it when something other than the items has
-   * changed their size, for example a style sheet.
+   * Remeasures the available space. It also drops the cached measurements of the items and fits them again,
+   * unless the bar has no size. Call it when something other than the items has changed their size, for
+   * example a style sheet.
    */
   remeasure(): void;
 }

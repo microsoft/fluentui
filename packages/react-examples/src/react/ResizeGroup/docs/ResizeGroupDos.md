@@ -2,4 +2,4 @@
 - Ensure that result of rendering the data returned by onReduceData is actually smaller than the previous data.
 - Include a cacheKey in your data to improve performance. Two objects with the same cacheKey are assumed to have the same width, so the ResizeGroup will only store one measurement per resize group.
 - Implement onGrowData for improved performance when the container for the resize group increases in size.
-- Call `remeasure` on the component ref when something other than the data has changed the size of the content, for example a style sheet. It measures the data again, and when the size has changed it drops the cached measurements and fits the data again.
+- Call `remeasure` on the component ref when something other than the data has changed the size of the content, for example a style sheet. It drops the cached measurements and fits the data again.

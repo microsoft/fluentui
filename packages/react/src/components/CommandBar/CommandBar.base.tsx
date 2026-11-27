@@ -170,8 +170,8 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _onRenderItem = (item: ICommandBarItemProps): JSXElement | React.ReactNode => {
     // This renders the items of the bar, so none of them is in the overflow menu. The flag of an item can still
     // say that it is: the bar sets it when it moves the item into the menu, and only the step that moves the
-    // item back clears it. The items are also rendered here to measure them without moving any of them. Render
-    // such an item with the flag off.
+    // item back clears it. A pass that starts from the full data renders every item here to measure it, without
+    // moving any of them. Render such an item with the flag off.
     const renderedItem = item.renderedInOverflow ? { ...item, renderedInOverflow: false } : item;
 
     if (item.onRender) {
