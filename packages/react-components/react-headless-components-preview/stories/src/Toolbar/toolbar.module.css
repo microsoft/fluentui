@@ -9,7 +9,7 @@
   box-shadow: var(--shadow-1);
 }
 
-.toolbar[data-vertical] {
+.toolbar[data-orientation='vertical'] {
   flex-direction: column;
   border-radius: var(--radius-lg);
 }
@@ -65,7 +65,7 @@
   background: var(--border);
 }
 
-.toolbar[data-vertical] .divider {
+.toolbar[data-orientation='vertical'] .divider {
   width: auto;
   height: 1px;
   margin: 4px 4px;
@@ -77,7 +77,7 @@
   gap: 2px;
 }
 
-.toolbar[data-vertical] .group {
+.toolbar[data-orientation='vertical'] .group {
   flex-direction: column;
 }
 

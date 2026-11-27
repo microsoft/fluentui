@@ -15,8 +15,10 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
 
   // eslint-disable-next-line react-hooks/immutability
   state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'} wrap`;
-  // eslint-disable-next-line react-hooks/immutability
+  // eslint-disable-next-line react-hooks/immutability, @typescript-eslint/no-deprecated
   state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };

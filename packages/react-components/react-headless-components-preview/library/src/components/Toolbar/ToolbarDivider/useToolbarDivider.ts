@@ -14,8 +14,10 @@ export const useToolbarDivider = (props: ToolbarDividerProps, ref: React.Ref<HTM
   const state: ToolbarDividerState = useToolbarDividerBase_unstable(props, ref);
 
   // Set data-vertical based on the resolved orientation of the divider (already inverted relative to the toolbar).
-  // eslint-disable-next-line react-hooks/immutability
+  // eslint-disable-next-line react-hooks/immutability, @typescript-eslint/no-deprecated
   state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };

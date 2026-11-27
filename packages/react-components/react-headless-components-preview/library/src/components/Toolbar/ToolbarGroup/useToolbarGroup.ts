@@ -14,8 +14,10 @@ export const useToolbarGroup = (props: ToolbarGroupProps, ref: React.Ref<HTMLDiv
   const state: ToolbarGroupState = useToolbarGroup_unstable(props, ref);
 
   // Set data-vertical based on the toolbar context orientation.
-  // eslint-disable-next-line react-hooks/immutability
+  // eslint-disable-next-line react-hooks/immutability, @typescript-eslint/no-deprecated
   state.root['data-vertical'] = toDataAttributeValue(state.vertical);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };

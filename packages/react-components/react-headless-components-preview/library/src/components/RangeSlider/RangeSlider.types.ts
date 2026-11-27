@@ -33,7 +33,13 @@ export type RangeSliderState = RangeSliderBaseState & {
     'data-disabled'?: string;
 
     /**
+     * Data attribute with the component's orientation.
+     */
+    'data-orientation'?: 'vertical' | 'horizontal';
+
+    /**
      * Set when the RangeSlider is vertical.
+     * @deprecated Use `data-orientation` instead. Will be removed in a future release.
      */
     'data-vertical'?: string;
   };

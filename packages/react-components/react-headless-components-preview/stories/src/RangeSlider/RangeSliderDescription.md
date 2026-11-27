@@ -11,9 +11,9 @@ Use RangeSlider for filters where an approximate range matters, such as a price 
 
 **State attributes:**
 
-| Attribute       | Slot                      | Present when                                                                                |
-| --------------- | ------------------------- | ------------------------------------------------------------------------------------------- |
-| `data-disabled` | root                      | the whole RangeSlider is disabled                                                           |
-| `data-vertical` | root                      | the RangeSlider is vertical                                                                 |
-| `data-disabled` | `startThumb` / `endThumb` | that thumb is disabled, by the whole RangeSlider or by `disabled` on its input slot         |
-| `data-active`   | `startThumb` / `endThumb` | that thumb should be drawn on top when the thumbs overlap (last used, or the enabled thumb) |
+| Attribute          | Slot                      | Present when                                                                                |
+| ------------------ | ------------------------- | ------------------------------------------------------------------------------------------- |
+| `data-disabled`    | root                      | the whole RangeSlider is disabled                                                           |
+| `data-orientation` | root                      | `"vertical"` or `"horizontal"`: the RangeSlider orientation                                 |
+| `data-disabled`    | `startThumb` / `endThumb` | that thumb is disabled, by the whole RangeSlider or by `disabled` on its input slot         |
+| `data-active`      | `startThumb` / `endThumb` | that thumb should be drawn on top when the thumbs overlap (last used, or the enabled thumb) |

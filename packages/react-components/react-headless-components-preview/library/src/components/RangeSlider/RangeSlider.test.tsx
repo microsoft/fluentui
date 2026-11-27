@@ -57,6 +57,7 @@ describe('RangeSlider', () => {
 
       expect(root).not.toHaveAttribute('data-disabled');
       expect(root).not.toHaveAttribute('data-vertical');
+      expect(root).toHaveAttribute('data-orientation', 'horizontal');
       expect(startThumb).not.toHaveAttribute('data-disabled');
       expect(endThumb).not.toHaveAttribute('data-disabled');
     });
@@ -74,6 +75,7 @@ describe('RangeSlider', () => {
       const { container } = render(<RangeSlider vertical defaultValue={{ start: 20, end: 80 }} {...thumbLabels} />);
 
       expect(container.firstElementChild).toHaveAttribute('data-vertical', '');
+      expect(container.firstElementChild).toHaveAttribute('data-orientation', 'vertical');
     });
 
     it('sets data-disabled only on a thumb disabled through its slot', () => {

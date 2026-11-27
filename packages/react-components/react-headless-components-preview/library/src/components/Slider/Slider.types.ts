@@ -13,7 +13,13 @@ export type SliderState = SliderBaseState & {
     'data-disabled'?: string;
 
     /**
+     * Data attribute with the component's orientation.
+     */
+    'data-orientation'?: 'vertical' | 'horizontal';
+
+    /**
      * Data attribute set when the slider is oriented vertically.
+     * @deprecated Use `data-orientation` instead. Will be removed in a future release.
      */
     'data-vertical'?: string;
   };
