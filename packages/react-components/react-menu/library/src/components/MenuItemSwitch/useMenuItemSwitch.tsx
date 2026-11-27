@@ -4,6 +4,7 @@ import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import type { MenuItemSwitchProps, MenuItemSwitchState } from './MenuItemSwitch.types';
 import { useMenuItemCheckboxBase_unstable } from '../MenuItemCheckbox/useMenuItemCheckbox';
+import { useMenuItemStyledBehaviors } from '../MenuItem/useMenuItemStyledBehaviors';
 import { CircleFilled } from '@fluentui/react-icons';
 import { circleFilledClassName } from './useMenuItemSwitchStyles.styles';
 
@@ -21,6 +22,7 @@ export const useMenuItemSwitch_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): MenuItemSwitchState => {
   const state = useMenuItemSwitchBase_unstable(props, ref);
+  useMenuItemStyledBehaviors(props, state);
 
   // Set default icon for switch indicator
   if (state.switchIndicator) {

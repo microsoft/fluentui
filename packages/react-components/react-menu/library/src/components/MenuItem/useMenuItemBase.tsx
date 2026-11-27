@@ -1,13 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  useEventCallback,
-  useMergedRefs,
-  getIntrinsicElementProps,
-  slot,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
@@ -16,12 +10,13 @@ import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 import type { ARIAButtonElement, ARIAButtonElementIntersection, ARIAButtonProps } from '@fluentui/react-aria';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
-import { useValidateNesting } from '../../utils/useValidateNesting';
+import { useIsInMenuSplitGroup } from '../../contexts/menuSplitGroupContext';
 
 /**
  * Base hook for MenuItem component, produces state required to render the component.
- * It doesn't set any design-related props specific to MenuItem such as submenu indicator icon.
+ * It doesn't set any design-related props specific to MenuItem such as submenu indicator icon,
+ * nor the layout-only MenuSplitGroup multiline notification and the development-only nesting validation
+ * (see `useMenuItemStyledBehaviors`).
  */
 export const useMenuItemBase_unstable = (
   props: MenuItemProps,
@@ -40,12 +35,9 @@ export const useMenuItemBase_unstable = (
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);
-  useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
 
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
   const dismissedWithKeyboardRef = React.useRef(false);
-
-  const validateNestingRef = useValidateNesting(getValidateNestingComponentName(props.role));
 
   const state: MenuItemState = {
     hasSubmenu,
@@ -69,7 +61,7 @@ export const useMenuItemBase_unstable = (
           ...rest,
           disabled: false,
           disabledFocusable: disabled,
-          ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
+          ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
           onKeyDown: useEventCallback(event => {
             props.onKeyDown?.(event);
             if (!event.isDefaultPrevented() && (event.key === Space || event.key === Enter)) {
@@ -122,23 +114,6 @@ export const useMenuItemBase_unstable = (
   return state;
 };
 
-/**
- * MenuSplitGroup needs to apply extra styles when its main item is in multiline layout mode
- * Notify the parent MenuSplitGroup so that it can handle this case
- */
-const useNotifySplitItemMultiline = (options: { hasSubmenu: boolean; multiline: boolean }) => {
-  const { hasSubmenu, multiline } = options;
-  const isSplitItemTrigger = useIsInMenuSplitGroup() && hasSubmenu;
-
-  const { setMultiline } = useMenuSplitGroupContext_unstable();
-
-  useIsomorphicLayoutEffect(() => {
-    if (!isSplitItemTrigger) {
-      setMultiline(multiline);
-    }
-  }, [setMultiline, multiline, isSplitItemTrigger]);
-};
-
 const useIconAndCheckmarkAlignment = (options: { hasSubmenu: boolean }) => {
   const { hasSubmenu } = options;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
@@ -149,14 +124,4 @@ const useIconAndCheckmarkAlignment = (options: { hasSubmenu: boolean }) => {
     hasIcons: hasIcons && !isSplitItemTrigger,
     hasCheckmarks: hasCheckmarks && !isSplitItemTrigger,
   };
-};
-
-const getValidateNestingComponentName = (role?: string) => {
-  switch (role) {
-    case 'menuitemcheckbox':
-      return 'MenuItemCheckbox';
-    case 'menuitemradio':
-      return 'MenuItemRadio';
-  }
-  return 'MenuItem';
 };
