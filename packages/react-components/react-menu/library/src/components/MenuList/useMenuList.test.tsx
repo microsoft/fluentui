@@ -2,8 +2,10 @@ import * as React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuList_unstable } from './useMenuList';
+import { useMenuListBase_unstable } from './useMenuList';
 import { MenuProvider } from '../../contexts/menuContext';
 import type { MenuContextValue } from '../../contexts/menuContext';
+import * as nestingValidation from '../../utils/useValidateNesting';
 
 jest.mock('@fluentui/react-tabster', () => ({
   useArrowNavigationGroup: jest.fn(),
@@ -16,6 +18,12 @@ jest.mock('@fluentui/react-shared-contexts', () => ({
   // eslint-disable-next-line @typescript-eslint/naming-convention
   useFluent_unstable: jest.fn(() => ({ dir: 'ltr', targetDocument: document })),
 }));
+
+jest.mock('../../utils/useValidateNesting', () => ({
+  useValidateNesting: jest.fn(() => jest.fn()),
+}));
+
+const mockedUseValidateNesting = nestingValidation.useValidateNesting as jest.Mock;
 
 const defaultMenuContextValue: MenuContextValue = {
   open: false,
@@ -47,10 +55,20 @@ function makeMenuWrapper(overrides: Partial<MenuContextValue> = {}) {
 
 beforeEach(() => {
   (useFocusFinders as jest.Mock).mockReturnValue({ findAllFocusable: jest.fn() });
+  mockedUseValidateNesting.mockClear();
 });
 
 describe('useMenuList_unstable', () => {
   describe('components and slots', () => {
+    it('installs nesting validation in the styled hook only', () => {
+      renderHook(() => useMenuList_unstable({}, null));
+      expect(mockedUseValidateNesting).toHaveBeenCalledWith('MenuList');
+
+      mockedUseValidateNesting.mockClear();
+      renderHook(() => useMenuListBase_unstable({}, null));
+      expect(mockedUseValidateNesting).not.toHaveBeenCalled();
+    });
+
     it('returns components shape with a div root', () => {
       const { result } = renderHook(() => useMenuList_unstable({}, null));
 

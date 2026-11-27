@@ -2,10 +2,15 @@ import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import * as ReactSharedContexts from '@fluentui/react-shared-contexts';
 import { useMenuItem_unstable } from './useMenuItem';
+import { useMenuItemBase_unstable } from './useMenuItemBase';
+import { useMenuItemCheckbox_unstable } from '../MenuItemCheckbox/useMenuItemCheckbox';
+import { useMenuItemRadio_unstable } from '../MenuItemRadio/useMenuItemRadio';
+import { useMenuItemSwitch_unstable } from '../MenuItemSwitch/useMenuItemSwitch';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { MenuProvider } from '../../contexts/menuContext';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuSplitGroupContextProvider } from '../../contexts/menuSplitGroupContext';
+import * as nestingValidation from '../../utils/useValidateNesting';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
@@ -16,7 +21,12 @@ jest.mock('@fluentui/react-shared-contexts', () => ({
   useFluent_unstable: jest.fn(() => ({ dir: 'ltr', targetDocument: document })),
 }));
 
+jest.mock('../../utils/useValidateNesting', () => ({
+  useValidateNesting: jest.fn(() => jest.fn()),
+}));
+
 const mockedUseFluent = ReactSharedContexts.useFluent_unstable as jest.Mock;
+const mockedUseValidateNesting = nestingValidation.useValidateNesting as jest.Mock;
 
 const defaultMenuListContextValue: MenuListContextValue = {
   checkedValues: {},
@@ -53,13 +63,14 @@ function makeWrapper(
     menu?: Partial<MenuContextValue>;
     isSubmenuTrigger?: boolean;
     inMenuSplitGroup?: boolean;
+    setMultiline?: jest.Mock;
   } = {},
 ) {
   const menuListValue: MenuListContextValue = { ...defaultMenuListContextValue, ...options.menuList };
   const menuValue: MenuContextValue = { ...defaultMenuContextValue, ...options.menu };
 
   const splitGroupContextValue = {
-    setMultiline: () => null,
+    setMultiline: options.setMultiline ?? (() => null),
   };
 
   return ({ children }: { children: React.ReactNode }) => (
@@ -82,9 +93,66 @@ function makeWrapper(
 describe('useMenuItem_unstable', () => {
   beforeEach(() => {
     mockedUseFluent.mockReturnValue({ dir: 'ltr', targetDocument: document });
+    mockedUseValidateNesting.mockClear();
   });
 
   describe('components and slots', () => {
+    it.each([
+      [
+        'MenuItem',
+        (props: { subText?: string }) => useMenuItem_unstable(props, React.createRef<ARIAButtonElement<'div'>>()),
+      ],
+      [
+        'MenuItemCheckbox',
+        (props: { subText?: string }) =>
+          useMenuItemCheckbox_unstable(
+            { ...props, name: 'test', value: '1' },
+            React.createRef<ARIAButtonElement<'div'>>(),
+          ),
+      ],
+      [
+        'MenuItemRadio',
+        (props: { subText?: string }) =>
+          useMenuItemRadio_unstable(
+            { ...props, name: 'test', value: '1' },
+            React.createRef<ARIAButtonElement<'div'>>(),
+          ),
+      ],
+      [
+        'MenuItemSwitch',
+        (props: { subText?: string }) =>
+          useMenuItemSwitch_unstable({ ...props, name: 'test', value: '1' }, React.createRef<HTMLDivElement>()),
+      ],
+    ])('notifies MenuSplitGroup for multiline %s', (_name, useItem) => {
+      const setMultiline = jest.fn();
+      renderHook(() => useItem({ subText: 'Secondary text' }), {
+        wrapper: makeWrapper({ inMenuSplitGroup: true, setMultiline }),
+      });
+
+      expect(setMultiline).toHaveBeenCalledWith(true);
+    });
+
+    it('does not install MenuItem styled behaviors in the base hook', () => {
+      const setMultiline = jest.fn();
+      renderHook(
+        () => useMenuItemBase_unstable({ subText: 'Secondary text' }, React.createRef<ARIAButtonElement<'div'>>()),
+        {
+          wrapper: makeWrapper({ isSubmenuTrigger: true, inMenuSplitGroup: true, setMultiline }),
+        },
+      );
+
+      expect(setMultiline).not.toHaveBeenCalled();
+      expect(mockedUseValidateNesting).not.toHaveBeenCalled();
+    });
+
+    it('installs the MenuItem nesting validator in the styled hook', () => {
+      renderHook(() => useMenuItem_unstable({}, React.createRef<ARIAButtonElement<'div'>>()), {
+        wrapper: makeWrapper(),
+      });
+
+      expect(mockedUseValidateNesting).toHaveBeenCalledWith('MenuItem');
+    });
+
     it('returns components shape with all MenuItem slots', () => {
       const ref = React.createRef<ARIAButtonElement<'div'>>();
 
