@@ -34,7 +34,22 @@ export const useOverlayDrawer_unstable = (
   ref: React.Ref<HTMLElement>,
 ): OverlayDrawerState => {
   const { open, size, position, unmountOnClose } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange, backdropMotion, surfaceMotion, mountNode } = props;
+  // Drawer-owned props are consumed here and must not reach the DialogSurface root element.
+  const {
+    modalType = 'modal',
+    inertTrapFocus,
+    onOpenChange,
+    backdropMotion,
+    surfaceMotion,
+    mountNode,
+    open: _open,
+    size: _size,
+    position: _position,
+    unmountOnClose: _unmountOnClose,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    defaultOpen: _defaultOpen,
+    ...surfaceProps
+  } = props;
   const { dir, targetDocument } = useFluent();
   const { element: mountNodeElement } = toMountNodeProps(mountNode);
   const hasMountNodeElement = Boolean(mountNodeElement && targetDocument?.body !== mountNodeElement);
@@ -44,9 +59,9 @@ export const useOverlayDrawer_unstable = (
 
   const root = slot.always(
     {
-      ...props,
+      ...surfaceProps,
       ref,
-      unmountOnClose,
+      mountNode,
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
       backdropMotion: mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size }),
     },

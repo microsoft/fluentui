@@ -69,3 +69,56 @@ describe('OverlayDrawer', () => {
     expect(drawerInsideMountNode).toBeTruthy();
   });
 });
+
+describe('OverlayDrawer DOM attributes', () => {
+  it('does not render drawer props as DOM attributes on the surface', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const onOpenChange = jest.fn();
+    const customProps = { 'custom-attribute': 'custom-value' } as {};
+
+    render(
+      <OverlayDrawer
+        id="drawer"
+        data-testid="drawer"
+        aria-label="Drawer"
+        open
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        defaultOpen
+        onOpenChange={onOpenChange}
+        modalType="alert"
+        inertTrapFocus
+        unmountOnClose={false}
+        position="end"
+        size="large"
+        surfaceMotion={{}}
+        backdropMotion={{}}
+        {...customProps}
+      >
+        Drawer
+      </OverlayDrawer>,
+    );
+
+    const drawer = document.getElementById('drawer') as HTMLElement;
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+
+    expect(drawer.getAttribute('role')).toBe('alertdialog');
+    expect(drawer.getAttribute('aria-label')).toBe('Drawer');
+    expect(drawer.getAttribute('data-testid')).toBe('drawer');
+    expect(drawer.getAttribute('custom-attribute')).toBe('custom-value');
+    [
+      'open',
+      'defaultopen',
+      'onopenchange',
+      'modaltype',
+      'inerttrapfocus',
+      'unmountonclose',
+      'position',
+      'size',
+      'surfacemotion',
+      'backdropmotion',
+      'mountnode',
+    ].forEach(attribute => expect(drawer.hasAttribute(attribute)).toBe(false));
+  });
+});
