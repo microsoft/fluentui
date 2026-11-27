@@ -587,3 +587,121 @@ describe.skip('Render calling with respective to props', () => {
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
+
+describe('Horizontal bar chart with axis - Default category order of a string y axis', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const size = { height: 300, width: 600 };
+  // The y values of the bars from the top of the chart to the bottom. The label of a bar starts with its y value.
+  const barsFromTop = (container: HTMLElement, count: number = 4) => {
+    const bars = Array.from(container.querySelectorAll('rect[role="option"]'));
+    expect(bars).toHaveLength(count);
+    return bars
+      .sort((first, second) => Number(first.getAttribute('y')) - Number(second.getAttribute('y')))
+      .map(bar => bar.getAttribute('aria-label')!.split('.')[0]);
+  };
+  // A stacked chart: the y values of its rows from the top to the bottom, the labels of its y axis in
+  // alphabetical order, and the labels of its bar groups.
+  const stackedChart = (container: HTMLElement) => ({
+    rowsFromTop: Array.from(new Set(barsFromTop(container, stackedChartPointsHBCWA.length))),
+    axisLabels: Array.from(container.querySelectorAll('.fui-cart__yAxis .tick text'))
+      .map(tick => tick.textContent)
+      .sort(),
+    groups: Array.from(container.querySelectorAll('[aria-label*="bar group"]')).map(group =>
+      group.getAttribute('aria-label'),
+    ),
+  });
+  const threeGroups = {
+    rowsFromTop: ['Q1', 'Q2', 'Q3'],
+    axisLabels: ['Q1', 'Q2', 'Q3'],
+    groups: [
+      'Q1, bar group 1 of 3, with 3 bars.',
+      'Q2, bar group 2 of 3, with 3 bars.',
+      'Q3, bar group 3 of 3, with 3 bars.',
+    ],
+  };
+
+  testWithWait(
+    'Should draw the first data point as the top bar when yAxisCategoryOrder is not set',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsWithStringYAxisHBCWA, ...size },
+    container => {
+      // Assert
+      expect(barsFromTop(container)).toEqual(['String One', 'String Two', 'String Three', 'String Four']);
+    },
+  );
+
+  testWithWait(
+    'Should draw the bars in the same order when yAxisCategoryOrder is set to default',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsWithStringYAxisHBCWA, ...size, yAxisCategoryOrder: 'default' },
+    container => {
+      // Assert
+      expect(barsFromTop(container)).toEqual(['String One', 'String Two', 'String Three', 'String Four']);
+    },
+  );
+
+  testWithWait(
+    'Should follow a given yAxisCategoryOrder',
+    HorizontalBarChartWithAxis,
+    {
+      data: chartPointsWithStringYAxisHBCWA,
+      ...size,
+      yAxisCategoryOrder: ['String Three', 'String One', 'String Four', 'String Two'],
+    },
+    container => {
+      // Assert. The first category of the list is the bottom bar.
+      expect(barsFromTop(container)).toEqual(['String Two', 'String Four', 'String One', 'String Three']);
+    },
+  );
+
+  testWithWait(
+    'Should draw the first group of a stacked chart at the top when yAxisCategoryOrder is not set',
+    HorizontalBarChartWithAxis,
+    { data: stackedChartPointsHBCWA, ...size },
+    container => {
+      // Assert. Three bars share each of the three y values, and each y value is listed once.
+      expect(stackedChart(container)).toEqual(threeGroups);
+    },
+  );
+
+  testWithWait(
+    'Should list each y value of a stacked chart once when yAxisCategoryOrder is set to default',
+    HorizontalBarChartWithAxis,
+    { data: stackedChartPointsHBCWA, ...size, yAxisCategoryOrder: 'default' },
+    container => {
+      // Assert
+      expect(stackedChart(container)).toEqual(threeGroups);
+    },
+  );
+
+  testWithWait(
+    'Should keep the order of the data when yAxisCategoryOrder is set to data',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsWithStringYAxisHBCWA, ...size, yAxisCategoryOrder: 'data' },
+    container => {
+      // Assert. The first data point is the bottom bar.
+      expect(barsFromTop(container)).toEqual(['String Four', 'String Three', 'String Two', 'String One']);
+    },
+  );
+
+  testWithWait(
+    'Should count the groups of a stacked chart with a numeric y axis',
+    HorizontalBarChartWithAxis,
+    {
+      // The same stacked chart with the y values 1, 2 and 3 in place of Q1, Q2 and Q3.
+      data: stackedChartPointsHBCWA.map(point => ({ ...point, y: Number(String(point.y).slice(1)) })),
+      ...size,
+    },
+    container => {
+      // Assert. The y axis labels are not drawn from this list on a numeric axis. Only the group count uses it.
+      const groups = Array.from(container.querySelectorAll('[aria-label*="bar group"]'));
+      expect(groups.map(group => group.getAttribute('aria-label')!.replace(/^\d+, /, ''))).toEqual([
+        'bar group 1 of 3, with 3 bars.',
+        'bar group 2 of 3, with 3 bars.',
+        'bar group 3 of 3, with 3 bars.',
+      ]);
+    },
+  );
+});

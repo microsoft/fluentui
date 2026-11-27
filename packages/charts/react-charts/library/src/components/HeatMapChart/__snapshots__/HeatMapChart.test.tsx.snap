@@ -693,7 +693,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  p4
+                  p3
                 </text>
               </g>
               <g
@@ -712,7 +712,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  p3
+                  p4
                 </text>
               </g>
             </g>
@@ -745,7 +745,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  p2
+                  p1
                 </text>
               </g>
               <g
@@ -763,7 +763,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  p1
+                  p2
                 </text>
               </g>
             </g>
@@ -773,14 +773,14 @@ Object {
               role="listbox"
             >
               <g
-                aria-label="p4, p1. Nasty, 50."
+                aria-label="p3, p2. Nasty, 25."
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
                 <rect
-                  fill="rgb(255, 197, 186)"
+                  fill="rgb(255, 195, 195)"
                   height="118.86138613861385"
                   width="286.23762376237624"
                 />
@@ -792,30 +792,7 @@ Object {
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
-                  50
-                </text>
-              </g>
-              <g
-                aria-label="p3, p1. Excellent, 75."
-                fill-opacity="1"
-                role="option"
-                tabindex="0"
-                transform="translate(337.9207920792079, 22.42574257425744)"
-              >
-                <rect
-                  fill="rgb(255, 200, 178)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  aria-hidden="true"
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
-                >
-                  75
+                  25
                 </text>
               </g>
               <g
@@ -823,7 +800,7 @@ Object {
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
-                transform="translate(45.8415841584158, 143.71287128712873)"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
                 <rect
                   fill="rgb(255, 203, 169)"
@@ -842,14 +819,14 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="p3, p2. Nasty, 25."
+                aria-label="p3, p1. Excellent, 75."
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
-                transform="translate(337.9207920792079, 143.71287128712873)"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
                 <rect
-                  fill="rgb(255, 195, 195)"
+                  fill="rgb(255, 200, 178)"
                   height="118.86138613861385"
                   width="286.23762376237624"
                 />
@@ -861,7 +838,30 @@ Object {
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
-                  25
+                  75
+                </text>
+              </g>
+              <g
+                aria-label="p4, p1. Nasty, 50."
+                fill-opacity="1"
+                role="option"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(255, 197, 186)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  aria-hidden="true"
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
                 </text>
               </g>
             </g>
@@ -981,7 +981,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                p4
+                p3
               </text>
             </g>
             <g
@@ -1000,7 +1000,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                p3
+                p4
               </text>
             </g>
           </g>
@@ -1033,7 +1033,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                p2
+                p1
               </text>
             </g>
             <g
@@ -1051,7 +1051,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                p1
+                p2
               </text>
             </g>
           </g>
@@ -1061,14 +1061,14 @@ Object {
             role="listbox"
           >
             <g
-              aria-label="p4, p1. Nasty, 50."
+              aria-label="p3, p2. Nasty, 25."
               fill-opacity="1"
               role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 22.42574257425744)"
             >
               <rect
-                fill="rgb(255, 197, 186)"
+                fill="rgb(255, 195, 195)"
                 height="118.86138613861385"
                 width="286.23762376237624"
               />
@@ -1080,30 +1080,7 @@ Object {
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="p3, p1. Excellent, 75."
-              fill-opacity="1"
-              role="option"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(255, 200, 178)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                aria-hidden="true"
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                75
+                25
               </text>
             </g>
             <g
@@ -1111,7 +1088,7 @@ Object {
               fill-opacity="1"
               role="option"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
               <rect
                 fill="rgb(255, 203, 169)"
@@ -1130,14 +1107,14 @@ Object {
               </text>
             </g>
             <g
-              aria-label="p3, p2. Nasty, 25."
+              aria-label="p3, p1. Excellent, 75."
               fill-opacity="1"
               role="option"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
               <rect
-                fill="rgb(255, 195, 195)"
+                fill="rgb(255, 200, 178)"
                 height="118.86138613861385"
                 width="286.23762376237624"
               />
@@ -1149,7 +1126,30 @@ Object {
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
-                25
+                75
+              </text>
+            </g>
+            <g
+              aria-label="p4, p1. Nasty, 50."
+              fill-opacity="1"
+              role="option"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
+            >
+              <rect
+                fill="rgb(255, 197, 186)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                aria-hidden="true"
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
               </text>
             </g>
           </g>
@@ -4692,7 +4692,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
-              xPoint p4
+              xPoint p3
             </text>
           </g>
           <g
@@ -4711,7 +4711,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
-              xPoint p3
+              xPoint p4
             </text>
           </g>
         </g>
@@ -4744,7 +4744,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               x="-10"
             >
-              yPoint p2
+              yPoint p1
             </text>
           </g>
           <g
@@ -4762,7 +4762,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               x="-10"
             >
-              yPoint p1
+              yPoint p2
             </text>
           </g>
         </g>
@@ -4772,14 +4772,14 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           role="listbox"
         >
           <g
-            aria-label="xPoint p4, yPoint p1. Nasty, 50."
+            aria-label="xPoint p3, yPoint p2. Nasty, 25."
             fill-opacity="1"
             role="option"
             tabindex="0"
             transform="translate(45.8415841584158, 22.42574257425744)"
           >
             <rect
-              fill="rgb(159, 198, 222)"
+              fill="rgb(166, 207, 226)"
               height="118.86138613861385"
               width="286.23762376237624"
             />
@@ -4791,30 +4791,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="xPoint p3, yPoint p1. Excellent, 75."
-            fill-opacity="1"
-            role="option"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(151, 189, 219)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              75
+              25
             </text>
           </g>
           <g
@@ -4822,7 +4799,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             fill-opacity="1"
             role="option"
             tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
+            transform="translate(337.9207920792079, 22.42574257425744)"
           >
             <rect
               fill="rgb(144, 180, 215)"
@@ -4841,14 +4818,14 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             </text>
           </g>
           <g
-            aria-label="xPoint p3, yPoint p2. Nasty, 25."
+            aria-label="xPoint p3, yPoint p1. Excellent, 75."
             fill-opacity="1"
             role="option"
             tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
+            transform="translate(45.8415841584158, 143.71287128712873)"
           >
             <rect
-              fill="rgb(166, 207, 226)"
+              fill="rgb(151, 189, 219)"
               height="118.86138613861385"
               width="286.23762376237624"
             />
@@ -4860,7 +4837,30 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
-              25
+              75
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p4, yPoint p1. Nasty, 50."
+            fill-opacity="1"
+            role="option"
+            tabindex="0"
+            transform="translate(337.9207920792079, 143.71287128712873)"
+          >
+            <rect
+              fill="rgb(159, 198, 222)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              50
             </text>
           </g>
         </g>

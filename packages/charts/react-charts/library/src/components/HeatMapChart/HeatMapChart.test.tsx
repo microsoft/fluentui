@@ -539,6 +539,83 @@ describe('HeatMapChart snapShot testing', () => {
   });
 });
 
+describe('HeatMapChart - Default category order of string axes', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  // In the data the sizes and the regions are not in alphabetical order.
+  const cell = (x: string, y: string, value: number) => ({ x, y, value, rectText: value });
+  const orders: HeatMapChartProps['data'] = [
+    {
+      value: 20,
+      legend: 'Orders',
+      data: [
+        cell('Small', 'South', 10),
+        cell('Medium', 'South', 20),
+        cell('Large', 'South', 30),
+        cell('Small', 'North', 15),
+        cell('Medium', 'North', 25),
+        cell('Large', 'North', 35),
+      ],
+    },
+  ];
+  const chart = {
+    data: orders,
+    domainValuesForColorScale: [0, 40],
+    rangeValuesForColorScale: ['lightblue', 'darkblue'],
+  };
+  const tickLabels = (container: HTMLElement, axis: 'xAxis' | 'yAxis') =>
+    Array.from(container.querySelectorAll(`.fui-cart__${axis} .tick text`)).map(text => text.textContent);
+
+  it('Should order the labels of string axes by name when the category order props are not set', async () => {
+    const { container } = render(<HeatMapChart {...chart} />);
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Large', 'Medium', 'Small']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['North', 'South']);
+  });
+
+  it('Should draw the labels in the same order when the category order props are set to default', async () => {
+    const { container } = render(<HeatMapChart {...chart} xAxisCategoryOrder="default" yAxisCategoryOrder="default" />);
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Large', 'Medium', 'Small']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['North', 'South']);
+  });
+
+  it('Should follow given category orders', async () => {
+    const { container } = render(
+      <HeatMapChart
+        {...chart}
+        xAxisCategoryOrder={['Medium', 'Small', 'Large']}
+        yAxisCategoryOrder={['South', 'North']}
+      />,
+    );
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Medium', 'Small', 'Large']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['South', 'North']);
+  });
+
+  it('Should keep the order of the data when sortOrder is none', async () => {
+    const { container } = render(<HeatMapChart {...chart} sortOrder="none" />);
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Medium', 'Large']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['South', 'North']);
+  });
+
+  it('Should keep the order of the data when the category order props are set to data', async () => {
+    const { container } = render(<HeatMapChart {...chart} xAxisCategoryOrder="data" yAxisCategoryOrder="data" />);
+    // Assert
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Medium', 'Large']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['South', 'North']);
+  });
+
+  it('Should order an axis without its category order prop by name when the other axis has one', async () => {
+    const { container } = render(<HeatMapChart {...chart} xAxisCategoryOrder="data" />);
+    // Assert. The x axis keeps the order of the data, the y axis gets the default order.
+    await waitFor(() => expect(tickLabels(container, 'xAxis')).toEqual(['Small', 'Medium', 'Large']));
+    expect(tickLabels(container, 'yAxis')).toEqual(['North', 'South']);
+  });
+});
+
 describe('HeatMapChart - basic props', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);

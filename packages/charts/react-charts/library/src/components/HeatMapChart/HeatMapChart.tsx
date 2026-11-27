@@ -708,12 +708,16 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       return result;
     };
 
+    // The defaults of the two category order props are applied here. The default value of the whole props
+    // parameter never takes effect, because React always passes a props object.
     const _shouldOrderXAxisLabelsByCategoryOrder = () => {
-      return _xAxisType.current === XAxisTypes.StringAxis && props.xAxisCategoryOrder !== 'default';
+      const { xAxisCategoryOrder = 'default' } = props;
+      return _xAxisType.current === XAxisTypes.StringAxis && xAxisCategoryOrder !== 'default';
     };
 
     const _shouldOrderYAxisLabelsByCategoryOrder = () => {
-      return _yAxisType.current === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+      const { yAxisCategoryOrder = 'default' } = props;
+      return _yAxisType.current === YAxisType.StringAxis && yAxisCategoryOrder !== 'default';
     };
 
     const _mapCategoryToValues = (isYAxis = false) => {

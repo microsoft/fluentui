@@ -833,7 +833,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String One
+              String Four
             </text>
           </g>
           <g
@@ -851,7 +851,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String Two
+              String Three
             </text>
           </g>
           <g
@@ -869,7 +869,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String Three
+              String Two
             </text>
           </g>
           <g
@@ -887,7 +887,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String Four
+              String One
             </text>
           </g>
         </g>
@@ -908,7 +908,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
             <text
               aria-hidden="true"
@@ -918,7 +918,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               text-anchor="start"
               transform="translate(4)"
               x="158"
-              y="218.83333333333334"
+              y="66.16666666666669"
             >
               1k
             </text>
@@ -939,7 +939,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
             <text
               aria-hidden="true"
@@ -949,7 +949,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               text-anchor="start"
               transform="translate(4)"
               x="630"
-              y="167.94444444444446"
+              y="117.05555555555557"
             >
               5k
             </text>
@@ -970,7 +970,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
             <text
               aria-hidden="true"
@@ -980,7 +980,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               text-anchor="start"
               transform="translate(4)"
               x="394"
-              y="117.05555555555557"
+              y="167.94444444444446"
             >
               3k
             </text>
@@ -1001,7 +1001,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
             <text
               aria-hidden="true"
@@ -1011,7 +1011,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               text-anchor="start"
               transform="translate(4)"
               x="276"
-              y="66.16666666666669"
+              y="218.83333333333334"
             >
               2k
             </text>
@@ -4949,7 +4949,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  Q1
+                  Q3
                 </text>
               </g>
               <g
@@ -4985,7 +4985,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  Q3
+                  Q1
                 </text>
               </g>
             </g>
@@ -5006,7 +5006,7 @@ Object {
                   transform="translate(0,-6.542857142857141)"
                   width="208.71428571428575"
                   x="208.57142857142858"
-                  y="191.57142857142856"
+                  y="60.71428571428571"
                 />
                 <rect
                   aria-label="Q1. Product B, -5K."
@@ -5020,7 +5020,7 @@ Object {
                   transform="translate(0,-6.542857142857141)"
                   width="103.35714285714286"
                   x="103.21428571428572"
-                  y="191.57142857142856"
+                  y="60.71428571428571"
                 />
                 <rect
                   aria-label="Q1. Product C, 8K."
@@ -5034,7 +5034,7 @@ Object {
                   transform="translate(0,-6.542857142857141)"
                   width="168.57142857142858"
                   x="419.28571428571433"
-                  y="191.57142857142856"
+                  y="60.71428571428571"
                 />
                 <text
                   aria-hidden="true"
@@ -5044,7 +5044,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="587.8571428571429"
-                  y="207.92857142857142"
+                  y="77.07142857142856"
                 >
                   13k
                 </text>
@@ -5124,7 +5124,7 @@ Object {
                   transform="translate(0,-6.542857142857141)"
                   width="314.07142857142856"
                   x="208.57142857142858"
-                  y="60.71428571428571"
+                  y="191.57142857142856"
                 />
                 <rect
                   aria-label="Q3. Product B, -4K."
@@ -5138,7 +5138,7 @@ Object {
                   transform="translate(0,-6.542857142857141)"
                   width="82.28571428571429"
                   x="124.28571428571429"
-                  y="60.71428571428571"
+                  y="191.57142857142856"
                 />
                 <rect
                   aria-label="Q3. Product C, 5K."
@@ -5152,7 +5152,7 @@ Object {
                   transform="translate(0,-6.542857142857141)"
                   width="105.35714285714286"
                   x="524.6428571428571"
-                  y="60.71428571428571"
+                  y="191.57142857142856"
                 />
                 <text
                   aria-hidden="true"
@@ -5162,7 +5162,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="630"
-                  y="77.07142857142856"
+                  y="207.92857142857142"
                 >
                   16k
                 </text>
@@ -5604,7 +5604,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                Q1
+                Q3
               </text>
             </g>
             <g
@@ -5640,7 +5640,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                Q3
+                Q1
               </text>
             </g>
           </g>
@@ -5661,7 +5661,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="208.71428571428575"
                 x="208.57142857142858"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="Q1. Product B, -5K."
@@ -5675,7 +5675,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="103.35714285714286"
                 x="103.21428571428572"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="Q1. Product C, 8K."
@@ -5689,7 +5689,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="168.57142857142858"
                 x="419.28571428571433"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <text
                 aria-hidden="true"
@@ -5699,7 +5699,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="587.8571428571429"
-                y="207.92857142857142"
+                y="77.07142857142856"
               >
                 13k
               </text>
@@ -5779,7 +5779,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="314.07142857142856"
                 x="208.57142857142858"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="Q3. Product B, -4K."
@@ -5793,7 +5793,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="82.28571428571429"
                 x="124.28571428571429"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="Q3. Product C, 5K."
@@ -5807,7 +5807,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="105.35714285714286"
                 x="524.6428571428571"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <text
                 aria-hidden="true"
@@ -5817,7 +5817,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="630"
-                y="77.07142857142856"
+                y="207.92857142857142"
               >
                 16k
               </text>
@@ -7109,7 +7109,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  data-full="String One"
+                  data-full="String Four"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -7133,7 +7133,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  data-full="String Two"
+                  data-full="String Three"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -7157,7 +7157,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  data-full="String Three"
+                  data-full="String Two"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -7181,7 +7181,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  data-full="String Four"
+                  data-full="String One"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -7212,7 +7212,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="118"
                   x="40"
-                  y="206.11111111111111"
+                  y="53.44444444444446"
                 />
                 <text
                   aria-hidden="true"
@@ -7222,7 +7222,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="158"
-                  y="218.83333333333334"
+                  y="66.16666666666669"
                 >
                   1k
                 </text>
@@ -7243,7 +7243,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="590"
                   x="40"
-                  y="155.22222222222223"
+                  y="104.33333333333334"
                 />
                 <text
                   aria-hidden="true"
@@ -7253,7 +7253,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="630"
-                  y="167.94444444444446"
+                  y="117.05555555555557"
                 >
                   5k
                 </text>
@@ -7274,7 +7274,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="354"
                   x="40"
-                  y="104.33333333333334"
+                  y="155.22222222222223"
                 />
                 <text
                   aria-hidden="true"
@@ -7284,7 +7284,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="394"
-                  y="117.05555555555557"
+                  y="167.94444444444446"
                 >
                   3k
                 </text>
@@ -7305,7 +7305,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="236"
                   x="40"
-                  y="53.44444444444446"
+                  y="206.11111111111111"
                 />
                 <text
                   aria-hidden="true"
@@ -7315,7 +7315,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="276"
-                  y="66.16666666666669"
+                  y="218.83333333333334"
                 >
                   2k
                 </text>
@@ -7640,7 +7640,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                data-full="String One"
+                data-full="String Four"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -7664,7 +7664,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                data-full="String Two"
+                data-full="String Three"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -7688,7 +7688,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                data-full="String Three"
+                data-full="String Two"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -7712,7 +7712,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                data-full="String Four"
+                data-full="String One"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -7743,7 +7743,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
               <text
                 aria-hidden="true"
@@ -7753,7 +7753,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="158"
-                y="218.83333333333334"
+                y="66.16666666666669"
               >
                 1k
               </text>
@@ -7774,7 +7774,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
               <text
                 aria-hidden="true"
@@ -7784,7 +7784,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="630"
-                y="167.94444444444446"
+                y="117.05555555555557"
               >
                 5k
               </text>
@@ -7805,7 +7805,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
               <text
                 aria-hidden="true"
@@ -7815,7 +7815,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="394"
-                y="117.05555555555557"
+                y="167.94444444444446"
               >
                 3k
               </text>
@@ -7836,7 +7836,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
               <text
                 aria-hidden="true"
@@ -7846,7 +7846,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="276"
-                y="66.16666666666669"
+                y="218.83333333333334"
               >
                 2k
               </text>
@@ -8234,7 +8234,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String One
+                  String Four
                 </text>
               </g>
               <g
@@ -8252,7 +8252,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String Two
+                  String Three
                 </text>
               </g>
               <g
@@ -8270,7 +8270,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String Three
+                  String Two
                 </text>
               </g>
               <g
@@ -8288,7 +8288,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String Four
+                  String One
                 </text>
               </g>
             </g>
@@ -8309,7 +8309,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="118"
                   x="40"
-                  y="206.11111111111111"
+                  y="53.44444444444446"
                 />
                 <text
                   aria-hidden="true"
@@ -8319,7 +8319,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="158"
-                  y="218.83333333333334"
+                  y="66.16666666666669"
                 >
                   1k
                 </text>
@@ -8340,7 +8340,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="590"
                   x="40"
-                  y="155.22222222222223"
+                  y="104.33333333333334"
                 />
                 <text
                   aria-hidden="true"
@@ -8350,7 +8350,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="630"
-                  y="167.94444444444446"
+                  y="117.05555555555557"
                 >
                   5k
                 </text>
@@ -8371,7 +8371,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="354"
                   x="40"
-                  y="104.33333333333334"
+                  y="155.22222222222223"
                 />
                 <text
                   aria-hidden="true"
@@ -8381,7 +8381,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="394"
-                  y="117.05555555555557"
+                  y="167.94444444444446"
                 >
                   3k
                 </text>
@@ -8402,7 +8402,7 @@ Object {
                   transform="translate(0,-3.634920634920636)"
                   width="236"
                   x="40"
-                  y="53.44444444444446"
+                  y="206.11111111111111"
                 />
                 <text
                   aria-hidden="true"
@@ -8412,7 +8412,7 @@ Object {
                   text-anchor="start"
                   transform="translate(4)"
                   x="276"
-                  y="66.16666666666669"
+                  y="218.83333333333334"
                 >
                   2k
                 </text>
@@ -8736,7 +8736,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String One
+                String Four
               </text>
             </g>
             <g
@@ -8754,7 +8754,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String Two
+                String Three
               </text>
             </g>
             <g
@@ -8772,7 +8772,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String Three
+                String Two
               </text>
             </g>
             <g
@@ -8790,7 +8790,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String Four
+                String One
               </text>
             </g>
           </g>
@@ -8811,7 +8811,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
               <text
                 aria-hidden="true"
@@ -8821,7 +8821,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="158"
-                y="218.83333333333334"
+                y="66.16666666666669"
               >
                 1k
               </text>
@@ -8842,7 +8842,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
               <text
                 aria-hidden="true"
@@ -8852,7 +8852,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="630"
-                y="167.94444444444446"
+                y="117.05555555555557"
               >
                 5k
               </text>
@@ -8873,7 +8873,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
               <text
                 aria-hidden="true"
@@ -8883,7 +8883,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="394"
-                y="117.05555555555557"
+                y="167.94444444444446"
               >
                 3k
               </text>
@@ -8904,7 +8904,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
               <text
                 aria-hidden="true"
@@ -8914,7 +8914,7 @@ Object {
                 text-anchor="start"
                 transform="translate(4)"
                 x="276"
-                y="66.16666666666669"
+                y="218.83333333333334"
               >
                 2k
               </text>

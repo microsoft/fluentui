@@ -49,7 +49,7 @@ type ColorScale = (_p?: number) => string;
 export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarChartWithAxisProps> = React.forwardRef<
   HTMLDivElement,
   HorizontalBarChartWithAxisProps
->((props = { yAxisCategoryOrder: 'default' }, forwardedRef) => {
+>((props, forwardedRef) => {
   const _refArray: RefArrayData[] = [];
   const _calloutId: string = useId('callout');
   const _isRtl: boolean = useRtl();
@@ -817,15 +817,20 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   function _getOrderedYAxisLabels() {
+    // The default is applied here. A default value for the whole props parameter never takes effect,
+    // because React always passes a props object.
+    const { yAxisCategoryOrder = 'default' } = props;
     const shouldOrderYAxisLabelsByCategoryOrder =
-      _yAxisType === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+      _yAxisType === YAxisType.StringAxis && yAxisCategoryOrder !== 'default';
     if (!shouldOrderYAxisLabelsByCategoryOrder) {
       // Keep the original ordering logic as the default behavior to ensure backward compatibility
       const reversedBars = [..._points].reverse();
-      return reversedBars.map((point: HorizontalBarChartWithAxisDataPoint) => point.y as string);
+      // The points of a stacked chart share their y values. Each value is listed once, so that the axis draws
+      // one tick for it and the label of a bar group counts the groups.
+      return Array.from(new Set(reversedBars.map((point: HorizontalBarChartWithAxisDataPoint) => point.y as string)));
     }
 
-    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
+    return sortAxisCategories(_mapCategoryToValues(), yAxisCategoryOrder);
   }
 
   function _mapCategoryToValues() {
