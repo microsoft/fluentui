@@ -24,6 +24,7 @@ export { SearchBoxSlots }
 export type SearchBoxState = SearchBoxBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-invalid'?: string;
         'data-focused'?: string;
     };
 };

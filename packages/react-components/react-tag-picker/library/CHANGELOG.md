@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-tag-picker
 
-<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.11.0)
+
+Tue, 24 Nov 2026 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.10.8..@fluentui/react-tag-picker_v9.11.0)
+
+### Minor changes
+
+- Add click-trigger timing to the TagPickerControl base hook for native popover composition. ([PR #37178](https://github.com/microsoft/fluentui/pull/37178) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- Bump @fluentui/keyboard-keys to v9.0.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-aria to v9.17.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-combobox to v9.17.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.22 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-field to v9.5.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-portal to v9.8.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-positioning to v9.23.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.20 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tags to v9.9.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- fix: inherit TagPicker disabled state in the shared button trigger ([PR #37179](https://github.com/microsoft/fluentui/pull/37179) by 43711362+paolo-aliprandi@users.noreply.github.com)
 
 ## [9.10.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.8)
 

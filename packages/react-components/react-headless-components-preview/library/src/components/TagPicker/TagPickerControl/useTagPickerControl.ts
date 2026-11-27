@@ -16,7 +16,7 @@ export const useTagPickerControl = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
-  const state: TagPickerControlState = useTagPickerControlBase_unstable(props, ref);
+  const state: TagPickerControlState = useTagPickerControlBase_unstable({ ...props, toggleOn: 'click' }, ref);
 
   /* eslint-disable react-hooks/immutability -- decorate base state with data-* attributes */
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);

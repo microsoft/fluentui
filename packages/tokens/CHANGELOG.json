@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:28 GMT",
+      "version": "1.0.0-alpha.25",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "1.0.0-alpha.24",
       "tag": "@fluentui/tokens_v1.0.0-alpha.24",

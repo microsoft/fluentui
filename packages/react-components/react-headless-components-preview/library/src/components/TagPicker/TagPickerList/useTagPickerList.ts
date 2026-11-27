@@ -23,7 +23,7 @@ export const useTagPickerList = (props: TagPickerListProps, ref: React.Ref<HTMLD
   const listboxSlot = useListboxSlot(props, useMergedRefs(popoverRef, ref), {
     state: { multiselect: true, open, setOpen },
     triggerRef,
-    defaultProps: { id: popoverId },
+    defaultProps: { id: popoverId, 'aria-multiselectable': props.multiselect ?? true },
   });
 
   return {
