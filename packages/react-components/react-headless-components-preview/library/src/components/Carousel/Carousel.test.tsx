@@ -698,6 +698,124 @@ describe('Carousel', () => {
     expect(otherNext).toHaveFocus();
   });
 
+  describe('with a nested carousel', () => {
+    // The inner carousel has two groups and the outer three, so their selected tabs are told apart by label.
+    const inner = (props: ExampleProps = {}) => example({ 'aria-label': 'Inner', slides: items.slice(0, 4), ...props });
+    const nested = (props: Partial<CarouselProps> = {}, header?: React.ReactNode) => (
+      <Carousel aria-label="Outer" circular autoplayInterval={1000} {...props}>
+        <CarouselAutoplayButton />
+        {header}
+        <CarouselPrevious />
+        <CarouselViewport>
+          <CarouselCard>{inner({ autoplay: true })}</CarouselCard>
+          <CarouselCard>Two</CarouselCard>
+          <CarouselCard>Three</CarouselCard>
+        </CarouselViewport>
+        <CarouselNext />
+        <CarouselNav />
+      </Carousel>
+    );
+    const outerSelected = () =>
+      screen.getAllByRole('tab', { selected: true }).find(tab => tab.getAttribute('aria-label')?.endsWith('of 3'));
+    const outerPause = () => screen.getByRole('button', { name: 'Pause' });
+    // Document order: the outer Play comes before the one inside its first slide.
+    const outerPlay = () => screen.getAllByRole('button', { name: 'Play' })[0];
+    const innerPlay = () => screen.getAllByRole('button', { name: 'Play' }).at(-1)!;
+
+    it('treats the inner playback control as content: hover suspends the outer rotation', () => {
+      jest.useFakeTimers();
+      render(nested());
+      fireEvent.click(outerPlay());
+      expect(innerPlay()).not.toBe(outerPause());
+      // The outer carousel's own Pause stays exempt from suspension and interruption.
+      fireEvent.pointerOver(outerPause());
+      act(() => outerPause().focus());
+      fireEvent.keyDown(outerPause(), { key: 'Tab' });
+      act(() => jest.advanceTimersByTime(1000));
+      expect(outerSelected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+      fireEvent.click(screen.getByRole('tab', { name: 'Page 1 of 3' }));
+      fireEvent.click(outerPlay());
+      fireEvent.pointerOver(innerPlay());
+      act(() => jest.advanceTimersByTime(3000));
+      expect(outerSelected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+      expect(outerPause()).toBeVisible();
+      fireEvent.pointerLeave(screen.getByRole('region', { name: 'Outer' }));
+      act(() => jest.advanceTimersByTime(1000));
+      expect(outerSelected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+    });
+
+    // jsdom doesn't deliver pointerdown to React; the Cypress suite covers pointer activation.
+    it.each(['focus', 'keyDown'] as const)(
+      'treats the inner playback control as content: %s stops the outer rotation',
+      interaction => {
+        jest.useFakeTimers();
+        render(nested());
+        fireEvent.click(outerPlay());
+        expect(outerPause()).toBeVisible();
+        const target = innerPlay();
+        if (interaction === 'focus') {
+          act(() => target.focus());
+        } else {
+          fireEvent.keyDown(target, { key: 'Enter' });
+        }
+        expect(screen.queryByRole('button', { name: 'Pause' })).toBeNull();
+        act(() => jest.advanceTimersByTime(5000));
+        expect(outerSelected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+      },
+    );
+
+    it("doesn't take a nested carousel's Next button as its own boundary anchor", () => {
+      // A nested carousel outside the outer viewport, but inside its root.
+      const header = inner({ nav: false });
+      const { rerender } = render(nested({ circular: false, activeIndex: 0 }, header));
+      const innerNext = screen.getAllByRole('button', { name: 'Next' })[0];
+      act(() => innerNext.focus());
+      rerender(nested({ circular: false, activeIndex: 2 }, header));
+      expect(outerSelected()).toHaveAttribute('aria-label', 'Page 3 of 3');
+      expect(innerNext).toHaveFocus();
+    });
+  });
+
+  describe('with render-callback controls that rewrite aria-controls but forward the ref', () => {
+    const rewrite = (Component: React.ElementType, props: object) => <Component {...props} aria-controls="elsewhere" />;
+
+    it('keeps its own playback control exempt', () => {
+      jest.useFakeTimers();
+      render(example({ autoplay: { children: rewrite }, circular: true, autoplayInterval: 1000 }));
+      fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+      const pause = screen.getByRole('button', { name: 'Pause' });
+      expect(pause).toHaveAttribute('aria-controls', 'elsewhere');
+      fireEvent.pointerOver(pause);
+      act(() => pause.focus());
+      fireEvent.keyDown(pause, { key: 'Tab' });
+      expect(screen.getByRole('button', { name: 'Pause' })).toBe(pause);
+      act(() => jest.advanceTimersByTime(1000));
+      expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+    });
+
+    it('keeps its own Next button as the boundary focus anchor through motion', async () => {
+      const resolvers: (() => void)[] = [];
+      const transition = jest.fn(() => [
+        runningAnimation(
+          new Promise<void>(resolve => {
+            resolvers.push(resolve);
+          }),
+          jest.fn(),
+        ),
+      ]);
+      render(example({ next: { button: { children: rewrite } }, defaultActiveIndex: 1, transition }));
+      const next = document.querySelector<HTMLElement>('[data-carousel-action="next"]')!;
+      expect(next).toHaveAttribute('aria-controls', 'elsewhere');
+      act(() => next.focus());
+      fireEvent.click(next);
+      // The anchor stays focused and shown until the motion settles, then focus recovers into the last group.
+      expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'true');
+      expect(next).toHaveFocus();
+      await act(async () => resolvers[0]());
+      expect(screen.getByRole('group', { name: 'Slide 5 of 5' })).toHaveFocus();
+    });
+  });
+
   it('uses the computed direction instead of writing one, mirroring nav keys and transitions', () => {
     // jsdom doesn't inherit `direction`; Carousel.cy.tsx covers an inherited `dir="rtl"` in a real browser.
     const transition = jest.fn(() => []);

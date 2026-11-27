@@ -1260,6 +1260,44 @@ describe('Carousel browser behavior', () => {
     cy.get('.viewport').should('have.attr', 'aria-live', 'polite');
   });
 
+  it("stops for pointer activation of a nested carousel's playback control, keeping its own exempt", () => {
+    const outerSelected = (position: number) =>
+      cy.get(`[role="tab"][aria-label="Page ${position} of 3"]`).should('have.attr', 'aria-selected', 'true');
+    // Rotation only advances on cy.tick(), so slow commands can't move the outer carousel off the nested one.
+    cy.clock();
+    mount(
+      <Carousel id="outer" aria-label="Outer" circular autoplayInterval={1000}>
+        <CarouselAutoplayButton id="outer-playback" />
+        <CarouselViewport>
+          <CarouselCard>Outer first</CarouselCard>
+          <CarouselCard>
+            <Carousel id="inner" aria-label="Inner" circular autoplayInterval={60000}>
+              <CarouselAutoplayButton id="inner-playback" />
+              <CarouselViewport>{['Inner first', 'Inner second']}</CarouselViewport>
+              <CarouselNav />
+            </Carousel>
+          </CarouselCard>
+          <CarouselCard>Outer third</CarouselCard>
+        </CarouselViewport>
+        <CarouselNav />
+      </Carousel>,
+    );
+    // The outer carousel's own Play/Pause is exempt from pointer interruption and hover suspension.
+    cy.get('#outer-playback').realClick().should('have.text', 'Pause');
+    cy.tick(1000);
+    outerSelected(2);
+    // Hovering the nested control suspends the outer rotation like any content.
+    cy.get('#inner-playback').realHover();
+    // pointerover renders at continuous priority: let it commit before advancing the frozen clock.
+    cy.wait(100);
+    cy.tick(3000);
+    // Activating it stops the outer rotation. Its render also flushes any advance the tick caused.
+    cy.get('#inner-playback').realClick();
+    cy.get('#inner').should('have.attr', 'data-playing');
+    cy.get('#outer').should('not.have.attr', 'data-playing');
+    outerSelected(2);
+  });
+
   it('waits only for finite motion, then cancels every handle and recovers boundary focus', () => {
     let finite: Animation;
     let handles: Animation[];

@@ -9,6 +9,7 @@ import {
   useCarouselContext,
   useCarouselPartRegistration,
 } from '../carouselContext';
+import { useCarouselControlRef } from '../carouselControls';
 import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type {
   CarouselAutoplayButtonProps,
@@ -29,7 +30,11 @@ export const useCarouselAutoplayButton = (
   const context = useCarouselContext();
   const rendered = context.paged && !isControlHidden(props);
   const register = useCarouselPartRegistration('autoplay', rendered, !isControlDisabled(props));
-  const mergedRef = useMergedRefs(ref, useFieldsetRegistration<HTMLButtonElement>(register));
+  const mergedRef = useMergedRefs(
+    ref,
+    useFieldsetRegistration<HTMLButtonElement>(register),
+    useCarouselControlRef<HTMLButtonElement>(context.viewportRef, 'autoplay'),
+  );
   const {
     playLabel = 'Play',
     pauseLabel = 'Pause',

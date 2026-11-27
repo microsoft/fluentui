@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { getOwnCarouselAction } from './carouselControls';
 
 type Environment = { visible: boolean; documentVisible: boolean; reducedMotion: boolean };
 
@@ -58,6 +59,9 @@ export function useCarouselEnvironment(
   return { visible, documentVisible, reducedMotion };
 }
 
+const isOwnPlayback = (owner: object, target: EventTarget): boolean =>
+  getOwnCarouselAction(owner, target as Node) === 'autoplay';
+
 export function useCarouselRotation(
   targetDocument: Document | undefined,
   enabled: boolean,
@@ -68,6 +72,8 @@ export function useCarouselRotation(
   atEnd: boolean,
   advance: () => void,
   environment: Environment,
+  /** Identifies this carousel's own playback control (see `useCarouselControlRef`); a nested carousel's is content. */
+  owner: object,
 ): {
   playing: boolean;
   stop: () => void;
@@ -131,16 +137,15 @@ export function useCarouselRotation(
     }),
     // Pointing at the playback control neither starts nor ends a suspension: rotation started there runs,
     // but moving from a slide onto Pause keeps it suspended until the pointer leaves the carousel.
+    // A nested carousel's playback control is content of this one.
     onPointerOver: useEventCallback((event: React.PointerEvent<HTMLDivElement>) => {
-      const target = event.target as HTMLElement;
-      if (!target.closest('[data-carousel-action="autoplay"]')) {
+      if (!isOwnPlayback(owner, event.target)) {
         setHovered(true);
       }
     }),
     onPointerLeave: useEventCallback(() => setHovered(false)),
     interrupt: useEventCallback((event: React.SyntheticEvent<HTMLDivElement>) => {
-      const target = event.target as HTMLElement;
-      if (!target.closest('[data-carousel-action="autoplay"]')) {
+      if (!isOwnPlayback(owner, event.target)) {
         stop();
       }
     }),

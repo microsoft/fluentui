@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useControllableState, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../hooks/top-layer/utils';
 import { focusCarouselPage } from './focusCarouselPage';
+import { getOwnCarouselAction } from './carouselControls';
 import type { CarouselProps, CarouselIndexChangeData } from './Carousel.types';
 
 const isFiniteAndRunning = (animation: Animation): boolean =>
@@ -127,7 +128,9 @@ export function useCarouselSelection(options: SelectionOptions): {
     const focused = active && rootRef.current?.contains(active) ? active : null;
     const oldPage = viewport?.children[view.index];
     const inContent = !!focused && !!oldPage?.contains(focused);
-    const anchor = focused?.getAttribute('data-carousel-action');
+    // Only this carousel's own Previous/Next buttons anchor focus; a nested carousel's are content.
+    const action = getOwnCarouselAction(viewportRef, focused);
+    const anchor = action === 'previous' || action === 'next' ? action : undefined;
     const boundary =
       !options.circular && ((anchor === 'previous' && index === 0) || (anchor === 'next' && index === pageCount - 1));
     recovery.current = inContent || boundary ? focused : null;
@@ -140,7 +143,7 @@ export function useCarouselSelection(options: SelectionOptions): {
       outgoing: paged && view.index < pageCount ? view.index : undefined,
       direction,
       busy: true,
-      anchor: anchor === 'previous' || anchor === 'next' ? anchor : undefined,
+      anchor,
     });
   }, [
     index,

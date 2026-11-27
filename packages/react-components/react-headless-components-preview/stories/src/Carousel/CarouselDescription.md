@@ -102,7 +102,9 @@ false and enables directional wrapping with both arrows always available.
 non-integers or values outside 1000–2147483647 throw. Pause, manual navigation, or interaction outside
 playback stops rotation. Hover temporarily suspends it, including while the pointer is over Pause, until the
 pointer leaves the carousel; document visibility and viewport intersection
-suspend its timer. Resuming a suspended session always waits a fresh interval. Non-circular playback stops
+suspend its timer. These exemptions apply only to the carousel's own controls, identified by the element its
+forwarded ref receives: a carousel nested in a slide is content of the outer carousel, so hovering its Play/Pause or
+arrows suspends the outer rotation and focusing or activating them stops it. Resuming a suspended session always waits a fresh interval. Non-circular playback stops
 once the selection reaches the final group; Play there requests the first group immediately. In controlled
 mode it retries that restart once per eligible interval until accepted or stopped. Localize `playLabel`, `pauseLabel` and
 `reducedMotionLabel` on `CarouselAutoplayButton`, and `getPageLabel`/`getSlideLabel` on `Carousel`.

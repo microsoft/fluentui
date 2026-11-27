@@ -126,6 +126,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     lastGroup,
     advance,
     environment,
+    viewportRef,
   );
   const previousUnavailable = !circular && view.index === 0;
   const nextUnavailable = !circular && view.index === pageCount - 1;

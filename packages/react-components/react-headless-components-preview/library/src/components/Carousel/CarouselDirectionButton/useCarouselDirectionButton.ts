@@ -17,6 +17,7 @@ import {
   useCarouselContext,
   useCarouselPartRegistration,
 } from '../carouselContext';
+import { useCarouselControlRef } from '../carouselControls';
 import { focusSelectedPage } from '../focusCarouselPage';
 import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type { CarouselDirectionButtonProps, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
@@ -53,6 +54,8 @@ export const useCarouselDirectionButton = (
   const track = useFieldsetRegistration(register);
   const probe = useMergedRefs<HTMLTemplateElement>(track);
   const buttonRef = useMergedRefs(buttonSlot.ref, keepButtonMounted ? track : undefined);
+  const ownControlRef = useCarouselControlRef<HTMLButtonElement>(context.viewportRef, kind);
+  const controlRef = useMergedRefs(keepButtonMounted ? buttonRef : buttonSlot.ref, ownControlRef);
   const probeRef = !custom && present && !showWrapper && context.pageCount > 1 ? probe : undefined;
   // A custom button is already mounted while staged. Honor its autofocus once, only when it becomes usable.
   const pendingAutoFocus = React.useRef(buttonSlot.autoFocus);
@@ -99,7 +102,7 @@ export const useCarouselDirectionButton = (
     'aria-describedby': undefined,
     'aria-disabled': wrapperDisabled || buttonSlot['aria-disabled'],
     'data-carousel-action': kind,
-    ref: keepButtonMounted ? buttonRef : buttonSlot.ref,
+    ref: controlRef,
     autoFocus: keepButtonMounted ? undefined : buttonSlot.autoFocus,
     disabled: buttonSlot.disabled || (!keepButtonMounted && unavailable),
     disabledFocusable: buttonSlot.disabledFocusable || (!hidden && !buttonSlot.disabled && unavailable),
