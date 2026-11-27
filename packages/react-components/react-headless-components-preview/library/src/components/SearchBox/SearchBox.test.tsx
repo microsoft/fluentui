@@ -52,4 +52,16 @@ describe('SearchBox', () => {
 
     expect(root).not.toHaveAttribute('data-invalid');
   });
+
+  it('renders with data-readonly when read-only', () => {
+    const { container } = render(<SearchBox readOnly placeholder="Search..." />);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-readonly');
+  });
+
+  it('does not render data-readonly by default', () => {
+    const { container } = render(<SearchBox placeholder="Search..." />);
+
+    expect(container.firstElementChild!).not.toHaveAttribute('data-readonly');
+  });
 });

@@ -1,10 +1,9 @@
-import { computePosition } from '@floating-ui/dom';
-import type { Placement } from '@floating-ui/dom';
+import { computePosition } from './utils/computePosition';
 import { createPositionManager } from './createPositionManager';
-import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_HIDDEN, POSITIONING_END_EVENT } from './constants';
-import type { OnPositioningEndEvent } from './types';
+import { POSITIONING_END_EVENT } from './constants';
+import type { OnPositioningEndEvent, PositioningPlacement } from './types';
 
-jest.mock('@floating-ui/dom', () => ({
+jest.mock('./utils/computePosition', () => ({
   computePosition: jest.fn(),
 }));
 
@@ -32,10 +31,7 @@ function createTestElements() {
   return { container, target };
 }
 
-const mockMiddlewareData = {
-  intersectionObserver: { intersecting: false },
-  hide: { escaped: false, referenceHidden: false },
-};
+const mockVisibility = { intersecting: false, escaped: false, referenceHidden: false };
 
 describe('createPositionManager', () => {
   beforeEach(() => {
@@ -47,7 +43,57 @@ describe('createPositionManager', () => {
     document.body.innerHTML = '';
   });
 
-  it.each([
+  it('listens to ancestor scrolls once and detaches when disposed', async () => {
+    computePositionMock.mockResolvedValue({ x: 0, y: 0, placement: 'bottom', ...mockVisibility });
+    const { container, target } = createTestElements();
+    const positioned = jest.fn();
+    container.addEventListener(POSITIONING_END_EVENT, positioned);
+    const scroller = document.body.appendChild(document.createElement('div'));
+    scroller.style.overflowY = 'auto';
+    scroller.appendChild(target);
+    const add = jest.spyOn(scroller, 'addEventListener');
+    const remove = jest.spyOn(scroller, 'removeEventListener');
+    const manager = createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'fixed',
+      options: { disableUpdateOnResize: true },
+    });
+    await flushMicrotasks();
+
+    scroller.dispatchEvent(new Event('scroll'));
+    await flushMicrotasks();
+    document.body.dispatchEvent(new Event('scroll'));
+    await flushMicrotasks();
+    expect(positioned).toHaveBeenCalledTimes(3);
+    expect(add).toHaveBeenCalledTimes(1);
+    expect(add).toHaveBeenCalledWith('scroll', manager.updatePosition, { passive: true });
+
+    manager.dispose();
+    expect(remove).toHaveBeenCalledWith('scroll', manager.updatePosition);
+    scroller.dispatchEvent(new Event('scroll'));
+    document.body.dispatchEvent(new Event('scroll'));
+    await flushMicrotasks();
+    expect(positioned).toHaveBeenCalledTimes(3);
+  });
+
+  it('does not try to observe elements in documents without a window', async () => {
+    const doc = document.implementation.createHTMLDocument();
+    expect(doc.defaultView).toBeNull();
+    const manager = createPositionManager({
+      container: doc.createElement('div'),
+      target: doc.createElement('button'),
+      arrow: null,
+      strategy: 'absolute',
+    });
+    manager.updatePosition();
+    await flushMicrotasks();
+    manager.dispose();
+    expect(computePositionMock).not.toHaveBeenCalled();
+  });
+
+  it.each<PositioningPlacement>([
     'top',
     'top-start',
     'top-end',
@@ -60,13 +106,12 @@ describe('createPositionManager', () => {
     'left',
     'left-start',
     'left-end',
-  ] as Placement[])('dispatches POSITIONING_END_EVENT with placement "%s"', async (placement: Placement) => {
+  ])('dispatches POSITIONING_END_EVENT with placement "%s"', async placement => {
     computePositionMock.mockResolvedValue({
       x: 10,
       y: 20,
       placement,
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     const { container, target } = createTestElements();
@@ -78,9 +123,8 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement,
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -100,8 +144,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     const { container, target } = createTestElements();
@@ -113,9 +156,8 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement: 'top',
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -134,11 +176,9 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: {
-        ...mockMiddlewareData,
-        hide: { escaped: true, referenceHidden: true },
-      },
+      ...mockVisibility,
+      escaped: true,
+      referenceHidden: true,
     });
 
     const { container, target } = createTestElements();
@@ -162,49 +202,14 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
 
     const event: OnPositioningEndEvent = listener.mock.calls[0][0];
     expect(event.detail).toEqual({ placement: 'bottom', escaped: true, referenceHidden: true });
-  });
-
-  it('does not report hide flags when the layout viewport is unavailable', async () => {
-    computePositionMock.mockResolvedValue({
-      x: 0,
-      y: 0,
-      placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: {
-        ...mockMiddlewareData,
-        hide: { escaped: true, referenceHidden: true },
-      },
-    });
-
-    const { container, target } = createTestElements();
-    const listener = jest.fn();
-    container.addEventListener(POSITIONING_END_EVENT, listener);
-
-    createPositionManager({
-      container,
-      target,
-      arrow: null,
-      strategy: 'absolute',
-      middleware: [],
-      placement: 'bottom',
-      disableUpdateOnResize: true,
-    });
-
-    await flushMicrotasks();
-
-    const event: OnPositioningEndEvent = listener.mock.calls[0][0];
-    expect(event.detail).toEqual({ placement: 'bottom', escaped: false, referenceHidden: false });
-    expect(container.hasAttribute(DATA_POSITIONING_ESCAPED)).toBe(false);
-    expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(false);
   });
 
   it('does not dispatch event after dispose', async () => {
@@ -227,9 +232,8 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     // Let debounce microtask fire so computePosition is called
@@ -243,8 +247,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     // Allow the .then() to run

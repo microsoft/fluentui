@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: SearchBox exposes data-readonly",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

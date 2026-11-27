@@ -23,7 +23,19 @@ describe('usePositioning', () => {
     expect(typeof result.current.containerRef).toBe('function');
   });
 
-  it('targetRef writes anchor-name onto the trigger element', () => {
+  it('targetRef writes anchor-name onto the trigger element once a container is attached', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+
+    act(() => {
+      result.current.targetRef(node);
+      result.current.containerRef(document.createElement('div'));
+    });
+
+    expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+  });
+
+  it('does not touch the trigger while no container is attached (closed overlay)', () => {
     const result = mountHook();
     const node = document.createElement('div');
 
@@ -31,7 +43,29 @@ describe('usePositioning', () => {
       result.current.targetRef(node);
     });
 
+    expect(node.style.getPropertyValue('anchor-name')).toBe('');
+  });
+
+  it('releases a trigger removed while the overlay is closed', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+    const container = document.createElement('div');
+
+    // Open: anchor-name is written onto the trigger.
+    act(() => {
+      result.current.targetRef(node);
+      result.current.containerRef(container);
+    });
     expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+
+    // Close, then remove the trigger: its anchor-name is cleaned up instead of lingering on the detached node.
+    act(() => {
+      result.current.containerRef(null);
+    });
+    act(() => {
+      result.current.targetRef(null);
+    });
+    expect(node.style.getPropertyValue('anchor-name')).toBe('');
   });
 
   it('appends to anchor-name so multiple instances can share one trigger', () => {
@@ -43,6 +77,8 @@ describe('usePositioning', () => {
     act(() => {
       first.current.targetRef(node);
       second.current.targetRef(node);
+      first.current.containerRef(document.createElement('div'));
+      second.current.containerRef(document.createElement('div'));
     });
 
     const names = node.style
@@ -64,6 +100,7 @@ describe('usePositioning', () => {
 
     act(() => {
       result.current.targetRef(node);
+      result.current.containerRef(document.createElement('div'));
     });
 
     const names = node.style

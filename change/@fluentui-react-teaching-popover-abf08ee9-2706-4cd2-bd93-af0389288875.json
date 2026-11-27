@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore all dismiss button borders in TeachingPopoverHeader and TeachingPopoverTitle for forced colors",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "paulmardling@microsoft.com"
+}

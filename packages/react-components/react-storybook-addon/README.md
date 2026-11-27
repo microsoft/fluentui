@@ -58,6 +58,11 @@ This presets uses [custom docs container and page](https://storybook.js.org/docs
   - `Slot` api rendering
   - native props support
 
+The default props table displays readable `Slot` / `Slot<...>` types and slot
+customization guidance, including when Storybook reuses already normalized story
+or component metadata. Set `reactStorybookAddon.docs.argTable.slotsApi` to `false`
+to disable slot normalization and guidance.
+
 ## Getting Started
 
 ### Installation
