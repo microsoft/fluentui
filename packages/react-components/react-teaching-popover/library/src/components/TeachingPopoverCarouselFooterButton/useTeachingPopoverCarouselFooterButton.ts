@@ -28,6 +28,7 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
 ): TeachingPopoverCarouselFooterButtonBaseState => {
   // `appearance`, `disabledFocusable`, `icon`, `iconPosition`, `shape` and `size` are Button props handled by the
   // styled hook through `useButton_unstable`, they are not DOM attributes.
+  // `dangerouslySetInnerHTML` is omitted because root children are replaced by `altText` on the trailing step.
   const {
     navType,
     altText,
@@ -39,6 +40,7 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
     size,
     onClick,
     children,
+    dangerouslySetInnerHTML: _dangerouslySetInnerHTML,
     ...rest
   } = props;
 

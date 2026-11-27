@@ -23,6 +23,8 @@ export const useTeachingPopoverCarouselNavBase_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselNavBaseState => {
   const values = useCarouselValues_unstable(snapshot => snapshot);
+  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
+  const { dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rootProps } = props;
 
   return {
     values,
@@ -35,7 +37,7 @@ export const useTeachingPopoverCarouselNavBase_unstable = (
         ref,
         role: 'tablist',
         tabIndex: 0,
-        ...props,
+        ...rootProps,
         children: null,
       },
       { elementType: 'div' },

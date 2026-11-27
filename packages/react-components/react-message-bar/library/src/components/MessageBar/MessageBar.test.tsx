@@ -247,4 +247,10 @@ describe('MessageBar DOM attributes', () => {
       'role',
     ]);
   });
+
+  it('does not forward dangerouslySetInnerHTML to the root, which renders composed children', () => {
+    const { container } = render(<MessageBar dangerouslySetInnerHTML={{ __html: 'Injected' }}>Message</MessageBar>);
+
+    expect((container.firstElementChild as HTMLElement).textContent).toBe('Message');
+  });
 });

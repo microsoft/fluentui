@@ -25,7 +25,8 @@ export const useMessageBarGroup_unstable = (
     });
   }
 
-  const { animate = 'exit-only', ...rest } = props;
+  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
+  const { animate = 'exit-only', dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rest } = props;
 
   const children = React.Children.map(props.children ?? [], c =>
     React.isValidElement(c) && c.type !== React.Fragment ? c : null,

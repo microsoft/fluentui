@@ -10,7 +10,8 @@ export const useTeachingPopoverBody_unstable = (
   props: TeachingPopoverBodyProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverBodyState => {
-  const { mediaLength, media, ...rest } = props;
+  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
+  const { mediaLength, media, dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rest } = props;
 
   return {
     components: {

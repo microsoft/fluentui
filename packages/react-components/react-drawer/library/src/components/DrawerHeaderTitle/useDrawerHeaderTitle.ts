@@ -19,7 +19,10 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  const { children, heading, action, ...rest } = props;
+  // `children` stays in `rest` so a root render function still reaches the root slot.
+  // `dangerouslySetInnerHTML` is omitted because the renderer composes the root children.
+  const { heading, action, dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rest } = props;
+  const { children } = props;
   const headingId = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
   return {

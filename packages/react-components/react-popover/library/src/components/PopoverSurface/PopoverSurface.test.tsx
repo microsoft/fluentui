@@ -80,4 +80,11 @@ describe('PopoverSurface', () => {
     // Assert
     expect(getByTestId(testid)).not.toBeNull();
   });
+
+  it('does not forward dangerouslySetInnerHTML to the root, which always renders composed children', () => {
+    mockPopoverContext({ withArrow: false });
+    const { getByTestId } = render(<PopoverSurface {...props} dangerouslySetInnerHTML={{ __html: 'Details' }} />);
+
+    expect(getByTestId(testid).innerHTML).toBe('');
+  });
 });

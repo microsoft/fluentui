@@ -10,7 +10,8 @@ export const useCarouselItem_unstable = (
   props: CarouselItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselItemState => {
-  const { value, ...rest } = props;
+  // Inactive items render no content, so `dangerouslySetInnerHTML` must not inject any.
+  const { value, dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rest } = props;
 
   const visible = useCarouselContext_unstable(c => c.value === value);
   const state: CarouselItemState = {

@@ -23,7 +23,8 @@ export const useTeachingPopoverFooterBase_unstable = (
   props: TeachingPopoverFooterBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterBaseState => {
-  const { footerLayout = 'horizontal', ...rest } = props;
+  // The renderer composes the root children, which React does not allow alongside `dangerouslySetInnerHTML`.
+  const { footerLayout = 'horizontal', dangerouslySetInnerHTML: _dangerouslySetInnerHTML, ...rest } = props;
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const handleButtonClick = useEventCallback(
