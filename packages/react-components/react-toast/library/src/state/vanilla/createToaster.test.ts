@@ -167,6 +167,7 @@ describe('createToaster', () => {
     one.remove();
 
     expect(toaster.visibleToasts.has('one')).toBe(false);
+    expect(toaster.visibleToasts.has('two')).toBe(true);
     expect(toaster.visibleToasts.has('four')).toBe(false);
     const four = toaster.toasts.get('four');
     assertToast(four);
@@ -174,5 +175,29 @@ describe('createToaster', () => {
     four.remove();
 
     expect(toaster.visibleToasts.has('two')).toBe(true);
+  });
+
+  it('should dequeue toasts with lower numeric priority first', () => {
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'first', priority: 10 }, () => null);
+    toaster.buildToast({ content: 'foo', toastId: 'low-priority', priority: 5 }, () => null);
+    toaster.buildToast({ content: 'foo', toastId: 'high-priority', priority: 1 }, () => null);
+
+    expect(toaster.visibleToasts.has('first')).toBe(true);
+    const first = toaster.toasts.get('first');
+    assertToast(first);
+    first.close();
+    first.remove();
+
+    expect(toaster.visibleToasts.has('high-priority')).toBe(true);
+    expect(toaster.visibleToasts.has('low-priority')).toBe(false);
+
+    const high = toaster.toasts.get('high-priority');
+    assertToast(high);
+    high.close();
+    high.remove();
+
+    expect(toaster.visibleToasts.has('low-priority')).toBe(true);
   });
 });

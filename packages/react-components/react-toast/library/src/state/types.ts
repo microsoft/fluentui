@@ -48,7 +48,9 @@ export interface ToastOptions<TData = object> {
    */
   toasterId: ToasterId | undefined;
   /**
-   * Higher priority toasts will be rendered before lower priority toasts
+   * Higher priority toasts will be rendered before lower priority toasts.
+   * Lower numeric values take precedence (e.g. priority 1 renders before priority 2).
+   * @default 0
    */
   priority: number;
   /**
@@ -107,7 +109,7 @@ export interface Toast<TData = object> extends ToastOptions<TData> {
    */
   updateId: number;
   /**
-   * Used to determine default priority when the user does not set one
+   * Used to determine FIFO dispatch order when toasts have identical priority.
    * Simple counter of toasts dispatched.
    */
   order: number;
