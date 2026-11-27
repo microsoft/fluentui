@@ -26,17 +26,27 @@ const isAlwaysAllowed = name => ALWAYS_ALLOWED.has(name) || name.startsWith('dat
 const getConstituents = type => (type.isUnion() ? type.types : [type]);
 
 /**
+ * @param {TSESTree.Property} property
+ * @returns {string | undefined} the key of a non-computed identifier or string-literal property
+ */
+function getStaticKey(property) {
+  if (property.key.type === AST_NODE_TYPES.Identifier) {
+    return property.key.name;
+  }
+  if (property.key.type === AST_NODE_TYPES.Literal && typeof property.key.value === 'string') {
+    return property.key.value;
+  }
+  return undefined;
+}
+
+/**
  * @param {TSESTree.ObjectExpression} options
+ * @param {string} name
  * @returns {TSESTree.Node | undefined}
  */
-function getElementTypeValue(options) {
+function getOptionValue(options, name) {
   for (const property of options.properties) {
-    if (
-      property.type === AST_NODE_TYPES.Property &&
-      !property.computed &&
-      property.key.type === AST_NODE_TYPES.Identifier &&
-      property.key.name === 'elementType'
-    ) {
+    if (property.type === AST_NODE_TYPES.Property && !property.computed && getStaticKey(property) === name) {
       return property.value;
     }
   }
@@ -52,13 +62,9 @@ function getKeysOverriddenAfter(object, spread) {
   const keys = new Set();
   const index = object.properties.indexOf(spread);
   for (const property of object.properties.slice(index + 1)) {
-    if (property.type !== AST_NODE_TYPES.Property || property.computed) {
-      continue;
-    }
-    if (property.key.type === AST_NODE_TYPES.Identifier) {
-      keys.add(property.key.name);
-    } else if (property.key.type === AST_NODE_TYPES.Literal && typeof property.key.value === 'string') {
-      keys.add(property.key.value);
+    const key = property.type === AST_NODE_TYPES.Property && !property.computed ? getStaticKey(property) : undefined;
+    if (key !== undefined) {
+      keys.add(key);
     }
   }
   return keys;
@@ -121,61 +127,117 @@ module.exports = createRule({
     }
 
     /**
-     * Adds the tag names a type can hold to `tags`. `undefined`, `null` and `never` add nothing.
-     * @param {ts.Type} type
-     * @param {Set<string>} tags
-     * @returns {boolean} false when the type can hold something other than a string literal (for example a component)
+     * The possible values of `as` while walking the merged slot props in order: a tag name,
+     * ABSENT (`as` is unset or nullish, so the slot renders `elementType`) or UNKNOWN (a component or an arbitrary string).
+     * @typedef {Set<string | symbol>} AsState
      */
-    function collectTagLiterals(type, tags) {
+    const ABSENT = Symbol('absent');
+    const UNKNOWN = Symbol('unknown');
+
+    /**
+     * @param {ts.Type} type
+     * @returns {AsState}
+     */
+    function getAsValues(type) {
+      /** @type {AsState} */
+      const values = new Set();
       for (const constituent of getConstituents(type)) {
         if (constituent.isStringLiteral()) {
-          tags.add(constituent.value);
+          values.add(constituent.value);
         } else if (
-          ![ts.TypeFlags.Undefined, ts.TypeFlags.Null, ts.TypeFlags.Never].some(flag =>
-            isTypeFlagSet(constituent, flag),
-          )
+          isTypeFlagSet(constituent, ts.TypeFlags.Undefined) ||
+          isTypeFlagSet(constituent, ts.TypeFlags.Null)
         ) {
-          return false;
+          values.add(ABSENT);
+        } else if (!isTypeFlagSet(constituent, ts.TypeFlags.Never)) {
+          values.add(UNKNOWN);
         }
       }
-      return true;
+      return values;
+    }
+
+    /** @param {ts.Symbol} symbol */
+    function isOptional(symbol) {
+      // eslint-disable-next-line no-bitwise
+      return (symbol.getFlags() & ts.SymbolFlags.Optional) !== 0;
     }
 
     /**
-     * Slots render `as ?? elementType` for intrinsic element types, so every tag `as` can hold is a possible root.
-     * @param {TSESTree.ObjectExpression} value
-     * @param {TSESTree.SpreadElement[]} spreads
+     * Applies a spread of `type` on top of `state`: a required `as` replaces it, an optional one may or may not.
+     * @param {AsState} state
+     * @param {ts.Type | undefined} type
      * @param {ts.Node} location
-     * @returns {Set<string> | undefined} the tags `as` can hold, or undefined when `as` can be something else
+     * @returns {AsState}
      */
-    function getAsTags(value, spreads, location) {
-      const tags = new Set();
-      for (const property of value.properties) {
-        if (
-          property.type === AST_NODE_TYPES.Property &&
-          !property.computed &&
-          property.key.type === AST_NODE_TYPES.Identifier &&
-          property.key.name === 'as'
-        ) {
+    function spreadAs(state, type, location) {
+      if (!type || isTypeFlagSet(type, ts.TypeFlags.Any) || isTypeFlagSet(type, ts.TypeFlags.Unknown)) {
+        return new Set([...state, UNKNOWN]);
+      }
+      /** @type {AsState} */
+      const next = new Set();
+      for (const constituent of getConstituents(type)) {
+        const asProp = typeChecker.getPropertyOfType(typeChecker.getApparentType(constituent), 'as');
+        if (!asProp || isOptional(asProp)) {
+          state.forEach(value => next.add(value));
+        }
+        if (asProp) {
+          getAsValues(typeChecker.getTypeOfSymbolAtLocation(asProp, location)).forEach(value => next.add(value));
+        }
+      }
+      return next;
+    }
+
+    /**
+     * Walks an object literal's entries in order, as object spread merges them.
+     * @param {AsState} state
+     * @param {TSESTree.ObjectExpression} object
+     * @param {ts.Node} location
+     * @returns {AsState}
+     */
+    function mergeObjectAs(state, object, location) {
+      let current = state;
+      for (const property of object.properties) {
+        if (property.type === AST_NODE_TYPES.SpreadElement) {
+          current = spreadAs(current, getType(property.argument), location);
+        } else if (!property.computed && getStaticKey(property) === 'as') {
           const type = getType(property.value);
-          if (type && !collectTagLiterals(type, tags)) {
-            return undefined;
-          }
+          current = type ? getAsValues(type) : new Set([UNKNOWN]);
         }
       }
-      for (const spread of spreads) {
-        const spreadType = getType(spread.argument);
-        if (!spreadType) {
-          continue;
-        }
-        for (const constituent of getConstituents(spreadType)) {
-          const asProp = typeChecker.getPropertyOfType(typeChecker.getApparentType(constituent), 'as');
-          if (asProp && !collectTagLiterals(typeChecker.getTypeOfSymbolAtLocation(asProp, location), tags)) {
-            return undefined;
-          }
+      return current;
+    }
+
+    /**
+     * Slots render `as ?? elementType` for intrinsic element types, after merging `{ ...defaultProps, ...value }`.
+     * @param {TSESTree.ObjectExpression} value
+     * @param {TSESTree.ObjectExpression} options
+     * @param {string[]} elementTags
+     * @param {ts.Node} location
+     * @returns {string[] | undefined} the possible root tags, or undefined when `as` can be something else
+     */
+    function getRootTags(value, options, elementTags, location) {
+      /** @type {AsState} */
+      let state = new Set([ABSENT]);
+      const defaultProps = getOptionValue(options, 'defaultProps');
+      if (defaultProps?.type === AST_NODE_TYPES.ObjectExpression) {
+        state = mergeObjectAs(state, defaultProps, location);
+      } else if (defaultProps) {
+        state = spreadAs(state, getType(defaultProps), location);
+      }
+      state = mergeObjectAs(state, value, location);
+
+      if (state.has(UNKNOWN)) {
+        return undefined;
+      }
+      const tags = new Set();
+      for (const entry of state) {
+        if (entry === ABSENT) {
+          elementTags.forEach(tag => tags.add(tag));
+        } else if (typeof entry === 'string') {
+          tags.add(entry);
         }
       }
-      return tags;
+      return [...tags];
     }
 
     /**
@@ -217,19 +279,18 @@ module.exports = createRule({
           return;
         }
 
-        const elementType = getElementTypeValue(options);
+        const elementType = getOptionValue(options, 'elementType');
         const elementTags = elementType && getIntrinsicTags(elementType);
         if (!elementTags) {
           return;
         }
 
         const location = esTreeNodeToTSNodeMap.get(node);
-        const asTags = getAsTags(value, spreads, location);
-        if (!asTags) {
+        const tags = getRootTags(value, options, elementTags, location);
+        if (!tags) {
           // `as` can be a component or an unknown string, so the rendered element is unknown.
           return;
         }
-        const tags = [...new Set([...elementTags, ...asTags])];
         const allProps = getIntrinsicProps(location.getSourceFile());
         const tagProps = tags.map(tag => allProps.get(tag));
         if (tagProps.some(props => !props)) {

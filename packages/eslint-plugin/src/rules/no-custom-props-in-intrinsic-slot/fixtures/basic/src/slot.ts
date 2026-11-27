@@ -1,6 +1,9 @@
 import type * as React from 'react';
 
-type SlotOptions = { elementType: keyof React.JSX.IntrinsicElements | React.ElementType };
+type SlotOptions = {
+  elementType: keyof React.JSX.IntrinsicElements | React.ElementType;
+  defaultProps?: Record<string, unknown>;
+};
 
 // Minimal stand-in for `slot` from `@fluentui/react-utilities`; the rule only needs the call shape and types.
 export const slot = {
