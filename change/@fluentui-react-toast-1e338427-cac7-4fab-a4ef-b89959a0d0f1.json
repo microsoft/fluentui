@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-toast): keep toasts inside a narrow viewport and inside the container of an inline Toaster. With the default offset the Toaster now narrows when the viewport, or the container of an inline Toaster, is narrower than 332px, and keeps a 20px gutter at both edges. A Toaster with a style prop no longer throws in development builds.",
+  "packageName": "@fluentui/react-toast",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

@@ -27,5 +27,5 @@ export type {
 } from './types';
 export { useToaster } from './useToaster';
 export { useToastController } from './useToastController';
-export { getPositionStyles } from './vanilla';
+export { getPositionStyles, toasterMaxWidthVar } from './vanilla';
 export { TOAST_POSITIONS } from './constants';
