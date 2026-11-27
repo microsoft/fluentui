@@ -55,7 +55,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import type { Chart, ImageExportOptions } from '../../types/index';
+import type { Chart, FocusRestorePolicy, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
@@ -68,6 +68,7 @@ import { Legends } from '../Legends/index';
 import type { JSXElement } from '@fluentui/react-utilities/src/index';
 import { resolveCSSVariables, useRtl } from '../../utilities/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
+import { useCompositeChartFocusRestore } from '../CommonComponents/useCompositeChartFocusRestore';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -106,6 +107,17 @@ export interface Schema {
  * {@docCategory DeclarativeChart}
  */
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
+  /**
+   * Focus policy for line, vertical bar, and gauge data/color content changes.
+   * Defaults to 'preserve' (chart-owned focus only). 'reset' returns to the remembered
+   * chart target even from outside; 'none' disables automatic restoration.
+   * For multiple plots, only the last-focused axis group receives 'reset'; other plots use 'preserve'.
+   * If that group or its remembered target is unavailable, no other plot is selected instead.
+   * Changing the policy alone does not move focus.
+   * Simultaneous schema data and legend-selection updates use the incoming selection before restoring focus.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
   /**
    * The schema representing the chart data, layout and configuration
    */
@@ -153,11 +165,13 @@ function renderChart<TProps>(
   commonProps: Partial<TProps>,
   cellRow: number,
   cellColumn: number,
+  onFocusCapture: React.FocusEventHandler<HTMLDivElement>,
 ): JSXElement {
   const chartProps = transformer(...transformerArgs);
   return (
     <div
       key={`${cellRow}_${cellColumn}`}
+      onFocusCapture={onFocusCapture}
       style={{
         gridRowStart: cellRow,
         gridRowEnd: cellRow + 1,
@@ -387,26 +401,33 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const legendsRef = React.useRef<LegendContainer>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isRTL = useRtl();
+  const { onSubplotFocus, getSubplotFocusRestorePolicy } = useCompositeChartFocusRestore(props.focusRestorePolicy);
 
   if (!isArrayOrTypedArray(selectedLegends)) {
     selectedLegends = [];
   }
 
-  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
+  const [legendState, setLegendState] = React.useState<{ chartSchema: Schema; activeLegends: string[] }>({
+    chartSchema: props.chartSchema,
+    activeLegends: selectedLegends,
+  });
+  // Use incoming selection until the effect synchronizes local legend state.
+  const activeLegends = legendState.chartSchema === props.chartSchema ? legendState.activeLegends : selectedLegends;
+
   const onActiveLegendsChange = (keys: string[]) => {
-    setActiveLegends(keys);
+    setLegendState({ chartSchema: props.chartSchema, activeLegends: keys });
     if (props.onSchemaChange) {
       props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
     }
   };
 
   React.useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { plotlySchema } = sanitizeJson(props.chartSchema);
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { selectedLegends } = plotlySchema;
+    const { selectedLegends: nextSelectedLegends } = sanitizeJson(props.chartSchema).plotlySchema;
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setActiveLegends(selectedLegends ?? []);
+    setLegendState({
+      chartSchema: props.chartSchema,
+      activeLegends: isArrayOrTypedArray(nextSelectedLegends) ? nextSelectedLegends : [],
+    });
   }, [props.chartSchema]);
 
   const multiSelectLegendProps = {
@@ -601,6 +622,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                   ? {}
                   : {
                       ...interactiveCommonProps,
+                      focusRestorePolicy: getSubplotFocusRestorePolicy(xAxisKey),
                     }
               ) as Partial<ReturnType<typeof transformer>>;
 
@@ -622,6 +644,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 },
                 cellProperties?.row ?? 1,
                 cellProperties?.column ?? 1,
+                () => onSubplotFocus(xAxisKey),
               );
             }
             return <></>;

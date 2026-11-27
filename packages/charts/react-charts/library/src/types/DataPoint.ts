@@ -3,6 +3,15 @@ import type { LegendShape } from '../components/Legends/Legends.types';
 import type { CurveFactory } from 'd3-shape';
 import type { SankeyLink, SankeyNode } from 'd3-sankey';
 
+/**
+ * Focus behavior after a chart's data or colors change in content.
+ * `preserve` retains chart-owned focus, including focus lost when a target remounts.
+ * `reset` also permits returning focus from outside the chart.
+ * `none` disables automatic restoration without clearing navigation memory.
+ * {@docCategory ChartProps}
+ */
+export type FocusRestorePolicy = 'preserve' | 'reset' | 'none';
+
 export interface Basestate {
   _width?: number;
   _height?: number;

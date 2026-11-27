@@ -1,0 +1,64 @@
+import type * as React from 'react';
+import { getCardinalCurveTension } from '../../utilities/curveFactory';
+
+export function areChartDataEqual(previous: unknown, current: unknown): boolean {
+  if (Object.is(previous, current)) {
+    return true;
+  }
+  if (typeof previous === 'function' && typeof current === 'function') {
+    const previousTension = getCardinalCurveTension(previous);
+    return previousTension !== undefined && Object.is(previousTension, getCardinalCurveTension(current));
+  }
+  if (previous instanceof Date && current instanceof Date) {
+    return previous.getTime() === current.getTime();
+  }
+  if (Array.isArray(previous) && Array.isArray(current)) {
+    return (
+      previous.length === current.length && previous.every((value, index) => areChartDataEqual(value, current[index]))
+    );
+  }
+  if (
+    !previous ||
+    !current ||
+    typeof previous !== 'object' ||
+    typeof current !== 'object' ||
+    Object.getPrototypeOf(previous) !== Object.prototype ||
+    Object.getPrototypeOf(current) !== Object.prototype
+  ) {
+    return false;
+  }
+
+  const previousRecord = previous as Record<string, unknown>;
+  const currentRecord = current as Record<string, unknown>;
+  const isDataKey = (key: string): boolean => {
+    const previousValue = previousRecord[key];
+    const currentValue = currentRecord[key];
+    return !(
+      /^on[A-Z]/.test(key) &&
+      (typeof previousValue === 'function' || previousValue === undefined) &&
+      (typeof currentValue === 'function' || currentValue === undefined)
+    );
+  };
+  const keys = Object.keys(previousRecord).filter(isDataKey);
+  const currentKeys = Object.keys(currentRecord).filter(isDataKey);
+  return (
+    keys.length === currentKeys.length &&
+    keys.every(
+      key =>
+        Object.prototype.hasOwnProperty.call(currentRecord, key) &&
+        areChartDataEqual(previousRecord[key], currentRecord[key]),
+    )
+  );
+}
+
+export function getChartEventTarget<T extends Element>(event: React.SyntheticEvent<T>): T {
+  return event.currentTarget;
+}
+
+export function isChartElementTabbable(element: SVGElement | null | undefined): element is SVGElement {
+  return !!element && element.tabIndex >= 0;
+}
+
+export function isFocusLeavingChart(event: React.FocusEvent<HTMLElement>): boolean {
+  return !event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node);
+}
