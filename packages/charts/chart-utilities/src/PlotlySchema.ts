@@ -1578,10 +1578,10 @@ export interface Font {
   size: number;
   /**
    * Sets the weight (or boldness) of the font.
-   * number between or equal to 1 and 1000
+   * A number between 1 and 1000, or a supported CSS font-weight keyword.
    * @default normal
    */
-  weight: number;
+  weight: number | 'normal' | 'bold' | 'bolder' | 'lighter';
 }
 
 export interface Config {
