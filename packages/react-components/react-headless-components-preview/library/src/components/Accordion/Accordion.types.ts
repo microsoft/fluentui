@@ -10,7 +10,7 @@ export type {
 export type AccordionState = AccordionBaseState & {
   root: {
     /**
-     * Data attribute set to indicate whether the accordion allows multiple items to be expanded at once.
+     * Data attribute set when every item in the accordion can be collapsed.
      */
     'data-collapsible'?: string;
     /**

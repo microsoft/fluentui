@@ -146,25 +146,26 @@ treated as the stable styling surface for headless primitives.
 
 Core attributes:
 
-| Attribute                 | Values                             |
-| ------------------------- | ---------------------------------- |
-| `data-disabled`           | presence                           |
-| `data-disabled-focusable` | presence                           |
-| `data-focusable`          | presence                           |
-| `data-checked`            | `"true"` \| `"false"` \| `"mixed"` |
-| `data-selected`           | presence                           |
-| `data-expanded`           | `"true"` \| `"false"`              |
-| `data-open`               | `"true"` \| `"false"`              |
-| `data-orientation`        | `"horizontal"` \| `"vertical"`     |
-| `data-icon-position`      | `"before"` \| `"after"`            |
-| `data-icon-only`          | presence                           |
-| `data-label-position`     | `"before"` \| `"after"`            |
+| Attribute                 | Values                         |
+| ------------------------- | ------------------------------ |
+| `data-disabled`           | presence                       |
+| `data-disabled-focusable` | presence                       |
+| `data-checked`            | presence \| `"mixed"`          |
+| `data-selected`           | presence                       |
+| `data-open`               | presence                       |
+| `data-orientation`        | `"horizontal"` \| `"vertical"` |
+| `data-icon-position`      | `"before"` \| `"after"`        |
+| `data-icon-only`          | presence                       |
+| `data-label-position`     | `"before"` \| `"after"`        |
+| `data-invalid`            | presence                       |
+| `data-readonly`           | presence                       |
+| `data-required`           | presence                       |
 
 Attribute emission rules:
 
 - presence attributes are emitted only when the state is true; otherwise omitted
-- boolean-valued attributes are always emitted as `"true"` or `"false"`
-- tri-state attributes (for example `data-checked`) use the declared enum values
+- boolean attributes are presence attributes: emitted as an empty string when true and omitted when false (never `"true"`/`"false"`)
+- tri-state attributes add a value to a presence attribute (for example `data-checked="mixed"`)
 - attributes are emitted on the root slot unless a documented component exception exists
 
 Rules:

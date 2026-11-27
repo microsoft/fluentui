@@ -39,7 +39,7 @@ describe('Combobox', () => {
     expect(getAllByRole('option')).toHaveLength(3);
   });
 
-  it('sets data-selected="true" on the selected option', () => {
+  it('sets data-selected on the selected option', () => {
     const { getAllByRole } = render(
       <Combobox open defaultSelectedOptions={['Dog']} placeholder="Select">
         <Option>Cat</Option>
@@ -53,7 +53,7 @@ describe('Combobox', () => {
     expect(options[2]).not.toHaveAttribute('data-selected');
   });
 
-  it('sets data-disabled="true" on disabled options', () => {
+  it('sets data-disabled on disabled options', () => {
     const { getAllByRole } = render(
       <Combobox open placeholder="Select">
         <Option>Cat</Option>

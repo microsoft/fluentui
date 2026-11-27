@@ -50,7 +50,7 @@ describe('Dropdown', () => {
     expect(getByRole('listbox')).toHaveAttribute('popover', 'manual');
   });
 
-  it('sets data-selected="true" on the selected option', () => {
+  it('sets data-selected on the selected option', () => {
     const { getAllByRole } = render(
       <Dropdown open defaultSelectedOptions={['Dog']} placeholder="Select">
         <Option>Cat</Option>
@@ -64,7 +64,7 @@ describe('Dropdown', () => {
     expect(options[2]).not.toHaveAttribute('data-selected');
   });
 
-  it('sets data-disabled="true" on disabled options', () => {
+  it('sets data-disabled on disabled options', () => {
     const { getAllByRole } = render(
       <Dropdown open placeholder="Select">
         <Option>Cat</Option>
