@@ -25,6 +25,23 @@ See the [project README](../../apps/vr-tests-react-components/README.md) for bui
 modes and coverage, and the [Storybook tooling README](../../scripts/storybook/README.md#configurereacticons)
 for shared icon configuration.
 
+## Cross-platform tooling regressions
+
+Run tooling tests through Nx without accepting snapshots or API report changes:
+
+```bash
+yarn nx run workspace-plugin:test --skip-nx-cache --runInBand --ci
+yarn nx run scripts-monorepo:test --skip-nx-cache --runInBand --ci
+```
+
+Unset `__FORCE_SNAPSHOT_UPDATE__` and `__FORCE_API_MD_UPDATE__` before running.
+Use `path.win32` and `path.posix` fixtures for path parsing coverage on every host.
+Compare unordered file inventories using sorted copies and filesystem paths using
+native path operations; package export keys use POSIX separators.
+Leave temporary working directories before deleting them, restore the Nx workspace
+root even if deletion fails, and keep cleanup errors visible. Path fixtures do not
+replace native Windows, macOS, and Linux execution.
+
 ## Writing Unit Tests
 
 Tests live adjacent to the component they test:

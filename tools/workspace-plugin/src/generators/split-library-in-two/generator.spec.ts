@@ -9,6 +9,7 @@ import {
   updateJson,
   writeJson,
   output,
+  visitNotIgnoredFiles,
 } from '@nx/devkit';
 
 import { splitLibraryInTwoGenerator } from './generator';
@@ -16,6 +17,12 @@ import { setupCodeowners } from '../../utils-testing';
 import { TsConfig } from '../../types';
 import { addCodeowner } from '../add-codeowners';
 import { workspacePaths } from '../../utils';
+import { win32 } from 'node:path';
+
+jest.mock('@nx/devkit', () => {
+  const actual = jest.requireActual<typeof import('@nx/devkit')>('@nx/devkit');
+  return { ...actual, visitNotIgnoredFiles: jest.fn(actual.visitNotIgnoredFiles) };
+});
 
 const noop = () => {
   return;
@@ -32,6 +39,23 @@ describe('split-library-in-two generator', () => {
     jest.spyOn(output, 'log').mockImplementation(noop);
     jest.spyOn(output, 'warn').mockImplementation(noop);
     jest.spyOn(output, 'error').mockImplementation(noop);
+  });
+
+  it('preserves stories and Storybook files with Windows visitor paths', async () => {
+    const root = readProjectConfiguration(tree, options.project).root;
+    const story = tree.read(`${root}/stories/Default.stories.tsx`, 'utf-8');
+    const actualVisit = jest.requireActual<typeof import('@nx/devkit')>('@nx/devkit').visitNotIgnoredFiles;
+    jest.mocked(visitNotIgnoredFiles).mockImplementationOnce((fixture, dir, visitor) => {
+      actualVisit(fixture, dir, file => visitor(win32.normalize(file)));
+    });
+
+    await splitLibraryInTwoGenerator(tree, { ...options, skipFormat: true });
+
+    expect(tree.read(`${root}/stories/src/Default.stories.tsx`, 'utf-8')).toEqual(story);
+    expect(readJson(tree, `${root}/stories/.storybook/tsconfig.json`).include).toEqual(['*.js', '*.cjs']);
+    expect(tree.read(`${root}/stories/.storybook/main.js`, 'utf-8')).toContain('../src/');
+    expect(tree.exists(`${root}/library/.storybook/tsconfig.json`)).toBe(false);
+    expect(tree.exists(`${root}/library/stories/Default.stories.tsx`)).toBe(false);
   });
 
   it('should split v9 project into 2', async () => {
