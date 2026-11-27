@@ -41,10 +41,123 @@ V8 `centerContain` and `centerCover` are not direct aliases for `contain` and
   smaller than the frame; when either dimension is larger it scales down like
   `contain`.
 
-If preserving this no-upscale behavior matters, use `onLoad` to compare
-`naturalWidth`/`naturalHeight` with the rendered frame, then choose `fit="center"`
-or `fit="cover"`/`fit="contain"` from those conditions. Mapping
-`centerCover` directly to `fit="cover"` incorrectly upscales small images.
+Neither hybrid mode is a v9 `fit` value. Mapping them directly to `fit="contain"`
+or `fit="cover"` incorrectly upscales small images. The examples below preserve
+the no-upscale rules for a fixed **200 x 150** content box, with no border or
+padding. In v8, these dimensions sized the wrapper; in v9, they size the `<img>`
+itself. `object-position: center` centers the image pixels, not the element in
+its parent.
+
+### Replacing `ImageFit.centerContain`
+
+CSS `object-fit: scale-down` chooses the smaller of the intrinsic image size
+and `contain`, so it does not upscale. Use a custom class because v9 does not
+expose `scale-down` through `fit`. Keep both dimensions explicit; without a
+bounded box, there may be nothing for `object-fit` to scale into.
+
+```tsx
+import * as React from 'react';
+import { Image, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  centerContain: {
+    objectFit: 'scale-down',
+    objectPosition: 'center',
+  },
+});
+
+export const CenterContainExample = () => {
+  const styles = useStyles();
+
+  return (
+    <Image
+      src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x100.png"
+      alt="A 300 by 100 placeholder"
+      width={200}
+      height={150}
+      className={styles.centerContain}
+    />
+  );
+};
+```
+
+Here a 300 x 100 source becomes approximately 200 x 67, while a 100 x 100
+source stays 100 x 100. Both are centered, with empty space around the pixels.
+
+### Replacing `ImageFit.centerCover`
+
+There is no single CSS `object-fit` value for this rule. Compare both natural
+dimensions with the content box and select `cover` only when **both** are
+larger; otherwise select `center`. Both v9 modes already set
+`object-position: center`.
+
+```tsx
+import * as React from 'react';
+import { Image } from '@fluentui/react-components';
+
+const frameWidth = 200;
+const frameHeight = 150;
+
+type CenterCoverProps = { src: string; alt: string };
+
+const LoadedCenterCover = ({ src, alt }: CenterCoverProps) => {
+  const imageRef = React.useRef<HTMLImageElement>(null);
+  const [fit, setFit] = React.useState<'center' | 'cover'>('center');
+
+  const updateFit = React.useCallback((image: HTMLImageElement) => {
+    setFit(image.naturalWidth > frameWidth && image.naturalHeight > frameHeight ? 'cover' : 'center');
+  }, []);
+
+  React.useEffect(() => {
+    const image = imageRef.current;
+    if (image?.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
+      updateFit(image);
+    }
+  }, [updateFit]);
+
+  return (
+    <Image
+      ref={imageRef}
+      src={src}
+      alt={alt}
+      width={frameWidth}
+      height={frameHeight}
+      fit={fit}
+      onLoad={event => updateFit(event.currentTarget)}
+      onError={() => setFit('center')}
+    />
+  );
+};
+
+export const CenterCoverExample = ({ src, alt }: CenterCoverProps) => (
+  <LoadedCenterCover key={src} src={src} alt={alt} />
+);
+
+// For example:
+// <CenterCoverExample src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png" alt="A square placeholder" />
+```
+
+The mount check handles cached or hydrated images that completed before the
+React load handler was attached. The `key` is on the **state-owning component**:
+changing `src` resets its previous fit before the new image loads.
+
+For the same 200 x 150 box:
+
+| Natural source size | `centerContain` result | `centerCover` result                               |
+| ------------------- | ---------------------- | -------------------------------------------------- |
+| 100 x 100           | Unscaled, centered     | Unscaled, centered                                 |
+| 300 x 100           | Shrinks to contain     | Unscaled; horizontal crop and vertical empty space |
+| 100 x 300           | Shrinks to contain     | Unscaled; vertical crop and horizontal empty space |
+| 300 x 300           | Shrinks to contain     | Shrinks to cover; vertical crop                    |
+| 200 x 300           | Shrinks to contain     | Unscaled; vertical crop                            |
+| 200 x 150           | Unscaled               | Unscaled                                           |
+
+These examples assume v8's automatically calculated `coverStyle`, not a manual
+orientation override. For a responsive frame, `scale-down` responds to the CSS
+box automatically, but the `centerCover` example must also remeasure the content
+box and recompute the fit when it resizes (for example, with `ResizeObserver`).
+An `onLoad` comparison alone is insufficient after a resize. Account for border
+and padding when measuring, and preserve any wrapper clipping separately.
 
 ### Notes on `none` and `center`
 
