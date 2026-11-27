@@ -270,7 +270,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         : lineChartData;
       _hasMarkersMode =
         filteredData?.some((item: LineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
-      _isScatterPolar = isScatterPolarSeries(filteredData!);
+      _isScatterPolar = filteredData ? isScatterPolarSeries(filteredData) : false;
       return filteredData
         ? filteredData.map((item: LineChartPoints, index: number) => {
             let color: string;

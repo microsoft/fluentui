@@ -1074,3 +1074,34 @@ describe('LineChart - mouse events', () => {
     expect(screen.getByTestId('callout-action')).toBeInTheDocument();
   });
 });
+
+// lineChartData is optional in the type of the data, so a chart can get data that has no array of lines at all.
+// This group is at the end of the file so that the generated ids in the snapshots above stay as they are.
+describe('Render empty chart aria label div for data without lineChartData', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const countEmptyChartDivs = (container: HTMLElement) =>
+    container.querySelectorAll('[aria-label="Graph has no data to display"]').length;
+
+  it('Empty chart aria label div rendered', () => {
+    const wrapper = render(<LineChart data={{ chartTitle: 'EmptyLineChart' }} />);
+    expect(countEmptyChartDivs(wrapper.container)).toBe(1);
+  });
+
+  it('Empty chart aria label div rendered after a change to such data', () => {
+    const wrapper = render(<LineChart data={basicChartPoints} />);
+    expect(countEmptyChartDivs(wrapper.container)).toBe(0);
+
+    wrapper.rerender(<LineChart data={{ chartTitle: 'EmptyLineChart' }} />);
+    expect(countEmptyChartDivs(wrapper.container)).toBe(1);
+  });
+
+  it('No empty chart aria label div rendered after a change from such data', () => {
+    const wrapper = render(<LineChart data={{ chartTitle: 'EmptyLineChart' }} />);
+    expect(countEmptyChartDivs(wrapper.container)).toBe(1);
+
+    wrapper.rerender(<LineChart data={basicChartPoints} />);
+    expect(countEmptyChartDivs(wrapper.container)).toBe(0);
+  });
+});

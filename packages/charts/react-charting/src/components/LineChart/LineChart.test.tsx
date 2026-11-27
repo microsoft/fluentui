@@ -293,4 +293,29 @@ describe('Render empty chart aria label div when chart is empty', () => {
     const { container } = render(<LineChart data={emptyChartPoints} />);
     expect(container.querySelectorAll('[aria-label="Graph has no data to display"]').length).toBe(1);
   });
+
+  // lineChartData is optional in the type of the data, so a chart can get data that has no array of lines at all.
+  const countEmptyChartDivs = (container: HTMLElement) =>
+    container.querySelectorAll('[aria-label="Graph has no data to display"]').length;
+
+  it('Empty chart aria label div rendered for data without lineChartData', () => {
+    const { container } = render(<LineChart data={{ chartTitle: 'EmptyLineChart' }} />);
+    expect(countEmptyChartDivs(container)).toBe(1);
+  });
+
+  it('Empty chart aria label div rendered after a change to data without lineChartData', () => {
+    const { container, rerender } = render(<LineChart data={chartPoints} />);
+    expect(countEmptyChartDivs(container)).toBe(0);
+
+    rerender(<LineChart data={{ chartTitle: 'EmptyLineChart' }} />);
+    expect(countEmptyChartDivs(container)).toBe(1);
+  });
+
+  it('No empty chart aria label div rendered after a change from data without lineChartData', () => {
+    const { container, rerender } = render(<LineChart data={{ chartTitle: 'EmptyLineChart' }} />);
+    expect(countEmptyChartDivs(container)).toBe(1);
+
+    rerender(<LineChart data={chartPoints} />);
+    expect(countEmptyChartDivs(container)).toBe(0);
+  });
 });

@@ -473,7 +473,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : lineChartData;
     this._hasMarkersMode =
       filteredData?.some((item: ILineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
-    this._isScatterPolar = isScatterPolarSeries(filteredData!);
+    this._isScatterPolar = filteredData ? isScatterPolarSeries(filteredData) : false;
     return filteredData
       ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
