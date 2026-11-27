@@ -20,6 +20,7 @@ import {
   useTimeout,
   useFirstMount,
   useMergedRefs,
+  getTriggerChild,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -101,7 +102,6 @@ export const useMenuBase_unstable = (
   } = props;
 
   const { targetDocument } = useFluent();
-  const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const resolvedPositioning = resolvePositioningShorthand(props.positioning);
@@ -133,14 +133,17 @@ export const useMenuBase_unstable = (
     }
   }
 
-  let menuTrigger: React.ReactElement | undefined = undefined;
+  let menuTrigger: React.ReactElement<{ children?: React.ReactElement }> | undefined = undefined;
   let menuPopover: React.ReactElement | undefined = undefined;
   if (children.length === 2) {
-    menuTrigger = children[0];
+    menuTrigger = children[0] as React.ReactElement<{ children?: React.ReactElement }>;
     menuPopover = children[1];
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
+
+  const triggerChild = getTriggerChild<{ id?: string }>(menuTrigger?.props.children);
+  const triggerId = useId('menu', triggerChild?.props.id);
 
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 

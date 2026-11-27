@@ -3,6 +3,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useMenu_unstable } from './useMenu';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
+import { MenuTrigger } from '../MenuTrigger/index';
 
 const defaultMenuListContextValue: MenuListContextValue = {
   checkedValues: {},
@@ -153,6 +154,38 @@ describe('useMenu_unstable', () => {
 
       expect(typeof result.current.triggerId).toBe('string');
       expect(result.current.triggerId.length).toBeGreaterThan(0);
+    });
+
+    it('uses the trigger child id instead of generating an id', () => {
+      const customTrigger = (
+        <MenuTrigger key="trigger">
+          <button id="custom-trigger-id">trigger</button>
+        </MenuTrigger>
+      );
+      const { result } = renderHook(() => useMenu_unstable({ children: [customTrigger, popover] }));
+
+      expect(result.current.triggerId).toBe('custom-trigger-id');
+    });
+
+    it('updates the triggerId when the trigger child id changes', () => {
+      const { result, rerender } = renderHook(
+        ({ id }) =>
+          useMenu_unstable({
+            children: [
+              <MenuTrigger key="trigger">
+                <button id={id}>trigger</button>
+              </MenuTrigger>,
+              popover,
+            ],
+          }),
+        { initialProps: { id: 'first-trigger-id' } },
+      );
+
+      expect(result.current.triggerId).toBe('first-trigger-id');
+
+      rerender({ id: 'second-trigger-id' });
+
+      expect(result.current.triggerId).toBe('second-trigger-id');
     });
 
     it('keeps the same triggerId across re-renders', () => {
