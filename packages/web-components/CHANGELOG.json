@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 26 Nov 2026 04:08:33 GMT",
+      "version": "3.2.5",
+      "tag": "@fluentui/web-components_v3.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "aseebshibin4@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "104705759cda00b5b8cb2524a20e5e8398ce876e",
+            "comment": "fix: restore menu list keyboard navigation after reconnect"
+          },
+          {
+            "author": "eruvalca@outlook.com",
+            "package": "@fluentui/web-components",
+            "commit": "1d36e82785984b7a6a825d0f984b2a1e4ede0b78",
+            "comment": "fix: stop setTheme from retaining every theme object and element-scoped style sheet"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9d4242a084b2fafd15e235cec8fd8643a5bcc364",
+            "comment": "Fix `spellcheck` conversion and propagation for TextInput and TextArea."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Nov 2026 04:08:53 GMT",
       "version": "3.2.4",
       "tag": "@fluentui/web-components_v3.2.4",

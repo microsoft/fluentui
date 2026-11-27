@@ -40,7 +40,6 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     borderTopRightRadius: tokens.borderRadiusNone,
     borderBottomRightRadius: tokens.borderRadiusNone,
-    borderRightStyle: 'none',
     marginInlineStart: 'auto',
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
     ...createCustomFocusIndicatorStyle({
