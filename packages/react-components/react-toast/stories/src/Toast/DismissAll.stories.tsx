@@ -26,7 +26,7 @@ export const DismissAll = (): JSXElement => {
 DismissAll.parameters = {
   docs: {
     description: {
-      story: ['The `dismissAllToasts imperative API will dismiss all rendered Toasts.'].join('\n'),
+      story: ['The `dismissAllToasts` imperative API will dismiss all rendered Toasts.'].join('\n'),
     },
   },
 };

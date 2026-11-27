@@ -70,7 +70,7 @@ PauseAndPlay.parameters = {
         'Toasts can be paused and played imperatively based on the user provided id.',
         '',
         '> ⚠️ Toasts paused this way can only be dismissed once the **app** plays it again. Make sure',
-        'that your app will will play a toast after it has been paused.',
+        'that your app will play a toast after it has been paused.',
       ].join('\n'),
     },
   },
