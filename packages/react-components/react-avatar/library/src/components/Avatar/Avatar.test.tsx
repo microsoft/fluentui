@@ -253,4 +253,10 @@ describe('Avatar', () => {
 
     expect(screen.queryByAltText('test-image')).toBeNull();
   });
+
+  it('does not render the icon slot as a root attribute', () => {
+    const { container } = render(<Avatar icon={<b>icon</b>} />);
+
+    expect((container.firstElementChild as HTMLElement).hasAttribute('icon')).toBe(false);
+  });
 });

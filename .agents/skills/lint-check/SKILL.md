@@ -24,13 +24,14 @@ Run linting and fix common issues for Fluent UI packages.
 
 2. **Parse the output** and categorize errors by the custom Fluent UI ESLint rules:
 
-   | Rule                                    | What it catches                             | How to fix                                            |
-   | --------------------------------------- | ------------------------------------------- | ----------------------------------------------------- |
-   | `@fluentui/ban-context-export`          | Context exported from wrong layer           | Move to `react-shared-contexts` package               |
-   | `@fluentui/ban-instanceof-html-element` | `instanceof HTMLElement` (breaks iframes)   | Use element.tagName or feature detection              |
-   | `@fluentui/no-global-react`             | `React.FC`, `React.useState` etc.           | Use named imports: `import { useState } from 'react'` |
-   | `@fluentui/no-restricted-imports`       | Banned import paths                         | Use the allowed import path from the error message    |
-   | `@fluentui/no-context-default-value`    | Context created without `undefined` default | Use `createContext(undefined)` and add a guard hook   |
+   | Rule                                          | What it catches                             | How to fix                                                                                  |
+   | --------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------- |
+   | `@fluentui/ban-context-export`                | Context exported from wrong layer           | Move to `react-shared-contexts` package                                                     |
+   | `@fluentui/ban-instanceof-html-element`       | `instanceof HTMLElement` (breaks iframes)   | Use element.tagName or feature detection                                                    |
+   | `@fluentui/no-global-react`                   | `React.FC`, `React.useState` etc.           | Use named imports: `import { useState } from 'react'`                                       |
+   | `@fluentui/no-restricted-imports`             | Banned import paths                         | Use the allowed import path from the error message                                          |
+   | `@fluentui/no-context-default-value`          | Context created without `undefined` default | Use `createContext(undefined)` and add a guard hook                                         |
+   | `@fluentui/no-custom-props-in-intrinsic-slot` | Non-DOM props spread into an intrinsic slot | Destructure the named props before spreading `...rest` into `slot.always` / `slot.optional` |
 
 3. **Auto-fix** any issues found by editing the source files directly. For each fix:
 

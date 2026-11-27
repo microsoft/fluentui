@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: stop rendering the Avatar icon slot as an `icon` attribute on the root element",
+  "packageName": "@fluentui/react-avatar",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

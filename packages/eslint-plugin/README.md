@@ -92,6 +92,25 @@ The rule requires an options object containing:
 - `max` (required): the maximum line length
 - `ignorePatterns` (optional): ignore the line if it matches any of these regular expressions
 
+### `no-custom-props-in-intrinsic-slot`
+
+Reports props that are spread into a `slot.always` / `slot.optional` call for an intrinsic element (for example `elementType: 'div'`) when they are not valid attributes of that element. Such props reach the DOM: React warns about them in development, and they end up as unknown attributes in the markup.
+
+This is a type-aware rule. It reads the type of each spread object, so it also catches props that a component forgot to destructure. Names starting with `data-` or `aria-`, `as`, `ref`, `key` and `children` are always allowed. Keys set after the spread, props typed as `never` and slots with a component `elementType` are not checked. Slots render `as ?? elementType` after merging `{ ...defaultProps, ...value }`, so the rule follows `as` through `defaultProps` and the value's entries in merge order: an explicit `as` key or a spread with a required `as` replaces earlier values, and a spread with an optional `as` adds to them. Every tag that `as` can end up holding counts as a possible root, plus `elementType` when `as` can be unset. When `as` can be a component or an arbitrary string, the call is not checked. When there are several possible tags, a prop is allowed if any of them accepts it.
+
+**❌ Don't**
+
+```ts
+const root = slot.always({ ref, ...props }, { elementType: 'div' }); // `size`, `appearance` reach the DOM
+```
+
+**✅ Do**
+
+```ts
+const { size, appearance, ...rest } = props;
+const root = slot.always({ ref, ...rest }, { elementType: 'div' });
+```
+
 ### `no-global-react`
 
 Ban references to the `React` global namespace (in favor of explicitly importing React). Implicit global references cause problems for API Extractor and potentially other tools.
