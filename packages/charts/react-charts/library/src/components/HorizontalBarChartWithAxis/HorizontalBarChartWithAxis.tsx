@@ -318,12 +318,14 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     };
     const from = middleOf(focused);
     // Every other bar that can take the focus and is in another row: how far below it is, and how far to the side.
+    // The bars of one row have the same top and the same height, so their middles are equal. Rows are compared
+    // without a tolerance, because the rows of a numeric y axis can be less than a pixel apart.
     const others = Array.from(
       focused.ownerSVGElement?.querySelectorAll<SVGRectElement>('rect[role="option"][tabindex="0"]') ?? [],
     )
       .filter(bar => bar !== focused)
       .map(bar => ({ bar, below: middleOf(bar).y - from.y, aside: Math.abs(middleOf(bar).x - from.x) }))
-      .filter(other => Math.abs(other.below) >= 1);
+      .filter(other => other.below !== 0);
     if (others.length === 0) {
       return;
     }
@@ -332,7 +334,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const distances = (ahead.length > 0 ? ahead : others).map(other => Math.abs(other.below));
     const rowDistance = ahead.length > 0 ? Math.min(...distances) : Math.max(...distances);
     const next = (ahead.length > 0 ? ahead : others)
-      .filter(other => Math.abs(Math.abs(other.below) - rowDistance) < 1)
+      .filter(other => Math.abs(other.below) === rowDistance)
       .reduce((nearest, other) => (other.aside < nearest.aside ? other : nearest));
     event.preventDefault();
     next.bar.focus();

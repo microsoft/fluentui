@@ -639,6 +639,31 @@ describe('Horizontal bar chart with axis - Up and down arrow keys', () => {
     press('ArrowUp');
     expect(document.activeElement).toBe(lower);
   });
+
+  test('Should move between rows that are less than a pixel apart', async () => {
+    // A numeric y axis. The bars of 1000 and 1001 are almost in the same place.
+    const closeRows: HorizontalBarChartWithAxisDataPoint[] = [1000, 1001, 50000].map((y, index) => ({
+      x: 1000 * (index + 1),
+      y,
+      legend: `Row ${y}`,
+      color: tokens.colorPaletteBlueForeground2,
+    }));
+    const [top, middle, bottom] = await renderBars(closeRows, 3);
+    expect(topOf(bottom) - topOf(middle)).toBeGreaterThan(0);
+    expect(topOf(bottom) - topOf(middle)).toBeLessThan(1);
+    act(() => bottom.focus());
+    // Assert
+    expect(press('ArrowUp')).toBe(false);
+    expect(document.activeElement).toBe(middle);
+    press('ArrowUp');
+    expect(document.activeElement).toBe(top);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(middle);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(bottom);
+    press('ArrowDown');
+    expect(document.activeElement).toBe(top);
+  });
 });
 
 describe('HorizontalBarChartWithAxis - basic props', () => {
