@@ -416,9 +416,14 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
 
         return xAxisPoints;
       },
+      // The labels of a string axis with a category order come from props.data, in the order that
+      // props.xAxisCategoryOrder gives (_getOrderedXAxisLabels). Both are dependencies, so that the labels follow
+      // a change of either.
       [
         _getFormattedLabelForXAxisDataPoint,
+        props.data,
         props.sortOrder,
+        props.xAxisCategoryOrder,
         props.xAxisDateFormatString,
         props.xAxisNumberFormatString,
       ],
@@ -446,9 +451,12 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
 
         return yAxisPoints;
       },
+      // As for the x axis: _getOrderedYAxisLabels reads props.data and props.yAxisCategoryOrder.
       [
         _getFormattedLabelForYAxisDataPoint,
+        props.data,
         props.sortOrder,
+        props.yAxisCategoryOrder,
         props.yAxisDateFormatString,
         props.yAxisNumberFormatString,
       ],
@@ -580,12 +588,16 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
           xAxisPoints,
         };
       },
+      // _getOrderedXPoints puts the rows of a string x axis with a category order in the order of its labels, and
+      // reads props.data and props.xAxisCategoryOrder for that.
       [
         _getFormattedLabelForXAxisDataPoint,
         _getFormattedLabelForYAxisDataPoint,
         _getXAxisDataPoints,
         _getYAxisDataPoints,
+        props.data,
         props.sortOrder,
+        props.xAxisCategoryOrder,
       ],
     );
 
