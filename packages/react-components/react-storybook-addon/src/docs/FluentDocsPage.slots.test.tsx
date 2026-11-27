@@ -85,7 +85,7 @@ function createDocs(story: PreparedStory, slotsApi = true, nativePropsApi = true
 function expectSlotGuidance() {
   expect(screen.getByText(/Slots in Fluent UI React components are designed to be modified or replaced/)).toBeTruthy();
   expect(screen.getByRole('link', { name: 'Customizing components with slots' }).getAttribute('href')).toBe(
-    './?path=/docs/concepts-developer-customizing-components-with-slots--docs',
+    'https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--docs',
   );
 }
 
@@ -95,6 +95,10 @@ describe('FluentDocsPage slot guidance', () => {
     ['WithSlotShorthandValue<HTMLAttributes<HTMLElement>>', 'Slot'],
     ['Slot', 'Slot'],
     ['Slot<"span">', 'Slot<"span">'],
+    [
+      '({ as: "h1"; } & Omit<DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, "children"> & { ...; }) | ... 7 more ...',
+      'Slot',
+    ],
   ])('keeps guidance and readable story summaries across rerenders and revisits for %s', (input, expected) => {
     const story = createStory();
     const argType = { name: 'icon', description: 'The icon slot.', table: { type: { summary: input } } };
@@ -182,17 +186,21 @@ describe('FluentDocsPage slot guidance', () => {
     expect(argType.type.name).toBe(field === 'name' ? input : 'string');
   });
 
-  it.each(['string', 'Slotted', 'SomeSlot', 'SlotProps', 'Slot<"span"> | undefined'])(
-    'does not classify unrelated types as slots: %s',
-    input => {
-      const story = createStory();
-      story.argTypes.value = { name: 'value', table: { type: { summary: input } } };
-      render(createDocs(story));
-      expect(screen.getByTestId('arg-types')).toBeTruthy();
-      expect(screen.queryByText(/Slots in Fluent UI React components/)).toBeNull();
-      expect(story.argTypes.value.table?.type?.summary).toBe(input);
-    },
-  );
+  it.each([
+    'string',
+    'Slotted',
+    'SomeSlot',
+    'SlotProps',
+    'Slot<"span"> | undefined',
+    '{ as: "span"; } & Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, "children">',
+  ])('does not classify unrelated types as slots: %s', input => {
+    const story = createStory();
+    story.argTypes.value = { name: 'value', table: { type: { summary: input } } };
+    render(createDocs(story));
+    expect(screen.getByTestId('arg-types')).toBeTruthy();
+    expect(screen.queryByText(/Slots in Fluent UI React components/)).toBeNull();
+    expect(story.argTypes.value.table?.type?.summary).toBe(input);
+  });
 
   it('does not mutate slot metadata or show guidance when slotsApi is disabled', () => {
     const story = createStory();

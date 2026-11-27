@@ -41,6 +41,10 @@
       "optional": true
     }
   },
+  "devDependencies": {
+    "react-docgen-typescript": "2.2.2",
+    "typescript": "5.7.3"
+  },
   "beachball": {
     "disallowedChangeTypes": [
       "major",

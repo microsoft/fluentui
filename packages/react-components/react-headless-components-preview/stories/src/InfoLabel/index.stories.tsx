@@ -1,4 +1,4 @@
-import { InfoLabel } from '@fluentui/react-headless-components-preview/info-label';
+import { InfoButton, InfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 
 import descriptionMd from './InfoLabelDescription.md';
 
@@ -11,6 +11,7 @@ export { InField } from './InfoLabelInField.stories';
 export default {
   title: 'Components/InfoLabel',
   component: InfoLabel,
+  subcomponents: { InfoButton },
   parameters: {
     docs: {
       description: {

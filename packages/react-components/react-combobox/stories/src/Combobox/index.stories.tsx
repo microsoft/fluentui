@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react-webpack5';
-import { Combobox, Listbox, Option } from '@fluentui/react-components';
+import { Combobox, Listbox, Option, OptionGroup } from '@fluentui/react-components';
 
 import descriptionMd from './ComboboxDescription.md';
 import bestPracticesMd from './ComboboxBestPractices.md';
@@ -27,6 +27,7 @@ export default {
   component: Combobox,
   subcomponents: {
     Option,
+    OptionGroup,
     Listbox,
   },
   parameters: {

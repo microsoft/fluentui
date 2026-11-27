@@ -3317,6 +3317,7 @@ __metadata:
     "@fluentui/react-calendar-preview": "npm:*"
     "@fluentui/react-components": "npm:*"
     "@fluentui/react-datepicker-compat": "npm:*"
+    "@fluentui/react-datepicker-preview": "npm:*"
     "@fluentui/react-icons-compat": "npm:*"
     "@fluentui/react-icons-northstar": "npm:*"
     "@fluentui/react-menu-grid-preview": "npm:*"
@@ -4168,7 +4169,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
+"@fluentui/react-datepicker-preview@npm:*, @fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library"
   dependencies:
@@ -5739,6 +5740,8 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.1"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    react-docgen-typescript: "npm:2.2.2"
+    typescript: "npm:5.7.3"
   peerDependencies:
     "@storybook/addon-docs": ^9.1.17
     "@storybook/icons": ^1.3.2
@@ -27935,7 +27938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen-typescript@npm:^2.1.0, react-docgen-typescript@npm:^2.2.2":
+"react-docgen-typescript@npm:2.2.2, react-docgen-typescript@npm:^2.1.0, react-docgen-typescript@npm:^2.2.2":
   version: 2.2.2
   resolution: "react-docgen-typescript@npm:2.2.2"
   peerDependencies:

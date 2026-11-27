@@ -13,6 +13,8 @@ import {
   TeachingPopoverTitle,
   TeachingPopoverTrigger,
 } from '@fluentui/react-components';
+// eslint-disable-next-line @fluentui/no-restricted-imports -- This subcomponent is exported only by its package.
+import { TeachingPopoverCarouselFooterButton } from '@fluentui/react-teaching-popover';
 import descriptionMd from './TeachingPopoverDescription.md';
 
 export { Default } from './TeachingPopoverDefault.stories';
@@ -29,6 +31,7 @@ export default {
     TeachingPopoverCarousel,
     TeachingPopoverCarouselCard,
     TeachingPopoverCarouselFooter,
+    TeachingPopoverCarouselFooterButton,
     TeachingPopoverCarouselNav,
     TeachingPopoverCarouselNavButton,
     TeachingPopoverCarouselPageCount,

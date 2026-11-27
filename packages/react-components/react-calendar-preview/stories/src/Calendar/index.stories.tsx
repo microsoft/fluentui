@@ -1,4 +1,4 @@
-import { Calendar } from '@fluentui/react-calendar-preview';
+import { Calendar, CalendarDay, CalendarMonth, CalendarYear } from '@fluentui/react-calendar-preview';
 
 import descriptionMd from './CalendarDescription.md';
 import bestPracticesMd from './CalendarBestPractices.md';
@@ -25,6 +25,7 @@ export { CalendarFocusAndDismissal } from './CalendarFocusAndDismissal.stories';
 export default {
   title: 'Preview Components/Calendar',
   component: Calendar,
+  subcomponents: { CalendarDay, CalendarMonth, CalendarYear },
   parameters: {
     docs: {
       description: {
