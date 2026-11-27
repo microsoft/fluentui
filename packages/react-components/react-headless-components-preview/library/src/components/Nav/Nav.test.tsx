@@ -90,6 +90,7 @@ describe('Nav', () => {
 
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
     expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
   });
 
@@ -113,11 +114,14 @@ describe('Nav', () => {
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
     expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
 
     // Click to close
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'false');
+    expect(result.getByText('Category 1')).not.toHaveAttribute('data-open');
+    expect(result.getByText('Category 1')).not.toHaveAttribute('data-expanded');
     expect(result.queryByText('Sub Item 1')).not.toBeInTheDocument();
   });
 

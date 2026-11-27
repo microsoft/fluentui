@@ -104,6 +104,7 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCat
     root: {
         'data-disabled'?: string;
         'data-expanded'?: string;
+        'data-open'?: string;
         'data-selected'?: string;
     };
 };

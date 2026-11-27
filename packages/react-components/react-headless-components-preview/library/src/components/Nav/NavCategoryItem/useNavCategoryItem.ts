@@ -65,7 +65,9 @@ export const useNavCategoryItem = (
   };
 
   state.root['data-disabled'] = toDataAttributeValue(state.root.disabled || state.root['aria-disabled']);
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   state.root['data-expanded'] = toDataAttributeValue(state.open);
+  state.root['data-open'] = toDataAttributeValue(state.open);
   state.root['data-selected'] = toDataAttributeValue(state.selected);
 
   return state;
