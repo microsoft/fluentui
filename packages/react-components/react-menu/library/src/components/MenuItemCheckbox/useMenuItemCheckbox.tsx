@@ -5,6 +5,7 @@ import { slot } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItemBase_unstable } from '../MenuItem/useMenuItemBase';
+import { useMenuItemStyledBehaviors } from '../MenuItem/useMenuItemStyledBehaviors';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
@@ -14,6 +15,7 @@ export const useMenuItemCheckbox_unstable = (
   ref: React.Ref<ARIAButtonElement<'div'>>,
 ): MenuItemCheckboxState => {
   const state = useMenuItemCheckboxBase_unstable(props, ref);
+  useMenuItemStyledBehaviors(props, state);
 
   // Set default checkmark icon
   if (state.checkmark) {
