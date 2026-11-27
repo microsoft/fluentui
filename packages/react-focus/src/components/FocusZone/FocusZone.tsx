@@ -270,6 +270,33 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this._updateTabIndexes();
     }
 
+    // Programmatic focus can change _activeElement without changing the tab stop.
+    const tabStop =
+      this._activeElement?.tabIndex === 0
+        ? this._activeElement
+        : this._defaultFocusElement?.tabIndex === 0
+        ? this._defaultFocusElement
+        : null;
+    const focusedElement = this.context?.shadowRoot ? this.context.shadowRoot.activeElement : doc?.activeElement;
+    if (
+      !this._isInnerZone &&
+      !this._lastIndexPath &&
+      doc &&
+      root &&
+      !elementContains(root, focusedElement as HTMLElement | null, ALLOW_VIRTUAL_ELEMENTS) &&
+      (tabStop
+        ? !isElementTabbable(tabStop, undefined, this._inShadowRoot)
+        : !Array.from(root.querySelectorAll<HTMLElement>('[tabindex="0"]')).some(element =>
+            isElementTabbable(element, undefined, this._inShadowRoot),
+          ))
+    ) {
+      if (tabStop) {
+        tabStop.setAttribute(TABINDEX, '-1');
+      }
+      // An update-time repair must not overwrite descendants of focusable nested zones.
+      this._updateTabIndexes(undefined, false);
+    }
+
     if (
       !this.props.preventFocusRestoration &&
       doc &&
@@ -1333,7 +1360,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return parentElement;
   }
 
-  private _updateTabIndexes(element?: HTMLElement): void {
+  private _updateTabIndexes(element?: HTMLElement, includeFocusableInnerZones: boolean = true): void {
     if (
       !this._activeElement &&
       this.props.defaultTabbableElement &&
@@ -1399,7 +1426,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         }
       }
 
-      this._updateTabIndexes(child);
+      // Plain inner zones share their descendant tab stops with the outer zone.
+      if (
+        includeFocusableInnerZones ||
+        !isElementFocusZone(child) ||
+        child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) !== 'true'
+      ) {
+        this._updateTabIndexes(child, includeFocusableInnerZones);
+      }
     }
   }
 
