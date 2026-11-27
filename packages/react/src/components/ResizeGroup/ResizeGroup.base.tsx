@@ -421,8 +421,10 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
       addMeasurementToCache: (data, measurement) => measurementCache.current.addMeasurementToCache(data, measurement),
     }),
   );
-  // True from a remeasure call until the cached measurement of the full data has been checked against a new one.
+  // True from a remeasure call until its check has run: a new measurement of the full data.
   const checkMeasurementCache = React.useRef(false);
+  // The measurement that the latest check took, and the cacheKey of the full data that it measured.
+  const lastCheck = React.useRef<{ cacheKey: string; dimension: number } | undefined>(undefined);
   // Whether the latest render rendered the full data for that check, in place of the data of the resize state.
   const isCheckRenderRef = React.useRef(false);
 
@@ -475,24 +477,40 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
           : measuredBoundingRect.width;
       };
 
-      // After a remeasure call, compare the cached measurement of the full data with the size it has now. If
-      // they differ, something other than the data has changed the size of the content, for example a style
-      // sheet or a font, and none of the cached measurements can be trusted.
+      // After a remeasure call, measure the full data again. If its size has changed, something other than the
+      // data has changed the size of the content, for example a style sheet or a font, and none of the cached
+      // measurements can be trusted.
       if (isCheckRenderRef.current) {
         // The latest render put the full data in the measuring div, not the data of the resize state.
         if (!checkMeasurementCache.current || !refToMeasure.current) {
           return;
         }
         checkMeasurementCache.current = false;
-        const cachedDimension = measurementCache.current.getCachedMeasurement(dataRef.current);
+        const fullData = dataRef.current;
         const measuredDimension = getElementToMeasureDimension();
         // Content that measures 0 is not laid out, for example inside display: none. That says nothing about
-        // the cached measurements.
-        if (measuredDimension !== 0 && cachedDimension !== measuredDimension) {
-          measurementCache.current = getMeasurementCache();
-          measurementCache.current.addMeasurementToCache(dataRef.current, measuredDimension);
-          fitDataAgain(!!props.onGrowData);
-          return;
+        // the cached measurements, and neither does a render without data.
+        if (measuredDimension !== 0 && fullData) {
+          // The check renders the full data while other data is on screen. Content that also depends on what is
+          // on screen, for example on the items that are in an overflow menu at that moment, can measure
+          // differently here than it does in a pass. So compare with the check before this one, and with the
+          // cached measurement only when this is the first check of this data.
+          const previousCheck = lastCheck.current;
+          const expectedDimension =
+            previousCheck && previousCheck.cacheKey === fullData.cacheKey
+              ? previousCheck.dimension
+              : measurementCache.current.getCachedMeasurement(fullData);
+          lastCheck.current = { cacheKey: fullData.cacheKey, dimension: measuredDimension };
+          if (expectedDimension !== measuredDimension) {
+            measurementCache.current = getMeasurementCache();
+            if (!props.onGrowData) {
+              // The new pass starts from the full data and would take this measurement again. With onGrowData
+              // it starts from other data, and measures the full data itself when it gets there.
+              measurementCache.current.addMeasurementToCache(fullData, measuredDimension);
+            }
+            fitDataAgain(!!props.onGrowData);
+            return;
+          }
         }
         if (stateRef.current.dataToMeasure) {
           // A pass is under way, but the latest render put the full data in the measuring div in place of its

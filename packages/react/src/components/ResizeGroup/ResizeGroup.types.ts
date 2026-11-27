@@ -17,10 +17,9 @@ export enum ResizeGroupDirection {
  */
 export interface IResizeGroup {
   /**
-   * Remeasures the available space. When the data has a `cacheKey`, it also measures the data again and
-   * compares the result with the cached measurement. If the two differ, the cached measurements are dropped
-   * and the data is fit again. Call it when something other than the data has changed the size of the content,
-   * for example a style sheet.
+   * Remeasures the available space. When the data has a `cacheKey`, it also measures the data again. If the
+   * size has changed, the cached measurements are dropped and the data is fit again. Call it when something
+   * other than the data has changed the size of the content, for example a style sheet.
    */
   remeasure(): void;
 }

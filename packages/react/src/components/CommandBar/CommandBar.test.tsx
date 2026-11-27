@@ -4,8 +4,9 @@ import userEvent from '@testing-library/user-event';
 import { CommandBar } from './CommandBar';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
+import type { IButtonProps } from '../../Button';
 import type { IContextualMenuItem } from '../../ContextualMenu';
-import type { ICommandBar, ICommandBarItemProps } from './CommandBar.types';
+import type { ICommandBar, ICommandBarItemProps, ICommandBarProps } from './CommandBar.types';
 
 describe('CommandBar', () => {
   beforeEach(() => {
@@ -357,7 +358,7 @@ describe('CommandBar', () => {
     }
   });
 
-  describe('remeasure() and items that come back from the overflow menu', () => {
+  describe('remeasure() and the items in the overflow menu', () => {
     // jsdom has no layout, so the tests set the width of one button and of the bar.
     let buttonWidth: number;
     let barWidth: number;
@@ -380,6 +381,23 @@ describe('CommandBar', () => {
       });
       runAllTimers();
     };
+    // What a buttonAs component gets: the props of the button, with the flag of the item among them.
+    type IRenderedButtonProps = IButtonProps & Pick<ICommandBarItemProps, 'renderedInOverflow'>;
+    const renderBar = (barItems: ICommandBarItemProps[], props: Partial<ICommandBarProps> = {}) => {
+      items = barItems;
+      onDataGrown = jest.fn();
+      render(<CommandBar componentRef={commandBar} items={items} onDataGrown={onDataGrown} {...props} />);
+      runAllTimers();
+    };
+    const renderDefaultButtons = () => {
+      renderBar([
+        { key: '1', text: 'First' },
+        { key: '2', text: 'Second' },
+        { key: '3', text: 'Third' },
+      ]);
+      // Three buttons do not fit in 250px, and neither do two buttons and the overflow button.
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, true, true]);
+    };
 
     beforeEach(() => {
       jest.useFakeTimers();
@@ -388,25 +406,17 @@ describe('CommandBar', () => {
       Element.prototype.getBoundingClientRect = function (this: HTMLElement): DOMRect {
         let width = 0;
         if (this.style.position === 'fixed' && this.style.visibility === 'hidden') {
-          // The div that the ResizeGroup renders the items into to measure them.
-          width = this.querySelectorAll('button').length * buttonWidth;
+          // The div that the ResizeGroup renders the items into to measure them. A button can say how wide it
+          // is, and every other button has the same width.
+          this.querySelectorAll('button').forEach(button => {
+            width += Number(button.getAttribute('data-width') ?? buttonWidth);
+          });
         } else if (this.firstElementChild?.lastElementChild?.getAttribute('data-automation-id') === 'visibleContent') {
           // The root of the ResizeGroup.
           width = barWidth;
         }
         return { width, height: 0, top: 0, right: width, bottom: 0, left: 0, x: 0, y: 0 } as DOMRect;
       };
-
-      items = [
-        { key: '1', text: 'First' },
-        { key: '2', text: 'Second' },
-        { key: '3', text: 'Third' },
-      ];
-      onDataGrown = jest.fn();
-      render(<CommandBar componentRef={commandBar} items={items} onDataGrown={onDataGrown} />);
-      runAllTimers();
-      // Three buttons do not fit in 250px, and neither do two buttons and the overflow button.
-      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, true, true]);
     });
 
     afterEach(() => {
@@ -414,6 +424,7 @@ describe('CommandBar', () => {
     });
 
     it('updates the items when the bar has more room', () => {
+      renderDefaultButtons();
       barWidth = 400;
       remeasure();
 
@@ -422,11 +433,89 @@ describe('CommandBar', () => {
     });
 
     it('updates the items when the items have become smaller', () => {
+      renderDefaultButtons();
       buttonWidth = 50;
       remeasure();
 
       expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, false, false]);
       expect(onDataGrown.mock.calls.map(([item]) => item.key)).toEqual(['2', '3']);
+    });
+
+    it('leaves the items alone when nothing has changed and a render function reads renderedInOverflow', () => {
+      // Each item says how wide it is: 100px in the bar, and half of that in the overflow menu. The overflow
+      // button is 20px wide.
+      buttonWidth = 20;
+      const onRender = (item: ICommandBarItemProps) => (
+        <button data-width={item.renderedInOverflow ? 50 : 100}>{item.text}</button>
+      );
+      renderBar(['First', 'Second', 'Third'].map(text => ({ key: text, text, onRender })));
+      // Three items do not fit in 250px. Two items and the overflow button do.
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+
+      remeasure();
+
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+      expect(onDataGrown).not.toHaveBeenCalled();
+    });
+
+    it('keeps the items where they are when a render function reads which items the bar has moved', () => {
+      // The same items, but each one looks up in a set whether it is in the overflow menu. The application
+      // keeps that set up to date in onDataReduced and onDataGrown.
+      buttonWidth = 20;
+      const inMenu = new Set<string>();
+      const onRender = (item: ICommandBarItemProps) => (
+        <button data-width={inMenu.has(item.key) ? 50 : 100}>{item.text}</button>
+      );
+      const onDataReduced = (item: ICommandBarItemProps) => {
+        inMenu.add(item.key);
+      };
+      const onDataGrownToBar = jest.fn((item: ICommandBarItemProps) => {
+        inMenu.delete(item.key);
+      });
+      renderBar(
+        ['First', 'Second', 'Third'].map(text => ({ key: text, text, onRender })),
+        { onDataReduced, onDataGrown: onDataGrownToBar },
+      );
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+
+      // The check renders all three items in the bar while the third one is in the menu, so it measures 250px
+      // and not the 300px of the first pass. The new fit measures every step itself and ends where it started.
+      remeasure();
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+      expect(onDataGrownToBar.mock.calls.map(([item]) => item.key)).toEqual(['Third']);
+
+      // A second call takes the same measurement as the first one, and nothing is fit again.
+      remeasure();
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+      expect(onDataGrownToBar).toHaveBeenCalledTimes(1);
+    });
+
+    it('renders an item in the bar with the flag off and gives its click handler the item itself', () => {
+      buttonWidth = 20;
+      const onClick = jest.fn();
+      const rendered: IRenderedButtonProps[] = [];
+      const buttonAs = (props: IRenderedButtonProps) => {
+        rendered.push(props);
+        return <button data-width={100}>{props.text}</button>;
+      };
+      renderBar(
+        ['First', 'Second', 'Third'].map(text => ({ key: text, text, onClick })),
+        { buttonAs },
+      );
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, undefined, true]);
+
+      rendered.length = 0;
+      remeasure();
+
+      // The check renders the third item in the bar to measure it, while the flag on the item still says that
+      // it is in the overflow menu.
+      const thirdButtons = rendered.filter(props => props.text === 'Third');
+      expect(thirdButtons.map(props => props.renderedInOverflow)).toEqual([false]);
+      expect(items[2].renderedInOverflow).toBe(true);
+
+      thirdButtons[0].onClick!({} as React.MouseEvent<HTMLButtonElement>);
+      expect(onClick).toHaveBeenCalledTimes(1);
+      expect(onClick.mock.calls[0][1]).toBe(items[2]);
     });
   });
 });

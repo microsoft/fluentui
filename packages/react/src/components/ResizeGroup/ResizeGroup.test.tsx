@@ -641,8 +641,11 @@ describe('ResizeGroup remeasure', () => {
       if (this.classList.contains('resizeGroupRoot')) {
         width = containerWidth;
       } else if (this.style.visibility === 'hidden') {
-        // The div that the ResizeGroup renders data into to measure it.
-        width = Number(this.querySelector('[data-item-count]')!.getAttribute('data-item-count')) * itemWidth;
+        // The div that the ResizeGroup renders data into to measure it. The content can say how wide it is.
+        // Without that, every item has the same width.
+        const content = this.querySelector('[data-item-count]')!;
+        const ownWidth = content.getAttribute('data-width');
+        width = ownWidth === null ? Number(content.getAttribute('data-item-count')) * itemWidth : Number(ownWidth);
         measurements++;
       }
       return { width, height: 0, top: 0, right: width, bottom: 0, left: 0, x: 0, y: 0 } as DOMRect;
@@ -943,5 +946,78 @@ describe('ResizeGroup remeasure', () => {
     // The new fit starts from the two items that were being measured.
     expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([2, 3]);
     expect(onReduceData).not.toHaveBeenCalled();
+  });
+
+  describe('content that depends on more than the data', () => {
+    // Like a CommandBar item that is drawn smaller while it is in the overflow menu: the caller keeps the number
+    // of items that are shown up to date in onReduceData and onGrowData, and an item that is not shown takes
+    // 10px in place of the width of an item.
+    const renderGroupWithShownCount = () => {
+      let shown = fullData.count;
+      const onReduceData = jest.fn((data: IItemsData) => {
+        const nextData = onReduceItems(data);
+        shown = nextData ? nextData.count : shown;
+        return nextData;
+      });
+      const onGrowData = jest.fn((data: IItemsData) => {
+        const nextData = onGrowItems(data);
+        shown = nextData ? nextData.count : shown;
+        return nextData;
+      });
+      const onRenderData = (data: IItemsData) => (
+        <div
+          data-item-count={data.count}
+          data-width={Math.min(data.count, shown) * itemWidth + Math.max(data.count - shown, 0) * 10}
+        />
+      );
+
+      containerWidth = 420;
+      const result = renderResizeGroup({ onGrowData, onReduceData, onRenderData });
+      // Five items are 500px wide, and four items fit.
+      expect(result.getRenderedCount()).toBe(4);
+      onGrowData.mockClear();
+      onReduceData.mockClear();
+      measurements = 0;
+      return { ...result, onGrowData, onReduceData };
+    };
+
+    it('keeps the data that fits when the check does not measure what a pass measures', () => {
+      const { getRenderedCount, remeasure, onGrowData, onReduceData } = renderGroupWithShownCount();
+
+      // The check measures the five items while four are shown: 410px, and not the 500px of the first pass.
+      remeasure();
+
+      expect(getRenderedCount()).toBe(4);
+      // The new fit measures every step itself: the four items, and then the five items, which do not fit.
+      expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([4]);
+      expect(onReduceData.mock.calls.map(([data]) => data.count)).toEqual([5]);
+      expect(measurements).toBe(3);
+    });
+
+    it('does not fit the data again when the next check takes the same measurement', () => {
+      const { getRenderedCount, remeasure, onGrowData, onReduceData } = renderGroupWithShownCount();
+      remeasure();
+      onGrowData.mockClear();
+      onReduceData.mockClear();
+      measurements = 0;
+
+      remeasure();
+
+      expect(getRenderedCount()).toBe(4);
+      expect(onGrowData).not.toHaveBeenCalled();
+      expect(onReduceData).not.toHaveBeenCalled();
+      expect(measurements).toBe(1);
+    });
+
+    it('fits the data again when a later check takes another measurement', () => {
+      const { getRenderedCount, remeasure } = renderGroupWithShownCount();
+      remeasure();
+      expect(getRenderedCount()).toBe(4);
+
+      itemWidth = 150;
+      remeasure();
+
+      expect(getRenderedCount()).toBe(2);
+    });
   });
 });
