@@ -1,5 +1,14 @@
+import * as React from 'react';
+import { renderHook } from '@testing-library/react-hooks';
 import { computePosition } from './computePosition';
-import type { OffsetFunctionParam, PositioningOptions, PositioningPlacement } from '../types';
+import { usePositioningOptions } from '../usePositioningOptions';
+import { PositioningConfigurationProvider } from '../PositioningConfigurationContext';
+import type {
+  OffsetFunctionParam,
+  PositioningConfigurationFn,
+  PositioningOptions,
+  PositioningPlacement,
+} from '../types';
 
 // Supply layout measurements (which jsdom lacks), not a mock of the positioning or geometry helpers.
 function setup() {
@@ -60,6 +69,114 @@ describe('computePosition options', () => {
     await expect(place({ overflowBoundaryPadding }, 'bottom', rtl)).resolves.toMatchObject({ x: left });
     targetRect.x = 400;
     await expect(place({ overflowBoundaryPadding }, 'bottom', rtl)).resolves.toMatchObject({ x: right });
+  });
+
+  it.each<[PositioningOptions['flipBoundaryPadding'], PositioningPlacement, number]>([
+    [undefined, 'top', 5],
+    [0, 'top', 5],
+    [10, 'bottom', 45],
+    [{ top: 10 }, 'bottom', 45],
+  ])('uses flip padding %j to choose placement', async (flipBoundaryPadding, placement, y) => {
+    const { place, targetRect } = setup();
+    targetRect.y = 15;
+    await expect(place({ pinned: false, flipBoundaryPadding }, 'top')).resolves.toMatchObject({ placement, y });
+  });
+
+  it.each(['top', 'bottom'] as const)('treats undefined and zero %s flip padding as omitted', async side => {
+    const { place, targetRect } = setup();
+    targetRect.y = side === 'top' ? 15 : 255;
+    for (const flipBoundaryPadding of [{}, { [side]: undefined }, { [side]: 0 }]) {
+      await expect(place({ pinned: false, flipBoundaryPadding }, side)).resolves.toMatchObject({
+        placement: side,
+        y: side === 'top' ? 5 : 285,
+      });
+    }
+    await expect(place({ pinned: false, flipBoundaryPadding: { [side]: 10 } }, side)).resolves.toMatchObject({
+      placement: side === 'top' ? 'bottom' : 'top',
+      y: side === 'top' ? 45 : 245,
+    });
+  });
+
+  it.each([false, true])('maps logical flip padding in RTL=%s', async isRtl => {
+    const { place, targetRect } = setup();
+    targetRect.x = 25;
+    await expect(
+      place({ pinned: false, flipBoundaryPadding: { start: 10, end: 0 } }, 'left', isRtl),
+    ).resolves.toMatchObject({ placement: isRtl ? 'left' : 'right', x: isRtl ? 5 : 65 });
+    targetRect.x = 235;
+    await expect(
+      place({ pinned: false, flipBoundaryPadding: { start: 10, end: 0 } }, 'right', isRtl),
+    ).resolves.toMatchObject({ placement: isRtl ? 'left' : 'right', x: isRtl ? 215 : 275 });
+  });
+
+  it('keeps flip, shift and auto-size padding independent', async () => {
+    const { place, targetRect, container } = setup();
+    targetRect.x = 20;
+    targetRect.y = 15;
+    await expect(place({ pinned: false, overflowBoundaryPadding: 10 }, 'top')).resolves.toMatchObject({
+      placement: 'top',
+      x: 30,
+      y: 5,
+    });
+    await expect(
+      place(
+        {
+          pinned: false,
+          flipBoundaryPadding: { top: 10, end: 100 },
+          overflowBoundaryPadding: { start: 80, end: 10 },
+          autoSize: 'width',
+        },
+        'top',
+      ),
+    ).resolves.toMatchObject({ placement: 'bottom', x: 80, y: 45 });
+    expect(container.style.maxWidth).toBe('210px');
+  });
+
+  it('honors pinned and explicit fallback placements with flip padding', async () => {
+    const { place, targetRect } = setup();
+    targetRect.y = 15;
+    await expect(place({ flipBoundaryPadding: 10 }, 'top')).resolves.toMatchObject({ placement: 'top', y: 5 });
+    await expect(
+      place({ pinned: false, flipBoundaryPadding: 10, fallbackPositions: ['after'] }, 'top'),
+    ).resolves.toMatchObject({ placement: 'right', x: 140, y: 25 });
+  });
+
+  it('passes padding through configuration and applies provider overrides', async () => {
+    const { container, target, targetRect } = setup();
+    targetRect.y = 15;
+    const configure = jest.fn<ReturnType<PositioningConfigurationFn>, Parameters<PositioningConfigurationFn>>(
+      ({ options }) => ({ ...options, flipBoundaryPadding: 10 }),
+    );
+    const wrapper = ({ children }: { children?: React.ReactNode }) =>
+      React.createElement(PositioningConfigurationProvider, { value: configure }, children);
+    const { result } = renderHook(() => usePositioningOptions({ position: 'above', flipBoundaryPadding: 0 }), {
+      wrapper,
+    });
+    const resolved = result.current(container, null);
+    expect(configure).toHaveBeenCalledWith(
+      expect.objectContaining({ options: expect.objectContaining({ flipBoundaryPadding: 0 }) }),
+    );
+    await expect(computePosition(target, container, resolved)).resolves.toMatchObject({
+      placement: 'bottom',
+      y: 45,
+    });
+  });
+
+  it('updates and removes flip padding without remounting', async () => {
+    const { container, target, targetRect } = setup();
+    targetRect.y = 15;
+    const initialProps: { padding: number | undefined } = { padding: 0 };
+    const { result, rerender } = renderHook(
+      ({ padding }: { padding: number | undefined }) =>
+        usePositioningOptions({ position: 'above', flipBoundaryPadding: padding }),
+      { initialProps },
+    );
+    const compute = () => computePosition(target, container, result.current(container, null));
+    await expect(compute()).resolves.toMatchObject({ placement: 'top', y: 5 });
+    rerender({ padding: 10 });
+    await expect(compute()).resolves.toMatchObject({ placement: 'bottom', y: 45 });
+    rerender({ padding: undefined });
+    await expect(compute()).resolves.toMatchObject({ placement: 'top', y: 5 });
   });
 
   it.each<[PositioningPlacement, number, number]>([

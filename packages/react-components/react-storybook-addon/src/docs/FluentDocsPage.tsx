@@ -191,6 +191,10 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
       return `Slot`;
     }
 
+    if (typeName === 'Slot' || /^Slot<.+>$/.test(typeName)) {
+      hasArgAsSlot = true;
+    }
+
     return typeName;
   };
 
