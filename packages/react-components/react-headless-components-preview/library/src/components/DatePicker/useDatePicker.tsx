@@ -10,10 +10,10 @@ import {
   useControllableState,
   useEventCallback,
   useId,
-  useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { resolvePositioningShorthand, usePositioning } from '../../hooks';
+import { useLayerOpenState } from '../../hooks/top-layer';
 import { toDataAttributeValue } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { compareDatePart, focusCalendarGrid, isRestrictedDate } from '../Calendar/utils';
@@ -323,7 +323,7 @@ export const useDatePicker = (
       // Keep the Escape that closes the calendar from also dismissing a surrounding dialog or popover.
       event.preventDefault();
       event.stopPropagation();
-      requestOpen(event, false, 'keyboard');
+      requestOpen(event, false, 'escape');
     } else if (
       event.key === Enter &&
       allowTextInput &&
@@ -526,12 +526,14 @@ export const useDatePicker = (
   popupSurface.onKeyDown = mergeCallbacks(popupSurface.onKeyDown, onSurfaceKeyDown);
 
   // Declared after the surface handlers, so focus moved while showing the popover reaches them.
-  useIsomorphicLayoutEffect(() => {
-    const surface = surfaceRef.current;
-    if (open && surface && typeof surface.showPopover === 'function' && !surface.matches(':popover-open')) {
-      surface.showPopover();
-    }
-  }, [open]);
+  // `manual` popovers only report `native-open`/`native-close` (something outside React opened or closed the popover),
+  // which map to 'outsideClick' so the reason union stays unchanged.
+  useLayerOpenState(surfaceRef, {
+    open,
+    mode: 'manual',
+    onOpenChange: (nextOpen, { event, type }) =>
+      requestOpen(event as unknown as DatePickerEvent, nextOpen, type === 'escape' ? 'escape' : 'outsideClick'),
+  });
 
   // Root
 

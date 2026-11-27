@@ -309,6 +309,35 @@ describe('DatePicker', () => {
       expect(onOpenChange.mock.calls[1][1]).toMatchObject({ open: false, reason: 'outsideClick' });
     });
 
+    it('reports escape when Escape closes from the field', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole } = renderDatePicker({ defaultOpen: true, onOpenChange });
+      const control = getByRole('combobox');
+
+      fireEvent.keyDown(control, { key: 'Escape' });
+
+      const calls = onOpenChange.mock.calls;
+      expect(calls[calls.length - 1][1]).toMatchObject({ open: false, reason: 'escape' });
+    });
+
+    it('opens when :popover-open is unsupported', () => {
+      const spy = jest
+        .spyOn(HTMLElement.prototype, 'matches')
+        .mockImplementation(function (this: HTMLElement, selector: string) {
+          if (selector === ':popover-open') {
+            throw new SyntaxError('unsupported');
+          }
+          return Element.prototype.matches.call(this, selector);
+        });
+      try {
+        const { getByRole } = renderDatePicker({ defaultOpen: true });
+        // The popover polyfill marks a popover in the top layer with the `:popover-open` class.
+        expect(getByRole('dialog')).toHaveClass(':popover-open');
+      } finally {
+        spy.mockRestore();
+      }
+    });
+
     it('cannot open while disabled', () => {
       const { container, getByRole, queryByRole } = renderDatePicker({ disabled: true });
       const trigger = getByRole('combobox', { name: 'Due date Select a date' });

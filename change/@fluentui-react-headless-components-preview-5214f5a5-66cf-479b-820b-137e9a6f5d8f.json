@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: DatePicker uses the shared top-layer hook (works with popover polyfills) and reports every Escape close as reason 'escape'",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
