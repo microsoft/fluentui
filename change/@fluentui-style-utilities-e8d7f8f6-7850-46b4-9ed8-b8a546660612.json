@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(style-utilities): suppress missing icon warning for custom image URLs and deduplicate warnings per icon name",
+  "packageName": "@fluentui/style-utilities",
+  "email": "enter.k.giridharan@gmail.com"
+}
+
