@@ -1,6 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: data-orientation on Toolbar, Slider and RangeSlider and data-open on NavCategoryItem (data-vertical and data-expanded are deprecated aliases); BREAKING: Avatar data-active is now presence-only and inactive avatars get data-inactive",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com"
-}

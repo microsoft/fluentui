@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: data-orientation replaces data-vertical (Toolbar, ToolbarGroup, ToolbarRadioGroup, ToolbarDivider, ToolbarButton, Slider, RangeSlider) and data-open replaces data-expanded (NavCategoryItem); BREAKING: data-vertical and data-expanded are removed, and Avatar data-active is presence-only with new data-inactive",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
