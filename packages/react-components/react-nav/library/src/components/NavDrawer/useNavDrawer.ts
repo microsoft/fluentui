@@ -20,6 +20,21 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
   const { size = undefined, tabbable = false } = props;
+  // Nav-owned props are consumed by useNav_unstable and must not be forwarded to the Drawer root element.
+  const {
+    defaultSelectedValue: _defaultSelectedValue,
+    defaultSelectedCategoryValue: _defaultSelectedCategoryValue,
+    defaultOpenCategories: _defaultOpenCategories,
+    openCategories: _openCategories,
+    onNavItemSelect: _onNavItemSelect,
+    selectedValue: _selectedValue,
+    selectedCategoryValue: _selectedCategoryValue,
+    multiple: _multiple,
+    onNavCategoryItemToggle: _onNavCategoryItemToggle,
+    density: _density,
+    tabbable: _tabbable,
+    ...drawerProps
+  } = props;
 
   const navState = useNav_unstable(props, ref);
 
@@ -36,7 +51,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     },
 
     root: slot.always(
-      { ref, role: 'navigation', ...props },
+      { ref, role: 'navigation', ...drawerProps },
       {
         // TODO: remove once React v18 slot API is modified
         // this is a problem with the lack of support for union types on React v18

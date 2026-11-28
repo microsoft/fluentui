@@ -5,7 +5,7 @@ import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
+import { isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
 
 import type {
   TeachingPopoverCarouselNavButtonBaseProps,
@@ -26,7 +26,7 @@ export const useTeachingPopoverCarouselNavButtonBase_unstable = (
   props: TeachingPopoverCarouselNavButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): TeachingPopoverCarouselNavButtonBaseState => {
-  const { onClick, as = 'a' } = props;
+  const { onClick } = props;
 
   const value = useValueIdContext();
 
@@ -41,18 +41,15 @@ export const useTeachingPopoverCarouselNavButtonBase_unstable = (
     }
   });
 
-  const _carouselButton = slot.always<ARIAButtonSlotProps<'a'>>(
-    getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
-    {
-      elementType: 'button',
-      defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-        role: 'tab',
-        type: 'button',
-        'aria-selected': `${!!isSelected}`,
-      },
+  const _carouselButton = slot.always<ARIAButtonSlotProps<'a'>>(useARIAButtonProps(props.as, props), {
+    elementType: 'button',
+    defaultProps: {
+      ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+      role: 'tab',
+      type: 'button',
+      'aria-selected': `${!!isSelected}`,
     },
-  );
+  });
 
   _carouselButton.onClick = handleClick;
 

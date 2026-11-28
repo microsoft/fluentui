@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { slot, useEventCallback } from '@fluentui/react-utilities';
 import type { TeachingPopoverTitleBaseProps, TeachingPopoverTitleBaseState } from './TeachingPopoverTitle.types';
 
 /**
@@ -15,7 +15,7 @@ export const useTeachingPopoverTitleBase_unstable = (
   props: TeachingPopoverTitleBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverTitleBaseState => {
-  const { dismissButton } = props;
+  const { dismissButton, ...rest } = props;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -36,10 +36,10 @@ export const useTeachingPopoverTitleBase_unstable = (
       dismissButton: 'button',
     },
     root: slot.always(
-      getIntrinsicElementProps('h2', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'h2' },
     ),
     dismissButton: slot.optional(dismissButton, {

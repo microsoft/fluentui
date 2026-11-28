@@ -198,3 +198,35 @@ describe('TeachingPopoverCarousel', () => {
     expect(announcement).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('TeachingPopoverCarousel DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <TeachingPopoverCarousel
+        announcement={value => value}
+        defaultValue="one"
+        onFinish={jest.fn()}
+        onValueChange={jest.fn()}
+      >
+        <TeachingPopoverCarouselCard value="one">Step one</TeachingPopoverCarouselCard>
+      </TeachingPopoverCarousel>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+
+  it('forwards native HTML props to inactive cards', () => {
+    const { container } = render(
+      <TeachingPopoverCarousel value="one">
+        <TeachingPopoverCarouselCard value="one">Step one</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="two" dangerouslySetInnerHTML={{ __html: '<span>Injected</span>' }} />
+      </TeachingPopoverCarousel>,
+    );
+
+    const inactiveCard = container.querySelector('[hidden]');
+    expect(inactiveCard?.innerHTML).toBe('<span>Injected</span>');
+  });
+});

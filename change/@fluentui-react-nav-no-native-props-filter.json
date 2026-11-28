@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: do not forward Nav-owned props to the Drawer root in NavDrawer",
+  "packageName": "@fluentui/react-nav",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

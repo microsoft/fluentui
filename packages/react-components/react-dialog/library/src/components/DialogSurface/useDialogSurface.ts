@@ -7,7 +7,6 @@ import {
   useMergedRefs,
   isResolvedShorthand,
   slot,
-  getIntrinsicElementProps,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import type * as React from 'react';
@@ -31,6 +30,7 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
+  const { backdrop: backdropProp, backdropMotion, mountNode, ...rest } = props;
   const contextRef = useMotionForwardedRef();
 
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
@@ -46,8 +46,8 @@ export const useDialogSurface_unstable = (
   const unmountOnClose = useDialogContext_unstable(ctx => ctx.unmountOnClose);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (isResolvedShorthand(props.backdrop)) {
-      props.backdrop.onClick?.(event);
+    if (isResolvedShorthand(backdropProp)) {
+      backdropProp.onClick?.(event);
     }
     if (modalType === 'modal' && !event.isDefaultPrevented()) {
       requestOpenChange({
@@ -73,7 +73,7 @@ export const useDialogSurface_unstable = (
     }
   });
 
-  const backdrop = slot.optional(props.backdrop, {
+  const backdrop = slot.optional(backdropProp, {
     renderByDefault: modalType !== 'non-modal',
     defaultProps: {
       'aria-hidden': 'true',
@@ -118,25 +118,25 @@ export const useDialogSurface_unstable = (
     treatBackdropAsNested,
     backdropAppearance,
     unmountOnClose,
-    mountNode: props.mountNode,
+    mountNode,
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
         role: modalType === 'alert' ? 'alertdialog' : 'dialog',
         'aria-modal': modalType !== 'non-modal',
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
         'aria-hidden': !unmountOnClose && !open ? true : undefined,
-        ...props,
+        ...rest,
         ...modalAttributes,
         onKeyDown: handleKeyDown,
         // FIXME:
         // `DialogSurfaceElement` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, contextRef, dialogRef) as React.Ref<HTMLDivElement>,
-      }),
+      },
       { elementType: 'div' },
     ),
-    backdropMotion: presenceMotionSlot(props.backdropMotion, {
+    backdropMotion: presenceMotionSlot(backdropMotion, {
       elementType: DialogBackdropMotion,
       defaultProps: {
         appear: unmountOnClose,

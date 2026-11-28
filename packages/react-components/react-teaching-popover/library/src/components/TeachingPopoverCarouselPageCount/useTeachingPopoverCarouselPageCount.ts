@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselPageCountProps,
   TeachingPopoverCarouselPageCountState,
@@ -36,11 +36,11 @@ export const useTeachingPopoverCarouselPageCount_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         ...props,
         children: props.children(currentIndex + 1, totalPages),
-      }),
+      },
       { elementType: 'div' },
     ),
   };

@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { DrawerHeaderTitle } from './DrawerHeaderTitle';
 import { isConformant } from '../../testing/isConformant';
-import type { DrawerHeaderTitleProps } from './DrawerHeaderTitle.types';
+import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
+import type { DrawerHeaderTitleProps, DrawerHeaderTitleSlots } from './DrawerHeaderTitle.types';
 import { drawerHeaderTitleClassNames } from './useDrawerHeaderTitleStyles.styles';
+import { useDrawerHeaderTitle_unstable } from './useDrawerHeaderTitle';
 
 describe('DrawerHeaderTitle', () => {
   isConformant<DrawerHeaderTitleProps>({
@@ -63,5 +66,47 @@ describe('DrawerHeaderTitle', () => {
         </div>
       </div>
     `);
+  });
+});
+
+describe('DrawerHeaderTitle DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <DrawerHeaderTitle heading={{ as: 'h3' }} action={<button>Close</button>}>
+        Title
+      </DrawerHeaderTitle>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
+
+describe('DrawerHeaderTitle root render function', () => {
+  it('runs a root render function passed as children alongside an explicit heading', () => {
+    const renderRoot: SlotRenderFunction<ExtractSlotProps<DrawerHeaderTitleSlots['root']>> = (Component, props) => (
+      <section data-testid="custom-root">
+        <Component {...props} />
+      </section>
+    );
+    const { container } = render(<DrawerHeaderTitle heading="Title">{renderRoot}</DrawerHeaderTitle>);
+
+    const customRoot = container.firstElementChild as HTMLElement;
+    expect(customRoot.tagName).toBe('SECTION');
+    expect(customRoot.getAttribute('data-testid')).toBe('custom-root');
+    expect(customRoot.querySelector('h2')?.textContent).toBe('Title');
+  });
+
+  it('forwards React native props while consuming component slots', () => {
+    const html = { __html: 'Title' };
+    const { result } = renderHook(() =>
+      useDrawerHeaderTitle_unstable({ heading: 'Heading', action: 'Action', dangerouslySetInnerHTML: html }, null),
+    );
+
+    expect(result.current.root.dangerouslySetInnerHTML).toBe(html);
+    expect(result.current.root).not.toHaveProperty('heading');
+    expect(result.current.root).not.toHaveProperty('action');
   });
 });

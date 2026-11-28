@@ -10,6 +10,7 @@ import { DrawerHeader } from './DrawerHeader';
 import { DrawerHeaderNavigation } from './DrawerHeaderNavigation';
 import { DrawerHeaderTitle } from './DrawerHeaderTitle';
 import { DrawerProvider, useDrawerContext } from './index';
+import type { DrawerProps } from './Drawer.types';
 
 describe('Drawer', () => {
   isConformant({
@@ -42,6 +43,20 @@ describe('Drawer', () => {
     expect(drawer.tagName).toBe('DIV');
     expect(drawer).toHaveAttribute('data-open');
     expect(drawer).toHaveAttribute('data-position', 'end');
+  });
+
+  it('does not forward overlay-only props to an inline drawer', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    // Responsive drawers may switch `type` at runtime while keeping overlay props.
+    const props = { type: 'inline', open: true, modalType: 'alert', onOpenChange: jest.fn() } as DrawerProps;
+    const result = render(<Drawer {...props}>Inline Drawer</Drawer>);
+    const drawer = result.getByText('Inline Drawer');
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect(drawer.tagName).toBe('DIV');
+    expect(drawer).not.toHaveAttribute('modalType');
+    expect(drawer).not.toHaveAttribute('modaltype');
   });
 
   it('exposes the Drawer context through the headless API', () => {

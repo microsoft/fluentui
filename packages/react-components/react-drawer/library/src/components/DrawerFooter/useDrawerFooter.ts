@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 
 import type { DrawerFooterProps, DrawerFooterState } from './DrawerFooter.types';
 import { useDrawerContext_unstable } from '../../contexts/drawerContext';
@@ -24,11 +24,11 @@ export const useDrawerFooter_unstable = (props: DrawerFooterProps, ref: React.Re
     },
 
     root: slot.always(
-      getIntrinsicElementProps('footer', {
+      {
         ref,
         role: 'none', // until header and footer elements can be scoped to a dialog, this is needed
         ...props,
-      }),
+      },
       { elementType: 'footer' },
     ),
 

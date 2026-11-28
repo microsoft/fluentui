@@ -2,9 +2,11 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { PopoverSurface } from './PopoverSurface';
 import { render, fireEvent } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../testing/isConformant';
 import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
 import type { PopoverSurfaceProps } from './PopoverSurface.types';
+import { usePopoverSurface_unstable } from './usePopoverSurface';
 
 jest.mock('../../popoverContext');
 
@@ -79,5 +81,15 @@ describe('PopoverSurface', () => {
 
     // Assert
     expect(getByTestId(testid)).not.toBeNull();
+  });
+
+  it('forwards React native props to the root slot', () => {
+    const html = { __html: 'Details' };
+    const { result } = renderHook(() =>
+      usePopoverSurface_unstable({ dangerouslySetInnerHTML: html, suppressHydrationWarning: true }, null),
+    );
+
+    expect(result.current.root.dangerouslySetInnerHTML).toBe(html);
+    expect(result.current.root.suppressHydrationWarning).toBe(true);
   });
 });
