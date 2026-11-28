@@ -629,8 +629,8 @@ describe('usePositioning with options that need JavaScript', () => {
       ({
         left: 450,
         right: 650,
-        top: container.style.positionArea.startsWith('block-start') ? 200 : 340,
-        bottom: container.style.positionArea.startsWith('block-start') ? 300 : 440,
+        top: container.style.getPropertyValue('position-area').startsWith('block-start') ? 200 : 340,
+        bottom: container.style.getPropertyValue('position-area').startsWith('block-start') ? 300 : 440,
         width: 200,
         height: 100,
       } as DOMRect);
