@@ -15,7 +15,6 @@ export { Default } from './CarouselDefault.stories';
 export { Grouped } from './CarouselGrouped.stories';
 export { Autoplay } from './CarouselAutoplay.stories';
 export { Controlled } from './CarouselControlled.stories';
-export { Static } from './CarouselStatic.stories';
 
 export default {
   title: 'Components/Carousel',
