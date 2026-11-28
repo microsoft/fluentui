@@ -137,11 +137,26 @@ describe('createToaster', () => {
 
   it('should dismiss a toast', () => {
     const toaster = createToaster({});
+    const onStatusChange = jest.fn();
 
-    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'foo', toastId: 'foo', onStatusChange }, () => null);
     toaster.dismissToast('foo');
 
     expect(toaster.visibleToasts.size).toBe(0);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+  });
+
+  it('removes a dismissed queued toast from the queue', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'first' }, () => null);
+    toaster.buildToast({ toastId: 'second', onStatusChange }, () => null);
+    toaster.buildToast({ toastId: 'third' }, () => null);
+
+    toaster.dismissToast('second');
+
+    expect(toaster.getQueuedToastIds()).toEqual(['third']);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
   });
 
   it('should dismiss all toasts', () => {

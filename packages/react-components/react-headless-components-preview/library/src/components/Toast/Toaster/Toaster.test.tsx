@@ -310,6 +310,65 @@ describe('Toaster', () => {
     ]);
   });
 
+  it('runs same-batch dismissal callbacks after the commit', async () => {
+    let controller: ReturnType<typeof useToastController>;
+    const focusResults: boolean[] = [];
+    const Test = () => {
+      controller = useToastController('dismiss-before-render-focus');
+      return <Toaster toasterId="dismiss-before-render-focus" />;
+    };
+    const { queryByText } = render(<Test />);
+
+    await act(async () => {
+      controller.dispatchToast('first', {
+        toastId: 'first',
+        timeout: -1,
+        onStatusChange: (_, data) => {
+          if (data.status === 'dismissed') {
+            flushSync(() =>
+              controller.dispatchToast(<button>replacement</button>, { toastId: 'replacement', timeout: -1 }),
+            );
+            const replacement = queryByText('replacement');
+            replacement?.focus();
+            focusResults.push(!!replacement && document.activeElement === replacement);
+          }
+        },
+      });
+      controller.dismissToast('first');
+    });
+
+    expect(focusResults).toEqual([true]);
+  });
+
+  it('does not report a queued toast unmounted during StrictMode effect replay', async () => {
+    let controller: ReturnType<typeof useToastController>;
+    const onStatusChange = jest.fn();
+    const toasterId = 'strict-mode-queued-toaster';
+    const Test = () => {
+      controller = useToastController(toasterId);
+      return (
+        <React.StrictMode>
+          <Toaster toasterId={toasterId} limit={1} />
+        </React.StrictMode>
+      );
+    };
+    const { queryByText } = render(<Test />);
+
+    await act(async () => {
+      controller.dispatchToast('first', { toastId: 'first', timeout: -1 });
+      controller.dispatchToast('second', { toastId: 'second', timeout: -1, onStatusChange });
+    });
+
+    expect(onStatusChange.mock.calls.map(([, data]) => data.status)).toEqual(['queued']);
+
+    await act(async () => {
+      controller.dismissToast('first');
+    });
+
+    expect(queryByText('second')).not.toBeNull();
+    expect(onStatusChange.mock.calls.map(([, data]) => data.status)).toEqual(['queued', 'visible']);
+  });
+
   it('reports visible using the callback and content from the committed render', () => {
     let controller: ReturnType<typeof useToastController>;
     const reports: Array<{ callback: string; content: string | null }> = [];

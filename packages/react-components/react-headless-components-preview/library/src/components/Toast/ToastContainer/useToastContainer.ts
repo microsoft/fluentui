@@ -59,6 +59,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   const hoverPauseRef = React.useRef(false);
   const windowBlurPauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
+  const hasBeenVisibleRef = React.useRef(false);
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -112,8 +113,32 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   });
 
   React.useEffect(() => {
-    return () => reportStatus('unmounted');
-  }, [reportStatus]);
+    if (visible) {
+      hasBeenVisibleRef.current = true;
+    }
+  }, [visible]);
+
+  const cancelPendingUnmountRef = React.useRef<(() => void) | null>(null);
+  React.useEffect(() => {
+    cancelPendingUnmountRef.current?.();
+    cancelPendingUnmountRef.current = null;
+    return () => {
+      if (!queued || hasBeenVisibleRef.current) {
+        reportStatus('unmounted');
+        return;
+      }
+
+      let cancelled = false;
+      cancelPendingUnmountRef.current = () => {
+        cancelled = true;
+      };
+      queueMicrotask(() => {
+        if (!cancelled) {
+          reportStatus('unmounted');
+        }
+      });
+    };
+  }, [queued, reportStatus]);
 
   React.useEffect(() => {
     if (!targetDocument || !pauseOnWindowBlur) {

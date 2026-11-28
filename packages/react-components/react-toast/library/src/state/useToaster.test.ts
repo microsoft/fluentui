@@ -47,7 +47,7 @@ describe('useToaster', () => {
 
     expect(toaster.buildToast).toHaveBeenCalledTimes(1);
     expect(toaster.updateToast).toHaveBeenCalledTimes(1);
-    expect(toaster.dismissAllToasts).toHaveBeenCalledTimes(1);
+    expect(toaster.takeAllToasts).toHaveBeenCalledTimes(1);
     expect(toaster.dismissToast).toHaveBeenCalledTimes(1);
   });
 
@@ -65,7 +65,7 @@ describe('useToaster', () => {
 
     expect(toaster.buildToast).toHaveBeenCalledTimes(0);
     expect(toaster.updateToast).toHaveBeenCalledTimes(0);
-    expect(toaster.dismissAllToasts).toHaveBeenCalledTimes(0);
+    expect(toaster.takeAllToasts).toHaveBeenCalledTimes(0);
     expect(toaster.dismissToast).toHaveBeenCalledTimes(0);
   });
 

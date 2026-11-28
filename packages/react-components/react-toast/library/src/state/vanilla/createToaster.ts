@@ -169,7 +169,13 @@ export function createToaster(options: Partial<ToasterOptions>): {
    * Dismisses a toast with a specific id
    */
   const dismissToast = (toastId: ToastId) => {
-    visibleToasts.delete(toastId);
+    const toast = toasts.get(toastId);
+    if (!toast) {
+      return;
+    }
+
+    queue.remove(toastId);
+    toast.close();
   };
 
   /**

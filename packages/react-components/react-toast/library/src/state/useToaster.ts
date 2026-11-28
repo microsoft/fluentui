@@ -144,8 +144,8 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
       toaster.updateToast(e.detail);
     };
 
-    const dismissAllToasts: ToastListenerMap[typeof EVENTS.dismissAll] = e => {
-      toaster.dismissAllToasts();
+    const dismissAllToasts: ToastListenerMap[typeof EVENTS.dismissAll] = () => {
+      closeAllToasts({ immediate: true });
     };
 
     const pauseToast: ToastListenerMap[typeof EVENTS.pause] = e => {
@@ -203,6 +203,7 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
     pauseAllToasts,
     getMostRecentVisibleToast,
     isFocusShortcut,
+    closeAllToasts,
   ]);
 
   const toastsToRender = (() => {
