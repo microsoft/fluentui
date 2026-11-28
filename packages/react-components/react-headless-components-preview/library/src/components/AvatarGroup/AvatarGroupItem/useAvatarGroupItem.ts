@@ -6,6 +6,7 @@ import { useAvatarGroupItemBase_unstable } from '@fluentui/react-avatar';
 
 import { Avatar } from '../../Avatar/Avatar';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an AvatarGroupItem component, given its props and ref.
@@ -19,6 +20,10 @@ export const useAvatarGroupItem = (props: AvatarGroupItemProps, ref: React.Ref<H
 
   return {
     ...state,
+    root: {
+      ...state.root,
+      'data-overflow-item': toDataAttributeValue(state.isOverflowItem),
+    },
     components: {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...state.components,

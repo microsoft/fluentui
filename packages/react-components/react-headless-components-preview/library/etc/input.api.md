@@ -22,6 +22,7 @@ export { InputSlots }
 export type InputState = InputBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-readonly'?: string;
         'data-invalid'?: string;
     };
 };
