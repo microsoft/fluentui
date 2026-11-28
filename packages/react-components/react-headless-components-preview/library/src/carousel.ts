@@ -52,7 +52,6 @@ export type {
   CarouselCardState,
   CarouselSlots,
   CarouselState,
-  CarouselTransition,
   CarouselViewportProps,
   CarouselViewportSlots,
   CarouselViewportState,

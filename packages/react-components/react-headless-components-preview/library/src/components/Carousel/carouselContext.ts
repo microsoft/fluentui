@@ -19,6 +19,8 @@ export type CarouselContextValue = {
   outgoingIndex: number | undefined;
   /** True while a group transition is unsettled. */
   busy: boolean;
+  /** Direction of the latest group change: 1 toward Next, -1 toward Previous. */
+  direction: 1 | -1;
   /**
    * More than one group, with controls that reach every group: a `CarouselNav`, both Previous and Next, or one of
    * them in a circular collection. Otherwise static.
@@ -28,10 +30,9 @@ export type CarouselContextValue = {
   buttons: boolean;
   /** Paged, with `CarouselNav` rendered. */
   nav: boolean;
-  /** Paged, with an available `CarouselAutoplayButton` (independent of reduced-motion preference). */
+  /** Paged, with an available `CarouselAutoplayButton`. */
   autoplay: boolean;
   playing: boolean;
-  reducedMotion: boolean;
   previousUnavailable: boolean;
   nextUnavailable: boolean;
   /** Unavailable and no longer needed as a focus anchor for a running transition. */
@@ -63,12 +64,12 @@ const defaultCarouselContextValue: CarouselContextValue = {
   activeIndex: 0,
   outgoingIndex: undefined,
   busy: false,
+  direction: 1,
   paged: false,
   buttons: false,
   nav: false,
   autoplay: false,
   playing: false,
-  reducedMotion: false,
   previousUnavailable: true,
   nextUnavailable: true,
   previousHidden: true,
@@ -103,7 +104,7 @@ export const useCarouselItemIndex = (): number => React.useContext(CarouselItemI
  */
 export const CarouselSlideCountContext = React.createContext<number | undefined>(undefined);
 
-/** Register the consumer's part, independently of the carousel's own boundary or reduced-motion state. */
+/** Register the consumer's part, independently of the carousel's own boundary state. */
 export const useCarouselPartRegistration = (
   part: CarouselPart,
   present: boolean,

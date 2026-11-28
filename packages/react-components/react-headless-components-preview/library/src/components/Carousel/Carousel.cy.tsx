@@ -4,7 +4,7 @@ import { mount } from '@fluentui/scripts-cypress';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { Carousel } from './Carousel';
-import type { CarouselProps, CarouselTransition } from './Carousel.types';
+import type { CarouselProps } from './Carousel.types';
 import { CarouselViewport } from './CarouselViewport';
 import { CarouselCard } from './CarouselCard';
 import { CarouselPrevious } from './CarouselPrevious';
@@ -14,10 +14,23 @@ import { CarouselNavButton } from './CarouselNavButton';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
 import { Tooltip } from '../Tooltip';
 
-const transition: CarouselTransition = ({ incoming, outgoing }) => [
-  incoming.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200 }),
-  outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 100 }),
-];
+/**
+ * Starts script animations on the incoming page as the carousel reads its animations, like an effect that calls
+ * `element.animate()` would. The carousel tracks them along with the page's CSS animations.
+ */
+const animateIncoming = (animate: (incoming: HTMLElement) => void) =>
+  cy.window().then(win => {
+    const original = win.Element.prototype.getAnimations;
+    cy.stub(win.Element.prototype, 'getAnimations').callsFake(function (this: Element, options?: GetAnimationsOptions) {
+      if (this.hasAttribute('data-incoming')) {
+        animate(this as HTMLElement);
+      }
+      return original.call(this, options);
+    });
+  });
+
+/** Turns off the example's CSS page animations, leaving only the ones a test starts. */
+const noCssMotion = '.viewport[data-direction] > [data-carousel-page] { animation: none; }';
 
 const freezeWhenReady = (target: HTMLElement): Animation => {
   const animation = target.animate([], 60000);
@@ -46,19 +59,16 @@ describe('Carousel browser behavior', () => {
       });
     });
   });
-  const renderCarousel = ({ autoplay = false, ...props }: Partial<CarouselProps> & { autoplay?: boolean } = {}) =>
+  const renderCarousel = ({
+    autoplay = false,
+    cssMotion = true,
+    ...props
+  }: Partial<CarouselProps> & { autoplay?: boolean; cssMotion?: boolean } = {}) =>
     mount(
       <div className="example">
-        <style>{styles}</style>
+        <style>{cssMotion ? styles : `${styles}\n${noCssMotion}`}</style>
         <button>Before</button>
-        <Carousel
-          id="lessons"
-          aria-label="Lessons"
-          groupSize={2}
-          className="carousel"
-          transition={transition}
-          {...props}
-        >
+        <Carousel id="lessons" aria-label="Lessons" groupSize={2} className="carousel" {...props}>
           {autoplay && <CarouselAutoplayButton className="button playback" />}
           <CarouselPrevious button={{ className: 'button', icon: '<' }} />
           <CarouselViewport className="viewport">
@@ -93,6 +103,24 @@ describe('Carousel browser behavior', () => {
     cy.get('[role="tab"]').first().should('be.focused').and('have.attr', 'aria-selected', 'true');
   });
 
+  it('settles after the CSS page animations, or immediately when reduced motion removes them', () => {
+    renderCarousel();
+    cy.get('[data-carousel-action="next"]').click();
+    cy.get('.viewport').should('have.attr', 'data-direction', 'next').and('have.attr', 'aria-busy', 'true');
+    cy.get('[data-incoming]').then(([page]) => expect(page.getAnimations()).to.have.length(1));
+    cy.get('[data-outgoing]').then(([page]) => expect(page.getAnimations()).to.have.length(1));
+    cy.get('.viewport').should('have.attr', 'aria-busy', 'false').and('not.have.attr', 'data-direction');
+    cy.get('[data-incoming], [data-outgoing]').should('not.exist');
+
+    setReducedMotionPreference('reduce');
+    cy.get('[data-carousel-action="previous"]').then(([previous]) => {
+      flushSync(() => previous.click());
+      const viewport = previous.ownerDocument.querySelector('.viewport')!;
+      expect(viewport).to.have.attr('aria-busy', 'false');
+      expect(viewport.querySelector('[data-incoming], [data-outgoing]')).to.equal(null);
+    });
+  });
+
   it('mirrors nav keys and retains button width in RTL', () => {
     renderCarousel({ dir: 'rtl' });
     cy.get('[data-carousel-button="next"] [aria-hidden="true"]').should(
@@ -117,25 +145,22 @@ describe('Carousel browser behavior', () => {
     });
   });
 
-  it('mirrors chevrons, nav keys and transitions according to the nearest direction', () => {
-    const dirs: string[] = [];
-    const record: CarouselTransition = data => {
-      dirs.push(data.dir);
-      return [];
-    };
-    renderCarousel({ transition: record });
+  it('mirrors chevrons, nav keys and the slide axis according to the nearest direction', () => {
+    renderCarousel();
+    const axis = () =>
+      cy.get('.carousel').then(([el]) => getComputedStyle(el).getPropertyValue('--carousel-axis').trim());
     cy.get('.example').invoke('attr', 'dir', 'rtl');
     cy.get('[role="region"]').should('not.have.attr', 'dir');
     const glyph = '[data-carousel-button="next"] [aria-hidden="true"]';
     cy.get(glyph).should('have.css', 'transform', 'matrix(-1, 0, 0, 1, 0, 0)');
     cy.get('[aria-selected="true"]').focus().realPress('ArrowLeft');
     cy.get('[role="tab"]').eq(1).should('be.focused').and('have.attr', 'aria-selected', 'true');
-    cy.wrap(dirs).should('deep.equal', ['rtl']);
+    axis().should('equal', '-1');
     cy.get('.carousel').invoke('attr', 'dir', 'ltr');
     cy.get(glyph).should('have.css', 'transform', 'none');
     cy.get('[aria-selected="true"]').realPress('ArrowLeft');
     cy.get('[role="tab"]').first().should('be.focused').and('have.attr', 'aria-selected', 'true');
-    cy.wrap(dirs).should('deep.equal', ['rtl', 'ltr']);
+    axis().should('equal', '');
   });
 
   it('names arrows through aria-label unless the button slot names them', () => {
@@ -856,9 +881,10 @@ describe('Carousel browser behavior', () => {
 
   [false, true].forEach(onSelectedPage => {
     it(`${onSelectedPage ? 'preserves' : 'recovers'} autofocus when paging starts at a controlled index`, () => {
-      const adapter = cy.stub().returns([]);
+      const adapter = cy.stub();
+      animateIncoming(adapter);
       mount(
-        <Carousel aria-label="Lessons" activeIndex={1} transition={adapter}>
+        <Carousel aria-label="Lessons" activeIndex={1}>
           <CarouselViewport>
             <input autoFocus={!onSelectedPage} aria-label="First" />
             <CarouselCard>
@@ -876,7 +902,8 @@ describe('Carousel browser behavior', () => {
 
   it('recovers only focus that entering paged mode would hide inside a shadow root', () => {
     let setControls: (value: boolean) => void;
-    const adapter = cy.stub().returns([]);
+    const adapter = cy.stub();
+    animateIncoming(adapter);
     const Example = () => {
       const [shadow, setShadow] = React.useState<ShadowRoot>();
       const attach = React.useCallback((node: HTMLDivElement | null) => {
@@ -892,7 +919,7 @@ describe('Carousel browser behavior', () => {
             createPortal(
               <>
                 <button>Outside</button>
-                <Carousel aria-label="Lessons" transition={adapter}>
+                <Carousel aria-label="Lessons">
                   <CarouselViewport>
                     <CarouselCard>
                       <input aria-label="First" />
@@ -1085,47 +1112,31 @@ describe('Carousel browser behavior', () => {
     outerSelected(2);
   });
 
-  it('waits only for finite motion, then cancels every handle and recovers boundary focus', () => {
+  it('waits only for finite motion, then recovers boundary focus', () => {
     let finite: Animation;
-    let handles: Animation[];
-    renderCarousel({
-      defaultActiveIndex: 1,
-      transition: ({ incoming }) => {
-        finite = incoming.animate([], 60000);
-        const paused = incoming.animate([], 60000);
-        paused.pause();
-        handles = [
-          finite,
-          incoming.animate([], { duration: 100, iterations: Infinity }),
-          paused,
-          freezeWhenReady(incoming),
-        ];
-        return handles;
-      },
+    animateIncoming(incoming => {
+      finite = incoming.animate([], 60000);
+      incoming.animate([], { duration: 100, iterations: Infinity });
+      incoming.animate([], 60000).pause();
+      freezeWhenReady(incoming);
     });
+    renderCarousel({ defaultActiveIndex: 1, cssMotion: false });
     cy.get('[data-carousel-action="next"]').focus().realPress('Enter');
     cy.get('.viewport').should('have.attr', 'aria-busy', 'true');
     cy.get('[data-carousel-action="next"]').should('be.focused');
     cy.then(() => finite.finish());
     cy.get('.viewport').should('have.attr', 'aria-busy', 'false');
     cy.get('[aria-label="Slide 5 of 5"]').should('be.focused');
-    cy.then(() => handles.forEach(animation => expect(animation.playState).to.equal('idle')));
   });
 
-  it('continues autoplay when none of the returned animations is advancing', () => {
-    renderCarousel({
-      autoplay: true,
-      autoplayInterval: 1000,
-      transition: ({ incoming }) => {
-        const paused = incoming.animate([], 60000);
-        paused.pause();
-        const idle = incoming.animate([], 60000);
-        idle.cancel();
-        const stopped = incoming.animate([], 60000);
-        stopped.playbackRate = 0;
-        return [paused, idle, stopped, freezeWhenReady(incoming)];
-      },
+  it('continues autoplay when none of the page animations is advancing', () => {
+    animateIncoming(incoming => {
+      incoming.animate([], 60000).pause();
+      incoming.animate([], 60000).cancel();
+      incoming.animate([], 60000).playbackRate = 0;
+      freezeWhenReady(incoming);
     });
+    renderCarousel({ autoplay: true, autoplayInterval: 1000, cssMotion: false });
     cy.contains('button', 'Play').focus().realPress('Enter');
     cy.get('[role="tab"]').last().should('have.attr', 'aria-selected', 'true');
     cy.get('.viewport').should('have.attr', 'aria-busy', 'false');
@@ -1133,13 +1144,12 @@ describe('Carousel browser behavior', () => {
 
   it('does not let canceled readiness settle the replacement transition', () => {
     const handles: Animation[] = [];
-    renderCarousel({
-      transition: ({ incoming }) => {
-        const animation = incoming.animate([], 60000);
-        handles.push(animation);
-        return [animation];
-      },
+    animateIncoming(incoming => {
+      // Like a consumer's effect, replace the running animation.
+      handles[handles.length - 1]?.cancel();
+      handles.push(incoming.animate([], 60000));
     });
+    renderCarousel({ cssMotion: false });
     cy.get('[data-carousel-action="next"]')
       .focus()
       .then(([next]) => {
@@ -1163,7 +1173,7 @@ describe('Carousel browser behavior', () => {
       const [index, setIndex] = React.useState(0);
       change = setIndex;
       return (
-        <Carousel aria-label="Controlled" activeIndex={index} transition={transition}>
+        <Carousel aria-label="Controlled" activeIndex={index}>
           <CarouselViewport>
             <CarouselCard>
               <input aria-label="First" />
@@ -1176,11 +1186,15 @@ describe('Carousel browser behavior', () => {
         </Carousel>
       );
     };
+    const animate = cy.stub();
+    animateIncoming(animate);
     mount(<Controlled />);
     cy.get('input[aria-label="First"]').focus();
     cy.then(() => change(1));
     cy.get('[aria-label="Slide 2 of 2"]').should('be.focused');
     cy.get('[aria-busy="false"]').should('exist');
+    // Motion is skipped, not waited for.
+    cy.wrap(animate).should('not.have.been.called');
   });
 
   it('recovers focus when the browser drops it from the outgoing group before settlement', () => {

@@ -13,19 +13,6 @@ export type CarouselIndexChangeData = EventData<'select', React.SyntheticEvent |
   reason: 'previous' | 'next' | 'nav' | 'autoplay';
 };
 
-/**
- * The carousel waits for finite, running animations with a nonzero playback rate. It checks each handle when
- * returned and rechecks eligible pending handles when ready. Then let accepted animations advance, or call
- * `finish()` or `cancel()`; pausing them indefinitely prevents settlement.
- * The carousel cancels all returned handles on settlement, interruption or unmount.
- */
-export type CarouselTransition = (data: {
-  incoming: HTMLElement;
-  outgoing: HTMLElement;
-  direction: 1 | -1;
-  dir: 'ltr' | 'rtl';
-}) => Animation[];
-
 export type CarouselProps = ComponentProps<CarouselSlots> & {
   /** Name of the collection, like "Upcoming meetings", rather than the word "carousel". */
   'aria-label': string;
@@ -39,8 +26,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   circular?: boolean;
   /** Integer milliseconds between settled groups, from 1000 to 2147483647. Defaults to 4000. */
   autoplayInterval?: number;
-  /** Optional native-animation adapter. No motion or design values are bundled by default. */
-  transition?: CarouselTransition;
   /** Localize a one-based group position. Defaults to "Page 1 of 3". */
   getPageLabel?: (position: number, total: number) => string;
   /** Localize a one-based slide position. Defaults to "Slide 1 of 5". */

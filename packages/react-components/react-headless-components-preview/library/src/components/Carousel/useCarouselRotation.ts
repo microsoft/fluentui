@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { getOwnCarouselAction } from './carouselControls';
 
-type Environment = { visible: boolean; documentVisible: boolean; reducedMotion: boolean };
+type Environment = { visible: boolean; documentVisible: boolean };
 
 export function useCarouselEnvironment(
   targetDocument: Document | undefined,
@@ -13,22 +13,14 @@ export function useCarouselEnvironment(
 ): Environment {
   const [visible, setVisible] = React.useState(false);
   const [documentVisible, setDocumentVisible] = React.useState(true);
-  const [reducedMotion, setReducedMotion] = React.useState(false);
 
   useIsomorphicLayoutEffect(() => {
-    const media = targetDocument?.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)');
-    const updateMotion = () => {
-      setReducedMotion(!!media?.matches);
-    };
     const updateVisibility = () => {
       setDocumentVisible(!targetDocument?.hidden);
     };
-    updateMotion();
     updateVisibility();
-    media?.addEventListener('change', updateMotion);
     targetDocument?.addEventListener('visibilitychange', updateVisibility);
     return () => {
-      media?.removeEventListener('change', updateMotion);
       targetDocument?.removeEventListener('visibilitychange', updateVisibility);
     };
   }, [targetDocument]);
@@ -56,7 +48,7 @@ export function useCarouselEnvironment(
     return () => observer.disconnect();
   }, [enabled, targetDocument, rootRef]);
 
-  return { visible, documentVisible, reducedMotion };
+  return { visible, documentVisible };
 }
 
 const isOwnPlayback = (owner: object, target: EventTarget): boolean =>
@@ -82,17 +74,17 @@ export function useCarouselRotation(
   onPointerLeave: () => void;
   interrupt: (event: React.SyntheticEvent<HTMLDivElement>) => void;
 } {
-  const { visible, documentVisible, reducedMotion } = environment;
+  const { visible, documentVisible } = environment;
   const [playing, setPlaying] = React.useState(false);
   const [hovered, setHovered] = React.useState(false);
   // Counts fired timers so the next one is armed even when a controlled owner declines the request.
   const [tick, setTick] = React.useState(0);
   const stop = useEventCallback(() => setPlaying(false));
   useIsomorphicLayoutEffect(() => {
-    if (!enabled || reducedMotion) {
+    if (!enabled) {
       stop();
     }
-  }, [enabled, reducedMotion, stop]);
+  }, [enabled, stop]);
   // Stop when the selection arrives at the last group (not when it is merely requested, which an owner may decline).
   // Leaving it, as Play does by restarting from the first group, never stops playback.
   const wasAtEnd = React.useRef(atEnd);
@@ -104,7 +96,7 @@ export function useCarouselRotation(
   }, [atEnd, stop]);
   React.useEffect(() => {
     const win = targetDocument?.defaultView;
-    if (!win || !enabled || !playing || busy || hovered || !visible || !documentVisible || reducedMotion) {
+    if (!win || !enabled || !playing || busy || hovered || !visible || !documentVisible) {
       return;
     }
     const timer = win.setTimeout(() => {
@@ -112,26 +104,13 @@ export function useCarouselRotation(
       setTick(current => current + 1);
     }, interval);
     return () => win.clearTimeout(timer);
-  }, [
-    enabled,
-    playing,
-    busy,
-    hovered,
-    visible,
-    documentVisible,
-    reducedMotion,
-    interval,
-    index,
-    tick,
-    advance,
-    targetDocument,
-  ]);
+  }, [enabled, playing, busy, hovered, visible, documentVisible, interval, index, tick, advance, targetDocument]);
 
   return {
-    playing: enabled && playing && !reducedMotion,
+    playing: enabled && playing,
     stop,
     play: useEventCallback(() => {
-      if (enabled && !reducedMotion) {
+      if (enabled) {
         setPlaying(true);
       }
     }),

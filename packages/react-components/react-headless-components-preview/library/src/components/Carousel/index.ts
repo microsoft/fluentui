@@ -5,7 +5,6 @@ export type {
   CarouselProps,
   CarouselSlots,
   CarouselState,
-  CarouselTransition,
 } from './Carousel.types';
 export { renderCarousel } from './renderCarousel';
 export { useCarousel } from './useCarousel';

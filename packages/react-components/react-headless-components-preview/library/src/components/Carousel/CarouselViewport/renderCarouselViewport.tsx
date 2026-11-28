@@ -35,6 +35,7 @@ export const renderCarouselViewport = (state: CarouselViewportState): JSXElement
               }}
               data-carousel-page=""
               data-active={inactive ? undefined : ''}
+              data-incoming={state.outgoingIndex !== undefined && state.activeIndex === i ? '' : undefined}
               data-outgoing={state.outgoingIndex === i ? '' : undefined}
             >
               <div data-carousel-slides="">

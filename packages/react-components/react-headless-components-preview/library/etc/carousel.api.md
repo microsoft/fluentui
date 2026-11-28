@@ -25,7 +25,6 @@ export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonP
 export type CarouselAutoplayButtonProps = ComponentProps<CarouselAutoplayButtonSlots> & {
     playLabel?: string;
     pauseLabel?: string;
-    reducedMotionLabel?: string;
 };
 
 // @public (undocumented)
@@ -65,12 +64,12 @@ export type CarouselContextValue = {
     activeIndex: number;
     outgoingIndex: number | undefined;
     busy: boolean;
+    direction: 1 | -1;
     paged: boolean;
     buttons: boolean;
     nav: boolean;
     autoplay: boolean;
     playing: boolean;
-    reducedMotion: boolean;
     previousUnavailable: boolean;
     nextUnavailable: boolean;
     previousHidden: boolean;
@@ -190,7 +189,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
     circular?: boolean;
     autoplayInterval?: number;
-    transition?: CarouselTransition;
     getPageLabel?: (position: number, total: number) => string;
     getSlideLabel?: (position: number, total: number) => string;
 };
@@ -208,14 +206,6 @@ export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue
         'data-circular'?: string;
     };
 };
-
-// @public
-export type CarouselTransition = (data: {
-    incoming: HTMLElement;
-    outgoing: HTMLElement;
-    direction: 1 | -1;
-    dir: 'ltr' | 'rtl';
-}) => Animation[];
 
 // @public
 export const CarouselViewport: ForwardRefComponent<CarouselViewportProps>;
@@ -236,6 +226,7 @@ export type CarouselViewportState = ComponentState<CarouselViewportSlots> & {
         'data-buttons'?: string;
         'data-nav'?: string;
         'data-transitioning'?: string;
+        'data-direction'?: 'next' | 'previous';
     };
     pages: React_2.ReactNode[][];
     idPrefix: string;

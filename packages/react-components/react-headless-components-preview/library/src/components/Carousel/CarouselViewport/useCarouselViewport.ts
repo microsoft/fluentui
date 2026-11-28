@@ -103,6 +103,12 @@ export const useCarouselViewport = (
         'data-buttons': toDataAttributeValue(context.buttons),
         'data-nav': toDataAttributeValue(context.nav),
         'data-transitioning': toDataAttributeValue(context.busy),
+        // Set only while transitioning, so page animations can key off the direction of travel.
+        'data-direction': context.busy
+          ? context.direction === 1
+            ? ('next' as const)
+            : ('previous' as const)
+          : undefined,
       },
     ),
     pages,

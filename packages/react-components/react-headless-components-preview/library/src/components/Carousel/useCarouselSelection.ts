@@ -12,24 +12,25 @@ const isFiniteAndRunning = (animation: Animation): boolean =>
   animation.playbackRate !== 0 &&
   Number.isFinite(animation.effect?.getComputedTiming().endTime);
 
-type SelectionOptions = Pick<
-  CarouselProps,
-  'activeIndex' | 'defaultActiveIndex' | 'onActiveIndexChange' | 'transition'
-> & {
+/** Animations on the page element itself; ones inside the slides (a looping spinner, a hover effect) don't count. */
+const getPageAnimations = (page: HTMLElement): Animation[] =>
+  typeof page.getAnimations === 'function' ? page.getAnimations() : [];
+
+type SelectionOptions = Pick<CarouselProps, 'activeIndex' | 'defaultActiveIndex' | 'onActiveIndexChange'> & {
   pageCount: number;
   groupSize: number;
   paged: boolean;
   circular: boolean;
-  /** Resolved when a transition starts, not during render. */
-  getDir: () => 'ltr' | 'rtl';
   targetDocument: Document | undefined;
   rootRef: React.RefObject<HTMLDivElement | null>;
-  reducedMotion: boolean;
   documentVisible: boolean;
   viewportRef: React.RefObject<HTMLDivElement | null>;
 };
 
-/** Selection never reads geometry or runs a JavaScript animation loop. */
+/**
+ * Selection never reads geometry or runs a JavaScript animation loop. A page change marks the pages with
+ * `data-incoming` and `data-outgoing`, then settles once the finite animations on both page elements finish.
+ */
 export function useCarouselSelection(options: SelectionOptions): {
   view: {
     paged: boolean;
@@ -47,13 +48,7 @@ export function useCarouselSelection(options: SelectionOptions): {
   ) => void;
   settle: (restoreFocus?: boolean) => void;
 } {
-  const { pageCount, paged, getDir, targetDocument, reducedMotion, viewportRef, rootRef, transition, groupSize } =
-    options;
-  // A latest ref: an inline adapter re-created by a parent re-render must not restart a running transition.
-  const transitionRef = React.useRef(transition);
-  useIsomorphicLayoutEffect(() => {
-    transitionRef.current = transition;
-  }, [transition]);
+  const { pageCount, paged, targetDocument, viewportRef, rootRef, groupSize } = options;
   const [requested, setRequested] = useControllableState({
     state: options.activeIndex,
     defaultState: options.defaultActiveIndex,
@@ -68,20 +63,12 @@ export function useCarouselSelection(options: SelectionOptions): {
     direction: 1 as 1 | -1,
     anchor: undefined as 'previous' | 'next' | undefined,
   });
-  const animations = React.useRef<Animation[]>([]);
   const pending = React.useRef<{ index: number; direction: 1 | -1 } | undefined>(undefined);
   const recovery = React.useRef<Element | null>(null);
   const skipMotion = React.useRef(false);
 
-  const cancel = useEventCallback(() => {
-    const current = animations.current;
-    animations.current = [];
-    current.forEach(animation => animation.cancel());
-  });
   const settle = useEventCallback((restoreFocus = true) => {
-    // Don't cancel here: the outgoing group is still `data-outgoing` (visible) until React commits `busy: false`, so
-    // removing its finished fill now paints it at full opacity for a frame. The busy effect's cleanup cancels at that
-    // commit, before paint.
+    // The animations belong to the page styles: removing `data-outgoing` and hiding the group in one commit ends them.
     const anchor = recovery.current;
     recovery.current = null;
     const viewport = viewportRef.current;
@@ -115,7 +102,6 @@ export function useCarouselSelection(options: SelectionOptions): {
           focusCarouselPage(selected);
         }
       }
-      cancel();
       pending.current = undefined;
       recovery.current = null;
       setView({ paged, index, outgoing: undefined, busy: false, direction: 1, anchor: undefined });
@@ -124,7 +110,6 @@ export function useCarouselSelection(options: SelectionOptions): {
     if (view.index === index) {
       return;
     }
-    cancel();
     const active = viewport ? getActiveElement(viewport) : null;
     // Focus in another carousel (or elsewhere on the page) is neither an anchor nor content of this one.
     const focused = active && rootRef.current?.contains(active) ? active : null;
@@ -158,7 +143,6 @@ export function useCarouselSelection(options: SelectionOptions): {
     paged,
     viewportRef,
     rootRef,
-    cancel,
     setRequested,
   ]);
 
@@ -171,53 +155,43 @@ export function useCarouselSelection(options: SelectionOptions): {
       view.outgoing === undefined
         ? undefined
         : (viewportRef.current?.children[view.outgoing] as HTMLElement | undefined);
-    const adapter = transitionRef.current;
     let disposed = false;
-    if (!adapter || !incoming || !outgoing || reducedMotion || targetDocument?.hidden || skipMotion.current || !paged) {
+    if (!incoming || !outgoing || targetDocument?.hidden || skipMotion.current || !paged) {
       settle();
       return;
     }
-    try {
-      const handles = adapter({ incoming, outgoing, direction: view.direction, dir: getDir() });
-      animations.current = handles;
-      const finite = handles.filter(isFiniteAndRunning);
-      if (!finite.length) {
-        settle();
-      } else {
-        const completions = finite.map(animation => {
-          // updatePlaybackRate() can leave the old rate visible until a pending play task becomes ready.
-          const completion = animation.pending
-            ? animation.ready.then(() => (!disposed && isFiniteAndRunning(animation) ? animation.finished : undefined))
-            : animation.finished;
-          return completion.catch(() => undefined);
-        });
-        Promise.all(completions).then(() => {
-          if (!disposed) {
-            settle();
-          }
-        });
-      }
-    } catch (error) {
+    // getAnimations() flushes styles, so CSS animations started by this commit's data attributes are listed.
+    const finite = [...getPageAnimations(incoming), ...getPageAnimations(outgoing)].filter(isFiniteAndRunning);
+    if (!finite.length) {
       settle();
-      throw error;
+      return;
     }
+    const completions = finite.map(animation => {
+      // updatePlaybackRate() can leave the old rate visible until a pending play task becomes ready.
+      const completion = animation.pending
+        ? animation.ready.then(() => (!disposed && isFiniteAndRunning(animation) ? animation.finished : undefined))
+        : animation.finished;
+      // A canceled animation (its attribute or name removed) counts as done.
+      return completion.catch(() => undefined);
+    });
+    Promise.all(completions).then(() => {
+      if (!disposed) {
+        settle();
+      }
+    });
     return () => {
       disposed = true;
-      cancel();
     };
   }, [
     view.busy,
     view.index,
     view.outgoing,
     view.direction,
-    getDir,
-    reducedMotion,
     options.documentVisible,
     targetDocument,
     viewportRef,
     paged,
     groupSize,
-    cancel,
     settle,
   ]);
 
@@ -241,6 +215,5 @@ export function useCarouselSelection(options: SelectionOptions): {
     },
   );
 
-  useIsomorphicLayoutEffect(() => cancel, [cancel]);
   return { view, request, settle };
 }

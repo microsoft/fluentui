@@ -11,8 +11,6 @@ export type CarouselAutoplayButtonProps = ComponentProps<CarouselAutoplayButtonS
   playLabel?: string;
   /** Defaults to "Pause". */
   pauseLabel?: string;
-  /** Shown, and exposed as `aria-disabled`, while the user prefers reduced motion. */
-  reducedMotionLabel?: string;
 };
 
 export type CarouselAutoplayButtonState = ComponentState<CarouselAutoplayButtonSlots> & {

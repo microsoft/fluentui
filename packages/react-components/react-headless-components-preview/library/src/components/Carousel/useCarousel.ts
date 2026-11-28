@@ -29,7 +29,6 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     activeIndex,
     defaultActiveIndex,
     onActiveIndexChange,
-    transition,
     getPageLabel = pageLabel,
     getSlideLabel = slideLabel,
     ...rootProps
@@ -89,15 +88,12 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     activeIndex,
     defaultActiveIndex,
     onActiveIndexChange,
-    transition,
     pageCount,
     groupSize,
     paged: canPage,
     circular,
-    getDir,
     targetDocument: fluent.targetDocument,
     rootRef,
-    reducedMotion: environment.reducedMotion,
     documentVisible: environment.documentVisible,
     viewportRef,
   });
@@ -170,7 +166,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     }
   });
   const toggleAutoplay = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
-    if (event.defaultPrevented || !autoplay || environment.reducedMotion) {
+    if (event.defaultPrevented || !autoplay) {
       return;
     }
     if (rotation.playing) {
@@ -232,7 +228,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     nav,
     autoplay,
     playing: rotation.playing,
-    reducedMotion: environment.reducedMotion,
+    direction: view.direction,
     previousUnavailable,
     nextUnavailable,
     previousHidden: previousUnavailable && !(view.busy && view.anchor === 'previous'),

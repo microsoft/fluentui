@@ -15,6 +15,7 @@ export type CarouselViewportState = ComponentState<CarouselViewportSlots> & {
     'data-buttons'?: string;
     'data-nav'?: string;
     'data-transitioning'?: string;
+    'data-direction'?: 'next' | 'previous';
   };
   /** Slides split into groups. The last group can be partially filled. */
   pages: React.ReactNode[][];

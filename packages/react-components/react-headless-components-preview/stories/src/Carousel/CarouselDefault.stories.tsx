@@ -8,13 +8,12 @@ import {
   CarouselCard,
   CarouselViewport,
 } from '@fluentui/react-headless-components-preview/carousel';
-import { carouselTransition } from './carouselTransition';
 import { arrowIcon, arrowTooltip, WorkshopSlide, workshops } from './carouselExample';
 import styles from './carousel.module.css';
 
 export const Default = (): React.ReactNode => (
   <div className={styles.example}>
-    <Carousel aria-label="Upcoming workshops" className={styles.carousel} transition={carouselTransition}>
+    <Carousel aria-label="Upcoming workshops" className={styles.carousel}>
       <CarouselPrevious button={{ className: styles.button, icon: arrowIcon('previous'), children: arrowTooltip }} />
       <CarouselViewport className={styles.viewport}>
         {workshops.slice(0, 3).map(workshop => (

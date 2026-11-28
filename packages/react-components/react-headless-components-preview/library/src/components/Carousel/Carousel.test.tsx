@@ -71,6 +71,16 @@ const replaceProperty = (target: object, key: string, value: unknown) => {
   });
 };
 
+/**
+ * jsdom has no animations. Stand in for the page's CSS: `animate` runs once per page change, when the carousel reads
+ * the animations of the page marked `data-incoming`.
+ */
+const animatePages = (animate: (page: HTMLElement) => Animation[]) => {
+  replaceProperty(HTMLElement.prototype, 'getAnimations', function (this: HTMLElement) {
+    return this.hasAttribute('data-incoming') ? animate(this) : [];
+  });
+};
+
 describe('Carousel', () => {
   isConformant({ Component: Carousel, displayName: 'Carousel', requiredProps: { 'aria-label': 'Notes' } });
 
@@ -368,7 +378,7 @@ describe('Carousel', () => {
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
   });
 
-  it('defers announcements and boundary focus, cancels interrupted animation and releases it on unmount', async () => {
+  it('defers announcements and boundary focus until the page animations finish', async () => {
     const resolvers: (() => void)[] = [];
     const animations: Animation[] = [];
     const transition = jest.fn(() => {
@@ -381,14 +391,14 @@ describe('Carousel', () => {
       animations.push(animation);
       return [animation];
     });
-    const { container, unmount } = render(example({ transition }));
+    animatePages(transition);
+    const { container } = render(example());
     const next = screen.getByRole('button', { name: 'Next' });
     act(() => next.focus());
     fireEvent.click(next);
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'true');
     expect(container.querySelector('[data-outgoing]')).toHaveAttribute('inert');
     fireEvent.click(next);
-    expect(animations[0].cancel).toHaveBeenCalled();
     expect(next).toHaveAttribute('aria-disabled', 'true');
     expect(next).toHaveFocus();
     await act(async () => resolvers[1]());
@@ -397,21 +407,51 @@ describe('Carousel', () => {
     expect(container.querySelector('[data-outgoing]')).toBeNull();
     fireEvent.click(selected());
     expect(transition).toHaveBeenCalledTimes(2);
-    const previous = screen.getByRole('button', { name: 'Previous' });
-    act(() => previous.focus());
-    fireEvent.click(previous);
-    unmount();
-    expect(animations[2].cancel).toHaveBeenCalled();
+  });
+
+  it('marks the pages and direction only while a change runs', async () => {
+    let resolve = () => undefined as void;
+    animatePages(() => [
+      runningAnimation(
+        new Promise<void>(done => {
+          resolve = done;
+        }),
+        jest.fn(),
+      ),
+    ]);
+    const { container } = render(example());
+    const viewport = screen.getByRole('tabpanel').parentElement!;
+    const pages = () => Array.from(viewport.children);
+    expect(viewport).not.toHaveAttribute('data-direction');
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    expect(viewport).toHaveAttribute('data-direction', 'next');
+    expect(pages()[0]).toHaveAttribute('data-outgoing');
+    expect(pages()[1]).toHaveAttribute('data-incoming');
+    await act(async () => resolve());
+    expect(viewport).not.toHaveAttribute('data-direction');
+    expect(container.querySelector('[data-incoming], [data-outgoing]')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
+    expect(viewport).toHaveAttribute('data-direction', 'previous');
+    expect(pages()[0]).toHaveAttribute('data-incoming');
+    await act(async () => resolve());
+  });
+
+  it('changes pages immediately without page animations', () => {
+    animatePages(() => []);
+    const { container } = render(example());
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+    expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
+    expect(container.querySelector('[data-incoming], [data-outgoing]')).toBeNull();
   });
 
   it('settles motion immediately on entry into a slide', () => {
     const cancel = jest.fn();
-    const transition = jest.fn(() => [runningAnimation(new Promise(jest.fn()), cancel)]);
-    render(example({ transition }));
+    animatePages(() => [runningAnimation(new Promise(jest.fn()), cancel)]);
+    render(example());
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
     const slide = screen.getByRole('group', { name: 'Slide 3 of 5' });
     act(() => slide.focus());
-    expect(cancel).toHaveBeenCalled();
     expect(slide).toHaveFocus();
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
   });
@@ -424,45 +464,6 @@ describe('Carousel', () => {
     expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 5');
     expect(screen.getByRole('region')).not.toHaveAttribute('data-playing');
     expect(screen.getByRole('region')).not.toHaveAttribute('data-circular');
-  });
-
-  it('settles and stops for reduced motion, never resuming without another Play', () => {
-    jest.useFakeTimers();
-    const host = render(<div />);
-    const win = host.container.ownerDocument.defaultView!;
-    host.unmount();
-    const listeners = new Set<() => void>();
-    const media = {
-      matches: false,
-      addEventListener: (_: string, listener: () => void) => listeners.add(listener),
-      removeEventListener: (_: string, listener: () => void) => listeners.delete(listener),
-    };
-    replaceProperty(win, 'matchMedia', () => media);
-    const cancel = jest.fn();
-    const transition = () => [runningAnimation(new Promise(jest.fn()), cancel)];
-    const { unmount } = render(example({ autoplay: true, circular: true, autoplayInterval: 1000, transition }));
-    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
-    act(() => jest.advanceTimersByTime(1000));
-    expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'true');
-    act(() => {
-      media.matches = true;
-      listeners.forEach(listener => listener());
-    });
-    expect(cancel).toHaveBeenCalled();
-    const unavailable = screen.getByRole('button', { name: 'Autoplay unavailable with reduced motion' });
-    expect(unavailable).toHaveAttribute('aria-disabled', 'true');
-    expect(unavailable.tabIndex).toBe(0);
-    expect(unavailable).not.toHaveAttribute('aria-pressed');
-    expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
-    act(() => {
-      media.matches = false;
-      listeners.forEach(listener => listener());
-    });
-    expect(screen.getByRole('button', { name: 'Play' })).toBeVisible();
-    act(() => jest.advanceTimersByTime(3000));
-    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
-    unmount();
-    expect(listeners.size).toBe(0);
   });
 
   it('suspends offscreen/background timers, resumes with a fresh interval and cleans up', () => {
@@ -590,7 +591,8 @@ describe('Carousel', () => {
 
   it('starts paged at the default group without replaying motion when parts register', () => {
     const transition = jest.fn(() => []);
-    render(example({ defaultActiveIndex: 2, transition }));
+    animatePages(transition);
+    render(example({ defaultActiveIndex: 2 }));
     expect(selected()).toHaveAttribute('aria-label', 'Page 3 of 3');
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
     expect(transition).not.toHaveBeenCalled();
@@ -807,7 +809,8 @@ describe('Carousel', () => {
           jest.fn(),
         ),
       ]);
-      render(example({ next: { button: { children: rewrite } }, defaultActiveIndex: 1, transition }));
+      animatePages(transition);
+      render(example({ next: { button: { children: rewrite } }, defaultActiveIndex: 1 }));
       const next = document.querySelector<HTMLElement>('[data-carousel-action="next"]')!;
       expect(next).toHaveAttribute('aria-controls', 'elsewhere');
       act(() => next.focus());
@@ -820,62 +823,34 @@ describe('Carousel', () => {
     });
   });
 
-  it('uses the computed direction instead of writing one, mirroring nav keys and transitions', () => {
+  it('uses the computed direction instead of writing one, mirroring nav keys', () => {
     // jsdom doesn't inherit `direction`; Carousel.cy.tsx covers an inherited `dir="rtl"` in a real browser.
-    const transition = jest.fn(() => []);
-    render(example({ transition, style: { direction: 'rtl' } }));
+    render(example({ style: { direction: 'rtl' } }));
     expect(screen.getByRole('region')).not.toHaveAttribute('dir');
     act(() => selected().focus());
     fireEvent.keyDown(selected(), { key: 'ArrowLeft' });
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
     fireEvent.keyDown(selected(), { key: 'ArrowRight' });
     expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
-    expect(transition).toHaveBeenLastCalledWith(expect.objectContaining({ dir: 'rtl' }));
   });
 
-  it('keeps a running transition when an inline adapter is re-created', async () => {
+  it('keeps a running transition through a parent re-render', async () => {
     let resolve = () => undefined as void;
-    const cancel = jest.fn();
     const calls = jest.fn();
-    const view = (label: string) =>
-      example({
-        'aria-label': label,
-        transition: () => {
-          calls();
-          const finished = new Promise<void>(done => {
-            resolve = done;
-          });
-          return [runningAnimation(finished, cancel)];
-        },
+    animatePages(() => {
+      calls();
+      const finished = new Promise<void>(done => {
+        resolve = done;
       });
-    const { rerender } = render(view('Notes'));
+      return [runningAnimation(finished, jest.fn())];
+    });
+    const { rerender } = render(example({ 'aria-label': 'Notes' }));
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
-    rerender(view('Notes again'));
+    rerender(example({ 'aria-label': 'Notes again' }));
     expect(calls).toHaveBeenCalledTimes(1);
-    expect(cancel).not.toHaveBeenCalled();
+    expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'true');
     await act(async () => resolve());
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
-  });
-
-  it('keeps a finished transition filled until the outgoing group is hidden', async () => {
-    let resolve = () => undefined as void;
-    const outgoingAtCancel: Array<Element | null> = [];
-    const { container } = render(
-      example({
-        transition: () => [
-          runningAnimation(
-            new Promise<void>(done => {
-              resolve = done;
-            }),
-            () => outgoingAtCancel.push(container.querySelector('[data-outgoing]')),
-          ),
-        ],
-      }),
-    );
-    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
-    await act(async () => resolve());
-    // Canceling while the outgoing group is still shown would repaint it at full opacity for a frame.
-    expect(outgoingAtCancel).toEqual([null]);
   });
 
   it('does not announce a static collection', () => {
@@ -924,12 +899,10 @@ describe('Carousel', () => {
   });
 
   it('prefers the computed direction over a Provider direction the DOM does not reflect', () => {
-    const transition = jest.fn(() => []);
-    render(<Provider dir="rtl">{example({ transition, style: { direction: 'ltr' } })}</Provider>);
+    render(<Provider dir="rtl">{example({ style: { direction: 'ltr' } })}</Provider>);
     act(() => selected().focus());
     fireEvent.keyDown(selected(), { key: 'ArrowRight' });
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
-    expect(transition).toHaveBeenLastCalledWith(expect.objectContaining({ dir: 'ltr' }));
   });
 
   it('keeps non-circular playback requesting while an owner declines the last group', () => {

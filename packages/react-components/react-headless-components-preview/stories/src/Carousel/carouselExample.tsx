@@ -17,7 +17,6 @@ import type { CarouselProps } from '@fluentui/react-headless-components-preview/
 // eslint-disable-next-line import/no-extraneous-dependencies -- Shared story helper uses development dependencies.
 import { Tooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
-import { carouselTransition } from './carouselTransition';
 import styles from './carousel.module.css';
 
 export type Workshop = { track: string; title: string; description: string; when: string };
@@ -90,7 +89,7 @@ export const CarouselExample = ({
   autoplay = false,
   ...props
 }: CarouselProps & { slides: React.ReactNode[]; autoplay?: boolean }): React.ReactElement => (
-  <Carousel className={styles.carousel} transition={carouselTransition} {...props}>
+  <Carousel className={styles.carousel} {...props}>
     {autoplay && <CarouselAutoplayButton className={`${styles.button} ${styles.playback}`} />}
     <CarouselPrevious button={{ className: styles.button, icon: arrowIcon('previous'), children: arrowTooltip }} />
     <CarouselViewport className={styles.viewport}>

@@ -111,26 +111,32 @@ suspend its timer. These exemptions apply only to the carousel's own controls, i
 forwarded ref receives: a carousel nested in a slide is content of the outer carousel, so hovering its Play/Pause or
 arrows suspends the outer rotation and focusing or activating them stops it. Resuming a suspended session always waits a fresh interval. Non-circular playback stops
 once the selection reaches the final group; Play there requests the first group immediately. In controlled
-mode it retries that restart once per eligible interval until accepted or stopped. Localize `playLabel`, `pauseLabel` and
-`reducedMotionLabel` on `CarouselAutoplayButton`, and `getPageLabel`/`getSlideLabel` on `Carousel`.
+mode it retries that restart once per eligible interval until accepted or stopped. Localize `playLabel` and
+`pauseLabel` on `CarouselAutoplayButton`, and `getPageLabel`/`getSlideLabel` on `Carousel`.
 
-Reduced motion settles animation immediately and disables playback without removing its focus stop.
-Clearing the preference does not restart playback.
+The carousel does not read `prefers-reduced-motion`. Whether autoplay is offered with reduced motion is the
+wrapper's call: render `CarouselAutoplayButton` conditionally, or not at all.
 
-The optional `transition` adapter on `Carousel` returns native `Animation` objects for the incoming and
-outgoing groups. Only running animations with a finite end time and nonzero playback rate delay focus recovery,
-live announcements (`aria-busy`), or the next autoplay interval. Carousel checks these conditions when the adapter
-returns and rechecks eligible pending animations when their `ready` promise resolves. After that check, let the
-animations advance or call `finish()` or `cancel()`; pausing an accepted animation indefinitely keeps the carousel
-busy. Carousel cancels every returned handle on settlement, interruption, or unmount.
-The example adapter uses transform and opacity with consumer-owned CSS variables; the headless library has no
-bundled motion values or styling. Without an adapter, changes are immediate.
+Page changes are animated with CSS. While one runs, the viewport has `data-transitioning` and
+`data-direction` (`next` or `previous`; flip it with `:dir(rtl)` for right-to-left layouts), the new group has
+`data-incoming` and the old group `data-outgoing`; style the old group visible while it is outgoing. Put the
+enter and exit keyframe animations on the `[data-carousel-page]` elements themselves: animations of the slides
+inside them are not tracked. Inactive groups are `hidden`, so use `animation` rather than `transition`.
+
+Once the change renders, the carousel reads `getAnimations()` on both page elements. Running animations with a
+finite end time and nonzero playback rate delay settlement: hiding the old group, focus recovery, live
+announcements (`aria-busy`) and the next autoplay interval. Animations started with `element.animate()` count
+too, if they exist by then. With no such animations (none styled, or removed under
+`@media (prefers-reduced-motion: reduce)`) the change is immediate. Pausing a tracked animation indefinitely keeps
+the carousel busy. The example animates transform and opacity with consumer-owned CSS variables; the headless
+library has no bundled motion values or styling.
 
 ## Styling hooks
 
 - `Carousel` root: `data-paged`, `data-playing`, `data-circular`.
 - `CarouselViewport`: `data-group-size` (1–4), plus `data-paged`, `data-buttons`, `data-nav` and
-  `data-transitioning`. Its generated groups are `[data-carousel-page]` (with `data-active` or `data-outgoing`)
+  `data-transitioning`, with `data-direction` while transitioning. Its generated groups are `[data-carousel-page]`
+  (with `data-active`, and `data-incoming` or `data-outgoing` while transitioning)
   containing `[data-carousel-slides]`.
 - `CarouselPrevious`/`CarouselNext` root: `data-carousel-button` (`previous` or `next`). At a boundary it stays
   in layout but is `hidden` and `inert`; style it with `visibility: hidden` so the viewport doesn't shift.

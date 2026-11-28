@@ -35,12 +35,7 @@ export const useCarouselAutoplayButton = (
     useFieldsetRegistration<HTMLButtonElement>(register),
     useCarouselControlRef<HTMLButtonElement>(context.viewportRef, 'autoplay'),
   );
-  const {
-    playLabel = 'Play',
-    pauseLabel = 'Pause',
-    reducedMotionLabel = 'Autoplay unavailable with reduced motion',
-    ...rest
-  } = props;
+  const { playLabel = 'Play', pauseLabel = 'Pause', ...rest } = props;
   const root = slot.always({ ...rest, ref: mergedRef } as NonNullable<CarouselAutoplayButtonSlots['root']>, {
     elementType: Button,
   });
@@ -52,9 +47,7 @@ export const useCarouselAutoplayButton = (
       'aria-labelledby': undefined,
       'aria-pressed': undefined,
       'data-carousel-action': 'autoplay',
-      disabled: props.disabled || context.reducedMotion,
-      disabledFocusable: props.disabledFocusable || (!props.disabled && context.reducedMotion),
-      children: context.reducedMotion ? reducedMotionLabel : context.playing ? pauseLabel : playLabel,
+      children: context.playing ? pauseLabel : playLabel,
       onClick: mergeCallbacks(root.onClick, context.toggleAutoplay),
     }),
     rendered,

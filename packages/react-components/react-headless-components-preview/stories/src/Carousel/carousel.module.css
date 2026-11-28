@@ -63,6 +63,45 @@
   pointer-events: none;
 }
 
+/*
+ * Page change. While it runs the viewport has `data-direction`, the new group `data-incoming` and the old one
+ * `data-outgoing`. The carousel settles (hides the old group, restores focus) once animations on both page
+ * elements finish; with none, the change is immediate.
+ */
+.viewport[data-direction='next'] {
+  --carousel-travel: 1;
+}
+
+.viewport[data-direction='previous'] {
+  --carousel-travel: -1;
+}
+
+.viewport[data-direction] {
+  --carousel-shift: calc(var(--carousel-travel) * var(--carousel-axis, 1) * var(--carousel-distance));
+}
+
+.viewport[data-direction] > [data-incoming] {
+  animation: carousel-enter var(--carousel-enter-duration) var(--carousel-enter-easing) both;
+}
+
+.viewport[data-direction] > [data-outgoing] {
+  animation: carousel-exit var(--carousel-exit-duration) var(--carousel-exit-easing) both;
+}
+
+@keyframes carousel-enter {
+  from {
+    opacity: 0;
+    transform: translateX(var(--carousel-shift));
+  }
+}
+
+@keyframes carousel-exit {
+  to {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--carousel-shift)));
+  }
+}
+
 .viewport [data-carousel-slides] {
   display: grid;
   grid-template-columns: repeat(var(--slides-per-page, 1), minmax(0, 1fr));
@@ -229,6 +268,10 @@
   font-size: 16px;
 }
 
+.carousel:dir(rtl) {
+  --carousel-axis: -1;
+}
+
 .carousel:dir(rtl) [data-carousel-button] .button > [aria-hidden='true'] {
   transform: scaleX(-1);
 }
@@ -237,10 +280,12 @@
   /* Inherit the nearest explicit direction, including an LTR island inside an RTL page. */
   [dir='rtl'] {
     --carousel-chevron-transform: scaleX(-1);
+    --carousel-axis: -1;
   }
 
   [dir='ltr'] {
     --carousel-chevron-transform: none;
+    --carousel-axis: 1;
   }
 
   .carousel [data-carousel-button] .button > [aria-hidden='true'] {
@@ -387,10 +432,15 @@
   font-weight: 500;
 }
 
+/* No animations means an immediate page change. */
 @media (prefers-reduced-motion: reduce) {
   .button,
   .indicator {
     transition: none;
+  }
+
+  .viewport[data-direction] > [data-carousel-page] {
+    animation: none;
   }
 }
 
