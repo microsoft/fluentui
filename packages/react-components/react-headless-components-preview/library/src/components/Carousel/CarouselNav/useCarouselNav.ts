@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import {
-  getIntrinsicElementProps,
   mergeCallbacks,
   slot,
   useEventCallback,
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../../hooks/top-layer/utils';
 import {
   isControlDisabled,
@@ -18,7 +18,12 @@ import {
 } from '../carouselContext';
 import { CarouselNavButton } from '../CarouselNavButton/CarouselNavButton';
 import { focusSelectedPage } from '../focusCarouselPage';
-import type { CarouselNavProps, CarouselNavState, NavButtonRenderFunction } from './CarouselNav.types';
+import type {
+  CarouselNavProps,
+  CarouselNavSlots,
+  CarouselNavState,
+  NavButtonRenderFunction,
+} from './CarouselNav.types';
 
 /** Create the state required to render CarouselNav. */
 export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
@@ -109,17 +114,17 @@ export const useCarouselNav = (props: CarouselNavProps, ref: React.Ref<HTMLDivEl
   const rootRef = useMergedRefs(shown ? ref : undefined, inertRef, navRef);
   return {
     components: { root: 'div' },
-    root: slot.always(
+    root: slot.always<ExtractSlotProps<CarouselNavSlots['root']>>(
       // Keep the templates mounted to detect when they become operable. An incomplete set gets only
       // a hidden staging container: do not apply the public tablist's role, display styles or handlers.
-      getIntrinsicElementProps<Omit<CarouselNavProps, 'children'>>('div', {
+      {
         ...(shown
           ? { 'aria-label': 'Choose a page', ...rest, role: 'tablist' }
           : { hidden: true, 'aria-hidden': true }),
         ref: rootRef,
         onFocus: mergeCallbacks(shown ? rest.onFocus : undefined, trackFocus),
         onBlur: mergeCallbacks(shown ? rest.onBlur : undefined, trackBlur),
-      }),
+      },
       { elementType: 'div' },
     ),
     pageCount,

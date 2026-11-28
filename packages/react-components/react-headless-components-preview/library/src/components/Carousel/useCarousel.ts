@@ -2,19 +2,13 @@
 
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import {
-  getIntrinsicElementProps,
-  mergeCallbacks,
-  slot,
-  useEventCallback,
-  useId,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../utils/toDataAttributeValue';
 import type { CarouselPart } from './carouselContext';
 import { useCarouselSelection } from './useCarouselSelection';
 import { useCarouselEnvironment, useCarouselRotation } from './useCarouselRotation';
-import type { CarouselProps, CarouselState } from './Carousel.types';
+import type { CarouselProps, CarouselSlots, CarouselState } from './Carousel.types';
 
 const pageLabel = (position: number, total: number) => `Page ${position} of ${total}`;
 const slideLabel = (position: number, total: number) => `Slide ${position} of ${total}`;
@@ -200,8 +194,8 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
   return {
     components: { root: 'div' },
     root: Object.assign(
-      slot.always(
-        getIntrinsicElementProps<CarouselProps>('div', {
+      slot.always<ExtractSlotProps<CarouselSlots['root']>>(
+        {
           role: 'region',
           'aria-roledescription': 'carousel',
           ...rootProps,
@@ -215,7 +209,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
             rootProps.onFocusCapture,
             rotation.playing || view.busy ? onFocusCapture : undefined,
           ),
-        }),
+        },
         { elementType: 'div' },
       ),
       {

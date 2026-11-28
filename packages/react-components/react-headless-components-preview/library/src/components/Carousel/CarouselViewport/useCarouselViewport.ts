@@ -1,13 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  slot,
-  useEventCallback,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { slot, useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import { useCarouselContext } from '../carouselContext';
 import { hasTabStop } from '../focusCarouselPage';
@@ -92,7 +86,7 @@ export const useCarouselViewport = (
     components: { root: 'div' },
     root: Object.assign(
       slot.always(
-        getIntrinsicElementProps('div', {
+        {
           ...rest,
           ref: viewportRef,
           id: context.viewportId,
@@ -100,7 +94,7 @@ export const useCarouselViewport = (
           'aria-live': context.paged && !context.playing ? ('polite' as const) : ('off' as const),
           'aria-atomic': context.paged || undefined,
           'aria-busy': context.busy,
-        }),
+        },
         { elementType: 'div' },
       ),
       {

@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {
-  getIntrinsicElementProps,
   mergeCallbacks,
   SLOT_RENDER_FUNCTION_SYMBOL,
   slot,
@@ -110,11 +109,11 @@ export const useCarouselDirectionButton = (
     components: { root: 'div', button: Button },
     root: Object.assign(
       slot.always(
-        getIntrinsicElementProps('div', {
+        {
           ...rest,
           ref: rootRef,
           hidden: keepButtonMounted ? rest.hidden : hidden,
-        }),
+        },
         { elementType: 'div' },
       ),
       { 'data-carousel-button': kind },

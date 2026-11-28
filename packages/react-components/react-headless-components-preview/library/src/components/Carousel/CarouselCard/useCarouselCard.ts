@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { CarouselSlideCountContext, useCarouselContext, useCarouselItemIndex } from '../carouselContext';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 
@@ -18,14 +18,14 @@ export const useCarouselCard = (props: CarouselCardProps, ref: React.Ref<HTMLDiv
   return {
     components: { root: 'div' },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         'aria-label': getSlideLabel(index + 1, Math.max(total, index + 1)),
         tabIndex: 0,
         ...props,
         ref,
         role: 'group',
         'aria-roledescription': 'slide',
-      }),
+      },
       { elementType: 'div' },
     ),
   };

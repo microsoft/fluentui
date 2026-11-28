@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import {
   CarouselRegisterTabContext,
@@ -11,7 +12,7 @@ import {
   useCarouselItemIndex,
 } from '../carouselContext';
 import { useFieldsetRegistration } from '../useFieldsetRegistration';
-import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
+import type { CarouselNavButtonProps, CarouselNavButtonSlots, CarouselNavButtonState } from './CarouselNavButton.types';
 
 /** Create the state required to render CarouselNavButton. Must be rendered inside `CarouselNav`. */
 export const useCarouselNavButton = (
@@ -34,8 +35,8 @@ export const useCarouselNavButton = (
   return {
     components: { root: 'button', indicator: 'span' },
     root: Object.assign(
-      slot.always(
-        getIntrinsicElementProps<CarouselNavButtonProps>('button', {
+      slot.always<ExtractSlotProps<CarouselNavButtonSlots['root']>>(
+        {
           type: 'button',
           'aria-label': getPageLabel(index + 1, pageCount),
           ...rest,
@@ -55,7 +56,7 @@ export const useCarouselNavButton = (
               onNavKeyDown(event, index);
             }
           }),
-        }),
+        },
         { elementType: 'button' },
       ),
       { 'data-selected': toDataAttributeValue(selected) },
