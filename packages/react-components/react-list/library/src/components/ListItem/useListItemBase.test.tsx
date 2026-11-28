@@ -46,6 +46,26 @@ describe('useListItemBase_unstable', () => {
     expect(getByRole('listitem').tagName).toBe('LI');
   });
 
+  it('preserves an explicit tabIndex of -1 when navigation is enabled', () => {
+    const { getByText } = render(
+      <BaseList navigationMode="items">
+        <BaseListItem tabIndex={-1}>Item</BaseListItem>
+      </BaseList>,
+    );
+
+    expect(getByText('Item').getAttribute('tabindex')).toBe('-1');
+  });
+
+  it('preserves an explicit tabIndex of -1 without navigation or selection', () => {
+    const { getByText } = render(
+      <BaseList>
+        <BaseListItem tabIndex={-1}>Item</BaseListItem>
+      </BaseList>,
+    );
+
+    expect(getByText('Item').getAttribute('tabindex')).toBe('-1');
+  });
+
   it('renders inferred selection roles when role props are explicitly undefined', () => {
     const { getByRole } = render(
       <BaseList role={undefined} selectionMode="single">

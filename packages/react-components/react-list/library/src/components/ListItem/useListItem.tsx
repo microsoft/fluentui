@@ -157,7 +157,6 @@ export const useListItemBase_unstable = (
     value = id,
     onKeyDown,
     onClick,
-    tabIndex,
     role,
     onAction,
     disabledSelection,
@@ -177,7 +176,7 @@ export const useListItemBase_unstable = (
 
   const finalListItemRole = role || listItemRole;
 
-  const focusableItems = Boolean(isSelectionModeEnabled || navigationMode || tabIndex === 0);
+  const focusableItems = Boolean(isSelectionModeEnabled || navigationMode || props.tabIndex === 0);
 
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
   const checkmarkRef = React.useRef<HTMLInputElement | null>(null);
