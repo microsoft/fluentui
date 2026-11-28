@@ -56,4 +56,51 @@ describe('TagGroup', () => {
 
     expect(getByRole('button')).toBeDisabled();
   });
+
+  it('if disabled, should disable button root overrides', () => {
+    const { getByRole } = render(
+      <TagGroup disabled>
+        <Tag value={'1'} as="button" />
+      </TagGroup>,
+    );
+
+    expect(getByRole('button')).toBeDisabled();
+  });
+
+  it('if disabled, should not disable span root overrides', () => {
+    const { getByTestId } = render(
+      <TagGroup disabled>
+        <Tag value={'1'} as="span" dismissible data-testid="tag" />
+      </TagGroup>,
+    );
+
+    expect(getByTestId('tag').tagName).toBe('SPAN');
+    expect(getByTestId('tag').hasAttribute('disabled')).toBe(false);
+  });
+});
+
+describe('TagGroup DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <TagGroup
+        appearance="brand"
+        disabled
+        dismissible
+        onDismiss={jest.fn()}
+        onTagSelect={jest.fn()}
+        selectedValues={['a']}
+        size="small"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'data-tabster',
+      'role',
+    ]);
+  });
 });

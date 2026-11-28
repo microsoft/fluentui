@@ -13,7 +13,6 @@ import {
 } from '@fluentui/react-tabster';
 import {
   elementContains,
-  getIntrinsicElementProps,
   mergeCallbacks,
   slot,
   useEventCallback,
@@ -154,7 +153,16 @@ export const useListItemBase_unstable = (
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemBaseState => {
   const id = useId('listItem');
-  const { value = id, onKeyDown, onClick, tabIndex, role, onAction, disabledSelection } = props;
+  const {
+    value = id,
+    onKeyDown,
+    onClick,
+    role,
+    onAction,
+    disabledSelection,
+    checkmark: checkmarkProp,
+    ...rest
+  } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
 
@@ -168,7 +176,7 @@ export const useListItemBase_unstable = (
 
   const finalListItemRole = role || listItemRole;
 
-  const focusableItems = Boolean(isSelectionModeEnabled || navigationMode || tabIndex === 0);
+  const focusableItems = Boolean(isSelectionModeEnabled || navigationMode || props.tabIndex === 0);
 
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
   const checkmarkRef = React.useRef<HTMLInputElement | null>(null);
@@ -255,7 +263,7 @@ export const useListItemBase_unstable = (
   });
 
   const root = slot.always(
-    getIntrinsicElementProps(as, {
+    {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
       id: String(value),
@@ -263,15 +271,15 @@ export const useListItemBase_unstable = (
         'aria-selected': isSelected,
         'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
-      ...props,
+      ...rest,
       role: finalListItemRole,
       onKeyDown: handleKeyDown,
       onClick: isSelectionModeEnabled || onClick || onAction ? handleClick : undefined,
-    }),
+    },
     { elementType: as },
   );
 
-  const checkmark = slot.optional(props.checkmark, {
+  const checkmark = slot.optional(checkmarkProp, {
     defaultProps: {
       type: 'checkbox',
       checked: isSelected,

@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getPartitionedNativeProps, useId, slot } from '@fluentui/react-utilities';
+import { useId, slot } from '@fluentui/react-utilities';
 import type {
   AlphaSliderBaseProps,
   AlphaSliderBaseState,
@@ -37,12 +37,6 @@ export const useAlphaSliderBase_unstable = (
   props: AlphaSliderBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): AlphaSliderBaseState => {
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['onChange', 'color'],
-  });
-
   const {
     vertical,
     // Slots
@@ -50,6 +44,15 @@ export const useAlphaSliderBase_unstable = (
     input,
     rail,
     thumb,
+    // Root props
+    className,
+    style,
+    // Handled by useAlphaSliderState_unstable
+    color,
+    defaultColor,
+    onChange,
+    transparency,
+    ...primaryProps
   } = props;
 
   const state: AlphaSliderBaseState = {
@@ -61,7 +64,7 @@ export const useAlphaSliderBase_unstable = (
       thumb: 'div',
     },
     root: slot.always(root, {
-      defaultProps: nativeProps.root,
+      defaultProps: { className, style },
       elementType: 'div',
     }),
     input: slot.always(input, {
@@ -69,7 +72,7 @@ export const useAlphaSliderBase_unstable = (
         id: useId('slider-', props.id),
         ref,
         'aria-orientation': vertical ? 'vertical' : 'horizontal',
-        ...nativeProps.primary,
+        ...primaryProps,
         type: 'range',
       },
       elementType: 'input',

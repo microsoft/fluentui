@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
+import { slot, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 
@@ -41,7 +41,8 @@ export const useNavItemBase_unstable = (
   props: NavItemProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): NavItemBaseState => {
-  const { onClick, value, icon, as, href } = props;
+  const { value, icon, ...rest } = props;
+  const { onClick, as, href } = rest;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
@@ -60,13 +61,10 @@ export const useNavItemBase_unstable = (
   });
 
   const root = slot.always<ARIAButtonSlotProps<'a'>>(
-    getIntrinsicElementProps(
-      rootElementType,
-      useARIAButtonProps(rootElementType, {
-        'aria-current': selected ? 'page' : 'false',
-        ...props,
-      }),
-    ),
+    useARIAButtonProps(rootElementType, {
+      'aria-current': selected ? 'page' : 'false',
+      ...rest,
+    }),
     {
       elementType: rootElementType,
       defaultProps: {

@@ -68,7 +68,6 @@ exports[`List rendering renders a default state 1`] = `
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="listitem"
-      value="test-value-1"
     >
       First ListItem
     </li>
@@ -77,7 +76,6 @@ exports[`List rendering renders a default state 1`] = `
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="listitem"
-      value="test-value-2"
     >
       Second ListItem
     </li>
@@ -100,7 +98,6 @@ exports[`List selection multiselect items are properly rendered with all attribu
       id="test-value-1"
       role="option"
       tabindex="0"
-      value="test-value-1"
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
@@ -125,7 +122,6 @@ exports[`List selection multiselect items are properly rendered with all attribu
       id="test-value-2"
       role="option"
       tabindex="0"
-      value="test-value-2"
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
@@ -161,7 +157,6 @@ exports[`List selection single select items are properly rendered with all attri
       id="test-value-1"
       role="option"
       tabindex="0"
-      value="test-value-1"
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
@@ -186,7 +181,6 @@ exports[`List selection single select items are properly rendered with all attri
       id="test-value-2"
       role="option"
       tabindex="0"
-      value="test-value-2"
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"

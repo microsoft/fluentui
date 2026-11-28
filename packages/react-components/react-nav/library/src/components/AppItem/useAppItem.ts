@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { AppItemBaseProps, AppItemBaseState, AppItemProps, AppItemState } from './AppItem.types';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { useARIAButtonProps } from '@fluentui/react-aria';
@@ -43,24 +43,17 @@ export const useAppItemBase_unstable = (
   props: AppItemBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): AppItemBaseState => {
-  const { icon, as, href } = props;
+  const { icon, ...rest } = props;
+  const { as, href } = rest;
   const rootElementType = as || (href ? 'a' : 'button');
 
-  const root = slot.always<ARIAButtonSlotProps<'a'>>(
-    getIntrinsicElementProps(
-      rootElementType,
-      useARIAButtonProps(rootElementType, {
-        ...props,
-      }),
-    ),
-    {
-      elementType: rootElementType,
-      defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-        type: rootElementType,
-      },
+  const root = slot.always<ARIAButtonSlotProps<'a'>>(useARIAButtonProps(rootElementType, rest), {
+    elementType: rootElementType,
+    defaultProps: {
+      ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+      type: rootElementType,
     },
-  );
+  });
 
   return {
     components: {

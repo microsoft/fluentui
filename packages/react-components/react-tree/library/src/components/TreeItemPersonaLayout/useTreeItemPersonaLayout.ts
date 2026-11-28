@@ -24,11 +24,13 @@ export const useTreeItemPersonaLayout_unstable = (
   props: TreeItemPersonaLayoutProps,
   ref: React.Ref<HTMLSpanElement>,
 ): TreeItemPersonaLayoutState => {
-  const { media, children, main, description } = props;
+  const { media, children, main, description, ...layoutProps } = props;
 
   const treeItemLayoutState = useTreeItemLayout_unstable(
     {
-      ...props,
+      ...layoutProps,
+      children,
+      main,
       iconBefore: null,
       iconAfter: null,
     },

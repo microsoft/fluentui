@@ -3,7 +3,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
-  getIntrinsicElementProps,
   useId,
   useEventCallback,
   slot,
@@ -58,6 +57,11 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     'aria-level': level = contextLevel,
     'aria-selected': ariaSelected,
     'aria-expanded': ariaExpanded,
+    // Handled through `props` below, they must not reach the root
+    value: _value,
+    open: _open,
+    onOpenChange: _onOpenChange,
+    parentValue: _parentValue,
     ...rest
   } = props;
 
@@ -328,7 +332,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     // FIXME: this property is not necessary anymore, but as removing it would be a breaking change, we need to keep it as false
     isActionsVisible: false,
     root: slot.always(
-      getIntrinsicElementProps(as, {
+      {
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
         role: 'treeitem',
@@ -341,7 +345,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         onClick: handleClick,
         onKeyDown: handleKeyDown,
         onChange: handleChange,
-      } as const),
+      } as const,
       { elementType: 'div' },
     ),
   };

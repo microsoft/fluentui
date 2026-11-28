@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { slot, useEventCallback } from '@fluentui/react-utilities';
 import type {
   ColorPickerBaseProps,
   ColorPickerBaseState,
@@ -36,10 +36,10 @@ export const useColorPickerBase_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         ...rest,
-      }),
+      },
       { elementType: 'div' },
     ),
     color,

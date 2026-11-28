@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import { useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { DismissRegular } from '@fluentui/react-icons';
 import type { TagBaseProps, TagBaseState, TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
@@ -37,7 +37,18 @@ export const useTagBase_unstable = (
 
   const id = useId('fui-Tag', props.id);
 
-  const { disabled = false, dismissible = contextDismissible ?? false, selected, value = id } = props;
+  const {
+    disabled = false,
+    dismissible = contextDismissible ?? false,
+    selected,
+    value = id,
+    media,
+    icon,
+    primaryText,
+    secondaryText,
+    dismissIcon,
+    ...rest
+  } = props;
 
   const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
@@ -53,7 +64,8 @@ export const useTagBase_unstable = (
     }
   });
 
-  const elementType = dismissible ? 'button' : 'span';
+  const defaultElementType = dismissible ? 'button' : 'span';
+  const elementType = rest.as ?? defaultElementType;
   const selectedProp = tagGroupRole === 'listbox' ? 'aria-selected' : 'aria-pressed';
   const selectable = typeof selected === 'boolean' || tagGroupRole === 'listbox';
 
@@ -72,15 +84,16 @@ export const useTagBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps(elementType, {
-        ref,
+      {
+        ref: ref as React.Ref<HTMLButtonElement & HTMLSpanElement>,
         role: tagGroupRole === 'listbox' ? 'option' : undefined,
         [selectedProp]: selectable ? selected : undefined,
-        ...props,
-        disabled: contextDisabled ? true : disabled,
+        ...rest,
+        // `disabled` is only a valid attribute when the root renders as a button
+        disabled: elementType === 'button' ? (contextDisabled ? true : disabled) : undefined,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
-      }),
+      },
       {
         defaultProps: {
           type: elementType === 'button' ? 'button' : undefined,
@@ -89,17 +102,17 @@ export const useTagBase_unstable = (
       },
     ),
 
-    media: slot.optional(props.media, { elementType: 'span' }),
-    icon: slot.optional(props.icon, { elementType: 'span' }),
-    primaryText: slot.optional(props.primaryText, {
+    media: slot.optional(media, { elementType: 'span' }),
+    icon: slot.optional(icon, { elementType: 'span' }),
+    primaryText: slot.optional(primaryText, {
       renderByDefault: true,
       defaultProps: {
         children: props.children,
       },
       elementType: 'span',
     }),
-    secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
-    dismissIcon: slot.optional(props.dismissIcon, {
+    secondaryText: slot.optional(secondaryText, { elementType: 'span' }),
+    dismissIcon: slot.optional(dismissIcon, {
       renderByDefault: dismissible,
       elementType: 'span',
     }),
@@ -118,9 +131,9 @@ export const useTagBase_unstable = (
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
   const { size: contextSize, appearance: contextAppearance } = useTagGroupContext_unstable();
 
-  const { appearance = contextAppearance ?? 'filled', shape = 'rounded', size = contextSize } = props;
+  const { appearance = contextAppearance ?? 'filled', shape = 'rounded', size = contextSize, ...baseProps } = props;
 
-  const baseState = useTagBase_unstable(props, ref);
+  const baseState = useTagBase_unstable(baseProps, ref);
 
   if (baseState.dismissIcon) {
     baseState.dismissIcon.children ??= <DismissRegular />;

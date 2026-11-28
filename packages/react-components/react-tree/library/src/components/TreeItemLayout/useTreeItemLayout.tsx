@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {
-  getIntrinsicElementProps,
   isResolvedShorthand,
   useMergedRefs,
   slot,
@@ -142,7 +141,17 @@ function useTreeItemLayoutBase(
   targetDocument: Document | undefined,
   isNavigatingWithKeyboard: () => boolean,
 ): TreeItemLayoutBaseState {
-  const { main, iconAfter, iconBefore } = props;
+  const {
+    main,
+    iconAfter,
+    iconBefore,
+    // Slots resolved below from `props`, they must not reach the root
+    aside: _aside,
+    actions: _actions,
+    expandIcon: _expandIcon,
+    selector: _selector,
+    ...rest
+  } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
@@ -359,13 +368,13 @@ function useTreeItemLayoutBase(
       selector: 'input',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ...props,
+      {
+        ...rest,
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, layoutRef) as React.Ref<HTMLDivElement>,
-      }),
+      },
       {
         elementType: 'div',
       },

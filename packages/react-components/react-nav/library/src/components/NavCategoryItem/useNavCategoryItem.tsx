@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDown20Regular } from '@fluentui/react-icons';
 import { createPresenceComponentVariant, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
 
@@ -38,7 +38,8 @@ export const useNavCategoryItem_unstable = (
 ): NavCategoryItemState => {
   const { density = 'medium' } = useNavContext_unstable();
 
-  const state = useNavCategoryItemBase_unstable(props, ref);
+  const { expandIconMotion, ...baseProps } = props;
+  const state = useNavCategoryItemBase_unstable(baseProps, ref);
 
   return {
     ...state,
@@ -54,7 +55,7 @@ export const useNavCategoryItem_unstable = (
       },
       elementType: 'span',
     }),
-    expandIconMotion: presenceMotionSlot(props.expandIconMotion, {
+    expandIconMotion: presenceMotionSlot(expandIconMotion, {
       elementType: ExpandIconMotion,
       defaultProps: {
         visible: state.open,
@@ -74,7 +75,7 @@ export const useNavCategoryItemBase_unstable = (
   props: NavCategoryItemBaseProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemBaseState => {
-  const { onClick, expandIcon, icon } = props;
+  const { onClick, expandIcon, icon, ...rest } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
@@ -101,14 +102,14 @@ export const useNavCategoryItemBase_unstable = (
       expandIcon: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         ref,
         type: 'button',
         'aria-current': validAriaCurrent,
         'aria-expanded': open,
-        ...props,
+        ...rest,
         onClick: onNavCategoryItemClick,
-      }),
+      },
       { elementType: 'button' },
     ),
     expandIcon: slot.always(expandIcon, {

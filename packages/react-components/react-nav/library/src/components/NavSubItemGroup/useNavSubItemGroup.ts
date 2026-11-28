@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 
@@ -26,7 +26,8 @@ export const useNavSubItemGroup_unstable = (
   props: NavSubItemGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): NavSubItemGroupState => {
-  const state = useNavSubItemGroupBase_unstable(props, ref);
+  const { collapseMotion, ...baseProps } = props;
+  const state = useNavSubItemGroupBase_unstable(baseProps, ref);
 
   return {
     ...state,
@@ -35,7 +36,7 @@ export const useNavSubItemGroup_unstable = (
       ...state.components,
       collapseMotion: Collapse,
     },
-    collapseMotion: presenceMotionSlot(props.collapseMotion, {
+    collapseMotion: presenceMotionSlot(collapseMotion, {
       elementType: Collapse,
       defaultProps: {
         visible: state.open,
@@ -65,10 +66,10 @@ export const useNavSubItemGroupBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ...props,
         ref,
-      }),
+      },
       { elementType: 'div' },
     ),
   };

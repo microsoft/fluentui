@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   EmptySwatchBaseProps,
   EmptySwatchBaseState,
@@ -31,13 +31,13 @@ export const useEmptySwatchBase_unstable = (
       root: 'button',
     },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         ref,
         role,
         ...a11yProps,
         type: 'button',
         ...props,
-      }),
+      },
       { elementType: 'button' },
     ),
   };

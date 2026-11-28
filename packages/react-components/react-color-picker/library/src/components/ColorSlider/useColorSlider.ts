@@ -1,14 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  getPartitionedNativeProps,
-  getPercentInRange,
-  useId,
-  slot,
-  useControllableState,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { getPercentInRange, useId, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { colorSliderCSSVars } from './ColorSlider.constants';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
@@ -42,12 +35,6 @@ export const useColorSliderBase_unstable = (
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['onChange', 'color'],
-  });
-
   const {
     color,
     channel = 'hue',
@@ -58,11 +45,16 @@ export const useColorSliderBase_unstable = (
     input,
     rail,
     thumb,
+    // Root props
+    className,
+    style,
+    defaultColor,
+    ...primaryProps
   } = props;
 
   const hslColor = createHslColor(color || colorFromContext);
   const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
-    defaultState: props.defaultColor,
+    defaultState: defaultColor,
     state: color || colorFromContext,
     initialState: INITIAL_COLOR_HSV,
   });
@@ -133,7 +125,8 @@ export const useColorSliderBase_unstable = (
     root: slot.always(root, {
       defaultProps: {
         role: 'group',
-        ...nativeProps.root,
+        className,
+        style,
       },
       elementType: 'div',
     }),
@@ -145,7 +138,7 @@ export const useColorSliderBase_unstable = (
         max: MAX,
         tabIndex: 0,
         ['aria-orientation']: vertical ? 'vertical' : 'horizontal',
-        ...nativeProps.primary,
+        ...primaryProps,
         type: 'range',
       },
       elementType: 'input',

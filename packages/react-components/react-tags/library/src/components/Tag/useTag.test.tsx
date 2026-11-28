@@ -109,6 +109,31 @@ describe('useTagBase_unstable', () => {
     expect(root.disabled).toBe(true);
   });
 
+  it('should apply disabled to a button root override', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { result } = renderHook(() => useTagBase_unstable({ as: 'button', disabled: true }, ref), {
+      wrapper: wrap(),
+    });
+    expect((result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled).toBe(true);
+  });
+
+  it('should not apply disabled to a span root override', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { result } = renderHook(() => useTagBase_unstable({ as: 'span', disabled: true, dismissible: true }, ref), {
+      wrapper: wrap(),
+    });
+    expect((result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled).toBeUndefined();
+  });
+
+  it('should inherit context disabled with a button root override', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { result } = renderHook(() => useTagBase_unstable({ as: 'button', disabled: false }, ref), {
+      wrapper: wrap({ handleTagDismiss: () => ({}), size: 'medium', disabled: true }),
+    });
+    expect(result.current.disabled).toBe(true);
+    expect((result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled).toBe(true);
+  });
+
   it('should inherit dismissible from TagGroupContext when not set on props', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTagBase_unstable({}, ref), {
@@ -117,5 +142,42 @@ describe('useTagBase_unstable', () => {
     expect(result.current.dismissible).toBe(true);
     const root = result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(root.type).toBe('button');
+  });
+});
+
+describe('useTagBase_unstable root props', () => {
+  it('does not forward component props to the root slot', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { result } = renderHook(
+      () =>
+        useTagBase_unstable(
+          {
+            disabled: true,
+            dismissible: true,
+            dismissIcon: 'd',
+            icon: 'i',
+            media: 'm',
+            primaryText: 'p',
+            secondaryText: 's',
+            selected: true,
+            value: 'tag-value',
+            'data-custom': 'kept',
+          } as React.ComponentProps<'button'> & Parameters<typeof useTagBase_unstable>[0],
+          ref,
+        ),
+      { wrapper: wrap() },
+    );
+
+    expect(Object.keys(result.current.root).sort()).toEqual([
+      'aria-pressed',
+      'data-custom',
+      'disabled',
+      'id',
+      'onClick',
+      'onKeyDown',
+      'ref',
+      'role',
+      'type',
+    ]);
   });
 });

@@ -1,14 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  useControllableState,
-  useEventCallback,
-  mergeCallbacks,
-  useMergedRefs,
-  slot,
-} from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, mergeCallbacks, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { TagGroupBaseProps, TagGroupBaseState, TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -68,12 +61,12 @@ export const useTagGroupBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         role,
         'aria-disabled': disabled,
         ...rest,
-      }),
+      },
       { elementType: 'div' },
     ),
   };
@@ -89,7 +82,7 @@ export const useTagGroupBase_unstable = (
  * @param ref - reference to root HTMLDivElement of TagGroup
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
-  const { size = 'medium', appearance = 'filled' } = props;
+  const { size = 'medium', appearance = 'filled', ...baseProps } = props;
 
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
@@ -129,7 +122,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
   });
 
   return {
-    ...useTagGroupBase_unstable({ ...arrowNavigationProps, ...props, onDismiss: enhancedOnDismiss }, mergedRef),
+    ...useTagGroupBase_unstable({ ...arrowNavigationProps, ...baseProps, onDismiss: enhancedOnDismiss }, mergedRef),
     size,
     appearance,
   };
