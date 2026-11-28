@@ -1,109 +1,151 @@
 'use client';
 
-import { useIsomorphicLayoutEffect, useEventCallback } from '@fluentui/react-utilities';
-import { computePosition, debounce, isRendered } from './utils';
+import * as React from 'react';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import type { UsePositioningOptions } from './types';
+import { ABOVE, AFTER, BEFORE, BELOW, CENTER, END, START } from './constants';
+import { applyVisibility, getPlacementString, isRendered, updatePlacementAttribute } from './utils';
+import { normalizeAlign } from './utils/placement';
+
+type PlacementObserverOptions = Pick<
+  UsePositioningOptions,
+  | 'coverTarget'
+  | 'disableUpdateOnResize'
+  | 'position'
+  | 'align'
+  | 'offset'
+  | 'pinned'
+  | 'fallbackPositions'
+  | 'strategy'
+  | 'matchTargetSize'
+>;
 
 /**
- * Mirrors the placement that the browser actually resolves for an
- * anchored element into its `data-placement` attribute. Useful when CSS
- * `position-try-fallbacks` flips the surface after a layout shift, scroll,
- * or content reflow — consumers can style the surface (arrows, animations)
- * via `[data-placement^="above"]` and friends and stay in sync.
- *
- * The surface counts as hidden only when it is not rendered (no client rects, e.g.
- * `display: none` on a closed popover); `visibility: hidden`, `opacity: 0` or
- * `scale(0)` still count as laid out. While hidden only a ResizeObserver (and an
- * IntersectionObserver, when available) stays attached; window listeners attach when
- * the surface is laid out. ResizeObserver compares sizes, so a 0×0 surface toggling
- * `display: none` does not notify it; the IntersectionObserver reports that transition
- * whenever the surface is inside the viewport, and a scroll or resize that finds the
- * surface hidden detaches the window listeners. Without ResizeObserver (test DOMs such
- * as jsdom) the observer does nothing.
+ * Mirrors CSS's resolved placement and visibility into the positioning attributes and completion event.
+ * Hidden (unrendered) surfaces retain only size/intersection observers; scroll/resize listeners resume on layout.
+ * Pass null elements to stop observing.
  */
 export function usePlacementObserver(
   containerEl: HTMLElement | null,
   targetEl: HTMLElement | null,
-  targetDocument: Document | undefined,
-  disabled = false,
+  options: PlacementObserverOptions,
 ): () => void {
+  const {
+    coverTarget = false,
+    disableUpdateOnResize,
+    position = ABOVE,
+    align: alignInput = CENTER,
+    offset,
+    pinned = false,
+    strategy = 'fixed',
+    matchTargetSize,
+  } = options;
+  const align = normalizeAlign(alignInput);
+  const mainAxis = typeof offset === 'number' ? offset : (typeof offset === 'object' && offset?.mainAxis) || 0;
+  const crossAxis = (typeof offset === 'object' && offset?.crossAxis) || 0;
+  const fallbackPositions = options.fallbackPositions?.join(',') ?? '';
+  const scheduleRef = React.useRef<(() => void) | null>(null);
+
   const update = useEventCallback(() => {
-    if (!containerEl || !targetEl) {
+    const win = containerEl?.ownerDocument.defaultView;
+    if (!containerEl || !targetEl || !win || !isRendered(containerEl) || !isRendered(targetEl)) {
       return;
     }
 
-    const result = computePosition(targetEl, containerEl);
-    if (!result) {
-      return;
-    }
+    const rtl = win.getComputedStyle(containerEl).direction === 'rtl';
+    // Geometry is physical, but the configured block alignment is logical. Overlap (including coverTarget and
+    // negative offsets) can't determine a side: use the resolved configuration for completion in that case.
+    const physicalAlign =
+      rtl && (position === ABOVE || position === BELOW) && align !== CENTER ? (align === START ? END : START) : align;
+    const physicalPosition =
+      rtl && (position === BEFORE || position === AFTER) ? (position === BEFORE ? AFTER : BEFORE) : position;
+    const placement = (!coverTarget && updatePlacementAttribute(targetEl, containerEl)) || {
+      position: physicalPosition,
+      align: physicalAlign,
+      placement: getPlacementString(physicalPosition, physicalAlign),
+    };
 
-    if (containerEl.getAttribute('data-placement') !== result.placement) {
-      containerEl.setAttribute('data-placement', result.placement);
-    }
+    applyVisibility(containerEl, targetEl, placement, rtl);
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (disabled || !containerEl || !targetEl) {
-      return;
-    }
-
-    const win = targetDocument?.defaultView;
-    const ResizeObserverCtor = win?.ResizeObserver;
-    if (!win || !ResizeObserverCtor) {
+    const win = containerEl?.ownerDocument.defaultView;
+    if (!containerEl || !targetEl || !win) {
       return;
     }
 
     let listening = false;
-
+    let active = true;
+    let pending = false;
     const stopListening = () => {
-      if (!listening) {
-        return;
-      }
-      listening = false;
-      win.removeEventListener('scroll', debouncedUpdate, { capture: true });
-      win.removeEventListener('resize', debouncedUpdate);
-    };
-
-    // Only detaches here: this runs in a microtask and may land after cleanup.
-    const debouncedUpdate = debounce(() => {
-      if (isRendered(containerEl)) {
-        update();
-      } else {
-        stopListening();
-      }
-    });
-
-    const startListening = () => {
       if (listening) {
-        return;
+        listening = false;
+        win.removeEventListener('scroll', debouncedUpdate, { capture: true });
+        win.removeEventListener('resize', debouncedUpdate);
       }
-      listening = true;
-      win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
-      win.addEventListener('resize', debouncedUpdate);
     };
-
+    const debouncedUpdate = () => {
+      if (!pending) {
+        pending = true;
+        Promise.resolve().then(() => {
+          pending = false;
+          if (!active) {
+            return;
+          }
+          if (isRendered(containerEl)) {
+            update();
+          } else {
+            stopListening();
+          }
+        });
+      }
+    };
     const sync = () => {
       if (isRendered(containerEl)) {
-        startListening();
+        if (!listening) {
+          listening = true;
+          win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
+          win.addEventListener('resize', debouncedUpdate);
+        }
         debouncedUpdate();
       } else {
         stopListening();
       }
     };
-
-    const resizeObserver = new ResizeObserverCtor(sync);
-    resizeObserver.observe(containerEl, { box: 'border-box' });
-    resizeObserver.observe(targetEl);
-
-    const IntersectionObserverCtor = win.IntersectionObserver;
-    const intersectionObserver = IntersectionObserverCtor ? new IntersectionObserverCtor(sync) : null;
+    const resizeObserver = disableUpdateOnResize || !win.ResizeObserver ? null : new win.ResizeObserver(sync);
+    resizeObserver?.observe(containerEl, { box: 'border-box' });
+    resizeObserver?.observe(targetEl);
+    const intersectionObserver = win.IntersectionObserver ? new win.IntersectionObserver(sync) : null;
     intersectionObserver?.observe(containerEl);
+    scheduleRef.current = sync;
+    sync();
 
     return () => {
-      resizeObserver.disconnect();
+      scheduleRef.current = null;
+      active = false;
+      resizeObserver?.disconnect();
       intersectionObserver?.disconnect();
       stopListening();
     };
-  }, [containerEl, targetEl, targetDocument, disabled, update]);
+  }, [containerEl, targetEl, disableUpdateOnResize, update]);
+
+  // Option-only changes don't notify observers. Reuse the existing queue rather than recreating observers
+  // (which send initial notifications), and measure after later layout effects have applied the CSS.
+  useIsomorphicLayoutEffect(() => {
+    scheduleRef.current?.();
+  }, [
+    containerEl,
+    targetEl,
+    position,
+    align,
+    coverTarget,
+    mainAxis,
+    crossAxis,
+    pinned,
+    fallbackPositions,
+    strategy,
+    matchTargetSize,
+  ]);
 
   return update;
 }
