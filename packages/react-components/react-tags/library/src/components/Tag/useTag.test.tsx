@@ -114,7 +114,7 @@ describe('useTagBase_unstable', () => {
     const { result } = renderHook(() => useTagBase_unstable({ as: 'button', disabled: true }, ref), {
       wrapper: wrap(),
     });
-    expect(result.current.root.disabled).toBe(true);
+    expect((result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled).toBe(true);
   });
 
   it('should not apply disabled to a span root override', () => {
@@ -122,7 +122,7 @@ describe('useTagBase_unstable', () => {
     const { result } = renderHook(() => useTagBase_unstable({ as: 'span', disabled: true, dismissible: true }, ref), {
       wrapper: wrap(),
     });
-    expect(result.current.root.disabled).toBeUndefined();
+    expect((result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled).toBeUndefined();
   });
 
   it('should inherit context disabled with a button root override', () => {
@@ -131,7 +131,7 @@ describe('useTagBase_unstable', () => {
       wrapper: wrap({ handleTagDismiss: () => ({}), size: 'medium', disabled: true }),
     });
     expect(result.current.disabled).toBe(true);
-    expect(result.current.root.disabled).toBe(true);
+    expect((result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled).toBe(true);
   });
 
   it('should inherit dismissible from TagGroupContext when not set on props', () => {
