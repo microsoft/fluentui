@@ -1,0 +1,129 @@
+'use client';
+
+import * as React from 'react';
+import type { CarouselNavState } from './CarouselNav/CarouselNav.types';
+
+/** Compound parts whose presence changes how the collection behaves. */
+export type CarouselPart = 'previous' | 'next' | 'nav' | 'autoplay';
+
+export type CarouselContextValue = {
+  idPrefix: string;
+  viewportId: string;
+  viewportRef: React.RefObject<HTMLDivElement | null>;
+  groupSize: 1 | 2 | 3 | 4;
+  slideCount: number;
+  pageCount: number;
+  /** Zero-based selected group. */
+  activeIndex: number;
+  /** Group playing its exit transition, if any. */
+  outgoingIndex: number | undefined;
+  /** True while a group transition is unsettled. */
+  busy: boolean;
+  /** Direction of the latest group change: 1 toward Next, -1 toward Previous. */
+  direction: 1 | -1;
+  /**
+   * More than one group, with controls that reach every group: a `CarouselNav`, both Previous and Next, or one of
+   * them in a circular collection. Otherwise static.
+   */
+  paged: boolean;
+  /** Paged, with `CarouselPrevious`/`CarouselNext` rendered. */
+  buttons: boolean;
+  /** Paged, with `CarouselNav` rendered. */
+  nav: boolean;
+  /** Paged, with an available `CarouselAutoplayButton`. */
+  autoplay: boolean;
+  playing: boolean;
+  previousUnavailable: boolean;
+  nextUnavailable: boolean;
+  /** Unavailable and no longer needed as a focus anchor for a running transition. */
+  previousHidden: boolean;
+  nextHidden: boolean;
+  getPageLabel: (position: number, total: number) => string;
+  getSlideLabel: (position: number, total: number) => string;
+  /** Registers a visible part. Disabled controls are present but do not provide a route or enable playback. */
+  register: (part: CarouselPart, available?: boolean) => () => void;
+  setSlideCount: (count: number) => void;
+  select: (index: number, event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+  previous: (event: React.MouseEvent<HTMLElement>) => void;
+  next: (event: React.MouseEvent<HTMLElement>) => void;
+  toggleAutoplay: (event: React.MouseEvent<HTMLElement>) => void;
+  /** Handles arrow, Home and End keys on the tab at zero-based `index`. */
+  onNavKeyDown: (event: React.KeyboardEvent<HTMLElement>, index: number) => void;
+};
+
+const noop = () => undefined;
+const label = (position: number, total: number) => `${position} of ${total}`;
+
+const defaultCarouselContextValue: CarouselContextValue = {
+  idPrefix: '',
+  viewportId: '',
+  viewportRef: { current: null },
+  groupSize: 1,
+  slideCount: 0,
+  pageCount: 0,
+  activeIndex: 0,
+  outgoingIndex: undefined,
+  busy: false,
+  direction: 1,
+  paged: false,
+  buttons: false,
+  nav: false,
+  autoplay: false,
+  playing: false,
+  previousUnavailable: true,
+  nextUnavailable: true,
+  previousHidden: true,
+  nextHidden: true,
+  getPageLabel: label,
+  getSlideLabel: label,
+  register: () => noop,
+  setSlideCount: noop,
+  select: noop,
+  previous: noop,
+  next: noop,
+  toggleAutoplay: noop,
+  onNavKeyDown: noop,
+};
+
+export const CarouselContext = React.createContext<CarouselContextValue | undefined>(undefined);
+
+export const useCarouselContext = (): CarouselContextValue =>
+  React.useContext(CarouselContext) ?? defaultCarouselContextValue;
+
+/** Zero-based position of a generated item (a slide inside the viewport, or a button inside `CarouselNav`). */
+export const CarouselItemIndexContext = React.createContext<number | undefined>(undefined);
+
+/** Only a complete set of operable tabs constitutes a pagination route. */
+export const CarouselRegisterTabContext = React.createContext<CarouselNavState['registerTab'] | undefined>(undefined);
+
+export const useCarouselItemIndex = (): number => React.useContext(CarouselItemIndexContext) ?? 0;
+
+/**
+ * Number of slides, provided by `CarouselViewport` while it renders. Unlike the root's `slideCount`, which the
+ * viewport reports in a layout effect, it is known during the server render.
+ */
+export const CarouselSlideCountContext = React.createContext<number | undefined>(undefined);
+
+/** Register the consumer's part, independently of the carousel's own boundary state. */
+export const useCarouselPartRegistration = (
+  part: CarouselPart,
+  present: boolean,
+  available = true,
+): ((enabled: boolean) => (() => void) | undefined) => {
+  const { register } = useCarouselContext();
+  return React.useCallback(
+    (enabled: boolean) => (present ? register(part, available && enabled) : undefined),
+    [register, part, present, available],
+  );
+};
+
+export const isControlDisabled = (props: {
+  disabled?: boolean;
+  disabledFocusable?: boolean;
+  'aria-disabled'?: React.AriaAttributes['aria-disabled'];
+}): boolean =>
+  !!(props.disabled || props.disabledFocusable || props['aria-disabled'] === true || props['aria-disabled'] === 'true');
+
+/** An explicitly hidden or inert part cannot provide an operable route, irrespective of group boundaries. */
+export const isControlHidden = (props: { hidden?: boolean; inert?: boolean }): boolean =>
+  !!(props.hidden || props.inert);

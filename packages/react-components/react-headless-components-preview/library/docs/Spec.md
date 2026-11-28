@@ -144,6 +144,17 @@ Every exported component exposes:
 
 Each component's base logic lives in its individual package (for example, `@fluentui/react-button`). This package re-exports stable wrappers and primitives on top of that base logic.
 
+#### Carousel preview scope
+
+The `carousel` subpath is a fixed-group preview, not an unstyled replacement for `@fluentui/react-carousel`.
+It groups one to four slides by position, registers explicit controls, and requests group selection and
+user-started playback. The styled Carousel uses Embla for scrolling, automatic grouping and optional dragging;
+its events and timing are not this preview's contract. Changes to one do not imply parity in the other.
+
+Maintain the preview behavior and regression tests in `library/src/components/Carousel`, and the visual
+example in `stories/src/Carousel`, under the headless package's existing CODEOWNERS. A shared base or a
+parity commitment would require a separate decision with the styled package's maintainers.
+
 ## Migration
 
 This package is a new addition; there is no migration from v8 or v0. For teams currently using full Fluent UI components that want to adopt base hooks, the path is:
@@ -198,4 +209,4 @@ Each component follows its corresponding WAI-ARIA authoring practice:
 | Button    | Button / Link pattern |
 | Divider   | Separator pattern     |
 
-> Keyboard navigation, focus management, and state announcements are delegated to the individual component packages and are identical to their styled counterparts.
+> For shared-base components, keyboard navigation, focus management, and state announcements are delegated to their individual packages. For the separate fixed-group contract, see [Carousel preview scope](#carousel-preview-scope).
