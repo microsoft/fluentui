@@ -100,7 +100,10 @@ export const useCarouselDirectionButton = (
     ref: controlRef,
     autoFocus: undefined,
     disabled: buttonSlot.disabled || (!keepButtonMounted && unavailable),
-    disabledFocusable: buttonSlot.disabledFocusable || (!hidden && !buttonSlot.disabled && unavailable),
+    // Stays set while a paged arrow is hidden at a boundary, so a render callback can close its tooltip. A staged
+    // arrow in a static collection gets no synthesized state.
+    disabledFocusable:
+      buttonSlot.disabledFocusable || ((!hidden || context.buttons) && !buttonSlot.disabled && unavailable),
     onFocus: mergeCallbacks(buttonSlot.onFocus, () => setFocused(true)),
     onBlur: mergeCallbacks(buttonSlot.onBlur, () => setFocused(false)),
     onClick: mergeCallbacks(buttonSlot.onClick, kind === 'previous' ? context.previous : context.next),

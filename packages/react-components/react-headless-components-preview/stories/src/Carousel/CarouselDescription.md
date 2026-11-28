@@ -55,6 +55,9 @@ const withTooltip: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (
 <CarouselNext button={{ icon: <ChevronRightRegular />, children: withTooltip }} />;
 ```
 
+The render function receives `disabledFocusable` while the arrow is unavailable, including while it's hidden at
+the first or last group. Keep the tooltip closed then; the examples do this with a controlled `visible`.
+
 ## Autoplay
 
 Rotation starts only when the user presses Play. It pauses on hover and while the carousel is off-screen or the

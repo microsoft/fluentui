@@ -436,6 +436,24 @@ describe('Carousel', () => {
     await act(async () => resolve());
   });
 
+  it('tells a custom arrow it is unavailable while hidden at a boundary', () => {
+    const seen: (boolean | undefined)[] = [];
+    const track = (Component: React.ElementType, props: { disabledFocusable?: boolean }) => {
+      seen.push(props.disabledFocusable);
+      return <Component {...props} />;
+    };
+    render(example({ next: { button: { children: track } } }));
+    const next = screen.getByRole('button', { name: 'Next' });
+    expect(seen[seen.length - 1]).toBe(false);
+    fireEvent.click(next);
+    fireEvent.click(next);
+    expect(selected()).toHaveAttribute('aria-label', 'Page 3 of 3');
+    expect(next.closest('[hidden]')).not.toBeNull();
+    expect(seen[seen.length - 1]).toBe(true);
+    fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
+    expect(seen[seen.length - 1]).toBe(false);
+  });
+
   it('changes pages immediately without page animations', () => {
     animatePages(() => []);
     const { container } = render(example());

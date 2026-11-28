@@ -1,3 +1,5 @@
+'use client';
+
 // eslint-disable-next-line import/no-extraneous-dependencies -- Shared story helper uses development dependencies.
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies -- Shared story helper uses development dependencies.
@@ -73,14 +75,52 @@ export const arrowIcon = (direction: 'previous' | 'next'): { children: React.Rea
   'aria-hidden': true as const,
 });
 
+/** Keeps the tooltip closed, and drops a pending show, while the arrow is unavailable. */
+const ArrowTooltip = ({
+  label,
+  unavailable,
+  children,
+}: {
+  label: string | undefined;
+  unavailable: boolean;
+  children: React.ReactElement;
+}): React.ReactElement => {
+  const [visible, setVisible] = React.useState(false);
+  // Forget an open tooltip as soon as the arrow becomes unavailable, so it doesn't reappear afterwards.
+  const [wasUnavailable, setWasUnavailable] = React.useState(unavailable);
+  if (wasUnavailable !== unavailable) {
+    setWasUnavailable(unavailable);
+    if (unavailable) {
+      setVisible(false);
+    }
+  }
+  const onVisibleChange = React.useCallback(
+    (_: unknown, data: { visible: boolean }) => setVisible(data.visible && !unavailable),
+    [unavailable],
+  );
+  return (
+    <Tooltip
+      relationship="inaccessible"
+      content={{ children: label, className: styles.tooltip }}
+      visible={visible && !unavailable}
+      onVisibleChange={onVisibleChange}
+    >
+      {children}
+    </Tooltip>
+  );
+};
+
 /**
  * Arrows have no built-in tooltip. Compose one through the button slot's render function. The button keeps its
  * `aria-label` ("Previous"/"Next" by default), so the tooltip only shows that name and stays `inaccessible`.
+ * `disabledFocusable` marks an unavailable arrow, including one hidden at the first or last group.
  */
-export const arrowTooltip: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
-  <Tooltip relationship="inaccessible" content={{ children: props['aria-label'], className: styles.tooltip }}>
+export const arrowTooltip: SlotRenderFunction<
+  React.ComponentPropsWithRef<'button'> & { disabledFocusable?: boolean }
+> = (Component, props) => (
+  <ArrowTooltip label={props['aria-label']} unavailable={!!props.disabledFocusable}>
     <Component {...props} />
-  </Tooltip>
+  </ArrowTooltip>
 );
 
 /** Shared story composition: autoplay button first, arrows around the viewport, nav below. */
