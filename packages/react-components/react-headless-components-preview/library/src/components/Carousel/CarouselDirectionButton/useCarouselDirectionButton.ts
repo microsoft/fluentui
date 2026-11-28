@@ -1,13 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  mergeCallbacks,
-  SLOT_RENDER_FUNCTION_SYMBOL,
-  slot,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import { getActiveElement } from '../../../hooks/top-layer/utils';
 import { Button } from '../../Button';
 import {
@@ -18,7 +12,6 @@ import {
 } from '../carouselContext';
 import { useCarouselControlRef } from '../carouselControls';
 import { focusSelectedPage } from '../focusCarouselPage';
-import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type { CarouselDirectionButtonProps, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
 /**
@@ -38,27 +31,21 @@ export const useCarouselDirectionButton = (
   const present = !isControlHidden(props) && !isControlHidden(buttonSlot);
   const wrapperDisabled = isControlDisabled(rest);
   const enabled = !wrapperDisabled && !isControlDisabled(buttonSlot);
-  const custom = !!buttonSlot[SLOT_RENDER_FUNCTION_SYMBOL] || typeof rest.children === 'function';
-  const keepButtonMounted = custom && present && context.pageCount > 1;
   const boundaryHidden = kind === 'previous' ? context.previousHidden : context.nextHidden;
   const rendered = present && context.buttons;
   const [focused, setFocused] = React.useState(false);
   const retiring = focused && (!rendered || boundaryHidden);
   const showWrapper = rendered || retiring;
-  const staging = keepButtonMounted && !showWrapper;
-  const hidden = staging || (boundaryHidden && !retiring);
+  const hidden = boundaryHidden && !retiring;
   const wrapper = React.useRef<HTMLDivElement>(null);
-  const stageRef = React.useRef<HTMLDivElement>(null);
+  // Arrows register from props, so a hidden or unmounted arrow still counts as a route.
   const register = useCarouselPartRegistration(kind, present, enabled);
-  const track = useFieldsetRegistration(register);
-  const probe = useMergedRefs<HTMLTemplateElement>(track);
-  const buttonRef = useMergedRefs(buttonSlot.ref, keepButtonMounted ? track : undefined);
+  useIsomorphicLayoutEffect(() => register(true), [register]);
   const ownControlRef = useCarouselControlRef<HTMLButtonElement>(context.viewportRef, kind);
   const focusTarget = React.useRef<HTMLButtonElement | null>(null);
-  const controlRef = useMergedRefs(keepButtonMounted ? buttonRef : buttonSlot.ref, ownControlRef, focusTarget);
-  const probeRef = !custom && present && !showWrapper && context.pageCount > 1 ? probe : undefined;
-  // A staged custom button is mounted before it is usable, so native autofocus would fire too early. Honor `autoFocus`
-  // once from an effect, when the arrow is shown.
+  const controlRef = useMergedRefs(buttonSlot.ref, ownControlRef, focusTarget);
+  // The button remounts when it leaves a boundary, so native autofocus would fire again. Honor `autoFocus` once, from
+  // an effect, when the arrow is shown.
   const pendingAutoFocus = React.useRef(buttonSlot.autoFocus);
   React.useEffect(() => {
     if (pendingAutoFocus.current && !hidden && focusTarget.current) {
@@ -68,9 +55,9 @@ export const useCarouselDirectionButton = (
   });
   useIsomorphicLayoutEffect(() => {
     if (retiring) {
-      // Keep a retiring arrow mounted until this commit can check actual focus ownership. Staging also hides content
-      // a root callback renders beside the forwarded root, and focus dropped since it was tracked was dropped from here.
-      const owner = stageRef.current ?? wrapper.current;
+      // Keep a retiring arrow mounted until this commit can check actual focus ownership; focus dropped since it was
+      // tracked was dropped from here.
+      const owner = wrapper.current;
       const active = owner && getActiveElement(owner);
       if (owner && (owner.contains(active) || !active || active === owner.ownerDocument.body)) {
         focusSelectedPage(context.viewportRef.current, context.activeIndex);
@@ -84,12 +71,7 @@ export const useCarouselDirectionButton = (
     },
     [hidden],
   );
-  const rootRef = useMergedRefs(
-    ref,
-    wrapper,
-    keepButtonMounted ? undefined : inertRef,
-    keepButtonMounted ? undefined : track,
-  );
+  const rootRef = useMergedRefs(ref, wrapper, inertRef);
   const named = !!buttonSlot['aria-label'] || !!buttonSlot['aria-labelledby'];
   const control = {
     ...buttonSlot,
@@ -99,11 +81,9 @@ export const useCarouselDirectionButton = (
     'data-carousel-action': kind,
     ref: controlRef,
     autoFocus: undefined,
-    disabled: buttonSlot.disabled || (!keepButtonMounted && unavailable),
-    // Stays set while a paged arrow is hidden at a boundary, so a render callback can close its tooltip. A staged
-    // arrow in a static collection gets no synthesized state.
-    disabledFocusable:
-      buttonSlot.disabledFocusable || ((!hidden || context.buttons) && !buttonSlot.disabled && unavailable),
+    disabled: buttonSlot.disabled || unavailable,
+    // An unavailable arrow stays a focusable anchor until the transition settles; a render callback can read it.
+    disabledFocusable: buttonSlot.disabledFocusable || (!buttonSlot.disabled && unavailable),
     onFocus: mergeCallbacks(buttonSlot.onFocus, () => setFocused(true)),
     onBlur: mergeCallbacks(buttonSlot.onBlur, () => setFocused(false)),
     onClick: mergeCallbacks(buttonSlot.onClick, kind === 'previous' ? context.previous : context.next),
@@ -115,7 +95,7 @@ export const useCarouselDirectionButton = (
         {
           ...rest,
           ref: rootRef,
-          hidden: keepButtonMounted ? rest.hidden : hidden,
+          hidden,
         },
         { elementType: 'div' },
       ),
@@ -124,11 +104,6 @@ export const useCarouselDirectionButton = (
     button: control,
     kind,
     rendered: showWrapper,
-    probeRef,
-    keepButtonMounted,
-    stage: keepButtonMounted
-      ? { ref: stageRef, onFocus: () => setFocused(true), onBlur: () => setFocused(false) }
-      : undefined,
     hidden,
     unavailable,
   };

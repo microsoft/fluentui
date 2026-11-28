@@ -446,21 +446,25 @@ describe('Carousel', () => {
     await act(async () => resolve());
   });
 
-  it('tells a custom arrow it is unavailable while hidden at a boundary', () => {
+  it('unmounts a custom arrow at a boundary, keeping its empty slot', () => {
     const seen: (boolean | undefined)[] = [];
     const track = (Component: React.ElementType, props: { disabledFocusable?: boolean }) => {
       seen.push(props.disabledFocusable);
       return <Component {...props} />;
     };
-    render(example({ next: { button: { children: track } } }));
+    const { container } = render(example({ next: { button: { children: track } } }));
     const next = screen.getByRole('button', { name: 'Next' });
     expect(seen[seen.length - 1]).toBe(false);
     fireEvent.click(next);
     fireEvent.click(next);
     expect(selected()).toHaveAttribute('aria-label', 'Page 3 of 3');
-    expect(next.closest('[hidden]')).not.toBeNull();
-    expect(seen[seen.length - 1]).toBe(true);
+    expect(next).not.toBeInTheDocument();
+    const slot = container.querySelector('[data-carousel-button="next"]');
+    expect(slot).toHaveAttribute('hidden');
+    expect(slot).toHaveAttribute('inert');
+    expect(slot).toBeEmptyDOMElement();
     fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
+    expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
     expect(seen[seen.length - 1]).toBe(false);
   });
 

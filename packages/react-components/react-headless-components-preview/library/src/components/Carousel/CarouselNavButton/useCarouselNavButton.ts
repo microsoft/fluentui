@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import {
@@ -11,7 +11,6 @@ import {
   useCarouselContext,
   useCarouselItemIndex,
 } from '../carouselContext';
-import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type { CarouselNavButtonProps, CarouselNavButtonSlots, CarouselNavButtonState } from './CarouselNavButton.types';
 
 /** Create the state required to render CarouselNavButton. Must be rendered inside `CarouselNav`. */
@@ -24,12 +23,15 @@ export const useCarouselNavButton = (
   const registerTab = React.useContext(CarouselRegisterTabContext);
   const available = !isControlHidden(props) && !isControlDisabled(props);
   const autoFocusOnMount = React.useRef(props.autoFocus);
-  const register = React.useCallback(
-    (enabled: boolean, node: HTMLButtonElement) =>
-      available && enabled ? registerTab?.(index, autoFocusOnMount.current ? node : undefined) : undefined,
-    [registerTab, available, index],
-  );
-  const mergedRef = useMergedRefs(ref, useFieldsetRegistration(register));
+  // Register once the node is committed: the nav resolves `autoFocus` against it, before its own layout effect.
+  const node = React.useRef<HTMLButtonElement | null>(null);
+  const [committedNode, setCommittedNode] = React.useState<HTMLButtonElement | null>(null);
+  const nodeRef = useMergedRefs(node, setCommittedNode);
+  useIsomorphicLayoutEffect(() => {
+    const target = node.current;
+    return target && available ? registerTab?.(index, autoFocusOnMount.current ? target : undefined) : undefined;
+  }, [registerTab, available, index, committedNode]);
+  const mergedRef = useMergedRefs(ref, nodeRef);
   const { indicator, ...rest } = props;
   const selected = activeIndex === index;
   return {

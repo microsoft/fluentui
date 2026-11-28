@@ -112,13 +112,6 @@ type CarouselDirectionButtonState = ComponentState<CarouselDirectionButtonSlots>
     };
     kind: 'previous' | 'next';
     rendered: boolean;
-    probeRef?: React_2.RefObject<HTMLTemplateElement | null>;
-    keepButtonMounted?: boolean;
-    stage?: {
-        ref: React_2.RefObject<HTMLDivElement | null>;
-        onFocus: () => void;
-        onBlur: () => void;
-    };
     hidden: boolean;
     unavailable: boolean;
 };

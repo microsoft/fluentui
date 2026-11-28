@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import { Button } from '../../Button';
 import {
   isControlDisabled,
@@ -10,7 +10,6 @@ import {
   useCarouselPartRegistration,
 } from '../carouselContext';
 import { useCarouselControlRef } from '../carouselControls';
-import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type {
   CarouselAutoplayButtonProps,
   CarouselAutoplayButtonSlots,
@@ -30,11 +29,8 @@ export const useCarouselAutoplayButton = (
   const context = useCarouselContext();
   const rendered = context.paged && !isControlHidden(props);
   const register = useCarouselPartRegistration('autoplay', rendered, !isControlDisabled(props));
-  const mergedRef = useMergedRefs(
-    ref,
-    useFieldsetRegistration<HTMLButtonElement>(register),
-    useCarouselControlRef<HTMLButtonElement>(context.viewportRef, 'autoplay'),
-  );
+  useIsomorphicLayoutEffect(() => register(true), [register]);
+  const mergedRef = useMergedRefs(ref, useCarouselControlRef<HTMLButtonElement>(context.viewportRef, 'autoplay'));
   const { playLabel = 'Play', pauseLabel = 'Pause', ...rest } = props;
   const root = slot.always({ ...rest, ref: mergedRef } as NonNullable<CarouselAutoplayButtonSlots['root']>, {
     elementType: Button,
