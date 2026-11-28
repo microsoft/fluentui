@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Persona, Field, Nav, Breadcrumb and Menu props reach the right element; Breadcrumb focusMode and Menu closeOnScroll work",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

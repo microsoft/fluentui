@@ -16,7 +16,7 @@ import { Avatar } from '../Avatar';
  * @param ref - reference to root HTMLDivElement of Persona
  */
 export const usePersona = (props: PersonaProps, ref: React.Ref<HTMLDivElement>): PersonaState => {
-  const { textPosition = 'after', ...baseProps } = props;
+  const { textPosition = 'after', avatar, ...baseProps } = props;
   const baseState = usePersonaBase_unstable(baseProps, ref);
 
   const state: PersonaState = {
@@ -27,7 +27,7 @@ export const usePersona = (props: PersonaProps, ref: React.Ref<HTMLDivElement>):
       ...baseState.components,
       avatar: Avatar,
     },
-    avatar: slot.optional(props.avatar, {
+    avatar: slot.optional(avatar, {
       renderByDefault: true,
       defaultProps: {
         name: props.name,

@@ -18,5 +18,11 @@ export const useField = (props: FieldProps, ref: React.Ref<HTMLDivElement>): Fie
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-required'] = toDataAttributeValue(state.required);
 
+  if (state.label) {
+    // Headless renders a plain <label>, which has no `required` attribute. The root carries data-required.
+    // eslint-disable-next-line react-hooks/immutability
+    state.label.required = undefined;
+  }
+
   return state;
 };

@@ -32,4 +32,10 @@ describe('Persona', () => {
     expect(root.firstElementChild).toBe(primaryText);
     expect(root.lastElementChild).toBe(avatar);
   });
+
+  it('does not leak the avatar prop onto the root element', () => {
+    const { container } = render(<Persona name="John Doe" avatar={{ 'aria-label': 'x' }} />);
+
+    expect(container.firstElementChild).not.toHaveAttribute('avatar');
+  });
 });

@@ -253,4 +253,24 @@ describe('Nav', () => {
     expect(result.getByRole('button', { name: 'Category 1 expand' })).toBeInTheDocument();
     expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'false');
   });
+
+  it('defaults the root role to navigation', () => {
+    const { container } = render(
+      <Nav>
+        <NavItem value="item1">Item 1</NavItem>
+      </Nav>,
+    );
+
+    expect(container.firstElementChild).toHaveAttribute('role', 'navigation');
+  });
+
+  it('lets a consumer role override the default', () => {
+    const { container } = render(
+      <Nav role="none">
+        <NavItem value="item1">Item 1</NavItem>
+      </Nav>,
+    );
+
+    expect(container.firstElementChild).toHaveAttribute('role', 'none');
+  });
 });
