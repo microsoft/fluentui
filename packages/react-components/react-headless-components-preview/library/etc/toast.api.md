@@ -89,6 +89,7 @@ export type ToastContainerContextValues = {
 // @public (undocumented)
 export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> & ToastData & {
     visible: boolean;
+    queued?: boolean;
     tryRestoreFocus: () => void;
     announce?: ToastAnnounce;
 };

@@ -51,7 +51,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
         : undefined,
     [shortcuts],
   );
-  const { toastsToRender, isToastVisible, playAllToasts, tryRestoreFocus, closeAllToasts } =
+  const { toastsToRender, isToastVisible, queuedToastIds, playAllToasts, tryRestoreFocus, closeAllToasts } =
     useToasterState<HTMLDivElement>({
       toasterId,
       position,
@@ -80,7 +80,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     // Leave Escape that a popover or dialog inside a toast already handled.
     if (e.key === Escape && !e.isDefaultPrevented()) {
       e.preventDefault();
-      closeAllToasts();
+      closeAllToasts({ immediate: true });
     }
     onKeyDownProp?.(e);
   });
@@ -89,9 +89,10 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     const { announceToast, toasterRef } = useToastAnnounce(announceProp ?? announce);
     const popoverRef = React.useRef<HTMLDivElement>(null);
     const positionHasToasts = toastsToRender.has(toastPosition);
+    const positionHasVisibleToasts = toastsToRender.get(toastPosition)?.some(toast => isToastVisible(toast.toastId));
 
     // Unmounted when the position has no toasts. Toasts restore focus themselves.
-    useLayerOpenState(popoverRef, { open: positionHasToasts, mode: 'manual' });
+    useLayerOpenState(popoverRef, { open: !!positionHasVisibleToasts, mode: 'manual' });
 
     return slot.optional<ExtractSlotProps<Slot<'div'>>>(positionHasToasts ? {} : null, {
       defaultProps: {
@@ -102,8 +103,9 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             tryRestoreFocus={tryRestoreFocus}
             intent={toast.intent}
             announce={announceToast}
-            key={toast.toastId}
+            key={toast.order}
             visible={isToastVisible(toast.toastId)}
+            queued={queuedToastIds.has(toast.toastId)}
           >
             {toast.content as React.ReactNode}
           </ToastContainer>

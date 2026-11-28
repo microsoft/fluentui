@@ -7,6 +7,7 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
 import { useFocusableGroup, useFocusFinders } from '@fluentui/react-tabster';
 import type { ToastStatus } from '../../state';
+import { reportToastStatus } from '../../state/vanilla/createToaster';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import type { TimerProps } from '../Timer/Timer';
 import { Timer } from '../Timer/Timer';
@@ -33,6 +34,7 @@ export const useToastContainer_unstable = (
 ): ToastContainerState => {
   const {
     visible,
+    queued,
     children,
     close: closeProp,
     remove,
@@ -71,7 +73,7 @@ export const useToastContainer_unstable = (
 
     closeProp();
   });
-  const onStatusChange = useEventCallback((status: ToastStatus) => props.onStatusChange?.(null, { status, ...props }));
+  const onStatusChange = useEventCallback((status: ToastStatus) => reportToastStatus(props, status));
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => {
     if (imperativePauseRef.current) {
@@ -110,6 +112,18 @@ export const useToastContainer_unstable = (
   React.useEffect(() => {
     return () => onStatusChange('unmounted');
   }, [onStatusChange]);
+
+  const wasVisibleRef = React.useRef(visible);
+  const wasRemovedRef = React.useRef(false);
+  React.useEffect(() => {
+    if (visible) {
+      wasVisibleRef.current = true;
+    } else if (queued === false && !wasVisibleRef.current && !wasRemovedRef.current) {
+      wasRemovedRef.current = true;
+      remove();
+      onStatusChange('dismissed');
+    }
+  }, [visible, queued, remove, closeProp, onStatusChange]);
 
   React.useEffect(() => {
     if (!targetDocument) {

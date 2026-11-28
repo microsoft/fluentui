@@ -20,6 +20,8 @@ export type ToastContainerSlots = {
 export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> &
   Toast & {
     visible: boolean;
+    /** Whether the toast is waiting in the toaster queue. */
+    queued?: boolean;
     announce: Announce;
     intent: ToastIntent | undefined;
     tryRestoreFocus: () => void;

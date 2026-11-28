@@ -16,6 +16,8 @@ export type ToastContainerSlots = {
 export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> &
   ToastData & {
     visible: boolean;
+    /** Whether the toast is waiting for a visibility slot. Defaults to false. */
+    queued?: boolean;
     tryRestoreFocus: () => void;
     /**
      * Announcer used to narrate this toast's text content to screen readers.

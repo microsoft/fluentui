@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: headless Toaster keeps queued toasts until they become visible instead of dismissing them on mount",
+  "comment": "fix: retain queued toasts and clean up toasts dismissed before rendering",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

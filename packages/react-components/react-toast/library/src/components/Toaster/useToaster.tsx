@@ -22,8 +22,15 @@ import { useToastAnnounce } from './useToastAnnounce';
 export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const { offset, announce: announceProp, mountNode, inline = false, ...rest } = props;
   const announceRef = React.useRef<Announce>(() => null);
-  const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =
-    useToaster<HTMLDivElement>(rest);
+  const {
+    toastsToRender,
+    isToastVisible,
+    queuedToastIds,
+    pauseAllToasts,
+    playAllToasts,
+    tryRestoreFocus,
+    closeAllToasts,
+  } = useToaster<HTMLDivElement>(rest);
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
@@ -56,8 +63,9 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
             tryRestoreFocus={tryRestoreFocus}
             intent={toast.intent}
             announce={announceToast}
-            key={toast.toastId}
+            key={toast.order}
             visible={isToastVisible(toast.toastId)}
+            queued={queuedToastIds.has(toast.toastId)}
           >
             {toast.content as React.ReactNode}
           </ToastContainer>

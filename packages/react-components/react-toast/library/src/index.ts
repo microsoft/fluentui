@@ -1,4 +1,5 @@
 export { useToastController, useToaster } from './state';
+export { reportToastStatus as reportToastStatus_unstable } from './state/vanilla/createToaster';
 export type {
   Announce as ToastAnnounce,
   AnnounceOptions as ToastAnnounceOptions,

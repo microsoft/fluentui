@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flushSync } from 'react-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -246,6 +247,91 @@ describe('Toast (headless)', () => {
     cy.contains(TOAST_CONTAINER, 'Queued toast').should('exist');
     cy.wait(700);
     cy.contains(TOAST_CONTAINER, 'Queued toast').should('not.exist');
+  });
+
+  it('should promote a queued toast when the first is dismissed in the same event', () => {
+    const Example = () => {
+      const { dispatchToast, dismissToast } = useToastController();
+      const makeToasts = () => {
+        dispatchToast(<Toast>First toast</Toast>, { toastId: 'first', timeout: -1 });
+        dispatchToast(<Toast>Queued toast</Toast>, { toastId: 'queued', timeout: -1 });
+        dismissToast('first');
+      };
+
+      return (
+        <>
+          <button onClick={makeToasts}>Make toasts</button>
+          <Toaster limit={1} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('button').click();
+    cy.contains(TOAST_CONTAINER, 'First toast').should('not.exist');
+    cy.contains(TOAST_CONTAINER, 'Queued toast').should('exist');
+  });
+
+  it('should start a fresh timer for a same-id replacement', () => {
+    const Example = () => {
+      const { dispatchToast, dismissToast } = useToastController();
+      const makeToast = () =>
+        dispatchToast(<Toast>First toast</Toast>, {
+          toastId: 'same',
+          timeout: 2000,
+          onStatusChange: (_, { status }) => {
+            if (status === 'dismissed') {
+              dispatchToast(<Toast>Replacement toast</Toast>, { toastId: 'same', timeout: 2000 });
+            }
+          },
+        });
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <button id="dismiss" onClick={() => dismissToast('same')}>
+            Dismiss toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click().wait(1300);
+    cy.get('#dismiss').click();
+    cy.contains(TOAST_CONTAINER, 'Replacement toast').should('exist').wait(900).should('exist');
+  });
+
+  it('should not open an empty position while its toast is queued', () => {
+    const Example = () => {
+      const { dispatchToast, dismissToast } = useToastController();
+      const makeToasts = () => {
+        dispatchToast(<Toast>First toast</Toast>, { toastId: 'first', position: 'bottom-end', timeout: -1 });
+        dispatchToast(<Toast>Queued toast</Toast>, { toastId: 'queued', position: 'top-end', timeout: -1 });
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToasts}>
+            Make toasts
+          </button>
+          <button id="dismiss" onClick={() => dismissToast('first')}>
+            Dismiss first toast
+          </button>
+          <Toaster limit={1} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get('[data-toaster-position="top-end"]').should('not.match', ':popover-open');
+    cy.get('#dismiss').click();
+    cy.get('[data-toaster-position="top-end"]').should('match', ':popover-open');
+    cy.contains(TOAST_CONTAINER, 'Queued toast').should('exist');
   });
 
   it('should pause a promoted queued toast while focus is in the toaster', () => {
@@ -552,18 +638,66 @@ describe('Toast (headless)', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+          <Toaster limit={2} shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
     };
 
     mount(<Example />);
     cy.get('#make').click().click().click();
-    cy.get(TOAST_CONTAINER).should('have.length', 3);
+    cy.get(TOAST_CONTAINER).should('have.length', 2);
     cy.get('body').type('{ctrl+m}');
     cy.focused().should('have.attr', 'role', 'listitem').realPress('Escape');
     cy.get(TOAST_CONTAINER).should('not.exist');
     cy.get('#make').should('be.focused');
+  });
+
+  it('should allow a pending dismissal callback to synchronously focus a replacement', () => {
+    const reportFocus = cy.stub().as('reportFocus');
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const replacementRef = React.useRef<HTMLButtonElement>(null);
+      const makeToasts = () => {
+        dispatchToast('First toast', {
+          toastId: 'first',
+          timeout: -1,
+          onStatusChange: (_, data) => {
+            if (data.status === 'dismissed') {
+              flushSync(() => dispatchToast('First replacement', { toastId: 'first-replacement', timeout: -1 }));
+            }
+          },
+        });
+        dispatchToast('Second toast', {
+          toastId: 'second',
+          timeout: -1,
+          onStatusChange: (_, data) => {
+            if (data.status === 'dismissed') {
+              flushSync(() =>
+                dispatchToast(<button ref={replacementRef}>Second replacement</button>, {
+                  toastId: 'second-replacement',
+                  timeout: -1,
+                }),
+              );
+              const replacement = replacementRef.current;
+              replacement?.focus();
+              reportFocus(!!replacement && replacement.ownerDocument.activeElement === replacement);
+            }
+          },
+        });
+      };
+
+      return (
+        <>
+          <button onClick={makeToasts}>Make toasts</button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.contains('button', 'Make toasts').click();
+    cy.contains(TOAST_CONTAINER, 'First toast').focus().realPress('Escape');
+    cy.get('@reportFocus').should('have.been.calledOnceWith', true);
   });
 
   it('should keep toasts on an Escape that toast content already handled', () => {

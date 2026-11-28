@@ -4,6 +4,7 @@ import * as React from 'react';
 import { isHTMLElement, useEventCallback, useForceUpdate } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { createToaster } from './vanilla';
+import { reportToastStatus, runToastCallbacks } from './vanilla/createToaster';
 import type {
   CommonToastDetail,
   ShowToastEventDetail,
@@ -20,11 +21,14 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
   options: Partial<ToasterOptions> = {},
 ): {
   isToastVisible: (toastId: ToastId) => boolean;
+  /** IDs waiting for a visibility slot at the time of this render. */
+  queuedToastIds: ReadonlySet<ToastId>;
   toastsToRender: Map<ToastPosition, Toast[]>;
   pauseAllToasts: () => void;
   playAllToasts: () => void;
   tryRestoreFocus: () => void;
-  closeAllToasts: () => void;
+  /** Immediately removes queued and visible toasts when `immediate` is set. */
+  closeAllToasts: (options?: { immediate?: boolean }) => void;
 } {
   const forceUpdate = useForceUpdate();
   const { toasterId: userToasterId, shortcuts } = options;
@@ -87,14 +91,24 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
     }
   }, [getMostRecentVisibleToast]);
 
-  const closeAllToasts = React.useCallback(() => {
-    toaster.visibleToasts.forEach(toastId => {
-      const toast = toaster.toasts.get(toastId);
-      toast?.close();
-    });
+  const closeAllToasts = React.useCallback(
+    (closeOptions?: { immediate?: boolean }) => {
+      if (closeOptions?.immediate) {
+        const toasts = toaster.takeAllToasts();
+        runToastCallbacks(
+          [...toasts.map(toast => () => reportToastStatus(toast, 'dismissed')), forceUpdate, tryRestoreFocus],
+          'Multiple errors occurred while dismissing toasts',
+        );
+        return;
+      } else {
+        const visibleToasts = Array.from(toaster.visibleToasts, toastId => toaster.toasts.get(toastId));
+        visibleToasts.forEach(toast => toast?.close());
+      }
 
-    tryRestoreFocus();
-  }, [toaster, tryRestoreFocus]);
+      tryRestoreFocus();
+    },
+    [toaster, forceUpdate, tryRestoreFocus],
+  );
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -214,6 +228,7 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
 
   return {
     isToastVisible: toaster.isToastVisible,
+    queuedToastIds: new Set(toaster.getQueuedToastIds()),
     toastsToRender,
     pauseAllToasts,
     playAllToasts,

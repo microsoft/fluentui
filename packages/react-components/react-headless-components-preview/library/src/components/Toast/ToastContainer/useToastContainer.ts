@@ -12,6 +12,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete } from '@fluentui/keyboard-keys';
+import { reportToastStatus_unstable } from '@fluentui/react-toast';
 import type { ToastPoliteness, ToastStatus } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { usePausableTimer } from './usePausableTimer';
@@ -29,11 +30,12 @@ const intentPolitenessMap: Record<NonNullable<ToastContainerProps['intent']>, To
 export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTMLElement>): ToastContainerState => {
   const {
     visible,
+    queued,
     children,
     close: closeProp,
     remove,
     updateId,
-    onStatusChange,
+    onStatusChange: _onStatusChange,
     data,
     timeout = -1,
     intent = 'info',
@@ -67,7 +69,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     closeProp();
   });
 
-  const reportStatus = useEventCallback((status: ToastStatus) => onStatusChange?.(null, { status, ...props }));
+  const reportStatus = useEventCallback((status: ToastStatus) => reportToastStatus_unstable(props, status));
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => {
     if (imperativePauseRef.current || hoverPauseRef.current || windowBlurPauseRef.current) {
@@ -175,17 +177,21 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   // Queued toasts must not count down before they are shown.
   usePausableTimer({ timeout, running: running && visible, onTimeout: close, resetKey: updateId });
 
-  // Queued toasts mount before they are visible; only a toast that was shown can be dismissed and removed.
-  const wasVisibleRef = React.useRef(false);
+  const removedToastRef = React.useRef<{ toastId: string; order: number } | null>(null);
   React.useEffect(() => {
     if (visible) {
-      wasVisibleRef.current = true;
-    } else if (wasVisibleRef.current) {
-      wasVisibleRef.current = false;
-      reportStatus('dismissed');
+      removedToastRef.current = null;
+    } else if (
+      !queued &&
+      (!removedToastRef.current ||
+        removedToastRef.current.toastId !== props.toastId ||
+        removedToastRef.current.order !== props.order)
+    ) {
+      removedToastRef.current = { toastId: props.toastId, order: props.order };
       remove();
+      reportStatus('dismissed');
     }
-  }, [visible, remove, reportStatus]);
+  }, [visible, queued, props.toastId, props.order, remove, reportStatus]);
 
   React.useEffect(() => {
     return () => {

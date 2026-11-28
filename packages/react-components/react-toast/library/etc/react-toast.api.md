@@ -39,6 +39,9 @@ export const renderToastTitle_unstable: (state: ToastTitleState) => JSXElement;
 export const renderToastTrigger_unstable: (state: ToastTriggerState) => JSXElement | null;
 
 // @public
+export const reportToastStatus_unstable: (toast: ToastData, status: ToastStatus) => void;
+
+// @public
 export const Toast: ForwardRefComponent<ToastProps>;
 
 // @public (undocumented)
@@ -110,6 +113,7 @@ export type ToastContainerContextValue = {
 // @public
 export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> & ToastData & {
     visible: boolean;
+    queued?: boolean;
     announce: ToastAnnounce;
     intent: ToastIntent | undefined;
     tryRestoreFocus: () => void;
@@ -373,11 +377,14 @@ export function useToastController(toasterId?: ToasterId): {
 // @public (undocumented)
 export function useToaster<TElement extends HTMLElement = HTMLDivElement>(options?: Partial<ToasterOptions>): {
     isToastVisible: (toastId: ToastId) => boolean;
+    queuedToastIds: ReadonlySet<ToastId>;
     toastsToRender: Map<ToastPosition, ToastData[]>;
     pauseAllToasts: () => void;
     playAllToasts: () => void;
     tryRestoreFocus: () => void;
-    closeAllToasts: () => void;
+    closeAllToasts: (options?: {
+        immediate?: boolean;
+    }) => void;
 };
 
 // @public

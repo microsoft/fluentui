@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve queued toast ordering and dismissal lifecycle",
+  "packageName": "@fluentui/react-toast",
+  "email": "dmytrokirpa@microsoft.com"
+}

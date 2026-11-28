@@ -120,6 +120,30 @@ describe('Toast', () => {
       .should('not.exist');
   });
 
+  it('should promote a queued toast when the first is dismissed before rendering', () => {
+    const Example = () => {
+      const { dispatchToast, dismissToast } = useToastController();
+      const makeToasts = () => {
+        dispatchToast(<Toast>First toast</Toast>, { toastId: 'first', timeout: -1 });
+        dispatchToast(<Toast>Second toast</Toast>, { toastId: 'second', timeout: -1 });
+        dismissToast('first');
+        dispatchToast(<Toast>Third toast</Toast>, { toastId: 'third', timeout: -1 });
+      };
+
+      return (
+        <>
+          <button onClick={makeToasts}>Make toasts</button>
+          <Toaster limit={1} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('button').click();
+    cy.contains(`.${toastClassNames.root}`, 'Second toast').should('be.visible');
+    cy.contains(`.${toastClassNames.root}`, 'Third toast').should('not.exist');
+  });
+
   it('should play and pause toast', () => {
     const Example = () => {
       const toastId = 'foo';

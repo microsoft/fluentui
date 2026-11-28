@@ -6,6 +6,7 @@ import type {
   ToastId,
   ToastImperativeRef,
   ToastOptions,
+  ToastStatus,
   UpdateToastEventDetail,
 } from '../types';
 
@@ -32,6 +33,78 @@ const defaulToastOptions: Pick<
 
 // Multiple toasts can be dispatched in a single tick, use counter to prevent collisions
 let counter = 0;
+const dismissalStates = new WeakMap<
+  Toast['imperativeRef'],
+  { status: 'open' | 'pending' | 'reported'; toast: Toast; pendingUnmounts: Toast[] }
+>();
+
+const getToastDismissal = (toast: Toast) => {
+  const dismissal = dismissalStates.get(toast.imperativeRef);
+  if (
+    !dismissal ||
+    dismissal.toast.close !== toast.close ||
+    dismissal.toast.remove !== toast.remove ||
+    dismissal.toast.toastId !== toast.toastId ||
+    dismissal.toast.order !== toast.order
+  ) {
+    return undefined;
+  }
+  return dismissal;
+};
+
+export const runToastCallbacks = (callbacks: Array<() => void>, errorMessage: string): void => {
+  const errors: unknown[] = [];
+  callbacks.forEach(callback => {
+    try {
+      callback();
+    } catch (error) {
+      errors.push(error);
+    }
+  });
+  if (errors.length === 1) {
+    throw errors[0];
+  }
+  if (errors.length > 1) {
+    throw Object.assign(new Error(errorMessage), { errors });
+  }
+};
+
+const markToastDismissalPending = (toast: Toast): void => {
+  const dismissal = getToastDismissal(toast);
+  if (dismissal?.status === 'open') {
+    dismissal.status = 'pending';
+  }
+};
+
+/** Reports a toast lifecycle status, preserving dismissal ordering for managed toasts. */
+export const reportToastStatus = (toast: Toast, status: ToastStatus): void => {
+  const dismissal = getToastDismissal(toast);
+  if (status === 'unmounted' && dismissal?.status === 'pending') {
+    // Let the pending dismissal run outside the unmount commit before reporting unmount.
+    dismissal.pendingUnmounts.push(toast);
+    return;
+  }
+
+  if (status === 'dismissed' && dismissal) {
+    if (dismissal.status === 'reported') {
+      return;
+    }
+    dismissal.status = 'reported';
+    const pendingUnmounts = dismissal.pendingUnmounts.splice(0);
+    runToastCallbacks(
+      [
+        () => toast.onStatusChange?.(null, { ...toast, status }),
+        ...pendingUnmounts.map(
+          unmounted => () => unmounted.onStatusChange?.(null, { ...unmounted, status: 'unmounted' }),
+        ),
+      ],
+      'Multiple errors occurred while reporting toast status',
+    );
+    return;
+  }
+
+  toast.onStatusChange?.(null, { ...toast, status });
+};
 
 /**
  * Toast are managed outside of the react lifecycle because they can be
@@ -42,7 +115,9 @@ export function createToaster(options: Partial<ToasterOptions>): {
   buildToast: (toastOptions: Partial<ToastOptions> & { toastId: ToastId }, onUpdate: () => void) => void;
   dismissAllToasts: () => void;
   dismissToast: (toastId: ToastId) => void;
+  getQueuedToastIds: () => ToastId[];
   isToastVisible: (toastId: ToastId) => boolean;
+  takeAllToasts: () => Toast[];
   updateToast: (options: UpdateToastEventDetail) => void;
   visibleToasts: Set<ToastId>;
   toasts: Map<ToastId, Toast>;
@@ -79,8 +154,15 @@ export function createToaster(options: Partial<ToasterOptions>): {
       return;
     }
 
+    const { close, remove, updateId, order, imperativeRef, priority } = toastToUpdate;
     Object.assign(toastToUpdate, toastOptions);
-    toastToUpdate.updateId++;
+    Object.assign(toastToUpdate, { close, remove, updateId: updateId + 1, order, imperativeRef });
+
+    if (toastToUpdate.priority !== priority && queue.contains(toastId)) {
+      const queuedToastIds = queue.all();
+      queue.clear();
+      queuedToastIds.forEach(queue.enqueue);
+    }
   };
 
   /**
@@ -98,6 +180,15 @@ export function createToaster(options: Partial<ToasterOptions>): {
     queue.clear();
   };
 
+  const takeAllToasts = () => {
+    const activeToasts = Array.from(toasts.values());
+    activeToasts.forEach(markToastDismissalPending);
+    toasts.clear();
+    visibleToasts.clear();
+    queue.clear();
+    return activeToasts;
+  };
+
   /**
    * @param toastOptions user configured options
    * @param onUpdate Some toast methods can result in UI changes (i.e. close) use this to dispatch callbacks
@@ -111,24 +202,28 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
     const close = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      if (!toast || toast.close !== close) {
         return;
       }
 
       visibleToasts.delete(toastId);
-      onUpdate();
-      toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+      markToastDismissalPending(toast);
+      runToastCallbacks(
+        [onUpdate, () => reportToastStatus(toast, 'dismissed')],
+        'Multiple errors occurred while closing a toast',
+      );
     };
 
     const remove = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      if (!toast || toast.remove !== remove) {
         return;
       }
 
+      markToastDismissalPending(toast);
       toasts.delete(toastId);
 
-      if (visibleToasts.size < limit && queue.peek()) {
+      if (visibleToasts.size < limit && queue.size() > 0) {
         const nextToast = toasts.get(queue.dequeue());
         if (!nextToast) {
           return;
@@ -137,9 +232,23 @@ export function createToaster(options: Partial<ToasterOptions>): {
         visibleToasts.add(nextToast.toastId);
       }
 
-      onUpdate();
+      runToastCallbacks(
+        [
+          onUpdate,
+          () => {
+            const dismissal = getToastDismissal(toast);
+            const unmounted = dismissal?.pendingUnmounts[0];
+            if (dismissal?.status === 'pending' && unmounted) {
+              reportToastStatus(unmounted, 'dismissed');
+            }
+          },
+        ],
+        'Multiple errors occurred while removing a toast',
+      );
     };
 
+    const order = counter++;
+    const imperativeRef = React.createRef<ToastImperativeRef>();
     const toast: Toast = {
       ...defaulToastOptions,
       close,
@@ -148,17 +257,23 @@ export function createToaster(options: Partial<ToasterOptions>): {
       content,
       updateId: 0,
       toasterId,
-      order: counter++,
+      order,
       data: {},
-      imperativeRef: React.createRef<ToastImperativeRef>(),
+      imperativeRef,
     };
 
     assignDefined(toast, options);
     assignDefined(toast, toastOptions);
+    Object.assign(toast, { close, remove, updateId: 0, order, imperativeRef });
 
+    dismissalStates.set(imperativeRef, { status: 'open', toast, pendingUnmounts: [] });
     toasts.set(toastId, toast);
-    toast.onStatusChange?.(null, { status: 'queued', ...toast });
-    if (visibleToasts.size >= limit) {
+    toast.onStatusChange?.(null, { ...toast, status: 'queued' });
+    if (toasts.get(toastId) !== toast) {
+      return;
+    }
+
+    if (visibleToasts.size >= limit || queue.size() > 0) {
       queue.enqueue(toastId);
     } else {
       visibleToasts.add(toastId);
@@ -169,7 +284,9 @@ export function createToaster(options: Partial<ToasterOptions>): {
     buildToast,
     dismissAllToasts,
     dismissToast,
+    getQueuedToastIds: queue.all,
     isToastVisible,
+    takeAllToasts,
     updateToast,
     visibleToasts,
     toasts,
