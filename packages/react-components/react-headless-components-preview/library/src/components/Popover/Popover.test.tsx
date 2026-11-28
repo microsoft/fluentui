@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
@@ -570,5 +570,66 @@ describe('Popover', () => {
 
     rerender(<Example open={false} />);
     expect(queryByTestId('custom')).not.toBeInTheDocument();
+  });
+
+  it('persists the mouseleave event before the hover delay so React < 17 does not pool it', () => {
+    jest.useFakeTimers();
+    try {
+      const persist = jest.fn();
+      const { getByText } = render(
+        <Popover openOnHover mouseLeaveDelay={100}>
+          <PopoverTrigger>
+            <button
+              onMouseLeave={e => {
+                // Runs before the trigger's own handler, on the same synthetic event.
+                const original = e.persist.bind(e);
+                e.persist = () => {
+                  persist();
+                  original();
+                };
+              }}
+            >
+              Trigger
+            </button>
+          </PopoverTrigger>
+          <PopoverSurface>Content</PopoverSurface>
+        </Popover>,
+      );
+
+      fireEvent.mouseEnter(getByText('Trigger'));
+      fireEvent.mouseLeave(getByText('Trigger'));
+
+      // Persisting must happen synchronously, before the delayed close reads the event.
+      expect(persist).toHaveBeenCalledTimes(1);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('reports the mouseleave event type after the hover delay', () => {
+    jest.useFakeTimers();
+    try {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(
+        <Popover openOnHover mouseLeaveDelay={100} onOpenChange={onOpenChange}>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>Content</PopoverSurface>
+        </Popover>,
+      );
+
+      fireEvent.mouseEnter(getByText('Trigger'));
+      fireEvent.mouseLeave(getByText('Trigger'));
+      act(() => {
+        jest.advanceTimersByTime(100);
+      });
+
+      const lastData = onOpenChange.mock.calls[onOpenChange.mock.calls.length - 1][1];
+      expect(lastData.type).toBe('mouseleave');
+      expect(lastData.open).toBe(false);
+    } finally {
+      jest.useRealTimers();
+    }
   });
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from './PopoverTrigger';
 import { PopoverSurface } from '../PopoverSurface/PopoverSurface';
@@ -107,5 +107,61 @@ describe('PopoverTrigger', () => {
     );
 
     expect(getByText('Trigger')).not.toHaveAttribute('data-open');
+  });
+
+  describe('openOnContext', () => {
+    const renderContext = (onOpenChange: jest.Mock) =>
+      render(
+        <Popover openOnContext onOpenChange={onOpenChange}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>Content</PopoverSurface>
+        </Popover>,
+      );
+
+    it('opens immediately from a keyboard contextmenu', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = renderContext(onOpenChange);
+
+      fireEvent.contextMenu(getByText('Trigger'), { button: 0 });
+
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+    });
+
+    it('waits for pointerup after a right-click contextmenu', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = renderContext(onOpenChange);
+
+      fireEvent.contextMenu(getByText('Trigger'), { button: 2 });
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      fireEvent.pointerUp(document);
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+    });
+
+    it('keeps at most one pending pointerup listener', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = renderContext(onOpenChange);
+
+      fireEvent.contextMenu(getByText('Trigger'), { button: 2 });
+      fireEvent.contextMenu(getByText('Trigger'), { button: 2 });
+      fireEvent.pointerUp(document);
+
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('drops the pending pointerup listener on unmount', () => {
+      const onOpenChange = jest.fn();
+      const { getByText, unmount } = renderContext(onOpenChange);
+
+      fireEvent.contextMenu(getByText('Trigger'), { button: 2 });
+      unmount();
+      fireEvent.pointerUp(document);
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
   });
 });
