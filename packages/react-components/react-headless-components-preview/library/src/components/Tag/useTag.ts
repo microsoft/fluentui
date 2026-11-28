@@ -17,6 +17,10 @@ export const useTag = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLBut
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   state.root['data-dismissible'] = toDataAttributeValue(state.dismissible);
   state.root['data-selected'] = toDataAttributeValue(state.selected);
+
+  if (state.dismissIcon) {
+    state.dismissIcon['aria-hidden'] ??= true;
+  }
   /* eslint-enable react-hooks/immutability */
 
   return state;

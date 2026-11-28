@@ -38,6 +38,13 @@ describe('Input', () => {
     expect(root).toHaveAttribute('data-disabled');
   });
 
+  it('reflects input-slot readonly state on the root', () => {
+    const { container, rerender } = render(<Input input={{ readOnly: true }} />);
+    expect(container.firstElementChild).toHaveAttribute('data-readonly');
+    rerender(<Input input={{ readOnly: false }} />);
+    expect(container.firstElementChild).not.toHaveAttribute('data-readonly');
+  });
+
   it('renders with data-readonly when read-only', () => {
     const { container } = render(<Input readOnly />);
 

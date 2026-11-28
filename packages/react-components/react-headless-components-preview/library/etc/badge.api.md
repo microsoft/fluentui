@@ -29,6 +29,7 @@ export { BadgeSlots as PresenceBadgeSlots }
 export type BadgeState = BadgeBaseState & {
     root: {
         'data-icon-position'?: 'before' | 'after';
+        'data-icon-only'?: string;
     };
 };
 

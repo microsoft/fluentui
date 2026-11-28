@@ -42,6 +42,10 @@ export { BreadcrumbButtonSlots }
 export type BreadcrumbButtonState = BreadcrumbButtonBaseState & {
     root: {
         'data-current'?: string;
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-icon-position'?: BreadcrumbButtonBaseState['iconPosition'];
     };
 };
 

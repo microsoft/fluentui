@@ -30,7 +30,7 @@ export { FieldSlots }
 export type FieldState = FieldBaseState & {
     root: {
         'data-required'?: string;
-        'data-validate-state'?: FieldBaseState['validationState'];
+        'data-validation-state'?: FieldBaseState['validationState'];
     };
 };
 

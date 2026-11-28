@@ -16,9 +16,15 @@ export const useBreadcrumbButton = (
 ): BreadcrumbButtonState => {
   const state: BreadcrumbButtonState = useBreadcrumbButtonBase_unstable(props, ref);
 
-  // Set data attribute for current state to simplify styling of the active breadcrumb item.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root['data-current'] = toDataAttributeValue(state.current);
-
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      'data-current': toDataAttributeValue(state.current),
+      'data-disabled': toDataAttributeValue(state.disabled),
+      'data-disabled-focusable': toDataAttributeValue(state.disabledFocusable),
+      'data-icon-only': toDataAttributeValue(state.iconOnly),
+      'data-icon-position': state.icon ? state.iconPosition : undefined,
+    },
+  };
 };

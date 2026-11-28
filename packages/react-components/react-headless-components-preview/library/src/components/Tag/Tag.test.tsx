@@ -32,4 +32,14 @@ describe('Tag', () => {
     const tag = result.getByText('Selected tag');
     expect(tag.closest('[data-selected]')).not.toBeNull();
   });
+
+  it('hides decorative dismiss content from the button name', () => {
+    const { getByRole, getByText } = render(
+      <Tag dismissible dismissIcon="Dismiss icon">
+        Tag
+      </Tag>,
+    );
+    expect(getByRole('button', { name: 'Tag' })).toBeInTheDocument();
+    expect(getByText('Dismiss icon')).toHaveAttribute('aria-hidden', 'true');
+  });
 });

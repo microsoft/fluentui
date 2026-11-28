@@ -17,6 +17,9 @@ export type FieldState = FieldBaseState & {
      */
     'data-required'?: string;
 
-    'data-validate-state'?: FieldBaseState['validationState'];
+    /**
+     * Data attribute reflecting the resolved validation state: 'error', 'warning', 'success', or 'none'.
+     */
+    'data-validation-state'?: FieldBaseState['validationState'];
   };
 };

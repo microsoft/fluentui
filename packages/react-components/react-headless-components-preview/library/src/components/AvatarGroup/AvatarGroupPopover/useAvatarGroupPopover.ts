@@ -7,6 +7,7 @@ import type { AvatarGroupPopoverBaseProps } from '@fluentui/react-avatar';
 import { PopoverSurface } from '../../Popover/PopoverSurface/PopoverSurface';
 import { Tooltip } from '../../Tooltip/Tooltip';
 import type { AvatarGroupPopoverProps, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an AvatarGroupPopover component.
@@ -60,7 +61,10 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
       content: 'ul',
       popoverSurface: PopoverSurface,
     },
-    triggerButton,
+    triggerButton: {
+      ...triggerButton,
+      'data-open': toDataAttributeValue(popoverOpen),
+    },
     tooltip: slot.always(props.tooltip, {
       defaultProps: baseState.tooltip,
       elementType: Tooltip,
