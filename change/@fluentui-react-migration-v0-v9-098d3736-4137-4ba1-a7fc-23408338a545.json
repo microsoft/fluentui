@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add experimental css-modules subpath export",
+  "packageName": "@fluentui/react-migration-v0-v9",
+  "email": "vgenaev@gmail.com"
+}

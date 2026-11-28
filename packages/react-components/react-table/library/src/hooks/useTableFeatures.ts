@@ -11,7 +11,7 @@ import type {
 } from './types';
 import { defaultTableSelectionState } from './useTableSelection';
 import { defaultTableSortState } from './useTableSort';
-import { defaultColumnSizingState } from './useTableColumnSizing';
+import { defaultColumnSizingState } from './defaultColumnSizingState';
 
 const defaultRowEnhancer: RowEnhancer<unknown, TableRowData<unknown>> = row => row;
 

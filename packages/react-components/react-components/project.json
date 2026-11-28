@@ -8,7 +8,8 @@
   "metadata": {
     "exportMap": {
       "root": true,
-      "subpathEntryPoints": ["src/unstable/index.ts"]
+      "subpathEntryPoints": ["src/unstable/index.ts"],
+      "cssModules": true
     },
     "bundleSizeFixtures": {
       "BaseHooks.fixture.js": {

@@ -100,6 +100,16 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./css-modules": {
+      "import": {
+        "types": "./dist/css-modules.d.ts",
+        "default": "./lib/css-modules/index.js"
+      },
+      "require": {
+        "types": "./dist/css-modules.d.cts",
+        "default": "./lib-commonjs/css-modules/index.cjs"
+      }
+    },
     "./unstable": {
       "import": {
         "types": "./dist/unstable.d.ts",

@@ -1,7 +1,13 @@
 import { type ProjectConfiguration, type Tree, formatFiles, getProjects, readJson, updateJson } from '@nx/devkit';
 import { isEqual } from 'lodash';
 
-import { buildEntryPointFields, buildExportMap, readExportMapConfig, resolveEntryPoints } from './lib/export-map';
+import {
+  buildEntryPointFields,
+  buildExportMap,
+  readExportMapConfig,
+  resolveEntryPoints,
+  withCssModulesEntryPoint,
+} from './lib/export-map';
 import type { PackageJson } from '../../types';
 
 const REQUIRED_TAGS = ['vNext', 'platform:web'];
@@ -52,7 +58,11 @@ async function syncProject(tree: Tree, projectConfig: ProjectConfiguration): Pro
   const packageJson = readJson<PackageJson>(tree, packageJsonPath);
 
   const config = readExportMapConfig(projectConfig);
-  const entryPoints = await resolveEntryPoints(tree, projectConfig.root, config);
+  const entryPoints = withCssModulesEntryPoint(
+    await resolveEntryPoints(tree, projectConfig.root, config),
+    packageJson,
+    config,
+  );
 
   if (entryPoints.length === 0) {
     return false;

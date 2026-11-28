@@ -1,0 +1,112 @@
+.buttonRow {
+  column-gap: var(--spacingHorizontalM);
+  display: flex;
+  margin-bottom: var(--spacingVerticalL);
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.itemButton {
+  background-color: var(--colorTransparentBackground);
+  border: none;
+  border-radius: var(--borderRadiusMedium);
+  color: var(--colorNeutralForeground3);
+  font-family: inherit;
+  font-size: var(--fontSizeBase200);
+  height: calc(2 * var(--spacingHorizontalXL));
+  line-height: calc(2 * var(--spacingHorizontalXL));
+  min-height: calc(2 * var(--spacingHorizontalXL));
+  min-width: calc(2 * var(--spacingHorizontalXL));
+  overflow: visible;
+  padding: 0;
+  width: calc(2 * var(--spacingHorizontalXL));
+  font-weight: var(--fontWeightRegular);
+  &:hover {
+    background-color: var(--colorBrandBackgroundInvertedHover);
+    color: var(--colorNeutralForeground1Static);
+    cursor: pointer;
+    outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+  &:hover:active {
+    background-color: var(--colorBrandBackgroundInvertedPressed);
+  }
+}
+
+.highlightCurrent {
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  font-weight: var(--fontWeightSemibold);
+  &:hover,
+  &:hover:active {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+
+.highlightSelected {
+  background-color: var(--colorBrandBackgroundInvertedSelected);
+  color: var(--colorNeutralForeground1Static);
+  font-weight: var(--fontWeightSemibold);
+  &:hover {
+    background-color: var(--colorBrandBackgroundInvertedSelected);
+    color: var(--colorNeutralForeground1Static);
+  }
+  &:hover:active {
+    background-color: var(--colorBrandBackgroundInvertedPressed);
+  }
+}
+
+.disabled {
+  &,
+  &:disabled,
+  & button {
+    color: var(--colorNeutralForegroundDisabled);
+    pointer-events: none;
+  }
+}
+
+/* Forced colors rules come last, after the state rules they override: Griffel sorted @media rules after all
+   other rules, so they won over equal-specificity :hover/:active rules. */
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .itemButton:not(html):hover {
+    background-color: Window;
+    color: WindowText;
+    forced-color-adjust: none;
+    outline: var(--strokeWidthThin) solid Highlight;
+  }
+  .itemButton:not(html):hover:active {
+    background-color: Window;
+    color: Highlight;
+    forced-color-adjust: none;
+  }
+  .highlightCurrent:not(html) {
+    background-color: WindowText;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .highlightCurrent:not(html):hover,
+  .highlightCurrent:not(html):hover:active {
+    background-color: WindowText;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .highlightSelected:not(html) {
+    background-color: Highlight;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .highlightSelected:not(html):hover {
+    background-color: Highlight;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .disabled:not(html) {
+    color: GrayText;
+    forced-color-adjust: none;
+  }
+}

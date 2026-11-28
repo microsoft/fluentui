@@ -2,6 +2,7 @@
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 
 /**
@@ -25,8 +26,8 @@ const useStyles = makeStyles({
 
   logo: {
     position: 'absolute',
-    bottom: '12px',
-    left: '12px',
+    bottom: tokens.spacingVerticalM,
+    left: tokens.spacingHorizontalM,
     width: '32px',
     height: '32px',
   },

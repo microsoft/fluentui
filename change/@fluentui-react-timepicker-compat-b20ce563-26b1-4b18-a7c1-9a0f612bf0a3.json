@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add experimental css-modules subpath export",
+  "packageName": "@fluentui/react-timepicker-compat",
+  "email": "vgenaev@gmail.com"
+}

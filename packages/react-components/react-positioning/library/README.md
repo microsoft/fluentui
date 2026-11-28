@@ -2,6 +2,12 @@
 
 React utilities for positioning elements in the DOM, powered by Fluent UI's positioning engine.
 
+## CSS arrow asset
+
+The opt-in `@fluentui/react-positioning/arrow.module.css` export requires a CSS
+Modules loader. It is excluded from Are the Types Wrong's JavaScript entry-point
+checks in `.attw.json`; the package's JavaScript exports remain checked.
+
 ## Usage
 
 ```tsx

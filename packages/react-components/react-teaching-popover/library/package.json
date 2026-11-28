@@ -5,7 +5,9 @@
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "*.md",
     "dist/*.d.ts",
@@ -31,6 +33,7 @@
     "@fluentui/react-utilities": "^9.27.1",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1",
     "use-sync-external-store": "^1.4.0"
   },
   "peerDependencies": {
@@ -51,6 +54,16 @@
       "require": {
         "types": "./dist/index.d.cts",
         "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./css-modules": {
+      "import": {
+        "types": "./dist/css-modules.d.ts",
+        "default": "./lib/css-modules/index.js"
+      },
+      "require": {
+        "types": "./dist/css-modules.d.cts",
+        "default": "./lib-commonjs/css-modules/index.cjs"
       }
     },
     "./package.json": "./package.json"

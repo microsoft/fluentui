@@ -1,7 +1,9 @@
 import { type ExecutorContext, logger, readJsonFile } from '@nx/devkit';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 
 import { type BuildExecutorSchema } from '../schema';
+import { type PackageJson } from '../../../types';
+import { hasCssSideEffects } from '../../../css-modules';
 
 type Tasks = () => Promise<boolean>;
 
@@ -59,8 +61,16 @@ export function normalizeOptions(schema: BuildExecutorSchema, context: ExecutorC
   // `isEsmPackage` is the single source of truth consumed by every ESM-first postprocessing step:
   // `cjsRenameTransforms` (renames `lib-commonjs/*.js` -> `*.cjs` inline during the SWC compile) and
   // `copyCjsTypes` (copies rolled `dist/*.d.ts` -> `*.d.cts` after the build) - see `./cjs-extension`.
-  const pkgJson = readJsonFile<{ type?: string }>(join(absoluteProjectRoot, 'package.json'));
+  const pkgJson = readJsonFile<PackageJson>(join(absoluteProjectRoot, 'package.json'));
   const isEsmPackage = Boolean(schema.__esmFirst) || pkgJson.type === 'module';
+  const cssAssets =
+    project.tags?.includes('vNext') && hasCssSideEffects(pkgJson)
+      ? schema.moduleOutput.map(({ outputPath }) => ({
+          input: resolvedSourceRoot,
+          glob: '**/*.css',
+          output: relative(absoluteOutputPathRoot, join(absoluteProjectRoot, outputPath)),
+        }))
+      : [];
 
   // The `.cjs` rename only rewrites *relative* `require()` specifiers that already carry an extension
   // (e.g. `require("./x.js")` -> `require("./x.cjs")`). Extensionless requires (`require("./x")`) are
@@ -83,6 +93,7 @@ export function normalizeOptions(schema: BuildExecutorSchema, context: ExecutorC
   return {
     ...defaults,
     ...schema,
+    assets: [...(schema.assets ?? []), ...cssAssets],
     project,
     sourceRoot: resolvedSourceRoot,
     absoluteSourceRoot,

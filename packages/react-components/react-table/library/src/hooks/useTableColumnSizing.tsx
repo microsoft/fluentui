@@ -1,20 +1,12 @@
 'use client';
 
 import { TableResizeHandle } from '../TableResizeHandle';
-import type { TableColumnSizingState, TableFeaturesState, UseTableColumnSizingParams } from './types';
+import type { TableFeaturesState, UseTableColumnSizingParams } from './types';
 
 import { useKeyboardResizing } from './useKeyboardResizing';
 import { useColumnResize, useColumnSizingFeature } from './useColumnSizingFeature';
 
-export const defaultColumnSizingState: TableColumnSizingState = {
-  getColumnWidths: () => [],
-  getOnMouseDown: () => () => null,
-  setColumnWidth: () => null,
-  getTableProps: () => ({}),
-  getTableHeaderCellProps: () => ({ style: {}, columnId: '' }),
-  getTableCellProps: () => ({ style: {}, columnId: '' }),
-  enableKeyboardMode: () => () => null,
-};
+export { defaultColumnSizingState } from './defaultColumnSizingState';
 
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
   // False positive, these plugin hooks are intended to be run on every render
