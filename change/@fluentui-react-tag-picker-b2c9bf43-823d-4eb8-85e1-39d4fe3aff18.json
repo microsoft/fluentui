@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix TagPickerControl aside measurement frame cleanup on detach and React StrictMode replay.",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "paulmardling@microsoft.com"
+}

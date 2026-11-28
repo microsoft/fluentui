@@ -50,7 +50,22 @@ export const useTagPickerControlBase_unstable = (
 
   const { targetDocument } = useFluent_unstable();
   const tagPickerId = useId('tagPicker-');
-  const rafIdRef = React.useRef<number | null>(null);
+  const pendingFrameRef = React.useRef<{ id: number; targetWindow: Window } | null>(null);
+  const cancelPendingFrame = React.useCallback(() => {
+    const frame = pendingFrameRef.current;
+    if (frame !== null) {
+      frame.targetWindow.cancelAnimationFrame(frame.id);
+      pendingFrameRef.current = null;
+    }
+  }, []);
+  const cancelOnDetach = React.useCallback(
+    (element: HTMLSpanElement | null) => {
+      if (element === null) {
+        cancelPendingFrame();
+      }
+    },
+    [cancelPendingFrame],
+  );
 
   const innerRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLSpanElement>(null);
@@ -82,9 +97,17 @@ export const useTagPickerControlBase_unstable = (
     const targetWindow = targetDocument?.defaultView;
 
     if (targetWindow) {
-      rafIdRef.current = targetWindow.requestAnimationFrame(() => {
-        innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
-      });
+      cancelPendingFrame();
+      const frame = {
+        targetWindow,
+        id: targetWindow.requestAnimationFrame(() => {
+          if (pendingFrameRef.current === frame) {
+            pendingFrameRef.current = null;
+            innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
+          }
+        }),
+      };
+      pendingFrameRef.current = frame;
     }
   });
   const aside = slot.optional<ExtractSlotProps<Slot<'span'>>>(undefined, {
@@ -94,7 +117,8 @@ export const useTagPickerControlBase_unstable = (
       ref: observerRef,
     },
   });
-  const mergedAsideRefs = useMergedRefs(asideRef, aside?.ref);
+  // Ref detach tracks DOM removal without cancelling the initial measurement during effect replay.
+  const mergedAsideRefs = useMergedRefs(asideRef, aside?.ref, cancelOnDetach);
   if (aside) {
     aside.ref = mergedAsideRefs;
   }
@@ -192,16 +216,6 @@ export const useTagPickerControlBase_unstable = (
   if (state.expandIcon) {
     state.expandIcon.ref = expandIconLabelMergeRef;
   }
-
-  React.useEffect(() => {
-    const targetWindow = targetDocument?.defaultView;
-
-    return () => {
-      if (rafIdRef.current && targetWindow) {
-        targetWindow.cancelAnimationFrame(rafIdRef.current);
-      }
-    };
-  }, [targetDocument]);
 
   return state;
 };
