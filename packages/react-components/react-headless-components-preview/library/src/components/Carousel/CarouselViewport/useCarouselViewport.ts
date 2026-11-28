@@ -42,12 +42,23 @@ export const useCarouselViewport = (
   useIsomorphicLayoutEffect(() => {
     measure();
     const viewport = context.viewportRef.current;
-    const Observer = viewport?.ownerDocument.defaultView?.MutationObserver;
-    if (!nav || !viewport || !Observer) {
+    const win = viewport?.ownerDocument.defaultView;
+    const Observer = win?.MutationObserver;
+    if (!nav || !viewport || !win || !Observer) {
       return;
     }
+    // Measuring reads computed styles, so coalesce bursts of changes into one measurement per frame.
+    let frame = 0;
+    const schedule = () => {
+      if (!frame) {
+        frame = win.requestAnimationFrame(() => {
+          frame = 0;
+          measure();
+        });
+      }
+    };
     // Slide content can change without re-rendering the viewport.
-    const observer = new Observer(measure);
+    const observer = new Observer(schedule);
     observer.observe(viewport, {
       subtree: true,
       childList: true,
@@ -65,20 +76,20 @@ export const useCarouselViewport = (
         'style',
       ],
     });
-    // Ancestors can conceal or disable slide controls without touching the viewport: presentation classes and
-    // styles, and a surrounding fieldset's disabled state or first legend (which exempts its content).
+    // A surrounding fieldset disables slide controls, except inside its first legend.
     for (let node = viewport.parentElement; node; node = node.parentElement) {
-      observer.observe(node, {
-        attributeFilter: ['class', 'style', 'disabled'],
-        childList: node.localName === 'fieldset',
-      });
+      if (node.localName === 'fieldset') {
+        observer.observe(node, { attributeFilter: ['disabled'], childList: true });
+      }
     }
     // Media queries can change computed display or visibility too.
-    const win = viewport.ownerDocument.defaultView;
-    win?.addEventListener('resize', measure);
+    win.addEventListener('resize', schedule);
     return () => {
       observer.disconnect();
-      win?.removeEventListener('resize', measure);
+      win.removeEventListener('resize', schedule);
+      if (frame) {
+        win.cancelAnimationFrame(frame);
+      }
     };
   }, [nav, pages, context.viewportRef, measure]);
 

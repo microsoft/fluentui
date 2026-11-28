@@ -30,6 +30,7 @@ export type {
   CarouselContextValue,
   CarouselContextValues,
   CarouselIndexChangeData,
+  CarouselName,
   CarouselNextProps,
   CarouselNextSlots,
   CarouselNextState,

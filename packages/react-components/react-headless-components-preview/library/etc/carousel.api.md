@@ -132,6 +132,13 @@ export type CarouselIndexChangeData = EventData<'select', React_2.SyntheticEvent
 };
 
 // @public
+export type CarouselName = {
+    'aria-label': string;
+} | {
+    'aria-labelledby': string;
+};
+
+// @public
 export const CarouselNav: ForwardRefComponent<CarouselNavProps>;
 
 // @public
@@ -181,8 +188,7 @@ export type CarouselPart = 'previous' | 'next' | 'nav' | 'autoplay';
 export const CarouselPrevious: ForwardRefComponent<CarouselDirectionButtonProps>;
 
 // @public (undocumented)
-export type CarouselProps = ComponentProps<CarouselSlots> & {
-    'aria-label': string;
+export type CarouselProps = ComponentProps<CarouselSlots> & CarouselName & {
     groupSize?: 1 | 2 | 3 | 4;
     activeIndex?: number;
     defaultActiveIndex?: number;

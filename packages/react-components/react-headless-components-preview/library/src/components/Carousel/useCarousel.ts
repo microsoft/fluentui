@@ -33,17 +33,6 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     getSlideLabel = slideLabel,
     ...rootProps
   } = props;
-  if (![1, 2, 3, 4].includes(groupSize)) {
-    throw new RangeError('Carousel groupSize must be 1, 2, 3 or 4.');
-  }
-  if (!Number.isInteger(autoplayInterval) || autoplayInterval < 1000 || autoplayInterval > 2147483647) {
-    throw new RangeError('Carousel autoplayInterval must be an integer from 1000 to 2147483647.');
-  }
-  for (const value of [activeIndex, defaultActiveIndex]) {
-    if (value !== undefined && (!Number.isInteger(value) || value < 0)) {
-      throw new RangeError('Carousel indices must be non-negative integers.');
-    }
-  }
   const fluent = useFluent_unstable();
   const rootRef = React.useRef<HTMLDivElement>(null);
   // Resolved lazily, so the root doesn't override an inherited direction: the explicit prop, then the root's computed

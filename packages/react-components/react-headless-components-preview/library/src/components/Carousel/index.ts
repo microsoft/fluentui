@@ -2,6 +2,7 @@ export { Carousel } from './Carousel';
 export type {
   CarouselContextValues,
   CarouselIndexChangeData,
+  CarouselName,
   CarouselProps,
   CarouselSlots,
   CarouselState,

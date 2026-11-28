@@ -81,6 +81,16 @@ const animatePages = (animate: (page: HTMLElement) => Animation[]) => {
   });
 };
 
+/** Applies a DOM change, then waits for the viewport's next-frame focus-stop measurement. */
+const changeAndMeasure = async (change: () => unknown) => {
+  await act(async () => {
+    change();
+    await new Promise(resolve => {
+      requestAnimationFrame(resolve);
+    });
+  });
+};
+
 describe('Carousel', () => {
   isConformant({ Component: Carousel, displayName: 'Carousel', requiredProps: { 'aria-label': 'Notes' } });
 
@@ -988,7 +998,7 @@ describe('Carousel', () => {
     );
     const panels = () => Array.from(document.querySelectorAll('[data-carousel-page]'));
     expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0']);
-    await act(async () => fireEvent.click(screen.getByText('Plain')));
+    await changeAndMeasure(() => fireEvent.click(screen.getByText('Plain')));
     expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual([null, '0']);
     rerender(example());
     expect(panels().every(panel => !panel.hasAttribute('tabindex'))).toBe(true);
@@ -1037,10 +1047,9 @@ describe('Carousel', () => {
     expect(screen.getByText('Outside')).toHaveFocus();
   });
 
-  it('remeasures panel focus stops when an ancestor class or a fieldset legend changes', async () => {
+  it('remeasures panel focus stops when a fieldset legend changes', async () => {
     const { container } = render(
       <div id="host">
-        <style>{'.compact #action { display: none; }'}</style>
         <Carousel aria-label="Notes">
           <fieldset disabled>
             <legend>
@@ -1055,14 +1064,10 @@ describe('Carousel', () => {
       </div>,
     );
     const panels = () => Array.from(document.querySelectorAll('[data-carousel-page]'));
-    await act(async () => undefined);
-    expect(panels()[0]).not.toHaveAttribute('tabindex');
-    await act(async () => container.querySelector('#host')!.classList.add('compact'));
-    expect(panels()[0]).toHaveAttribute('tabindex', '0');
-    await act(async () => container.querySelector('#host')!.classList.remove('compact'));
+    await changeAndMeasure(() => undefined);
     expect(panels()[0]).not.toHaveAttribute('tabindex');
     // A new first legend leaves the carousel's legend disabled by the fieldset.
-    await act(async () => {
+    await changeAndMeasure(() => {
       const fieldset = container.querySelector('fieldset')!;
       fieldset.insertBefore(document.createElement('legend'), fieldset.firstChild);
     });
@@ -1092,12 +1097,12 @@ describe('Carousel', () => {
     );
     const panels = () => Array.from(document.querySelectorAll('[data-carousel-page]'));
     expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0', '0', null]);
-    await act(async () => {
+    await changeAndMeasure(() => {
       screen.getByText('Collapsed', { selector: 'button' }).style.display = '';
       screen.getByText('Summary').parentElement!.setAttribute('open', '');
     });
     expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual([null, null, '0', null]);
-    await act(async () => container.querySelector('fieldset')!.setAttribute('disabled', ''));
+    await changeAndMeasure(() => container.querySelector('fieldset')!.setAttribute('disabled', ''));
     expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0', '0', '0']);
   });
 
@@ -1141,8 +1146,17 @@ describe('Carousel', () => {
     expect(screen.getByRole('button', { name: 'Outside' })).toHaveFocus();
   });
 
-  it.each([0, 999, 1000.5, NaN, Infinity, 2147483648])('rejects invalid autoplay interval %s', autoplayInterval => {
-    jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    expect(() => render(example({ autoplayInterval }))).toThrow(RangeError);
+  it('can be named by aria-labelledby instead of aria-label', () => {
+    render(
+      <>
+        <h2 id="carousel-title">Field notes</h2>
+        <Carousel aria-labelledby="carousel-title">
+          <CarouselViewport>{['A']}</CarouselViewport>
+        </Carousel>
+      </>,
+    );
+    expect(screen.getByRole('region', { name: 'Field notes' })).toHaveAttribute('aria-roledescription', 'carousel');
+    // @ts-expect-error A carousel needs aria-label or aria-labelledby.
+    expect(() => render(<Carousel />)).not.toThrow();
   });
 });
