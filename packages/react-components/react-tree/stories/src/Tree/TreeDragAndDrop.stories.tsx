@@ -1,10 +1,15 @@
 import * as React from 'react';
-import type { JSXElement, HeadlessFlatTreeItemProps, FlatTreeItemProps } from '@fluentui/react-components';
-import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
+import type { HeadlessFlatTreeItemProps, FlatTreeItemProps } from '@fluentui/react-tree';
+import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 
 import { DndContext, KeyboardSensor, PointerSensor, closestCenter, useSensor, useSensors } from '@dnd-kit/core';
 import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
-import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 type FlatItem = HeadlessFlatTreeItemProps & { layout: string };
@@ -30,20 +35,43 @@ const sortItems = (array: FlatItem[], from: number, to: number) => {
   return newArray;
 };
 
-const SortableTreeItem = ({ children, value, ...rest }: FlatTreeItemProps) => {
+const SortableTreeItem = ({ children, value, onKeyDown, ...rest }: FlatTreeItemProps) => {
   const { attributes, isDragging, listeners, setNodeRef, transform, transition } = useSortable({
     id: value as UniqueIdentifier,
+    attributes: { role: 'treeitem' },
   });
   const style = { transform: CSS.Transform.toString(transform), transition, zIndex: isDragging ? 1 : 0 };
 
   return (
-    <FlatTreeItem ref={setNodeRef} value={value} style={style} {...attributes} {...listeners} {...rest}>
+    <FlatTreeItem
+      ref={setNodeRef}
+      value={value}
+      style={style}
+      aria-describedby={attributes['aria-describedby']}
+      aria-roledescription={attributes['aria-roledescription']}
+      {...listeners}
+      {...rest}
+      onKeyDown={event => {
+        listeners?.onKeyDown?.(event);
+        onKeyDown?.(event);
+        const isTypeAhead =
+          event.key.length === 1 && /\w/.test(event.key) && !event.altKey && !event.ctrlKey && !event.metaKey;
+        if (
+          isDragging &&
+          (isTypeAhead ||
+            ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key))
+        ) {
+          // Prevent Tree navigation and activation, but let the document-level drag sensor receive the event.
+          event.preventDefault();
+        }
+      }}
+    >
       {children}
     </FlatTreeItem>
   );
 };
 
-export const DragAndDrop = (): JSXElement => {
+export const DragAndDrop = (): React.ReactElement => {
   const [items, setItems] = React.useState(flatTreeItems);
   const virtualTree = useHeadlessFlatTree_unstable(items, {
     defaultOpenItems: ['1'],
@@ -51,17 +79,20 @@ export const DragAndDrop = (): JSXElement => {
 
   const handleDragEnd = React.useCallback((event: DragEndEvent) => {
     const { active, over } = event;
-    if (active.id !== over?.id) {
+    if (over && active.id !== over.id) {
       setItems(prevItems => {
         const oldIndex = prevItems.findIndex(item => item.value === active.id);
-        const newIndex = prevItems.findIndex(item => item.value === over?.id);
+        const newIndex = prevItems.findIndex(item => item.value === over.id);
         return sortItems(prevItems, oldIndex, newIndex);
       });
     }
   }, []);
 
   const sortableItems = items.filter(item => item.parentValue).map(item => item.value);
-  const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor));
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
 
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
@@ -93,6 +124,8 @@ DragAndDrop.parameters = {
 In this example, the tree component is integrated with \`@dnd-kit\` to enable drag-and-drop behavior within the tree. A few key steps are involved to achieve this:
 
 **DndContext** and **SortableContext** from \`@dnd-kit\` set up the necessary environment for drag-and-drop throughout the tree. Following that, **SortableTreeItem** is a component that wraps \`TreeItem\`, leveraging the **useSortable** hook to add drag-and-drop capabilities. Lastly, the **handleDragEnd** function ensures items are rearranged correctly after dragging.
+
+To reorder with the keyboard, focus a sortable item and press Enter or Space to pick it up. Up and Down move it between siblings; Enter or Space drops it, and Escape cancels. The keyboard sensor uses \`sortableKeyboardCoordinates\` rather than free movement. While dragging, the item prevents Tree navigation (including Home, End and typeahead) and activation without stopping events from reaching the drag sensor. Normal Tree navigation resumes after dropping or cancelling. The integration preserves Tree's \`treeitem\` roles and roving tab index rather than forwarding the drag library's button roles and tab indices.
 
 By adopting this approach, users can easily drag and drop tree items, rearranging them as desired. The \`dnd-kit\` also supports virtualization. For an in-depth look and further customization options, check the [dnd-kit's documentation](https://dndkit.com/).`,
     },

@@ -6208,6 +6208,8 @@ __metadata:
 "@fluentui/react-tree-stories@workspace:packages/react-components/react-tree/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tree-stories@workspace:packages/react-components/react-tree/stories"
+  dependencies:
+    "@fluentui/scripts-cypress": "npm:*"
   languageName: unknown
   linkType: soft
 

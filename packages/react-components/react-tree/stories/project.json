@@ -4,5 +4,18 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-tree/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "e2e": {
+      "command": "yarn run -T cypress run --component",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": [
+        "default",
+        "{projectRoot}/cypress.config.ts",
+        { "externalDependencies": ["cypress", "@cypress/react"] }
+      ]
+    }
+  }
 }

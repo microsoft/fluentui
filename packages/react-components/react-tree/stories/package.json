@@ -1,5 +1,8 @@
 {
   "name": "@fluentui/react-tree-stories",
   "version": "0.0.0",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@fluentui/scripts-cypress": "*"
+  }
 }
