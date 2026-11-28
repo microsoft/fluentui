@@ -14,6 +14,14 @@ import { BaseCheckbox } from '../checkbox/checkbox.base.js';
  * @public
  */
 export class Radio extends BaseCheckbox {
+  /**
+   * The element identity. This static property should NOT be overridden by subclasses. It’s designed to provide an
+   * unambiguous name for the custom element and its subclass custom elements, regardless of their tag names.
+   * @readonly
+   * @internal
+   */
+  static readonly elementIdentity = 'radio';
+
   constructor() {
     super();
     this.elementInternals.role = 'radio';

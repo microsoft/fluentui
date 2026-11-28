@@ -13,6 +13,11 @@ export type {
 export type FieldState = FieldBaseState & {
   root: {
     /**
+     * Data attribute set when the field is required.
+     */
+    'data-required'?: string;
+
+    /**
      * Data attribute reflecting the resolved validation state: 'error', 'warning', 'success', or 'none'.
      */
     'data-validation-state'?: FieldBaseState['validationState'];

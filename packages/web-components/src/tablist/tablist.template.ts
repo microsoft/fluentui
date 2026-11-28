@@ -6,8 +6,6 @@ import type { Tablist } from './tablist.js';
  */
 export const template = html<Tablist>`
   <template
-    role="tablist"
-    focusgroup="tablist inline block"
     @click="${(x, c) => x.handleClick(c.event as PointerEvent)}"
     @focusin="${(x, c) => x.handleFocusIn(c.event as FocusEvent)}"
   >

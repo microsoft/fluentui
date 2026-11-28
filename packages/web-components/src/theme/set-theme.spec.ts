@@ -183,6 +183,96 @@ test.describe('setTheme()', () => {
     await expect(span).toHaveCSS('--bar', 'bar2');
   });
 
+  test('should share one style sheet for element-scoped themes with equal tokens', async ({ fastPage, page }) => {
+    const a = page.locator('div.a');
+    const b = page.locator('div.b');
+
+    await fastPage.setTemplate(/* html */ `
+      <div class="parent">
+        <div class="a"></div>
+        <div class="b"></div>
+      </div>
+    `);
+
+    const supportsScopedTheme = await page.evaluate(() => 'adoptedStyleSheets' in document && 'CSSScopeRule' in window);
+    test.skip(!supportsScopedTheme, 'Element-scoped themes require CSS `@scope` and adopted style sheets.');
+
+    const result = await page.evaluate(() => {
+      const a = document.querySelector<HTMLDivElement>('div.a')!;
+      const b = document.querySelector<HTMLDivElement>('div.b')!;
+      const styleSheetCountBefore = document.adoptedStyleSheets.length;
+
+      // Distinct objects with equal tokens should map to the same theme.
+      window.setTheme({ foo: 'foo1', bar: 'bar1' }, a);
+      const styleSheetCountAfterFirstTheme = document.adoptedStyleSheets.length;
+
+      // Re-applying equal tokens from new objects must not add style sheets.
+      for (let i = 0; i < 10; i++) {
+        window.setTheme({ foo: 'foo1', bar: 'bar1' }, b);
+      }
+
+      return {
+        styleSheetCountBefore,
+        styleSheetCountAfterFirstTheme,
+        styleSheetCountAfterRepeatedThemes: document.adoptedStyleSheets.length,
+        firstThemeKey: a.dataset.fluentTheme,
+        secondThemeKey: b.dataset.fluentTheme,
+      };
+    });
+
+    expect(result.firstThemeKey).toBeTruthy();
+    expect(result.secondThemeKey).toBe(result.firstThemeKey);
+    expect(result.styleSheetCountAfterFirstTheme).toBe(result.styleSheetCountBefore + 1);
+    expect(result.styleSheetCountAfterRepeatedThemes).toBe(result.styleSheetCountAfterFirstTheme);
+
+    await expect(a).toHaveCSS('--foo', 'foo1');
+    await expect(a).toHaveCSS('--bar', 'bar1');
+    await expect(b).toHaveCSS('--foo', 'foo1');
+    await expect(b).toHaveCSS('--bar', 'bar1');
+  });
+
+  test('should use separate style sheets for element-scoped themes with different tokens', async ({
+    fastPage,
+    page,
+  }) => {
+    const a = page.locator('div.a');
+    const b = page.locator('div.b');
+
+    await fastPage.setTemplate(/* html */ `
+      <div class="parent">
+        <div class="a"></div>
+        <div class="b"></div>
+      </div>
+    `);
+
+    const supportsScopedTheme = await page.evaluate(() => 'adoptedStyleSheets' in document && 'CSSScopeRule' in window);
+    test.skip(!supportsScopedTheme, 'Element-scoped themes require CSS `@scope` and adopted style sheets.');
+
+    const result = await page.evaluate(() => {
+      const a = document.querySelector<HTMLDivElement>('div.a')!;
+      const b = document.querySelector<HTMLDivElement>('div.b')!;
+      const styleSheetCountBefore = document.adoptedStyleSheets.length;
+
+      window.setTheme({ foo: 'foo1' }, a);
+      window.setTheme({ foo: 'foo2' }, b);
+
+      return {
+        styleSheetCountBefore,
+        styleSheetCountAfterThemes: document.adoptedStyleSheets.length,
+        firstThemeKey: a.dataset.fluentTheme,
+        secondThemeKey: b.dataset.fluentTheme,
+      };
+    });
+
+    expect(result.firstThemeKey).toBeTruthy();
+    expect(result.secondThemeKey).toBeTruthy();
+    expect(result.secondThemeKey).not.toBe(result.firstThemeKey);
+    expect(result.styleSheetCountAfterThemes).toBe(result.styleSheetCountBefore + 2);
+
+    await expect(a).toHaveCSS('--foo', 'foo1');
+    await expect(b).toHaveCSS('--foo', 'foo2');
+  });
+
   test('sanitizes token values', async ({ fastPage, page }) => {
     const body = page.locator('body');
 

@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {
-  getIntrinsicElementProps,
   mergeCallbacks,
   useControllableState,
   slot,
@@ -44,12 +43,12 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
 
     root: slot.always(
       // eslint-disable-next-line react-hooks/refs
-      getIntrinsicElementProps('button', {
+      {
         type: 'button',
         'aria-label': 'information',
         ...rest,
         ref: rootRef,
-      }),
+      },
       { elementType: 'button' },
     ),
     popover: popoverSlot,

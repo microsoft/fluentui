@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 /**
  * Creates a MutableRef with ref change callback. Is useful as React.useRef() doesn't notify you when its content
@@ -13,7 +12,6 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
  *
  * @param initialValue - initial ref value
  * @param callback - a callback to run when value changes
- * @param skipInitialResolve - a flag to skip an initial ref report
  *
  * @example
  * const ref = useCallbackRef(0, (newValue, oldValue) => console.log(oldValue, '->', newValue);
@@ -23,10 +21,8 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 export function useCallbackRef<T>(
   initialValue: T | null,
   callback: (newValue: T | null, lastValue: T | null) => void,
-  skipInitialResolve?: boolean,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): React.MutableRefObject<T | null> {
-  const isFirst = React.useRef(true);
   const [ref] = React.useState(() => ({
     // value
     value: initialValue,
@@ -42,20 +38,11 @@ export function useCallbackRef<T>(
 
         if (last !== value) {
           ref.value = value;
-
-          if (skipInitialResolve && isFirst.current) {
-            return;
-          }
-
           ref.callback(value, last);
         }
       },
     },
   }));
-
-  useIsomorphicLayoutEffect(() => {
-    isFirst.current = false;
-  }, []);
 
   // update callback
   ref.callback = callback;
