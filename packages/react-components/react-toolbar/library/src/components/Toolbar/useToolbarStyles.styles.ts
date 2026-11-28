@@ -37,9 +37,9 @@ export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => 
     toolbarClassNames.root,
     styles.root,
     vertical && styles.vertical,
-    size === 'small' && !vertical && styles.small,
-    size === 'medium' && !vertical && styles.medium,
-    size === 'large' && !vertical && styles.large,
+    size === 'small' && styles.small,
+    size === 'medium' && styles.medium,
+    size === 'large' && styles.large,
     state.root.className,
   );
 
