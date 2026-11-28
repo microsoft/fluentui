@@ -1,0 +1,84 @@
+query ($owner: String!, $name: String!, $n: Int!) {
+  repository(owner: $owner, name: $name) {
+    issue(number: $n) {
+      number
+      title
+      body
+      createdAt
+      url
+      author {
+        login
+      }
+      labels(first: 30) {
+        nodes {
+          name
+        }
+      }
+      assignees(first: 10) {
+        nodes {
+          login
+        }
+      }
+      comments(last: 50) {
+        nodes {
+          author {
+            login
+            __typename
+          }
+          authorAssociation
+          createdAt
+          body
+        }
+      }
+      closedByPullRequestsReferences(first: 10, includeClosedPrs: true) {
+        nodes {
+          repository {
+            nameWithOwner
+          }
+          number
+          state
+          isDraft
+          isCrossRepository
+          updatedAt
+          author {
+            login
+            __typename
+          }
+        }
+      }
+      timelineItems(itemTypes: [CROSS_REFERENCED_EVENT], last: 20) {
+        nodes {
+          ... on CrossReferencedEvent {
+            createdAt
+            source {
+              ... on PullRequest {
+                repository {
+                  nameWithOwner
+                }
+                number
+                state
+                isDraft
+                isCrossRepository
+                updatedAt
+                author {
+                  login
+                  __typename
+                }
+                mergeable
+                statusCheckRollup: commits(last: 1) {
+                  nodes {
+                    commit {
+                      statusCheckRollup {
+                        state
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
