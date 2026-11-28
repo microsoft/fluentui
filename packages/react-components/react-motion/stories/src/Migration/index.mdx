@@ -350,23 +350,21 @@ import { Fade } from '@fluentui/react-motion-components-preview';
 
 ```tsx
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-import { fadeAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
+import { fadeIn, fadeOut, scaleIn, scaleOut } from '@fluentui/react-motion-components-preview';
 
 const FadeScale = createPresenceComponent({
   enter: [
-    fadeAtom({ direction: 'enter', duration: motionTokens.durationNormal }),
-    scaleAtom({
-      direction: 'enter',
+    fadeIn({ duration: motionTokens.durationNormal }),
+    scaleIn({
+      from: 0.9,
       duration: motionTokens.durationNormal,
-      outScale: 0.9,
     }),
   ],
   exit: [
-    fadeAtom({ direction: 'exit', duration: motionTokens.durationNormal }),
-    scaleAtom({
-      direction: 'exit',
+    fadeOut({ duration: motionTokens.durationNormal }),
+    scaleOut({
+      to: 0.9,
       duration: motionTokens.durationNormal,
-      outScale: 0.9,
     }),
   ],
 });

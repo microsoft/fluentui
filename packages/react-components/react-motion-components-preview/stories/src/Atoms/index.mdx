@@ -85,26 +85,25 @@ In the Fluent Motion System's <a href="?path=/docs/motion-introduction--docs#an-
 Each atom is a factory function that returns an `AtomMotion` object — a plain description of keyframes, duration, and easing that the browser can execute directly.
 
 ```ts
-import { fadeAtom } from '@fluentui/react-motion-components-preview';
+import { blur } from '@fluentui/react-motion-components-preview';
 
-const fadeIn = fadeAtom({
-  direction: 'enter',
+const blurMotion = blur({
   duration: 500,
-  outOpacity: 0,
-  inOpacity: 1,
+  from: '10px',
+  to: '0px',
 });
-// Returns: { keyframes: [{ opacity: 0 }, { opacity: 1 }], duration: 500, easing: '...', ... }
+// Returns: { keyframes: [{ filter: 'blur(10px)' }, { filter: 'blur(0px)' }], duration: 500, easing: '...', delay: 0 }
 ```
 
 ## Available Atoms
 
-| Atom         | Effect               | CSS Property             | Key Parameters                |
-| ------------ | -------------------- | ------------------------ | ----------------------------- |
-| `fadeAtom`   | Opacity transition   | `opacity`                | `outOpacity`, `inOpacity`     |
-| `scaleAtom`  | Size scaling         | `transform: scale()`     | `outScale`, `inScale`         |
-| `slideAtom`  | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY`  |
-| `rotateAtom` | 3D rotation          | `transform: rotate3d()`  | `axis`, `outAngle`, `inAngle` |
-| `blurAtom`   | Blur filter          | `filter: blur()`         | `outRadius`, `inRadius`       |
+| Atom     | Effect               | CSS Property     | Neutral Value | Key Parameters       |
+| -------- | -------------------- | ---------------- | ------------- | -------------------- |
+| `fade`   | Opacity transition   | `opacity`        | `1`           | `from`, `to`         |
+| `scale`  | Size scaling         | `scale`          | `1`           | `from`, `to`         |
+| `slide`  | Position translation | `translate`      | `'0px' '0px'` | `from`, `to`         |
+| `rotate` | 3D rotation          | `rotate`         | `0` degrees   | `axis`, `from`, `to` |
+| `blur`   | Blur filter          | `filter: blur()` | `'0px'`       | `from`, `to`         |
 
 <AtomsDemo />
 
@@ -114,34 +113,63 @@ const fadeIn = fadeAtom({
 
 All atoms accept these base parameters:
 
-| Parameter   | Type                | Default       | Description                             |
-| ----------- | ------------------- | ------------- | --------------------------------------- |
-| `direction` | `'enter' \| 'exit'` | —             | **Required.** Determines keyframe order |
-| `duration`  | `number`            | —             | **Required.** Animation duration in ms  |
-| `easing`    | `string`            | `curveLinear` | CSS easing function                     |
-| `delay`     | `number`            | `0`           | Delay before animation starts           |
+| Parameter  | Type     | Default       | Description                            |
+| ---------- | -------- | ------------- | -------------------------------------- |
+| `duration` | `number` | —             | **Required.** Animation duration in ms |
+| `easing`   | `string` | `curveLinear` | CSS easing function                    |
+| `delay`    | `number` | `0`           | Delay before animation starts          |
+
+General atoms (`fade`, `scale`, `slide`, `rotate`, `blur`) animate between explicit `from` and `to` endpoints — both endpoints are required (within a `slide` pose, an omitted `x` or `y` axis defaults to `'0px'`). Fade helpers set `fill: 'both'` so delayed fades stay hidden; the other atoms do not add a fade or set `fill`.
+
+Directional `*In` and `*Out` helpers encode the neutral-value boundary (opacity `1`, scale `1`, zero translation `0px`, `0` degrees on axis `'z'`, or blur `'0px'`): `*In` arrives at neutral (`to` is forbidden), and `*Out` departs from neutral (`from` is forbidden). `fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that defaults to `0`. `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut` require their outer endpoint because they have no universal displaced value. Neutral atom defaults differ from the presence components' Fluent entrance defaults. Use the general helper when authoring explicit `from` and `to` endpoints.
 
 ### Per-Atom Parameters
 
 In addition to the common parameters above, each atom has specific properties:
 
 ```ts
-import { fadeAtom, scaleAtom, slideAtom, rotateAtom, blurAtom } from '@fluentui/react-motion-components-preview';
+import {
+  fade,
+  fadeIn,
+  fadeOut,
+  scale,
+  scaleIn,
+  scaleOut,
+  slide,
+  slideIn,
+  slideOut,
+  rotate,
+  rotateIn,
+  rotateOut,
+  blur,
+  blurIn,
+  blurOut,
+} from '@fluentui/react-motion-components-preview';
 
-// fadeAtom — opacity transition
-fadeAtom({ direction: 'enter', duration: 500, outOpacity: 0, inOpacity: 1 });
+// Opacity (0 to 1; optional outer endpoint defaults to 0 on fadeIn/fadeOut)
+fade({ duration: 500, from: 0.2, to: 0.8 });
+fadeIn({ duration: 500 });
+fadeOut({ duration: 500, to: 0.2 });
 
-// scaleAtom — size scaling
-scaleAtom({ direction: 'enter', duration: 500, outScale: 0.9, inScale: 1 });
+// Scale (unitless factor; optional outer endpoint defaults to 0 on scaleIn/scaleOut)
+scale({ duration: 500, from: 0.8, to: 1.2 });
+scaleIn({ duration: 500, from: 0.9 });
+scaleOut({ duration: 500 });
 
-// slideAtom — position translation
-slideAtom({ direction: 'enter', duration: 500, outX: '0px', outY: '20px', inX: '0px', inY: '0px' });
+// Translation with CSS lengths (omitted axis defaults to '0px')
+slide({ duration: 500, from: { y: '20px' }, to: { y: '0px' } });
+slideIn({ duration: 500, from: { y: '20px' } });
+slideOut({ duration: 500, to: { x: '24px' } });
 
-// rotateAtom — rotation (axis: 'x' | 'y' | 'z')
-rotateAtom({ direction: 'enter', duration: 600, axis: 'z', outAngle: -90, inAngle: 0 });
+// Rotation in degrees (axis: 'x' | 'y' | 'z')
+rotate({ duration: 600, axis: 'y', from: -90, to: 45 });
+rotateIn({ duration: 600, from: -90 });
+rotateOut({ duration: 600, to: 90 });
 
-// blurAtom — blur filter
-blurAtom({ direction: 'enter', duration: 500, outRadius: '10px', inRadius: '0px' });
+// Blur with CSS lengths
+blur({ duration: 500, from: '1rem', to: '2px' });
+blurIn({ duration: 500, from: '10px' });
+blurOut({ duration: 500, to: '10px' });
 ```
 
 ## Creating Custom Presence Components
@@ -160,8 +188,8 @@ Use the function form to access runtime values like element dimensions:
 const DynamicSlide = createPresenceComponent(({ element }) => {
   const width = element.offsetWidth;
   return {
-    enter: slideAtom({ direction: 'enter', duration: 500, outX: `-${width}px` }),
-    exit: slideAtom({ direction: 'exit', duration: 500, outX: `-${width}px` }),
+    enter: slideIn({ duration: 500, from: { x: `-${width}px` } }),
+    exit: slideOut({ duration: 500, to: { x: `-${width}px` } }),
   };
 });
 ```

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Migrate internal backdrop motion from fadeAtom to fadeIn/fadeOut.",
+  "packageName": "@fluentui/react-drawer",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

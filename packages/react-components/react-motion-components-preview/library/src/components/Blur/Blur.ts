@@ -1,7 +1,7 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
-import { fadeAtom } from '../../atoms/fade-atom';
-import { blurAtom } from '../../atoms/blur-atom';
+import { fadeIn, fadeOut } from '../../atoms/fade-atom';
+import { blur } from '../../atoms/blur-atom';
 import type { BlurParams } from './blur-types';
 
 /**
@@ -28,22 +28,21 @@ const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
   inRadius = '0px',
   animateOpacity = true,
 }) => {
-  const enterAtoms = [blurAtom({ direction: 'enter', duration, easing, delay, outRadius, inRadius })];
+  const enterAtoms = [blur({ duration, easing, delay, from: outRadius, to: inRadius })];
   const exitAtoms = [
-    blurAtom({
-      direction: 'exit',
+    blur({
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outRadius,
-      inRadius,
+      from: inRadius,
+      to: outRadius,
     }),
   ];
 
   // Only add fade atoms if animateOpacity is true.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
+    enterAtoms.push(fadeIn({ duration, easing, delay }));
+    exitAtoms.push(fadeOut({ duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {
