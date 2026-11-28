@@ -13,6 +13,7 @@ import { useChildElement } from '../utils/useChildElement';
 import type {
   MotionParam,
   PresenceMotion,
+  BasePresenceParams,
   MotionImperativeRef,
   PresenceMotionFn,
   PresenceDirection,
@@ -28,6 +29,143 @@ import { createMotionComponent } from './createMotionComponent';
  * @internal
  */
 export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
+
+/**
+ * Retains pose mappings on the component so variants can reuse directional normalization.
+ *
+ * @internal
+ */
+export const PRESENCE_COMPONENT_OPTIONS = Symbol('PRESENCE_COMPONENT_OPTIONS');
+
+/**
+ * Selects optional keys of `MotionParams` (props that callers may omit).
+ * Directional `.In` and `.Out` components omit opposite and `in` pose props at runtime,
+ * so only optional props can safely be mapped in `poseProps` or stripped from directional props.
+ */
+type OptionalMotionParamKeys<MotionParams> = {
+  [Key in keyof MotionParams]-?: {} extends Pick<MotionParams, Key> ? Key : never;
+}[keyof MotionParams];
+
+/**
+ * Selects optional props (other than the anchor prop itself) whose defined value types are assignable
+ * in both directions with the anchor prop.
+ * Each prop maps to its key or never; the final indexed access collects the compatible keys into a union.
+ *
+ * @example
+ * ```ts
+ * type Params = {
+ *   fromScale?: number;
+ *   inScale?: number;
+ *   toScale?: number;
+ *   fromX?: string;
+ *   limitedScale?: 0 | 1;
+ * };
+ * type ScaleKeys = CompatiblePoseKeys<Params, 'fromScale'>;
+ * // 'inScale' | 'toScale'
+ * // fromScale is excluded; fromX has a different value type; limitedScale cannot accept every number.
+ * ```
+ */
+type CompatiblePoseKeys<MotionParams, Anchor extends OptionalMotionParamKeys<MotionParams>> = Exclude<
+  {
+    // NonNullable ignores absent values; tuple wrappers compare whole types, including union-valued props.
+    [Key in OptionalMotionParamKeys<MotionParams>]: [NonNullable<MotionParams[Key]>] extends [
+      NonNullable<MotionParams[Anchor]>,
+    ]
+      ? // Check the reverse assignment too: a narrower type such as 0 | 1 must not match number.
+        [NonNullable<MotionParams[Anchor]>] extends [NonNullable<MotionParams[Key]>]
+        ? Key
+        : never
+      : never;
+  }[OptionalMotionParamKeys<MotionParams>],
+  Anchor
+>;
+
+type PosePropMapping<MotionParams extends Record<string, MotionParam>, AllowNeutral extends boolean> = {
+  [From in OptionalMotionParamKeys<MotionParams>]: {
+    [To in CompatiblePoseKeys<MotionParams, From>]: {
+      from: From;
+      in?: Exclude<CompatiblePoseKeys<MotionParams, From>, To>;
+      to: To;
+    } & (AllowNeutral extends true
+      ? {
+          /** Value for omitted sibling axes when any axis in this pose group is authored. */
+          neutral?: MotionParams[From];
+        }
+      : { neutral?: never });
+  }[CompatiblePoseKeys<MotionParams, From>];
+}[OptionalMotionParamKeys<MotionParams>];
+
+type StoredPoseProp = { from: PropertyKey; in?: PropertyKey; to: PropertyKey; neutral?: MotionParam };
+
+/**
+ * Maps temporal endpoint props for presence and Prism-strict directional components.
+ *
+ * Use a single mapping object for a scalar pose (such as opacity, scale, or DOM-measured size without an `in` prop),
+ * or a nested array of mappings for coupled axes of one multi-axis pose (such as X and Y translation) where `neutral`
+ * fills omitted sibling axes within that group only.
+ *
+ * When `poseProps` is provided, `.In` accepts only `from*` pose props (omitting `in*`, `to*`, and exit timing),
+ * and `.Out` accepts only `to*` pose props (omitting `in*` and `from*`).
+ *
+ * @example
+ * ```ts
+ * type Params = {
+ *   fromScale?: number;
+ *   inScale?: number;
+ *   toScale?: number;
+ *   fromX?: string;
+ *   inX?: string;
+ *   toX?: string;
+ *   fromY?: string;
+ *   inY?: string;
+ *   toY?: string;
+ * };
+ * const options: PresenceComponentOptions<
+ *   Params,
+ *   'fromScale' | 'fromX' | 'fromY',
+ *   'toScale' | 'toX' | 'toY',
+ *   'inScale' | 'inX' | 'inY'
+ * > = {
+ *   poseProps: [
+ *     { from: 'fromScale', in: 'inScale', to: 'toScale' },
+ *     [
+ *       { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+ *       { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+ *     ],
+ *   ],
+ * };
+ * // Authoring fromX without fromY fills fromY = '0px' without affecting fromScale.
+ * ```
+ */
+export type PresenceComponentOptions<
+  MotionParams extends Record<string, MotionParam>,
+  FromKeys extends keyof MotionParams = never,
+  ToKeys extends keyof MotionParams = never,
+  InKeys extends keyof MotionParams = never,
+> = {
+  /** One entry per independent pose: a scalar mapping or a coupled multi-axis group. */
+  poseProps: readonly (
+    | ({ from: FromKeys; in?: InKeys; to: ToKeys } & PosePropMapping<MotionParams, false>)
+    | readonly ({ from: FromKeys; in?: InKeys; to: ToKeys } & PosePropMapping<MotionParams, true>)[]
+  )[];
+};
+
+type ExitTimingKey = Extract<keyof BasePresenceParams, `exit${string}`>;
+
+type PresenceInOmit<
+  MotionParams extends Record<string, MotionParam>,
+  FromKeys extends keyof MotionParams,
+  ToKeys extends keyof MotionParams,
+  InKeys extends keyof MotionParams,
+> = [FromKeys | ToKeys | InKeys] extends [never]
+  ? never
+  : Extract<InKeys | ToKeys | ExitTimingKey, OptionalMotionParamKeys<MotionParams>>;
+
+type PresenceOutOmit<
+  MotionParams extends Record<string, MotionParam>,
+  FromKeys extends keyof MotionParams,
+  InKeys extends keyof MotionParams,
+> = Extract<InKeys | FromKeys, OptionalMotionParamKeys<MotionParams>>;
 
 export type PresenceComponentProps = {
   /**
@@ -81,20 +219,88 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
-  PresenceComponentProps & MotionParams
-> & {
+type DirectionalMotionParams<MotionParams extends Record<string, MotionParam>, OmitKeys extends keyof MotionParams> = [
+  OmitKeys,
+] extends [never]
+  ? MotionParams
+  : Omit<MotionParams, OmitKeys>;
+
+export type PresenceComponent<
+  MotionParams extends Record<string, MotionParam> = {},
+  InOmit extends keyof MotionParams = never,
+  OutOmit extends keyof MotionParams = never,
+> = React.FC<PresenceComponentProps & MotionParams> & {
   (props: PresenceComponentProps & MotionParams): JSXElement | null;
   [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-  In: MotionComponent<MotionParams>;
-  Out: MotionComponent<MotionParams>;
+  [PRESENCE_COMPONENT_OPTIONS]?: {
+    poseProps: readonly (StoredPoseProp | readonly StoredPoseProp[])[];
+  };
+  In: MotionComponent<DirectionalMotionParams<MotionParams, InOmit>>;
+  Out: MotionComponent<DirectionalMotionParams<MotionParams, OutOmit>>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
 
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
+type ExitTimingSuffix = {
+  [Key in keyof BasePresenceParams]-?: Key extends `exit${infer Suffix}`
+    ? Lowercase<Suffix> extends keyof BasePresenceParams
+      ? Suffix
+      : never
+    : never;
+}[keyof BasePresenceParams];
+
+/**
+ * Creates a presence component with directional `.In` and `.Out` motion components.
+ *
+ * When passing `options.poseProps`, annotate `MotionParams` on `value` (for example with `PresenceMotionFn<Params>`
+ * or an inline parameter type) instead of supplying a single explicit `<Params>` type argument, so TypeScript can
+ * infer `FromKeys`, `ToKeys`, and `InKeys` from `options.poseProps`. Mapped pose props must be optional on
+ * `MotionParams` because `.In` and `.Out` omit opposite and `in` endpoints at runtime.
+ */
+export function createPresenceComponent<
+  MotionParams extends Record<string, MotionParam> = {},
+  FromKeys extends keyof MotionParams = never,
+  ToKeys extends keyof MotionParams = never,
+  InKeys extends keyof MotionParams = never,
+>(
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
-): PresenceComponent<MotionParams> {
+  options?: PresenceComponentOptions<NoInfer<MotionParams>, FromKeys, ToKeys, InKeys>,
+): PresenceComponent<
+  MotionParams,
+  PresenceInOmit<MotionParams, FromKeys, ToKeys, InKeys>,
+  PresenceOutOmit<MotionParams, FromKeys, InKeys>
+> {
+  type PoseEntry = {
+    from: keyof MotionParams;
+    in?: keyof MotionParams;
+    to: keyof MotionParams;
+    neutral?: MotionParams[keyof MotionParams];
+  };
+  const coupledGroups = options?.poseProps.filter(Array.isArray) as readonly (readonly PoseEntry[])[] | undefined;
+  // Within each multi-axis pose group, an authored endpoint uses neutral values for omitted sibling axes
+  // (e.g. fromX alone implies fromY = '0px') without affecting other groups or wholly omitted endpoints.
+  const presenceFn: PresenceMotionFn<MotionParams> =
+    typeof value === 'function'
+      ? coupledGroups?.length
+        ? params => {
+            const next: Record<PropertyKey, unknown> = { ...params };
+            for (const group of coupledGroups) {
+              for (const ep of ['from', 'in', 'to'] as const) {
+                if (group.some(p => p[ep] !== undefined && next[p[ep]!] !== undefined)) {
+                  for (const p of group) {
+                    const k = p[ep];
+                    if (k !== undefined && next[k] === undefined && p.neutral !== undefined) {
+                      next[k] = p.neutral;
+                    }
+                  }
+                }
+              }
+            }
+            return value(next as { element: HTMLElement } & MotionParams);
+          }
+        : value
+      : () => value;
+
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
       const itemContext = React.useContext(PresenceGroupChildContext);
@@ -178,8 +384,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
             handleRef.current = undefined;
           }
 
-          const presenceMotion =
-            typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
+          const presenceMotion = presenceFn({ element, ...optionsRef.current.params });
           const IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION = (
             presenceMotion as PresenceMotion & { [INTERRUPTABLE_MOTION_SYMBOL]?: boolean }
           )[INTERRUPTABLE_MOTION_SYMBOL];
@@ -262,21 +467,40 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     {
       // Heads up!
       // Always normalize it to a function to simplify types
-      [PRESENCE_MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+      [PRESENCE_MOTION_DEFINITION]: presenceFn,
+      [PRESENCE_COMPONENT_OPTIONS]: options,
     },
     {
       // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>
-      In: createMotionComponent(
+      In: createMotionComponent<
+        DirectionalMotionParams<MotionParams, PresenceInOmit<MotionParams, FromKeys, ToKeys, InKeys>>
+      >(
         // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
         // Otherwise, pass the `enter` motion object directly.
-        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).enter : value.enter,
+        typeof value === 'function'
+          ? params => presenceFn(params as { element: HTMLElement } & MotionParams).enter
+          : value.enter,
       ),
 
       // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
-      Out: createMotionComponent(
-        // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
-        // Otherwise, pass the `exit` motion object directly.
-        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).exit : value.exit,
+      Out: createMotionComponent<
+        DirectionalMotionParams<MotionParams, PresenceOutOmit<MotionParams, FromKeys, InKeys>>
+      >(
+        // If we have a motion function, forward explicit ordinary timing props to `exit*` before variant defaults
+        // are merged (preserving any explicit `exit*` value) and pick `exit`.
+        typeof value === 'function'
+          ? params => {
+              const next = { ...params } as Record<string, MotionParam>;
+              for (const key of ['Duration', 'Easing', 'Delay'] as readonly ExitTimingSuffix[]) {
+                const src = key.toLowerCase();
+                const dst = `exit${key}`;
+                if (next[dst] === undefined && next[src] !== undefined) {
+                  next[dst] = next[src];
+                }
+              }
+              return presenceFn(next as { element: HTMLElement } & MotionParams).exit;
+            }
+          : value.exit,
       ),
     },
   );
